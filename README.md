@@ -18,13 +18,13 @@ Each of those layers are also their own libraries, available as [twfx](https://g
 
 **two** is open-source, and published under the zlib license: as such it is looking for sponsors, funding, and your support through [patreon](https://www.patreon.com/libmud).
 
-# live coding
+### live coding
 
-Try [this live-coding environment](https://hugoam.github.io/two/editor/editor.html), where you can browse and edit in real-time any of the 35 examples we ported from three.js
+As a demonstration of the features and API of two, you can try this [live-coding environment](https://hugoam.github.io/two/editor/editor.html), which allows you to browse and edit (in real-time) any of the 35 examples we ported from three.js
 
 [![samples](media/samples0.gif?raw=true)](https://hugoam.github.io/two/editor/editor.html)
 
-# building
+### building
 two is built with [GENie](https://github.com/bkaradzic/GENie) build system, which is based on premake and consists of a bunch of lua scripts. The GENie binaries needed by two for windows and linux are included for convenience in the `bin` folder.  
 To get a headstart and build two you should clone this repository, and run GENie which will generate projects for two libraries and for the examples.
 
@@ -39,7 +39,7 @@ The build instructions for linux and gcc look like:
 - for osx (xcode): `bin/darwin/genie --xcode=osx xcode9`
 - for windows (visual studio): `bin/windows/genie vs2017`
 
-# quickstart
+### quickstart
 This is the minimal sample code you need to run a two application
 ```c++
 #include <two/two.h>
@@ -64,7 +64,7 @@ Don't hesitate to have a look at the examples!
 
 ![samples](media/ui0.gif?raw=true)
 
-# [ui](docs/ui.md)
+### [ui](docs/ui.md)
 
 two ui uses a novel paradigm that sits halfway between **immediate** (like dear imgui) and **retained** ui (like Qt) : its API looks and feels exactly like an immediate ui library, except not much is *actually* done immediately. As such, we prefer to refer to it as a **declarative** ui.  
 The final tree of widgets will look exactly like the tree of the declarations that is traversed on any given frame. however, events are processed, and rendering is done in a separate step.
@@ -93,7 +93,7 @@ ui::button(parent, style, "Click me!");
 
 An extensive UI example demonstrates the usage in a way no documentation ever could: have a look at the code.
 
-# [graphics](graphics.md)
+### [graphics](graphics.md)
 two gfx library uses the same immediate paradigm as the ui. instead of nesting ui nodes (widgets) calls, you nest graphics nodes calls. as such it is perfect for quickly setting up some debug graphics rendering.
 
 ```c++
@@ -117,39 +117,39 @@ animated.play("walk");
 
 A collection of 35 examples ported from three.js demonstrate most usages of the API: check them out to get familiar with how to use two.
 
-# examples
+### examples
 
-## [pbr materials](https://hugoam.github.io/two-io/examples/03_materials_low.html)
+#### [pbr materials](https://hugoam.github.io/two-io/examples/03_materials_low.html)
 ![pbr materials](https://github.com/hugoam/two-io/blob/master/media/03_materials.png)
 
-## [lights](https://hugoam.github.io/two-io/examples/04_lights.html)
+#### [lights](https://hugoam.github.io/two-io/examples/04_lights.html)
 ![lights](https://github.com/hugoam/two-io/blob/master/media/04_lights.png)
 
-## [sponza (.obj import)](https://hugoam.github.io/two-io/examples/04_sponza.html)
+#### [sponza (.obj import)](https://hugoam.github.io/two-io/examples/04_sponza.html)
 ![sponza (.obj import)](https://github.com/hugoam/two-io/blob/master/media/04_sponza.png)
 
-## [character (animations)](https://hugoam.github.io/two-io/examples/05_character.html)
+#### [character (animations)](https://hugoam.github.io/two-io/examples/05_character.html)
 ![character (animations)](https://github.com/hugoam/two-io/blob/master/media/05_character.png)
 
-## [particles](https://hugoam.github.io/two-io/examples/06_particles.html)
+#### [particles](https://hugoam.github.io/two-io/examples/06_particles.html)
 ![particles](https://github.com/hugoam/two-io/blob/master/media/06_particles.png)
 
-## [gltf](https://hugoam.github.io/two-io/examples/07_gltf.html)
+#### [gltf](https://hugoam.github.io/two-io/examples/07_gltf.html)
 ![gltf](https://github.com/hugoam/two-io/blob/master/media/07_gltf.png)
 
-## [sky (perez model)](https://hugoam.github.io/two-io/examples/08_sky.html)
+#### [sky (perez model)](https://hugoam.github.io/two-io/examples/08_sky.html)
 ![sky (perez model)](https://github.com/hugoam/two-io/blob/master/media/08_sky.png)
 
-## [live shader](https://hugoam.github.io/two-io/examples/09_live_shader.html)
+#### [live shader](https://hugoam.github.io/two-io/examples/09_live_shader.html)
 ![live shader](https://github.com/hugoam/two-io/blob/master/media/09_live_shader.png)
 
-## [live graphics](https://hugoam.github.io/two-io/examples/14_live_gfx.html)
+#### [live graphics](https://hugoam.github.io/two-io/examples/14_live_gfx.html)
 ![live graphics](https://github.com/hugoam/two-io/blob/master/media/14_live_gfx.png)
 
-## [live graphics (visual script)](https://hugoam.github.io/two-io/examples/4_live_gfx_visual.html)
+#### [live graphics (visual script)](https://hugoam.github.io/two-io/examples/4_live_gfx_visual.html)
 ![live graphics (visual script)](https://github.com/hugoam/two-io/blob/master/media/14_live_gfx_visual.png)
 
-# credits
+### credits
 two couldn't exist without:
 - [GENie](https://github.com/bkaradzic/GENie) build system
 - [bgfx](https://github.com/bkaradzic/bgfx) rendering library
@@ -159,7 +159,7 @@ two couldn't exist without:
 - [glm](https://github.com/g-truc/glm) math library
 - [json](https://github.com/nlohmann/json) header
 
-# support
+### support
 Creating two has been a huge time investment over the course of a few years: the only way I can pursue that effort and make it thrive into the programming ecosystem of our dreams, is through funding and sponsorship: you are welcome to have a look at our [patreon](https://www.patreon.com/toyengine).
 
 Iron supports:
@@ -168,5 +168,5 @@ Iron supports:
 Stone supports:
 - Etienne Balit, Le Bach, Manos Agelidis, Nebo Milic, Omar Cornut, Stefan Hagen, Sunder Iyer
 
-# license
+### license
 two is licensed under the [zlib license](LICENSE.txt).
