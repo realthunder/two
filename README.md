@@ -18,7 +18,11 @@ Each of those layers are also their own libraries, available as [twfx](https://g
 
 **two** is open-source, and published under the zlib license: as such it is looking for sponsors, funding, and your support through [patreon](https://www.patreon.com/libmud).
 
-![samples](media/samples0.gif?raw=true)
+# live coding
+
+Try [this live-coding environment](https://hugoam.github.io/two/editor/editor.html), where you can browse and edit in real-time any of the 35 examples we ported from three.js
+
+[![samples](media/samples0.gif?raw=true)](https://hugoam.github.io/two/editor/editor.html)
 
 # building
 two is built with [GENie](https://github.com/bkaradzic/GENie) build system, which is based on premake and consists of a bunch of lua scripts. The GENie binaries needed by two for windows and linux are included for convenience in the `bin` folder.  
