@@ -175,7 +175,7 @@ namespace two
 		encoder.submit(view, program.fetch());
 	}
 
-	bgfx::VertexDecl ImmediateDraw::ms_vertex_decl;
+	bgfx::VertexLayout ImmediateDraw::ms_vertex_decl;
 
 	static size_t s_direct_index = 0;
 

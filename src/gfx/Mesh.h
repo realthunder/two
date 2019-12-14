@@ -40,7 +40,7 @@ namespace two
 		MeshAdapter m_writer = {};
 	};
 	
-	export_ TWO_GFX_EXPORT const bgfx::VertexDecl& vertex_decl(uint32_t vertex_format);
+	export_ TWO_GFX_EXPORT const bgfx::VertexLayout& vertex_decl(uint32_t vertex_format);
 
 	export_ TWO_GFX_EXPORT GpuMesh alloc_mesh(PrimitiveType primitive, uint32_t vertex_format, uint32_t vertex_count, uint32_t index_count, bool index32);
 	export_ TWO_GFX_EXPORT GpuMesh alloc_mesh(PrimitiveType primitive, uint32_t vertex_format, uint32_t vertex_count, uint32_t index_count);

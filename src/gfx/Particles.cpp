@@ -36,9 +36,9 @@ module two.gfx;
 
 namespace two
 {
-	bgfx::VertexDecl particle_vertex_decl()
+	bgfx::VertexLayout particle_vertex_decl()
 	{
-		bgfx::VertexDecl decl;
+		bgfx::VertexLayout decl;
 
 		decl.begin();
 			decl.add(bgfx::Attrib::Position, 3, bgfx::AttribType::Float);
@@ -241,7 +241,7 @@ namespace two
 		if(0 == m_num)
 			return;
 
-		static bgfx::VertexDecl decl = particle_vertex_decl();
+		static bgfx::VertexLayout decl = particle_vertex_decl();
 
 		const uint32_t numVertices = min(bgfx::getAvailTransientVertexBuffer(m_num * 4, decl), uint32_t(UINT16_MAX));
 		const uint32_t numIndices = bgfx::getAvailTransientIndexBuffer(m_num * 6);

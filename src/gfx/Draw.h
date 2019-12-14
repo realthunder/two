@@ -46,7 +46,7 @@ namespace two
 			uint32_t m_colour;
 		};
 
-		static bgfx::VertexDecl ms_vertex_decl;
+		static bgfx::VertexLayout ms_vertex_decl;
 
 		Material& m_material;
 

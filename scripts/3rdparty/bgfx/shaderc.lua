@@ -28,14 +28,14 @@ project "spirv-opt"
     configuration {}
     
 project "shaderc"
-	kind "StaticLib"
+    kind "StaticLib"
 
-	links {
-		"bx",
-		"bimg",
+    links {
+        "bx",
+        "bimg",
         "bgfx",
-	}
-    
+    }
+
     removefiles {
         path.join(BGFX_DIR, "src/**.h"),
         path.join(BGFX_DIR, "src/**.cpp"),

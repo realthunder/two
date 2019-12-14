@@ -99,6 +99,6 @@ namespace stl
 	template class TWO_GFX_EXPORT unordered_map<string, bgfx::UniformHandle>;
 
 	template class TWO_GFX_EXPORT vector<bgfx::InstanceDataBuffer>;
-	template class TWO_GFX_EXPORT unordered_map<uint, bgfx::VertexDecl>;
+	template class TWO_GFX_EXPORT unordered_map<uint, bgfx::VertexLayout>;
 }
 #endif

@@ -199,7 +199,7 @@ namespace two
 	export_ enum refl_ Clockwise : unsigned int
 	{
 		CLOCKWISE,
-		ANTI_CLOCKWISE
+		ANTI_CLOCKWISE,
 	};
 }
 

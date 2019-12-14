@@ -47,8 +47,6 @@ project "spirv-opt"
 		path.join(SPIRV_TOOLS, "source/ext_inst.h"),
 		path.join(SPIRV_TOOLS, "source/extensions.cpp"),
 		path.join(SPIRV_TOOLS, "source/extensions.h"),
-		path.join(SPIRV_TOOLS, "source/id_descriptor.cpp"),
-		path.join(SPIRV_TOOLS, "source/id_descriptor.h"),
 		path.join(SPIRV_TOOLS, "source/instruction.h"),
 		path.join(SPIRV_TOOLS, "source/latest_version_glsl_std_450_header.h"),
 		path.join(SPIRV_TOOLS, "source/latest_version_opencl_std_header.h"),
@@ -110,7 +108,6 @@ project "spirv-opt"
 		path.join(SPIRV_TOOLS, "source/val/validate_composites.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_constants.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_conversion.cpp"),
-		path.join(SPIRV_TOOLS, "source/val/validate_datarules.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_debug.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_decorations.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_derivatives.cpp"),
@@ -126,10 +123,12 @@ project "spirv-opt"
 		path.join(SPIRV_TOOLS, "source/val/validate_logicals.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_memory.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_memory_semantics.cpp"),
+		path.join(SPIRV_TOOLS, "source/val/validate_misc.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_mode_setting.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_non_uniform.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_primitives.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_scopes.cpp"),
+		path.join(SPIRV_TOOLS, "source/val/validate_small_type_uses.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validate_type.cpp"),
 		path.join(SPIRV_TOOLS, "source/val/validation_state.cpp"),
 	}
@@ -655,10 +654,10 @@ project "shaderc"
 
 	configuration {}
 
-	if filesexist(BGFX_DIR, path.join(BGFX_DIR, "../bgfx-ext"), {
+	if filesexist(BGFX_DIR, path.join(BGFX_DIR, "../bgfx-gnm"), {
 		path.join(BGFX_DIR, "scripts/shaderc.lua"), }) then
 
-		if filesexist(BGFX_DIR, path.join(BGFX_DIR, "../bgfx-ext"), {
+		if filesexist(BGFX_DIR, path.join(BGFX_DIR, "../bgfx-gnm"), {
 			path.join(BGFX_DIR, "tools/shaderc/shaderc_pssl.cpp"), }) then
 
 			removefiles {
@@ -666,7 +665,7 @@ project "shaderc"
 			}
 		end
 
-		dofile(path.join(BGFX_DIR, "../bgfx-ext/scripts/shaderc.lua") )
+		dofile(path.join(BGFX_DIR, "../bgfx-gnm/scripts/shaderc.lua") )
 	end
 
 	strip()

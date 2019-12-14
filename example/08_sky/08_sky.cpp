@@ -268,10 +268,10 @@ struct ScreenPosVertex
 			.end();
 	}
 
-	static bgfx::VertexDecl ms_decl;
+	static bgfx::VertexLayout ms_decl;
 };
 
-bgfx::VertexDecl ScreenPosVertex::ms_decl;
+bgfx::VertexLayout ScreenPosVertex::ms_decl;
 
 void ProceduralSky::init(GfxSystem& gfx, ivec2 vertex_count)
 {

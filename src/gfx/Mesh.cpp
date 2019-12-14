@@ -24,9 +24,9 @@ module two.gfx;
 
 namespace two
 {
-	bgfx::VertexDecl create_vertex_decl(uint32_t vertex_format)
+	bgfx::VertexLayout create_vertex_decl(uint32_t vertex_format)
 	{
-		bgfx::VertexDecl decl;
+		bgfx::VertexLayout decl;
 
 		bool half_support = (bgfx::getCaps()->supported & BGFX_CAPS_VERTEX_ATTRIB_HALF) != 0;
 		bool needs_half = (vertex_format & VertexAttribute::QTexCoord0) != 0
@@ -77,9 +77,9 @@ namespace two
 		return decl;
 	}
 
-	const bgfx::VertexDecl& vertex_decl(uint32_t vertex_format)
+	const bgfx::VertexLayout& vertex_decl(uint32_t vertex_format)
 	{
-		static map<uint32_t, bgfx::VertexDecl> decls;
+		static map<uint32_t, bgfx::VertexLayout> decls;
 		if(decls.find(vertex_format) == decls.end())
 			decls[vertex_format] = create_vertex_decl(vertex_format);
 		return decls[vertex_format];
@@ -303,7 +303,7 @@ namespace two
 		m_vertex_count = vertex_count;
 		m_index_count = index_count;
 
-		const bgfx::VertexDecl& decl = vertex_decl(vertex_format);
+		const bgfx::VertexLayout& decl = vertex_decl(vertex_format);
 		bgfx::allocTransientVertexBuffer(&m_direct.m_vertices, vertex_count, decl);
 		if(index_count)
 			bgfx::allocTransientIndexBuffer(&m_direct.m_indices, index_count);
@@ -317,14 +317,14 @@ namespace two
 		static auto morph_decl = [](VertexAttribute::Enum attrib, bgfx::Attrib::Enum battrib)
 		{
 			UNUSED(attrib);
-			bgfx::VertexDecl decl;
+			bgfx::VertexLayout decl;
 			decl.begin();
 			decl.add(battrib, 3, bgfx::AttribType::Float);
 			decl.end();
-			return bgfx::createVertexDecl(decl);
+			return bgfx::createVertexLayout(decl);
 		};
 
-		static bgfx::VertexDeclHandle morph_decls[4] =
+		static bgfx::VertexLayoutHandle morph_decls[4] =
 		{
 			morph_decl(VertexAttribute::MorphPosition0, bgfx::Attrib::TexCoord2),
 			morph_decl(VertexAttribute::MorphPosition1, bgfx::Attrib::TexCoord3),
@@ -332,7 +332,7 @@ namespace two
 			morph_decl(VertexAttribute::MorphPosition3, bgfx::Attrib::TexCoord5),
 		};
 
-		static bgfx::VertexDeclHandle normal_decls[4] =
+		static bgfx::VertexLayoutHandle normal_decls[4] =
 		{
 			morph_decl(VertexAttribute::MorphNormal0, bgfx::Attrib::TexCoord6),
 			morph_decl(VertexAttribute::MorphNormal1, bgfx::Attrib::TexCoord7),

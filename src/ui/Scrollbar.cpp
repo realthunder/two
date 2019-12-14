@@ -55,12 +55,12 @@ namespace ui
 			cursor = max(content_size - visible_size, 0.f);
 
 		Widget& rewind = button(scrollbar, dim == Axis::Y ? scrollbar_styles().scroll_up
-														: scrollbar_styles().scroll_left);
+														  : scrollbar_styles().scroll_left);
 
 		scroller(scrollbar, cursor, overflow, visible_size, dim);
 
 		Widget& forward = button(scrollbar, dim == Axis::Y ? scrollbar_styles().scroll_down
-														 : scrollbar_styles().scroll_right);
+														   : scrollbar_styles().scroll_right);
 
 		if(rewind.activated())
 			cursor -= 22.f;

@@ -140,9 +140,9 @@ namespace two
 		uint32_t m_rgba;
 		vec2 m_texcoord;
 
-		static bgfx::VertexDecl& decl()
+		static bgfx::VertexLayout& decl()
 		{
-			static bgfx::VertexDecl decl = vertex_decl(VertexAttribute::Position | VertexAttribute::Colour | VertexAttribute::TexCoord0);
+			static bgfx::VertexLayout decl = vertex_decl(VertexAttribute::Position | VertexAttribute::Colour | VertexAttribute::TexCoord0);
 			return decl;
 		}
 	};

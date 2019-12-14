@@ -128,8 +128,8 @@ namespace two
 		for(int i = 0; i < stats->numViews; ++i)
 		{
 			const bgfx::ViewStats& view_stats = stats->viewStats[i];
-			double gpu_time = 1000.0f * view_stats.gpuTimeElapsed / (double)stats->gpuTimerFreq;
-			double cpu_time = 1000.0f * view_stats.cpuTimeElapsed / (double)stats->cpuTimerFreq;
+			double gpu_time = 1000.0f * (view_stats.gpuTimeEnd - view_stats.gpuTimeBegin) / (double)stats->gpuTimerFreq;
+			double cpu_time = 1000.0f * (view_stats.cpuTimeEnd - view_stats.cpuTimeBegin) / (double)stats->cpuTimerFreq;
 
 			Widget& row = ui::row(table);
 			ui::label(row, view_stats.name);
