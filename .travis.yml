@@ -8,6 +8,7 @@ addons:
       - gcc-8
       - g++-8
       - libgl1-mesa-dev
+      - libglu1-mesa-dev
       - xorg-dev
 
 matrix:
