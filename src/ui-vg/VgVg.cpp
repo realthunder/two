@@ -130,14 +130,13 @@ namespace two
 		bgfx::setViewMode(view, bgfx::ViewMode::Sequential);
 		bgfx::setViewName(view, "ui");
 
-		//vg::beginFrame(m_vg, uint16_t(rect.width), uint16_t(rect.height), pixel_ratio);
 		vg::begin(m_vg, view, uint16_t(rect.width), uint16_t(rect.height), pixel_ratio);
 	}
 
 	void VgVg::end_frame(uint16_t view)
 	{
-		//vg::endFrame(m_vg, view);
 		vg::end(m_vg);
+		vg::frame(m_vg);
 	}
 
 	bool VgVg::clipped(const vec4& rect)

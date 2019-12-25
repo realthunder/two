@@ -137,7 +137,7 @@ namespace stl {
 	template <class T, class Alloc, size_t Pad>
 	inline buf<T, Alloc, Pad>::~buf() {
 		destroy_urange(this->m_first, this->m_last);
-		Alloc::static_deallocate(this->m_first, this->capacity() + Pad);
+		Alloc::static_deallocate(this->m_first, sizeof(T) * (this->capacity() + Pad));
 	}
 
 	template <class T, class Alloc, size_t Pad>
