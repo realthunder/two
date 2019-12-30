@@ -7,6 +7,15 @@ function uses_zeromq()
         path.join(TWO_3RDPARTY_DIR, "cppzmq"),
     }
     
+	removeflags {
+		"NoExceptions",
+	}
+
+    configuration { "linux or osx or asmjs" }
+        links {
+            "pthread",
+        }
+
     configuration { "vs*" }
         links {
             "ws2_32",
@@ -24,9 +33,13 @@ zeromq = dep(nil, "zeromq", true, uses_zeromq)
         "ZMQ_STATIC",
     }
 
-	--removedefines {
-	--	"__STDC_LIMIT_MACROS",
-    --}
+	removeflags {
+		"NoExceptions",
+	}
+
+	removedefines {
+		"__STDC_LIMIT_MACROS",
+    }
     
     includedirs {
         path.join(TWO_SRC_DIR),
@@ -47,6 +60,48 @@ zeromq = dep(nil, "zeromq", true, uses_zeromq)
         path.join(TWO_3RDPARTY_DIR, "libzmq", "src", "ws_address.cpp"),
         path.join(TWO_3RDPARTY_DIR, "libzmq", "src", "ws_connecter.cpp"),
     }
+
+    configuration { "linux or asmjs" }
+        defines {
+            "ZMQ_IOTHREAD_POLLER_USE_EPOLL",
+            "ZMQ_POLL_BASED_ON_POLL",
+            "ZMQ_USE_EPOLL",
+            "HAVE_POSIX_MEMALIGN",
+            "ZMQ_HAVE_EVENTFD",
+            "ZMQ_HAVE_IFADDRS",
+            "ZMQ_HAVE_SOCK_CLOEXEC",
+            "ZMQ_HAVE_SO_BINDTODEVICE",
+            "ZMQ_HAVE_SO_KEEPALIVE",
+            "ZMQ_HAVE_SO_PEERCRED",
+            "ZMQ_HAVE_TCP_KEEPCNT",
+            "ZMQ_HAVE_TCP_KEEPIDLE",
+            "ZMQ_HAVE_TCP_KEEPINTVL",
+            "ZMQ_HAVE_UIO",
+            "HAVE_CLOCK_GETTIME",
+            "HAVE_FORK",
+            "HAVE_ACCEPT4",
+        }
+
+        defines {
+            "ZMQ_CACHELINE_SIZE=64",
+        }
+
+        links {
+            "pthread",
+        }
+
+    configuration { "osx" }
+        defines {
+            "ZMQ_USE_KQUEUE",
+            "HAVE_POSIX_MEMALIGN",
+            "ZMQ_HAVE_IFADDRS",
+            "ZMQ_HAVE_SO_KEEPALIVE",
+            "ZMQ_HAVE_TCP_KEEPALIVE",
+            "ZMQ_HAVE_TCP_KEEPCNT",
+            "ZMQ_HAVE_TCP_KEEPINTVL",
+            "ZMQ_HAVE_UIO",
+            "HAVE_FORK",
+        }
 
     configuration { "vs*" }
         defines {
