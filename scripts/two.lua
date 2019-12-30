@@ -215,6 +215,12 @@ function two_clrefl()
     configuration {}
 end
 
+function two_webcl()
+    includedirs {
+        path.join(TWO_3RDPARTY_DIR, "json11"),
+    }
+}
+
 function uses_two_bgfx()
     uses_two()
     
@@ -339,7 +345,7 @@ two.frame   = module("two", "frame",    TWO_SRC_DIR,    "frame",    nil,        
 if _OPTIONS["tools"] then
   two.clrefl = module("two", "clrefl",  TWO_SRC_DIR,    "clrefl",   two_clrefl, nil,            false,      { json11, two.infra })
   two.amalg  = module("two", "amalg",   TWO_SRC_DIR,    "amalg",    nil,        nil,            false,      { json11, two.infra })
-  two.webcl  = module("two", "webcl",   TWO_SRC_DIR,    "webcl",    nil,        nil,            false,      { json11, zeromq, two.infra })
+  two.webcl  = module("two", "webcl",   TWO_SRC_DIR,    "webcl",    two_webcl,  nil,            false,      { json11, zeromq, two.infra })
 end
 
 --two_sys(true)

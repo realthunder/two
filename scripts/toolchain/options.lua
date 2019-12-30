@@ -27,11 +27,6 @@ newoption {
 }
 
 newoption {
-    trigger = "webgl2",
-    description = "Use WebGL 2.0",
-}
-
-newoption {
     trigger = "webgpu",
     description = "Experimental WebGPU (dawn) renderer",
 }
@@ -48,12 +43,12 @@ newoption {
 
 newoption {
     trigger = "sound",
-    description = "Build two library with Sound.",
+    description = "Build two library with Sound",
 }
 
 newoption {
     trigger = "profile",
-    description = "Integrated profiling.",
+    description = "Integrated profiling",
 }
 
 newoption {
