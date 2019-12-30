@@ -219,7 +219,7 @@ function two_webcl()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "json11"),
     }
-}
+end
 
 function uses_two_bgfx()
     uses_two()
