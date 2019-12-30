@@ -149,8 +149,8 @@ function reflect(modules)
         end
     end
     
-    print(path.join(TWO_DIR, "bin/metagen") .. " " .. table.concat(jsons, " "))
-    os.execute(path.join(TWO_DIR, "bin/metagen") .. " " .. table.concat(jsons, " "))
+    print(path.join(TWO_DIR, "bin/clrefl") .. " " .. table.concat(jsons, " "))
+    os.execute(path.join(TWO_DIR, "bin/clrefl") .. " " .. table.concat(jsons, " "))
 end
 
 newaction {

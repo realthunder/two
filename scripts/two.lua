@@ -13,6 +13,7 @@ if not _OPTIONS["compile-only"] then
     dofile(path.join(TWO_DIR, "scripts/3rdparty/lua.lua"))
     dofile(path.join(TWO_DIR, "scripts/3rdparty/wren.lua"))
     dofile(path.join(TWO_DIR, "scripts/3rdparty/mikktspace.lua"))
+    dofile(path.join(TWO_DIR, "scripts/3rdparty/zeromq.lua"))
     dofile(path.join(TWO_DIR, "scripts/3rdparty/vg.lua"))
     dofile(path.join(TWO_DIR, "scripts/3rdparty/bgfx/bgfx.lua"))
     group "3rdparty"
@@ -71,8 +72,7 @@ function uses_two()
     
     includedirs {
         path.join(TWO_SRC_DIR),
-        path.join(TWO_DIST_DIR),
-        path.join(TWO_3RDPARTY_DIR, "tinystl", "include"),
+        path.join(TWO_DIST_DIR)
     }
     
     if _OPTIONS["use-stl"] then
@@ -339,6 +339,7 @@ two.frame   = module("two", "frame",    TWO_SRC_DIR,    "frame",    nil,        
 if _OPTIONS["tools"] then
   two.clrefl = module("two", "clrefl",  TWO_SRC_DIR,    "clrefl",   two_clrefl, nil,            false,      { json11, two.infra })
   two.amalg  = module("two", "amalg",   TWO_SRC_DIR,    "amalg",    nil,        nil,            false,      { json11, two.infra })
+  two.webcl  = module("two", "webcl",   TWO_SRC_DIR,    "webcl",    nil,        nil,            false,      { json11, zeromq, two.infra })
 end
 
 --two_sys(true)
@@ -397,11 +398,6 @@ function two_libs()
 
     --group "lib/two-opts"
     --libs(two.opts, "StaticLib")
-
-    if _OPTIONS["tools"] then
-        lib("two_clrefl", { two.clrefl }, "StaticLib", {}, true)
-        lib("two_amalg", { two.amalg }, "StaticLib", {}, true)
-    end
 end
 
 function two_binary(name, modules, deps)
