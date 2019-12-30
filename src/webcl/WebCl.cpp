@@ -12,6 +12,8 @@
 #include "zmq.hpp"
 #include "zmq_addon.hpp"
 
+#include <json11.hpp>
+
 #include <stl/string.hpp>
 #include <stl/vector.hpp>
 #include <stl/unordered_set.hpp>
@@ -30,6 +32,7 @@ namespace stl
 
 namespace two
 {
+    using Json = json11::Json;
 }
 
 using namespace two;
@@ -107,6 +110,61 @@ int main(int argc, char *argv[])
 
     stream.bind("tcp://*:8080");
 
+    "POST / HTTP/1.1 200";
+    "Content-Type: application/json";
+
+    "{";
+    "    sources: [";
+    "        {";
+    "            name: 'main.cpp'";
+    "            content: '";
+    "            '";
+    "    ]";
+    "}";
+
+    auto process_request = [](const stl::string& request)
+    {
+        size_t separator = request.find("\r\n\r\n");
+        if(separator == stl::string::npos)
+            separator = request.find("\n\n");
+
+        stl::string header = request.substr(0, separator);
+        stl::string body = request.substr(separator + 1, stl::string::npos);
+
+        if (!header.find("Content-Type: application/json"))
+        {
+            printf("[ERROR] Wrong content type - expected 'application/json'\n");
+            return;
+        }
+
+        std::string errors;
+        Json json = Json::parse(body.c_str(), errors);
+
+        if (!errors.empty())
+        {
+            printf("[ERROR] Errors while parsing JSON\n");
+            return;
+        }
+
+        stl::string project_path = "/home/hugoam/two/src/webproject";
+
+        Json sources = json["sources"];
+
+        for (const Json& source : sources.array_items())
+        {
+            stl::string name = source["name"].string_value().c_str();
+            stl::string content = source["content"].string_value().c_str();
+
+            write_file(project_path + "/" + name, content);
+        }
+
+        if (system(nullptr))
+        {
+            stl::string command = "cd /home/hugoam/two/build/projects/gmake/linux-clang/ && make config=releaseemscripten webproject";
+            system(command.c_str());
+        }
+    };
+
     while (true) {
 
         //  Get HTTP request
@@ -122,6 +180,7 @@ int main(int argc, char *argv[])
         stl::string request(body.data<char>(), body.size());
 
         printf("request(size=%d):\n%s\n", int(body.size()), request.c_str());
+        process_request(request);
 
         //  Send Hello World response
 
