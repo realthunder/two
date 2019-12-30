@@ -81,7 +81,7 @@ namespace stl
 	constexpr bool is_void = false;
 	
 	template <>
-	constexpr bool is_void<void> = true;
+	inline constexpr bool is_void<void> = true;
 
 	template<class T1, class T2>
 	constexpr bool is_same = false;
@@ -181,8 +181,8 @@ namespace stl
 	template<class _Ty>
 	constexpr bool is_float_impl = false;
 
-	template <> constexpr bool is_float_impl<float> = true;
-	template <> constexpr bool is_float_impl<double> = true;
+	template <> inline constexpr bool is_float_impl<float> = true;
+	template <> inline constexpr bool is_float_impl<double> = true;
 
 	template<class T>
 	constexpr bool is_float = is_float_impl<remove_cv<T>>;
@@ -190,18 +190,18 @@ namespace stl
 	template<class _Ty>
 	constexpr bool is_integral_impl = false;
 
-	template <> constexpr bool is_integral_impl<bool> = true;
-	template <> constexpr bool is_integral_impl<char> = true;
-	template <> constexpr bool is_integral_impl<unsigned char> = true;
-	template <> constexpr bool is_integral_impl<signed char> = true;
-	template <> constexpr bool is_integral_impl<unsigned short> = true;
-	template <> constexpr bool is_integral_impl<short> = true;
-	template <> constexpr bool is_integral_impl<unsigned int> = true;
-	template <> constexpr bool is_integral_impl<int> = true;
-	template <> constexpr bool is_integral_impl<unsigned long> = true;
-	template <> constexpr bool is_integral_impl<long> = true;
-	template <> constexpr bool is_integral_impl<unsigned long long> = true;
-	template <> constexpr bool is_integral_impl<long long> = true;
+	template <> inline constexpr bool is_integral_impl<bool> = true;
+	template <> inline constexpr bool is_integral_impl<char> = true;
+	template <> inline constexpr bool is_integral_impl<unsigned char> = true;
+	template <> inline constexpr bool is_integral_impl<signed char> = true;
+	template <> inline constexpr bool is_integral_impl<unsigned short> = true;
+	template <> inline constexpr bool is_integral_impl<short> = true;
+	template <> inline constexpr bool is_integral_impl<unsigned int> = true;
+	template <> inline constexpr bool is_integral_impl<int> = true;
+	template <> inline constexpr bool is_integral_impl<unsigned long> = true;
+	template <> inline constexpr bool is_integral_impl<long> = true;
+	template <> inline constexpr bool is_integral_impl<unsigned long long> = true;
+	template <> inline constexpr bool is_integral_impl<long long> = true;
 
 	template<class T>
 	constexpr bool is_integral = is_integral_impl<remove_cv<T>>;
