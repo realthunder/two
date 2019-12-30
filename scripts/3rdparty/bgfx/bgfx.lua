@@ -34,7 +34,7 @@ project "bgfx"
             "BGFX_CONFIG_RENDERER_OPENGL=31",
         }
 
-    configuration { "asmjs", "webgl2" }
+    configuration { "asmjs" }
         defines {
             "BGFX_CONFIG_RENDERER_OPENGLES=30",
         }

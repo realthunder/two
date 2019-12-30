@@ -58,9 +58,6 @@ function two_defines()
     configuration { "asmjs" }
         defines { "TWO_STATIC" }
 
-    configuration { "webgl2" }
-        defines { "TWO_WEBGL2" }
-
     configuration {}
 end
 
@@ -98,7 +95,7 @@ function two_binary_config()
             "TWO_RESOURCE_PATH=\"/data/\"",
         }
 
-    configuration { "asmjs", "webgl2" }
+    configuration { "asmjs" }
         linkoptions {
             "-s USE_WEBGL2=1",
         }

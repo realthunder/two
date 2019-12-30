@@ -222,11 +222,7 @@ namespace two
 		attrs.depth = 1;
 		attrs.stencil = 1;
 		attrs.antialias = 1;
-#ifdef TWO_WEBGL2
 		attrs.majorVersion = 2;
-#else
-		attrs.majorVersion = 1;
-#endif
 		attrs.minorVersion = 0;
 		attrs.enableExtensionsByDefault = 1;
 
