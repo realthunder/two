@@ -42,6 +42,12 @@ project "bgfx"
     configuration {}
 
 project "bimg_encode"
+    configuration { "asmjs" }
+        buildoptions {
+            "-Wno-fortify-source",
+            "-Wno-deprecated-copy",
+        }
+
     configuration { "mingw* or linux or osx or asmjs" }
         buildoptions {
             "-Wno-undef",

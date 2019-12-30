@@ -2,15 +2,14 @@
 --dofile(path.join(BGFX_DIR, "scripts/shaderc.lua"))
 dofile(path.join(TWO_DIR, "scripts/3rdparty/bgfx/shaderc_bgfx.lua"))
 
+project "glslang"
+    removeflags { "Cpp17" }
+    flags       { "Cpp14" }
+
 project "glsl-optimizer"
-    removeflags {
-        "Cpp17"
-    }
-    
-    flags {
-        "Cpp14"
-    }
-    
+    removeflags { "Cpp17" }
+    flags       { "Cpp14" }
+
     configuration { "asmjs" }
         defines {
             "HAVE___BUILTIN_FFS",
