@@ -61,6 +61,11 @@ newoption {
     description = "Build tools",
 }
 
+newoption {
+    trigger = "webcompile",
+    description = "Create dummy projects for webcompile",
+}
+
 --newoption {
 --    trigger = "renderer",
 --    --value = "toolset",

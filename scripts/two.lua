@@ -421,3 +421,19 @@ function two_js(name, modules)
     }
     two_binary_config()
 end
+
+function two_webcl(name)
+    local deps = { two.frame, two.gfx.pbr, two.gfx.obj, two.gfx.gltf }
+
+    local m = module(nil, name, path.join(TWO_DIR, "build"), name, nil, nil, false, deps)
+
+    two_binary(name, { m })
+
+    configuration { "asmjs" }
+        linkoptions {
+            "-s SIDE_MODULE=1",
+            "-s EXPORT_ALL=1",
+        }
+
+    configuration {}
+end
