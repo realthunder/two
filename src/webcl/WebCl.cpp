@@ -25,11 +25,6 @@
 #include <cassert>
 #include <cstring>
 
-namespace stl
-{
-	template class unordered_set<string>;
-}
-
 namespace two
 {
     using Json = json11::Json;

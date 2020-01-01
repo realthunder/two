@@ -133,10 +133,11 @@ function uses_shaderc()
     }
 end
 
---fcpp        = dep(nil, "fcpp",          false, nil)
---glslang     = dep(nil, "glslang",       false, nil)
---glslopt     = dep(nil, "glsl-optimizer",false, nil)
---spirvopt    = dep(nil, "fcpp",          false, nil)
+fcpp        = dep(nil, "fcpp",          false, nil)
+glslang     = dep(nil, "glslang",       false, nil)
+glslopt     = dep(nil, "glsl-optimizer",false, nil)
+spirvopt    = dep(nil, "spirv-opt",     false, nil)
+spirvcross  = dep(nil, "spirv-cross",   false, nil)
 
 bx          = dep(nil, "bx",            false, uses_bx)
 bimg        = dep(nil, "bimg",          false, uses_bimg,       { bx })

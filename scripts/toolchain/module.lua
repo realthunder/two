@@ -8,7 +8,7 @@ function dep(namespace, name, cppmodule, usage_decl, deps)
         namespace = namespace,
         name = name,
         dotname = string.gsub(name, "-", "."),
-        idname = string.gsub(name, "-", "_"),
+        idname = name,
         usage_decl = usage_decl,
         deps = deps,
     }
@@ -24,7 +24,9 @@ function dep(namespace, name, cppmodule, usage_decl, deps)
         links = {},
         kind = "StaticLib",
     }
-    
+
+    two_module()
+
     if cppmodule then
         modules(m)
     end

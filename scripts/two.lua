@@ -1,5 +1,20 @@
 -- two library
 
+function two_module()
+    if _OPTIONS["webcompile"] then
+        configuration { "asmjs" }
+            buildoptions {
+                "-s MAIN_MODULE=1",
+                "-fPIC",
+            }
+            linkoptions {
+                "-s MAIN_MODULE=1",
+            }
+    
+        configuration {}
+    end
+end
+
 if _OPTIONS["cpp-modules"] and _ACTION == "gmake" then
     dofile(path.join(TWO_DIR, "scripts/3rdparty/std.lua"))
 end
@@ -88,6 +103,7 @@ function uses_two()
 end
 
 function two_infra()
+    two_module()
     files {
         path.join(TWO_SRC_DIR, "stl", "**.h"),
         path.join(TWO_SRC_DIR, "stl", "**.hpp"),
@@ -96,18 +112,21 @@ function two_infra()
 end
 
 function two_jobs()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "tracy"),
     }
 end
 
 function two_srlz()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "json11"),
     }
 end
 
 function two_math()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "stb"),
         path.join(TWO_3RDPARTY_DIR, "json11"),
@@ -121,6 +140,7 @@ function uses_two_math()
 end
 
 function two_ui()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "json11"),
     }
@@ -131,6 +151,7 @@ function uses_two_ui()
 end
 
 function two_geom()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "mikkt"),
     }
@@ -143,18 +164,21 @@ function uses_two_noise()
 end
 
 function two_noise()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "FastNoise"),
     }
 end
 
 function two_wfc()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "json11"),
     }
 end
 
 function two_lang()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "lua"),
         path.join(TWO_3RDPARTY_DIR, "wren", "src", "include"),
@@ -162,6 +186,7 @@ function two_lang()
 end
 
 function two_snd()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "vorbis", "include"),
         path.join(TWO_3RDPARTY_DIR, "ogg", "include"),
@@ -180,6 +205,7 @@ function uses_two_snd()
 end
 
 function two_db()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "sqlite3"),
     }
@@ -190,6 +216,7 @@ function two_db()
 end
 
 function two_clrefl()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "json11"),
     }
@@ -216,6 +243,7 @@ function two_clrefl()
 end
 
 function two_webcl()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "json11"),
     }
@@ -243,6 +271,7 @@ function uses_two_gfx()
 end
 
 function two_gfx()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "json11"),
         path.join(TWO_3RDPARTY_DIR, "meshoptimizer", "src"),
@@ -258,12 +287,14 @@ function two_gfx()
 end
 
 function two_gfx_pbr()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "xatlas"),
     }
 end
 
 function two_gltf()
+    two_module()
     includedirs {
         path.join(TWO_3RDPARTY_DIR, "base64"),
         path.join(TWO_3RDPARTY_DIR, "json11"),
@@ -276,13 +307,13 @@ end
 -- core
 two.infra   = module("two", "infra",    TWO_SRC_DIR,    "infra",    two_infra,  uses_two,       true,       { })
 two.jobs    = module("two", "jobs",     TWO_SRC_DIR,    "jobs",     two_jobs,   uses_two,       true,       { tracy, two.infra })
-two.type    = module("two", "type",     TWO_SRC_DIR,    "type",     nil,        uses_two,       true,       { two.infra })
-two.tree    = module("two", "tree",     TWO_SRC_DIR,    "tree",     nil,        nil,            true,       { two.infra })
-two.pool    = module("two", "pool",     TWO_SRC_DIR,    "pool",     nil,        nil,            true,       { two.infra, two.type })
+two.type    = module("two", "type",     TWO_SRC_DIR,    "type",     two_module, uses_two,       true,       { two.infra })
+two.tree    = module("two", "tree",     TWO_SRC_DIR,    "tree",     two_module, nil,            true,       { two.infra })
+two.pool    = module("two", "pool",     TWO_SRC_DIR,    "pool",     two_module, nil,            true,       { two.infra, two.type })
 -- refl
-two.refl    = module("two", "refl",     TWO_SRC_DIR,    "refl",     nil,        nil,            true,       { two.infra, two.type, two.pool })
+two.refl    = module("two", "refl",     TWO_SRC_DIR,    "refl",     two_module, nil,            true,       { two.infra, two.type, two.pool })
 -- ecs
-two.ecs     = module("two", "ecs",      TWO_SRC_DIR,    "ecs",      nil,        uses_two,       true,       { two.infra, two.pool, two.type })
+two.ecs     = module("two", "ecs",      TWO_SRC_DIR,    "ecs",      two_module, uses_two,       true,       { two.infra, two.pool, two.type })
 -- srlz
 two.srlz    = module("two", "srlz",     TWO_SRC_DIR,    "srlz",     two_srlz,   nil,            true,       { json11, two.infra, two.type, two.refl })
 -- math
@@ -296,13 +327,13 @@ two.geom    = module("two", "geom",     TWO_SRC_DIR,    "geom",     two_geom,   
 -- procgen
 two.noise   = module("two", "noise",    TWO_SRC_DIR,    "noise",    two_noise,  uses_two_noise, true,       { fastnoise, two.infra, two.type, two.math, two.geom })
 two.wfc     = module("two", "wfc",      TWO_SRC_DIR,    "wfc",      two_wfc,    nil,            true,       { json11, two.infra, two.type, two.srlz, two.math, two.geom })
-two.fract   = module("two", "fract",    TWO_SRC_DIR,    "fract",    nil,        nil,            true,       { json11, two.infra, two.type, two.math, two.geom })
+two.fract   = module("two", "fract",    TWO_SRC_DIR,    "fract",    two_module, nil,            true,       { json11, two.infra, two.type, two.math, two.geom })
 -- lang
 two.lang    = module("two", "lang",     TWO_SRC_DIR,    "lang",     two_lang,   nil,            true,       { lua, wren, two.infra, two.type, two.pool, two.refl })
 -- ui
-two.ctx     = module("two", "ctx",      TWO_SRC_DIR,    "ctx",      nil,        nil,            true,       { two.infra, two.type, two.math })
+two.ctx     = module("two", "ctx",      TWO_SRC_DIR,    "ctx",      two_module, nil,            true,       { two.infra, two.type, two.math })
 two.ui      = module("two", "ui",       TWO_SRC_DIR,    "ui",       two_ui,     uses_two_ui,    true,       { two.infra, two.type, two.math, two.ctx })
-two.uio     = module("two", "uio",      TWO_SRC_DIR,    "uio",      nil,        nil,            true,       { two.infra, two.tree, two.type, two.ecs, two.pool, two.refl, two.math, two.lang, two.ctx, two.ui })
+two.uio     = module("two", "uio",      TWO_SRC_DIR,    "uio",      two_module, nil,            true,       { two.infra, two.tree, two.type, two.ecs, two.pool, two.refl, two.math, two.lang, two.ctx, two.ui })
 -- snd
 two.snd     = module("two", "snd",      TWO_SRC_DIR,    "snd",      two_snd,    uses_two_snd,   true,       { ogg, vorbis, vorbisfile, two.type, two.math })
 
@@ -325,26 +356,26 @@ two.uibackend   = two_ui_backend()
 
 --                   base   name        root path       sub path    self decl   usage decl      reflect     dependencies
 -- gfx
-two.bgfx    = module("two", "bgfx",     TWO_SRC_DIR,    "bgfx",     nil,        uses_two_bgfx,  true,       { bx, bimg, bimg.decode, bimg.encode, bgfx, two.infra, two.type, two.math, two.ctx })
+two.bgfx    = module("two", "bgfx",     TWO_SRC_DIR,    "bgfx",     two_module, uses_two_bgfx,  true,       { bx, bimg, bimg.decode, bimg.encode, bgfx, two.infra, two.type, two.math, two.ctx })
 two.gfx     = module("two", "gfx",      TWO_SRC_DIR,    "gfx",      two_gfx,    uses_two_gfx,   true,       { tracy, json11, meshopt, culling, bgfx, shaderc, two.infra, two.jobs, two.type, two.pool, two.ecs, two.math, two.geom, two.ctx, two.bgfx })
 -- gltf                                                     
 two.gltf    = module("two", "gltf",     TWO_SRC_DIR,    "gltf",     two_gltf,   nil,            true,       { json11, base64, two.infra, two.type, two.refl, two.srlz, two.math })
 -- gfx exts                                                 
 two.gfx.pbr = module("two", "gfx-pbr",  TWO_SRC_DIR,    "gfx-pbr",  two_gfx_pbr,nil,            true,       { xatlas, two.infra, two.type, two.math, two.geom, two.gfx })
-two.gfx.obj = module("two", "gfx-obj",  TWO_SRC_DIR,    "gfx-obj",  nil,        nil,            true,       { two.infra, two.type, two.srlz, two.math, two.geom, two.gfx })
+two.gfx.obj = module("two", "gfx-obj",  TWO_SRC_DIR,    "gfx-obj",  two_module, nil,            true,       { two.infra, two.type, two.srlz, two.math, two.geom, two.gfx })
 two.gfx.gltf= module("two", "gfx-gltf", TWO_SRC_DIR,    "gfx-gltf", two_gltf,   nil,            true,       { json11, two.infra, two.type, two.refl, two.srlz, two.math, two.geom, two.gfx, two.gltf, two.gltf.refl })
-two.gfx.ui  = module("two", "gfx-ui",   TWO_SRC_DIR,    "gfx-ui",   nil,        nil,            true,       { two.infra, two.tree, two.type, two.math, two.geom, two.ctx, two.ui, two.gfx })
-two.gfx.edit= module("two", "gfx-edit", TWO_SRC_DIR,    "gfx-edit", nil,        nil,            true,       { two.infra, two.type, two.refl, two.srlz, two.math, two.geom, two.ui, two.uio, two.gfx, two.gfx.pbr })
+two.gfx.ui  = module("two", "gfx-ui",   TWO_SRC_DIR,    "gfx-ui",   two_module, nil,            true,       { two.infra, two.tree, two.type, two.math, two.geom, two.ctx, two.ui, two.gfx })
+two.gfx.edit= module("two", "gfx-edit", TWO_SRC_DIR,    "gfx-edit", two_module, nil,            true,       { two.infra, two.type, two.refl, two.srlz, two.math, two.geom, two.ui, two.uio, two.gfx, two.gfx.pbr })
 -- tool                                                     
-two.tool    = module("two", "tool",     TWO_SRC_DIR,    "tool",     nil,        nil,            true,       { two.infra, two.tree, two.type, two.refl, two.srlz, two.lang, two.math, two.geom, two.ctx, two.ui, two.uio, two.gfx, two.gfx.pbr, two.gfx.ui, two.gfx.edit })
+two.tool    = module("two", "tool",     TWO_SRC_DIR,    "tool",     two_module, nil,            true,       { two.infra, two.tree, two.type, two.refl, two.srlz, two.lang, two.math, two.geom, two.ctx, two.ui, two.uio, two.gfx, two.gfx.pbr, two.gfx.ui, two.gfx.edit })
 -- wfc                                                      
-two.wfc.gfx = module("two", "wfc-gfx",  TWO_SRC_DIR,    "wfc-gfx",  nil,        nil,            true,       { json11, two.infra, two.tree, two.type, two.srlz, two.math, two.geom, two.wfc, two.ctx, two.ui, two.uio, two.gfx, two.gfx.ui })
+two.wfc.gfx = module("two", "wfc-gfx",  TWO_SRC_DIR,    "wfc-gfx",  two_module, nil,            true,       { json11, two.infra, two.tree, two.type, two.srlz, two.math, two.geom, two.wfc, two.ctx, two.ui, two.uio, two.gfx, two.gfx.ui })
 -- frame                                                    
-two.frame   = module("two", "frame",    TWO_SRC_DIR,    "frame",    nil,        nil,            true,       { two.gfx, two.gfx.ui, two.ctxbackend, two.uibackend })
+two.frame   = module("two", "frame",    TWO_SRC_DIR,    "frame",    two_module, nil,            true,       { two.gfx, two.gfx.ui, two.ctxbackend, two.uibackend })
 
 if _OPTIONS["tools"] then
   two.clrefl = module("two", "clrefl",  TWO_SRC_DIR,    "clrefl",   two_clrefl, nil,            false,      { json11, two.infra })
-  two.amalg  = module("two", "amalg",   TWO_SRC_DIR,    "amalg",    nil,        nil,            false,      { json11, two.infra })
+  two.amalg  = module("two", "amalg",   TWO_SRC_DIR,    "amalg",    two_module, nil,            false,      { json11, two.infra })
   two.webcl  = module("two", "webcl",   TWO_SRC_DIR,    "webcl",    two_webcl,  nil,            false,      { json11, zeromq, two.infra })
 end
 
@@ -390,6 +421,10 @@ function two_libs()
     else
         two.lib = lib("two", two.all, "StaticLib")
         
+            if _OPTIONS["webcompile"] then
+                kind "SharedLib"
+            end
+
             --files {
             --    path.join(TWO_SRC_DIR, "two", "**.h"),
             --}
@@ -401,6 +436,7 @@ function two_libs()
                 
             configuration {}
     end
+
 
     --group "lib/two-opts"
     --libs(two.opts, "StaticLib")
@@ -429,11 +465,13 @@ function two_webcl(name)
 
     two_binary(name, { m })
 
-    configuration { "asmjs" }
-        linkoptions {
-            "-s SIDE_MODULE=1",
-            "-s EXPORT_ALL=1",
-        }
-
-    configuration {}
+    if _OPTIONS["webcompile"] then
+        configuration { "asmjs" }
+            linkoptions {
+                "-s SIDE_MODULE=1",
+                "-s EXPORT_ALL=1",
+            }
+    
+        configuration {}
+    end
 end
