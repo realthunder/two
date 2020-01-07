@@ -103,6 +103,14 @@ zeromq = dep(nil, "zeromq", true, uses_zeromq)
             "HAVE_FORK",
         }
 
+        defines {
+            "ZMQ_CACHELINE_SIZE=64",
+        }
+
+        links {
+            "pthread",
+        }
+
     configuration { "vs*" }
         defines {
             "ZMQ_HAVE_WINDOWS",
