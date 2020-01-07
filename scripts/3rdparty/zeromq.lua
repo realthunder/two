@@ -92,6 +92,8 @@ zeromq = dep(nil, "zeromq", true, uses_zeromq)
 
     configuration { "osx" }
         defines {
+            "ZMQ_IOTHREAD_POLLER_USE_KQUEUE",
+            "ZMQ_POLL_BASED_ON_POLL",
             "ZMQ_USE_KQUEUE",
             "HAVE_POSIX_MEMALIGN",
             "ZMQ_HAVE_IFADDRS",
