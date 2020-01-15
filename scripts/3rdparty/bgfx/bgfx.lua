@@ -21,6 +21,14 @@ project "bgfx"
     defines {
         "BGFX_CONFIG_RENDERER_WEBGPU=1",
     }
+
+    configuration { "asmjs" }
+        defines {
+            "BGFX_CONFIG_RENDERER_OPENGL=0",
+            "BGFX_CONFIG_RENDERER_OPENGLES=0",
+        }
+
+    configuration {}
 end
 
 project "bgfx"
@@ -34,11 +42,13 @@ project "bgfx"
             "BGFX_CONFIG_RENDERER_OPENGL=31",
         }
 
+if not _OPTIONS["webgpu"] then
     configuration { "asmjs" }
         defines {
             "BGFX_CONFIG_RENDERER_OPENGLES=30",
         }
-        
+end
+
     configuration {}
 
 project "bimg_encode"

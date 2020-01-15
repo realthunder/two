@@ -95,9 +95,14 @@ function two_binary_config()
             "TWO_RESOURCE_PATH=\"/data/\"",
         }
 
-    configuration { "asmjs" }
+    configuration { "asmjs", "not webgpu" }
         linkoptions {
             "-s USE_WEBGL2=1",
+        }
+
+    configuration { "asmjs", "webgpu" }
+        linkoptions {
+            "-s USE_WEBGPU=1",
         }
 
     configuration { "not osx", "not asmjs" }
