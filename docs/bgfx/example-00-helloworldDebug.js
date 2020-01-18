@@ -7133,7 +7133,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _wgpuDeviceCreateQueue(deviceId) {
       assert(WebGPU.mgrQueue.objects.length === 1, 'there is only one queue');
       var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrQueue.create(device.getQueue());
+      return WebGPU.mgrQueue.create(device.defaultQueue);
     }
 
   function _wgpuDeviceCreateRenderPipeline(deviceId, descriptor) {
