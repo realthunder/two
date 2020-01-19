@@ -38,8 +38,8 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-01-cubesDebug.data';
-      var REMOTE_PACKAGE_BASE = 'example-01-cubesDebug.data';
+      var PACKAGE_NAME = '../../../asmjs/bin/assets.data';
+      var REMOTE_PACKAGE_BASE = 'assets.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
         err('warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)');
@@ -183,10 +183,10 @@ Module['FS_createPath']('/', 'images', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-01-cubesDebug.data');
+                Module['removeRunDependency']('datafile_../../../asmjs/bin/assets.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-01-cubesDebug.data');
+      Module['addRunDependency']('datafile_../../../asmjs/bin/assets.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
