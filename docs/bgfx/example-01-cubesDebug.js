@@ -6388,10 +6388,12 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   var WebGPU={initManagers:function() {
         if (this.mgrDevice) return;
   
-        function makeManager() {
+        function makeManager(name) {
           return {
+            name: name,
             objects: [undefined],
             create: function(object) {
+              console.log("creating a " + this.name);
               var id = this.objects.length;
               assert(typeof this.objects[id] === 'undefined');
               this.objects[id] = { refcount: 1, object: object };
@@ -6414,38 +6416,39 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
               assert(o.refcount > 0);
               o.refcount--;
               if (o.refcount <= 0) {
+                console.log("destroying a " + this.name);
                 delete this.objects[id];
               }
             },
           };
         }
   
-        this.mgrSurface = this.mgrSurface || makeManager();
-        this.mgrSwapChain = this.mgrSwapChain || makeManager();
+        this.mgrSurface = this.mgrSurface || makeManager("Surface");
+        this.mgrSwapChain = this.mgrSwapChain || makeManager("SwapChain");
   
-        this.mgrDevice = this.mgrDevice || makeManager();
-        this.mgrQueue = this.mgrQueue || makeManager();
-        this.mgrFence = this.mgrFence || makeManager();
+        this.mgrDevice = this.mgrDevice || makeManager("Device");
+        this.mgrQueue = this.mgrQueue || makeManager("Queue");
+        this.mgrFence = this.mgrFence || makeManager("Fence");
   
-        this.mgrCommandBuffer = this.mgrCommandBuffer || makeManager();
-        this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager();
-        this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager();
-        this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager();
-        this.mgrComputePipeline = this.mgrComputePipeline || makeManager();
+        this.mgrCommandBuffer = this.mgrCommandBuffer || makeManager("CommandBuffer");
+        this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager("CommandEncoder");
+        this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager("RenderPassEncoder");
+        this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager("ComputePassEncoder");
+        this.mgrComputePipeline = this.mgrComputePipeline || makeManager("ComputePipeline");
   
-        this.mgrBindGroup = this.mgrBindGroup || makeManager();
-        this.mgrBuffer = this.mgrBuffer || makeManager();
-        this.mgrSampler = this.mgrSampler || makeManager();
-        this.mgrTexture = this.mgrTexture || makeManager();
-        this.mgrTextureView = this.mgrTextureView || makeManager();
+        this.mgrBindGroup = this.mgrBindGroup || makeManager("BindGroup");
+        this.mgrBuffer = this.mgrBuffer || makeManager("Buffer");
+        this.mgrSampler = this.mgrSampler || makeManager("Sampler");
+        this.mgrTexture = this.mgrTexture || makeManager("Texture");
+        this.mgrTextureView = this.mgrTextureView || makeManager("TextureView");
   
-        this.mgrBindGroupLayout = this.mgrBindGroupLayout || makeManager();
-        this.mgrPipelineLayout = this.mgrPipelineLayout || makeManager();
-        this.mgrRenderPipeline = this.mgrRenderPipeline || makeManager();
-        this.mgrShaderModule = this.mgrShaderModule || makeManager();
+        this.mgrBindGroupLayout = this.mgrBindGroupLayout || makeManager("BindGroupLayout");
+        this.mgrPipelineLayout = this.mgrPipelineLayout || makeManager("PipelineLayout");
+        this.mgrRenderPipeline = this.mgrRenderPipeline || makeManager("RenderPipeline");
+        this.mgrShaderModule = this.mgrShaderModule || makeManager("ShaderModule");
   
-        this.mgrRenderBundleEncoder = this.mgrRenderBundleEncoder || makeManager();
-        this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
+        this.mgrRenderBundleEncoder = this.mgrRenderBundleEncoder || makeManager("RenderBundleEncoder");
+        this.mgrRenderBundle = this.mgrRenderBundle || makeManager("RenderBundle");
       },trackMapWrite:function(obj, mapped) {
         var data = _malloc(mapped.byteLength);
         HEAPU8.fill(0, data, mapped.byteLength);
