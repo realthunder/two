@@ -7548,7 +7548,10 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
   function _wgpuSwapChainGetCurrentTextureView(swapChainId) {
       var swapChain = WebGPU.mgrSwapChain.get(swapChainId);
-      return WebGPU.mgrTextureView.create(swapChain.getCurrentTexture().createView());
+      var texture = swapChain.getCurrentTexture();
+      console.log("SwapChain::getCurrentTextureView");
+      console.log(texture);
+      return WebGPU.mgrTextureView.create(texture.createView());
     }
 
   function _wgpuSwapChainRelease(id) {
