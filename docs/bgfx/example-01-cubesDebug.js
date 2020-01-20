@@ -7352,9 +7352,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var type;
         if (ev.error instanceof GPUValidationError) type = Validation;
         else if (ev.error instanceof GPUOutOfMemoryError) type = OutOfMemory;
-        var messagePtr = allocateUTF8(ev.error.message);
-        dynCall('viii', callback, [type, messagePtr, userdata]);
-        _free(messagePtr);
+        console.error(ev.error.message);
       };
     }
 
@@ -7504,12 +7502,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   }
 
   function _wgpuSwapChainGetCurrentTextureView(swapChainId) {
-      console.log("_wgpuSwapChainGetCurrentTextureView");
       var swapChain = WebGPU.mgrSwapChain.get(swapChainId);
       var texture = swapChain.getCurrentTexture();
-      if (this.previousTexture)
-          WebGPU.mgrTexture.release(this.previousTexture);
-      this.previousTexture = WebGPU.mgrTexture.create(texture);
       return WebGPU.mgrTextureView.create(texture.createView());
     }
 
