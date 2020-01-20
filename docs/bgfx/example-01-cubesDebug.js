@@ -7508,7 +7508,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var swapChain = WebGPU.mgrSwapChain.get(swapChainId);
       var texture = swapChain.getCurrentTexture();
       if (this.previousTexture)
-          WebGPU.mgrTextureView.release(this.previousTexture);
+          WebGPU.mgrTexture.release(this.previousTexture);
       this.previousTexture = WebGPU.mgrTexture.create(texture);
       return WebGPU.mgrTextureView.create(texture.createView());
     }
