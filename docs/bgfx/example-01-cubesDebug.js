@@ -7510,7 +7510,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       if (this.previousTexture)
           WebGPU.mgrTextureView.release(this.previousTexture);
       this.previousTexture = texture;
-      console.log(swapChain.getCurrentTextureView());
       return WebGPU.mgrTextureView.create(texture.createView());
     }
 
