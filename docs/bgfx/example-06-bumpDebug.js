@@ -196,7 +196,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2962, "filename": "/shaders/spirv/vs_bump.bin"}, {"start": 2962, "audio": 0, "end": 7893, "filename": "/shaders/spirv/fs_bump.bin"}, {"start": 7893, "audio": 0, "end": 540989, "filename": "/textures/fieldstone-rgba.png"}, {"start": 540989, "audio": 0, "end": 1090231, "filename": "/textures/fieldstone-n.png"}], "remote_package_size": 1090231, "package_uuid": "a6256dc4-9ec8-4c11-91e4-7ddcf3e24b43"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2962, "filename": "/shaders/spirv/vs_bump.bin"}, {"start": 2962, "audio": 0, "end": 7893, "filename": "/shaders/spirv/fs_bump.bin"}, {"start": 7893, "audio": 0, "end": 540989, "filename": "/textures/fieldstone-rgba.png"}, {"start": 540989, "audio": 0, "end": 1090231, "filename": "/textures/fieldstone-n.png"}], "remote_package_size": 1090231, "package_uuid": "991638e7-eb8e-48fb-810b-b27f047909a8"});
   
   })();
   
@@ -1414,11 +1414,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5955728,
+    STACK_BASE = 5955680,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 712848,
-    DYNAMIC_BASE = 5955728,
-    DYNAMICTOP_PTR = 712688;
+    STACK_MAX = 712800,
+    DYNAMIC_BASE = 5955680,
+    DYNAMICTOP_PTR = 712640;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1928,7 +1928,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  573756: function() {debugger;}
+  573708: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1938,7 +1938,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 711824;
+// STATICTOP = STATIC_BASE + 711776;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4613,7 +4613,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _emscripten_get_now() { abort() }
 
   function _emscripten_get_sbrk_ptr() {
-      return 712688;
+      return 712640;
     }
 
   

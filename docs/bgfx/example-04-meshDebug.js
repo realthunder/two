@@ -196,7 +196,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2707, "filename": "/shaders/spirv/vs_mesh.bin"}, {"start": 2707, "audio": 0, "end": 5462, "filename": "/shaders/spirv/fs_mesh.bin"}, {"start": 5462, "audio": 0, "end": 2593872, "filename": "/meshes/bunny.bin"}], "remote_package_size": 2593872, "package_uuid": "a90ef138-02f2-4d3f-a7da-5f721ac79a8a"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2707, "filename": "/shaders/spirv/vs_mesh.bin"}, {"start": 2707, "audio": 0, "end": 5462, "filename": "/shaders/spirv/fs_mesh.bin"}, {"start": 5462, "audio": 0, "end": 2593872, "filename": "/meshes/bunny.bin"}], "remote_package_size": 2593872, "package_uuid": "17c4e7d6-148d-4551-95f2-929c2935c09c"});
   
   })();
   
@@ -1414,11 +1414,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5928304,
+    STACK_BASE = 5928256,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 685424,
-    DYNAMIC_BASE = 5928304,
-    DYNAMICTOP_PTR = 685264;
+    STACK_MAX = 685376,
+    DYNAMIC_BASE = 5928256,
+    DYNAMICTOP_PTR = 685216;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1928,7 +1928,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  561900: function() {debugger;}
+  561852: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1938,7 +1938,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 684400;
+// STATICTOP = STATIC_BASE + 684352;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4578,7 +4578,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _emscripten_get_now() { abort() }
 
   function _emscripten_get_sbrk_ptr() {
-      return 685264;
+      return 685216;
     }
 
   
