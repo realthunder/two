@@ -120,6 +120,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       }
   Module['FS_createPath']('/', 'shaders', true, true);
 Module['FS_createPath']('/shaders', 'spirv', true, true);
+Module['FS_createPath']('/', 'meshes', true, true);
 
       function DataRequest(start, end, audio) {
         this.start = start;
@@ -195,7 +196,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2707, "filename": "/shaders/spirv/vs_mesh.bin"}, {"start": 2707, "audio": 0, "end": 5462, "filename": "/shaders/spirv/fs_mesh.bin"}], "remote_package_size": 5462, "package_uuid": "ab66ab76-6c4e-42b4-a93f-267ab525af46"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2707, "filename": "/shaders/spirv/vs_mesh.bin"}, {"start": 2707, "audio": 0, "end": 5462, "filename": "/shaders/spirv/fs_mesh.bin"}, {"start": 5462, "audio": 0, "end": 2593872, "filename": "/meshes/bunny.bin"}], "remote_package_size": 2593872, "package_uuid": "ab9e7c2a-ab9c-45de-9311-dcd7a7d74fe6"});
   
   })();
   
