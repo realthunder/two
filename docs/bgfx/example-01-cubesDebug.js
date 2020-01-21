@@ -1234,11 +1234,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5418160,
+    STACK_BASE = 5417984,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 175280,
-    DYNAMIC_BASE = 5418160,
-    DYNAMICTOP_PTR = 175120;
+    STACK_MAX = 175104,
+    DYNAMIC_BASE = 5417984,
+    DYNAMICTOP_PTR = 174944;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1748,7 +1748,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  55676: function() {debugger;}
+  55500: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1758,7 +1758,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 174256;
+// STATICTOP = STATIC_BASE + 174080;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4398,7 +4398,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _emscripten_get_now() { abort() }
 
   function _emscripten_get_sbrk_ptr() {
-      return 175120;
+      return 174944;
     }
 
   
@@ -6393,7 +6393,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
             name: name,
             objects: [undefined],
             create: function(object) {
-              console.log("creating a " + this.name);
+              //console.log("creating a " + this.name);
               var id = this.objects.length;
               assert(typeof this.objects[id] === 'undefined');
               this.objects[id] = { refcount: 1, object: object };
@@ -6416,7 +6416,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
               assert(o.refcount > 0);
               o.refcount--;
               if (o.refcount <= 0) {
-                console.log("destroying a " + this.name);
+                //console.log("destroying a " + this.name);
                 delete this.objects[id];
               }
             },
