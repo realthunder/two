@@ -195,7 +195,7 @@ namespace two
 			//this->create_context(name);
 		}
 
-		emscripten_set_resize_callback(0, this, true, [](int, const EmscriptenUiEvent* event, void* w) { UNUSED(event); static_cast<EmContext*>(w)->resize(); return EM_BOOL(true); });
+		emscripten_set_resize_callback(EMSCRIPTEN_EVENT_TARGET_DOCUMENT, this, true, [](int, const EmscriptenUiEvent* event, void* w) { UNUSED(event); static_cast<EmContext*>(w)->resize(); return EM_BOOL(true); });
 
 		emscripten_set_mousemove_callback("#canvas", this, true, [](int, const EmscriptenMouseEvent* event, void* w) { return EM_BOOL(static_cast<EmContext*>(w)->inject_mouse_move(*event)); });
 
@@ -207,7 +207,7 @@ namespace two
 #ifdef KEYS_INPUT_CANVAS_ONLY
 		const char* keys_target = "#canvas";
 #else
-		const char* keys_target = nullptr;
+		const char* keys_target = EMSCRIPTEN_EVENT_TARGET_DOCUMENT;
 #endif
 		emscripten_set_keydown_callback(keys_target, this, true, [](int, const EmscriptenKeyboardEvent* event, void* w) { return EM_BOOL(static_cast<EmContext*>(w)->inject_key_down(*event)); });
 		emscripten_set_keyup_callback(keys_target, this, true, [](int, const EmscriptenKeyboardEvent* event, void* w) { return EM_BOOL(static_cast<EmContext*>(w)->inject_key_up(*event)); });
@@ -276,7 +276,7 @@ namespace two
 
 	bool EmContext::inject_mouse_move(const EmscriptenMouseEvent& mouseEvent)
 	{
-		m_cursor = max(vec2(0.f), min(vec2(m_size), vec2(float(mouseEvent.canvasX), float(mouseEvent.canvasY))));
+		m_cursor = max(vec2(0.f), min(vec2(m_size), vec2(float(mouseEvent.targetX), float(mouseEvent.targetY))));
 		vec2 movement = { float(mouseEvent.movementX), float(mouseEvent.movementY) };
 		m_mouse->moved(m_cursor, m_mouse_lock ? &movement : nullptr);
 		return true;
@@ -296,13 +296,13 @@ namespace two
 	bool EmContext::inject_mouse_down(const EmscriptenMouseEvent& mouseEvent)
 	{
 		this->update_mouse_lock();
-		m_mouse->m_buttons[convert_html5_mouse_button(mouseEvent.button)].pressed({ float(mouseEvent.canvasX), float(mouseEvent.canvasY) });
+		m_mouse->m_buttons[convert_html5_mouse_button(mouseEvent.button)].pressed({ float(mouseEvent.targetX), float(mouseEvent.targetY) });
 		return true;
 	}
 
 	bool EmContext::inject_mouse_up(const EmscriptenMouseEvent& mouseEvent)
 	{
-		m_mouse->m_buttons[convert_html5_mouse_button(mouseEvent.button)].released({ float(mouseEvent.canvasX), float(mouseEvent.canvasY) });
+		m_mouse->m_buttons[convert_html5_mouse_button(mouseEvent.button)].released({ float(mouseEvent.targetX), float(mouseEvent.targetY) });
 		return true;
 	}
 
