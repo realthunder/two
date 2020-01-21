@@ -6802,7 +6802,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
       function makeColorAttachments(count, caPtr) {
         var attachments = [];
-        console.log("Create " + count.toString() + " color attachments");
         for (var i = 0; i < count; ++i) {
           attachments.push(makeColorAttachment(caPtr + 32 * i));
         }
@@ -6811,7 +6810,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
       function makeDepthStencilAttachment(dsaPtr) {
         if (dsaPtr === 0) return undefined;
-        console.log("Create depth stencil attachments");
+  
         var depthLoadValue = WebGPU.LoadOp[
             HEAPU32[(((dsaPtr)+(4))>>2)]];
         if (depthLoadValue === 'clear') {
@@ -7121,7 +7120,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
       function makeColorStates(count, csPtr) {
         if (count === 0) return undefined;
-        console.log("Create " + count.toString() + " color states");
+  
         var states = [];
         for (var i = 0; i < count; ++i) {
           states.push(makeColorState(csPtr + 36 * i));
@@ -7145,7 +7144,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
       function makeDepthStencilState(dssPtr) {
         if (dssPtr === 0) return undefined;
-        console.log("Create stencil state");
+  
         assert(dssPtr);
         return {
           format: WebGPU.TextureFormat[
