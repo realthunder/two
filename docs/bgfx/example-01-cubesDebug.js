@@ -195,7 +195,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1056, "filename": "/shaders/spirv/vs_cubes.bin"}, {"start": 1056, "audio": 0, "end": 1462, "filename": "/shaders/spirv/fs_cubes.bin"}, {"start": 1462, "audio": 0, "end": 2218, "filename": "/shaders/spirv/fs_cubes_color.bin"}], "remote_package_size": 2218, "package_uuid": "3421a116-dbc8-472c-a7dc-925d867ba993"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1056, "filename": "/shaders/spirv/vs_cubes.bin"}, {"start": 1056, "audio": 0, "end": 1462, "filename": "/shaders/spirv/fs_cubes.bin"}, {"start": 1462, "audio": 0, "end": 2218, "filename": "/shaders/spirv/fs_cubes_color.bin"}], "remote_package_size": 2218, "package_uuid": "67139fdc-072f-4a44-a225-169e073c9e60"});
   
   })();
   
@@ -7620,9 +7620,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         pass.setBindGroup(groupIndex, group);
       } else {
         var offsets = [];
-        // TODO: Update to u32 after rolling the header.
-        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 8) {
-          offsets.push(HEAPU32[(((dynamicOffsetsPtr + 4))>>2)] * 0x100000000 + HEAPU32[((dynamicOffsetsPtr)>>2)]);
+        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 4) {
+          offsets.push(HEAPU32[((dynamicOffsetsPtr)>>2)]);
         }
         pass.setBindGroup(groupIndex, group, offsets);
       }
