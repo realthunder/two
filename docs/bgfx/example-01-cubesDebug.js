@@ -195,7 +195,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1056, "filename": "/shaders/spirv/vs_cubes.bin"}, {"start": 1056, "audio": 0, "end": 1462, "filename": "/shaders/spirv/fs_cubes.bin"}, {"start": 1462, "audio": 0, "end": 2218, "filename": "/shaders/spirv/fs_cubes_color.bin"}], "remote_package_size": 2218, "package_uuid": "854a285d-2663-43f7-9b07-1f385ce8f33e"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1056, "filename": "/shaders/spirv/vs_cubes.bin"}, {"start": 1056, "audio": 0, "end": 1462, "filename": "/shaders/spirv/fs_cubes.bin"}, {"start": 1462, "audio": 0, "end": 2218, "filename": "/shaders/spirv/fs_cubes_color.bin"}], "remote_package_size": 2218, "package_uuid": "07137673-65c5-4016-be63-d7677eb5709d"});
   
   })();
   
@@ -813,8 +813,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 473,
-  'maximum': 473 + 0,
+  'initial': 472,
+  'maximum': 472 + 0,
   'element': 'anyfunc'
 });
 
@@ -7168,7 +7168,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       function makeBinding(bindingPtr) {
         assert(bindingPtr);
   
-        let s = {
+        return {
           binding:
             HEAPU32[((bindingPtr)>>2)],
           visibility:
@@ -7184,8 +7184,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           hasDynamicOffset:
             (HEAP8[(((bindingPtr)+(12))>>0)] !== 0),
         };
-        console.log("Make BindGroupLayout visibility " + s.visibility.toString());
-        return s;
       }
   
       function makeBindings(count, bindingsPtrs) {
