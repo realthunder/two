@@ -7168,7 +7168,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       function makeBinding(bindingPtr) {
         assert(bindingPtr);
   
-        return {
+        let s = {
           binding:
             HEAPU32[((bindingPtr)>>2)],
           visibility:
@@ -7184,6 +7184,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           hasDynamicOffset:
             (HEAP8[(((bindingPtr)+(12))>>0)] !== 0),
         };
+        console.log("Make BindGroupLayout visibility " + s.visibility.toString());
+        return s;
       }
   
       function makeBindings(count, bindingsPtrs) {
