@@ -196,7 +196,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2707, "filename": "/shaders/spirv/vs_mesh.bin"}, {"start": 2707, "audio": 0, "end": 5462, "filename": "/shaders/spirv/fs_mesh.bin"}, {"start": 5462, "audio": 0, "end": 2593872, "filename": "/meshes/bunny.bin"}], "remote_package_size": 2593872, "package_uuid": "17c4e7d6-148d-4551-95f2-929c2935c09c"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2707, "filename": "/shaders/spirv/vs_mesh.bin"}, {"start": 2707, "audio": 0, "end": 5462, "filename": "/shaders/spirv/fs_mesh.bin"}, {"start": 5462, "audio": 0, "end": 2593872, "filename": "/meshes/bunny.bin"}], "remote_package_size": 2593872, "package_uuid": "0864cd14-03e1-458a-9bfb-236e5d88ac8b"});
   
   })();
   
@@ -814,8 +814,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 475,
-  'maximum': 475 + 0,
+  'initial': 474,
+  'maximum': 474 + 0,
   'element': 'anyfunc'
 });
 
@@ -7621,9 +7621,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         pass.setBindGroup(groupIndex, group);
       } else {
         var offsets = [];
-        // TODO: Update to u32 after rolling the header.
-        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 8) {
-          offsets.push(HEAPU32[(((dynamicOffsetsPtr + 4))>>2)] * 0x100000000 + HEAPU32[((dynamicOffsetsPtr)>>2)]);
+        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 4) {
+          offsets.push(HEAPU32[((dynamicOffsetsPtr)>>2)]);
         }
         pass.setBindGroup(groupIndex, group, offsets);
       }

@@ -634,8 +634,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 473,
-  'maximum': 473 + 0,
+  'initial': 472,
+  'maximum': 472 + 0,
   'element': 'anyfunc'
 });
 
@@ -7441,9 +7441,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         pass.setBindGroup(groupIndex, group);
       } else {
         var offsets = [];
-        // TODO: Update to u32 after rolling the header.
-        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 8) {
-          offsets.push(HEAPU32[(((dynamicOffsetsPtr + 4))>>2)] * 0x100000000 + HEAPU32[((dynamicOffsetsPtr)>>2)]);
+        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 4) {
+          offsets.push(HEAPU32[((dynamicOffsetsPtr)>>2)]);
         }
         pass.setBindGroup(groupIndex, group, offsets);
       }

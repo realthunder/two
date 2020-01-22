@@ -196,7 +196,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2962, "filename": "/shaders/spirv/vs_bump.bin"}, {"start": 2962, "audio": 0, "end": 7893, "filename": "/shaders/spirv/fs_bump.bin"}, {"start": 7893, "audio": 0, "end": 540989, "filename": "/textures/fieldstone-rgba.png"}, {"start": 540989, "audio": 0, "end": 1090231, "filename": "/textures/fieldstone-n.png"}], "remote_package_size": 1090231, "package_uuid": "991638e7-eb8e-48fb-810b-b27f047909a8"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2962, "filename": "/shaders/spirv/vs_bump.bin"}, {"start": 2962, "audio": 0, "end": 7893, "filename": "/shaders/spirv/fs_bump.bin"}, {"start": 7893, "audio": 0, "end": 540989, "filename": "/textures/fieldstone-rgba.png"}, {"start": 540989, "audio": 0, "end": 1090231, "filename": "/textures/fieldstone-n.png"}], "remote_package_size": 1090231, "package_uuid": "4be2a703-c066-4b1d-ab15-49e7284a88c5"});
   
   })();
   
@@ -814,8 +814,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 774,
-  'maximum': 774 + 0,
+  'initial': 773,
+  'maximum': 773 + 0,
   'element': 'anyfunc'
 });
 
@@ -8016,9 +8016,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         pass.setBindGroup(groupIndex, group);
       } else {
         var offsets = [];
-        // TODO: Update to u32 after rolling the header.
-        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 8) {
-          offsets.push(HEAPU32[(((dynamicOffsetsPtr + 4))>>2)] * 0x100000000 + HEAPU32[((dynamicOffsetsPtr)>>2)]);
+        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 4) {
+          offsets.push(HEAPU32[((dynamicOffsetsPtr)>>2)]);
         }
         pass.setBindGroup(groupIndex, group, offsets);
       }

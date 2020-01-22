@@ -195,7 +195,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1056, "filename": "/shaders/spirv/vs_cubes.bin"}, {"start": 1056, "audio": 0, "end": 1462, "filename": "/shaders/spirv/fs_cubes.bin"}, {"start": 1462, "audio": 0, "end": 2218, "filename": "/shaders/spirv/fs_cubes_color.bin"}], "remote_package_size": 2218, "package_uuid": "67139fdc-072f-4a44-a225-169e073c9e60"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1056, "filename": "/shaders/spirv/vs_cubes.bin"}, {"start": 1056, "audio": 0, "end": 1462, "filename": "/shaders/spirv/fs_cubes.bin"}, {"start": 1462, "audio": 0, "end": 2218, "filename": "/shaders/spirv/fs_cubes_color.bin"}], "remote_package_size": 2218, "package_uuid": "5b929dc9-e35e-434b-9056-19ca8a396328"});
   
   })();
   
@@ -1413,11 +1413,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5928464,
+    STACK_BASE = 5928384,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 685584,
-    DYNAMIC_BASE = 5928464,
-    DYNAMICTOP_PTR = 685424;
+    STACK_MAX = 685504,
+    DYNAMIC_BASE = 5928384,
+    DYNAMICTOP_PTR = 685344;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1927,7 +1927,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  561836: function() {debugger;}
+  561756: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1937,7 +1937,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 684560;
+// STATICTOP = STATIC_BASE + 684480;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4577,7 +4577,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _emscripten_get_now() { abort() }
 
   function _emscripten_get_sbrk_ptr() {
-      return 685424;
+      return 685344;
     }
 
   

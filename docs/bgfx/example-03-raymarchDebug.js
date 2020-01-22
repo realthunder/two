@@ -195,7 +195,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1266, "filename": "/shaders/spirv/vs_raymarching.bin"}, {"start": 1266, "audio": 0, "end": 11377, "filename": "/shaders/spirv/fs_raymarching.bin"}], "remote_package_size": 11377, "package_uuid": "3b54ee86-78c2-4982-9bee-6300c956a912"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1266, "filename": "/shaders/spirv/vs_raymarching.bin"}, {"start": 1266, "audio": 0, "end": 11377, "filename": "/shaders/spirv/fs_raymarching.bin"}], "remote_package_size": 11377, "package_uuid": "9cdfcdfd-fbda-49a4-89ac-6797fc4c0ca4"});
   
   })();
   
@@ -813,8 +813,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 473,
-  'maximum': 473 + 0,
+  'initial': 472,
+  'maximum': 472 + 0,
   'element': 'anyfunc'
 });
 
@@ -7620,9 +7620,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         pass.setBindGroup(groupIndex, group);
       } else {
         var offsets = [];
-        // TODO: Update to u32 after rolling the header.
-        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 8) {
-          offsets.push(HEAPU32[(((dynamicOffsetsPtr + 4))>>2)] * 0x100000000 + HEAPU32[((dynamicOffsetsPtr)>>2)]);
+        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 4) {
+          offsets.push(HEAPU32[((dynamicOffsetsPtr)>>2)]);
         }
         pass.setBindGroup(groupIndex, group, offsets);
       }
