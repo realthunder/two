@@ -197,7 +197,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1094, "filename": "/shaders/spirv/vs_hdr_skybox.bin"}, {"start": 1094, "audio": 0, "end": 2836, "filename": "/shaders/spirv/fs_hdr_skybox.bin"}, {"start": 2836, "audio": 0, "end": 3930, "filename": "/shaders/spirv/vs_hdr_lum.bin"}, {"start": 3930, "audio": 0, "end": 8132, "filename": "/shaders/spirv/fs_hdr_lum.bin"}, {"start": 8132, "audio": 0, "end": 9226, "filename": "/shaders/spirv/vs_hdr_lumavg.bin"}, {"start": 9226, "audio": 0, "end": 15068, "filename": "/shaders/spirv/fs_hdr_lumavg.bin"}, {"start": 15068, "audio": 0, "end": 17726, "filename": "/shaders/spirv/vs_hdr_blur.bin"}, {"start": 17726, "audio": 0, "end": 19747, "filename": "/shaders/spirv/fs_hdr_blur.bin"}, {"start": 19747, "audio": 0, "end": 20841, "filename": "/shaders/spirv/vs_hdr_bright.bin"}, {"start": 20841, "audio": 0, "end": 25946, "filename": "/shaders/spirv/fs_hdr_bright.bin"}, {"start": 25946, "audio": 0, "end": 27768, "filename": "/shaders/spirv/vs_hdr_mesh.bin"}, {"start": 27768, "audio": 0, "end": 30946, "filename": "/shaders/spirv/fs_hdr_mesh.bin"}, {"start": 30946, "audio": 0, "end": 33360, "filename": "/shaders/spirv/vs_hdr_tonemap.bin"}, {"start": 33360, "audio": 0, "end": 38186, "filename": "/shaders/spirv/fs_hdr_tonemap.bin"}, {"start": 38186, "audio": 0, "end": 2626596, "filename": "/meshes/bunny.bin"}, {"start": 2626596, "audio": 0, "end": 15209576, "filename": "/textures/uffizi.ktx"}], "remote_package_size": 15209576, "package_uuid": "76f20fbd-a00c-4e2a-83b7-25e13e513de2"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1094, "filename": "/shaders/spirv/vs_hdr_skybox.bin"}, {"start": 1094, "audio": 0, "end": 2836, "filename": "/shaders/spirv/fs_hdr_skybox.bin"}, {"start": 2836, "audio": 0, "end": 3930, "filename": "/shaders/spirv/vs_hdr_lum.bin"}, {"start": 3930, "audio": 0, "end": 8132, "filename": "/shaders/spirv/fs_hdr_lum.bin"}, {"start": 8132, "audio": 0, "end": 9226, "filename": "/shaders/spirv/vs_hdr_lumavg.bin"}, {"start": 9226, "audio": 0, "end": 15068, "filename": "/shaders/spirv/fs_hdr_lumavg.bin"}, {"start": 15068, "audio": 0, "end": 17726, "filename": "/shaders/spirv/vs_hdr_blur.bin"}, {"start": 17726, "audio": 0, "end": 19747, "filename": "/shaders/spirv/fs_hdr_blur.bin"}, {"start": 19747, "audio": 0, "end": 20841, "filename": "/shaders/spirv/vs_hdr_bright.bin"}, {"start": 20841, "audio": 0, "end": 25946, "filename": "/shaders/spirv/fs_hdr_bright.bin"}, {"start": 25946, "audio": 0, "end": 27768, "filename": "/shaders/spirv/vs_hdr_mesh.bin"}, {"start": 27768, "audio": 0, "end": 30946, "filename": "/shaders/spirv/fs_hdr_mesh.bin"}, {"start": 30946, "audio": 0, "end": 33360, "filename": "/shaders/spirv/vs_hdr_tonemap.bin"}, {"start": 33360, "audio": 0, "end": 38186, "filename": "/shaders/spirv/fs_hdr_tonemap.bin"}, {"start": 38186, "audio": 0, "end": 2626596, "filename": "/meshes/bunny.bin"}, {"start": 2626596, "audio": 0, "end": 15209576, "filename": "/textures/uffizi.ktx"}], "remote_package_size": 15209576, "package_uuid": "6f7390a0-3410-4d48-a63a-eb90affa6cba"});
   
   })();
   
@@ -1415,11 +1415,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5958528,
+    STACK_BASE = 5957664,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 715648,
-    DYNAMIC_BASE = 5958528,
-    DYNAMICTOP_PTR = 715488;
+    STACK_MAX = 714784,
+    DYNAMIC_BASE = 5957664,
+    DYNAMICTOP_PTR = 714624;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1929,7 +1929,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  577292: function() {debugger;}
+  576428: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1939,7 +1939,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 714624;
+// STATICTOP = STATIC_BASE + 713760;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4614,7 +4614,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _emscripten_get_now() { abort() }
 
   function _emscripten_get_sbrk_ptr() {
-      return 715488;
+      return 714624;
     }
 
   
