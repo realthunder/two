@@ -197,7 +197,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1094, "filename": "/shaders/spirv/vs_hdr_skybox.bin"}, {"start": 1094, "audio": 0, "end": 2836, "filename": "/shaders/spirv/fs_hdr_skybox.bin"}, {"start": 2836, "audio": 0, "end": 3930, "filename": "/shaders/spirv/vs_hdr_lum.bin"}, {"start": 3930, "audio": 0, "end": 8132, "filename": "/shaders/spirv/fs_hdr_lum.bin"}, {"start": 8132, "audio": 0, "end": 9226, "filename": "/shaders/spirv/vs_hdr_lumavg.bin"}, {"start": 9226, "audio": 0, "end": 15068, "filename": "/shaders/spirv/fs_hdr_lumavg.bin"}, {"start": 15068, "audio": 0, "end": 17726, "filename": "/shaders/spirv/vs_hdr_blur.bin"}, {"start": 17726, "audio": 0, "end": 19747, "filename": "/shaders/spirv/fs_hdr_blur.bin"}, {"start": 19747, "audio": 0, "end": 20841, "filename": "/shaders/spirv/vs_hdr_bright.bin"}, {"start": 20841, "audio": 0, "end": 25946, "filename": "/shaders/spirv/fs_hdr_bright.bin"}, {"start": 25946, "audio": 0, "end": 27768, "filename": "/shaders/spirv/vs_hdr_mesh.bin"}, {"start": 27768, "audio": 0, "end": 30946, "filename": "/shaders/spirv/fs_hdr_mesh.bin"}, {"start": 30946, "audio": 0, "end": 33360, "filename": "/shaders/spirv/vs_hdr_tonemap.bin"}, {"start": 33360, "audio": 0, "end": 38186, "filename": "/shaders/spirv/fs_hdr_tonemap.bin"}, {"start": 38186, "audio": 0, "end": 2626596, "filename": "/meshes/bunny.bin"}, {"start": 2626596, "audio": 0, "end": 15209576, "filename": "/textures/uffizi.ktx"}], "remote_package_size": 15209576, "package_uuid": "71c5d53d-23a2-41a0-a8c5-3c470381a33a"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1094, "filename": "/shaders/spirv/vs_hdr_skybox.bin"}, {"start": 1094, "audio": 0, "end": 2836, "filename": "/shaders/spirv/fs_hdr_skybox.bin"}, {"start": 2836, "audio": 0, "end": 3930, "filename": "/shaders/spirv/vs_hdr_lum.bin"}, {"start": 3930, "audio": 0, "end": 8132, "filename": "/shaders/spirv/fs_hdr_lum.bin"}, {"start": 8132, "audio": 0, "end": 9226, "filename": "/shaders/spirv/vs_hdr_lumavg.bin"}, {"start": 9226, "audio": 0, "end": 15068, "filename": "/shaders/spirv/fs_hdr_lumavg.bin"}, {"start": 15068, "audio": 0, "end": 17726, "filename": "/shaders/spirv/vs_hdr_blur.bin"}, {"start": 17726, "audio": 0, "end": 19747, "filename": "/shaders/spirv/fs_hdr_blur.bin"}, {"start": 19747, "audio": 0, "end": 20841, "filename": "/shaders/spirv/vs_hdr_bright.bin"}, {"start": 20841, "audio": 0, "end": 25946, "filename": "/shaders/spirv/fs_hdr_bright.bin"}, {"start": 25946, "audio": 0, "end": 27768, "filename": "/shaders/spirv/vs_hdr_mesh.bin"}, {"start": 27768, "audio": 0, "end": 30946, "filename": "/shaders/spirv/fs_hdr_mesh.bin"}, {"start": 30946, "audio": 0, "end": 33360, "filename": "/shaders/spirv/vs_hdr_tonemap.bin"}, {"start": 33360, "audio": 0, "end": 38186, "filename": "/shaders/spirv/fs_hdr_tonemap.bin"}, {"start": 38186, "audio": 0, "end": 2626596, "filename": "/meshes/bunny.bin"}, {"start": 2626596, "audio": 0, "end": 15209576, "filename": "/textures/uffizi.ktx"}], "remote_package_size": 15209576, "package_uuid": "b41d5ad8-17e7-499a-997f-7d08cb211863"});
   
   })();
   
@@ -314,6 +314,7 @@ if (ENVIRONMENT_IS_NODE) {
   Module['inspect'] = function () { return '[Emscripten Module object]'; };
 
 
+
 } else
 if (ENVIRONMENT_IS_SHELL) {
 
@@ -352,6 +353,8 @@ if (ENVIRONMENT_IS_SHELL) {
     console.log = print;
     console.warn = console.error = typeof printErr !== 'undefined' ? printErr : print;
   }
+
+
 } else
 
 // Note that this includes Node.js workers when relevant (pthreads is enabled).
@@ -539,6 +542,7 @@ function warnOnce(text) {
 
 
 
+
 // Wraps a JS function as a wasm function with a given signature.
 function convertJsFunctionToWasm(func, sig) {
 
@@ -669,6 +673,8 @@ function addFunction(func, sig) {
 function removeFunction(index) {
   removeFunctionWasm(index);
 }
+
+
 
 var funcWrappers = {};
 
@@ -1000,27 +1006,7 @@ function getMemory(size) {
 }
 
 
-
-
-// Given a pointer 'ptr' to a null-terminated ASCII-encoded string in the emscripten HEAP, returns
-// a copy of that string as a Javascript String object.
-
-function AsciiToString(ptr) {
-  var str = '';
-  while (1) {
-    var ch = HEAPU8[((ptr++)>>0)];
-    if (!ch) return str;
-    str += String.fromCharCode(ch);
-  }
-}
-
-// Copies the given Javascript String object 'str' to the emscripten HEAP at address 'outPtr',
-// null-terminated and encoded in ASCII form. The copy will require at most str.length+1 bytes of space in the HEAP.
-
-function stringToAscii(str, outPtr) {
-  return writeAsciiToMemory(str, outPtr, false);
-}
-
+// runtime_strings.js: Strings related runtime functions that are part of both MINIMAL_RUNTIME and regular runtime.
 
 // Given a pointer 'ptr' to a null-terminated UTF8-encoded string in the given array that contains uint8 values, returns
 // a copy of that string as a Javascript String object.
@@ -1173,10 +1159,33 @@ function lengthBytesUTF8(str) {
 }
 
 
+
+// runtime_strings_extra.js: Strings related runtime functions that are available only in regular runtime.
+
+// Given a pointer 'ptr' to a null-terminated ASCII-encoded string in the emscripten HEAP, returns
+// a copy of that string as a Javascript String object.
+
+function AsciiToString(ptr) {
+  var str = '';
+  while (1) {
+    var ch = HEAPU8[((ptr++)>>0)];
+    if (!ch) return str;
+    str += String.fromCharCode(ch);
+  }
+}
+
+// Copies the given Javascript String object 'str' to the emscripten HEAP at address 'outPtr',
+// null-terminated and encoded in ASCII form. The copy will require at most str.length+1 bytes of space in the HEAP.
+
+function stringToAscii(str, outPtr) {
+  return writeAsciiToMemory(str, outPtr, false);
+}
+
 // Given a pointer 'ptr' to a null-terminated UTF16LE-encoded string in the emscripten HEAP, returns
 // a copy of that string as a Javascript String object.
 
 var UTF16Decoder = typeof TextDecoder !== 'undefined' ? new TextDecoder('utf-16le') : undefined;
+
 function UTF16ToString(ptr) {
   assert(ptr % 2 == 0, 'Pointer passed to UTF16ToString must be aligned to two bytes!');
   var endPtr = ptr;
@@ -1365,7 +1374,6 @@ function writeAsciiToMemory(str, buffer, dontAddNull) {
   // Null-terminate the pointer to the HEAP.
   if (!dontAddNull) HEAP8[((buffer)>>0)]=0;
 }
-
 
 
 
@@ -1633,6 +1641,14 @@ function reSign(value, bits, ignore) {
   return value;
 }
 
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/imul
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/clz32
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/trunc
 
 assert(Math.imul, 'This browser does not support Math.imul(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill');
 assert(Math.fround, 'This browser does not support Math.fround(), build with LEGACY_VM_SUPPORT or POLYFILL_OLD_MATH_FUNCTIONS to add in a polyfill');
@@ -1970,7 +1986,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         // IE10+ special cases: It does have callstack info, but it is only populated if an Error object is thrown,
         // so try that as a special-case.
         try {
-          throw new Error(0);
+          throw new Error();
         } catch(e) {
           err = e;
         }
@@ -2713,9 +2729,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           }
         }
       },lookupNode:function(parent, name) {
-        var err = FS.mayLookup(parent);
-        if (err) {
-          throw new FS.ErrnoError(err, parent);
+        var errCode = FS.mayLookup(parent);
+        if (errCode) {
+          throw new FS.ErrnoError(errCode, parent);
         }
         var hash = FS.hashName(parent.id, name);
         for (var node = FS.nameTable[hash]; node; node = node.name_next) {
@@ -2820,8 +2836,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         }
         return 0;
       },mayLookup:function(dir) {
-        var err = FS.nodePermissions(dir, 'x');
-        if (err) return err;
+        var errCode = FS.nodePermissions(dir, 'x');
+        if (errCode) return errCode;
         if (!dir.node_ops.lookup) return 2;
         return 0;
       },mayCreate:function(dir, name) {
@@ -2838,9 +2854,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         } catch (e) {
           return e.errno;
         }
-        var err = FS.nodePermissions(dir, 'wx');
-        if (err) {
-          return err;
+        var errCode = FS.nodePermissions(dir, 'wx');
+        if (errCode) {
+          return errCode;
         }
         if (isdir) {
           if (!FS.isDir(node.mode)) {
@@ -2960,17 +2976,17 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var mounts = FS.getMounts(FS.root.mount);
         var completed = 0;
   
-        function doCallback(err) {
+        function doCallback(errCode) {
           assert(FS.syncFSRequests > 0);
           FS.syncFSRequests--;
-          return callback(err);
+          return callback(errCode);
         }
   
-        function done(err) {
-          if (err) {
+        function done(errCode) {
+          if (errCode) {
             if (!done.errored) {
               done.errored = true;
-              return doCallback(err);
+              return doCallback(errCode);
             }
             return;
           }
@@ -3080,9 +3096,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         if (!name || name === '.' || name === '..') {
           throw new FS.ErrnoError(28);
         }
-        var err = FS.mayCreate(parent, name);
-        if (err) {
-          throw new FS.ErrnoError(err);
+        var errCode = FS.mayCreate(parent, name);
+        if (errCode) {
+          throw new FS.ErrnoError(errCode);
         }
         if (!parent.node_ops.mknod) {
           throw new FS.ErrnoError(63);
@@ -3127,9 +3143,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           throw new FS.ErrnoError(44);
         }
         var newname = PATH.basename(newpath);
-        var err = FS.mayCreate(parent, newname);
-        if (err) {
-          throw new FS.ErrnoError(err);
+        var errCode = FS.mayCreate(parent, newname);
+        if (errCode) {
+          throw new FS.ErrnoError(errCode);
         }
         if (!parent.node_ops.symlink) {
           throw new FS.ErrnoError(63);
@@ -3180,17 +3196,17 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         }
         // we'll need to delete the old entry
         var isdir = FS.isDir(old_node.mode);
-        var err = FS.mayDelete(old_dir, old_name, isdir);
-        if (err) {
-          throw new FS.ErrnoError(err);
+        var errCode = FS.mayDelete(old_dir, old_name, isdir);
+        if (errCode) {
+          throw new FS.ErrnoError(errCode);
         }
         // need delete permissions if we'll be overwriting.
         // need create permissions if new doesn't already exist.
-        err = new_node ?
+        errCode = new_node ?
           FS.mayDelete(new_dir, new_name, isdir) :
           FS.mayCreate(new_dir, new_name);
-        if (err) {
-          throw new FS.ErrnoError(err);
+        if (errCode) {
+          throw new FS.ErrnoError(errCode);
         }
         if (!old_dir.node_ops.rename) {
           throw new FS.ErrnoError(63);
@@ -3200,9 +3216,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         }
         // if we are going to change the parent, check write permissions
         if (new_dir !== old_dir) {
-          err = FS.nodePermissions(old_dir, 'w');
-          if (err) {
-            throw new FS.ErrnoError(err);
+          errCode = FS.nodePermissions(old_dir, 'w');
+          if (errCode) {
+            throw new FS.ErrnoError(errCode);
           }
         }
         try {
@@ -3234,9 +3250,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var parent = lookup.node;
         var name = PATH.basename(path);
         var node = FS.lookupNode(parent, name);
-        var err = FS.mayDelete(parent, name, true);
-        if (err) {
-          throw new FS.ErrnoError(err);
+        var errCode = FS.mayDelete(parent, name, true);
+        if (errCode) {
+          throw new FS.ErrnoError(errCode);
         }
         if (!parent.node_ops.rmdir) {
           throw new FS.ErrnoError(63);
@@ -3270,12 +3286,12 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var parent = lookup.node;
         var name = PATH.basename(path);
         var node = FS.lookupNode(parent, name);
-        var err = FS.mayDelete(parent, name, false);
-        if (err) {
+        var errCode = FS.mayDelete(parent, name, false);
+        if (errCode) {
           // According to POSIX, we should map EISDIR to EPERM, but
           // we instead do what Linux does (and we must, as we use
           // the musl linux libc).
-          throw new FS.ErrnoError(err);
+          throw new FS.ErrnoError(errCode);
         }
         if (!parent.node_ops.unlink) {
           throw new FS.ErrnoError(63);
@@ -3385,9 +3401,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         if (!FS.isFile(node.mode)) {
           throw new FS.ErrnoError(28);
         }
-        var err = FS.nodePermissions(node, 'w');
-        if (err) {
-          throw new FS.ErrnoError(err);
+        var errCode = FS.nodePermissions(node, 'w');
+        if (errCode) {
+          throw new FS.ErrnoError(errCode);
         }
         node.node_ops.setattr(node, {
           size: len,
@@ -3462,9 +3478,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         // create and write to a file with read-only permissions; it is read-only
         // for later use)
         if (!created) {
-          var err = FS.mayOpen(node, flags);
-          if (err) {
-            throw new FS.ErrnoError(err);
+          var errCode = FS.mayOpen(node, flags);
+          if (errCode) {
+            throw new FS.ErrnoError(errCode);
           }
         }
         // do truncation if necessary
@@ -3693,9 +3709,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         if (!FS.isDir(lookup.node.mode)) {
           throw new FS.ErrnoError(54);
         }
-        var err = FS.nodePermissions(lookup.node, 'x');
-        if (err) {
-          throw new FS.ErrnoError(err);
+        var errCode = FS.nodePermissions(lookup.node, 'x');
+        if (errCode) {
+          throw new FS.ErrnoError(errCode);
         }
         FS.currentPath = lookup.path;
       },createDefaultDirectories:function() {
@@ -6602,17 +6618,20 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
   
   var WebGPU={initManagers:function() {
-        if (this.mgrDevice) return;
+        if (this["mgrDevice"]) return;
   
         function makeManager(name) {
           return {
             name: name,
             objects: [undefined],
-            create: function(object) {
+            create: function(object, wrapper /* = {} */) {
               //console.log("creating a " + this.name);
+              wrapper = wrapper || {};
               var id = this.objects.length;
               assert(typeof this.objects[id] === 'undefined');
-              this.objects[id] = { refcount: 1, object: object };
+              wrapper.refcount = 1;
+              wrapper.object = object;
+              this.objects[id] = wrapper;
               return id;
             },
             get: function(id) {
@@ -6642,7 +6661,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         this.mgrSurface = this.mgrSurface || makeManager("Surface");
         this.mgrSwapChain = this.mgrSwapChain || makeManager("SwapChain");
   
-        this.mgrDevice = this.mgrDevice || makeManager("Device");
+        this["mgrDevice"] = this["mgrDevice"] || makeManager();
         this.mgrQueue = this.mgrQueue || makeManager("Queue");
         this.mgrFence = this.mgrFence || makeManager("Fence");
   
@@ -6650,7 +6669,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager("CommandEncoder");
         this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager("RenderPassEncoder");
         this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager("ComputePassEncoder");
-        this.mgrComputePipeline = this.mgrComputePipeline || makeManager("ComputePipeline");
   
         this.mgrBindGroup = this.mgrBindGroup || makeManager("BindGroup");
         this.mgrBuffer = this.mgrBuffer || makeManager("Buffer");
@@ -6661,6 +6679,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         this.mgrBindGroupLayout = this.mgrBindGroupLayout || makeManager("BindGroupLayout");
         this.mgrPipelineLayout = this.mgrPipelineLayout || makeManager("PipelineLayout");
         this.mgrRenderPipeline = this.mgrRenderPipeline || makeManager("RenderPipeline");
+        this.mgrComputePipeline = this.mgrComputePipeline || makeManager("ComputePipeline");
         this.mgrShaderModule = this.mgrShaderModule || makeManager("ShaderModule");
   
         this.mgrRenderBundleEncoder = this.mgrRenderBundleEncoder || makeManager("RenderBundleEncoder");
@@ -6679,44 +6698,53 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         obj.mapWriteDst = undefined;
       },makeColor:function(ptr) {
         return {
-          r: HEAPF32[((ptr)>>2)],
-          g: HEAPF32[(((ptr)+(4))>>2)],
-          b: HEAPF32[(((ptr)+(8))>>2)],
-          a: HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF32[((ptr)>>2)],
+          "g": HEAPF32[(((ptr)+(4))>>2)],
+          "b": HEAPF32[(((ptr)+(8))>>2)],
+          "a": HEAPF32[(((ptr)+(12))>>2)],
         };
       },makeExtent3D:function(ptr) {
         return {
-          width: HEAPU32[((ptr)>>2)],
-          height: HEAPU32[(((ptr)+(4))>>2)],
-          depth: HEAPU32[(((ptr)+(8))>>2)],
+          "width": HEAPU32[((ptr)>>2)],
+          "height": HEAPU32[(((ptr)+(4))>>2)],
+          "depth": HEAPU32[(((ptr)+(8))>>2)],
         };
       },makeOrigin3D:function(ptr) {
         return {
-          x: HEAPU32[((ptr)>>2)],
-          y: HEAPU32[(((ptr)+(4))>>2)],
-          z: HEAPU32[(((ptr)+(8))>>2)],
+          "x": HEAPU32[((ptr)>>2)],
+          "y": HEAPU32[(((ptr)+(4))>>2)],
+          "z": HEAPU32[(((ptr)+(8))>>2)],
         };
       },makeTextureCopyView:function(ptr) {
         assert(ptr);assert(HEAP32[((ptr)>>2)] === 0);
         return {
-          texture: this.mgrTexture.get(
+          "texture": this.mgrTexture.get(
             HEAP32[(((ptr)+(4))>>2)]),
-          mipLevel: HEAPU32[(((ptr)+(8))>>2)],
-          arrayLayer: HEAPU32[(((ptr)+(12))>>2)],
-          origin: WebGPU.makeOrigin3D(ptr + 16),
+          "mipLevel": HEAPU32[(((ptr)+(8))>>2)],
+          "arrayLayer": HEAPU32[(((ptr)+(12))>>2)],
+          "origin": WebGPU.makeOrigin3D(ptr + 16),
         };
       },makeBufferCopyView:function(ptr) {
         assert(ptr);assert(HEAP32[((ptr)>>2)] === 0);
         return {
-          buffer: this.mgrBuffer.get(
+          "buffer": this.mgrBuffer.get(
             HEAP32[(((ptr)+(4))>>2)]),
-          offset: HEAPU32[((((ptr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((ptr)+(8))>>2)],
-          rowPitch: HEAPU32[(((ptr)+(16))>>2)],
-          imageHeight: HEAPU32[(((ptr)+(20))>>2)],
+          "offset": HEAPU32[((((ptr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((ptr)+(8))>>2)],
+          "rowPitch": HEAPU32[(((ptr)+(16))>>2)],
+          "imageHeight": HEAPU32[(((ptr)+(20))>>2)],
         };
-      },AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","sampled-texture","storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:["never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgbaunorm","bc1rgbaunorm-srgb","bc2rgbaunorm","bc2rgbaunorm-srgb","bc3rgbaunorm","bc3rgbaunorm-srgb","bc4runorm","bc4rsnorm","bc5rgunorm","bc5rgsnorm","bc6hrgbufloat","bc6hrgbsfloat","bc7rgbaunorm","bc7rgbaunorm-srgb"],TextureViewDimension:[,"1d","2d","2darray","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
+      },makeProgrammableStageDescriptor:function(ptr) {
+        if (ptr === 0) return undefined;
+        assert(ptr);assert(HEAP32[((ptr)>>2)] === 0);
+        return {
+          "module": WebGPU.mgrShaderModule.get(
+            HEAP32[(((ptr)+(4))>>2)]),
+          "entryPoint": UTF8ToString(
+            HEAP32[(((ptr)+(8))>>2)]),
+        };
+      },AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","sampled-texture","storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:["never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PresentMode:["no-v-sync","v-sync"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
       assert(Module['preinitializedWebGPUDevice']);
-      return WebGPU.mgrDevice.create(Module['preinitializedWebGPUDevice']);
+      return WebGPU["mgrDevice"].create(Module['preinitializedWebGPUDevice']);
     }
 
   
@@ -7356,7 +7384,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
       var count = (assert(count_h < 0x200000), count_h * 0x100000000 + count_l)
   ;
-      buffer.setSubData(start, HEAPU8, data, count);
+      buffer["setSubData"](start, HEAPU8, data, count);
     }
 
   function _wgpuCommandBufferRelease(id) {
@@ -7364,18 +7392,15 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   }
 
   function _wgpuCommandEncoderBeginComputePass(encoderId, descriptor) {
-      assert(descriptor !== 0);
-  
-      function makeComputePassDescriptor(descriptor) {
-        return {
-          label: UTF8ToString(HEAPU32[(((descriptor)+(4))>>2)])
-        };
+      var desc;
+      if (descriptor) {
+        assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
+        desc = {};
+        var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
+        if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
       }
-  
-      var desc = makeComputePassDescriptor(descriptor);
-  
       var commandEncoder = WebGPU.mgrCommandEncoder.get(encoderId);
-      return WebGPU.mgrComputePassEncoder.create(commandEncoder.beginComputePass(desc));
+      return WebGPU.mgrComputePassEncoder.create(commandEncoder["beginComputePass"](desc));
     }
 
   function _wgpuCommandEncoderBeginRenderPass(encoderId, descriptor) {
@@ -7389,13 +7414,13 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         }
   
         return {
-          attachment: WebGPU.mgrTextureView.get(
+          "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
-          resolveTarget: WebGPU.mgrTextureView.get(
+          "resolveTarget": WebGPU.mgrTextureView.get(
             HEAPU32[(((caPtr)+(4))>>2)]),
-          storeOp: WebGPU.StoreOp[
+          "storeOp": WebGPU.StoreOp[
             HEAPU32[(((caPtr)+(12))>>2)]],
-          loadValue: loadValue,
+          "loadValue": loadValue,
         };
       }
   
@@ -7423,43 +7448,43 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         }
   
         return {
-          attachment: WebGPU.mgrTextureView.get(
+          "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
-          depthStoreOp: WebGPU.StoreOp[
+          "depthStoreOp": WebGPU.StoreOp[
             HEAPU32[(((dsaPtr)+(8))>>2)]],
-          depthLoadValue: depthLoadValue,
-          stencilStoreOp: WebGPU.StoreOp[
+          "depthLoadValue": depthLoadValue,
+          "stencilStoreOp": WebGPU.StoreOp[
             HEAPU32[(((dsaPtr)+(20))>>2)]],
-          stencilLoadValue: stencilLoadValue,
+          "stencilLoadValue": stencilLoadValue,
         };
       }
   
       function makeRenderPassDescriptor(descriptor) {
         assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
         var desc = {
-          label: undefined,
-          colorAttachments: makeColorAttachments(
+          "label": undefined,
+          "colorAttachments": makeColorAttachments(
             HEAPU32[(((descriptor)+(8))>>2)],
             HEAP32[(((descriptor)+(12))>>2)]),
-          depthStencilAttachment: makeDepthStencilAttachment(
+          "depthStencilAttachment": makeDepthStencilAttachment(
             HEAP32[(((descriptor)+(16))>>2)]),
         };
         var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-        if (labelPtr) desc.label = UTF8ToString(labelPtr);
+        if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
         return desc;
       }
   
       var desc = makeRenderPassDescriptor(descriptor);
   
       var commandEncoder = WebGPU.mgrCommandEncoder.get(encoderId);
-      return WebGPU.mgrRenderPassEncoder.create(commandEncoder.beginRenderPass(desc));
+      return WebGPU.mgrRenderPassEncoder.create(commandEncoder["beginRenderPass"](desc));
     }
 
   function _wgpuCommandEncoderCopyBufferToBuffer(encoderId, srcId, srcOffset_l, srcOffset_h, dstId, dstOffset_l, dstOffset_h, size_l, size_h) {
       var commandEncoder = WebGPU.mgrCommandEncoder.get(encoderId);
       var src = WebGPU.mgrBuffer.get(srcId);
       var dst = WebGPU.mgrBuffer.get(dstId);
-      commandEncoder.copyBufferToBuffer(
+      commandEncoder["copyBufferToBuffer"](
         src, (assert(srcOffset_h < 0x200000), srcOffset_h * 0x100000000 + srcOffset_l)
   ,
         dst, (assert(dstOffset_h < 0x200000), dstOffset_h * 0x100000000 + dstOffset_l)
@@ -7471,21 +7496,20 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _wgpuCommandEncoderCopyBufferToTexture(encoderId, srcPtr, dstPtr, copySizePtr) {
       var commandEncoder = WebGPU.mgrCommandEncoder.get(encoderId);
       var copySize = WebGPU.makeExtent3D(copySizePtr);
-      commandEncoder.copyBufferToTexture(
+      commandEncoder["copyBufferToTexture"](
         WebGPU.makeBufferCopyView(srcPtr), WebGPU.makeTextureCopyView(dstPtr), copySize);
     }
 
   function _wgpuCommandEncoderCopyTextureToTexture(encoderId, srcPtr, dstPtr, copySizePtr) {
       var commandEncoder = WebGPU.mgrCommandEncoder.get(encoderId);
-      var src = WebGPU.makeTextureCopyView(srcPtr);
-      var dst = WebGPU.makeTextureCopyView(dstPtr);
       var copySize = WebGPU.makeExtent3D(copySizePtr);
-      commandEncoder.copyTextureToTexture(src, dst, copySize);
+      commandEncoder["copyTextureToTexture"](
+        WebGPU.makeTextureCopyView(srcPtr), WebGPU.makeTextureCopyView(dstPtr), copySize);
     }
 
   function _wgpuCommandEncoderFinish(encoderId) {
       var commandEncoder = WebGPU.mgrCommandEncoder.get(encoderId);
-      return WebGPU.mgrCommandBuffer.create(commandEncoder.finish());
+      return WebGPU.mgrCommandBuffer.create(commandEncoder["finish"]());
     }
 
   function _wgpuCommandEncoderReference(id) {
@@ -7498,36 +7522,36 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
   function _wgpuComputePassEncoderDispatch(passId, x, y, z) {
       var pass = WebGPU.mgrComputePassEncoder.get(passId);
-      pass.dispatch(x, y, z);
+      pass["dispatch"](x, y, z);
     }
 
   function _wgpuComputePassEncoderEndPass(passId) {
       var pass = WebGPU.mgrComputePassEncoder.get(passId);
-      pass.endPass();
-    }
-
-  function _wgpuComputePassEncoderPopDebugGroup(passId) {
-      var pass = WebGPU.mgrComputePassEncoder.get(passId);
-      pass.popDebugGroup();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(passId, groupLabel) {
-      var pass = WebGPU.mgrComputePassEncoder.get(passId);
-      pass.pushDebugGroup(UTF8ToString(groupLabel));
+      pass["endPass"]();
     }
 
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
 
-  function _wgpuComputePassEncoderSetBindGroup(passId, groupIndex, group, dynamicOffsetCount, dynamicOffsets) {
+  function _wgpuComputePassEncoderSetBindGroup(passId, groupIndex, groupId, dynamicOffsetCount, dynamicOffsetsPtr) {
       var pass = WebGPU.mgrComputePassEncoder.get(passId);
-      pass.setBindGroup();
+      var group = WebGPU.mgrBindGroup.get(groupId);
+      if (dynamicOffsetCount == 0) {
+        pass["setBindGroup"](groupIndex, group);
+      } else {
+        var offsets = [];
+        for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 4) {
+          offsets.push(HEAPU32[((dynamicOffsetsPtr)>>2)]);
+        }
+        pass["setBindGroup"](groupIndex, group, offsets);
+      }
     }
 
-  function _wgpuComputePassEncoderSetPipeline(passId, pipeline) {
+  function _wgpuComputePassEncoderSetPipeline(passId, pipelineId) {
       var pass = WebGPU.mgrComputePassEncoder.get(passId);
-      pass.setPipeline(pipeline);
+      var pipeline = WebGPU.mgrComputePipeline.get(pipelineId);
+      pass["setPipeline"](pipeline);
     }
 
   function _wgpuComputePipelineRelease(id) {
@@ -7558,22 +7582,22 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           }
   
           return {
-            binding: binding,
-            resource: {
-              buffer: WebGPU.mgrBuffer.get(bufferId),
-              offset: HEAPU32[((((bindingPtr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((bindingPtr)+(8))>>2)],
-              size: size,
+            "binding": binding,
+            "resource": {
+              "buffer": WebGPU.mgrBuffer.get(bufferId),
+              "offset": HEAPU32[((((bindingPtr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((bindingPtr)+(8))>>2)],
+              "size": size,
             },
           };
         } else if (samplerId != 0) {
           return {
-            binding: binding,
-            resource: WebGPU.mgrSampler.get(samplerId),
+            "binding": binding,
+            "resource": WebGPU.mgrSampler.get(samplerId),
           };
         } else {
           return {
-            binding: binding,
-            resource: WebGPU.mgrTextureView.get(textureViewId),
+            "binding": binding,
+            "resource": WebGPU.mgrTextureView.get(textureViewId),
           };
         }
       }
@@ -7588,19 +7612,19 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       }
   
       var desc = {
-        label: undefined,
-        layout: WebGPU.mgrBindGroupLayout.get(
+        "label": undefined,
+        "layout": WebGPU.mgrBindGroupLayout.get(
           HEAP32[(((descriptor)+(8))>>2)]),
-        bindings: makeBindings(
+        "bindings": makeBindings(
           HEAPU32[(((descriptor)+(12))>>2)],
           HEAP32[(((descriptor)+(16))>>2)]
         ),
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrBindGroup.create(device.createBindGroup(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrBindGroup.create(device["createBindGroup"](desc));
     }
 
   function _wgpuDeviceCreateBindGroupLayout(deviceId, descriptor) {
@@ -7610,19 +7634,19 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         assert(bindingPtr);
   
         return {
-          binding:
+          "binding":
             HEAPU32[((bindingPtr)>>2)],
-          visibility:
+          "visibility":
             HEAPU32[(((bindingPtr)+(4))>>2)],
-          type: WebGPU.BindingType[
+          "type": WebGPU.BindingType[
             HEAPU32[(((bindingPtr)+(8))>>2)]],
-          textureDimension: WebGPU.TextureViewDimension[
+          "textureDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((bindingPtr)+(16))>>2)]],
-          textureComponentType: WebGPU.TextureComponentType[
+          "textureComponentType": WebGPU.TextureComponentType[
             HEAPU32[(((bindingPtr)+(20))>>2)]],
-          multisampled:
+          "multisampled":
             (HEAP8[(((bindingPtr)+(13))>>0)] !== 0),
-          hasDynamicOffset:
+          "hasDynamicOffset":
             (HEAP8[(((bindingPtr)+(12))>>0)] !== 0),
         };
       }
@@ -7637,45 +7661,61 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       }
   
       var desc = {
-        bindings: makeBindings(
+        "bindings": makeBindings(
           HEAPU32[(((descriptor)+(8))>>2)],
           HEAP32[(((descriptor)+(12))>>2)]
         ),
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrBindGroupLayout.create(device.createBindGroupLayout(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrBindGroupLayout.create(device["createBindGroupLayout"](desc));
     }
 
   function _wgpuDeviceCreateBuffer(deviceId, descriptor) {
       assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
       var desc = {
-        label: undefined,
-        usage: HEAPU32[(((descriptor)+(8))>>2)],
-        size: HEAPU32[((((descriptor + 4))+(16))>>2)] * 0x100000000 + HEAPU32[(((descriptor)+(16))>>2)],
+        "label": undefined,
+        "usage": HEAPU32[(((descriptor)+(8))>>2)],
+        "size": HEAPU32[((((descriptor + 4))+(16))>>2)] * 0x100000000 + HEAPU32[(((descriptor)+(16))>>2)],
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrBuffer.create(device.createBuffer(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrBuffer.create(device["createBuffer"](desc));
     }
 
   function _wgpuDeviceCreateCommandEncoder(deviceId, descriptor) {
       var desc;
       if (descriptor) {
         assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
-        desc = { label: undefined };
+        desc = {
+          "label": undefined,
+        };
         var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-        if (labelPtr) desc.label = UTF8ToString(labelPtr);
+        if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
       }
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrCommandEncoder.create(device.createCommandEncoder(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrCommandEncoder.create(device["createCommandEncoder"](desc));
     }
 
   function _wgpuDeviceCreateComputePipeline(deviceId, descriptor) {
+      assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
+  
+      var desc = {
+        "label": undefined,
+        "layout":  WebGPU.mgrPipelineLayout.get(
+          HEAP32[(((descriptor)+(8))>>2)]),
+        "computeStage": WebGPU.makeProgrammableStageDescriptor(
+          descriptor + 12),
+      };
+      var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
+  
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrComputePipeline.create(device["createComputePipeline"](desc));
     }
 
   function _wgpuDeviceCreatePipelineLayout(deviceId, descriptor) {
@@ -7687,41 +7727,33 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         bgls.push(WebGPU.mgrBindGroupLayout.get(
           HEAP32[(((bglPtr)+(4 * i))>>2)]));
       }
-      var desc = { label: undefined, bindGroupLayouts: bgls };
+      var desc = {
+        "label": undefined,
+        "bindGroupLayouts": bgls,
+      };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrPipelineLayout.create(device.createPipelineLayout(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrPipelineLayout.create(device["createPipelineLayout"](desc));
     }
 
   function _wgpuDeviceCreateQueue(deviceId) {
       assert(WebGPU.mgrQueue.objects.length === 1, 'there is only one queue');
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrQueue.create(device.defaultQueue);
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrQueue.create(device["defaultQueue"]);
     }
 
   function _wgpuDeviceCreateRenderPipeline(deviceId, descriptor) {
       assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
   
-      function makeStage(ptr) {
-        if (ptr === 0) return undefined;
-        assert(ptr);assert(HEAP32[((ptr)>>2)] === 0);
-        return {
-          module: WebGPU.mgrShaderModule.get(
-            HEAP32[(((ptr)+(4))>>2)]),
-          entryPoint: UTF8ToString(
-            HEAP32[(((ptr)+(8))>>2)]),
-        };
-      }
-  
       function makeRasterizationState(rsPtr) {
         if (rsPtr === 0) return undefined;
         assert(rsPtr);assert(HEAP32[((rsPtr)>>2)] === 0);
         return {
-          frontFace: WebGPU.FrontFace[
+          "frontFace": WebGPU.FrontFace[
             HEAPU32[(((rsPtr)+(4))>>2)]],
-          cullMode: WebGPU.CullMode[
+          "cullMode": WebGPU.CullMode[
             HEAPU32[(((rsPtr)+(8))>>2)]],
         };
       }
@@ -7729,11 +7761,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       function makeBlendDescriptor(bdPtr) {
         if (bdPtr === 0) return undefined;
         return {
-          operation: WebGPU.BlendOperation[
+          "operation": WebGPU.BlendOperation[
             HEAPU32[((bdPtr)>>2)]],
-          srcFactor: WebGPU.BlendFactor[
+          "srcFactor": WebGPU.BlendFactor[
             HEAPU32[(((bdPtr)+(4))>>2)]],
-          dstFactor: WebGPU.BlendFactor[
+          "dstFactor": WebGPU.BlendFactor[
             HEAPU32[(((bdPtr)+(8))>>2)]],
         };
       }
@@ -7741,11 +7773,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       function makeColorState(csPtr) {
         assert(csPtr);assert(HEAP32[((csPtr)>>2)] === 0);
         return {
-          format: WebGPU.TextureFormat[
+          "format": WebGPU.TextureFormat[
             HEAPU32[(((csPtr)+(4))>>2)]],
-          alphaBlend: makeBlendDescriptor(csPtr + 8),
-          colorBlend: makeBlendDescriptor(csPtr + 20),
-          writeMask: HEAPU32[(((csPtr)+(32))>>2)],
+          "alphaBlend": makeBlendDescriptor(csPtr + 8),
+          "colorBlend": makeBlendDescriptor(csPtr + 20),
+          "writeMask": HEAPU32[(((csPtr)+(32))>>2)],
         };
       }
   
@@ -7762,13 +7794,13 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       function makeStencilStateFace(ssfPtr) {
         assert(ssfPtr);
         return {
-          compare: WebGPU.CompareFunction[
+          "compare": WebGPU.CompareFunction[
             HEAPU32[((ssfPtr)>>2)]],
-          failOp: WebGPU.StencilOperation[
+          "failOp": WebGPU.StencilOperation[
             HEAPU32[(((ssfPtr)+(4))>>2)]],
-          depthFailOp: WebGPU.StencilOperation[
+          "depthFailOp": WebGPU.StencilOperation[
             HEAPU32[(((ssfPtr)+(8))>>2)]],
-          passOp: WebGPU.StencilOperation[
+          "passOp": WebGPU.StencilOperation[
             HEAPU32[(((ssfPtr)+(12))>>2)]],
         };
       }
@@ -7778,25 +7810,25 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
         assert(dssPtr);
         return {
-          format: WebGPU.TextureFormat[
+          "format": WebGPU.TextureFormat[
             HEAPU32[(((dssPtr)+(4))>>2)]],
-          depthWriteEnabled: (HEAP8[(((dssPtr)+(8))>>0)] !== 0),
-          depthCompare: WebGPU.CompareFunction[
+          "depthWriteEnabled": (HEAP8[(((dssPtr)+(8))>>0)] !== 0),
+          "depthCompare": WebGPU.CompareFunction[
             HEAPU32[(((dssPtr)+(12))>>2)]],
-          stencilFront: makeStencilStateFace(dssPtr + 16),
-          stencilBack: makeStencilStateFace(dssPtr + 32),
-          stencilReadMask: HEAPU32[(((dssPtr)+(48))>>2)],
-          stencilWriteMask: HEAPU32[(((dssPtr)+(52))>>2)],
+          "stencilFront": makeStencilStateFace(dssPtr + 16),
+          "stencilBack": makeStencilStateFace(dssPtr + 32),
+          "stencilReadMask": HEAPU32[(((dssPtr)+(48))>>2)],
+          "stencilWriteMask": HEAPU32[(((dssPtr)+(52))>>2)],
         };
       }
   
       function makeVertexAttribute(vaPtr) {
         assert(vaPtr);
         return {
-          format: WebGPU.VertexFormat[
+          "format": WebGPU.VertexFormat[
             HEAPU32[((vaPtr)>>2)]],
-          offset: HEAPU32[((((vaPtr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((vaPtr)+(8))>>2)],
-          shaderLocation: HEAPU32[(((vaPtr)+(16))>>2)],
+          "offset": HEAPU32[((((vaPtr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((vaPtr)+(8))>>2)],
+          "shaderLocation": HEAPU32[(((vaPtr)+(16))>>2)],
         };
       }
   
@@ -7812,11 +7844,10 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         if (vbPtr === 0) return undefined;
   
         return {
-          arrayStride: HEAPU32[(((vbPtr + 4))>>2)] * 0x100000000 + HEAPU32[((vbPtr)>>2)],
-          stepMode: WebGPU.InputStepMode[
+          "arrayStride": HEAPU32[(((vbPtr + 4))>>2)] * 0x100000000 + HEAPU32[((vbPtr)>>2)],
+          "stepMode": WebGPU.InputStepMode[
             HEAPU32[(((vbPtr)+(8))>>2)]],
-          // TODO(kainino0x): Update naming once WGPU matches WebGPU.
-          attributes: makeVertexAttributes(
+          "attributes": makeVertexAttributes(
             HEAPU32[(((vbPtr)+(12))>>2)],
             HEAP32[(((vbPtr)+(16))>>2)]),
         };
@@ -7836,71 +7867,71 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         if (viPtr === 0) return undefined;
         assert(viPtr);assert(HEAP32[((viPtr)>>2)] === 0);
         return {
-          indexFormat: WebGPU.IndexFormat[
+          "indexFormat": WebGPU.IndexFormat[
             HEAPU32[(((viPtr)+(4))>>2)]],
-          vertexBuffers: makeVertexBuffers(
+          "vertexBuffers": makeVertexBuffers(
             HEAPU32[(((viPtr)+(8))>>2)],
             HEAP32[(((viPtr)+(12))>>2)]),
         };
       }
   
       var desc = {
-        label: undefined,
-        layout: WebGPU.mgrPipelineLayout.get(
+        "label": undefined,
+        "layout": WebGPU.mgrPipelineLayout.get(
           HEAP32[(((descriptor)+(8))>>2)]),
-        vertexStage: makeStage(
+        "vertexStage": WebGPU.makeProgrammableStageDescriptor(
           descriptor + 12),
-        fragmentStage: makeStage(
+        "fragmentStage": WebGPU.makeProgrammableStageDescriptor(
           HEAP32[(((descriptor)+(24))>>2)]),
-        primitiveTopology: WebGPU.PrimitiveTopology[
+        "primitiveTopology": WebGPU.PrimitiveTopology[
           HEAPU32[(((descriptor)+(32))>>2)]],
-        rasterizationState: makeRasterizationState(
+        "rasterizationState": makeRasterizationState(
           HEAP32[(((descriptor)+(36))>>2)]),
-        colorStates: makeColorStates(
+        "colorStates": makeColorStates(
           HEAPU32[(((descriptor)+(48))>>2)],
           HEAP32[(((descriptor)+(52))>>2)]),
-        depthStencilState: makeDepthStencilState(
+        "depthStencilState": makeDepthStencilState(
           HEAP32[(((descriptor)+(44))>>2)]),
-        vertexState: makeVertexState(
+        "vertexState": makeVertexState(
           HEAP32[(((descriptor)+(28))>>2)]),
-        sampleCount: HEAPU32[(((descriptor)+(40))>>2)],
-        sampleMask: HEAPU32[(((descriptor)+(56))>>2)],
-        alphaToCoverageEnabled: (HEAP8[(((descriptor)+(60))>>0)] !== 0),
+        "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
+        "sampleMask": HEAPU32[(((descriptor)+(56))>>2)],
+        "alphaToCoverageEnabled": (HEAP8[(((descriptor)+(60))>>0)] !== 0),
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrRenderPipeline.create(device.createRenderPipeline(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrRenderPipeline.create(device["createRenderPipeline"](desc));
     }
 
   function _wgpuDeviceCreateSampler(deviceId, descriptor) {
       assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
   
       var desc = {
-        label: undefined,
-        addressModeU: WebGPU.AddressMode[
+        "label": undefined,
+        "addressModeU": WebGPU.AddressMode[
             HEAPU32[(((descriptor)+(8))>>2)]],
-        addressModeV: WebGPU.AddressMode[
+        "addressModeV": WebGPU.AddressMode[
             HEAPU32[(((descriptor)+(12))>>2)]],
-        addressModeW: WebGPU.AddressMode[
+        "addressModeW": WebGPU.AddressMode[
             HEAPU32[(((descriptor)+(16))>>2)]],
-        magFilter: WebGPU.FilterMode[
+        "magFilter": WebGPU.FilterMode[
             HEAPU32[(((descriptor)+(20))>>2)]],
-        minFilter: WebGPU.FilterMode[
+        "minFilter": WebGPU.FilterMode[
             HEAPU32[(((descriptor)+(24))>>2)]],
-        mipmapFilter: WebGPU.FilterMode[
+        "mipmapFilter": WebGPU.FilterMode[
             HEAPU32[(((descriptor)+(28))>>2)]],
-        lodMinClamp: HEAPF32[(((descriptor)+(32))>>2)],
-        lodMaxClamp: HEAPF32[(((descriptor)+(36))>>2)],
-        compare: WebGPU.CompareFunction[
+        "lodMinClamp": HEAPF32[(((descriptor)+(32))>>2)],
+        "lodMaxClamp": HEAPF32[(((descriptor)+(36))>>2)],
+        "compare": WebGPU.CompareFunction[
             HEAPU32[(((descriptor)+(40))>>2)]],
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrSampler.create(device.createSampler(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrSampler.create(device["createSampler"](desc));
     }
 
   function _wgpuDeviceCreateShaderModule(deviceId, descriptor) {
@@ -7908,38 +7939,38 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var count = HEAPU32[(((descriptor)+(8))>>2)];
       var start = HEAP32[(((descriptor)+(12))>>2)];
       var desc = {
-        label: undefined,
-        code: HEAPU32.subarray(start >> 2, (start >> 2) + count),
+        "label": undefined,
+        "code": HEAPU32.subarray(start >> 2, (start >> 2) + count),
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrShaderModule.create(device.createShaderModule(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrShaderModule.create(device["createShaderModule"](desc));
     }
 
   function _wgpuDeviceCreateSwapChain(deviceId, surfaceId, descriptor) {
       assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
-      var device = WebGPU.mgrDevice.get(deviceId);
+      var device = WebGPU["mgrDevice"].get(deviceId);
       var canvas = WebGPU.mgrSurface.get(surfaceId);
   
       canvas.width = HEAPU32[(((descriptor)+(16))>>2)];
       canvas.height = HEAPU32[(((descriptor)+(20))>>2)];
   
       var ctx = canvas.getContext('gpupresent');
-      assert(/* WGPUPresentMode_VSync */ 1 ===
+      assert(1 ===
         HEAPU32[(((descriptor)+(24))>>2)]);
   
       var desc = {
-        label: undefined,
-        device: device,
-        format: WebGPU.TextureFormat[
+        "label": undefined,
+        "device": device,
+        "format": WebGPU.TextureFormat[
           HEAPU32[(((descriptor)+(12))>>2)]],
-        usage: HEAPU32[(((descriptor)+(8))>>2)],
+        "usage": HEAPU32[(((descriptor)+(8))>>2)],
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
-      var swapChain = ctx.configureSwapChain(desc);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
+      var swapChain = ctx["configureSwapChain"](desc);
   
       return WebGPU.mgrSwapChain.create(swapChain);
     }
@@ -7948,22 +7979,22 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
   
       var desc = {
-        label: undefined,
-        size: WebGPU.makeExtent3D(descriptor + 16),
-        arrayLayerCount: HEAPU32[(((descriptor)+(28))>>2)],
-        mipLevelCount: HEAPU32[(((descriptor)+(36))>>2)],
-        sampleCount: HEAPU32[(((descriptor)+(40))>>2)],
-        dimension: WebGPU.TextureDimension[
+        "label": undefined,
+        "size": WebGPU.makeExtent3D(descriptor + 16),
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
+        "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
+        "dimension": WebGPU.TextureDimension[
           HEAPU32[(((descriptor)+(12))>>2)]],
-        format: WebGPU.TextureFormat[
+        "format": WebGPU.TextureFormat[
           HEAPU32[(((descriptor)+(32))>>2)]],
-        usage: HEAPU32[(((descriptor)+(8))>>2)],
+        "usage": HEAPU32[(((descriptor)+(8))>>2)],
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-      if (labelPtr) desc.label = UTF8ToString(labelPtr);
+      if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
-      var device = WebGPU.mgrDevice.get(deviceId);
-      return WebGPU.mgrTexture.create(device.createTexture(desc));
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      return WebGPU.mgrTexture.create(device["createTexture"](desc));
     }
 
   function _wgpuDeviceReference(id) {
@@ -7975,12 +8006,14 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   }
 
   function _wgpuDeviceSetUncapturedErrorCallback(deviceId, callback, userdata) {
-      var device = WebGPU.mgrDevice.get(deviceId);
-      device.onuncapturederror = function(ev) {
+      var device = WebGPU["mgrDevice"].get(deviceId);
+      device["onuncapturederror"] = function(ev) {
         // WGPUErrorType type, const char* message, void* userdata
         var Validation = 0x00000001;
         var OutOfMemory = 0x00000002;
         var type;
+        assert(typeof GPUValidationError !== 'undefined');
+        assert(typeof GPUOutOfMemoryError !== 'undefined');
         if (ev.error instanceof GPUValidationError) type = Validation;
         else if (ev.error instanceof GPUOutOfMemoryError) type = OutOfMemory;
         var messagePtr = allocateUTF8(ev.error.message);
@@ -7990,19 +8023,20 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
     }
 
   function _wgpuInstanceCreateSurface(instanceId, descriptor) {
+      assert(descriptor);
       assert(instanceId === 0, "WGPUInstance is ignored");
-      assert(descriptor !== 0);
       var nextInChainPtr = HEAP32[((descriptor)>>2)];
       assert(nextInChainPtr !== 0);
-      assert(/* WGPUSType_SurfaceDescriptorFromHTMLCanvas */ 4 ===
+      assert(4 ===
         HEAPU32[(((nextInChainPtr)+(4))>>2)]);
-      var descriptorFromHTMLCanvas = nextInChainPtr;
+      var descriptorFromHTMLCanvasId = nextInChainPtr;
   
-      assert(descriptorFromHTMLCanvas);assert(HEAP32[((descriptorFromHTMLCanvas)>>2)] === 0);
-      var targetPtr = HEAP32[(((descriptorFromHTMLCanvas)+(8))>>2)];
-      assert(targetPtr !== 0);
-      var target = UTF8ToString(targetPtr);
-      var canvas = __findCanvasEventTarget(target);
+      assert(descriptorFromHTMLCanvasId);assert(HEAP32[((descriptorFromHTMLCanvasId)>>2)] === 0);
+      var idPtr = HEAP32[(((descriptorFromHTMLCanvasId)+(8))>>2)];
+      assert(idPtr);
+      var id = UTF8ToString(idPtr);
+      var canvas = document.getElementById(id);
+      assert(canvas instanceof HTMLCanvasElement);
   
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
       if (labelPtr) canvas.surfaceLabelWebGPU = UTF8ToString(labelPtr);
@@ -8040,17 +8074,17 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
   function _wgpuRenderPassEncoderDraw(passId, vertexCount, instanceCount, firstVertex, firstInstance) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
-      pass.draw(vertexCount, instanceCount, firstVertex, firstInstance);
+      pass["draw"](vertexCount, instanceCount, firstVertex, firstInstance);
     }
 
   function _wgpuRenderPassEncoderDrawIndexed(passId, indexCount, instanceCount, firstIndex, baseVertex, firstInstance) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
-      pass.drawIndexed(indexCount, instanceCount, firstIndex, baseVertex, firstInstance);
+      pass["drawIndexed"](indexCount, instanceCount, firstIndex, baseVertex, firstInstance);
     }
 
   function _wgpuRenderPassEncoderEndPass(passId) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
-      pass.endPass();
+      pass["endPass"]();
     }
 
   function _wgpuRenderPassEncoderReference(id) {
@@ -8065,47 +8099,47 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       var group = WebGPU.mgrBindGroup.get(groupId);
       if (dynamicOffsetCount == 0) {
-        pass.setBindGroup(groupIndex, group);
+        pass["setBindGroup"](groupIndex, group);
       } else {
         var offsets = [];
         for (var i = 0; i < dynamicOffsetCount; i++, dynamicOffsetsPtr += 4) {
           offsets.push(HEAPU32[((dynamicOffsetsPtr)>>2)]);
         }
-        pass.setBindGroup(groupIndex, group, offsets);
+        pass["setBindGroup"](groupIndex, group, offsets);
       }
     }
 
   function _wgpuRenderPassEncoderSetBlendColor(passId, colorPtr) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       var color = WebGPU.makeColor(colorPtr);
-      pass.setBlendColor(color);
+      pass["setBlendColor"](color);
     }
 
   function _wgpuRenderPassEncoderSetIndexBuffer(passId, bufferId, offset) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       var buffer = WebGPU.mgrBuffer.get(bufferId);
-      pass.setIndexBuffer(buffer, offset);
+      pass["setIndexBuffer"](buffer, offset);
     }
 
   function _wgpuRenderPassEncoderSetPipeline(passId, pipelineId) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       var pipeline = WebGPU.mgrRenderPipeline.get(pipelineId);
-      pass.setPipeline(pipeline);
+      pass["setPipeline"](pipeline);
     }
 
   function _wgpuRenderPassEncoderSetScissorRect(passId, x, y, w, h) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
-      pass.setScissorRect(x, y, w, h);
+      pass["setScissorRect"](x, y, w, h);
     }
 
   function _wgpuRenderPassEncoderSetVertexBuffer(passId, slot, bufferId, offset) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
-      pass.setVertexBuffer(slot, WebGPU.mgrBuffer.get(bufferId), offset);
+      pass["setVertexBuffer"](slot, WebGPU.mgrBuffer.get(bufferId), offset);
     }
 
   function _wgpuRenderPassEncoderSetViewport(passId, x, y, w, h, minDepth, maxDepth) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
-      pass.setViewport(x, y, w, h, minDepth, maxDepth);
+      pass["setViewport"](x, y, w, h, minDepth, maxDepth);
     }
 
   function _wgpuRenderPipelineRelease(id) {
@@ -8134,7 +8168,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
   function _wgpuSwapChainGetCurrentTextureView(swapChainId) {
       var swapChain = WebGPU.mgrSwapChain.get(swapChainId);
-      return WebGPU.mgrTextureView.create(swapChain.getCurrentTexture().createView());
+      return WebGPU.mgrTextureView.create(swapChain["getCurrentTexture"]()["createView"]());
     }
 
   function _wgpuSwapChainRelease(id) {
@@ -8146,23 +8180,23 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       if (descriptor) {
         assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
         desc = {
-          format: WebGPU.TextureFormat[
+          "format": WebGPU.TextureFormat[
             HEAPU32[(((descriptor)+(8))>>2)]],
-          dimension: WebGPU.TextureViewDimension[
+          "dimension": WebGPU.TextureViewDimension[
             HEAPU32[(((descriptor)+(12))>>2)]],
-          baseMipLevel: HEAPU32[(((descriptor)+(16))>>2)],
-          mipLevelCount: HEAPU32[(((descriptor)+(20))>>2)],
-          baseArrayLayer: HEAPU32[(((descriptor)+(24))>>2)],
-          arrayLayerCount: HEAPU32[(((descriptor)+(28))>>2)],
-          aspect: WebGPU.TextureAspect[
+          "baseMipLevel": HEAPU32[(((descriptor)+(16))>>2)],
+          "mipLevelCount": HEAPU32[(((descriptor)+(20))>>2)],
+          "baseArrayLayer": HEAPU32[(((descriptor)+(24))>>2)],
+          "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+          "aspect": WebGPU.TextureAspect[
             HEAPU32[(((descriptor)+(32))>>2)]],
         };
         var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
-        if (labelPtr) desc.label = UTF8ToString(labelPtr);
+        if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
       }
   
       var texture = WebGPU.mgrTexture.get(textureId);
-      return WebGPU.mgrTextureView.create(texture.createView(desc));
+      return WebGPU.mgrTextureView.create(texture["createView"](desc));
     }
 
   function _wgpuTextureDestroy(textureId) { WebGPU.mgrTexture.get(textureId).destroy(); }
@@ -8261,316 +8295,8 @@ function intArrayToString(array) {
 // ASM_LIBRARY EXTERN PRIMITIVES: Int8Array,Int32Array
 
 var asmGlobalArg = {};
-var asmLibraryArg = { "__assert_fail": ___assert_fail, "__cxa_atexit": ___cxa_atexit, "__handle_stack_overflow": ___handle_stack_overflow, "__lock": ___lock, "__map_file": ___map_file, "__syscall221": ___syscall221, "__syscall5": ___syscall5, "__syscall54": ___syscall54, "__syscall91": ___syscall91, "__unlock": ___unlock, "abort": _abort, "abs": _abs, "emscripten_asm_const_iii": _emscripten_asm_const_iii, "emscripten_get_now": _emscripten_get_now, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_log": _emscripten_log, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_request_fullscreen_strategy": _emscripten_request_fullscreen_strategy, "emscripten_resize_heap": _emscripten_resize_heap, "emscripten_set_focus_callback_on_thread": _emscripten_set_focus_callback_on_thread, "emscripten_set_focusin_callback_on_thread": _emscripten_set_focusin_callback_on_thread, "emscripten_set_focusout_callback_on_thread": _emscripten_set_focusout_callback_on_thread, "emscripten_set_keydown_callback_on_thread": _emscripten_set_keydown_callback_on_thread, "emscripten_set_keypress_callback_on_thread": _emscripten_set_keypress_callback_on_thread, "emscripten_set_keyup_callback_on_thread": _emscripten_set_keyup_callback_on_thread, "emscripten_set_main_loop": _emscripten_set_main_loop, "emscripten_set_mousedown_callback_on_thread": _emscripten_set_mousedown_callback_on_thread, "emscripten_set_mousemove_callback_on_thread": _emscripten_set_mousemove_callback_on_thread, "emscripten_set_mouseup_callback_on_thread": _emscripten_set_mouseup_callback_on_thread, "emscripten_set_resize_callback_on_thread": _emscripten_set_resize_callback_on_thread, "emscripten_set_wheel_callback_on_thread": _emscripten_set_wheel_callback_on_thread, "emscripten_webgpu_get_device": _emscripten_webgpu_get_device, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "fd_close": _fd_close, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_write": _fd_write, "memory": wasmMemory, "setTempRet0": _setTempRet0, "strftime_l": _strftime_l, "system": _system, "table": wasmTable, "time": _time, "wgpuBindGroupLayoutReference": _wgpuBindGroupLayoutReference, "wgpuBindGroupLayoutRelease": _wgpuBindGroupLayoutRelease, "wgpuBindGroupRelease": _wgpuBindGroupRelease, "wgpuBufferDestroy": _wgpuBufferDestroy, "wgpuBufferReference": _wgpuBufferReference, "wgpuBufferRelease": _wgpuBufferRelease, "wgpuBufferSetSubData": _wgpuBufferSetSubData, "wgpuCommandBufferRelease": _wgpuCommandBufferRelease, "wgpuCommandEncoderBeginComputePass": _wgpuCommandEncoderBeginComputePass, "wgpuCommandEncoderBeginRenderPass": _wgpuCommandEncoderBeginRenderPass, "wgpuCommandEncoderCopyBufferToBuffer": _wgpuCommandEncoderCopyBufferToBuffer, "wgpuCommandEncoderCopyBufferToTexture": _wgpuCommandEncoderCopyBufferToTexture, "wgpuCommandEncoderCopyTextureToTexture": _wgpuCommandEncoderCopyTextureToTexture, "wgpuCommandEncoderFinish": _wgpuCommandEncoderFinish, "wgpuCommandEncoderReference": _wgpuCommandEncoderReference, "wgpuCommandEncoderRelease": _wgpuCommandEncoderRelease, "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch, "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass, "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup, "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup, "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease, "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup, "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline, "wgpuComputePipelineRelease": _wgpuComputePipelineRelease, "wgpuDeviceCreateBindGroup": _wgpuDeviceCreateBindGroup, "wgpuDeviceCreateBindGroupLayout": _wgpuDeviceCreateBindGroupLayout, "wgpuDeviceCreateBuffer": _wgpuDeviceCreateBuffer, "wgpuDeviceCreateCommandEncoder": _wgpuDeviceCreateCommandEncoder, "wgpuDeviceCreateComputePipeline": _wgpuDeviceCreateComputePipeline, "wgpuDeviceCreatePipelineLayout": _wgpuDeviceCreatePipelineLayout, "wgpuDeviceCreateQueue": _wgpuDeviceCreateQueue, "wgpuDeviceCreateRenderPipeline": _wgpuDeviceCreateRenderPipeline, "wgpuDeviceCreateSampler": _wgpuDeviceCreateSampler, "wgpuDeviceCreateShaderModule": _wgpuDeviceCreateShaderModule, "wgpuDeviceCreateSwapChain": _wgpuDeviceCreateSwapChain, "wgpuDeviceCreateTexture": _wgpuDeviceCreateTexture, "wgpuDeviceReference": _wgpuDeviceReference, "wgpuDeviceRelease": _wgpuDeviceRelease, "wgpuDeviceSetUncapturedErrorCallback": _wgpuDeviceSetUncapturedErrorCallback, "wgpuInstanceCreateSurface": _wgpuInstanceCreateSurface, "wgpuInstanceRelease": _wgpuInstanceRelease, "wgpuPipelineLayoutReference": _wgpuPipelineLayoutReference, "wgpuPipelineLayoutRelease": _wgpuPipelineLayoutRelease, "wgpuQueueReference": _wgpuQueueReference, "wgpuQueueRelease": _wgpuQueueRelease, "wgpuQueueSubmit": _wgpuQueueSubmit, "wgpuRenderPassEncoderDraw": _wgpuRenderPassEncoderDraw, "wgpuRenderPassEncoderDrawIndexed": _wgpuRenderPassEncoderDrawIndexed, "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass, "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference, "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease, "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup, "wgpuRenderPassEncoderSetBlendColor": _wgpuRenderPassEncoderSetBlendColor, "wgpuRenderPassEncoderSetIndexBuffer": _wgpuRenderPassEncoderSetIndexBuffer, "wgpuRenderPassEncoderSetPipeline": _wgpuRenderPassEncoderSetPipeline, "wgpuRenderPassEncoderSetScissorRect": _wgpuRenderPassEncoderSetScissorRect, "wgpuRenderPassEncoderSetVertexBuffer": _wgpuRenderPassEncoderSetVertexBuffer, "wgpuRenderPassEncoderSetViewport": _wgpuRenderPassEncoderSetViewport, "wgpuRenderPipelineRelease": _wgpuRenderPipelineRelease, "wgpuSamplerReference": _wgpuSamplerReference, "wgpuSamplerRelease": _wgpuSamplerRelease, "wgpuShaderModuleReference": _wgpuShaderModuleReference, "wgpuShaderModuleRelease": _wgpuShaderModuleRelease, "wgpuSurfaceRelease": _wgpuSurfaceRelease, "wgpuSwapChainGetCurrentTextureView": _wgpuSwapChainGetCurrentTextureView, "wgpuSwapChainRelease": _wgpuSwapChainRelease, "wgpuTextureCreateView": _wgpuTextureCreateView, "wgpuTextureDestroy": _wgpuTextureDestroy, "wgpuTextureReference": _wgpuTextureReference, "wgpuTextureRelease": _wgpuTextureRelease, "wgpuTextureViewReference": _wgpuTextureViewReference, "wgpuTextureViewRelease": _wgpuTextureViewRelease };
+var asmLibraryArg = { "__assert_fail": ___assert_fail, "__cxa_atexit": ___cxa_atexit, "__handle_stack_overflow": ___handle_stack_overflow, "__lock": ___lock, "__map_file": ___map_file, "__syscall221": ___syscall221, "__syscall5": ___syscall5, "__syscall54": ___syscall54, "__syscall91": ___syscall91, "__unlock": ___unlock, "abort": _abort, "abs": _abs, "emscripten_asm_const_iii": _emscripten_asm_const_iii, "emscripten_get_now": _emscripten_get_now, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_log": _emscripten_log, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_request_fullscreen_strategy": _emscripten_request_fullscreen_strategy, "emscripten_resize_heap": _emscripten_resize_heap, "emscripten_set_focus_callback_on_thread": _emscripten_set_focus_callback_on_thread, "emscripten_set_focusin_callback_on_thread": _emscripten_set_focusin_callback_on_thread, "emscripten_set_focusout_callback_on_thread": _emscripten_set_focusout_callback_on_thread, "emscripten_set_keydown_callback_on_thread": _emscripten_set_keydown_callback_on_thread, "emscripten_set_keypress_callback_on_thread": _emscripten_set_keypress_callback_on_thread, "emscripten_set_keyup_callback_on_thread": _emscripten_set_keyup_callback_on_thread, "emscripten_set_main_loop": _emscripten_set_main_loop, "emscripten_set_mousedown_callback_on_thread": _emscripten_set_mousedown_callback_on_thread, "emscripten_set_mousemove_callback_on_thread": _emscripten_set_mousemove_callback_on_thread, "emscripten_set_mouseup_callback_on_thread": _emscripten_set_mouseup_callback_on_thread, "emscripten_set_resize_callback_on_thread": _emscripten_set_resize_callback_on_thread, "emscripten_set_wheel_callback_on_thread": _emscripten_set_wheel_callback_on_thread, "emscripten_webgpu_get_device": _emscripten_webgpu_get_device, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "fd_close": _fd_close, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_write": _fd_write, "memory": wasmMemory, "setTempRet0": _setTempRet0, "strftime_l": _strftime_l, "system": _system, "table": wasmTable, "time": _time, "wgpuBindGroupLayoutReference": _wgpuBindGroupLayoutReference, "wgpuBindGroupLayoutRelease": _wgpuBindGroupLayoutRelease, "wgpuBindGroupRelease": _wgpuBindGroupRelease, "wgpuBufferDestroy": _wgpuBufferDestroy, "wgpuBufferReference": _wgpuBufferReference, "wgpuBufferRelease": _wgpuBufferRelease, "wgpuBufferSetSubData": _wgpuBufferSetSubData, "wgpuCommandBufferRelease": _wgpuCommandBufferRelease, "wgpuCommandEncoderBeginComputePass": _wgpuCommandEncoderBeginComputePass, "wgpuCommandEncoderBeginRenderPass": _wgpuCommandEncoderBeginRenderPass, "wgpuCommandEncoderCopyBufferToBuffer": _wgpuCommandEncoderCopyBufferToBuffer, "wgpuCommandEncoderCopyBufferToTexture": _wgpuCommandEncoderCopyBufferToTexture, "wgpuCommandEncoderCopyTextureToTexture": _wgpuCommandEncoderCopyTextureToTexture, "wgpuCommandEncoderFinish": _wgpuCommandEncoderFinish, "wgpuCommandEncoderReference": _wgpuCommandEncoderReference, "wgpuCommandEncoderRelease": _wgpuCommandEncoderRelease, "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch, "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass, "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease, "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup, "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline, "wgpuComputePipelineRelease": _wgpuComputePipelineRelease, "wgpuDeviceCreateBindGroup": _wgpuDeviceCreateBindGroup, "wgpuDeviceCreateBindGroupLayout": _wgpuDeviceCreateBindGroupLayout, "wgpuDeviceCreateBuffer": _wgpuDeviceCreateBuffer, "wgpuDeviceCreateCommandEncoder": _wgpuDeviceCreateCommandEncoder, "wgpuDeviceCreateComputePipeline": _wgpuDeviceCreateComputePipeline, "wgpuDeviceCreatePipelineLayout": _wgpuDeviceCreatePipelineLayout, "wgpuDeviceCreateQueue": _wgpuDeviceCreateQueue, "wgpuDeviceCreateRenderPipeline": _wgpuDeviceCreateRenderPipeline, "wgpuDeviceCreateSampler": _wgpuDeviceCreateSampler, "wgpuDeviceCreateShaderModule": _wgpuDeviceCreateShaderModule, "wgpuDeviceCreateSwapChain": _wgpuDeviceCreateSwapChain, "wgpuDeviceCreateTexture": _wgpuDeviceCreateTexture, "wgpuDeviceReference": _wgpuDeviceReference, "wgpuDeviceRelease": _wgpuDeviceRelease, "wgpuDeviceSetUncapturedErrorCallback": _wgpuDeviceSetUncapturedErrorCallback, "wgpuInstanceCreateSurface": _wgpuInstanceCreateSurface, "wgpuInstanceRelease": _wgpuInstanceRelease, "wgpuPipelineLayoutReference": _wgpuPipelineLayoutReference, "wgpuPipelineLayoutRelease": _wgpuPipelineLayoutRelease, "wgpuQueueReference": _wgpuQueueReference, "wgpuQueueRelease": _wgpuQueueRelease, "wgpuQueueSubmit": _wgpuQueueSubmit, "wgpuRenderPassEncoderDraw": _wgpuRenderPassEncoderDraw, "wgpuRenderPassEncoderDrawIndexed": _wgpuRenderPassEncoderDrawIndexed, "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass, "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference, "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease, "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup, "wgpuRenderPassEncoderSetBlendColor": _wgpuRenderPassEncoderSetBlendColor, "wgpuRenderPassEncoderSetIndexBuffer": _wgpuRenderPassEncoderSetIndexBuffer, "wgpuRenderPassEncoderSetPipeline": _wgpuRenderPassEncoderSetPipeline, "wgpuRenderPassEncoderSetScissorRect": _wgpuRenderPassEncoderSetScissorRect, "wgpuRenderPassEncoderSetVertexBuffer": _wgpuRenderPassEncoderSetVertexBuffer, "wgpuRenderPassEncoderSetViewport": _wgpuRenderPassEncoderSetViewport, "wgpuRenderPipelineRelease": _wgpuRenderPipelineRelease, "wgpuSamplerReference": _wgpuSamplerReference, "wgpuSamplerRelease": _wgpuSamplerRelease, "wgpuShaderModuleReference": _wgpuShaderModuleReference, "wgpuShaderModuleRelease": _wgpuShaderModuleRelease, "wgpuSurfaceRelease": _wgpuSurfaceRelease, "wgpuSwapChainGetCurrentTextureView": _wgpuSwapChainGetCurrentTextureView, "wgpuSwapChainRelease": _wgpuSwapChainRelease, "wgpuTextureCreateView": _wgpuTextureCreateView, "wgpuTextureDestroy": _wgpuTextureDestroy, "wgpuTextureReference": _wgpuTextureReference, "wgpuTextureRelease": _wgpuTextureRelease, "wgpuTextureViewReference": _wgpuTextureViewReference, "wgpuTextureViewRelease": _wgpuTextureViewRelease };
 var asm = createWasm();
-var real____wasm_call_ctors = asm["__wasm_call_ctors"];
-asm["__wasm_call_ctors"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real____wasm_call_ctors.apply(null, arguments);
-};
-
-var real__strlen = asm["strlen"];
-asm["strlen"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real__strlen.apply(null, arguments);
-};
-
-var real__malloc = asm["malloc"];
-asm["malloc"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real__malloc.apply(null, arguments);
-};
-
-var real__free = asm["free"];
-asm["free"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real__free.apply(null, arguments);
-};
-
-var real__main = asm["main"];
-asm["main"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real__main.apply(null, arguments);
-};
-
-var real__realloc = asm["realloc"];
-asm["realloc"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real__realloc.apply(null, arguments);
-};
-
-var real__fflush = asm["fflush"];
-asm["fflush"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real__fflush.apply(null, arguments);
-};
-
-var real____errno_location = asm["__errno_location"];
-asm["__errno_location"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real____errno_location.apply(null, arguments);
-};
-
-var real__setThrew = asm["setThrew"];
-asm["setThrew"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real__setThrew.apply(null, arguments);
-};
-
-var real____set_stack_limit = asm["__set_stack_limit"];
-asm["__set_stack_limit"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real____set_stack_limit.apply(null, arguments);
-};
-
-var real_stackSave = asm["stackSave"];
-asm["stackSave"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_stackSave.apply(null, arguments);
-};
-
-var real_stackAlloc = asm["stackAlloc"];
-asm["stackAlloc"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_stackAlloc.apply(null, arguments);
-};
-
-var real_stackRestore = asm["stackRestore"];
-asm["stackRestore"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_stackRestore.apply(null, arguments);
-};
-
-var real___growWasmMemory = asm["__growWasmMemory"];
-asm["__growWasmMemory"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real___growWasmMemory.apply(null, arguments);
-};
-
-var real_dynCall_ii = asm["dynCall_ii"];
-asm["dynCall_ii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_ii.apply(null, arguments);
-};
-
-var real_dynCall_vi = asm["dynCall_vi"];
-asm["dynCall_vi"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_vi.apply(null, arguments);
-};
-
-var real_dynCall_viiiii = asm["dynCall_viiiii"];
-asm["dynCall_viiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_viiiii.apply(null, arguments);
-};
-
-var real_dynCall_vii = asm["dynCall_vii"];
-asm["dynCall_vii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_vii.apply(null, arguments);
-};
-
-var real_dynCall_viii = asm["dynCall_viii"];
-asm["dynCall_viii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_viii.apply(null, arguments);
-};
-
-var real_dynCall_viiii = asm["dynCall_viiii"];
-asm["dynCall_viiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_viiii.apply(null, arguments);
-};
-
-var real_dynCall_iiii = asm["dynCall_iiii"];
-asm["dynCall_iiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiii.apply(null, arguments);
-};
-
-var real_dynCall_iii = asm["dynCall_iii"];
-asm["dynCall_iii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iii.apply(null, arguments);
-};
-
-var real_dynCall_fii = asm["dynCall_fii"];
-asm["dynCall_fii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_fii.apply(null, arguments);
-};
-
-var real_dynCall_iiiiiii = asm["dynCall_iiiiiii"];
-asm["dynCall_iiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiiii.apply(null, arguments);
-};
-
-var real_dynCall_v = asm["dynCall_v"];
-asm["dynCall_v"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_v.apply(null, arguments);
-};
-
-var real_dynCall_iiiii = asm["dynCall_iiiii"];
-asm["dynCall_iiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiii.apply(null, arguments);
-};
-
-var real_dynCall_jiji = asm["dynCall_jiji"];
-asm["dynCall_jiji"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_jiji.apply(null, arguments);
-};
-
-var real_dynCall_iij = asm["dynCall_iij"];
-asm["dynCall_iij"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iij.apply(null, arguments);
-};
-
-var real_dynCall_iijii = asm["dynCall_iijii"];
-asm["dynCall_iijii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iijii.apply(null, arguments);
-};
-
-var real_dynCall_vijii = asm["dynCall_vijii"];
-asm["dynCall_vijii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_vijii.apply(null, arguments);
-};
-
-var real_dynCall_viiiiiiii = asm["dynCall_viiiiiiii"];
-asm["dynCall_viiiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_viiiiiiii.apply(null, arguments);
-};
-
-var real_dynCall_viiiiii = asm["dynCall_viiiiii"];
-asm["dynCall_viiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_viiiiii.apply(null, arguments);
-};
-
-var real_dynCall_iiiiji = asm["dynCall_iiiiji"];
-asm["dynCall_iiiiji"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiji.apply(null, arguments);
-};
-
-var real_dynCall_viiiiiiiii = asm["dynCall_viiiiiiiii"];
-asm["dynCall_viiiiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_viiiiiiiii.apply(null, arguments);
-};
-
-var real_dynCall_viiiiiii = asm["dynCall_viiiiiii"];
-asm["dynCall_viiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_viiiiiii.apply(null, arguments);
-};
-
-var real_dynCall_iiiiii = asm["dynCall_iiiiii"];
-asm["dynCall_iiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiii.apply(null, arguments);
-};
-
-var real_dynCall_viijii = asm["dynCall_viijii"];
-asm["dynCall_viijii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_viijii.apply(null, arguments);
-};
-
-var real_dynCall_iidiiii = asm["dynCall_iidiiii"];
-asm["dynCall_iidiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iidiiii.apply(null, arguments);
-};
-
-var real_dynCall_iiiiiiiii = asm["dynCall_iiiiiiiii"];
-asm["dynCall_iiiiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiiiiii.apply(null, arguments);
-};
-
-var real_dynCall_iiiiij = asm["dynCall_iiiiij"];
-asm["dynCall_iiiiij"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiij.apply(null, arguments);
-};
-
-var real_dynCall_iiiiid = asm["dynCall_iiiiid"];
-asm["dynCall_iiiiid"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiid.apply(null, arguments);
-};
-
-var real_dynCall_iiiiijj = asm["dynCall_iiiiijj"];
-asm["dynCall_iiiiijj"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiijj.apply(null, arguments);
-};
-
-var real_dynCall_iiiiiiii = asm["dynCall_iiiiiiii"];
-asm["dynCall_iiiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiiiii.apply(null, arguments);
-};
-
-var real_dynCall_iiiiiijj = asm["dynCall_iiiiiijj"];
-asm["dynCall_iiiiiijj"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiiijj.apply(null, arguments);
-};
-
 Module["asm"] = asm;
 var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
@@ -8865,6 +8591,7 @@ if (!Object.getOwnPropertyDescriptor(Module, "UTF32ToString")) Module["UTF32ToSt
 if (!Object.getOwnPropertyDescriptor(Module, "stringToUTF32")) Module["stringToUTF32"] = function() { abort("'stringToUTF32' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "lengthBytesUTF32")) Module["lengthBytesUTF32"] = function() { abort("'lengthBytesUTF32' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "allocateUTF8")) Module["allocateUTF8"] = function() { abort("'allocateUTF8' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
+if (!Object.getOwnPropertyDescriptor(Module, "allocateUTF8OnStack")) Module["allocateUTF8OnStack"] = function() { abort("'allocateUTF8OnStack' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "stackTrace")) Module["stackTrace"] = function() { abort("'stackTrace' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "addOnPreRun")) Module["addOnPreRun"] = function() { abort("'addOnPreRun' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "addOnInit")) Module["addOnInit"] = function() { abort("'addOnInit' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };

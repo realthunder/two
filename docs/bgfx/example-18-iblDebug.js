@@ -197,7 +197,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2027, "filename": "/shaders/spirv/vs_ibl_mesh.bin"}, {"start": 2027, "audio": 0, "end": 7973, "filename": "/shaders/spirv/fs_ibl_mesh.bin"}, {"start": 7973, "audio": 0, "end": 10047, "filename": "/shaders/spirv/vs_ibl_skybox.bin"}, {"start": 10047, "audio": 0, "end": 13497, "filename": "/shaders/spirv/fs_ibl_skybox.bin"}, {"start": 13497, "audio": 0, "end": 2601907, "filename": "/meshes/bunny.bin"}, {"start": 2601907, "audio": 0, "end": 5420009, "filename": "/meshes/orb.bin"}, {"start": 5420009, "audio": 0, "end": 9614445, "filename": "/textures/bolonga_lod.dds"}, {"start": 9614445, "audio": 0, "end": 10401025, "filename": "/textures/bolonga_irr.dds"}, {"start": 10401025, "audio": 0, "end": 14595461, "filename": "/textures/kyoto_lod.dds"}, {"start": 14595461, "audio": 0, "end": 15382041, "filename": "/textures/kyoto_irr.dds"}], "remote_package_size": 15382041, "package_uuid": "19c01c06-20e3-4083-8822-4763803f28fa"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2027, "filename": "/shaders/spirv/vs_ibl_mesh.bin"}, {"start": 2027, "audio": 0, "end": 7973, "filename": "/shaders/spirv/fs_ibl_mesh.bin"}, {"start": 7973, "audio": 0, "end": 10047, "filename": "/shaders/spirv/vs_ibl_skybox.bin"}, {"start": 10047, "audio": 0, "end": 13497, "filename": "/shaders/spirv/fs_ibl_skybox.bin"}, {"start": 13497, "audio": 0, "end": 2601907, "filename": "/meshes/bunny.bin"}, {"start": 2601907, "audio": 0, "end": 5420009, "filename": "/meshes/orb.bin"}, {"start": 5420009, "audio": 0, "end": 9614445, "filename": "/textures/bolonga_lod.dds"}, {"start": 9614445, "audio": 0, "end": 10401025, "filename": "/textures/bolonga_irr.dds"}, {"start": 10401025, "audio": 0, "end": 14595461, "filename": "/textures/kyoto_lod.dds"}, {"start": 14595461, "audio": 0, "end": 15382041, "filename": "/textures/kyoto_irr.dds"}], "remote_package_size": 15382041, "package_uuid": "f9747f8f-7c2a-4fc2-a338-27e0cebffd38"});
   
   })();
   
@@ -7706,6 +7706,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   
       var desc = {
         "label": undefined,
+        "layout":  WebGPU.mgrPipelineLayout.get(
+          HEAP32[(((descriptor)+(8))>>2)]),
         "computeStage": WebGPU.makeProgrammableStageDescriptor(
           descriptor + 12),
       };
