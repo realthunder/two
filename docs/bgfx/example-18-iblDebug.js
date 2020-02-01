@@ -121,6 +121,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
   Module['FS_createPath']('/', 'shaders', true, true);
 Module['FS_createPath']('/shaders', 'spirv', true, true);
 Module['FS_createPath']('/', 'meshes', true, true);
+Module['FS_createPath']('/', 'textures', true, true);
 
       function DataRequest(start, end, audio) {
         this.start = start;
@@ -196,7 +197,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2027, "filename": "/shaders/spirv/vs_ibl_mesh.bin"}, {"start": 2027, "audio": 0, "end": 7973, "filename": "/shaders/spirv/fs_ibl_mesh.bin"}, {"start": 7973, "audio": 0, "end": 10047, "filename": "/shaders/spirv/vs_ibl_skybox.bin"}, {"start": 10047, "audio": 0, "end": 13497, "filename": "/shaders/spirv/fs_ibl_skybox.bin"}, {"start": 13497, "audio": 0, "end": 2601907, "filename": "/meshes/bunny.bin"}, {"start": 2601907, "audio": 0, "end": 5420009, "filename": "/meshes/orb.bin"}], "remote_package_size": 5420009, "package_uuid": "ad561c63-63cd-44fc-b0b4-6ba04e38e72b"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 2027, "filename": "/shaders/spirv/vs_ibl_mesh.bin"}, {"start": 2027, "audio": 0, "end": 7973, "filename": "/shaders/spirv/fs_ibl_mesh.bin"}, {"start": 7973, "audio": 0, "end": 10047, "filename": "/shaders/spirv/vs_ibl_skybox.bin"}, {"start": 10047, "audio": 0, "end": 13497, "filename": "/shaders/spirv/fs_ibl_skybox.bin"}, {"start": 13497, "audio": 0, "end": 2601907, "filename": "/meshes/bunny.bin"}, {"start": 2601907, "audio": 0, "end": 5420009, "filename": "/meshes/orb.bin"}, {"start": 5420009, "audio": 0, "end": 9614445, "filename": "/textures/bolonga_lod.dds"}, {"start": 9614445, "audio": 0, "end": 10401025, "filename": "/textures/bolonga_irr.dds"}, {"start": 10401025, "audio": 0, "end": 14595461, "filename": "/textures/kyoto_lod.dds"}, {"start": 14595461, "audio": 0, "end": 15382041, "filename": "/textures/kyoto_irr.dds"}], "remote_package_size": 15382041, "package_uuid": "19c01c06-20e3-4083-8822-4763803f28fa"});
   
   })();
   
@@ -6667,6 +6668,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         this.mgrCommandBuffer = this.mgrCommandBuffer || makeManager("CommandBuffer");
         this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager("CommandEncoder");
         this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager("RenderPassEncoder");
+        this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager("ComputePassEncoder");
   
         this.mgrBindGroup = this.mgrBindGroup || makeManager("BindGroup");
         this.mgrBuffer = this.mgrBuffer || makeManager("Buffer");
@@ -6677,6 +6679,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         this.mgrBindGroupLayout = this.mgrBindGroupLayout || makeManager("BindGroupLayout");
         this.mgrPipelineLayout = this.mgrPipelineLayout || makeManager("PipelineLayout");
         this.mgrRenderPipeline = this.mgrRenderPipeline || makeManager("RenderPipeline");
+        this.mgrComputePipeline = this.mgrComputePipeline || makeManager("ComputePipeline");
         this.mgrShaderModule = this.mgrShaderModule || makeManager("ShaderModule");
   
         this.mgrRenderBundleEncoder = this.mgrRenderBundleEncoder || makeManager("RenderBundleEncoder");
