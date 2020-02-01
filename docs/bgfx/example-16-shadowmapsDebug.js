@@ -197,7 +197,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 884, "filename": "/shaders/spirv/vs_shadowmaps_color.bin"}, {"start": 884, "audio": 0, "end": 1246, "filename": "/shaders/spirv/fs_shadowmaps_color_black.bin"}, {"start": 1246, "audio": 0, "end": 2340, "filename": "/shaders/spirv/vs_shadowmaps_texture.bin"}, {"start": 2340, "audio": 0, "end": 3093, "filename": "/shaders/spirv/fs_shadowmaps_texture.bin"}, {"start": 3093, "audio": 0, "end": 4187, "filename": "/shaders/spirv/vs_shadowmaps_color_texture.bin"}, {"start": 4187, "audio": 0, "end": 5796, "filename": "/shaders/spirv/fs_shadowmaps_color_texture.bin"}, {"start": 5796, "audio": 0, "end": 8349, "filename": "/shaders/spirv/vs_shadowmaps_vblur.bin"}, {"start": 8349, "audio": 0, "end": 10884, "filename": "/shaders/spirv/fs_shadowmaps_vblur.bin"}, {"start": 10884, "audio": 0, "end": 13437, "filename": "/shaders/spirv/vs_shadowmaps_hblur.bin"}, {"start": 13437, "audio": 0, "end": 15972, "filename": "/shaders/spirv/fs_shadowmaps_hblur.bin"}, {"start": 15972, "audio": 0, "end": 19535, "filename": "/shaders/spirv/fs_shadowmaps_vblur_vsm.bin"}, {"start": 19535, "audio": 0, "end": 23098, "filename": "/shaders/spirv/fs_shadowmaps_hblur_vsm.bin"}, {"start": 23098, "audio": 0, "end": 24192, "filename": "/shaders/spirv/vs_shadowmaps_unpackdepth.bin"}, {"start": 24192, "audio": 0, "end": 25545, "filename": "/shaders/spirv/fs_shadowmaps_unpackdepth.bin"}, {"start": 25545, "audio": 0, "end": 26886, "filename": "/shaders/spirv/fs_shadowmaps_unpackdepth_vsm.bin"}, {"start": 26886, "audio": 0, "end": 27858, "filename": "/shaders/spirv/vs_shadowmaps_packdepth.bin"}, {"start": 27858, "audio": 0, "end": 28652, "filename": "/shaders/spirv/fs_shadowmaps_packdepth.bin"}, {"start": 28652, "audio": 0, "end": 29646, "filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm.bin"}, {"start": 29646, "audio": 0, "end": 30706, "filename": "/shaders/spirv/vs_shadowmaps_packdepth_linear.bin"}, {"start": 30706, "audio": 0, "end": 31380, "filename": "/shaders/spirv/fs_shadowmaps_packdepth_linear.bin"}, {"start": 31380, "audio": 0, "end": 32254, "filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm_linear.bin"}, {"start": 32254, "audio": 0, "end": 34601, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting.bin"}, {"start": 34601, "audio": 0, "end": 41017, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard.bin"}, {"start": 41017, "audio": 0, "end": 57717, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf.bin"}, {"start": 57717, "audio": 0, "end": 64625, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm.bin"}, {"start": 64625, "audio": 0, "end": 71225, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm.bin"}, {"start": 71225, "audio": 0, "end": 73652, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear.bin"}, {"start": 73652, "audio": 0, "end": 80124, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear.bin"}, {"start": 80124, "audio": 0, "end": 96980, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear.bin"}, {"start": 96980, "audio": 0, "end": 103944, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear.bin"}, {"start": 103944, "audio": 0, "end": 110600, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear.bin"}, {"start": 110600, "audio": 0, "end": 114035, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_omni.bin"}, {"start": 114035, "audio": 0, "end": 122913, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_omni.bin"}, {"start": 122913, "audio": 0, "end": 142111, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_omni.bin"}, {"start": 142111, "audio": 0, "end": 151481, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_omni.bin"}, {"start": 151481, "audio": 0, "end": 160543, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_omni.bin"}, {"start": 160543, "audio": 0, "end": 164250, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_omni.bin"}, {"start": 164250, "audio": 0, "end": 173184, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_omni.bin"}, {"start": 173184, "audio": 0, "end": 192538, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_omni.bin"}, {"start": 192538, "audio": 0, "end": 201964, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_omni.bin"}, {"start": 201964, "audio": 0, "end": 211082, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_omni.bin"}, {"start": 211082, "audio": 0, "end": 214706, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_csm.bin"}, {"start": 214706, "audio": 0, "end": 225477, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_csm.bin"}, {"start": 225477, "audio": 0, "end": 276040, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_csm.bin"}, {"start": 276040, "audio": 0, "end": 288851, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_csm.bin"}, {"start": 288851, "audio": 0, "end": 300310, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_csm.bin"}, {"start": 300310, "audio": 0, "end": 304206, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_csm.bin"}, {"start": 304206, "audio": 0, "end": 315201, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_csm.bin"}, {"start": 315201, "audio": 0, "end": 366388, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_csm.bin"}, {"start": 366388, "audio": 0, "end": 379423, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_csm.bin"}, {"start": 379423, "audio": 0, "end": 391106, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_csm.bin"}, {"start": 391106, "audio": 0, "end": 2979516, "filename": "/meshes/bunny.bin"}, {"start": 2979516, "audio": 0, "end": 3033824, "filename": "/meshes/tree.bin"}, {"start": 3033824, "audio": 0, "end": 3034754, "filename": "/meshes/cube.bin"}, {"start": 3034754, "audio": 0, "end": 3072635, "filename": "/meshes/hollowcube.bin"}, {"start": 3072635, "audio": 0, "end": 3247539, "filename": "/textures/figure-rgba.dds"}, {"start": 3247539, "audio": 0, "end": 3597219, "filename": "/textures/fieldstone-rgba.dds"}], "remote_package_size": 3597219, "package_uuid": "e5027741-9b78-43a1-ab49-2c68936557fd"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 884, "filename": "/shaders/spirv/vs_shadowmaps_color.bin"}, {"start": 884, "audio": 0, "end": 1246, "filename": "/shaders/spirv/fs_shadowmaps_color_black.bin"}, {"start": 1246, "audio": 0, "end": 2340, "filename": "/shaders/spirv/vs_shadowmaps_texture.bin"}, {"start": 2340, "audio": 0, "end": 3093, "filename": "/shaders/spirv/fs_shadowmaps_texture.bin"}, {"start": 3093, "audio": 0, "end": 4187, "filename": "/shaders/spirv/vs_shadowmaps_color_texture.bin"}, {"start": 4187, "audio": 0, "end": 5796, "filename": "/shaders/spirv/fs_shadowmaps_color_texture.bin"}, {"start": 5796, "audio": 0, "end": 8349, "filename": "/shaders/spirv/vs_shadowmaps_vblur.bin"}, {"start": 8349, "audio": 0, "end": 10884, "filename": "/shaders/spirv/fs_shadowmaps_vblur.bin"}, {"start": 10884, "audio": 0, "end": 13437, "filename": "/shaders/spirv/vs_shadowmaps_hblur.bin"}, {"start": 13437, "audio": 0, "end": 15972, "filename": "/shaders/spirv/fs_shadowmaps_hblur.bin"}, {"start": 15972, "audio": 0, "end": 19535, "filename": "/shaders/spirv/fs_shadowmaps_vblur_vsm.bin"}, {"start": 19535, "audio": 0, "end": 23098, "filename": "/shaders/spirv/fs_shadowmaps_hblur_vsm.bin"}, {"start": 23098, "audio": 0, "end": 24192, "filename": "/shaders/spirv/vs_shadowmaps_unpackdepth.bin"}, {"start": 24192, "audio": 0, "end": 25545, "filename": "/shaders/spirv/fs_shadowmaps_unpackdepth.bin"}, {"start": 25545, "audio": 0, "end": 26886, "filename": "/shaders/spirv/fs_shadowmaps_unpackdepth_vsm.bin"}, {"start": 26886, "audio": 0, "end": 27858, "filename": "/shaders/spirv/vs_shadowmaps_packdepth.bin"}, {"start": 27858, "audio": 0, "end": 28652, "filename": "/shaders/spirv/fs_shadowmaps_packdepth.bin"}, {"start": 28652, "audio": 0, "end": 29646, "filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm.bin"}, {"start": 29646, "audio": 0, "end": 30706, "filename": "/shaders/spirv/vs_shadowmaps_packdepth_linear.bin"}, {"start": 30706, "audio": 0, "end": 31380, "filename": "/shaders/spirv/fs_shadowmaps_packdepth_linear.bin"}, {"start": 31380, "audio": 0, "end": 32254, "filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm_linear.bin"}, {"start": 32254, "audio": 0, "end": 34601, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting.bin"}, {"start": 34601, "audio": 0, "end": 41017, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard.bin"}, {"start": 41017, "audio": 0, "end": 57717, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf.bin"}, {"start": 57717, "audio": 0, "end": 64625, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm.bin"}, {"start": 64625, "audio": 0, "end": 71225, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm.bin"}, {"start": 71225, "audio": 0, "end": 73652, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear.bin"}, {"start": 73652, "audio": 0, "end": 80124, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear.bin"}, {"start": 80124, "audio": 0, "end": 96980, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear.bin"}, {"start": 96980, "audio": 0, "end": 103944, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear.bin"}, {"start": 103944, "audio": 0, "end": 110600, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear.bin"}, {"start": 110600, "audio": 0, "end": 114035, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_omni.bin"}, {"start": 114035, "audio": 0, "end": 122913, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_omni.bin"}, {"start": 122913, "audio": 0, "end": 142111, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_omni.bin"}, {"start": 142111, "audio": 0, "end": 151481, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_omni.bin"}, {"start": 151481, "audio": 0, "end": 160543, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_omni.bin"}, {"start": 160543, "audio": 0, "end": 164250, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_omni.bin"}, {"start": 164250, "audio": 0, "end": 173184, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_omni.bin"}, {"start": 173184, "audio": 0, "end": 192538, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_omni.bin"}, {"start": 192538, "audio": 0, "end": 201964, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_omni.bin"}, {"start": 201964, "audio": 0, "end": 211082, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_omni.bin"}, {"start": 211082, "audio": 0, "end": 214706, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_csm.bin"}, {"start": 214706, "audio": 0, "end": 225477, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_csm.bin"}, {"start": 225477, "audio": 0, "end": 276040, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_csm.bin"}, {"start": 276040, "audio": 0, "end": 288851, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_csm.bin"}, {"start": 288851, "audio": 0, "end": 300310, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_csm.bin"}, {"start": 300310, "audio": 0, "end": 304206, "filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_csm.bin"}, {"start": 304206, "audio": 0, "end": 315201, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_csm.bin"}, {"start": 315201, "audio": 0, "end": 366388, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_csm.bin"}, {"start": 366388, "audio": 0, "end": 379423, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_csm.bin"}, {"start": 379423, "audio": 0, "end": 391106, "filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_csm.bin"}, {"start": 391106, "audio": 0, "end": 2979516, "filename": "/meshes/bunny.bin"}, {"start": 2979516, "audio": 0, "end": 3033824, "filename": "/meshes/tree.bin"}, {"start": 3033824, "audio": 0, "end": 3034754, "filename": "/meshes/cube.bin"}, {"start": 3034754, "audio": 0, "end": 3072635, "filename": "/meshes/hollowcube.bin"}, {"start": 3072635, "audio": 0, "end": 3247539, "filename": "/textures/figure-rgba.dds"}, {"start": 3247539, "audio": 0, "end": 3597219, "filename": "/textures/flare.dds"}, {"start": 3597219, "audio": 0, "end": 3946899, "filename": "/textures/fieldstone-rgba.dds"}], "remote_package_size": 3946899, "package_uuid": "fb9f0550-84e0-4c0b-9268-2973aaf4d235"});
   
   })();
   
@@ -815,8 +815,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 775,
-  'maximum': 775 + 0,
+  'initial': 777,
+  'maximum': 777 + 0,
   'element': 'anyfunc'
 });
 
@@ -1415,11 +1415,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5965792,
+    STACK_BASE = 5966144,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 722912,
-    DYNAMIC_BASE = 5965792,
-    DYNAMICTOP_PTR = 722752;
+    STACK_MAX = 723264,
+    DYNAMIC_BASE = 5966144,
+    DYNAMICTOP_PTR = 723104;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1929,7 +1929,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  583916: function() {debugger;}
+  584268: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1939,7 +1939,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 721888;
+// STATICTOP = STATIC_BASE + 722240;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4614,7 +4614,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _emscripten_get_now() { abort() }
 
   function _emscripten_get_sbrk_ptr() {
-      return 722752;
+      return 723104;
     }
 
   
@@ -8424,6 +8424,13 @@ asm["dynCall_fii"] = function() {
   return real_dynCall_fii.apply(null, arguments);
 };
 
+var real_dynCall_iiiiiii = asm["dynCall_iiiiiii"];
+asm["dynCall_iiiiiii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return real_dynCall_iiiiiii.apply(null, arguments);
+};
+
 var real_dynCall_iiiii = asm["dynCall_iiiii"];
 asm["dynCall_iiiii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
@@ -8443,13 +8450,6 @@ asm["dynCall_jiji"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return real_dynCall_jiji.apply(null, arguments);
-};
-
-var real_dynCall_iiiiiii = asm["dynCall_iiiiiii"];
-asm["dynCall_iiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return real_dynCall_iiiiiii.apply(null, arguments);
 };
 
 var real_dynCall_iij = asm["dynCall_iij"];
@@ -8710,6 +8710,12 @@ var dynCall_fii = Module["dynCall_fii"] = function() {
   return Module["asm"]["dynCall_fii"].apply(null, arguments)
 };
 
+var dynCall_iiiiiii = Module["dynCall_iiiiiii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_iiiiiii"].apply(null, arguments)
+};
+
 var dynCall_iiiii = Module["dynCall_iiiii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -8726,12 +8732,6 @@ var dynCall_jiji = Module["dynCall_jiji"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_jiji"].apply(null, arguments)
-};
-
-var dynCall_iiiiiii = Module["dynCall_iiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_iiiiiii"].apply(null, arguments)
 };
 
 var dynCall_iij = Module["dynCall_iij"] = function() {
