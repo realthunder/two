@@ -195,7 +195,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1985, "filename": "/shaders/spirv/vs_particle.bin"}, {"start": 1985, "audio": 0, "end": 3348, "filename": "/shaders/spirv/fs_particle.bin"}, {"start": 3348, "audio": 0, "end": 13909, "filename": "/shaders/spirv/cs_init_instances.bin"}, {"start": 13909, "audio": 0, "end": 17710, "filename": "/shaders/spirv/cs_update_instances.bin"}, {"start": 17710, "audio": 0, "end": 18936, "filename": "/shaders/spirv/cs_indirect.bin"}], "remote_package_size": 18936, "package_uuid": "3bcee238-0ece-46d2-a6fb-41d774934c85"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1985, "filename": "/shaders/spirv/vs_particle.bin"}, {"start": 1985, "audio": 0, "end": 3348, "filename": "/shaders/spirv/fs_particle.bin"}, {"start": 3348, "audio": 0, "end": 13909, "filename": "/shaders/spirv/cs_init_instances.bin"}, {"start": 13909, "audio": 0, "end": 17710, "filename": "/shaders/spirv/cs_update_instances.bin"}, {"start": 17710, "audio": 0, "end": 18936, "filename": "/shaders/spirv/cs_indirect.bin"}], "remote_package_size": 18936, "package_uuid": "4b5531e3-35ec-4aed-8d5f-0e426becb271"});
   
   })();
   
@@ -6631,6 +6631,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         this.mgrCommandBuffer = this.mgrCommandBuffer || makeManager("CommandBuffer");
         this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager("CommandEncoder");
         this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager("RenderPassEncoder");
+        this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager("ComputePassEncoder");
   
         this.mgrBindGroup = this.mgrBindGroup || makeManager("BindGroup");
         this.mgrBuffer = this.mgrBuffer || makeManager("Buffer");
