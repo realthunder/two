@@ -22,10 +22,6 @@
         text-align: center
     }
 
-    div.emscripten_border {
-        border: 1px solid #000
-    }
-
     canvas.emscripten {
         border: 0 none;
         background-color: #000
@@ -44,9 +40,6 @@
         margin-left: 20px;
         display: inline-block;
         vertical-align: top;
-        -webkit-animation: rotation .8s linear infinite;
-        -moz-animation: rotation .8s linear infinite;
-        -o-animation: rotation .8s linear infinite;
         animation: rotation .8s linear infinite;
         border-left: 5px solid #ebebeb;
         border-right: 5px solid #ebebeb;
@@ -109,53 +102,17 @@
         height: 20px;
         width: 300px
     }
-
-    #controls {
-        display: inline-block;
-        float: right;
-        vertical-align: top;
-        margin-top: 30px;
-        margin-right: 20px
-    }
-
-    #output {
-        width: 100%;
-        height: 200px;
-        margin: 0 auto;
-        margin-top: 10px;
-        border-left: 0;
-        border-right: 0;
-        padding-left: 0;
-        padding-right: 0;
-        display: block;
-        background-color: #000;
-        color: #fff;
-        font-family: 'Lucida Console',Monaco,monospace;
-        outline: 0
-    }
 </style>
 </head>
 <body>
 <div class=spinner id=spinner></div>
 <div class=emscripten id=status>Downloading...</div>
-<span id=controls>
-    <span>
-        <input type=checkbox id=resize>Resize canvas
-    </span>
-    <span>
-        <input type=checkbox id=pointerLock checked>Lock/hide mouse pointer    
-    </span>
-    <span>
-        <input type=button onclick='Module.requestFullscreen(document.getElementById("pointerLock").checked,document.getElementById("resize").checked)' value=Fullscreen>
-    </span>
-</span>
 <div class=emscripten>
     <progress hidden id=progress max=100 value=0></progress>
 </div>
-<div class=emscripten_border>
+<div>
     <canvas class=emscripten id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
 </div>
-<textarea id=output rows=8></textarea>
 <script>
 var Module;
 (async () => {
@@ -165,16 +122,10 @@ var Module;
     Module = {
         preRun: [],
         postRun: [],
-        print: function() {
-            var t = document.getElementById("output");
-            return t && (t.value = ""),
-            function(e) {
-                1 < arguments.length && (e = Array.prototype.slice.call(arguments).join(" ")),
-                console.log(e),
-                t && (t.value += e + "\n",
-                t.scrollTop = t.scrollHeight)
-            }
-        }(),
+        print: function(e) {
+            1 < arguments.length && (e = Array.prototype.slice.call(arguments).join(" ")),
+            console.log(e)
+        },
         printErr: function(e) {
             1 < arguments.length && (e = Array.prototype.slice.call(arguments).join(" ")),
             console.error(e)
