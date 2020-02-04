@@ -195,7 +195,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1547, "filename": "/shaders/spirv/vs_instancing.bin"}, {"start": 1547, "audio": 0, "end": 1953, "filename": "/shaders/spirv/fs_instancing.bin"}], "remote_package_size": 1953, "package_uuid": "f78d3580-4950-4406-8a8f-009dcc89f3a1"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1547, "filename": "/shaders/spirv/vs_instancing.bin"}, {"start": 1547, "audio": 0, "end": 1953, "filename": "/shaders/spirv/fs_instancing.bin"}], "remote_package_size": 1953, "package_uuid": "a52272b2-09fe-44f5-87aa-b03a2812a103"});
   
   })();
   
