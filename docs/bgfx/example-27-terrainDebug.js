@@ -195,7 +195,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1198, "filename": "/shaders/spirv/vs_terrain.bin"}, {"start": 1198, "audio": 0, "end": 1864, "filename": "/shaders/spirv/fs_terrain.bin"}, {"start": 1864, "audio": 0, "end": 3490, "filename": "/shaders/spirv/vs_terrain_height_texture.bin"}], "remote_package_size": 3490, "package_uuid": "4d389200-fef0-4567-b1b0-fd90bbb8a80a"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1198, "filename": "/shaders/spirv/vs_terrain.bin"}, {"start": 1198, "audio": 0, "end": 1864, "filename": "/shaders/spirv/fs_terrain.bin"}, {"start": 1864, "audio": 0, "end": 3490, "filename": "/shaders/spirv/vs_terrain_height_texture.bin"}], "remote_package_size": 3490, "package_uuid": "82e83106-8834-4240-bfa6-e6d7f7099a20"});
   
   })();
   
