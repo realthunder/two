@@ -197,7 +197,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1094, "filename": "/shaders/spirv/vs_hdr_skybox.bin"}, {"start": 1094, "audio": 0, "end": 2836, "filename": "/shaders/spirv/fs_hdr_skybox.bin"}, {"start": 2836, "audio": 0, "end": 3930, "filename": "/shaders/spirv/vs_hdr_lum.bin"}, {"start": 3930, "audio": 0, "end": 8132, "filename": "/shaders/spirv/fs_hdr_lum.bin"}, {"start": 8132, "audio": 0, "end": 9226, "filename": "/shaders/spirv/vs_hdr_lumavg.bin"}, {"start": 9226, "audio": 0, "end": 15068, "filename": "/shaders/spirv/fs_hdr_lumavg.bin"}, {"start": 15068, "audio": 0, "end": 17726, "filename": "/shaders/spirv/vs_hdr_blur.bin"}, {"start": 17726, "audio": 0, "end": 19747, "filename": "/shaders/spirv/fs_hdr_blur.bin"}, {"start": 19747, "audio": 0, "end": 20841, "filename": "/shaders/spirv/vs_hdr_bright.bin"}, {"start": 20841, "audio": 0, "end": 25946, "filename": "/shaders/spirv/fs_hdr_bright.bin"}, {"start": 25946, "audio": 0, "end": 27768, "filename": "/shaders/spirv/vs_hdr_mesh.bin"}, {"start": 27768, "audio": 0, "end": 30946, "filename": "/shaders/spirv/fs_hdr_mesh.bin"}, {"start": 30946, "audio": 0, "end": 33360, "filename": "/shaders/spirv/vs_hdr_tonemap.bin"}, {"start": 33360, "audio": 0, "end": 38186, "filename": "/shaders/spirv/fs_hdr_tonemap.bin"}, {"start": 38186, "audio": 0, "end": 2626596, "filename": "/meshes/bunny.bin"}, {"start": 2626596, "audio": 0, "end": 15209576, "filename": "/textures/uffizi.ktx"}], "remote_package_size": 15209576, "package_uuid": "a5ca4b02-1a71-4df6-9c31-ce7d9905d8d4"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1094, "filename": "/shaders/spirv/vs_hdr_skybox.bin"}, {"start": 1094, "audio": 0, "end": 2836, "filename": "/shaders/spirv/fs_hdr_skybox.bin"}, {"start": 2836, "audio": 0, "end": 3930, "filename": "/shaders/spirv/vs_hdr_lum.bin"}, {"start": 3930, "audio": 0, "end": 8132, "filename": "/shaders/spirv/fs_hdr_lum.bin"}, {"start": 8132, "audio": 0, "end": 9226, "filename": "/shaders/spirv/vs_hdr_lumavg.bin"}, {"start": 9226, "audio": 0, "end": 15068, "filename": "/shaders/spirv/fs_hdr_lumavg.bin"}, {"start": 15068, "audio": 0, "end": 17726, "filename": "/shaders/spirv/vs_hdr_blur.bin"}, {"start": 17726, "audio": 0, "end": 19747, "filename": "/shaders/spirv/fs_hdr_blur.bin"}, {"start": 19747, "audio": 0, "end": 20841, "filename": "/shaders/spirv/vs_hdr_bright.bin"}, {"start": 20841, "audio": 0, "end": 25946, "filename": "/shaders/spirv/fs_hdr_bright.bin"}, {"start": 25946, "audio": 0, "end": 27768, "filename": "/shaders/spirv/vs_hdr_mesh.bin"}, {"start": 27768, "audio": 0, "end": 30946, "filename": "/shaders/spirv/fs_hdr_mesh.bin"}, {"start": 30946, "audio": 0, "end": 33360, "filename": "/shaders/spirv/vs_hdr_tonemap.bin"}, {"start": 33360, "audio": 0, "end": 38186, "filename": "/shaders/spirv/fs_hdr_tonemap.bin"}, {"start": 38186, "audio": 0, "end": 2626596, "filename": "/meshes/bunny.bin"}, {"start": 2626596, "audio": 0, "end": 15209576, "filename": "/textures/uffizi.ktx"}], "remote_package_size": 15209576, "package_uuid": "5f75ffc0-c8c1-4e5e-a9fc-55206d71c102"});
   
   })();
   
@@ -821,8 +821,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 775,
-  'maximum': 775 + 0,
+  'initial': 782,
+  'maximum': 782 + 0,
   'element': 'anyfunc'
 });
 
@@ -1423,11 +1423,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5957968,
+    STACK_BASE = 5965072,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 715088,
-    DYNAMIC_BASE = 5957968,
-    DYNAMICTOP_PTR = 714928;
+    STACK_MAX = 722192,
+    DYNAMIC_BASE = 5965072,
+    DYNAMICTOP_PTR = 722032;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1945,7 +1945,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  576732: function() {debugger;}
+  583836: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1955,7 +1955,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 714064;
+// STATICTOP = STATIC_BASE + 721168;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4630,7 +4630,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _emscripten_get_now() { abort() }
 
   function _emscripten_get_sbrk_ptr() {
-      return 714928;
+      return 722032;
     }
 
   
@@ -7370,6 +7370,26 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
   function _wgpuBufferDestroy(bufferId) { WebGPU.mgrBuffer.get(bufferId).destroy(); }
 
+  function _wgpuBufferMapReadAsync(bufferId, callback, userdata) {
+      var bufferEntry = WebGPU.mgrBuffer.objects[bufferId];
+      bufferEntry.mapped = 'write';
+      var buffer = bufferEntry.object;
+  
+      buffer["mapReadAsync"]().then(function(mapped) {
+        var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
+        var data = _malloc(mapped.byteLength);
+        HEAPU8.set(new Uint8Array(mapped), data);
+        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_l = mapped.byteLength | 0;
+        // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
+        dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+      }, function() {
+        // TODO(kainino0x): Figure out how to pick other error status values.
+        var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
+        dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
+      });
+    }
+
   function _wgpuBufferReference(id) {
     WebGPU.mgrBuffer.reference(id);
   }
@@ -7385,6 +7405,12 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var count = (assert(count_h < 0x200000), count_h * 0x100000000 + count_l)
   ;
       buffer["setSubData"](start, HEAPU8, data, count);
+    }
+
+  function _wgpuBufferUnmap(bufferId) {
+      var bufferWrapper = WebGPU.mgrBuffer.objects[bufferId];
+      WebGPU.trackUnmap(bufferWrapper);
+      bufferWrapper.object["unmap"]();
     }
 
   function _wgpuCommandBufferRelease(id) {
@@ -7498,6 +7524,13 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var copySize = WebGPU.makeExtent3D(copySizePtr);
       commandEncoder["copyBufferToTexture"](
         WebGPU.makeBufferCopyView(srcPtr), WebGPU.makeTextureCopyView(dstPtr), copySize);
+    }
+
+  function _wgpuCommandEncoderCopyTextureToBuffer(encoderId, srcPtr, dstPtr, copySizePtr) {
+      var commandEncoder = WebGPU.mgrCommandEncoder.get(encoderId);
+      var copySize = WebGPU.makeExtent3D(copySizePtr);
+      commandEncoder["copyTextureToBuffer"](
+        WebGPU.makeTextureCopyView(srcPtr), WebGPU.makeBufferCopyView(dstPtr), copySize);
     }
 
   function _wgpuCommandEncoderCopyTextureToTexture(encoderId, srcPtr, dstPtr, copySizePtr) {
@@ -8132,6 +8165,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       pass["setScissorRect"](x, y, w, h);
     }
 
+  function _wgpuRenderPassEncoderSetStencilReference(passId, reference) {
+      var pass = WebGPU.mgrRenderPassEncoder.get(passId);
+      pass["setStencilReference"](reference);
+    }
+
   function _wgpuRenderPassEncoderSetVertexBuffer(passId, slot, bufferId, offset) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       pass["setVertexBuffer"](slot, WebGPU.mgrBuffer.get(bufferId), offset);
@@ -8295,7 +8333,7 @@ function intArrayToString(array) {
 // ASM_LIBRARY EXTERN PRIMITIVES: Int8Array,Int32Array
 
 var asmGlobalArg = {};
-var asmLibraryArg = { "__assert_fail": ___assert_fail, "__cxa_atexit": ___cxa_atexit, "__handle_stack_overflow": ___handle_stack_overflow, "__lock": ___lock, "__map_file": ___map_file, "__syscall221": ___syscall221, "__syscall5": ___syscall5, "__syscall54": ___syscall54, "__syscall91": ___syscall91, "__unlock": ___unlock, "abort": _abort, "abs": _abs, "emscripten_asm_const_iii": _emscripten_asm_const_iii, "emscripten_get_now": _emscripten_get_now, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_log": _emscripten_log, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_request_fullscreen_strategy": _emscripten_request_fullscreen_strategy, "emscripten_resize_heap": _emscripten_resize_heap, "emscripten_set_focus_callback_on_thread": _emscripten_set_focus_callback_on_thread, "emscripten_set_focusin_callback_on_thread": _emscripten_set_focusin_callback_on_thread, "emscripten_set_focusout_callback_on_thread": _emscripten_set_focusout_callback_on_thread, "emscripten_set_keydown_callback_on_thread": _emscripten_set_keydown_callback_on_thread, "emscripten_set_keypress_callback_on_thread": _emscripten_set_keypress_callback_on_thread, "emscripten_set_keyup_callback_on_thread": _emscripten_set_keyup_callback_on_thread, "emscripten_set_main_loop": _emscripten_set_main_loop, "emscripten_set_mousedown_callback_on_thread": _emscripten_set_mousedown_callback_on_thread, "emscripten_set_mousemove_callback_on_thread": _emscripten_set_mousemove_callback_on_thread, "emscripten_set_mouseup_callback_on_thread": _emscripten_set_mouseup_callback_on_thread, "emscripten_set_resize_callback_on_thread": _emscripten_set_resize_callback_on_thread, "emscripten_set_wheel_callback_on_thread": _emscripten_set_wheel_callback_on_thread, "emscripten_webgpu_get_device": _emscripten_webgpu_get_device, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "fd_close": _fd_close, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_write": _fd_write, "memory": wasmMemory, "setTempRet0": _setTempRet0, "strftime_l": _strftime_l, "system": _system, "table": wasmTable, "time": _time, "wgpuBindGroupLayoutReference": _wgpuBindGroupLayoutReference, "wgpuBindGroupLayoutRelease": _wgpuBindGroupLayoutRelease, "wgpuBindGroupRelease": _wgpuBindGroupRelease, "wgpuBufferDestroy": _wgpuBufferDestroy, "wgpuBufferReference": _wgpuBufferReference, "wgpuBufferRelease": _wgpuBufferRelease, "wgpuBufferSetSubData": _wgpuBufferSetSubData, "wgpuCommandBufferRelease": _wgpuCommandBufferRelease, "wgpuCommandEncoderBeginComputePass": _wgpuCommandEncoderBeginComputePass, "wgpuCommandEncoderBeginRenderPass": _wgpuCommandEncoderBeginRenderPass, "wgpuCommandEncoderCopyBufferToBuffer": _wgpuCommandEncoderCopyBufferToBuffer, "wgpuCommandEncoderCopyBufferToTexture": _wgpuCommandEncoderCopyBufferToTexture, "wgpuCommandEncoderCopyTextureToTexture": _wgpuCommandEncoderCopyTextureToTexture, "wgpuCommandEncoderFinish": _wgpuCommandEncoderFinish, "wgpuCommandEncoderReference": _wgpuCommandEncoderReference, "wgpuCommandEncoderRelease": _wgpuCommandEncoderRelease, "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch, "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass, "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease, "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup, "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline, "wgpuComputePipelineRelease": _wgpuComputePipelineRelease, "wgpuDeviceCreateBindGroup": _wgpuDeviceCreateBindGroup, "wgpuDeviceCreateBindGroupLayout": _wgpuDeviceCreateBindGroupLayout, "wgpuDeviceCreateBuffer": _wgpuDeviceCreateBuffer, "wgpuDeviceCreateCommandEncoder": _wgpuDeviceCreateCommandEncoder, "wgpuDeviceCreateComputePipeline": _wgpuDeviceCreateComputePipeline, "wgpuDeviceCreatePipelineLayout": _wgpuDeviceCreatePipelineLayout, "wgpuDeviceCreateQueue": _wgpuDeviceCreateQueue, "wgpuDeviceCreateRenderPipeline": _wgpuDeviceCreateRenderPipeline, "wgpuDeviceCreateSampler": _wgpuDeviceCreateSampler, "wgpuDeviceCreateShaderModule": _wgpuDeviceCreateShaderModule, "wgpuDeviceCreateSwapChain": _wgpuDeviceCreateSwapChain, "wgpuDeviceCreateTexture": _wgpuDeviceCreateTexture, "wgpuDeviceReference": _wgpuDeviceReference, "wgpuDeviceRelease": _wgpuDeviceRelease, "wgpuDeviceSetUncapturedErrorCallback": _wgpuDeviceSetUncapturedErrorCallback, "wgpuInstanceCreateSurface": _wgpuInstanceCreateSurface, "wgpuInstanceRelease": _wgpuInstanceRelease, "wgpuPipelineLayoutReference": _wgpuPipelineLayoutReference, "wgpuPipelineLayoutRelease": _wgpuPipelineLayoutRelease, "wgpuQueueReference": _wgpuQueueReference, "wgpuQueueRelease": _wgpuQueueRelease, "wgpuQueueSubmit": _wgpuQueueSubmit, "wgpuRenderPassEncoderDraw": _wgpuRenderPassEncoderDraw, "wgpuRenderPassEncoderDrawIndexed": _wgpuRenderPassEncoderDrawIndexed, "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass, "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference, "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease, "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup, "wgpuRenderPassEncoderSetBlendColor": _wgpuRenderPassEncoderSetBlendColor, "wgpuRenderPassEncoderSetIndexBuffer": _wgpuRenderPassEncoderSetIndexBuffer, "wgpuRenderPassEncoderSetPipeline": _wgpuRenderPassEncoderSetPipeline, "wgpuRenderPassEncoderSetScissorRect": _wgpuRenderPassEncoderSetScissorRect, "wgpuRenderPassEncoderSetVertexBuffer": _wgpuRenderPassEncoderSetVertexBuffer, "wgpuRenderPassEncoderSetViewport": _wgpuRenderPassEncoderSetViewport, "wgpuRenderPipelineRelease": _wgpuRenderPipelineRelease, "wgpuSamplerReference": _wgpuSamplerReference, "wgpuSamplerRelease": _wgpuSamplerRelease, "wgpuShaderModuleReference": _wgpuShaderModuleReference, "wgpuShaderModuleRelease": _wgpuShaderModuleRelease, "wgpuSurfaceRelease": _wgpuSurfaceRelease, "wgpuSwapChainGetCurrentTextureView": _wgpuSwapChainGetCurrentTextureView, "wgpuSwapChainRelease": _wgpuSwapChainRelease, "wgpuTextureCreateView": _wgpuTextureCreateView, "wgpuTextureDestroy": _wgpuTextureDestroy, "wgpuTextureReference": _wgpuTextureReference, "wgpuTextureRelease": _wgpuTextureRelease, "wgpuTextureViewReference": _wgpuTextureViewReference, "wgpuTextureViewRelease": _wgpuTextureViewRelease };
+var asmLibraryArg = { "__assert_fail": ___assert_fail, "__cxa_atexit": ___cxa_atexit, "__handle_stack_overflow": ___handle_stack_overflow, "__lock": ___lock, "__map_file": ___map_file, "__syscall221": ___syscall221, "__syscall5": ___syscall5, "__syscall54": ___syscall54, "__syscall91": ___syscall91, "__unlock": ___unlock, "abort": _abort, "abs": _abs, "emscripten_asm_const_iii": _emscripten_asm_const_iii, "emscripten_get_now": _emscripten_get_now, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_log": _emscripten_log, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_request_fullscreen_strategy": _emscripten_request_fullscreen_strategy, "emscripten_resize_heap": _emscripten_resize_heap, "emscripten_set_focus_callback_on_thread": _emscripten_set_focus_callback_on_thread, "emscripten_set_focusin_callback_on_thread": _emscripten_set_focusin_callback_on_thread, "emscripten_set_focusout_callback_on_thread": _emscripten_set_focusout_callback_on_thread, "emscripten_set_keydown_callback_on_thread": _emscripten_set_keydown_callback_on_thread, "emscripten_set_keypress_callback_on_thread": _emscripten_set_keypress_callback_on_thread, "emscripten_set_keyup_callback_on_thread": _emscripten_set_keyup_callback_on_thread, "emscripten_set_main_loop": _emscripten_set_main_loop, "emscripten_set_mousedown_callback_on_thread": _emscripten_set_mousedown_callback_on_thread, "emscripten_set_mousemove_callback_on_thread": _emscripten_set_mousemove_callback_on_thread, "emscripten_set_mouseup_callback_on_thread": _emscripten_set_mouseup_callback_on_thread, "emscripten_set_resize_callback_on_thread": _emscripten_set_resize_callback_on_thread, "emscripten_set_wheel_callback_on_thread": _emscripten_set_wheel_callback_on_thread, "emscripten_webgpu_get_device": _emscripten_webgpu_get_device, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "fd_close": _fd_close, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_write": _fd_write, "memory": wasmMemory, "setTempRet0": _setTempRet0, "strftime_l": _strftime_l, "system": _system, "table": wasmTable, "time": _time, "wgpuBindGroupLayoutReference": _wgpuBindGroupLayoutReference, "wgpuBindGroupLayoutRelease": _wgpuBindGroupLayoutRelease, "wgpuBindGroupRelease": _wgpuBindGroupRelease, "wgpuBufferDestroy": _wgpuBufferDestroy, "wgpuBufferMapReadAsync": _wgpuBufferMapReadAsync, "wgpuBufferReference": _wgpuBufferReference, "wgpuBufferRelease": _wgpuBufferRelease, "wgpuBufferSetSubData": _wgpuBufferSetSubData, "wgpuBufferUnmap": _wgpuBufferUnmap, "wgpuCommandBufferRelease": _wgpuCommandBufferRelease, "wgpuCommandEncoderBeginComputePass": _wgpuCommandEncoderBeginComputePass, "wgpuCommandEncoderBeginRenderPass": _wgpuCommandEncoderBeginRenderPass, "wgpuCommandEncoderCopyBufferToBuffer": _wgpuCommandEncoderCopyBufferToBuffer, "wgpuCommandEncoderCopyBufferToTexture": _wgpuCommandEncoderCopyBufferToTexture, "wgpuCommandEncoderCopyTextureToBuffer": _wgpuCommandEncoderCopyTextureToBuffer, "wgpuCommandEncoderCopyTextureToTexture": _wgpuCommandEncoderCopyTextureToTexture, "wgpuCommandEncoderFinish": _wgpuCommandEncoderFinish, "wgpuCommandEncoderReference": _wgpuCommandEncoderReference, "wgpuCommandEncoderRelease": _wgpuCommandEncoderRelease, "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch, "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass, "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease, "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup, "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline, "wgpuComputePipelineRelease": _wgpuComputePipelineRelease, "wgpuDeviceCreateBindGroup": _wgpuDeviceCreateBindGroup, "wgpuDeviceCreateBindGroupLayout": _wgpuDeviceCreateBindGroupLayout, "wgpuDeviceCreateBuffer": _wgpuDeviceCreateBuffer, "wgpuDeviceCreateCommandEncoder": _wgpuDeviceCreateCommandEncoder, "wgpuDeviceCreateComputePipeline": _wgpuDeviceCreateComputePipeline, "wgpuDeviceCreatePipelineLayout": _wgpuDeviceCreatePipelineLayout, "wgpuDeviceCreateQueue": _wgpuDeviceCreateQueue, "wgpuDeviceCreateRenderPipeline": _wgpuDeviceCreateRenderPipeline, "wgpuDeviceCreateSampler": _wgpuDeviceCreateSampler, "wgpuDeviceCreateShaderModule": _wgpuDeviceCreateShaderModule, "wgpuDeviceCreateSwapChain": _wgpuDeviceCreateSwapChain, "wgpuDeviceCreateTexture": _wgpuDeviceCreateTexture, "wgpuDeviceReference": _wgpuDeviceReference, "wgpuDeviceRelease": _wgpuDeviceRelease, "wgpuDeviceSetUncapturedErrorCallback": _wgpuDeviceSetUncapturedErrorCallback, "wgpuInstanceCreateSurface": _wgpuInstanceCreateSurface, "wgpuInstanceRelease": _wgpuInstanceRelease, "wgpuPipelineLayoutReference": _wgpuPipelineLayoutReference, "wgpuPipelineLayoutRelease": _wgpuPipelineLayoutRelease, "wgpuQueueReference": _wgpuQueueReference, "wgpuQueueRelease": _wgpuQueueRelease, "wgpuQueueSubmit": _wgpuQueueSubmit, "wgpuRenderPassEncoderDraw": _wgpuRenderPassEncoderDraw, "wgpuRenderPassEncoderDrawIndexed": _wgpuRenderPassEncoderDrawIndexed, "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass, "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference, "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease, "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup, "wgpuRenderPassEncoderSetBlendColor": _wgpuRenderPassEncoderSetBlendColor, "wgpuRenderPassEncoderSetIndexBuffer": _wgpuRenderPassEncoderSetIndexBuffer, "wgpuRenderPassEncoderSetPipeline": _wgpuRenderPassEncoderSetPipeline, "wgpuRenderPassEncoderSetScissorRect": _wgpuRenderPassEncoderSetScissorRect, "wgpuRenderPassEncoderSetStencilReference": _wgpuRenderPassEncoderSetStencilReference, "wgpuRenderPassEncoderSetVertexBuffer": _wgpuRenderPassEncoderSetVertexBuffer, "wgpuRenderPassEncoderSetViewport": _wgpuRenderPassEncoderSetViewport, "wgpuRenderPipelineRelease": _wgpuRenderPipelineRelease, "wgpuSamplerReference": _wgpuSamplerReference, "wgpuSamplerRelease": _wgpuSamplerRelease, "wgpuShaderModuleReference": _wgpuShaderModuleReference, "wgpuShaderModuleRelease": _wgpuShaderModuleRelease, "wgpuSurfaceRelease": _wgpuSurfaceRelease, "wgpuSwapChainGetCurrentTextureView": _wgpuSwapChainGetCurrentTextureView, "wgpuSwapChainRelease": _wgpuSwapChainRelease, "wgpuTextureCreateView": _wgpuTextureCreateView, "wgpuTextureDestroy": _wgpuTextureDestroy, "wgpuTextureReference": _wgpuTextureReference, "wgpuTextureRelease": _wgpuTextureRelease, "wgpuTextureViewReference": _wgpuTextureViewReference, "wgpuTextureViewRelease": _wgpuTextureViewRelease };
 var asm = createWasm();
 Module["asm"] = asm;
 var ___wasm_call_ctors = Module["___wasm_call_ctors"] = function() {
@@ -8506,6 +8544,12 @@ var dynCall_viiiiiii = Module["dynCall_viiiiiii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_viiiiiii"].apply(null, arguments)
+};
+
+var dynCall_viiji = Module["dynCall_viiji"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_viiji"].apply(null, arguments)
 };
 
 var dynCall_iiiiii = Module["dynCall_iiiiii"] = function() {
