@@ -196,7 +196,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1409, "filename": "/shaders/spirv/vs_vt_generic.bin"}, {"start": 1409, "audio": 0, "end": 4078, "filename": "/shaders/spirv/fs_vt_unlit.bin"}, {"start": 4078, "audio": 0, "end": 5780, "filename": "/shaders/spirv/fs_vt_mip.bin"}, {"start": 5780, "audio": 0, "end": 9932408, "filename": "/textures/8k_mars.jpg"}], "remote_package_size": 9932408, "package_uuid": "53e3eef1-33c7-4dc1-a77d-67e16b6a8c64"});
+   loadPackage({"files": [{"start": 0, "audio": 0, "end": 1409, "filename": "/shaders/spirv/vs_vt_generic.bin"}, {"start": 1409, "audio": 0, "end": 4078, "filename": "/shaders/spirv/fs_vt_unlit.bin"}, {"start": 4078, "audio": 0, "end": 5780, "filename": "/shaders/spirv/fs_vt_mip.bin"}, {"start": 5780, "audio": 0, "end": 9932408, "filename": "/textures/8k_mars.jpg"}], "remote_package_size": 9932408, "package_uuid": "986e36ae-bb96-477a-a5b9-8bf78f13cb84"});
   
   })();
   
@@ -1436,7 +1436,7 @@ assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
 var TOTAL_STACK = 5242880;
 if (Module['TOTAL_STACK']) assert(TOTAL_STACK === Module['TOTAL_STACK'], 'the stack size can no longer be determined at runtime')
 
-var INITIAL_TOTAL_MEMORY = Module['TOTAL_MEMORY'] || 536870912;if (!Object.getOwnPropertyDescriptor(Module, 'TOTAL_MEMORY')) Object.defineProperty(Module, 'TOTAL_MEMORY', { configurable: true, get: function() { abort('Module.TOTAL_MEMORY has been replaced with plain INITIAL_TOTAL_MEMORY') } });
+var INITIAL_TOTAL_MEMORY = Module['TOTAL_MEMORY'] || 1073741824;if (!Object.getOwnPropertyDescriptor(Module, 'TOTAL_MEMORY')) Object.defineProperty(Module, 'TOTAL_MEMORY', { configurable: true, get: function() { abort('Module.TOTAL_MEMORY has been replaced with plain INITIAL_TOTAL_MEMORY') } });
 
 assert(INITIAL_TOTAL_MEMORY >= TOTAL_STACK, 'TOTAL_MEMORY should be larger than TOTAL_STACK, was ' + INITIAL_TOTAL_MEMORY + '! (TOTAL_STACK=' + TOTAL_STACK + ')');
 
