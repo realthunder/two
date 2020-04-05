@@ -6,6 +6,8 @@ NO_REFL = false
 
 MODULES = {}
 
+BASE_DIR = path.getabsolute("../..")
+
 if not TWO_DIR then
     TWO_DIR = path.getabsolute("..")
 end
@@ -14,11 +16,11 @@ TWO_DIST_DIR = path.join(TWO_DIR, "dist")
 
 TWO_3RDPARTY_DIR = path.join(TWO_DIR, "3rdparty")
 
-BX_DIR   = path.join(TWO_3RDPARTY_DIR, "bx")
-BGFX_DIR = path.join(TWO_3RDPARTY_DIR, "bgfx")
-BIMG_DIR = path.join(TWO_3RDPARTY_DIR, "bimg")
+BX_DIR   = path.join(BASE_DIR, "bx")
+BGFX_DIR = path.join(BASE_DIR, "bgfx")
+BIMG_DIR = path.join(BASE_DIR, "bimg")
 
-DAWN_DIR = path.join(TWO_DIR, "../../dawn")
+DAWN_DIR = path.join(BASE_DIR, "dawn")
 
 json = dofile(path.join(TWO_3RDPARTY_DIR, "jsonlua/json.lua"))
 

@@ -1,7 +1,3 @@
-[submodule "3rdparty/bx"]
-	path = 3rdparty/bx
-	url = https://github.com/bkaradzic/bx
-	branch = master
 [submodule "3rdparty/stb"]
 	path = 3rdparty/stb
 	url = https://github.com/nothings/stb
@@ -11,13 +7,6 @@
 [submodule "3rdparty/nanovgvg-layers"]
 	path = 3rdparty/nanovg-layers
 	url = https://github.com/hugoam/nanovg
-[submodule "3rdparty/bimg"]
-	path = 3rdparty/bimg
-	url = https://github.com/hugoam/bimg
-[submodule "3rdparty/bgfx"]
-	path = 3rdparty/bgfx
-	url = https://github.com/hugoam/bgfx
-	branch = master
 [submodule "3rdparty/lua"]
 	path = 3rdparty/lua
 	url = https://github.com/lua/lua
