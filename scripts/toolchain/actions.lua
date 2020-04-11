@@ -46,7 +46,7 @@ function write_module_xx(m)
     p("")
     p("#include <" .. m.subdir .. "/Api.h>")
     if m.reflect then
-        p("#include <meta/" .. m.name .. ".meta.h>")
+        --p("#include <meta/" .. m.name .. ".meta.h>")
     end
     p("")
     
