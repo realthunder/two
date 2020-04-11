@@ -49,37 +49,37 @@ namespace two
 		Storage m_storage;
 	};
 
-	export_ enum VarMode : unsigned int
+	export_ enum class VarMode : unsigned int
 	{
-		VAL,
-		REF
+		Val,
+		Ref
 	};
 
 	export_ class refl_ TWO_TYPE_EXPORT Var
 	{
 	public:
-		Var() : m_mode(VAL), m_any(), m_ref() {}
-		Var(const Any& val) : m_mode(VAL), m_any(val), m_ref(m_any.ref()) {}
-		Var(const Ref& ref) : m_mode(REF), m_ref(ref) {}
+		Var() : m_mode(VarMode::Val), m_any(), m_ref() {}
+		Var(const Any& val) : m_mode(VarMode::Val), m_any(val), m_ref(m_any.ref()) {}
+		Var(const Ref& ref) : m_mode(VarMode::Ref), m_ref(ref) {}
 
-		Var(const Var& other) : m_mode(other.m_mode), m_any(other.m_any), m_ref(m_mode == VAL ? m_any.ref() : other.m_ref) {}
-		Var& operator=(const Var& other) { m_mode = other.m_mode; if(m_mode == VAL) { m_any = other.m_any; m_ref = m_any.ref(); } else m_ref = other.m_ref; return *this; }
-		Var& operator=(const Ref& ref) { m_mode = REF; m_ref = ref; return *this; }
+		Var(const Var& other) : m_mode(other.m_mode), m_any(other.m_any), m_ref(m_mode == VarMode::Val ? m_any.ref() : other.m_ref) {}
+		Var& operator=(const Var& other) { m_mode = other.m_mode; if(m_mode == VarMode::Val) { m_any = other.m_any; m_ref = m_any.ref(); } else m_ref = other.m_ref; return *this; }
+		Var& operator=(const Ref& ref) { m_mode = VarMode::Ref; m_ref = ref; return *this; }
 
 		VarMode m_mode;
 		Any m_any;
 		Ref m_ref;
 
-		bool operator==(const Var& other) const { return m_mode == other.m_mode && (m_mode == VAL ? m_any == other.m_any : m_ref == other.m_ref); }
+		bool operator==(const Var& other) const { return m_mode == other.m_mode && (m_mode == VarMode::Val ? m_any == other.m_any : m_ref == other.m_ref); }
 
 		explicit operator bool() const { return this->none(); }
 
-		inline void copy(const Ref& ref) { if(m_mode == VAL) m_any = ref; else m_ref = ref; }
+		inline void copy(const Ref& ref) { if(m_mode == VarMode::Val) m_any = ref; else m_ref = ref; }
 
-		inline bool null() const { return m_mode == VAL ? false : m_ref.m_value == nullptr; }
-		inline bool none() const { return m_mode == VAL ? !m_any : false; }
-		inline void set(Ref value) { if(m_mode == VAL) m_any = value; else m_ref = value; }
-		inline void clear() { m_mode = VAL; m_any = Any(); }
+		inline bool null() const { return m_mode == VarMode::Val ? false : m_ref.m_value == nullptr; }
+		inline bool none() const { return m_mode == VarMode::Val ? !m_any : false; }
+		inline void set(Ref value) { if(m_mode == VarMode::Val) m_any = value; else m_ref = value; }
+		inline void clear() { m_mode = VarMode::Val; m_any = Any(); }
 
 		inline operator const Ref&() const { return m_ref; }
 		inline operator Ref&() { return m_ref; }

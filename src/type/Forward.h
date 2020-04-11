@@ -10,7 +10,7 @@
 
 namespace two
 {
-    enum VarMode : unsigned int;
+    enum class VarMode : unsigned int;
     
     struct Address;
     class Type;

@@ -310,9 +310,9 @@ namespace two
 		if(var.none() || var.null())
 			return push_null(state);
 		// kludge
-		else if(var.m_mode == REF && type(var).is<Member>())
+		else if(var.m_mode == VarMode::Ref && type(var).is<Member>())
 			return push_ref(state, var.m_ref);
-		else if(var.m_mode == REF && type(var).is<Callable>())
+		else if(var.m_mode == VarMode::Ref && type(var).is<Callable>())
 			return push_callable(state, val<Callable>(var.m_ref));
 		else if(is_sequence(type(var)))
 			return push_sequence(state, var);
@@ -328,7 +328,7 @@ namespace two
 
 	inline void read_value(lua_State* state, int index, Var& value)
 	{
-		if(value.m_mode == REF && value.m_ref == Ref())
+		if(value.m_mode == VarMode::Ref && value.m_ref == Ref())
 			value = read_ref(state, index);
 		else if(type(value).is<Type>())
 			value = read_type(state, index);
