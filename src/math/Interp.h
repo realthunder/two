@@ -12,7 +12,7 @@
 
 namespace two
 {
-	inline quat lerp(const quat& a, const quat& b, float c)
+	export_ inline quat lerp(const quat& a, const quat& b, float c)
 	{
 		return slerp(a, b, c);
 	}
@@ -92,7 +92,7 @@ namespace two
 		return slerp(start, end, t);
 	}
 
-	inline Colour lerp(const Colour& a, const Colour& b, float c)
+	export_ inline Colour lerp(const Colour& a, const Colour& b, float c)
 	{
 		vec4 va = to_vec4(a);
 		vec4 vb = to_vec4(b);

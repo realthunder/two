@@ -4,7 +4,9 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/base.h>
+#endif
 #include <math/Forward.h>
 
 namespace two

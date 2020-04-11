@@ -4,9 +4,10 @@
 
 #pragma once
 
-#include <math/Forward.h>
-
+#ifndef TWO_MODULES
 #include <ctime>
+#endif
+#include <math/Forward.h>
 
 namespace two
 {

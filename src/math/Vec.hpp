@@ -1,7 +1,9 @@
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stdint.h>
 #include <cmath>
+#endif
 #include <math/Forward.h>
 #include <math/Vec.h>
 #include <math/Math.h>
@@ -96,121 +98,121 @@ namespace two
 		return (typename T::type3&)v;
 	}
 
-	template <class T> inline v2<T> operator+(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x + b.x, a.y + b.y); }
-	template <class T> inline v3<T> operator+(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x + b.x, a.y + b.y, a.z + b.z); }
-	template <class T> inline v4<T> operator+(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w); }
+	export_ template <class T> inline v2<T> operator+(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x + b.x, a.y + b.y); }
+	export_ template <class T> inline v3<T> operator+(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x + b.x, a.y + b.y, a.z + b.z); }
+	export_ template <class T> inline v4<T> operator+(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w); }
 
-	template <class T> inline v2<T> operator+(const v2<T>& a, T b) { return v2<T>(a.x + b, a.y + b); }
-	template <class T> inline v3<T> operator+(const v3<T>& a, T b) { return v3<T>(a.x + b, a.y + b, a.z + b); }
-	template <class T> inline v4<T> operator+(const v4<T>& a, T b) { return v4<T>(a.x + b, a.y + b, a.z + b, a.w + b); }
+	export_ template <class T> inline v2<T> operator+(const v2<T>& a, T b) { return v2<T>(a.x + b, a.y + b); }
+	export_ template <class T> inline v3<T> operator+(const v3<T>& a, T b) { return v3<T>(a.x + b, a.y + b, a.z + b); }
+	export_ template <class T> inline v4<T> operator+(const v4<T>& a, T b) { return v4<T>(a.x + b, a.y + b, a.z + b, a.w + b); }
 
-	template <class T> inline v2<T> operator-(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x - b.x, a.y - b.y); }
-	template <class T> inline v3<T> operator-(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x - b.x, a.y - b.y, a.z - b.z); }
-	template <class T> inline v4<T> operator-(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w); }
+	export_ template <class T> inline v2<T> operator-(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x - b.x, a.y - b.y); }
+	export_ template <class T> inline v3<T> operator-(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x - b.x, a.y - b.y, a.z - b.z); }
+	export_ template <class T> inline v4<T> operator-(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w); }
 
-	template <class T> inline v2<T> operator-(const v2<T>& a, T b) { return v2<T>(a.x - b, a.y - b); }
-	template <class T> inline v3<T> operator-(const v3<T>& a, T b) { return v3<T>(a.x - b, a.y - b, a.z - b); }
-	template <class T> inline v4<T> operator-(const v4<T>& a, T b) { return v4<T>(a.x - b, a.y - b, a.z - b, a.w - b); }
+	export_ template <class T> inline v2<T> operator-(const v2<T>& a, T b) { return v2<T>(a.x - b, a.y - b); }
+	export_ template <class T> inline v3<T> operator-(const v3<T>& a, T b) { return v3<T>(a.x - b, a.y - b, a.z - b); }
+	export_ template <class T> inline v4<T> operator-(const v4<T>& a, T b) { return v4<T>(a.x - b, a.y - b, a.z - b, a.w - b); }
 
-	template <class T> inline v2<T> operator*(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x * b.x, a.y * b.y); }
-	template <class T> inline v3<T> operator*(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x * b.x, a.y * b.y, a.z * b.z); }
-	template <class T> inline v4<T> operator*(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w); }
-	template <class T> inline v2<T> operator*(const v2<T>& a, T b) { return v2<T>(a.x * b, a.y * b); }
-	template <class T> inline v3<T> operator*(const v3<T>& a, T b) { return v3<T>(a.x * b, a.y * b, a.z * b); }
-	template <class T> inline v4<T> operator*(const v4<T>& a, T b) { return v4<T>(a.x * b, a.y * b, a.z * b, a.w * b); }
-	template <class T> inline v4<T> operator*(const v4<T>& a, const v2<T>& b) { return v4<T>(a.x * b.x, a.y * b.y, a.z * b.x, a.w * b.y); }
-	template <class T> inline v2<T> operator*(T a, const v2<T>& b) { return v2<T>(a * b.x, a * b.y); }
-	template <class T> inline v3<T> operator*(T a, const v3<T>& b) { return v3<T>(a * b.x, a * b.y, a * b.z); }
-	template <class T> inline v4<T> operator*(T a, const v4<T>& b) { return v4<T>(a * b.x, a * b.y, a * b.z, a * b.w); }
+	export_ template <class T> inline v2<T> operator*(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x * b.x, a.y * b.y); }
+	export_ template <class T> inline v3<T> operator*(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x * b.x, a.y * b.y, a.z * b.z); }
+	export_ template <class T> inline v4<T> operator*(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w); }
+	export_ template <class T> inline v2<T> operator*(const v2<T>& a, T b) { return v2<T>(a.x * b, a.y * b); }
+	export_ template <class T> inline v3<T> operator*(const v3<T>& a, T b) { return v3<T>(a.x * b, a.y * b, a.z * b); }
+	export_ template <class T> inline v4<T> operator*(const v4<T>& a, T b) { return v4<T>(a.x * b, a.y * b, a.z * b, a.w * b); }
+	export_ template <class T> inline v4<T> operator*(const v4<T>& a, const v2<T>& b) { return v4<T>(a.x * b.x, a.y * b.y, a.z * b.x, a.w * b.y); }
+	export_ template <class T> inline v2<T> operator*(T a, const v2<T>& b) { return v2<T>(a * b.x, a * b.y); }
+	export_ template <class T> inline v3<T> operator*(T a, const v3<T>& b) { return v3<T>(a * b.x, a * b.y, a * b.z); }
+	export_ template <class T> inline v4<T> operator*(T a, const v4<T>& b) { return v4<T>(a * b.x, a * b.y, a * b.z, a * b.w); }
 
-	template <class T> inline v2<T> operator/(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x / b.x, a.y / b.y); }
-	template <class T> inline v3<T> operator/(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x / b.x, a.y / b.y, a.z / b.z); }
-	template <class T> inline v4<T> operator/(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w); }
-	template <class T> inline v2<T> operator/(const v2<T>& a, T b) { return v2<T>(a.x / b, a.y / b); }
-	template <class T> inline v3<T> operator/(const v3<T>& a, T b) { return v3<T>(a.x / b, a.y / b, a.z / b); }
-	template <class T> inline v4<T> operator/(const v4<T>& a, T b) { return v4<T>(a.x / b, a.y / b, a.z / b, a.w / b); }
-	template <class T> inline v4<T> operator/(const v4<T>& a, const v2<T>& b) { return v4<T>(a.x / b.x, a.y / b.y, a.z / b.x, a.w / b.y); }
-	template <class T> inline v2<T> operator/(T a, const v2<T>& b) { return v2<T>(a / b.x, a / b.y); }
-	template <class T> inline v3<T> operator/(T a, const v3<T>& b) { return v3<T>(a / b.x, a / b.y, a / b.z); }
-	template <class T> inline v4<T> operator/(T a, const v4<T>& b) { return v4<T>(a / b.x, a / b.y, a / b.z, a / b.w); }
+	export_ template <class T> inline v2<T> operator/(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x / b.x, a.y / b.y); }
+	export_ template <class T> inline v3<T> operator/(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x / b.x, a.y / b.y, a.z / b.z); }
+	export_ template <class T> inline v4<T> operator/(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w); }
+	export_ template <class T> inline v2<T> operator/(const v2<T>& a, T b) { return v2<T>(a.x / b, a.y / b); }
+	export_ template <class T> inline v3<T> operator/(const v3<T>& a, T b) { return v3<T>(a.x / b, a.y / b, a.z / b); }
+	export_ template <class T> inline v4<T> operator/(const v4<T>& a, T b) { return v4<T>(a.x / b, a.y / b, a.z / b, a.w / b); }
+	export_ template <class T> inline v4<T> operator/(const v4<T>& a, const v2<T>& b) { return v4<T>(a.x / b.x, a.y / b.y, a.z / b.x, a.w / b.y); }
+	export_ template <class T> inline v2<T> operator/(T a, const v2<T>& b) { return v2<T>(a / b.x, a / b.y); }
+	export_ template <class T> inline v3<T> operator/(T a, const v3<T>& b) { return v3<T>(a / b.x, a / b.y, a / b.z); }
+	export_ template <class T> inline v4<T> operator/(T a, const v4<T>& b) { return v4<T>(a / b.x, a / b.y, a / b.z, a / b.w); }
 
-	template <class T> inline v2<T>& operator+=(v2<T>& a, const v2<T>& b) { a = a + b; return a; }
-	template <class T> inline v3<T>& operator+=(v3<T>& a, const v3<T>& b) { a = a + b; return a; }
-	template <class T> inline v4<T>& operator+=(v4<T>& a, const v4<T>& b) { a = a + b; return a; }
+	export_ template <class T> inline v2<T>& operator+=(v2<T>& a, const v2<T>& b) { a = a + b; return a; }
+	export_ template <class T> inline v3<T>& operator+=(v3<T>& a, const v3<T>& b) { a = a + b; return a; }
+	export_ template <class T> inline v4<T>& operator+=(v4<T>& a, const v4<T>& b) { a = a + b; return a; }
 
-	template <class T> inline v2<T>& operator-=(v2<T>& a, const v2<T>& b) { a = a - b; return a; }
-	template <class T> inline v3<T>& operator-=(v3<T>& a, const v3<T>& b) { a = a - b; return a; }
-	template <class T> inline v4<T>& operator-=(v4<T>& a, const v4<T>& b) { a = a - b; return a; }
+	export_ template <class T> inline v2<T>& operator-=(v2<T>& a, const v2<T>& b) { a = a - b; return a; }
+	export_ template <class T> inline v3<T>& operator-=(v3<T>& a, const v3<T>& b) { a = a - b; return a; }
+	export_ template <class T> inline v4<T>& operator-=(v4<T>& a, const v4<T>& b) { a = a - b; return a; }
 
-	template <class T> inline v2<T>& operator*=(v2<T>& a, const v2<T>& b) { a = a * b; return a; }
-	template <class T> inline v3<T>& operator*=(v3<T>& a, const v3<T>& b) { a = a * b; return a; }
-	template <class T> inline v4<T>& operator*=(v4<T>& a, const v4<T>& b) { a = a * b; return a; }
-	template <class T> inline v2<T>& operator*=(v2<T>& a, T b) { a = a * b; return a; }
-	template <class T> inline v3<T>& operator*=(v3<T>& a, T b) { a = a * b; return a; }
-	template <class T> inline v4<T>& operator*=(v4<T>& a, T b) { a = a * b; return a; }
+	export_ template <class T> inline v2<T>& operator*=(v2<T>& a, const v2<T>& b) { a = a * b; return a; }
+	export_ template <class T> inline v3<T>& operator*=(v3<T>& a, const v3<T>& b) { a = a * b; return a; }
+	export_ template <class T> inline v4<T>& operator*=(v4<T>& a, const v4<T>& b) { a = a * b; return a; }
+	export_ template <class T> inline v2<T>& operator*=(v2<T>& a, T b) { a = a * b; return a; }
+	export_ template <class T> inline v3<T>& operator*=(v3<T>& a, T b) { a = a * b; return a; }
+	export_ template <class T> inline v4<T>& operator*=(v4<T>& a, T b) { a = a * b; return a; }
 
-	template <class T> inline v2<T>& operator/=(v2<T>& a, const v2<T>& b) { a = a / b; return a; }
-	template <class T> inline v3<T>& operator/=(v3<T>& a, const v3<T>& b) { a = a / b; return a; }
-	template <class T> inline v4<T>& operator/=(v4<T>& a, const v4<T>& b) { a = a / b; return a; }
-	template <class T> inline v2<T>& operator/=(v2<T>& a, T b) { a = a / b; return a; }
-	template <class T> inline v3<T>& operator/=(v3<T>& a, T b) { a = a / b; return a; }
-	template <class T> inline v4<T>& operator/=(v4<T>& a, T b) { a = a / b; return a; }
+	export_ template <class T> inline v2<T>& operator/=(v2<T>& a, const v2<T>& b) { a = a / b; return a; }
+	export_ template <class T> inline v3<T>& operator/=(v3<T>& a, const v3<T>& b) { a = a / b; return a; }
+	export_ template <class T> inline v4<T>& operator/=(v4<T>& a, const v4<T>& b) { a = a / b; return a; }
+	export_ template <class T> inline v2<T>& operator/=(v2<T>& a, T b) { a = a / b; return a; }
+	export_ template <class T> inline v3<T>& operator/=(v3<T>& a, T b) { a = a / b; return a; }
+	export_ template <class T> inline v4<T>& operator/=(v4<T>& a, T b) { a = a / b; return a; }
 
-	template <class T> inline bool all(const v2<T>& v) { return v.x && v.y; }
-	template <class T> inline bool all(const v3<T>& v) { return v.x && v.y && v.z; }
-	template <class T> inline bool all(const v4<T>& v) { return v.x && v.y && v.z && v.w; }
+	export_ template <class T> inline bool all(const v2<T>& v) { return v.x && v.y; }
+	export_ template <class T> inline bool all(const v3<T>& v) { return v.x && v.y && v.z; }
+	export_ template <class T> inline bool all(const v4<T>& v) { return v.x && v.y && v.z && v.w; }
 
-	template <class T> inline bool any(const v2<T>& v) { return v.x || v.y; }
-	template <class T> inline bool any(const v3<T>& v) { return v.x || v.y || v.z; }
-	template <class T> inline bool any(const v4<T>& v) { return v.x || v.y || v.z || v.w; }
+	export_ template <class T> inline bool any(const v2<T>& v) { return v.x || v.y; }
+	export_ template <class T> inline bool any(const v3<T>& v) { return v.x || v.y || v.z; }
+	export_ template <class T> inline bool any(const v4<T>& v) { return v.x || v.y || v.z || v.w; }
 
-	template <class T> inline bool2 isinf(const v2<T>& v) { return bool2(isinf(v.x), isinf(v.y)); }
-	template <class T> inline bool3 isinf(const v3<T>& v) { return bool3(isinf(v.x), isinf(v.y), isinf(v.z)); }
-	template <class T> inline bool4 isinf(const v4<T>& v) { return bool4(isinf(v.x), isinf(v.y), isinf(v.z), isinf(v.w)); }
+	export_ template <class T> inline bool2 isinf(const v2<T>& v) { return bool2(isinf(v.x), isinf(v.y)); }
+	export_ template <class T> inline bool3 isinf(const v3<T>& v) { return bool3(isinf(v.x), isinf(v.y), isinf(v.z)); }
+	export_ template <class T> inline bool4 isinf(const v4<T>& v) { return bool4(isinf(v.x), isinf(v.y), isinf(v.z), isinf(v.w)); }
 
-	template <class T> inline bool2 isnan(const v2<T>& v) { return bool2(isnan(v.x), isnan(v.y)); }
-	template <class T> inline bool3 isnan(const v3<T>& v) { return bool3(isnan(v.x), isnan(v.y), isnan(v.z)); }
-	template <class T> inline bool4 isnan(const v4<T>& v) { return bool4(isnan(v.x), isnan(v.y), isnan(v.z), isnan(v.w)); }
+	export_ template <class T> inline bool2 isnan(const v2<T>& v) { return bool2(isnan(v.x), isnan(v.y)); }
+	export_ template <class T> inline bool3 isnan(const v3<T>& v) { return bool3(isnan(v.x), isnan(v.y), isnan(v.z)); }
+	export_ template <class T> inline bool4 isnan(const v4<T>& v) { return bool4(isnan(v.x), isnan(v.y), isnan(v.z), isnan(v.w)); }
 
-	template <class T> inline bool2 less(const v2<T>& a, const v2<T>& b) { return bool2(a.x < b.x, a.y < b.y); }
-	template <class T> inline bool3 less(const v3<T>& a, const v3<T>& b) { return bool3(a.x < b.x, a.y < b.y, a.z < b.z); }
-	template <class T> inline bool4 less(const v4<T>& a, const v4<T>& b) { return bool4(a.x < b.x, a.y < b.y, a.z < b.z, a.w < b.w); }
+	export_ template <class T> inline bool2 less(const v2<T>& a, const v2<T>& b) { return bool2(a.x < b.x, a.y < b.y); }
+	export_ template <class T> inline bool3 less(const v3<T>& a, const v3<T>& b) { return bool3(a.x < b.x, a.y < b.y, a.z < b.z); }
+	export_ template <class T> inline bool4 less(const v4<T>& a, const v4<T>& b) { return bool4(a.x < b.x, a.y < b.y, a.z < b.z, a.w < b.w); }
 
-	template <class T> inline bool2 less_equal(const v2<T>& a, const v2<T>& b) { return bool2(a.x <= b.x, a.y <= b.y); }
-	template <class T> inline bool3 less_equal(const v3<T>& a, const v3<T>& b) { return bool3(a.x <= b.x, a.y <= b.y, a.z <= b.z); }
-	template <class T> inline bool4 less_equal(const v4<T>& a, const v4<T>& b) { return bool4(a.x <= b.x, a.y <= b.y, a.z <= b.z, a.w <= b.w); }
+	export_ template <class T> inline bool2 less_equal(const v2<T>& a, const v2<T>& b) { return bool2(a.x <= b.x, a.y <= b.y); }
+	export_ template <class T> inline bool3 less_equal(const v3<T>& a, const v3<T>& b) { return bool3(a.x <= b.x, a.y <= b.y, a.z <= b.z); }
+	export_ template <class T> inline bool4 less_equal(const v4<T>& a, const v4<T>& b) { return bool4(a.x <= b.x, a.y <= b.y, a.z <= b.z, a.w <= b.w); }
 
-	template <class T> inline bool2 greater(const v2<T>& a, const v2<T>& b) { return bool2(a.x > b.x, a.y > b.y); }
-	template <class T> inline bool3 greater(const v3<T>& a, const v3<T>& b) { return bool3(a.x > b.x, a.y > b.y, a.z > b.z); }
-	template <class T> inline bool4 greater(const v4<T>& a, const v4<T>& b) { return bool4(a.x > b.x, a.y > b.y, a.z > b.z, a.w > b.w); }
+	export_ template <class T> inline bool2 greater(const v2<T>& a, const v2<T>& b) { return bool2(a.x > b.x, a.y > b.y); }
+	export_ template <class T> inline bool3 greater(const v3<T>& a, const v3<T>& b) { return bool3(a.x > b.x, a.y > b.y, a.z > b.z); }
+	export_ template <class T> inline bool4 greater(const v4<T>& a, const v4<T>& b) { return bool4(a.x > b.x, a.y > b.y, a.z > b.z, a.w > b.w); }
 
-	template <class T> inline bool2 greater_equal(const v2<T>& a, const v2<T>& b) { return bool2(a.x >= b.x, a.y >= b.y); }
-	template <class T> inline bool3 greater_equal(const v3<T>& a, const v3<T>& b) { return bool3(a.x >= b.x, a.y >= b.y, a.z >= b.z); }
-	template <class T> inline bool4 greater_equal(const v4<T>& a, const v4<T>& b) { return bool4(a.x >= b.x, a.y >= b.y, a.z >= b.z, a.w >= b.w); }
+	export_ template <class T> inline bool2 greater_equal(const v2<T>& a, const v2<T>& b) { return bool2(a.x >= b.x, a.y >= b.y); }
+	export_ template <class T> inline bool3 greater_equal(const v3<T>& a, const v3<T>& b) { return bool3(a.x >= b.x, a.y >= b.y, a.z >= b.z); }
+	export_ template <class T> inline bool4 greater_equal(const v4<T>& a, const v4<T>& b) { return bool4(a.x >= b.x, a.y >= b.y, a.z >= b.z, a.w >= b.w); }
 
-	template <class T> inline bool  equal(const T& a, const T& b, float eps) { return abs(b - a) < eps; }
-	template <class T> inline bool2 equal(const v2<T>& a, const v2<T>& b, float eps) { return less(abs(b - a), v2<T>(eps)); }
-	template <class T> inline bool3 equal(const v3<T>& a, const v3<T>& b, float eps) { return less(abs(b - a), v3<T>(eps)); }
-	template <class T> inline bool4 equal(const v4<T>& a, const v4<T>& b, float eps) { return less(abs(b - a), v4<T>(eps)); }
+	export_ template <class T> inline bool  equal(const T& a, const T& b, float eps) { return abs(b - a) < eps; }
+	export_ template <class T> inline bool2 equal(const v2<T>& a, const v2<T>& b, float eps) { return less(abs(b - a), v2<T>(eps)); }
+	export_ template <class T> inline bool3 equal(const v3<T>& a, const v3<T>& b, float eps) { return less(abs(b - a), v3<T>(eps)); }
+	export_ template <class T> inline bool4 equal(const v4<T>& a, const v4<T>& b, float eps) { return less(abs(b - a), v4<T>(eps)); }
 
-	template <class T> inline bool2 equal(const v2<T>& a, const v2<T>& b) { return bool2(a.x == b.x, a.y == b.y); }
-	template <class T> inline bool3 equal(const v3<T>& a, const v3<T>& b) { return bool3(a.x == b.x, a.y == b.y, a.z == b.z); }
-	template <class T> inline bool4 equal(const v4<T>& a, const v4<T>& b) { return bool4(a.x == b.x, a.y == b.y, a.z == b.z, a.w == b.w); }
+	export_ template <class T> inline bool2 equal(const v2<T>& a, const v2<T>& b) { return bool2(a.x == b.x, a.y == b.y); }
+	export_ template <class T> inline bool3 equal(const v3<T>& a, const v3<T>& b) { return bool3(a.x == b.x, a.y == b.y, a.z == b.z); }
+	export_ template <class T> inline bool4 equal(const v4<T>& a, const v4<T>& b) { return bool4(a.x == b.x, a.y == b.y, a.z == b.z, a.w == b.w); }
 
-	template <class T> inline bool2 not_equal(const v2<T>& a, const v2<T>& b) { return bool2(a.x != b.x, a.y != b.y); }
-	template <class T> inline bool3 not_equal(const v3<T>& a, const v3<T>& b) { return bool3(a.x != b.x, a.y != b.y, a.z != b.z); }
-	template <class T> inline bool4 not_equal(const v4<T>& a, const v4<T>& b) { return bool4(a.x != b.x, a.y != b.y, a.z != b.z, a.w != b.w); }
+	export_ template <class T> inline bool2 not_equal(const v2<T>& a, const v2<T>& b) { return bool2(a.x != b.x, a.y != b.y); }
+	export_ template <class T> inline bool3 not_equal(const v3<T>& a, const v3<T>& b) { return bool3(a.x != b.x, a.y != b.y, a.z != b.z); }
+	export_ template <class T> inline bool4 not_equal(const v4<T>& a, const v4<T>& b) { return bool4(a.x != b.x, a.y != b.y, a.z != b.z, a.w != b.w); }
 
 	//template <class T> inline T     sign(T v) { return T(T(0) < v) - T(v < T(0)); }
-	template <class T> inline v2<T> sign(const v2<T>& v) { return T2(less(v2<T>(T(0)), v)) - v2<T>(less(v, v2<T>(T(0)))); }
-	template <class T> inline v3<T> sign(const v3<T>& v) { return T3(less(v3<T>(T(0)), v)) - v3<T>(less(v, v3<T>(T(0)))); }
-	template <class T> inline v4<T> sign(const v4<T>& v) { return T4(less(v4<T>(T(0)), v)) - v4<T>(less(v, v4<T>(T(0)))); }
+	export_ template <class T> inline v2<T> sign(const v2<T>& v) { return T2(less(v2<T>(T(0)), v)) - v2<T>(less(v, v2<T>(T(0)))); }
+	export_ template <class T> inline v3<T> sign(const v3<T>& v) { return T3(less(v3<T>(T(0)), v)) - v3<T>(less(v, v3<T>(T(0)))); }
+	export_ template <class T> inline v4<T> sign(const v4<T>& v) { return T4(less(v4<T>(T(0)), v)) - v4<T>(less(v, v4<T>(T(0)))); }
 
-	template <class T> inline T dot(const v2<T>& a, const v2<T>& b) { v2<T> tmp = a * b; return tmp.x + tmp.y; }
-	template <class T> inline T dot(const v3<T>& a, const v3<T>& b) { v3<T> tmp = a * b; return tmp.x + tmp.y + tmp.z; }
-	template <class T> inline T dot(const v4<T>& a, const v4<T>& b) { v4<T> tmp = a * b; return tmp.x + tmp.y + tmp.z + tmp.w; }
+	export_ template <class T> inline T dot(const v2<T>& a, const v2<T>& b) { v2<T> tmp = a * b; return tmp.x + tmp.y; }
+	export_ template <class T> inline T dot(const v3<T>& a, const v3<T>& b) { v3<T> tmp = a * b; return tmp.x + tmp.y + tmp.z; }
+	export_ template <class T> inline T dot(const v4<T>& a, const v4<T>& b) { v4<T> tmp = a * b; return tmp.x + tmp.y + tmp.z + tmp.w; }
 
-	template <class T> v3<T> cross(const v3<T>& a, const v3<T>& b)
+	export_ template <class T> v3<T> cross(const v3<T>& a, const v3<T>& b)
 	{
 		return v3<T>(
 			a.y * b.z - b.y * a.z,
@@ -219,101 +221,101 @@ namespace two
 		);
 	}
 
-	template <class T> inline T length(const v2<T>& v) { return T(sqrt(dot(v, v))); }
-	template <class T> inline T length(const v3<T>& v) { return T(sqrt(dot(v, v))); }
-	template <class T> inline T length(const v4<T>& v) { return T(sqrt(dot(v, v))); }
+	export_ template <class T> inline T length(const v2<T>& v) { return T(sqrt(dot(v, v))); }
+	export_ template <class T> inline T length(const v3<T>& v) { return T(sqrt(dot(v, v))); }
+	export_ template <class T> inline T length(const v4<T>& v) { return T(sqrt(dot(v, v))); }
 
-	template <class T> inline T length2(const v2<T>& v) { return dot(v, v); }
-	template <class T> inline T length2(const v3<T>& v) { return dot(v, v); }
-	template <class T> inline T length2(const v4<T>& v) { return dot(v, v); }
+	export_ template <class T> inline T length2(const v2<T>& v) { return dot(v, v); }
+	export_ template <class T> inline T length2(const v3<T>& v) { return dot(v, v); }
+	export_ template <class T> inline T length2(const v4<T>& v) { return dot(v, v); }
 
-	template <class T> inline T distance(const v2<T>& a, const v2<T>& b) { return length(b - a); }
-	template <class T> inline T distance(const v3<T>& a, const v3<T>& b) { return length(b - a); }
-	template <class T> inline T distance(const v4<T>& a, const v4<T>& b) { return length(b - a); }
+	export_ template <class T> inline T distance(const v2<T>& a, const v2<T>& b) { return length(b - a); }
+	export_ template <class T> inline T distance(const v3<T>& a, const v3<T>& b) { return length(b - a); }
+	export_ template <class T> inline T distance(const v4<T>& a, const v4<T>& b) { return length(b - a); }
 
-	template <class T> inline T distance2(const v2<T>& a, const v2<T>& b) { return length2(b - a); }
-	template <class T> inline T distance2(const v3<T>& a, const v3<T>& b) { return length2(b - a); }
-	template <class T> inline T distance2(const v4<T>& a, const v4<T>& b) { return length2(b - a); }
+	export_ template <class T> inline T distance2(const v2<T>& a, const v2<T>& b) { return length2(b - a); }
+	export_ template <class T> inline T distance2(const v3<T>& a, const v3<T>& b) { return length2(b - a); }
+	export_ template <class T> inline T distance2(const v4<T>& a, const v4<T>& b) { return length2(b - a); }
 
-	template <class T> inline v2<T> normalize(const v2<T>& v) { return v * T(1) / T(sqrt(dot(v, v))); }
-	template <class T> inline v3<T> normalize(const v3<T>& v) { return v * T(1) / T(sqrt(dot(v, v))); }
-	template <class T> inline v4<T> normalize(const v4<T>& v) { return v * T(1) / T(sqrt(dot(v, v))); }
+	export_ template <class T> inline v2<T> normalize(const v2<T>& v) { return v * T(1) / T(sqrt(dot(v, v))); }
+	export_ template <class T> inline v3<T> normalize(const v3<T>& v) { return v * T(1) / T(sqrt(dot(v, v))); }
+	export_ template <class T> inline v4<T> normalize(const v4<T>& v) { return v * T(1) / T(sqrt(dot(v, v))); }
 
-	template <class T> inline v2<T> abs(const v2<T>& v) { return v2<T>(abs(v.x), abs(v.y)); }
-	template <class T> inline v3<T> abs(const v3<T>& v) { return v3<T>(abs(v.x), abs(v.y), abs(v.z)); }
-	template <class T> inline v4<T> abs(const v4<T>& v) { return v4<T>(abs(v.x), abs(v.y), abs(v.z), abs(v.w)); }
+	export_ template <class T> inline v2<T> abs(const v2<T>& v) { return v2<T>(abs(v.x), abs(v.y)); }
+	export_ template <class T> inline v3<T> abs(const v3<T>& v) { return v3<T>(abs(v.x), abs(v.y), abs(v.z)); }
+	export_ template <class T> inline v4<T> abs(const v4<T>& v) { return v4<T>(abs(v.x), abs(v.y), abs(v.z), abs(v.w)); }
 
-	template <class T> inline v2<T> mod(const v2<T>& a, const v2<T>& b) { return v2<T>(fmod(a.x, b.x), fmod(a.y, b.y)); }
-	template <class T> inline v3<T> mod(const v3<T>& a, const v3<T>& b) { return v3<T>(fmod(a.x, b.x), fmod(a.y, b.y), fmod(a.z, b.z)); }
-	template <class T> inline v4<T> mod(const v4<T>& a, const v4<T>& b) { return v4<T>(fmod(a.x, b.x), fmod(a.y, b.y), fmod(a.z, b.z), fmod(a.w, b.w)); }
+	export_ template <class T> inline v2<T> mod(const v2<T>& a, const v2<T>& b) { return v2<T>(fmod(a.x, b.x), fmod(a.y, b.y)); }
+	export_ template <class T> inline v3<T> mod(const v3<T>& a, const v3<T>& b) { return v3<T>(fmod(a.x, b.x), fmod(a.y, b.y), fmod(a.z, b.z)); }
+	export_ template <class T> inline v4<T> mod(const v4<T>& a, const v4<T>& b) { return v4<T>(fmod(a.x, b.x), fmod(a.y, b.y), fmod(a.z, b.z), fmod(a.w, b.w)); }
 
-	template <class T> inline T     imod(const T& a, const T& b) { return a % b; }
-	template <class T> inline v2<T> imod(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x % b.x, a.y % b.y); }
-	template <class T> inline v3<T> imod(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x % b.x, a.y % b.y, a.z % b.z); }
-	template <class T> inline v4<T> imod(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x % b.x, a.y % b.y, a.z % b.z, a.w % b.w); }
+	export_ template <class T> inline T     imod(const T& a, const T& b) { return a % b; }
+	export_ template <class T> inline v2<T> imod(const v2<T>& a, const v2<T>& b) { return v2<T>(a.x % b.x, a.y % b.y); }
+	export_ template <class T> inline v3<T> imod(const v3<T>& a, const v3<T>& b) { return v3<T>(a.x % b.x, a.y % b.y, a.z % b.z); }
+	export_ template <class T> inline v4<T> imod(const v4<T>& a, const v4<T>& b) { return v4<T>(a.x % b.x, a.y % b.y, a.z % b.z, a.w % b.w); }
 
-	template <class T> inline v2<T> min(const v2<T>& a, const v2<T>& b) { return v2<T>(min(a.x, b.x), min(a.y, b.y)); }
-	template <class T> inline v3<T> min(const v3<T>& a, const v3<T>& b) { return v3<T>(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z)); }
-	template <class T> inline v4<T> min(const v4<T>& a, const v4<T>& b) { return v4<T>(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z), min(a.w, b.w)); }
-	template <class T> inline v2<T> min(const v2<T>& a, T b) { return v2<T>(min(a.x, b), min(a.y, b)); }
-	template <class T> inline v3<T> min(const v3<T>& a, T b) { return v3<T>(min(a.x, b), min(a.y, b), min(a.z, b)); }
-	template <class T> inline v4<T> min(const v4<T>& a, T b) { return v4<T>(min(a.x, b), min(a.y, b), min(a.z, b), min(a.w, b)); }
+	export_ template <class T> inline v2<T> min(const v2<T>& a, const v2<T>& b) { return v2<T>(min(a.x, b.x), min(a.y, b.y)); }
+	export_ template <class T> inline v3<T> min(const v3<T>& a, const v3<T>& b) { return v3<T>(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z)); }
+	export_ template <class T> inline v4<T> min(const v4<T>& a, const v4<T>& b) { return v4<T>(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z), min(a.w, b.w)); }
+	export_ template <class T> inline v2<T> min(const v2<T>& a, T b) { return v2<T>(min(a.x, b), min(a.y, b)); }
+	export_ template <class T> inline v3<T> min(const v3<T>& a, T b) { return v3<T>(min(a.x, b), min(a.y, b), min(a.z, b)); }
+	export_ template <class T> inline v4<T> min(const v4<T>& a, T b) { return v4<T>(min(a.x, b), min(a.y, b), min(a.z, b), min(a.w, b)); }
 
-	template <class T> inline v2<T> max(const v2<T>& a, const v2<T>& b) { return v2<T>(max(a.x, b.x), max(a.y, b.y)); }
-	template <class T> inline v3<T> max(const v3<T>& a, const v3<T>& b) { return v3<T>(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z)); }
-	template <class T> inline v4<T> max(const v4<T>& a, const v4<T>& b) { return v4<T>(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z), max(a.w, b.w)); }
-	template <class T> inline v2<T> max(const v2<T>& a, T b) { return v2<T>(max(a.x, b), max(a.y, b)); }
-	template <class T> inline v3<T> max(const v3<T>& a, T b) { return v3<T>(max(a.x, b), max(a.y, b), max(a.z, b)); }
-	template <class T> inline v4<T> max(const v4<T>& a, T b) { return v4<T>(max(a.x, b), max(a.y, b), max(a.z, b), max(a.w, b)); }
+	export_ template <class T> inline v2<T> max(const v2<T>& a, const v2<T>& b) { return v2<T>(max(a.x, b.x), max(a.y, b.y)); }
+	export_ template <class T> inline v3<T> max(const v3<T>& a, const v3<T>& b) { return v3<T>(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z)); }
+	export_ template <class T> inline v4<T> max(const v4<T>& a, const v4<T>& b) { return v4<T>(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z), max(a.w, b.w)); }
+	export_ template <class T> inline v2<T> max(const v2<T>& a, T b) { return v2<T>(max(a.x, b), max(a.y, b)); }
+	export_ template <class T> inline v3<T> max(const v3<T>& a, T b) { return v3<T>(max(a.x, b), max(a.y, b), max(a.z, b)); }
+	export_ template <class T> inline v4<T> max(const v4<T>& a, T b) { return v4<T>(max(a.x, b), max(a.y, b), max(a.z, b), max(a.w, b)); }
 
-	template <class T> inline v2<T> clamp(const v2<T>& v, T lo, T hi) { return min(max(v, lo), hi); }
-	template <class T> inline v3<T> clamp(const v3<T>& v, T lo, T hi) { return min(max(v, lo), hi); }
-	template <class T> inline v4<T> clamp(const v4<T>& v, T lo, T hi) { return min(max(v, lo), hi); }
+	export_ template <class T> inline v2<T> clamp(const v2<T>& v, T lo, T hi) { return min(max(v, lo), hi); }
+	export_ template <class T> inline v3<T> clamp(const v3<T>& v, T lo, T hi) { return min(max(v, lo), hi); }
+	export_ template <class T> inline v4<T> clamp(const v4<T>& v, T lo, T hi) { return min(max(v, lo), hi); }
 
-	template <class T> inline v2<T> clamp(const v2<T>& v, const v2<T>& lo, const v2<T>& hi) { return min(max(v, lo), hi); }
-	template <class T> inline v3<T> clamp(const v3<T>& v, const v3<T>& lo, const v3<T>& hi) { return min(max(v, lo), hi); }
-	template <class T> inline v4<T> clamp(const v4<T>& v, const v4<T>& lo, const v4<T>& hi) { return min(max(v, lo), hi); }
+	export_ template <class T> inline v2<T> clamp(const v2<T>& v, const v2<T>& lo, const v2<T>& hi) { return min(max(v, lo), hi); }
+	export_ template <class T> inline v3<T> clamp(const v3<T>& v, const v3<T>& lo, const v3<T>& hi) { return min(max(v, lo), hi); }
+	export_ template <class T> inline v4<T> clamp(const v4<T>& v, const v4<T>& lo, const v4<T>& hi) { return min(max(v, lo), hi); }
 
-	template <class T> inline T     saturate(T v) { return clamp(v, T(0), T(1)); }
-	template <class T> inline v2<T> saturate(const v2<T>& v) { return clamp(v, T(0), T(1)); }
-	template <class T> inline v3<T> saturate(const v3<T>& v) { return clamp(v, T(0), T(1)); }
-	template <class T> inline v4<T> saturate(const v4<T>& v) { return clamp(v, T(0), T(1)); }
+	export_ template <class T> inline T     saturate(T v) { return clamp(v, T(0), T(1)); }
+	export_ template <class T> inline v2<T> saturate(const v2<T>& v) { return clamp(v, T(0), T(1)); }
+	export_ template <class T> inline v3<T> saturate(const v3<T>& v) { return clamp(v, T(0), T(1)); }
+	export_ template <class T> inline v4<T> saturate(const v4<T>& v) { return clamp(v, T(0), T(1)); }
 
-	template <class T> inline v2<T> floor(const v2<T>& v) { return v2<T>(floor(v.x), floor(v.y)); }
-	template <class T> inline v3<T> floor(const v3<T>& v) { return v3<T>(floor(v.x), floor(v.y), floor(v.z)); }
-	template <class T> inline v4<T> floor(const v4<T>& v) { return v4<T>(floor(v.x), floor(v.y), floor(v.z), floor(v.w)); }
+	export_ template <class T> inline v2<T> floor(const v2<T>& v) { return v2<T>(floor(v.x), floor(v.y)); }
+	export_ template <class T> inline v3<T> floor(const v3<T>& v) { return v3<T>(floor(v.x), floor(v.y), floor(v.z)); }
+	export_ template <class T> inline v4<T> floor(const v4<T>& v) { return v4<T>(floor(v.x), floor(v.y), floor(v.z), floor(v.w)); }
 
-	template <class T> inline v2<T> ceil(const v2<T>& v) { return v2<T>(ceil(v.x), ceil(v.y)); }
-	template <class T> inline v3<T> ceil(const v3<T>& v) { return v3<T>(ceil(v.x), ceil(v.y), ceil(v.z)); }
-	template <class T> inline v4<T> ceil(const v4<T>& v) { return v4<T>(ceil(v.x), ceil(v.y), ceil(v.z), ceil(v.w)); }
+	export_ template <class T> inline v2<T> ceil(const v2<T>& v) { return v2<T>(ceil(v.x), ceil(v.y)); }
+	export_ template <class T> inline v3<T> ceil(const v3<T>& v) { return v3<T>(ceil(v.x), ceil(v.y), ceil(v.z)); }
+	export_ template <class T> inline v4<T> ceil(const v4<T>& v) { return v4<T>(ceil(v.x), ceil(v.y), ceil(v.z), ceil(v.w)); }
 
-	template <class T> inline v2<T> pow(const v2<T>& a, const v2<T>& b) { return v2<T>(pow(a.x, b.x), pow(a.y, b.y)); }
-	template <class T> inline v3<T> pow(const v3<T>& a, const v3<T>& b) { return v3<T>(pow(a.x, b.x), pow(a.y, b.y), pow(a.z, b.z)); }
-	template <class T> inline v4<T> pow(const v4<T>& a, const v4<T>& b) { return v4<T>(pow(a.x, b.x), pow(a.y, b.y), pow(a.z, b.z), pow(a.w, b.w)); }
+	export_ template <class T> inline v2<T> pow(const v2<T>& a, const v2<T>& b) { return v2<T>(pow(a.x, b.x), pow(a.y, b.y)); }
+	export_ template <class T> inline v3<T> pow(const v3<T>& a, const v3<T>& b) { return v3<T>(pow(a.x, b.x), pow(a.y, b.y), pow(a.z, b.z)); }
+	export_ template <class T> inline v4<T> pow(const v4<T>& a, const v4<T>& b) { return v4<T>(pow(a.x, b.x), pow(a.y, b.y), pow(a.z, b.z), pow(a.w, b.w)); }
 
-	template <class T> inline v2<T> cos(const v2<T>& v) { return v2<T>(cos(v.x), cos(v.y)); }
-	template <class T> inline v3<T> cos(const v3<T>& v) { return v3<T>(cos(v.x), cos(v.y), cos(v.z)); }
-	template <class T> inline v4<T> cos(const v4<T>& v) { return v4<T>(cos(v.x), cos(v.y), cos(v.z), cos(v.w)); }
+	export_ template <class T> inline v2<T> cos(const v2<T>& v) { return v2<T>(cos(v.x), cos(v.y)); }
+	export_ template <class T> inline v3<T> cos(const v3<T>& v) { return v3<T>(cos(v.x), cos(v.y), cos(v.z)); }
+	export_ template <class T> inline v4<T> cos(const v4<T>& v) { return v4<T>(cos(v.x), cos(v.y), cos(v.z), cos(v.w)); }
 
-	template <class T> inline v2<T> sin(const v2<T>& v) { return v2<T>(sin(v.x), sin(v.y)); }
-	template <class T> inline v3<T> sin(const v3<T>& v) { return v3<T>(sin(v.x), sin(v.y), sin(v.z)); }
-	template <class T> inline v4<T> sin(const v4<T>& v) { return v4<T>(sin(v.x), sin(v.y), sin(v.z), sin(v.w)); }
+	export_ template <class T> inline v2<T> sin(const v2<T>& v) { return v2<T>(sin(v.x), sin(v.y)); }
+	export_ template <class T> inline v3<T> sin(const v3<T>& v) { return v3<T>(sin(v.x), sin(v.y), sin(v.z)); }
+	export_ template <class T> inline v4<T> sin(const v4<T>& v) { return v4<T>(sin(v.x), sin(v.y), sin(v.z), sin(v.w)); }
 
 	// lerp
-	template <class T> inline T     lerp(T a, T b, float t) { return T(a + t * (b - a)); }
-	template <class T> inline v2<T> lerp(const v2<T>& a, const v2<T>& b, float t) { return v2<T>(a) + t * v2<T>(b - a); }
-	template <class T> inline v3<T> lerp(const v3<T>& a, const v3<T>& b, float t) { return v3<T>(a) + t * v3<T>(b - a); }
-	template <class T> inline v4<T> lerp(const v4<T>& a, const v4<T>& b, float t) { return v4<T>(a) + t * v4<T>(b - a); }
+	export_ template <class T> inline T     lerp(T a, T b, float t) { return T(a + t * (b - a)); }
+	export_ template <class T> inline v2<T> lerp(const v2<T>& a, const v2<T>& b, float t) { return v2<T>(a) + t * v2<T>(b - a); }
+	export_ template <class T> inline v3<T> lerp(const v3<T>& a, const v3<T>& b, float t) { return v3<T>(a) + t * v3<T>(b - a); }
+	export_ template <class T> inline v4<T> lerp(const v4<T>& a, const v4<T>& b, float t) { return v4<T>(a) + t * v4<T>(b - a); }
 
-	template <class T> T     spline(T a, T b, T c, T d, T t);
-	template <class T> v2<T> spline(const v2<T>& a, const v2<T>& b, const v2<T>& c, const v2<T>& d, T t);
-	template <class T> v3<T> spline(const v3<T>& a, const v3<T>& b, const v3<T>& c, const v3<T>& d, T t);
-	template <class T> v4<T> spline(const v4<T>& a, const v4<T>& b, const v4<T>& c, const v4<T>& d, T t);
+	export_ template <class T> T     spline(T a, T b, T c, T d, T t);
+	export_ template <class T> v2<T> spline(const v2<T>& a, const v2<T>& b, const v2<T>& c, const v2<T>& d, T t);
+	export_ template <class T> v3<T> spline(const v3<T>& a, const v3<T>& b, const v3<T>& c, const v3<T>& d, T t);
+	export_ template <class T> v4<T> spline(const v4<T>& a, const v4<T>& b, const v4<T>& c, const v4<T>& d, T t);
 
-	template <class T> inline T angle(T a, T b) { return acos(clamp(a * b, T(-1), T(1))); }
-	template <class T> inline T angle(const v2<T>& a, const v2<T>& b) { return acos(clamp(dot(a, b), T(-1), T(1))); }
-	template <class T> inline T angle(const v3<T>& a, const v3<T>& b) { return acos(clamp(dot(a, b), T(-1), T(1))); }
-	template <class T> inline T angle(const v4<T>& a, const v4<T>& b) { return acos(clamp(dot(a, b), T(-1), T(1))); }
+	export_ template <class T> inline T angle(T a, T b) { return acos(clamp(a * b, T(-1), T(1))); }
+	export_ template <class T> inline T angle(const v2<T>& a, const v2<T>& b) { return acos(clamp(dot(a, b), T(-1), T(1))); }
+	export_ template <class T> inline T angle(const v3<T>& a, const v3<T>& b) { return acos(clamp(dot(a, b), T(-1), T(1))); }
+	export_ template <class T> inline T angle(const v4<T>& a, const v4<T>& b) { return acos(clamp(dot(a, b), T(-1), T(1))); }
 
 	inline mat3::mat3() {}
 	inline mat3::mat3(const float3& x, const float3& y, const float3& z)
@@ -376,8 +378,8 @@ namespace two
 	export_ template <> inline const float* value_ptr(const mat4& m) { return &m.f[0]; }
 	export_ template <> inline float* value_ptr(quat& q) { return &q[0]; }
 
-	inline bool operator<(const uvec2& lhs, const uvec2& rhs) { return lhs.x < rhs.x || (lhs.x == rhs.x && lhs.y < rhs.y); }
-	inline bool operator<(const ivec2& lhs, const ivec2& rhs) { return lhs.x < rhs.x || (lhs.x == rhs.x && lhs.y < rhs.y); }
+	export_ inline bool operator<(const uvec2& lhs, const uvec2& rhs) { return lhs.x < rhs.x || (lhs.x == rhs.x && lhs.y < rhs.y); }
+	export_ inline bool operator<(const ivec2& lhs, const ivec2& rhs) { return lhs.x < rhs.x || (lhs.x == rhs.x && lhs.y < rhs.y); }
 
 	export_ inline vec3 to_xz(const vec2& vec) { return{ vec.x, 0.f, vec.y }; }
 	export_ inline vec2 to_xz(const vec3& vec) { return{ vec.x, vec.z }; }

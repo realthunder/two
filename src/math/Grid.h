@@ -4,9 +4,11 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stdint.h>
 #include <stl/vector.h>
 #include <stl/table.h>
+#endif
 #include <math/Forward.h>
 #include <math/Vec.h>
 #include <math/Axis.h>

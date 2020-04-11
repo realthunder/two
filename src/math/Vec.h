@@ -4,15 +4,16 @@
 
 #pragma once
 
-#include <stdint.h>
+#ifndef TWO_MODULES
 #include <stl/base.h>
+#endif
 #include <math/Axis.h>
 #include <math/Forward.h>
 
 namespace two
 {
-	template <class T>
-	export_ struct refl_ struct_ array_ v2
+	export_ template <class T>
+	struct refl_ struct_ array_ v2
 	{
 		typedef uint length_type;
 		typedef T type;
@@ -33,8 +34,8 @@ namespace two
 		};
 	};
 
-	template <class T>
-	export_ struct refl_ struct_ array_ v3
+	export_ template <class T>
+	struct refl_ struct_ array_ v3
 	{
 		typedef uint length_type;
 		typedef T type;
@@ -58,8 +59,8 @@ namespace two
 		};
 	};
 
-	template <class T>
-	export_ struct refl_ struct_ array_ v4
+	export_ template <class T>
+	struct refl_ struct_ array_ v4
 	{
 		typedef uint length_type;
 		typedef T type;

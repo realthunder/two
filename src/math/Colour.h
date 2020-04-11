@@ -4,8 +4,10 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stdint.h>
 #include <stl/stddef.h>
+#endif
 #include <math/Forward.h>
 
 namespace two
@@ -90,14 +92,14 @@ namespace two
 	export_ TWO_MATH_EXPORT func_ ColourHSL to_hsla(const Colour& colour);
 	export_ TWO_MATH_EXPORT func_ Colour to_rgba(const ColourHSL& colour);
 
-	inline Colour saturation(const Colour& colour, float amount)
+	export_ inline Colour saturation(const Colour& colour, float amount)
 	{
 		ColourHSL result = to_hsl(colour.r, colour.g, colour.b);
 		result.s *= amount;
 		return hsl(result.h, result.s, result.l);
 	}
 
-	inline Colour offset_hsl(const Colour& colour, float h, float s, float l)
+	export_ inline Colour offset_hsl(const Colour& colour, float h, float s, float l)
 	{
 		ColourHSL result = to_hsl(colour.r, colour.g, colour.b);
 		result.h *= h;

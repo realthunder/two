@@ -2,6 +2,7 @@
 #include <infra/Config.h>
 #include <infra/Cpp20.h>
 #include <stl/table.h>
+#include <stl/math.h>
 #include <infra/Arena.h>
 #include <infra/File.h>
 #include <infra/Forward.h>

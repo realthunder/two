@@ -12,29 +12,29 @@
 
 namespace stl
 {
-	using std::abs;
-	using std::floor;
-	using std::ceil;
-	using std::sin;
-	using std::cos;
-	using std::pow;
-	using std::log2;
-	using std::isnan;
-	using std::isinf;
+	export_ using std::abs;
+	export_ using std::floor;
+	export_ using std::ceil;
+	export_ using std::sin;
+	export_ using std::cos;
+	export_ using std::pow;
+	export_ using std::log2;
+	export_ using std::isnan;
+	export_ using std::isinf;
 
-	template <class T>
+	export_ template <class T>
 	inline constexpr T sq(T val) { return val * val; }
 
-	template <class T>
+	export_ template <class T>
 	inline constexpr T sign(T val) { return T(T(0) < val) - (val < T(0)); }
 
-	template <class T>
+	export_ template <class T>
 	inline constexpr T min(T a, T b) { return (b < a) ? b : a; }
 
-	template <class T>
+	export_ template <class T>
 	inline constexpr T max(T a, T b) { return (a < b) ? b : a; }
 
-	template <class T>
+	export_ template <class T>
 	inline constexpr T clamp(T v, T lo, T hi) { return min(max(v, lo), hi); }
 }
 

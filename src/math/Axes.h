@@ -4,12 +4,14 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/table.h>
+#include <stl/stddef.h>
+#endif
 #include <math/Forward.h>
 #include <math/Axis.h>
 #include <math/Vec.h>
 
-#include <stl/stddef.h>
 
 namespace two
 {
