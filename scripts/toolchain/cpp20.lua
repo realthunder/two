@@ -19,8 +19,8 @@ function modules(m)
     
     defines { "_CRT_NO_VA_START_VALIDATION" }
 
-    if _ACTION == "vs2015"
-	or _ACTION == "vs2017" then
+    if _ACTION == "vs2017"
+	or _ACTION == "vs2019" then
         files {
             path.join(m.path, m.dotname .. ".ixx"),
         }
@@ -47,7 +47,7 @@ function mxx(cpps, m)
 
     for _, cpp in ipairs(cpps) do
         local relcpp = path.getrelative(TWO_DIR, cpp)
-        print("module for " .. relcpp .. " = " .. m.dotname)
+      --print("module for " .. relcpp .. " = " .. m.dotname)
         cxxmodules[relcpp] = m.dotname
     end
 

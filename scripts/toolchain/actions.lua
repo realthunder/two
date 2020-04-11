@@ -26,18 +26,15 @@ function write_api(m)
     f:close()
 end
 
-function write_mxx(m)
-	local f, err = io.open(path.join(m.path, m.dotname .. ".mxx"), "wb")
-    io.output(f)
-    
+function write_module_xx(m)
     local p = io.printf
+    p("module;")
     p("#include <cpp/preimport.h>")
-    p("")
     p("#include <infra/Config.h>")
     p("")
     p("export module " .. m.dotname .. ";")
     p("export import std.core;")
-    p("export import std.io;")
+  --p("export import std.io;")
     p("export import std.threading;")
     p("export import std.regex;")
     p("")
@@ -49,18 +46,31 @@ function write_mxx(m)
     p("")
     p("#include <" .. m.subdir .. "/Api.h>")
     if m.reflect then
-        p("#include <meta/" .. m.subdir .. "/Module.h>")
-        p("#include <meta/" .. m.subdir .. "/Convert.h>")
+        p("#include <meta/" .. m.name .. ".meta.h>")
     end
     p("")
     
+end
+
+function write_ixx(m)
+	local f, err = io.open(path.join(m.path, m.dotname .. ".ixx"), "wb")
+    io.output(f)
+    write_module_xx(m)
+    f:close()
+end
+
+function write_mxx(m)
+	local f, err = io.open(path.join(m.path, m.dotname .. ".mxx"), "wb")
+    io.output(f)
+    write_module_xx(m)
     f:close()
 end
 
 function bootstrap(modules)
     for _, m in ipairs(modules) do
-        two_write_api(m)
-        two_write_mxx(m)
+      --write_api(m)
+        write_ixx(m)
+        write_mxx(m)
     end
 end
 

@@ -90,11 +90,8 @@ function uses_two()
         path.join(TWO_DIST_DIR)
     }
     
-    if _OPTIONS["use-stl"] then
-        configuration { "Debug" }
-            defines { "USE_STL" }
-            
-        configuration {}
+    if _OPTIONS["use-stl"] or _OPTIONS["cpp-modules"] then
+        defines { "USE_STL" }
     end
     
     if _OPTIONS["profile"] then
