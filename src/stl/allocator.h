@@ -4,7 +4,7 @@
 
 namespace stl {
 
-	struct allocator {
+	export_ struct allocator {
 		static void* static_allocate(size_t bytes) {
 			return operator new(bytes);
 		}

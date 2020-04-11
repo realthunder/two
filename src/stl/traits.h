@@ -1,116 +1,118 @@
 #pragma once
 
-namespace stl
+#include <infra/Config.h>
+
+export_ namespace stl
 {
-	template <bool Test, class T = void>
+	export_ template <bool Test, class T = void>
 	struct enable_if_base {};
 
-	template <class T>
+	export_ template <class T>
 	struct enable_if_base<true, T> { using type = T; };
 
-	template <bool Test, class T = void>
+	export_ template <bool Test, class T = void>
 	using enable_if = typename enable_if_base<Test, T>::type;
 
-	template <class T>
+	export_ template <class T>
 	struct remove_reference_base { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct remove_reference_base<T&> { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct remove_reference_base<T&&> { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct remove_pointer_base { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct remove_pointer_base<T*> { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct remove_pointer_base<T* const> { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	using remove_reference = typename remove_reference_base<T>::type;
 
-	template <class T>
+	export_ template <class T>
 	using remove_pointer = typename remove_pointer_base<T>::type;
 
-	template <class T>
+	export_ template <class T>
 	struct remove_cv_base { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct remove_cv_base<const T> { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct remove_cv_base<volatile T> { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct remove_cv_base<const volatile T> { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	using remove_cv = typename remove_cv_base<T>::type;
 
-	template <class... Types>
+	export_ template <class... Types>
 	using void_t = void;
 
-	template <class T, class = void>
+	export_ template <class T, class = void>
 	struct add_lvalue_reference_base { using type = T; };
 
-	template <class T, class = void>
+	export_ template <class T, class = void>
 	struct add_rvalue_reference_base { using type = T; };
 
-	template <class T>
+	export_ template <class T>
 	struct add_lvalue_reference_base<T, void_t<T&>> { using type = T&; };
 
-	template <class T>
+	export_ template <class T>
 	struct add_rvalue_reference_base<T, void_t<T&>> { using type = T&&; };
 
-	template <class T>
+	export_ template <class T>
 	using add_lvalue_reference = typename add_lvalue_reference_base<T>::type;
 
-	template <class T>
+	export_ template <class T>
 	using add_rvalue_reference = typename add_rvalue_reference_base<T>::type;
 
-	template <class T>
+	export_ template <class T>
 	add_rvalue_reference<T> declval() noexcept;
 
-	template <class T>
+	export_ template <class T>
 	using add_const = const T;
 
-	template <class T>
+	export_ template <class T>
 	constexpr bool is_void = false;
 	
-	template <>
+	export_ template <>
 	inline constexpr bool is_void<void> = true;
 
-	template<class T1, class T2>
+	export_ template<class T1, class T2>
 	constexpr bool is_same = false;
 
-	template<class T1>
+	export_ template<class T1>
 	constexpr bool is_same<T1, T1> = true;
 
-	template <class, class T, class... Args>
+	export_ template <class, class T, class... Args>
 	constexpr bool is_constructible_impl = false;
 
-	template <class T, class... Args>
+	export_ template <class T, class... Args>
 	constexpr bool is_constructible_impl<void_t<decltype(T(declval<Args>()...))>, T, Args...> = true;
 
-	template <class T, class... Args>
+	export_ template <class T, class... Args>
 	constexpr bool is_constructible = is_constructible_impl<void_t<>, T, Args...>;
 
-	template <class T>
+	export_ template <class T>
 	constexpr bool is_copy_constructible = is_constructible<T, add_lvalue_reference<const T>>;
 	
-	template <class T>
+	export_ template <class T>
 	constexpr bool is_default_constructible = is_constructible<T>;
 
-	template<class T, class U, typename = void>
+	export_ template<class T, class U, typename = void>
 	constexpr bool is_assignable = false;
 
-	template<class T, class U>
+	export_ template<class T, class U>
 	constexpr bool is_assignable<T, U, decltype(declval<T&>() = declval<U&>(), void())> = true;
 
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_copy_assignable = is_assignable<T, T>;
 
 #if 1
@@ -169,67 +171,67 @@ namespace stl
 	constexpr bool is_invocable = is_invocable_base<T, Args...>::value;
 #endif
 
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_pointer = false;
 
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_pointer<T*> = true;
 
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_pointer<T* const> = true;
 
-	template<class _Ty>
+	export_ template<class _Ty>
 	constexpr bool is_float_impl = false;
 
-	template <> inline constexpr bool is_float_impl<float> = true;
-	template <> inline constexpr bool is_float_impl<double> = true;
+	export_ template <> inline constexpr bool is_float_impl<float> = true;
+	export_ template <> inline constexpr bool is_float_impl<double> = true;
 
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_float = is_float_impl<remove_cv<T>>;
 
-	template<class _Ty>
+	export_ template<class _Ty>
 	constexpr bool is_integral_impl = false;
 
-	template <> inline constexpr bool is_integral_impl<bool> = true;
-	template <> inline constexpr bool is_integral_impl<char> = true;
-	template <> inline constexpr bool is_integral_impl<unsigned char> = true;
-	template <> inline constexpr bool is_integral_impl<signed char> = true;
-	template <> inline constexpr bool is_integral_impl<unsigned short> = true;
-	template <> inline constexpr bool is_integral_impl<short> = true;
-	template <> inline constexpr bool is_integral_impl<unsigned int> = true;
-	template <> inline constexpr bool is_integral_impl<int> = true;
-	template <> inline constexpr bool is_integral_impl<unsigned long> = true;
-	template <> inline constexpr bool is_integral_impl<long> = true;
-	template <> inline constexpr bool is_integral_impl<unsigned long long> = true;
-	template <> inline constexpr bool is_integral_impl<long long> = true;
+	export_ template <> inline constexpr bool is_integral_impl<bool> = true;
+	export_ template <> inline constexpr bool is_integral_impl<char> = true;
+	export_ template <> inline constexpr bool is_integral_impl<unsigned char> = true;
+	export_ template <> inline constexpr bool is_integral_impl<signed char> = true;
+	export_ template <> inline constexpr bool is_integral_impl<unsigned short> = true;
+	export_ template <> inline constexpr bool is_integral_impl<short> = true;
+	export_ template <> inline constexpr bool is_integral_impl<unsigned int> = true;
+	export_ template <> inline constexpr bool is_integral_impl<int> = true;
+	export_ template <> inline constexpr bool is_integral_impl<unsigned long> = true;
+	export_ template <> inline constexpr bool is_integral_impl<long> = true;
+	export_ template <> inline constexpr bool is_integral_impl<unsigned long long> = true;
+	export_ template <> inline constexpr bool is_integral_impl<long long> = true;
 
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_integral = is_integral_impl<remove_cv<T>>;
 
-	template<class T, bool = is_integral<T> || is_float<T>>
+	export_ template<class T, bool = is_integral<T> || is_float<T>>
 	constexpr bool is_signed = T(-1) < T(0);
  
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_signed<T, false> = false;
 
-	template<class T, bool = is_integral<T> || is_float<T>>
+	export_ template<class T, bool = is_integral<T> || is_float<T>>
 	constexpr bool is_unsigned = T(0) < T(-1);
 
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_unsigned<T, false> = false;
 
-	template<class T>
+	export_ template<class T>
 	constexpr bool is_number = is_float<T> || (is_integral<T> && !is_same<T, bool>);
 }
 
 namespace two
 {
-	using stl::declval;
-	using stl::enable_if;
-	using stl::remove_pointer; using stl::remove_reference; using stl::remove_cv;
-	using stl::is_same;
-	using stl::is_invocable; using stl::is_invocable_r;
-	using stl::is_copy_assignable;
-	using stl::is_constructible; using stl::is_copy_constructible; using stl::is_default_constructible;
-	using stl::is_pointer; using stl::is_integral; using stl::is_signed; using stl::is_unsigned; using stl::is_float; using stl::is_number;
+	export_ using stl::declval;
+	export_ using stl::enable_if;
+	export_ using stl::remove_pointer; export_ using stl::remove_reference; export_ using stl::remove_cv;
+	export_ using stl::is_same;
+	export_ using stl::is_invocable; export_ using stl::is_invocable_r;
+	export_ using stl::is_copy_assignable;
+	export_ using stl::is_constructible; export_ using stl::is_copy_constructible; export_ using stl::is_default_constructible;
+	export_ using stl::is_pointer; export_ using stl::is_integral; export_ using stl::is_signed; export_ using stl::is_unsigned; export_ using stl::is_float; export_ using stl::is_number;
 }

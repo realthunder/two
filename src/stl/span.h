@@ -76,6 +76,6 @@ namespace stl
 
 namespace two
 {
-	using stl::span;
-	using stl::span2d;
+	export_ using stl::span;
+	export_ using stl::span2d;
 }

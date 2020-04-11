@@ -7,22 +7,22 @@
 #include <infra/Config.h>
 #include <stdint.h>
 
-using schar = signed char;
-using uchar = unsigned char;
-using ushort = unsigned short;
-using uint = unsigned int;
-using ulong = unsigned long;
-using ullong = unsigned long long;
-using llong = long long;
-using ldouble = long double;
+export_ using schar = signed char;
+export_ using uchar = unsigned char;
+export_ using ushort = unsigned short;
+export_ using uint = unsigned int;
+export_ using ulong = unsigned long;
+export_ using ullong = unsigned long long;
+export_ using llong = long long;
+export_ using ldouble = long double;
 
 namespace stl
 {
-	template <class T>
+	export_ template <class T>
 	inline bool bit(T flags, T bit) { return (uint(flags) & uint(bit)) != 0; }
 }
 
 namespace two
 {
-	using stl::bit;
+	export_ using stl::bit;
 }

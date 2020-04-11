@@ -21,7 +21,7 @@ namespace stl
 #include <stl/swap.h>
 namespace stl
 {
-	template <class It, class T>
+	export_ template <class It, class T>
 	inline It find_char(It first, const It last, const T& val)
 	{
 		//if(!_Within_limits(first, val))
@@ -30,7 +30,7 @@ namespace stl
 		return first ? first : last;
 	}
 
-	template <class It, class T>
+	export_ template <class It, class T>
 	inline It find(It first, const It last, const T& val)
 	{
 		for(; first != last; ++first)
@@ -39,7 +39,7 @@ namespace stl
 		return first;
 	}
 
-	template <class It, class Pr>
+	export_ template <class It, class Pr>
 	inline It find_if(It first, const It last, Pr pred)
 	{
 		for(; first != last; ++first)
@@ -48,47 +48,39 @@ namespace stl
 		return first;
 	}
 
-	template <class It, class Pred>
+	export_ template <class It, class Pred>
 	inline It remove_if(It first, const It last, Pred pred)
 	{
 		first = find_if(first, last, pred);
 		It next = first;
 		if(first != last)
-		{
 			while(++first != last)
-			{
 				if(!pred(*first))
 				{
 					*next = move(*first);
 					++next;
 				}
-			}
-		}
 		first = next;
 		return first;
 	}
 
-	template <class It, class T>
+	export_ template <class It, class T>
 	inline It remove(It first, const It last, const T& val)
 	{
 		first = find(first, last, val);
 		It next = first;
 		if(first != last)
-		{
 			while(++first != last)
-			{
 				if(!(*first == val))
 				{
 					*next = move(*first);
 					++next;
 				}
-			}
-		}
 		first = next;
 		return first;
 	}
 
-	template <class InIt, class OutIt, class Fn>
+	export_ template <class InIt, class OutIt, class Fn>
 	inline OutIt transform(InIt first, const InIt last, OutIt dest, Fn func)
 	{
 		for(; first != last; ++first, (void)++dest)
@@ -98,7 +90,7 @@ namespace stl
 		return dest;
 	}
 
-	template <class It1, class It2, class Pr>
+	export_ template <class It1, class It2, class Pr>
 	inline bool includes(It1 first1, It1 last1, It2 first2, It2 last2, Pr pred)
 	{
 		for(; first1 != last1 && first2 != last2; ++first1)
@@ -112,7 +104,7 @@ namespace stl
 		return first2 == last2;
 	}
 
-	template <class It1, class It2>
+	export_ template <class It1, class It2>
 	inline bool includes(It1 first1, It1 last1, It2 first2, It2 last2)
 	{
 		auto less = [](auto&& left, auto&& right)
@@ -122,7 +114,7 @@ namespace stl
 		return includes(first1, last1, first2, last2, less);
 	}
 
-	template <class It1, class It2, class Pr>
+	export_ template <class It1, class It2, class Pr>
 	inline bool equal(It1 first1, const It1 last1, It2 first2, Pr pred)
 	{
 		for(; first1 != last1; ++first1, (void)++first2)
@@ -134,7 +126,7 @@ namespace stl
 	}
 
 #if 0
-	template <class It1, class It2, class Pr>
+	export_ template <class It1, class It2, class Pr>
 	inline bool equal_mem(const It1 first1, const It1 last1, const It2 first2)
 	{
 		const auto first1ch = reinterpret_cast<const char*>(first1);
@@ -144,7 +136,7 @@ namespace stl
 	}
 #endif
 
-	template <class It1, class It2, class Pr>
+	export_ template <class It1, class It2, class Pr>
 	inline bool equal(It1 first1, const It1 last1, It2 first2, const It2 last2, Pr Pred)
 	{
 		for(;;)
@@ -163,7 +155,7 @@ namespace stl
 		}
 	}
 
-	template <class It1, class It2>
+	export_ template <class It1, class It2>
 	inline bool equal(It1 first1, const It1 last1, It2 first2, const It2 last2)
 	{
 		auto equal_to = [](auto&& left, auto&& right)
@@ -173,7 +165,7 @@ namespace stl
 		return equal(first1, last1, first2, last2, equal_to);
 	}
 
-	template <class It>
+	export_ template <class It>
 	inline void reverse(It first, It last)
 	{
 		for(; first != last && first != --last; ++first)
@@ -382,38 +374,38 @@ namespace stl
 
 namespace two
 {
-	using stl::move;
-	//using stl::swap;
-	using stl::find;
-	using stl::find_if;
-	using stl::includes;
-	using stl::remove;
-	using stl::remove_if;
-	using stl::transform;
-	using stl::reverse;
-	using stl::has;
-	using stl::has_pred;
-	using stl::find;
-	using stl::index_of;
-	using stl::find_if;
-	//using stl::in;
-	using stl::equal;
-	using stl::contains;
-	using stl::reverse;
-	using stl::push;
-	using stl::add;
-	using stl::pop;
-	using stl::swap_pop;
-	using stl::extend;
-	using stl::merge;
-	using stl::prepend;
-	using stl::remove;
-	using stl::remove_ref;
-	using stl::remove_object;
-	using stl::remove_pt;
-	using stl::remove_if;
-	using stl::prune;
-	using stl::select;
-	using stl::select_swap;
-	using stl::transfer_unique;
+	export_ using stl::move;
+  //export_ using stl::swap;
+	export_ using stl::find;
+	export_ using stl::find_if;
+	export_ using stl::includes;
+	export_ using stl::remove;
+	export_ using stl::remove_if;
+	export_ using stl::transform;
+	export_ using stl::reverse;
+	export_ using stl::has;
+	export_ using stl::has_pred;
+	export_ using stl::find;
+	export_ using stl::index_of;
+	export_ using stl::find_if;
+  //export_ using stl::in;
+	export_ using stl::equal;
+	export_ using stl::contains;
+	export_ using stl::reverse;
+	export_ using stl::push;
+	export_ using stl::add;
+	export_ using stl::pop;
+	export_ using stl::swap_pop;
+	export_ using stl::extend;
+	export_ using stl::merge;
+	export_ using stl::prepend;
+	export_ using stl::remove;
+	export_ using stl::remove_ref;
+	export_ using stl::remove_object;
+	export_ using stl::remove_pt;
+	export_ using stl::remove_if;
+	export_ using stl::prune;
+	export_ using stl::select;
+	export_ using stl::select_swap;
+	export_ using stl::transfer_unique;
 }

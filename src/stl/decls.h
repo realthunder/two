@@ -34,9 +34,9 @@ namespace stl
 
 namespace two
 {
-	using stl::string;
-	using stl::function;
-	using stl::vector;
-	using stl::array;
-	using stl::span;
+	export_ using stl::string;
+	export_ using stl::function;
+	export_ using stl::vector;
+	export_ using stl::array;
+	export_ using stl::span;
 }

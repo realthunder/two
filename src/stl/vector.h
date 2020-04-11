@@ -5,7 +5,7 @@
 #include <vector>
 namespace stl
 {
-	using std::vector;
+	export_ using std::vector;
 }
 #else
 #include <stl/initializer_list.h>
@@ -134,5 +134,5 @@ namespace stl {
 
 namespace two
 {
-	using stl::vector;
+	export_ using stl::vector;
 }

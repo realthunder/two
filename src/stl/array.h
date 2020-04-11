@@ -27,6 +27,6 @@ namespace stl
 
 namespace two
 {
-	using stl::array_size;
-	using stl::array;
+	export_ using stl::array_size;
+	export_ using stl::array;
 }

@@ -5,7 +5,7 @@
 #include <string>
 namespace stl
 {
-	using std::string;
+	export_ using std::string;
 }
 #else
 #include <stl/initializer_list.h>
@@ -123,7 +123,7 @@ namespace stl {
 		return hash_string(value.c_str(), value.size());
 	}
 
-	using string = basic_string<TINYSTL_ALLOCATOR>;
+	export_ using string = basic_string<TINYSTL_ALLOCATOR>;
 
 	extern template TWO_INFRA_EXPORT string operator+(const string& lhs, const string& rhs);
 	extern template TWO_INFRA_EXPORT string operator+(const char* lhs, const string& rhs);
@@ -142,6 +142,7 @@ namespace stl
 
 namespace two
 {
-	using stl::string;
+  //export_ using string = stl::basic_string<TINYSTL_ALLOCATOR>;
+	export_ using stl::string;
 }
 
