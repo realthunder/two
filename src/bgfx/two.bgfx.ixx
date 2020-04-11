@@ -13,5 +13,4 @@ export import two.math;
 export import two.ctx;
 
 #include <bgfx/Api.h>
-#include <meta/bgfx.meta.h>
 

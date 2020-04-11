@@ -13,5 +13,4 @@ export import two.type;
 export import two.refl;
 
 #include <srlz/Api.h>
-#include <meta/srlz.meta.h>
 

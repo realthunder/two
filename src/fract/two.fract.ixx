@@ -14,5 +14,4 @@ export import two.math;
 export import two.geom;
 
 #include <fract/Api.h>
-#include <meta/fract.meta.h>
 

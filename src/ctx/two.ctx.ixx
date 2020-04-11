@@ -12,5 +12,4 @@ export import two.type;
 export import two.math;
 
 #include <ctx/Api.h>
-#include <meta/ctx.meta.h>
 

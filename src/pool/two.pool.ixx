@@ -11,5 +11,4 @@ export import two.infra;
 export import two.type;
 
 #include <pool/Api.h>
-#include <meta/pool.meta.h>
 

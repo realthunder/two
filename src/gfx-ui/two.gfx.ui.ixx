@@ -17,5 +17,4 @@ export import two.ui;
 export import two.gfx;
 
 #include <gfx-ui/Api.h>
-#include <meta/gfx-ui.meta.h>
 

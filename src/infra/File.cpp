@@ -3,6 +3,7 @@
 //  This notice and the license may not be removed or altered from any source distribution.
 
 #ifdef TWO_CPP_20
+module;
 #include <infra/Cpp20.h>
 #include <dirent.h>
 #else

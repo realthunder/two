@@ -1,6 +1,6 @@
-#include <infra/Cpp20.h>
-
 #ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
 module two.jobs;
 #else
 #include <cstddef>

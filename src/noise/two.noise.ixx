@@ -13,5 +13,4 @@ export import two.math;
 export import two.geom;
 
 #include <noise/Api.h>
-#include <meta/noise.meta.h>
 

@@ -19,5 +19,4 @@ export import two.gfx;
 export import two.gfx.pbr;
 
 #include <gfx-edit/Api.h>
-#include <meta/gfx-edit.meta.h>
 

@@ -15,5 +15,4 @@ export import two.srlz;
 export import two.math;
 
 #include <gltf/Api.h>
-#include <meta/gltf.meta.h>
 

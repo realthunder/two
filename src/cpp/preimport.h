@@ -1,15 +1,6 @@
 #ifdef _MSC_VER
 #include <infra/Cpp20.h>
 
-#if 1 // VS module bug kludge
-_STD_BEGIN
-
-_INLINE_VAR constexpr size_t hardware_constructive_interference_size = 64;
-_INLINE_VAR constexpr size_t hardware_destructive_interference_size = 64;
-
-_STD_END
-#endif
-
 #else
 #include <assert.h>
 #include <stdint.h>

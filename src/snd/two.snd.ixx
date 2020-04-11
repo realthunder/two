@@ -9,5 +9,4 @@ export import std.regex;
 
 
 #include <snd/Api.h>
-#include <meta/snd.meta.h>
 

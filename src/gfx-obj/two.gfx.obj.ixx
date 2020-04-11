@@ -15,5 +15,4 @@ export import two.geom;
 export import two.gfx;
 
 #include <gfx-obj/Api.h>
-#include <meta/gfx-obj.meta.h>
 

@@ -19,5 +19,4 @@ export import two.ctx;
 export import two.bgfx;
 
 #include <gfx/Api.h>
-#include <meta/gfx.meta.h>
 

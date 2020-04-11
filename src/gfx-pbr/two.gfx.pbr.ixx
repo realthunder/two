@@ -14,5 +14,4 @@ export import two.geom;
 export import two.gfx;
 
 #include <gfx-pbr/Api.h>
-#include <meta/gfx-pbr.meta.h>
 

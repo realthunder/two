@@ -24,5 +24,4 @@ export import two.gfx.ui;
 export import two.gfx.edit;
 
 #include <tool/Api.h>
-#include <meta/tool.meta.h>
 

@@ -22,5 +22,4 @@ export import two.gfx;
 export import two.gfx.ui;
 
 #include <wfc-gfx/Api.h>
-#include <meta/wfc-gfx.meta.h>
 

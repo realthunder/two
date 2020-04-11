@@ -13,5 +13,4 @@ export import two.pool;
 export import two.refl;
 
 #include <lang/Api.h>
-#include <meta/lang.meta.h>
 

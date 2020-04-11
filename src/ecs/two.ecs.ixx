@@ -12,5 +12,4 @@ export import two.pool;
 export import two.type;
 
 #include <ecs/Api.h>
-#include <meta/ecs.meta.h>
 

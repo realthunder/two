@@ -9,7 +9,7 @@
 #endif
 
 #ifdef TWO_MODULES
-module two.obj;
+module two.type;
 #else
 #include <stl/vector.h>
 #include <stl/string.h>

@@ -12,5 +12,4 @@ export import two.infra;
 export import two.type;
 
 #include <math/Api.h>
-#include <meta/math.meta.h>
 

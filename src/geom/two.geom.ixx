@@ -11,5 +11,4 @@ export import two.type;
 export import two.math;
 
 #include <geom/Api.h>
-#include <meta/geom.meta.h>
 

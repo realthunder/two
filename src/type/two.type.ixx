@@ -10,5 +10,4 @@ export import std.regex;
 export import two.infra;
 
 #include <type/Api.h>
-#include <meta/type.meta.h>
 

@@ -19,5 +19,4 @@ export import two.gltf;
 export import two.gltf.refl;
 
 #include <gfx-gltf/Api.h>
-#include <meta/gfx-gltf.meta.h>
 

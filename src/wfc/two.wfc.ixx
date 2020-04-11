@@ -15,5 +15,4 @@ export import two.math;
 export import two.geom;
 
 #include <wfc/Api.h>
-#include <meta/wfc.meta.h>
 

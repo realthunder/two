@@ -13,5 +13,4 @@ export import two.ctx.glfw;
 export import two.ui.vg;
 
 #include <frame/Api.h>
-#include <meta/frame.meta.h>
 
