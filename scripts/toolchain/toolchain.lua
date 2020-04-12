@@ -1,5 +1,5 @@
 --
--- Copyright 2010-2018 Branimir Karadzic. All rights reserved.
+-- Copyright 2010-2020 Branimir Karadzic. All rights reserved.
 -- License: https://github.com/bkaradzic/bx#license-bsd-2-clause
 --
 
@@ -50,7 +50,7 @@ function toolchain(_buildDir, _libDir)
 		description = "Choose GCC flavor",
 		allowed = {
 			{ "android-arm",     "Android - ARM"              },
-			{ "android-mips",    "Android - MIPS"             },
+			{ "android-arm64",   "Android - ARM64"            },
 			{ "android-x86",     "Android - x86"              },
 			{ "asmjs",           "Emscripten/asm.js"          },
 			{ "freebsd",         "FreeBSD"                    },
@@ -76,6 +76,7 @@ function toolchain(_buildDir, _libDir)
 			{ "orbis",           "Orbis"                      },
 			{ "riscv",           "RISC-V"                     },
 			{ "rpi",             "RaspberryPi"                },
+			{ "haiku",           "Haiku"                      },
 		},
 	}
 
@@ -197,6 +198,7 @@ function toolchain(_buildDir, _libDir)
 
 	flags {
 		"ExtraWarnings",
+		"FloatFast",
 	}
 
 	if _ACTION == "gmake" or _ACTION == "ninja" then
@@ -208,31 +210,34 @@ function toolchain(_buildDir, _libDir)
 
 		location (path.join(_buildDir, "projects", _ACTION, _OPTIONS["gcc"]))
 
-		function check_android_ndk()
-			if not os.getenv("ANDROID_NDK_ARM")
+		function check_android_ndk(suffix)
+			if not os.getenv("ANDROID_NDK_" .. suffix)
 			or not os.getenv("ANDROID_NDK_CLANG")
 			or not os.getenv("ANDROID_NDK_ROOT") then
-				print("Set ANDROID_NDK_CLANG, ANDROID_NDK_ARM, and ANDROID_NDK_ROOT environment variables.")
+				print("Set ANDROID_NDK_CLANG, ANDROID_NDK_" .. suffix .. ", and ANDROID_NDK_ROOT environment variables.")
 			end
 		end
 
 		if "android-arm" == _OPTIONS["gcc"] then
-			check_android_ndk()
+			check_android_ndk("ARM")
 			premake.gcc.cc   = "$(ANDROID_NDK_CLANG)/bin/clang"
 			premake.gcc.cxx  = "$(ANDROID_NDK_CLANG)/bin/clang++"
 			premake.gcc.ar   = "$(ANDROID_NDK_ARM)/bin/arm-linux-androideabi-ar"
 			premake.gcc.llvm = true
 
-		elseif "android-mips" == _OPTIONS["gcc"] then
-			check_android_ndk()
+		elseif "android-arm64" == _OPTIONS["gcc"] then
+			check_android_ndk("ARM64")
 			premake.gcc.cc   = "$(ANDROID_NDK_CLANG)/bin/clang"
 			premake.gcc.cxx  = "$(ANDROID_NDK_CLANG)/bin/clang++"
+			premake.gcc.ar   = "$(ANDROID_NDK_ARM64)/bin/aarch64-linux-android-ar"
+
 			premake.gcc.llvm = true
 
 		elseif "android-x86" == _OPTIONS["gcc"] then
-			check_android_ndk()
+			check_android_ndk("X86")
 			premake.gcc.cc   = "$(ANDROID_NDK_CLANG)/bin/clang"
 			premake.gcc.cxx  = "$(ANDROID_NDK_CLANG)/bin/clang++"
+			premake.gcc.ar   = "$(ANDROID_NDK_X86)/bin/i686-linux-android-ar"
 			premake.gcc.llvm = true
 
 		elseif "asmjs" == _OPTIONS["gcc"] then
@@ -250,27 +255,11 @@ function toolchain(_buildDir, _libDir)
 		elseif "freebsd" == _OPTIONS["gcc"] then
 
 		elseif "ios-arm"   == _OPTIONS["gcc"]
-			or "ios-arm64" == _OPTIONS["gcc"] then
-			premake.gcc.cc  = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
-			premake.gcc.cxx = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
-			premake.gcc.ar  = "ar"
-
-		elseif "ios-simulator" == _OPTIONS["gcc"] then
-			premake.gcc.cc  = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
-			premake.gcc.cxx = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
-			premake.gcc.ar  = "ar"
-
-		elseif "ios-simulator64" == _OPTIONS["gcc"] then
-			premake.gcc.cc  = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
-			premake.gcc.cxx = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
-			premake.gcc.ar  = "ar"
-
-		elseif "tvos-arm64" == _OPTIONS["gcc"] then
-			premake.gcc.cc  = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
-			premake.gcc.cxx = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
-			premake.gcc.ar  = "ar"
-
-		elseif "tvos-simulator" == _OPTIONS["gcc"] then
+			or "ios-arm64" == _OPTIONS["gcc"]
+			or "ios-simulator" == _OPTIONS["gcc"]
+			or "ios-simulator64" == _OPTIONS["gcc"]
+			or "tvos-arm64" == _OPTIONS["gcc"]
+			or "tvos-simulator" == _OPTIONS["gcc"] then
 			premake.gcc.cc  = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang"
 			premake.gcc.cxx = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++"
 			premake.gcc.ar  = "ar"
@@ -310,15 +299,6 @@ function toolchain(_buildDir, _libDir)
 		elseif "linux-mips-gcc" == _OPTIONS["gcc"] then
 
 		elseif "linux-arm-gcc" == _OPTIONS["gcc"] then
-
-		elseif "linux-steamlink" == _OPTIONS["gcc"] then
-			if not os.getenv("MARVELL_SDK_PATH") then
-				print("Set MARVELL_SDK_PATH environment variable.")
-			end
-
-			premake.gcc.cc  = "$(MARVELL_SDK_PATH)/toolchain/bin/armv7a-cros-linux-gnueabi-gcc"
-			premake.gcc.cxx = "$(MARVELL_SDK_PATH)/toolchain/bin/armv7a-cros-linux-gnueabi-g++"
-			premake.gcc.ar  = "$(MARVELL_SDK_PATH)/toolchain/bin/armv7a-cros-linux-gnueabi-ar"
 
 		elseif "mingw-gcc" == _OPTIONS["gcc"] then
 			if not os.getenv("MINGW") then
@@ -384,6 +364,7 @@ function toolchain(_buildDir, _libDir)
 		or _ACTION == "vs2013"
 		or _ACTION == "vs2015"
 		or _ACTION == "vs2017"
+		or _ACTION == "vs2019"
 		then
 
 		local action = premake.action.current()
@@ -398,14 +379,12 @@ function toolchain(_buildDir, _libDir)
 			else
 				premake.vstudio.toolset = ("LLVM-" .. _ACTION)
 			end
-			location (path.join(_buildDir, "projects", _ACTION .. "-clang"))
 
 		elseif "winstore100" == _OPTIONS["vs"] then
 			premake.vstudio.toolset = "v141"
 			premake.vstudio.storeapp = "10.0"
 
 			platforms { "ARM" }
-			location (path.join(_buildDir, "projects", _ACTION .. "-winstore100"))
 
 		elseif "durango" == _OPTIONS["vs"] then
 			if not os.getenv("DurangoXDK") then
@@ -415,7 +394,6 @@ function toolchain(_buildDir, _libDir)
 			premake.vstudio.toolset = "v140"
 			premake.vstudio.storeapp = "durango"
 			platforms { "Durango" }
-			location (path.join(_buildDir, "projects", _ACTION .. "-durango"))
 		elseif "orbis" == _OPTIONS["vs"] then
 
 			if not os.getenv("SCE_ORBIS_SDK_DIR") then
@@ -423,23 +401,18 @@ function toolchain(_buildDir, _libDir)
 			end
 
 			platforms { "Orbis" }
-			location (path.join(_buildDir, "projects", _ACTION .. "-orbis"))
 
 		elseif "vs2012-xp" == _OPTIONS["vs"] then
 			premake.vstudio.toolset = ("v110_xp")
-			location (path.join(_buildDir, "projects", _ACTION .. "-xp"))
 
 		elseif "vs2013-xp" == _OPTIONS["vs"] then
 			premake.vstudio.toolset = ("v120_xp")
-			location (path.join(_buildDir, "projects", _ACTION .. "-xp"))
 
 		elseif "vs2015-xp" == _OPTIONS["vs"] then
 			premake.vstudio.toolset = ("v140_xp")
-			location (path.join(_buildDir, "projects", _ACTION .. "-xp"))
 
 		elseif "vs2015-xp" == _OPTIONS["vs"] then
 			premake.vstudio.toolset = ("v141_xp")
-			location (path.join(_buildDir, "projects", _ACTION .. "-xp"))
 
 		end
 
@@ -456,17 +429,14 @@ function toolchain(_buildDir, _libDir)
 		if "osx" == _OPTIONS["xcode"] then
 			action.xcode.macOSTargetPlatformVersion = str_or(macosPlatform, "10.11")
 			premake.xcode.toolset = "macosx"
-			location (path.join(_buildDir, "projects", _ACTION .. "-osx"))
 
 		elseif "ios" == _OPTIONS["xcode"] then
 			action.xcode.iOSTargetPlatformVersion = str_or(iosPlatform, "8.0")
 			premake.xcode.toolset = "iphoneos"
-			location (path.join(_buildDir, "projects", _ACTION .. "-ios"))
 
 		elseif "tvos" == _OPTIONS["xcode"] then
 			action.xcode.tvOSTargetPlatformVersion = str_or(tvosPlatform, "9.0")
 			premake.xcode.toolset = "appletvos"
-			location (path.join(_buildDir, "projects", _ACTION .. "-tvos"))
 		end
 	end
 
@@ -530,8 +500,6 @@ function toolchain(_buildDir, _libDir)
 			"WIN32",
 			"_WIN32",
 			"_HAS_EXCEPTIONS=0",
-			"_HAS_ITERATOR_DEBUGGING=0",
-			"_ITERATOR_DEBUG_LEVEL=0",
 			"_SCL_SECURE=0",
 			"_SECURE_SCL=0",
 			"_SCL_SECURE_NO_WARNINGS",
@@ -656,9 +624,9 @@ function toolchain(_buildDir, _libDir)
 
 	configuration { "mingw-clang" }
 		buildoptions {
-			"-isystem$(MINGW)/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++",
-			"-isystem$(MINGW)/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/x86_64-w64-mingw32",
-			"-isystem$(MINGW)/x86_64-w64-mingw32/include",
+			"-isystem $(MINGW)/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++",
+			"-isystem $(MINGW)/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++/x86_64-w64-mingw32",
+			"-isystem $(MINGW)/x86_64-w64-mingw32/include",
 		}
 		linkoptions {
 			"-Qunused-arguments",
@@ -799,6 +767,7 @@ function toolchain(_buildDir, _libDir)
 		}
 		includedirs {
 			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/include",
+			"${ANDROID_NDK_ROOT}/sysroot/usr/include",
 			"$(ANDROID_NDK_ROOT)/sources/android/native_app_glue",
 		}
 		linkoptions {
@@ -810,7 +779,7 @@ function toolchain(_buildDir, _libDir)
 			"m",
 			"android",
 			"log",
-			"c++",
+			"c++_shared",
 			"gcc",
 		}
 		buildoptions {
@@ -830,39 +799,14 @@ function toolchain(_buildDir, _libDir)
 			"-Wl,-z,now",
 		}
 
-	configuration { "linux-steamlink" }
-		targetdir (path.join(_buildDir, "steamlink/bin"))
-		objdir (path.join(_buildDir, "steamlink/obj"))
-		libdirs { path.join(_libDir, "lib/steamlink") }
-		includedirs { path.join(bxDir, "include/compat/linux") }
-		defines {
-			"__STEAMLINK__=1", -- There is no special prefedined compiler symbol to detect SteamLink, faking it.
-		}
-		buildoptions {
-			"-Wfatal-errors",
-			"-Wunused-value",
-			"-Wundef",
-			"-pthread",
-			"-marm",
-			"-mfloat-abi=hard",
-			"--sysroot=$(MARVELL_SDK_PATH)/rootfs",
-		}
-		linkoptions {
-			"-static-libgcc",
-			"-static-libstdc++",
-			"--sysroot=$(MARVELL_SDK_PATH)/rootfs",
-		}
-
 	configuration { "android-arm" }
 		targetdir (path.join(_buildDir, "android-arm/bin"))
 		objdir (path.join(_buildDir, "android-arm/obj"))
 		libdirs {
-			path.join(_libDir, "lib/android-arm"),
 			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a",
 		}
 		includedirs {
-			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/include",
-			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/include",
+			"$(ANDROID_NDK_ROOT)/sysroot/usr/include/arm-linux-androideabi",
 		}
 		buildoptions {
 			"-gcc-toolchain $(ANDROID_NDK_ARM)",
@@ -885,42 +829,41 @@ function toolchain(_buildDir, _libDir)
 			"-Wl,--fix-cortex-a8",
 		}
 
-	configuration { "android-mips" }
-		targetdir (path.join(_buildDir, "android-mips/bin"))
-		objdir (path.join(_buildDir, "android-mips/obj"))
+	configuration { "android-arm64" }
+		targetdir (path.join(_buildDir, "android-arm64/bin"))
+		objdir (path.join(_buildDir, "android-arm64/obj"))
 		libdirs {
-			path.join(_libDir, "lib/android-mips"),
-			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/libs/mips",
+			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/libs/arm64-v8a",
 		}
 		includedirs {
-			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/libs/mips/include",
+			"$(ANDROID_NDK_ROOT)/sysroot/usr/include/aarch64-linux-android",
 		}
 		buildoptions {
-			"-gcc-toolchain $(ANDROID_NDK_MIPS)",
-			"--sysroot=" .. path.join("$(ANDROID_NDK_ROOT)/platforms", androidPlatform, "arch-mips"),
-			"-target mipsel-none-linux-android",
-			"-mips32",
+			"-gcc-toolchain $(ANDROID_NDK_ARM64)",
+			"--sysroot=" .. path.join("$(ANDROID_NDK_ROOT)/platforms", androidPlatform, "arch-arm64"),
+			"-target aarch64-none-linux-androideabi",
+			"-march=armv8-a",
 			"-Wunused-value",
 			"-Wundef",
 		}
 		linkoptions {
-			"-gcc-toolchain $(ANDROID_NDK_MIPS)",
-			"--sysroot=" .. path.join("$(ANDROID_NDK_ROOT)/platforms", androidPlatform, "arch-mips"),
-			path.join("$(ANDROID_NDK_ROOT)/platforms", androidPlatform, "arch-mips/usr/lib/crtbegin_so.o"),
-			path.join("$(ANDROID_NDK_ROOT)/platforms", androidPlatform, "arch-mips/usr/lib/crtend_so.o"),
-			"-target mipsel-none-linux-android",
-			"-mips32",
+			"-gcc-toolchain $(ANDROID_NDK_ARM64)",
+			"--sysroot=" .. path.join("$(ANDROID_NDK_ROOT)/platforms", androidPlatform, "arch-arm64"),
+			path.join("$(ANDROID_NDK_ROOT)/platforms", androidPlatform, "arch-arm64/usr/lib/crtbegin_so.o"),
+			path.join("$(ANDROID_NDK_ROOT)/platforms", androidPlatform, "arch-arm64/usr/lib/crtend_so.o"),
+			"-target aarch64-none-linux-androideabi",
+			"-march=armv8-a",
+			"-Wl,--fix-cortex-a8",
 		}
 
 	configuration { "android-x86" }
 		targetdir (path.join(_buildDir, "android-x86/bin"))
 		objdir (path.join(_buildDir, "android-x86/obj"))
 		libdirs {
-			path.join(_libDir, "lib/android-x86"),
 			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/libs/x86",
 		}
 		includedirs {
-			"$(ANDROID_NDK_ROOT)/sources/cxx-stl/llvm-libc++/libs/x86/include",
+			"$(ANDROID_NDK_ROOT)/sysroot/usr/include/x86_64-linux-android",
 		}
 		buildoptions {
 			"-gcc-toolchain $(ANDROID_NDK_X86)",
@@ -947,11 +890,15 @@ function toolchain(_buildDir, _libDir)
 		objdir (path.join(_buildDir, "asmjs/obj"))
 		libdirs { path.join(_libDir, "lib/asmjs") }
 		buildoptions {
-			--"-i\"system$(EMSCRIPTEN)/system/include\"",
-			--"-i\"system$(EMSCRIPTEN)/system/include/libcxx\"",
-			--"-i\"system$(EMSCRIPTEN)/system/include/libc\"",
 			"-Wunused-value",
 			"-Wundef",
+		}
+
+		linkoptions {
+--			"-s ASSERTIONS=2",
+--			"-s EMTERPRETIFY=1",
+--			"-s EMTERPRETIFY_ASYNC=1",
+			"-s PRECISE_F32=1",
 		}
 
 	configuration { "freebsd" }
@@ -1015,6 +962,7 @@ function toolchain(_buildDir, _libDir)
 			"-msse2",
 			"-Wunused-value",
 			"-Wundef",
+			"-target x86_64-apple-macos" .. (#macosPlatform > 0 and macosPlatform or "10.11"),
 		}
 		includedirs { path.join(bxDir, "include/compat/osx") }
 
@@ -1066,6 +1014,7 @@ function toolchain(_buildDir, _libDir)
 		buildoptions {
 			"-miphoneos-version-min=7.0",
 			"--sysroot=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS" ..iosPlatform .. ".sdk",
+			"-fembed-bitcode",
 		}
 
 	configuration { "ios-simulator" }
@@ -1223,10 +1172,10 @@ function strip()
 			"$(SILENT) $(ANDROID_NDK_ARM)/bin/arm-linux-androideabi-strip -s \"$(TARGET)\""
 		}
 
-	configuration { "android-mips", "Release" }
+	configuration { "android-arm64", "Release" }
 		postbuildcommands {
 			"$(SILENT) echo Stripping symbols.",
-			"$(SILENT) $(ANDROID_NDK_MIPS)/bin/mipsel-linux-android-strip -s \"$(TARGET)\""
+			"$(SILENT) $(ANDROID_NDK_ARM64)/bin/aarch64-linux-android-strip -s \"$(TARGET)\""
 		}
 
 	configuration { "android-x86", "Release" }
@@ -1235,13 +1184,7 @@ function strip()
 			"$(SILENT) $(ANDROID_NDK_X86)/bin/i686-linux-android-strip -s \"$(TARGET)\""
 		}
 
-	configuration { "linux-steamlink", "Release" }
-		postbuildcommands {
-			"$(SILENT) echo Stripping symbols.",
-			"$(SILENT) $(MARVELL_SDK_PATH)/toolchain/bin/armv7a-cros-linux-gnueabi-strip -s \"$(TARGET)\""
-		}
-
-	configuration { "linux-* or rpi", "not linux-steamlink", "Release" }
+	configuration { "linux-* or rpi", "Release" }
 		postbuildcommands {
 			"$(SILENT) echo Stripping symbols.",
 			"$(SILENT) strip -s \"$(TARGET)\""
@@ -1251,24 +1194,6 @@ function strip()
 		postbuildcommands {
 			"$(SILENT) echo Stripping symbols.",
 			"$(SILENT) $(MINGW)/bin/strip -s \"$(TARGET)\""
-		}
-
-	configuration { "asmjs" }
-		postbuildcommands {
-			"$(SILENT) echo Running asmjs finalize.",
-			"$(SILENT) \"$(EMSCRIPTEN)/emcc\" -O2 "
-
---				.. "-s ALLOW_MEMORY_GROWTH=1 "
---				.. "-s ASSERTIONS=2 "
---				.. "-s EMTERPRETIFY=1 "
---				.. "-s EMTERPRETIFY_ASYNC=1 "
-				.. "-s PRECISE_F32=1 "
-				.. "-s TOTAL_MEMORY=268435456 "
---				.. "-s USE_WEBGL2=1 "
-
-				.. "--memory-init-file 1 "
-				.. "\"$(TARGET)\" -o \"$(TARGET)\".html "
---				.. "--preload-file ../../../examples/runtime@/ "
 		}
 
 	configuration { "riscv" }
