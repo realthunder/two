@@ -23,6 +23,9 @@ module two.gfx.pbr;
 
 #include <cstdio>
 
+#define DEBUG_ENVMAP 0
+#define DEBUG_RADIANCE 1
+
 namespace two
 {
 	BlockRadiance::BlockRadiance(GfxSystem& gfx, BlockFilter& filter, BlockCopy& copy)
@@ -59,18 +62,25 @@ namespace two
 		if(!render.m_env->m_radiance.m_preprocessed && render.m_env->m_radiance.m_filter)
 			m_prefilter_queue.push_back(&render.m_env->m_radiance);
 
-#ifdef DEBUG_RADIANCE
-		if(bgfx::isValid(render.m_env->m_radiance.m_filtered))
+		if constexpr(DEBUG_ENVMAP)
 		{
-			m_gfx.m_copy->debug_show_texture(render, render.m_env->m_radiance.m_filtered, vec4(0.f), false, false, false, 2);
+			Texture* const envmap = render.m_env->m_radiance.m_texture;
+			if (envmap && envmap->valid())
+				m_gfx.m_copy->debug_show_texture(render, *envmap, vec4(0.f), 0);
 		}
-#endif
+
+		if constexpr(DEBUG_RADIANCE)
+		{
+			Texture* const filtered = render.m_env->m_radiance.m_filtered;
+			if (filtered && filtered->valid())
+				m_gfx.m_copy->debug_show_texture(render, *filtered, vec4(0.f), 0);
+		}
 	}
 
-	Texture* radiancemap(Radiance& radiance)
+	static Texture* radiancemap(Radiance& radiance)
 	{
-		Texture* const filtered = radiance.m_filtered;
-		Texture* const reflection = radiance.m_texture;
+		Texture* filtered = radiance.m_filtered;
+		Texture* reflection = radiance.m_texture;
 		if(filtered && filtered->valid())
 			return filtered;
 		else if(reflection && reflection->valid() && !radiance.m_filter)

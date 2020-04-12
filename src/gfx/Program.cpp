@@ -57,10 +57,12 @@ namespace two
 
 	bgfx::ShaderHandle load_shader(bx::FileReaderI& reader, cstring path)
 	{
-		if(file_exists(path))
-			return bgfx::createShader(load_mem(reader, path));
-		else
+		if(!file_exists(path))
 			return BGFX_INVALID_HANDLE;
+
+		bgfx::ShaderHandle shader = bgfx::createShader(load_mem(reader, path));
+		bgfx::setName(shader, file_name(path).c_str());
+		return shader;
 	}
 
 	bgfx::ProgramHandle load_compute_program(bx::FileReaderI& reader, const string& shader_path)

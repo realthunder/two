@@ -123,18 +123,17 @@ namespace two
 	template <class T>
 	struct GpuState {};
 
-	/*
-	initial idea (reality is quite far from that)
-	blocks
-		- a block is a unit of renderer work
-		- it contains all the information needed to be executed : target, bgfx view, viewport, clear, items, material, render state parameters, uniforms, textures, etc...
-		- blocks can be nested : ex in main render pass block there are subblocks for each material
-		- they can be complementary : inside a pbr render pass block the pbr material block fills in the missing pbr information
-		- the sum of uniform blocks must be equivalent to the uniforms expected by the shader(blocks)
-	blocks are functional components
-	passes are the unit of renderer work
-	both are orthogonal
-	*/
+	// initial idea (reality is quite far from that)
+	// blocks
+	// 	- a block is a unit of renderer work
+	// 	- it contains all the information needed to be executed : target, bgfx view, viewport, clear, items, material, render state parameters, uniforms, textures, etc...
+	// 	- blocks can be nested : ex in main render pass block there are subblocks for each material
+	// 	- they can be complementary : inside a pbr render pass block the pbr material block fills in the missing pbr information
+	// 	- the sum of uniform blocks must be equivalent to the uniforms expected by the shader(blocks)
+	// blocks are functional components
+	// passes are the unit of renderer work
+	// both are orthogonal
+
 	export_ struct refl_ TWO_GFX_EXPORT Pass
 	{
 		attr_ string m_name;

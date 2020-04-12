@@ -61,7 +61,9 @@ namespace two
 #ifdef TWO_PLATFORM_EMSCRIPTEN
 	constexpr size_t c_max_forward_lights = 32;
 #else
-	constexpr size_t c_max_forward_lights = 64;
+	// TODO implement global settings loaded at runtime
+	constexpr size_t c_max_forward_lights = 32;
+  //constexpr size_t c_max_forward_lights = 64;
 #endif
 
 	struct ZoneLights
