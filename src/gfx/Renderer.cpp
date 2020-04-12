@@ -188,12 +188,10 @@ namespace two
 		if(render.m_viewport->m_rect.width != 0 && render.m_viewport->m_rect.height != 0)
 			this->render(render, renderer);
 
-		//m_gfx.m_copy->debug_show_texture(render, *render.m_env->m_background.m_texture, vec4(0.f), 0);
-		//m_gfx.m_copy->debug_show_texture(render, *render.m_env->m_radiance.m_texture, vec4(0.f), 0);
-		//if(render.m_env->m_radiance.m_filtered)
-		//	m_gfx.m_copy->debug_show_texture(render, *render.m_env->m_radiance.m_filtered, vec4(0.f), 1);
-		//copy.debug_show_texture(render, render.m_env->m_radiance.m_filtered, vec4(0.f), false, false, false, 1);
-		//copy.debug_show_texture(render, bgfx::getTexture(render.m_target->m_effects.last()), vec4(0.f));
+		//m_gfx.m_copy->debug_show_texturep(render, render.m_env->m_background.m_texture, vec4(0.f), 0);
+		//m_gfx.m_copy->debug_show_texturep(render, render.m_env->m_radiance.m_texture, vec4(0.f), 0);
+		//m_gfx.m_copy->debug_show_texturep(render, render.m_env->m_radiance.m_filtered, vec4(0.f), 2);
+		//m_gfx.m_copy->debug_show_texture(render, render.m_target->m_ping_pong.last(), vec4(0.f));
 
 		if(render.m_viewport->m_autoflip)
 		{

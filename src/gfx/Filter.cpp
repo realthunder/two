@@ -210,7 +210,7 @@ namespace two
 		bgfx::setViewRect(pass.m_index, rect.x, rect.y, rect.width, rect.height);
 
 		draw_unit_quad(quad.m_fbo_flip);
-		//draw_quad(quad.m_dest.width, quad.m_dest.height);
+		//draw_quad(quad.m_dest.size, quad.m_fbo_flip);
 
 		bgfx::setUniform(u_uniform.u_source_crop, &crop);
 
@@ -263,6 +263,9 @@ namespace two
 
 	void BlockCopy::debug_show_texture(Render& render, Texture& texture, const vec4& rect, int level)
 	{
+		if (!texture.valid())
+			return;
+
 		assert(render.m_target);
 		const vec4 dest = rect == vec4(0.f) ? vec4(vec2(0.f), vec2(0.25f)) : rect;
 		const RenderQuad target_quad = { Rect4, dest };
@@ -272,5 +275,12 @@ namespace two
 
 		Pass pass; pass.m_index = render.debug_pass();
 		m_filter.submit(pass, render.m_target->m_backbuffer, program, target_quad, 0);
+	}
+
+	void BlockCopy::debug_show_texturep(Render& render, Texture* texture, const vec4& rect, int level)
+	{
+		if (!texture)
+			return;
+		debug_show_texture(render, *texture, rect, level);
 	}
 }

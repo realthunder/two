@@ -59,22 +59,17 @@ namespace two
 		if(!render.m_env || !render.m_env->m_radiance.m_texture)
 			return;
 
-		if(!render.m_env->m_radiance.m_preprocessed && render.m_env->m_radiance.m_filter)
-			m_prefilter_queue.push_back(&render.m_env->m_radiance);
+		Radiance& radiance = render.m_env->m_radiance;
+		if(!radiance.m_preprocessed && radiance.m_filter)
+			m_prefilter_queue.push_back(&radiance);
 
-		if constexpr(DEBUG_ENVMAP)
-		{
-			Texture* const envmap = render.m_env->m_radiance.m_texture;
-			if (envmap && envmap->valid())
-				m_gfx.m_copy->debug_show_texture(render, *envmap, vec4(0.f), 0);
-		}
+#ifdef DEBUG_ENVMAP
+		m_gfx.m_copy->debug_show_texturep(render, radiance.m_texture, vec4(0.f), 0);
+#endif
 
-		if constexpr(DEBUG_RADIANCE)
-		{
-			Texture* const filtered = render.m_env->m_radiance.m_filtered;
-			if (filtered && filtered->valid())
-				m_gfx.m_copy->debug_show_texture(render, *filtered, vec4(0.f), 0);
-		}
+#ifdef DEBUG_RADIANCE
+		m_gfx.m_copy->debug_show_texturep(render, radiance.m_filtered, vec4(0.f), 2);
+#endif
 	}
 
 	static Texture* radiancemap(Radiance& radiance)
