@@ -1,6 +1,23 @@
 -- two toolchain
 -- actions
 
+function copy_shaders(subpath)
+    local fullpath = path.join(TWO_DIR, subpath)
+    local destpath = path.join(TWO_DIR, "data/shaders")
+    local shaders = os.matchfiles(path.join(fullpath, "**"))
+    for _, file in ipairs(shaders) do
+        dest = path.getrelative(fullpath, file)
+        dest = path.join(destpath, dest)
+        print("copy_shaders " .. file .. " -> " .. dest)
+        os.copyfile(file, dest)
+    end
+end
+
+function setup_shaders()
+    copy_shaders("src/gfx/Shaders")
+    copy_shaders("src/gfx-pbr/Shaders")
+end
+
 function amalgamate(modules)
     for _, m in ipairs(modules) do
         local dir = os.getcwd()
@@ -186,4 +203,13 @@ newaction {
         amalgamate(MODULES)
     end
 }
+
+newaction {
+    trigger     = "copydata",
+    description = "Copy data files",
+    execute     = function()
+        setup_shaders()
+    end
+}
+
 
