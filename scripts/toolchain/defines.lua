@@ -107,12 +107,12 @@ function two_binary_config()
 
     configuration { "not osx", "not asmjs" }
         defines {
-            "TWO_RESOURCE_PATH=\"" .. path.join(PROJECT_DIR, "data") .. "\"",
+            "TWO_RESOURCE_PATH=\"" .. path.join(TWO_DIR, "data") .. "\"",
         }
 
     configuration { "osx", "not asmjs" }
         defines {
-            "TWO_RESOURCE_PATH=\\\"" .. path.join(PROJECT_DIR, "data") .. "\\\"",
+            "TWO_RESOURCE_PATH=\\\"" .. path.join(TWO_DIR, "data") .. "\\\"",
         }
 
     configuration {}
