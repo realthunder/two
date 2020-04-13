@@ -416,6 +416,7 @@ function two_libs()
             libs(two.all, "StaticLib")
         group "lib"
     else
+        group "lib"
         two.lib = lib("two", two.all, "StaticLib")
         
             if _OPTIONS["webcompile"] then
