@@ -32,12 +32,16 @@ project "bgfx"
 end
 
 project "bgfx"
+    defines {
+      --"BGFX_CONFIG_RENDERER_OPENGL=31",
+      --"BGFX_CONFIG_RENDERER_OPENGL=46",
+    }
     configuration { "Debug" }
         defines {
             "BGFX_CONFIG_DEBUG_UNIFORM=0",
         }
 
-    configuration { "osx",  }
+    configuration { "osx" }
         defines {
             "BGFX_CONFIG_RENDERER_OPENGL=31",
         }
@@ -102,7 +106,11 @@ function uses_bgfx()
         path.join(BX_DIR,    "include"),
         path.join(BGFX_DIR,  "include"),
     }
-    
+
+    if _OPTIONS["webgpu"] then
+        usesWebGPU()
+    end
+
     configuration { "linux", "not asmjs" }
         links {
             "X11",
