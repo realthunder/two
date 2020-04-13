@@ -1,7 +1,7 @@
 #ifndef TWO_SHADER_BLEND
 #define TWO_SHADER_BLEND
 
-#include <filter/filter.sh>
+#include <filter.sh>
 
 float softLight(float value, float amount)
 {
