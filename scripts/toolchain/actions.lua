@@ -4,12 +4,16 @@
 function copy_shaders(subpath)
     local fullpath = path.join(TWO_DIR, subpath)
     local destpath = path.join(TWO_DIR, "data/shaders")
-    local shaders = os.matchfiles(path.join(fullpath, "**"))
+    local shaders = os.matchfiles(path.join(fullpath, "**.*"))
     for _, file in ipairs(shaders) do
-        dest = path.getrelative(fullpath, file)
-        dest = path.join(destpath, dest)
-        print("copy_shaders " .. file .. " -> " .. dest)
-        os.copyfile(file, dest)
+        local relpath = path.getrelative(fullpath, file)
+        local dest = path.join(destpath, relpath)
+        print("copying shader " .. relpath)
+        os.mkdir(path.getdirectory(dest))
+        local success, err = os.copyfile(file, dest)
+        if not success then
+            print("error: " .. err)
+        end
     end
 end
 

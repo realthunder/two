@@ -407,6 +407,7 @@ function toolchain(_buildDir, _libDir)
 		then
 
 		local action = premake.action.current()
+		print("setting windowsTargetPlatformVersion to " .. windowsPlatform)
 		action.vstudio.windowsTargetPlatformVersion    = windowsPlatform
 		action.vstudio.windowsTargetPlatformMinVersion = windowsPlatform
 
