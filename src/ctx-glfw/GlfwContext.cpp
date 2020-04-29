@@ -8,6 +8,7 @@
 #endif
 
 #ifndef TWO_MODULES
+#include <infra/Log.h>
 #include <math/Math.h>
 #include <math/Vec.hpp>
 #include <ctx/KeyCode.h>
@@ -43,7 +44,7 @@ module two.ctx.glfw;
 
 void glfw_error(int error, const char* desc)
 {
-	printf("[ERROR] ctx glfw - GLFW %d: %s\n", error, desc);
+	two::error("ctx glfw - GLFW %d: %s", error, desc);
 }
 
 namespace two
@@ -206,13 +207,13 @@ namespace two
 
 	void GlfwContext::init_context()
 	{
-		printf("[info] ctx glfw - creating GLFW context. GLFW version %i.%i\n", GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR);
+		info("ctx glfw - creating GLFW context. GLFW version %i.%i", GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR);
 
 		glfwSetErrorCallback(glfw_error);
 
 		if(!glfwInit())
 		{
-			printf("[ERROR] ctx glfw - failed to init GLFW.\n");
+			error("ctx glfw - failed to init GLFW.");
 			return;
 		}
 

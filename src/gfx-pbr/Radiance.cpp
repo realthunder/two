@@ -10,6 +10,7 @@
 module two.gfx.pbr;
 #else
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <gfx/Scene.h>
 #include <gfx/Texture.h>
 #include <gfx/Material.h>
@@ -24,7 +25,7 @@ module two.gfx.pbr;
 #include <cstdio>
 
 #define DEBUG_ENVMAP 0
-#define DEBUG_RADIANCE 1
+#define DEBUG_RADIANCE 0
 
 namespace two
 {
@@ -63,11 +64,11 @@ namespace two
 		if(!radiance.m_preprocessed && radiance.m_filter)
 			m_prefilter_queue.push_back(&radiance);
 
-#ifdef DEBUG_ENVMAP
+#if DEBUG_ENVMAP
 		m_gfx.m_copy->debug_show_texturep(render, radiance.m_texture, vec4(0.f), 0);
 #endif
 
-#ifdef DEBUG_RADIANCE
+#if DEBUG_RADIANCE
 		m_gfx.m_copy->debug_show_texturep(render, radiance.m_filtered, vec4(0.f), 2);
 #endif
 	}
@@ -140,7 +141,7 @@ namespace two
 
 		if(!bgfx::isTextureValid(1, cube, 1, bgfx::TextureFormat::Enum(format), flags))
 		{
-			printf("[warning] could not prefilter env map roughness levels\n");
+			warn("could not prefilter env map roughness levels");
 			return;
 		}
 
@@ -154,8 +155,7 @@ namespace two
 			const uvec2 level_size = uvec2(size.x >> level, size.y >> level);
 			bgfx::Attachment attach = { bgfx::Access::Write, filtered, uint16_t(level), uint16_t(face), BGFX_RESOLVE_NONE };
 			FrameBuffer render_target = { level_size, filtered, { attach } }; // @todo fix ownership
-			m_copy.submit(Pass(), render_target, source, RenderQuad());
-			bgfx::frame();
+			m_copy.submit(Pass(), render_target, source, RenderQuad(), 0U, true);
 		};
 
 		const uint16_t num_faces = cube ? 6 : 1;

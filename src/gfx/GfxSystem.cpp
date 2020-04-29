@@ -18,6 +18,7 @@ module two.gfx;
 #include <stl/map.h>
 #include <pool/ObjectPool.hpp>
 #include <infra/ToString.h>
+#include <infra/Log.h>
 #include <infra/File.h>
 #include <math/Image256.h>
 #include <geom/Geom.hpp>
@@ -159,7 +160,7 @@ namespace two
 		m_impl->m_rigs = make_unique<TPool<Rig>>();
 		m_impl->m_animations = make_unique<TPool<Animation>>();
 		
-		auto load_tex = [&](Texture& texture, const string& path, const NoConfig& config) { load_texture(*this, texture, path); };
+		auto load_tex = [&](Texture& texture, const string& path, const NoConfig& config) { texture.load(*this, path); };
 
 		m_impl->m_textures = make_unique<AssetStore<Texture>>(*this, "textures/", load_tex);
 		m_impl->m_programs = make_unique<AssetStore<Program>>(*this, "programs/", ".prg");
@@ -222,7 +223,7 @@ namespace two
 
 	void GfxSystem::add_resource_path(const string& path, bool relative)
 	{
-		printf("[info] gfx - resource path: %s\n", path.c_str());
+		info("gfx - resource path: %s", path.c_str());
 		m_impl->m_resource_paths.push_back(relative ? m_resource_path + "/" + path : path);
 	}
 

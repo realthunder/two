@@ -5,6 +5,7 @@
 #pragma once
 
 #ifndef TWO_MODULES
+#include <infra/Log.h>
 #include <infra/File.h>
 #include <stl/span.h>
 #include <stl/algorithm.h>
@@ -58,7 +59,7 @@ namespace two
 	{
 		if(m_assets.find(name) != m_assets.end())
 		{
-			printf("[warning] creating asset %s of already existing name: previous asset deleted\n", name.c_str());
+			warn("creating asset %s of already existing name: previous asset deleted", name.c_str());
 			remove(m_vector, &*m_assets[name]);
 		}
 		m_assets[name] = make_unique<T_Asset>(name);

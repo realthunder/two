@@ -2,6 +2,7 @@
 #include <stl/span.h>
 #include <stl/math.h>
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <infra/AlignedAlloc.h>
 #include <infra/Arena.h>
 #include <infra/Thread.h>
@@ -116,7 +117,7 @@ namespace two
 		{
 			m_thread_states = aligned_vector<ThreadState>(num_threads + adoptable_threads);
 
-			printf("[info] jobs - job system running on %i worker threads\n", int(num_threads));
+			info("jobs - job system running on %i worker threads", int(num_threads));
 
 			for(size_t i = 0, n = m_thread_states.size(); i < n; i++)
 			{

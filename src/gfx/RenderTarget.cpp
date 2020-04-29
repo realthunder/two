@@ -145,6 +145,11 @@ namespace two
 		static const table<MSAA, uint64_t> msaa_flag = { BGFX_TEXTURE_RT, BGFX_TEXTURE_RT_MSAA_X2, BGFX_TEXTURE_RT_MSAA_X4, BGFX_TEXTURE_RT_MSAA_X8, BGFX_TEXTURE_RT_MSAA_X16 };
 		
 		TextureFormat color_format = TextureFormat::RGBA16F;
+		TextureFormat depth_format = TextureFormat::D24S8;
+
+		if (bgfx::getCaps()->rendererType == bgfx::RendererType::WebGPU)
+			// until WebGPU supports sampling depth, we just take the only sampleable format (and don't get any stencil)
+			depth_format = TextureFormat::D32F;
 
 		if(!bgfx::isTextureValid(0, false, 1, bgfx::TextureFormat::Enum(color_format), 0))
 			color_format = TextureFormat::RGB10A2;
@@ -157,7 +162,7 @@ namespace two
 
 		const uint64_t flags = msaa_flag[m_msaa];
 
-		m_depth = { size, false, TextureFormat::D24S8, flags | TEXTURE_DEPTH };
+		m_depth = { size, false, depth_format, flags | TEXTURE_DEPTH };
 
 		m_diffuse = { size, false, color_format, flags };
 
@@ -200,15 +205,15 @@ namespace two
 		m_deferred = false;
 #endif
 		if(m_deferred)
-			m_gbuffer.create(size, color_format, flags);
+			m_gbuffer.create(size, color_format, depth_format, flags);
 	}
 
 	RenderTarget::~RenderTarget()
 	{}
 
-	void GBuffer::create(const uvec2& size, TextureFormat color_format, uint64_t flags)
+	void GBuffer::create(const uvec2& size, TextureFormat color_format, TextureFormat depth_format, uint64_t flags)
 	{
-		m_depth    = { size, false, TextureFormat::D24S8, flags | TEXTURE_DEPTH };
+		m_depth    = { size, false, depth_format,		  flags | TEXTURE_DEPTH };
 		m_position = { size, false, color_format,		  flags };
 		m_normal   = { size, false, color_format,		  flags };
 		m_albedo   = { size, false, color_format,		  flags };

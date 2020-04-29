@@ -636,7 +636,7 @@ namespace two
 		if(program.m_blocks[MaterialBlock::User])
 			s_user_material_block.upload(encoder, m_user);
 
-		if(skin)
+		if (skin && skin->valid())
 			encoder.setTexture(uint8_t(TextureSampler::Skeleton), skin->m_texture);
 
 		if(m_submit)

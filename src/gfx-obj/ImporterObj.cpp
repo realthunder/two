@@ -8,6 +8,7 @@ module;
 module two.gfx.obj;
 #else
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <infra/File.h>
 #include <infra/ToString.h>
 #include <math/Timer.h>
@@ -226,7 +227,7 @@ namespace two
 		auto tof = [](const string& s) { return float(atof(s.c_str())); };
 		auto toi = [](const string& s) { return atoi(s.c_str()); };
 
-		printf("[info] obj - loading scene %s\n", scene.m_file.c_str());
+		info("obj - loading scene %s", scene.m_file.c_str());
 
 		Clock clock;
 		clock.step();
@@ -280,7 +281,7 @@ namespace two
 				m_import.m_items.push_back({ 0, &model, -1 });
 
 #if DEBUG_MESHES
-				printf("[info] obj - imported mesh %s with %u vertices and %u faces\n", 
+				info("obj - imported mesh %s with %u vertices and %u faces", 
 					   mesh.m_name.c_str(), m_shape.m_positions.size(), m_shape.m_indices.size() / 3);
 #endif
 
@@ -319,7 +320,7 @@ namespace two
 
 		if(!file_exists(filename))
 		{
-			printf("[ERROR] could not locate model %s\n", filename.c_str());
+			error("could not locate model %s", filename.c_str());
 			return;
 		}
 
@@ -417,7 +418,7 @@ namespace two
 
 		mesh_writer.next();
 
-		printf("[info] obj - imported %i vertices in %.2f seconds\n", int(g.vertices.size()), clock.step());
+		info("obj - imported %i vertices in %.2f seconds", int(g.vertices.size()), clock.step());
 	}
 
 	void ImporterOBJ::import_model(Model& model, const string& filepath, const ImportConfig& config)
@@ -440,6 +441,6 @@ namespace two
 	void ImporterOBJ::repack(const string& filepath, const ImportConfig& config)
 	{
 		UNUSED(filepath); UNUSED(config);
-		printf("[warning] obj - repack for this format not supported\n");
+		warn("obj - repack for this format not supported");
 	}
 }

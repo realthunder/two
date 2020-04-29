@@ -12,6 +12,7 @@
 module two.gfx.pbr;
 #else
 #include <infra/ToString.h>
+#include <infra/Log.h>
 #include <infra/File.h>
 #include <math/Random.h>
 #include <geom/Intersect.h>
@@ -70,7 +71,7 @@ namespace two
 		: m_size(size)
 		, m_atlas(uvec2(size))
 	{
-		printf("[info] create lightmap\n");
+		info("create lightmap");
 
 		//m_items.reserve(1024);
 		m_items.reserve(4096);
@@ -90,7 +91,7 @@ namespace two
 	void load_lightmap(GfxSystem& gfx, Lightmap& lightmap, const string& path)
 	{
 		lightmap.m_texture = { "lightmap" };
-		load_texture(gfx, lightmap.m_texture, path);
+		lightmap.m_texture.load(gfx, path);
 
 		for(LightmapItem& item : lightmap.m_items)
 			item.m_lightmap = &lightmap.m_texture;
@@ -123,7 +124,7 @@ namespace two
 
 		bool conservative = (bgfx::getCaps()->supported & BGFX_CAPS_CONSERVATIVE_RASTER) != 0;
 		if(!conservative)
-			printf("[warning] rendering lightmap without conservative raster support will produce visible seams\n");
+			warn("rendering lightmap without conservative raster support will produce visible seams");
 
 		pass.m_bgfx_state = 0 | BGFX_STATE_WRITE_RGB | BGFX_STATE_WRITE_A | BGFX_STATE_CONSERVATIVE_RASTER | BGFX_STATE_MSAA;
 
@@ -209,14 +210,14 @@ namespace two
 			}
 		};
 
-		xatlas::AddMeshError::Enum error = xatlas::AddMesh(m_atlas, xmesh, on_warning, &geometry);
+		xatlas::AddMeshError::Enum result = xatlas::AddMesh(m_atlas, xmesh, on_warning, &geometry);
 
-		if(error != xatlas::AddMeshError::Success)
+		if(result != xatlas::AddMeshError::Success)
 		{
-			printf("[ERROR] xatlas - adding mesh '%s': %s\n", mesh.m_name.c_str(), xatlas::StringForEnum(error));
+			error("xatlas - adding mesh '%s': %s\n", mesh.m_name.c_str(), xatlas::StringForEnum(result));
 		}
 
-		return error == xatlas::AddMeshError::Success;
+		return result == xatlas::AddMeshError::Success;
 	}
 
 	uvec2 XAtlas::generate(uint32_t rect_size, float density)
@@ -289,7 +290,7 @@ namespace two
 		if(is_unwrapped)
 			return;
 
-		printf("[info] unwrapping model %s for lightmap\n", model.m_name.c_str());
+		info("unwrapping model %s for lightmap", model.m_name.c_str());
 
 		XAtlas atlas;
 
@@ -311,7 +312,7 @@ namespace two
 
 		if(unwrap.size.x == 0 || unwrap.size.y == 0)
 		{
-			printf("[warning] model %s unwrapped to zero size rect\n", model.m_name.c_str());
+			warn("model %s unwrapped to zero size rect", model.m_name.c_str());
 			return;
 		}
 
@@ -411,7 +412,7 @@ namespace two
 
 	void BlockLightmap::bake_lightmaps(Scene& scene, LightmapAtlas& atlas, const mat4& transform, const vec3& extents)
 	{
-		printf("[info] bake lightmaps\n");
+		info("bake lightmaps");
 
 		vector<Item*> items;
 		//Plane6 planes = frustum_planes(transform, vec2(extents.x, extents.y), -extents.z / 2.f, -extents.z / 2.f);
@@ -474,7 +475,7 @@ namespace two
 			load_lightmap(m_gfx, *lightmap, cached_path);
 		}
 
-		printf("[info] bake lightmaps done\n");
+		info("bake lightmaps done");
 	}
 
 	void BlockLightmap::begin_frame(const RenderFrame& frame)

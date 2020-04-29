@@ -41,11 +41,12 @@ namespace two
 		static BlockDepth& block_depth = *gfx.m_renderer.block<BlockDepth>();
 		block_depth.submit(render, pass);
 
+		const bool is_color = block_depth.m_depth_method == DepthMethod::Distance
+						   || block_depth.m_depth_method == DepthMethod::DepthPacked;
 		UNUSED(render);
-		if(block_depth.m_depth_method == DepthMethod::Distance)
-			pass.m_bgfx_state = 0 | BGFX_STATE_WRITE_RGB | BGFX_STATE_WRITE_Z | BGFX_STATE_DEPTH_TEST_LEQUAL | BGFX_STATE_WRITE_A | BGFX_STATE_CULL_CW;
-		else
-			pass.m_bgfx_state = 0 | BGFX_STATE_WRITE_Z | BGFX_STATE_DEPTH_TEST_LEQUAL | BGFX_STATE_CULL_CW;
+		pass.m_bgfx_state = 0 | BGFX_STATE_WRITE_Z | BGFX_STATE_DEPTH_TEST_LEQUAL | BGFX_STATE_CULL_CW;
+		if (is_color)
+			pass.m_bgfx_state |= BGFX_STATE_WRITE_RGB | BGFX_STATE_WRITE_A;
 
 		bgfx::setViewMode(pass.m_index, bgfx::ViewMode::DepthAscending);
 

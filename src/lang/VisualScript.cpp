@@ -10,10 +10,10 @@ module two.lang;
 #include <stl/math.h>
 #include <stl/algorithm.h>
 #include <infra/ToString.h>
-#include <refl/Convert.h>
-#include <infra/ToString.h>
+#include <infra/Log.h>
 #include <infra/Reverse.h>
 #include <infra/Sort.h>
+#include <refl/Convert.h>
 #include <lang/Types.h>
 #include <lang/VisualScript.h>
 #endif
@@ -162,7 +162,7 @@ namespace two
 	
 	void dump_stream(Stream& stream, const string& name)
 	{
-		printf("[info] Dump tree %s\n", name.c_str());
+		info("dump tree %s", name.c_str());
 		stream.visit(true, [&](StreamBranch& branch)
 		{
 			for(size_t d = 0; d < branch.m_depth; ++d)
@@ -288,7 +288,7 @@ namespace two
 			valid = valid && check;
 #ifdef TWO_DEBUG_SCRIPT
 			if(!check)
-				printf("[warning] vislang - wrong parameter for process %s, input %s, branch %s\n", m_title.c_str(), input->m_name.c_str(), to_string(branch.m_index).c_str());
+				warn("vislang - wrong parameter for process %s, input %s, branch %s\n", m_title.c_str(), input->m_name.c_str(), to_string(branch.m_index).c_str());
 #endif
 		}
 		return valid;
@@ -300,7 +300,7 @@ namespace two
 		{
 #ifdef TWO_DEBUG_SCRIPT
 			//if(!branch.empty()) // @todo this doesn't work (branches are never empty :/
-				printf("[warning] vislang - process %s failed for branch %s\n", m_title.c_str(), to_string(branch.m_index).c_str());
+				warn("vislang - process %s failed for branch %s", m_title.c_str(), to_string(branch.m_index).c_str());
 #endif
 			for(Valve* valve : m_outputs)
 				valve->m_stream.write(branch, Var());

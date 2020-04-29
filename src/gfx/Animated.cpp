@@ -8,6 +8,7 @@
 module two.gfx;
 #else
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <math/Math.h>
 #include <math/Interp.h>
 #include <gfx/Types.h>
@@ -89,7 +90,7 @@ namespace two
 	void Mime::advance(float delta)
 	{
 		if(m_playing.size() > 2)
-			printf("[warning] Mime playing more than 2 animations at the same time\n");
+			warn("mime playing more than 2 animations at the same time");
 
 		for(AnimPlay& play : m_playing)
 			play.step(delta, m_speed_scale);
@@ -138,7 +139,7 @@ namespace two
 				target = &nodes[track.m_node];
 			if(!target && track.m_target != AnimTarget::Weights)
 			{
-				printf("[warning] No bone found for animation %s track %s with target %i %s\n", animation.m_name.c_str(), "", int(track.m_node), track.m_node_name.c_str());
+				warn("no bone found for animation %s track %s with target %i %s", animation.m_name.c_str(), "", int(track.m_node), track.m_node_name.c_str());
 				continue;
 			}
 

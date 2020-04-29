@@ -82,8 +82,11 @@ namespace two
 		m_shot = render.m_shot;
 	}
 
-	Pass Render::next_pass(cstring name, PassType type)
+	Pass Render::next_pass(cstring name, PassType type, uint8_t index)
 	{
+		if (index == UINT8_MAX)
+			index = m_pass_index++;
+
 		Pass pass;
 		pass.m_name = name;
 		pass.m_target = m_target;
@@ -92,14 +95,14 @@ namespace two
 		pass.m_viewport = m_viewport;
 		pass.m_rect = m_rect;
 		pass.m_use_mrt = m_needs_mrt;
-		pass.m_index = m_pass_index++;
+		pass.m_index = index;
 		pass.m_pass_type = type;
 
 		pass.m_encoder = bgfx::begin();
 
 		bgfx::setViewName(pass.m_index, name);
 
-		//printf("[info] render pass %s\n", name.c_str());
+		//info("render pass %s", name.c_str());
 		m_viewport->pass(pass);
 
 		this->set_uniforms(pass);
@@ -273,9 +276,9 @@ namespace two
 		element.m_program.set_option(0, VFLIP, render.m_vflip && bgfx::getCaps()->originBottomLeft);
 		element.m_program.set_option(0, MRT, render.m_is_mrt);
 
-		element.m_program.set_option(0, INSTANCING, element.m_item->m_batch != nullptr);
+		element.m_program.set_option(0, INSTANCING, element.m_item->m_batch != nullptr && element.m_item->m_batch->m_buffer.num > 0);
 		element.m_program.set_option(0, BILLBOARD, element.m_item->m_flags & ItemFlag::Billboard);
-		element.m_program.set_option(0, SKELETON, element.m_skin != nullptr);
+		element.m_program.set_option(0, SKELETON, element.m_skin != nullptr && element.m_skin->valid());
 		element.m_program.set_option(0, MORPHTARGET, element.m_item->m_rig && !element.m_item->m_rig->m_morphs.empty());
 		element.m_program.set_option(0, QNORMALS, element.m_elem->m_mesh->m_qnormals);
 

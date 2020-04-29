@@ -6,6 +6,7 @@
 module two.ui;
 #else
 #include <stl/hash_base.hpp>
+#include <infra/Log.h>
 #include <math/Vec.hpp>
 #include <ui/Style/Styles.h>
 #include <ui/UiWindow.h>
@@ -54,7 +55,7 @@ namespace two
 			if(g_styles.find(name) != g_styles.end())
 				selector.styles.push_back(g_styles[name]);
 			else
-				printf("[warning] ui - style %s not found\n", name.c_str());
+				warn("ui - style %s not found", name.c_str());
 		return selector;
 	}
 

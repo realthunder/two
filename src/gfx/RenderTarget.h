@@ -111,7 +111,7 @@ namespace two
 
 	export_ struct TWO_GFX_EXPORT GBuffer : public FrameBuffer
 	{
-		void create(const uvec2& size, TextureFormat color_format, uint64_t flags);
+		void create(const uvec2& size, TextureFormat color_format, TextureFormat depth_format, uint64_t flags);
 
 		Texture m_depth;
 		Texture m_position;

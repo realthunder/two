@@ -24,7 +24,7 @@ namespace two
 		//, m_index(s_light_index++)
 	{
 		m_shadow_bias = 0.01f;
-		m_shadow_normal_bias = 0.f; // @todo investigate why making this higher fucks up the first shadow slice
+		//m_shadow_normal_bias = 0.f; // @todo investigate why making this higher fucks up the first shadow slice
 
 		m_attenuation = 1.f;
 

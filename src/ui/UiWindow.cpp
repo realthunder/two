@@ -9,6 +9,7 @@ module two.ui;
 #else
 #include <stl/algorithm.h>
 #include <stl/unordered_map.hpp>
+#include <infra/Log.h>
 #include <infra/Vector.h>
 #include <infra/StringOps.h>
 #include <infra/File.h>
@@ -47,7 +48,7 @@ namespace two
 	{
 		this->reset_styles();
 
-		printf("[info] ui - window init - resource path %s\n", m_resource_path.c_str());
+		info("ui - window init - resource path %s", m_resource_path.c_str());
 
 		this->init_resources();
 		this->load_resources();
@@ -56,7 +57,7 @@ namespace two
 
 		m_ui = oconstruct<Ui>(*this);
 
-		printf("[info] ui - init input\n");
+		info("ui - init input");
 		m_context.init_input(m_ui->m_mouse, m_ui->m_keyboard);
 
 		this->resize(m_context.m_size, m_context.m_fb_size);
@@ -86,7 +87,7 @@ namespace two
 	{
 		string sprite_path = m_resource_path + "/interface/uisprites";
 
-		printf("[info] ui - loading images from path %s\n", sprite_path.c_str());
+		info("ui - loading images from path %s", sprite_path.c_str());
 
 		vector<Image> images;
 		load_folder_images(images, sprite_path, "");
@@ -103,7 +104,7 @@ namespace two
 
 	void UiWindow::load_resources()
 	{
-		printf("[info] ui - loading resources\n");
+		info("ui - loading resources");
 
 		m_vg.load_default_font();
 
@@ -139,7 +140,7 @@ namespace two
 
 	void UiWindow::resize(const uvec2& size, const uvec2& fb_size)
 	{
-		printf("[info] ui window - resize to (%i, %i) - pixel size (%i, %i)\n", int(size.x), int(size.y), int(fb_size.x), int(fb_size.y));
+		info("ui window - resize to (%i, %i) - pixel size (%i, %i)", int(size.x), int(size.y), int(fb_size.x), int(fb_size.y));
 		m_size = size;
 		m_context.reset_fb(fb_size);
 		m_ui->m_frame.set_size(vec2(fb_size));

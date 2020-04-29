@@ -154,6 +154,7 @@ EX(xx_light_hemisphere)
 
 		Model& model = *app.m_gfx.models().file("Flamingo"); // .glb
 
+		model.get_mesh(0).m_material->m_base.m_shader_color = ShaderColor::Vertex;
 		model.get_mesh(0).m_material->m_base.m_flat_shaded = true;
 		model.get_mesh(0).m_material->m_program = &three;
 

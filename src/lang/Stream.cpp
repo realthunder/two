@@ -110,7 +110,7 @@ namespace two
 		bool result = convert(m_value, *expected_type, value, ref);
 #if 0
 		if(!result)
-			printf("[warning] No conversion possible from %s to %s : dest set to None\n", type(source).m_name, output.m_name);
+			warn("No conversion possible from %s to %s : dest set to None", type(source).m_name, output.m_name);
 #endif
 		return result;
 	}

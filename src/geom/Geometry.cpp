@@ -13,6 +13,7 @@ module two.geom;
 #include <stl/unordered_map.h>
 #include <stl/map.h>
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <infra/Vector.h>
 #include <type/Cls.h>
 #include <math/Vec.hpp>
@@ -492,7 +493,7 @@ namespace two
 
 		bool success = genTangSpaceDefault(&context) != 0;
 		if(!success)
-			printf("[warning] Couldn't generate mikktspace tangents\n");
+			warn("Couldn't generate mikktspace tangents\n");
 	}
 
 	void MeshPacker::gen_tangents()
@@ -528,6 +529,6 @@ namespace two
 
 		bool success = genTangSpaceDefault(&context) != 0;
 		if(!success)
-			printf("[warning] Couldn't generate mikktspace tangents\n");
+			warn("Couldn't generate mikktspace tangents\n");
 	}
 }

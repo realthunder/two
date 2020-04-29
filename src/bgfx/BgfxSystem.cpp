@@ -13,6 +13,7 @@
 #ifdef TWO_MODULES
 module two.bgfx;
 #else
+#include <infra/Log.h>
 #include <type/Type.h>
 #include <bgfx/BgfxSystem.h>
 #endif
@@ -48,7 +49,8 @@ namespace two
 		: RenderSystem(resource_path, true)
 		//, m_capture_every(100)
 	{
-		printf("[info] gfx - init gfx system\n");
+		init_console();
+		info("gfx - init gfx system");
 	}
 
 	BgfxSystem::~BgfxSystem()
@@ -65,16 +67,18 @@ namespace two
 
 	void BgfxSystem::init(BgfxContext& context)
 	{
-		printf("[info] gfx - native handle = %p\n", context.m_native_handle);
+		info("gfx - native handle = %p", context.m_native_handle);
 		bgfx::PlatformData pd = {};
 		pd.nwh = context.m_native_handle;
 		pd.ndt = context.m_native_target;
 		bgfx::setPlatformData(pd);
 
-		printf("[info] gfx - bgfx::init\n");
+		info("gfx - bgfx::init");
 		bgfx::Init params = {};
 		params.type = bgfx::RendererType::OpenGL;
-		//params.type = bgfx::RendererType::Direct3D11;
+		params.type = bgfx::RendererType::Direct3D11;
+	  //params.type = bgfx::RendererType::Direct3D12;
+		params.type = bgfx::RendererType::WebGPU;
 		params.resolution.width = uint32_t(context.m_size.x);
 		params.resolution.height = uint32_t(context.m_size.y);
 		params.resolution.reset = BGFX_RESET_NONE;

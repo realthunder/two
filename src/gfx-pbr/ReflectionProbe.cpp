@@ -49,7 +49,7 @@ namespace two
 		{
 			bgfx::Attachment attachments[2] =
 			{
-				{ bgfx::Access::Write, m_depth , 0, 1, BGFX_RESOLVE_AUTO_GEN_MIPS },
+				{ bgfx::Access::Write, m_depth , 0, 0, BGFX_RESOLVE_AUTO_GEN_MIPS },
 				{ bgfx::Access::Write, m_cubemap, 0, uint16_t(i), BGFX_RESOLVE_AUTO_GEN_MIPS }
 			};
 			m_fbos[i] = { uvec2(size), m_cubemap, attachments };

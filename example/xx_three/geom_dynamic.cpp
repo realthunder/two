@@ -62,7 +62,7 @@ EX(xx_geom_dynamic)
 	static Mesh* lines_mesh = nullptr;
 
 #if INSTANCING
-	struct Point { vec3 pos; float pad; vec2 scale; float pad1; float pad2; };
+	struct Point { vec3 pos; float pad; vec2 scale; float pad1; float pad2; Colour colour; };
 
 	static Batch* points_batch = nullptr;
 	static Batch* lines_batch = nullptr;
@@ -170,7 +170,7 @@ EX(xx_geom_dynamic)
 		vec3& position = particle.position;
 		position += particle.velocity * delta * 20.f;
 #if INSTANCING
-		points[i] = { position, PAD, vec2(1.f), PAD, PAD };
+		points[i] = { position, PAD, vec2(1.f), PAD, PAD, Colour(1.f) };
 #else
 		gpu_points.m_writer.position(position);
 		gpu_points.m_writer.index(i);

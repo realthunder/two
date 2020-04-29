@@ -17,6 +17,7 @@ using Json = json11::Json;
 
 #include <type/DispatchDecl.h>
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <infra/File.h>
 #include <infra/StringOps.h>
 #include <infra/StringConvert.h>
@@ -98,7 +99,7 @@ namespace two
 
 		if(magic != 0x46546C67 || version != 2)
 		{
-			printf("[ERROR] .glb contents invalid\n");
+			error(".glb contents invalid");
 			return;
 		}
 

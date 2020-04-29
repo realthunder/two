@@ -20,6 +20,7 @@ module two.lang;
 #include <stl/algorithm.h>
 #include <infra/Global.h>
 #include <infra/ToString.h>
+#include <infra/Log.h>
 #include <math/Vec.h>
 #include <type/Any.h>
 #include <type/Proto.h>
@@ -467,7 +468,7 @@ namespace two
 			success &= !arg.none();
 			success &= param.nullable() || !arg.null();
 			if(!success)
-				printf("[ERROR] lua -> %s wrong argument %s, expect %s%s, got %s%s\n",
+				error("lua -> %s wrong argument %s, expect %s%s, got %s%s\n",
 					   callable.m_name, param.m_name, param.m_type->m_name, param.nullable() ? "" : " (non null)", type(arg).m_name, arg.null() ? " (null)" : "");
 		};
 		for(size_t i = 0; i < vars.m_count; ++i)
@@ -873,7 +874,7 @@ namespace two
 		{
 			if(!g_meta[type.m_id])
 			{
-				printf("[warning] lua - type %s doesn't have reflection meta type\n", type.m_name);
+				warn("lua - type %s doesn't have reflection meta type\n", type.m_name);
 				return;
 			}
 
@@ -941,7 +942,7 @@ namespace two
 	{
 		System& system = System::instance();
 
-		//printf("[info] Declaring lua Meta info\n");
+		//info("declaring lua Meta info");
 		//system.dumpMetaInfo();
 
 		for(Namespace& location : system.m_namespaces)

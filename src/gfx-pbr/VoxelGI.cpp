@@ -12,6 +12,7 @@
 module two.gfx.pbr;
 #else
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <math/Vec.hpp>
 #include <geom/Intersect.h>
 #include <tree/Graph.hpp>
@@ -115,13 +116,13 @@ namespace gfx
 		bgfx::frame();
 		bgfx::frame();
 
-		save_bgfx_texture(gfx, path, target_format, texture, source_format, subdiv, subdiv, subdiv);
+		save_texture(gfx, texture, path, TextureFormat(target_format));
 	}
 
 	void load_gi_probe(GfxSystem& gfx, GIProbe& gi_probe, const string& path)
 	{
 		gi_probe.m_voxels_light_rgba = { "voxels" };
-		load_texture(gfx, gi_probe.m_voxels_light_rgba, path);
+		gi_probe.m_voxels_light_rgba.load(gfx, path);
 	}
 
 	void pass_voxel_gi(GfxSystem& gfx, Render& render)
@@ -138,7 +139,7 @@ namespace gfx
 
 		bool conservative = (bgfx::getCaps()->supported & BGFX_CAPS_CONSERVATIVE_RASTER) != 0;
 		if(!conservative)
-			printf("[warning] rendering GI probe without conservative raster support will produce wrong output\n");
+			warn("rendering GI probe without conservative raster support will produce wrong output");
 
 		UNUSED(render); UNUSED(pass);
 		pass.m_bgfx_state = BGFX_STATE_CONSERVATIVE_RASTER | BGFX_STATE_CULL_CW | BGFX_STATE_MSAA;
@@ -178,7 +179,7 @@ namespace gfx
 
 			if(gi_probe->m_mode == GIProbeMode::Voxelize)
 			{
-				printf("[info] bake GIProbe\n");
+				info("bake GIProbe");
 
 				block_gi_bake.voxelize(render, *gi_probe);
 				block_gi_bake.output(render, *gi_probe);
@@ -192,7 +193,7 @@ namespace gfx
 
 				gi_probe->m_dirty = false;
 
-				printf("[info] bake GIProbe done\n");
+				info("bake GIProbe done");
 
 				//string path = m_gfx.m_resource_path + "/" + "gi_probe.dds";
 				//save_gi_probe(m_gfx, *gi_probe, bgfx::TextureFormat::RGBA16F, bgfx::TextureFormat::BC6H, path);

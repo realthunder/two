@@ -186,6 +186,8 @@ EX(xx_shader_lava)
 	static GfxViewer viewer = GfxViewer(window, scene);
 #endif
 
+	viewer.m_viewport.m_autorender = false;
+
 	static vec3 angles = vec3(0.3f, 0.f, 0.f);
 	static Node3* node = nullptr;
 	

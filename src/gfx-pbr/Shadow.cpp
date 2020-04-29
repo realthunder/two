@@ -35,6 +35,8 @@ module two.gfx.pbr;
 #include <cstdio>
 
 #define DEBUG_ATLAS 0
+#define DEBUG_ATLAS_DEPTH 0
+#define DEBUG_ATLAS_COLOR 0
 
 namespace two
 {
@@ -241,7 +243,8 @@ namespace two
 		slice.m_proj = crop_shrink_light_proj(light, slice.m_light_bounds, light_proj, float(csm_size));
 		slice.m_transform = light_transform;
 
-		mat4 crop_matrix = rect_mat(slice.m_rect) * bias_mat_bgfx(bgfx::getCaps()->originBottomLeft, bgfx::getCaps()->homogeneousDepth);
+		auto* caps = bgfx::getCaps();
+		mat4 crop_matrix = rect_mat(slice.m_rect) * bias_mat_bgfx(caps->originBottomLeft, caps->homogeneousDepth);
 		slice.m_shadow_matrix = crop_matrix * slice.m_proj * slice.m_transform;
 
 		slice.m_bias_scale = slice.m_index == 0 ? 1.f : slice.m_frustum.m_radius / csm.m_slices[0].m_frustum.m_radius;
@@ -270,6 +273,8 @@ namespace two
 			CSMSlice& slice = csm.m_slices[i];
 			update_csm_slice(render, light, light_transform, light_proj, slice, csm, slot.m_rect, slot.m_trect.width);
 			slice.m_fbo = &m_atlas.m_fbo;
+			slice.m_depth_method = depth_method();
+		  //slice.m_depth_method = DepthMethod::DepthPacked;
 		}
 	}
 
@@ -284,9 +289,11 @@ namespace two
 			m_depth = { size, false, TextureFormat::D24S8, BGFX_TEXTURE_RT | TEXTURE_CLAMP | TEXTURE_DEPTH };
 			m_fbo = { m_depth };
 		}
-		else if(method == DepthMethod::Distance)
+		else if(method == DepthMethod::Distance
+			 || method == DepthMethod::DepthPacked)
 		{
 			m_color = { size, false, TextureFormat::RGBA8, BGFX_TEXTURE_RT | TEXTURE_CLAMP | TEXTURE_POINT };
+			m_color.m_is_depth_packed = true;
 			m_fbo = { m_color };
 		}
 	}
@@ -312,7 +319,7 @@ namespace two
 		, m_block_depth(block_depth)
 		, m_block_light(block_light)
 	{
-		m_options = { "SHADOWS", "CSM_BLEND" };
+		m_options = { "SHADOWS", "SHADOWS_PACKED", "SHADOWS_COMPARE" }; // TODO "CSM_BLEND"
 		m_modes = { "PCF_LEVEL" };
 
 		//m_pcf_level = PCF_HARD;
@@ -345,10 +352,17 @@ namespace two
 			}
 
 		this->setup_shadows(render);
-
+		
 #if DEBUG_ATLAS
+		m_gfx.m_copy->debug_show_texture(render, m_atlas.m_depth, vec4(vec2(0.f),        vec2(0.25f)));
+		m_gfx.m_copy->debug_show_texture(render, m_atlas.m_color, vec4(vec2(0.f, 0.25f), vec2(0.25f)));
+		//m_gfx.m_copy->debug_show_texture(render, m_atlas.texture(depth_method()), vec4(0.f));
+#endif
+#if DEBUG_ATLAS_DEPTH
 		m_gfx.m_copy->debug_show_texture(render, m_atlas.m_depth, vec4(0.f));
-		//m_gfx.m_copy->debug_show_texture(render, m_atlas.m_color, vec4(0.f));
+#endif
+#if DEBUG_ATLAS_COLOR
+		m_gfx.m_copy->debug_show_texture(render, m_atlas.m_color, vec4(0.f));
 #endif
 	}
 
@@ -410,6 +424,7 @@ namespace two
 					shadow.m_light = &light;
 					shadow.m_rect = { offsets[axis], slot_size };
 					shadow.m_far = light.m_range;
+					shadow.m_depth_method = DepthMethod::Distance;
 
 					const vec3& position = light.m_node->position();
 					shadow.m_transform = bxlookat(position, position + to_vec3(axis), view_up[axis]);
@@ -422,8 +437,6 @@ namespace two
 					shadow.m_fbo = &m_atlas.m_fbo;
 
 					shadow.m_shadow_matrix = bxtranslation(-position);
-					shadow.m_depth_method = DepthMethod::Distance;
-
 				}
 			}
 			else if(light.m_type == LightType::Spot)
@@ -431,6 +444,7 @@ namespace two
 				LightShadow& shadow = push(m_shadows);
 				shadow.m_light = &light;
 				shadow.m_rect = m_atlas.render_update(render, light);
+				shadow.m_depth_method = depth_method();
 
 				shadow.m_proj = bxproj(light.m_spot_angle * 2.f, 1.f, 0.01f, light.m_range, bgfx::getCaps()->homogeneousDepth);
 				shadow.m_transform = light.m_node->m_transform;
@@ -499,16 +513,28 @@ namespace two
 	{
 		UNUSED(render);
 
+		bool shadow_sampler = SHADOW_SAMPLER; // m_pcf_level != PCF_HARD
+
 		program.set_mode(m_index, PCF_LEVEL, uint8_t(m_pcf_level));
 
 		const bool shadows = !m_csm_shadows.empty() || !m_shadows.empty();
 		program.set_option(m_index, SHADOWS, shadows);
+		program.set_option(m_index, SHADOWS_COMPARE, shadow_sampler);
+		
+		if (shadows)
+		{
+			DepthMethod depth_method;
 
-		//if(direct && light->m_shadows)
-		//{
-		//	program.set_option(m_index, CSM_SHADOW);
-		//	//program.set_option(m_index, CSM_BLEND, light->m_shadow_blend_splits);
-		//}
+			if (!m_shadows.empty())
+				depth_method = m_shadows[0].m_depth_method;
+			else if (!m_csm_shadows.empty())
+				depth_method = m_csm_shadows[0].m_slices[0].m_depth_method;
+
+			const bool shadows_packed = depth_method == DepthMethod::DepthPacked
+									 || depth_method == DepthMethod::Distance;
+			program.set_option(m_index, SHADOWS_PACKED, shadows_packed);
+			//program.set_option(m_index, CSM_BLEND, light->m_shadow_blend_splits);
+		}
 	}
 
 	void BlockShadow::submit(Render& render, const Pass& pass) const
@@ -543,19 +569,21 @@ namespace two
 
 		bgfx::Encoder& encoder = *pass.m_encoder;
 
-		bool shadow_sampler = false; // m_pcf_level != PCF_HARD
+		bool shadow_sampler = SHADOW_SAMPLER; // m_pcf_level != PCF_HARD
 		uint32_t shadow_flags = shadow_sampler ? BGFX_SAMPLER_COMPARE_LESS : TEXTURE_POINT;
 
 		// @todo for now normal shadows and direct shadows are incompatible because we use color for the former and depth for the latter
 		// we should be able to switch the distance shader to write to the depth buffer
 		if(!m_shadows.empty())
 		{
-			encoder.setTexture(uint8_t(TextureSampler::Shadow), m_atlas.m_color, shadow_flags);
+			DepthMethod depth_method = m_shadows[0].m_depth_method;
+			encoder.setTexture(uint8_t(TextureSampler::Shadow), m_atlas.texture(depth_method), shadow_flags);
 		}
 
 		if(!m_csm_shadows.empty())
 		{
-			encoder.setTexture(uint8_t(TextureSampler::Shadow), m_atlas.m_depth, shadow_flags);
+			DepthMethod depth_method = m_csm_shadows[0].m_slices[0].m_depth_method;
+			encoder.setTexture(uint8_t(TextureSampler::Shadow), m_atlas.texture(depth_method), shadow_flags);
 		}
 	}
 

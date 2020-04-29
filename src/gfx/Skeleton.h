@@ -54,6 +54,7 @@ namespace two
 
 		void add_joint(cstring bone, const mat4& inverse_bind);
 		void update_joints();
+		bool valid() const { return bgfx::isValid(m_texture); }
 
 		Skeleton* m_skeleton;
 

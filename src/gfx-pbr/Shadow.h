@@ -12,12 +12,17 @@
 #include <gfx-pbr/Forward.h>
 #include <gfx-pbr/ShadowAtlas.h>
 
+#define SHADOW_DEPTH 0
+#define SHADOW_SAMPLER 0
+
 namespace two
 {
 	enum ShaderOptionShadow : unsigned int
 	{
 		SHADOWS,
-		CSM_BLEND,
+		SHADOWS_PACKED,
+		SHADOWS_COMPARE,
+		//CSM_BLEND, // TODO
 	};
 
 	enum ShaderModeShadow : unsigned int
@@ -132,6 +137,17 @@ namespace two
 
 		void update_csm(Render& render, Light& light, CSMShadow& csm);
 
+		DepthMethod depth_method()
+		{
+#if SHADOW_SAMPLER || SHADOW_DEPTH
+			return DepthMethod::Depth;
+#else
+			return bgfx::getRendererType() == bgfx::RendererType::WebGPU
+				? DepthMethod::DepthPacked
+				: DepthMethod::Depth;
+#endif
+		}
+
 		BlockDepth& m_block_depth;
 		BlockLight& m_block_light;
 
@@ -146,7 +162,7 @@ namespace two
 				s_shadow_atlas = bgfx::createUniform("s_shadow_atlas", bgfx::UniformType::Sampler, 1U, bgfx::UniformSet::View);
 				u_shadow_atlas = bgfx::createUniform("u_shadow_atlas", bgfx::UniformType::Vec4,    1U, bgfx::UniformSet::View);
 				u_pcf_p0   = bgfx::createUniform("u_pcf_p0",   bgfx::UniformType::Vec4,    1U, bgfx::UniformSet::View);
-				u_csm_p0 = bgfx::createUniform("u_csm_p0", bgfx::UniformType::Vec4, 1U, bgfx::UniformSet::View);
+				u_csm_p0   = bgfx::createUniform("u_csm_p0",   bgfx::UniformType::Vec4,    1U, bgfx::UniformSet::View);
 			}
 
 			bgfx::UniformHandle s_shadow_atlas;

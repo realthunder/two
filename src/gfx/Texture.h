@@ -35,16 +35,12 @@ namespace two
 	};
 
 	export_ TWO_GFX_EXPORT void save_bgfx_texture(GfxSystem& gfx, const string& file_path, bgfx::TextureFormat::Enum target_format, bgfx::TextureHandle texture, bgfx::TextureFormat::Enum texture_format, uint16_t width, uint16_t height, uint16_t depth = 1);
-	export_ TWO_GFX_EXPORT bgfx::TextureHandle load_bgfx_texture(GfxSystem& gfx, const string& name, void* data, size_t size, uint64_t flags = BGFX_TEXTURE_NONE, bgfx::TextureInfo* info = nullptr, bool generate_mips = false);
-	export_ TWO_GFX_EXPORT bgfx::TextureHandle load_bgfx_texture(GfxSystem& gfx, const string& file_path, uint64_t flags = BGFX_TEXTURE_NONE, bgfx::TextureInfo* info = nullptr, bool generate_mips = false);
 	export_ TWO_GFX_EXPORT bimg::ImageContainer* load_bgfx_image(GfxSystem& gfx, const string& file_path, bgfx::TextureFormat::Enum dst_format);
-
-	export_ TWO_GFX_EXPORT void save_texture(GfxSystem& gfx, Texture& texture, const string& path);
-	export_ TWO_GFX_EXPORT void load_texture(GfxSystem& gfx, Texture& texture, const string& path, bool srgb = false, bool mips = false);
-	export_ TWO_GFX_EXPORT void load_texture_mem(GfxSystem& gfx, Texture& texture, span<uint8_t> data);
 
 	export_ enum class refl_ TextureFormat : unsigned int
 	{
+		None    = bgfx::TextureFormat::Unknown,
+
 		R8      = bgfx::TextureFormat::R8,
 		R16F    = bgfx::TextureFormat::R16F,
 		R32U	= bgfx::TextureFormat::R32U,
@@ -63,9 +59,12 @@ namespace two
 		D24     = bgfx::TextureFormat::D24,
 		D24S8   = bgfx::TextureFormat::D24S8,
 		D32     = bgfx::TextureFormat::D32,
+		D32F    = bgfx::TextureFormat::D32F,
 
 		Count
 	};
+
+	export_ TWO_GFX_EXPORT void save_texture(GfxSystem& gfx, Texture& texture, const string& path, TextureFormat target_format = TextureFormat::None);
 
 	export_ class refl_ TWO_GFX_EXPORT Texture
 	{
@@ -95,13 +94,38 @@ namespace two
 
 		meth_ bool valid() const;
 
+		meth_ void load(GfxSystem& gfx, const string& path, bool srgb = false, bool mips = false);
 		meth_ void reload(GfxSystem& gfx, bool srgb = false, bool mips = false);
+
+		meth_ void load_mem(GfxSystem& gfx, span<uint8_t> data);
 
 		void load_rgba(const uvec2& size, const bgfx::Memory& data);
 		void load_float(const uvec2& size, const bgfx::Memory& data, uint8_t num_components = 4);
 
 		meth_ void load_rgba(const uvec2& size, span<uint32_t> data, bool ref = false);
 		meth_ void load_float(const uvec2& size, span<float> data, bool ref = false);
+
+		void init(bgfx::TextureHandle texture, bgfx::TextureInfo& texture_info)
+		{
+			if (!bgfx::isValid(texture))
+			{
+				// set placeholder "missing texture" texture instead
+				return;
+			}
+
+			m_tex = texture;
+
+			m_size = uvec2(texture_info.width, texture_info.height);
+			m_format = TextureFormat(texture_info.format);
+			m_memsize = texture_info.storageSize;
+			m_bits_per_pixel = texture_info.bitsPerPixel;
+			m_is_cube = texture_info.cubeMap;
+			m_is_array = texture_info.numLayers > 1;
+			m_mips = texture_info.numMips > 0;
+
+			//bgfx::setName(m_tex, path.c_str());
+			bgfx::setName(m_tex, m_name.c_str());
+		}
 
 		bgfx::TextureHandle m_tex = BGFX_INVALID_HANDLE;
 

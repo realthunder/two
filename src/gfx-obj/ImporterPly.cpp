@@ -8,6 +8,7 @@ module;
 module two.gfx.obj;
 #else
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <infra/File.h>
 #include <infra/ToString.h>
 #include <infra/ToValue.h>
@@ -390,7 +391,7 @@ namespace two
 
 	void ImporterPLY::import(Import& scene, const string& path, const ImportConfig& config)
 	{
-		printf("[info] gltf - loading scene %s\n", scene.m_file.c_str());
+		info("gltf - loading scene %s", scene.m_file.c_str());
 
 		bool as_model = scene.m_models.size() > 0;
 		Model& model = as_model
@@ -445,6 +446,6 @@ namespace two
 	void ImporterPLY::repack(const string& filepath, const ImportConfig& config)
 	{
 		UNUSED(filepath); UNUSED(config);
-		printf("[warning] ply - repack for this format not supported\n");
+		warn("ply - repack for this format not supported");
 	}
 }

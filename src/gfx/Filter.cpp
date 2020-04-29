@@ -55,7 +55,7 @@ namespace two
 		m_multiply = mul;
 	}
 
-	void BlockFilter::source0p(Texture& texture, ProgramVersion& program, int level, uint32_t flags)
+	void BlockFilter::source0p(const Texture& texture, ProgramVersion& program, int level, uint32_t flags)
 	{
 		bgfx::setTexture(uint8_t(TextureSampler::Source0), u_uniform.s_source_0, texture, flags);
 
@@ -68,27 +68,27 @@ namespace two
 		program.set_option(m_index, SOURCE_0_CUBE, texture.m_is_cube);
 	}
 
-	void BlockFilter::source0(Texture& texture, uint32_t flags)
+	void BlockFilter::source0(const Texture& texture, uint32_t flags)
 	{
 		bgfx::setTexture(uint8_t(TextureSampler::Source0), u_uniform.s_source_0, texture, flags);
 	}
 
-	void BlockFilter::source1(Texture& texture, uint32_t flags)
+	void BlockFilter::source1(const Texture& texture, uint32_t flags)
 	{
 		bgfx::setTexture(uint8_t(TextureSampler::Source1), u_uniform.s_source_1, texture, flags);
 	}
 
-	void BlockFilter::source2(Texture& texture, uint32_t flags)
+	void BlockFilter::source2(const Texture& texture, uint32_t flags)
 	{
 		bgfx::setTexture(uint8_t(TextureSampler::Source2), u_uniform.s_source_2, texture, flags);
 	}
 
-	void BlockFilter::source3(Texture& texture, uint32_t flags)
+	void BlockFilter::source3(const Texture& texture, uint32_t flags)
 	{
 		bgfx::setTexture(uint8_t(TextureSampler::Source3), u_uniform.s_source_3, texture, flags);
 	}
 
-	void BlockFilter::sourcedepth(Texture& texture, uint32_t flags)
+	void BlockFilter::sourcedepth(const Texture& texture, uint32_t flags)
 	{
 		bgfx::setTexture(uint8_t(TextureSampler::SourceDepth), u_uniform.s_source_depth, texture, flags);
 	}
@@ -249,19 +249,19 @@ namespace two
 		UNUSED(render);
 	}
 
-	void BlockCopy::submit(const Pass& pass, FrameBuffer& fbo, Texture& texture, const RenderQuad& quad, uint64_t flags)
+	void BlockCopy::submit(const Pass& pass, FrameBuffer& fbo, const Texture& texture, const RenderQuad& quad, uint64_t flags, bool render)
 	{
 		ProgramVersion program = { m_program };
 		m_filter.source0p(texture, program, TEXTURE_CLAMP);
-		m_filter.submit(pass, fbo, program, quad, flags);
+		m_filter.submit(pass, fbo, program, quad, flags, render);
 	}
 
-	void BlockCopy::quad(const Pass& pass, FrameBuffer& fbo, Texture& texture, uint64_t flags)
+	void BlockCopy::quad(const Pass& pass, FrameBuffer& fbo, const Texture& texture, uint64_t flags, bool render)
 	{
-		this->submit(pass, fbo, texture, RenderQuad(pass.m_rect, true), flags);
+		this->submit(pass, fbo, texture, RenderQuad(pass.m_rect, true), flags, render);
 	}
 
-	void BlockCopy::debug_show_texture(Render& render, Texture& texture, const vec4& rect, int level)
+	void BlockCopy::debug_show_texture(Render& render, const Texture& texture, const vec4& rect, int level)
 	{
 		if (!texture.valid())
 			return;
@@ -273,11 +273,11 @@ namespace two
 		ProgramVersion program = { m_program };
 		m_filter.source0p(texture, program, level, TEXTURE_CLAMP);
 
-		Pass pass; pass.m_index = render.debug_pass();
+		Pass pass = render.next_pass("debug texture", PassType::PostProcess, render.debug_pass());
 		m_filter.submit(pass, render.m_target->m_backbuffer, program, target_quad, 0);
 	}
 
-	void BlockCopy::debug_show_texturep(Render& render, Texture* texture, const vec4& rect, int level)
+	void BlockCopy::debug_show_texturep(Render& render, const Texture* texture, const vec4& rect, int level)
 	{
 		if (!texture)
 			return;

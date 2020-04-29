@@ -16,8 +16,9 @@ module two.gfx;
 #include <stl/map.h>
 #include <stl/hash_base.hpp>
 #include <stl/algorithm.h>
-#include <infra/ToString.h>
 #include <stl/table.h>
+#include <infra/ToString.h>
+#include <infra/Log.h>
 #include <infra/File.h>
 #include <gfx/Program.h>
 #include <gfx/GfxSystem.h>
@@ -43,7 +44,7 @@ namespace two
 	{
 		if(!bx::open(&reader, file_path))
 		{
-			printf("[ERROR] failed to open file %s\n", file_path);
+			error("failed to open file %s", file_path);
 			return nullptr;
 		}
 
@@ -88,9 +89,9 @@ namespace two
 																	 : bgfx::createProgram(vertex_shader, fragment_shader, true);
 
 		if(!bgfx::isValid(program))
-			printf("[ERROR] gfx - failed to load program %s\n", shader_path.c_str());
+			error("gfx - failed to load program %s", shader_path.c_str());
 		//else
-		//	printf("[info] gfx - loaded program %s id %i\n", shader_path.c_str(), int(program.idx));
+		//	info("gfx - loaded program %s id %i", shader_path.c_str(), int(program.idx));
 
 		return program;
 	}
@@ -113,9 +114,6 @@ namespace two
 	bool compile_shader(GfxSystem& gfx, const string& name, const string& suffix, ShaderType shader_type, const string& defines_in, const string& source)
 	{
 		string defines = defines_in;
-		bool is_opengl = bgfx::getRendererType() == bgfx::RendererType::OpenGLES
-					  || bgfx::getRendererType() == bgfx::RendererType::OpenGL;
-
 		string source_path = shader_path(gfx, name, shader_type);
 
 		if(source != "")
@@ -136,25 +134,31 @@ namespace two
 
 		create_file_tree(output_path);
 
-		printf("[info] gfx - compiling shader : %s\n", source_path.c_str());
-		printf("[info] gfx - defines : %s\n", defines.c_str());
+		info("gfx - compiling shader : %s", source_path.c_str());
 
 		string include = gfx.m_resource_path + "/shaders/";
 		string varying_path = gfx.m_resource_path + "/shaders/varying.def.sc";
 
-		enum Target { GLSL, ESSL, HLSL, Metal };
-#if BX_PLATFORM_WINDOWS
-		Target target = is_opengl ? GLSL : HLSL;
-#elif BX_PLATFORM_LINUX
-		Target target = GLSL; UNUSED(is_opengl);
-#elif BX_PLATFORM_EMSCRIPTEN
-		//Target target = ESSL; UNUSED(is_opengl);
-		Target target = GLSL; UNUSED(is_opengl);
-#elif BX_PLATFORM_OSX
-		Target target = is_opengl ? GLSL : Metal;
-#endif
+		enum class Target { GLSL, ESSL, HLSL, Metal, SPIRV };
 
-		if(target == ESSL || target == Metal)
+		auto get_target = []
+		{
+			using RendererType = bgfx::RendererType;
+			auto renderer = bgfx::getRendererType();
+
+			if (renderer == RendererType::OpenGLES)			return Target::GLSL;
+			else if (renderer == RendererType::OpenGL)		return Target::GLSL;
+			else if (renderer == RendererType::Direct3D11)	return Target::HLSL;
+			else if (renderer == RendererType::Direct3D12)	return Target::HLSL;
+			else if (renderer == RendererType::Metal)		return Target::Metal;
+			else if (renderer == RendererType::Vulkan)		return Target::SPIRV;
+			else if (renderer == RendererType::WebGPU)		return Target::SPIRV;
+			else return Target::GLSL;
+		};
+
+		Target target = get_target();
+
+		if(target == Target::ESSL || target == Target::Metal)
 			defines += "NO_TEXEL_FETCH;";
 
 		vector<cstring> args;
@@ -175,38 +179,43 @@ namespace two
 
 		args.push_back("-O3");
 
-		if(target == GLSL)
+		if(target == Target::GLSL)
 		{
 			push_arg("--platform", "linux");
 			//push_arg("--profile", "120");
 			push_arg("--profile", "130");
 			//push_arg("--profile", "430");
 		}
-		else if(target == ESSL)
+		else if(target == Target::ESSL)
 		{
 			push_arg("--platform", "android");
 		}
-		else if(target == HLSL)
+		else if(target == Target::HLSL)
 		{
 			static table<ShaderType, cstring> profiles = { "cs_5_0", "ps_5_0", "gs_5_0", "vs_5_0" };
 			push_arg("--platform", "windows");
 			push_arg("--profile", profiles[shader_type]);
 		}
-		else if(target == Metal)
+		else if(target == Target::Metal)
 		{
 			push_arg("--platform", "osx");
 			push_arg("--profile", "metal");
+		}
+		else if (target == Target::SPIRV)
+		{
+			push_arg("--platform", "linux");
+			push_arg("--profile", "spirv");
 		}
 
 		int result = bgfx::compileShader(uint32_t(args.size()), args.data());
 
 		if(result == EXIT_FAILURE)
 		{
-			char output_text[90000];
+			char output_text[1024 * 128];
 			uint16_t output_size;
 			bgfx::getShaderError(output_text, output_size);
 
-			printf("[ERROR] failed to compile %s (%s), defines = %s\n", source_path.c_str(), output_path.c_str(), defines.c_str());
+			error("failed to compile %s (%s), defines = %s\n", source_path.c_str(), output_path.c_str(), defines.c_str());
 			printf("%s\n", output_text);
 			return false;
 		}
@@ -373,6 +382,11 @@ namespace two
 		const string suffix = "_v" + to_string(version.m_version);
 		const string defines = this->defines(config);
 
+		const string full_name = m_name + suffix;
+
+		info("gfx - compiling program %s", full_name.c_str());
+		info("gfx - with defines: %s", defines.c_str());
+
 		bool compiled = true;
 #ifdef TWO_LIVE_SHADER_COMPILER
 		if(compute)
@@ -389,16 +403,13 @@ namespace two
 		}
 #endif
 
-		const string full_name = m_name + suffix;
-
 		if(!compiled)
 		{
-			printf("[warning] gfx - failed to compile program %s : using last valid version instead\n", full_name.c_str());
+			warn("gfx - failed to compile program %s : using last valid version instead", full_name.c_str());
 			version.m_update = m_update;
 			return;
 		}
 
-		printf("[info] gfx - loading program %s with options %s\n", full_name.c_str(), defines.c_str());
 		const string compiled_path = gfx.m_resource_path + "/shaders/compiled/" + full_name;
 		version.m_program = compute ? load_compute_program(gfx.file_reader(), compiled_path)
 									: load_program(gfx.file_reader(), compiled_path);

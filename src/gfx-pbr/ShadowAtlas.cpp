@@ -28,9 +28,16 @@ namespace two
 		: m_side(size)
 		, m_size(size * num_slices, size)
 	{
+#if SHADOW_SAMPLER || SHADOW_DEPTH
+		// WebGPU does not support sampling D24S8 for now
+		m_depth = { m_size, false, TextureFormat::D32F, BGFX_TEXTURE_RT | TEXTURE_CLAMP | TEXTURE_DEPTH };
+#else
 		m_depth = { m_size, false, TextureFormat::D24S8, BGFX_TEXTURE_RT | TEXTURE_CLAMP | TEXTURE_DEPTH };
-		m_color = { m_size, false, TextureFormat::RGBA8, BGFX_TEXTURE_RT | TEXTURE_CLAMP };
+#endif
+		m_color = { m_size, false, TextureFormat::RGBA8, BGFX_TEXTURE_RT | TEXTURE_CLAMP | TEXTURE_POINT };
 		m_fbo = { m_size, { &m_depth, &m_color } };
+
+		m_color.m_is_depth_packed = true;
 
 		const float fraction = 1.f / float(num_slices);
 		for(uint8_t i = 0; i < num_slices; ++i)

@@ -241,7 +241,7 @@ namespace two
 		auto& shapes = m_impl->m_symbols[hash];
 		if(shapes.find(shape_mem) == shapes.end())
 		{
-			//printf("[info] created indexed Shape %s %s\n", shape.m_type.m_name, pack_json(Ref(&shape)).c_str());
+			//info("created indexed Shape %s %s", shape.m_type.m_name, pack_json(Ref(&shape)).c_str());
 			string name = "Shape:" + string(shape.m_type.m_name);
 			shapes[shape_mem] = gen_model(name.c_str(), ProcShape{ symbol, &shape, draw_mode }, true);
 		}

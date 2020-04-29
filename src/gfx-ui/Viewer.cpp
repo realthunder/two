@@ -273,7 +273,7 @@ namespace two
 				float targetDistance = length(offset);
 
 				// half of the fov is center to top of screen
-				targetDistance *= tan((fov / 2.f) * c_pi / 180.0);
+				targetDistance *= tan((fov / 2.f) * c_pi / 180.f);
 
 				// we use only clientHeight here so aspect ratio does not distort speed
 				panLeft(2 * delta.x * targetDistance / size.y); // , object.matrix);

@@ -36,9 +36,9 @@ namespace two
 		using TF = bgfx::TextureFormat;
 		static const TF::Enum formats[8][4] =
 		{
-			{ TF::R8,    TF::RG8U,   TF::RGB8U,   TF::RGBA8U },
+			{ TF::R8U,   TF::RG8U,   TF::RGB8U,   TF::RGBA8U },
 			{ TF::R8I,   TF::RG8I,   TF::RGB8I,   TF::RGBA8I },
-			{ TF::R16,   TF::RG16,   TF::Unknown, TF::RGBA16U },
+			{ TF::R16U,  TF::RG16U,  TF::Unknown, TF::RGBA16U },
 			{ TF::R16I,  TF::RG16I,  TF::Unknown, TF::RGBA16I },
 			{ TF::R32U,  TF::RG32U,  TF::Unknown, TF::RGBA32U },
 			{ TF::R32I,  TF::RG32I,  TF::Unknown, TF::RGBA32I },

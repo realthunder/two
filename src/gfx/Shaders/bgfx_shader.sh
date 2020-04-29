@@ -652,7 +652,7 @@ uniform mat4  u_proj;
 uniform mat4  u_invProj;
 uniform mat4  u_viewProj;
 uniform mat4  u_invViewProj;
-uniform mat4  u_model[BGFX_CONFIG_MAX_BONES];
+uniform mat4  u_model[1];
 uniform mat4  u_modelView;
 uniform mat4  u_modelViewProj;
 uniform vec4  u_alphaRef4;

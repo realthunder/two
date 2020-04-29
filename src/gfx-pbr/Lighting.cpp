@@ -15,6 +15,7 @@ module two.gfx.pbr;
 #include <geom/Shapes.h>
 #include <gfx/Shot.h>
 #include <gfx/Item.h>
+#include <gfx/Mesh.h>
 #include <gfx/Viewport.h>
 #include <gfx/Scene.h>
 #include <gfx/Camera.h>
@@ -47,8 +48,11 @@ namespace two
 
 		m_defines = {
 			{ "MAX_LIGHTS", to_string(c_max_forward_lights)  },
-			{ "MAX_SHADOWS", to_string(c_max_shadows) },
+			{ "MAX_SHADOWS", to_string(c_max_shadows) }
 		};
+
+		if (c_normalize_bone_indices)
+			m_defines.push_back({ "NORMALIZED_BONES", "" });
 	}
 
 	void BlockLight::init_block()

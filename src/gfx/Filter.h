@@ -64,13 +64,13 @@ namespace two
 
 		meth_ void multiply(float mul);
 
-		meth_ void source0p(Texture& texture, ProgramVersion& program, int level = 0, uint32_t flags = UINT32_MAX);
+		meth_ void source0p(const Texture& texture, ProgramVersion& program, int level = 0, uint32_t flags = UINT32_MAX);
 
-		meth_ void source0(Texture& texture, uint32_t flags = UINT32_MAX);
-		meth_ void source1(Texture& texture, uint32_t flags = UINT32_MAX);
-		meth_ void source2(Texture& texture, uint32_t flags = UINT32_MAX);
-		meth_ void source3(Texture& texture, uint32_t flags = UINT32_MAX);
-		meth_ void sourcedepth(Texture& texture, uint32_t flags = UINT32_MAX);
+		meth_ void source0(const Texture& texture, uint32_t flags = UINT32_MAX);
+		meth_ void source1(const Texture& texture, uint32_t flags = UINT32_MAX);
+		meth_ void source2(const Texture& texture, uint32_t flags = UINT32_MAX);
+		meth_ void source3(const Texture& texture, uint32_t flags = UINT32_MAX);
+		meth_ void sourcedepth(const Texture& texture, uint32_t flags = UINT32_MAX);
 
 		void uniform(const Pass& pass, const string& name, const mat4& value);
 		meth_ void uniform(const Pass& pass, const string& name, const vec4& value);
@@ -95,11 +95,11 @@ namespace two
 
 		virtual void begin_render(Render& render) override;
 
-		meth_ void submit(const Pass& pass, FrameBuffer& fbo, Texture& texture, const RenderQuad& quad, uint64_t flags = 0U);
-		meth_ void quad(const Pass& pass, FrameBuffer& fbo, Texture& texture, uint64_t flags = 0U);
+		meth_ void submit(const Pass& pass, FrameBuffer& fbo, const Texture& texture, const RenderQuad& quad, uint64_t flags = 0U, bool render = false);
+		meth_ void quad(const Pass& pass, FrameBuffer& fbo, const Texture& texture, uint64_t flags = 0U, bool render = false);
 
-		meth_ void debug_show_texture(Render& render, Texture& texture, const vec4& rect, int level = 0);
-		meth_ void debug_show_texturep(Render& render, Texture* texture, const vec4& rect, int level = 0);
+		meth_ void debug_show_texture(Render& render, const Texture& texture, const vec4& rect, int level = 0);
+		meth_ void debug_show_texturep(Render& render, const Texture* texture, const vec4& rect, int level = 0);
 
 		BlockFilter& m_filter;
 

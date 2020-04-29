@@ -10,6 +10,7 @@ module two.gfx;
 #include <stl/map.h>
 #include <stl/table.h>
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <math/Vec.hpp>
 #include <geom/Primitive.hpp>
 #include <geom/Geometry.h>
@@ -24,6 +25,12 @@ module two.gfx;
 
 namespace two
 {
+#ifdef TWO_PLATFORM_EMSCRIPTEN
+	const bool c_normalize_bone_indices = true;
+#else
+	const bool c_normalize_bone_indices = false;
+#endif
+
 	bgfx::VertexLayout create_vertex_decl(uint32_t vertex_format)
 	{
 		bgfx::VertexLayout decl;
@@ -32,12 +39,7 @@ namespace two
 		bool needs_half = (vertex_format & VertexAttribute::QTexCoord0) != 0
 					   || (vertex_format & VertexAttribute::QTexCoord1) != 0;
 		if(needs_half && !half_support)
-			printf("[warning] half vertex attribute not supported but used by texcoords\n");
-
-		bool normalize_indices = false;
-#ifdef TWO_PLATFORM_EMSCRIPTEN
-		normalize_indices = true;
-#endif
+			warn("half vertex attribute not supported but used by texcoords");
 
 		decl.begin();
 
@@ -68,7 +70,7 @@ namespace two
 		if((vertex_format & VertexAttribute::QTexCoord1) != 0)
 			decl.add(bgfx::Attrib::TexCoord1, 2, bgfx::AttribType::Half);
 		if((vertex_format & VertexAttribute::Joints) != 0)
-			decl.add(bgfx::Attrib::Indices, 4, bgfx::AttribType::Uint8, normalize_indices);
+			decl.add(bgfx::Attrib::Indices, 4, bgfx::AttribType::Uint8, c_normalize_bone_indices);
 		if((vertex_format & VertexAttribute::Weights) != 0)
 			decl.add(bgfx::Attrib::Weight, 4, bgfx::AttribType::Float);
 		

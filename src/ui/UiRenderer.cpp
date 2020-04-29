@@ -9,6 +9,7 @@ module two.ui;
 #else
 #include <stl/string.h>
 #include <stl/map.h>
+#include <infra/Log.h>
 #include <math/Vec.hpp>
 #include <ui/UiRenderer.h>
 #include <ui/Frame/Layer.h>
@@ -487,8 +488,8 @@ namespace two
 		double time = m_clock.read();
 		if(time - prevtime >= 4.f)
 		{
-			printf("[info] frame %.2f\n", ((time - prevtime) / frames) * 1000.f);
-			printf("[info] fps %f\n", (frames / (time - prevtime)));
+			info("frame %.2f", ((time - prevtime) / frames) * 1000.f);
+			info("fps %f", (frames / (time - prevtime)));
 			prevtime = time;
 			frames = 0;
 		}

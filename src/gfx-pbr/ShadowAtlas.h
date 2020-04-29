@@ -9,6 +9,7 @@
 #include <stl/map.h>
 #include <math/Vec.h>
 #endif
+#include <gfx/Depth.h>
 #include <gfx/Texture.h>
 #include <gfx/RenderTarget.h>
 #include <gfx-pbr/Forward.h>
@@ -25,6 +26,14 @@ namespace two
 
 		uint16_t m_side = 0;
 		uvec2 m_size;
+
+		const Texture& texture(DepthMethod depth_method) const
+		{
+			if (depth_method == DepthMethod::Depth)
+				return m_depth;
+			else if (depth_method == DepthMethod::DepthPacked || depth_method == DepthMethod::Distance)
+				return m_color;
+		}
 
 		Texture m_color;
 		Texture m_depth;

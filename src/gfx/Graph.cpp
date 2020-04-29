@@ -8,6 +8,7 @@
 module two.gfx;
 #else
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <infra/Copy.h>
 #include <pool/Pool.hpp>
 #include <tree/Graph.hpp>
@@ -102,7 +103,7 @@ namespace two
 		{
 			m_scene->m_orphan_sounds.push_back(m_sound);
 			m_sound = nullptr;
-			printf("[ERROR] sound goes out of graph but wasn't destroyed\n");
+			error("sound goes out of graph but wasn't destroyed\n");
 		}
 	}
 

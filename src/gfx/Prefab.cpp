@@ -9,6 +9,7 @@ module two.gfx;
 #else
 #include <stl/set.h>
 #include <stl/hash_base.hpp>
+#include <infra/Log.h>
 #include <pool/Pool.h>
 #include <gfx/Types.h>
 #include <gfx/Prefab.h>
@@ -18,6 +19,8 @@ module two.gfx;
 #include <gfx/Importer.h>
 #include <gfx/GfxSystem.h>
 #endif
+
+#include <cstdio>
 
 namespace two
 {
@@ -35,7 +38,7 @@ namespace two
 		if(m_call.validate())
 			m_call();
 		//else
-		//	printf("[warning] invalid prefab node element arguments\n");
+		//	warn("invalid prefab node element arguments");
 
 		for(PrefabNode& node : m_nodes)
 			node.draw(self);
@@ -66,7 +69,10 @@ namespace two
 	{
 		LocatedFile location = gfx.locate_file("models/" + name, { format == ModelFormat::obj ? ".obj" : ".gltf" });
 		Prefab& prefab = gfx.prefabs().create(name);
-		gfx.importer(format)->import_prefab(prefab, location.path(false), config);
+		if (location)
+			gfx.importer(format)->import_prefab(prefab, location.path(false), config);
+		else
+			warn("could not locate prefab %s", name.c_str());
 		return prefab;
 	}
 

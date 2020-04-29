@@ -9,6 +9,7 @@ module two.refl;
 #else
 #include <stl/string.h>
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <infra/File.h>
 #include <refl/System.h>
 #include <refl/Module.h>
@@ -43,7 +44,7 @@ namespace two
 		
 		if(!file_exists(module_path))
 		{
-			printf("[ERROR] refl - module %s not found\n", module_path.c_str());
+			error("refl - module %s not found", module_path.c_str());
 			return nullptr;
 		}
 
@@ -229,7 +230,7 @@ namespace two
 			{
 				return *func;
 			}
-		printf("[ERROR] retrieving function\n");
+		error("retrieving function");
 		return *m_functions[0];
 	}
 
@@ -249,11 +250,11 @@ namespace two
 	void System::dump_meta_info()
 	{
 		for(Function* function : System::instance().m_functions)
-			printf("[info] Meta function %s\n", function->m_name);
+			info("meta function %s", function->m_name);
 
 		for(Type* type : System::instance().m_types)
 		{
-			printf("[info] Meta type %s\n", type->m_name);
+			info("meta type %s", type->m_name);
 
 			if(!g_class[type->m_id])
 				continue;

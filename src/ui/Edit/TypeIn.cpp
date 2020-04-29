@@ -16,6 +16,7 @@ module two.ui;
 #else
 #include <stl/string.h>
 #include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <math/Math.h>
 #include <math/Vec.hpp>
 #include <tree/Graph.hpp>
@@ -94,7 +95,7 @@ namespace two
 		m_selection.m_start = min(size_t(m_selection.m_start), text.size());
 		m_selection.m_end = min(size_t(m_selection.m_end), text.size());
 
-		printf("[warning] undo/redo won't work after this\n");
+		warn("undo/redo won't work after this\n");
 		//mUndoBuffer.clear();
 
 		mark_dirty(0, m_string.size());
