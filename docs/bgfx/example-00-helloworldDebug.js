@@ -716,8 +716,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 478,
-  'maximum': 478 + 0,
+  'initial': 479,
+  'maximum': 479 + 0,
   'element': 'anyfunc'
 });
 
@@ -1338,11 +1338,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5938992,
+    STACK_BASE = 5939024,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 696112,
-    DYNAMIC_BASE = 5938992,
-    DYNAMICTOP_PTR = 695952;
+    STACK_MAX = 696144,
+    DYNAMIC_BASE = 5939024,
+    DYNAMICTOP_PTR = 695984;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1927,7 +1927,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 695088;
+// STATICTOP = STATIC_BASE + 695120;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4520,7 +4520,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 695952;
+      return 695984;
     }
 
   
@@ -6640,6 +6640,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           "offset": HEAPU32[((((ptr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((ptr)+(8))>>2)],
           "rowPitch": HEAPU32[(((ptr)+(16))>>2)],
           "imageHeight": HEAPU32[(((ptr)+(20))>>2)],
+          "bytesPerRow": HEAPU32[(((ptr)+(24))>>2)],
+          "rowsPerImage": HEAPU32[(((ptr)+(28))>>2)],
         };
       },makeProgrammableStageDescriptor:function(ptr) {
         if (ptr === 0) return undefined;
@@ -7128,6 +7130,10 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         "label": undefined,
         "layout": WebGPU.mgrBindGroupLayout.get(
           HEAP32[(((descriptor)+(8))>>2)]),
+        "entries": makeBindings(
+          HEAPU32[(((descriptor)+(20))>>2)],
+          HEAP32[(((descriptor)+(24))>>2)]
+        ),
         "bindings": makeBindings(
           HEAPU32[(((descriptor)+(12))>>2)],
           HEAP32[(((descriptor)+(16))>>2)]
@@ -7153,6 +7159,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
             HEAPU32[(((bindingPtr)+(4))>>2)],
           "type": WebGPU.BindingType[
             HEAPU32[(((bindingPtr)+(8))>>2)]],
+          "viewDimension": WebGPU.TextureViewDimension[
+            HEAPU32[(((bindingPtr)+(20))>>2)]],
           "textureDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((bindingPtr)+(16))>>2)]],
           "textureComponentType": WebGPU.TextureComponentType[
@@ -7172,12 +7180,17 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         }
         return bindings;
       }
-  
+      var bindings = makeBindings(
+        HEAPU32[(((descriptor)+(8))>>2)],
+        HEAP32[(((descriptor)+(12))>>2)]
+      );
+      var entries = makeBindings(
+        HEAPU32[(((descriptor)+(16))>>2)],
+        HEAP32[(((descriptor)+(20))>>2)]
+      );
       var desc = {
-        "bindings": makeBindings(
-          HEAPU32[(((descriptor)+(8))>>2)],
-          HEAP32[(((descriptor)+(12))>>2)]
-        ),
+        "bindings": bindings,
+        "entries": entries,
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
