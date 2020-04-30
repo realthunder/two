@@ -6849,7 +6849,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
         var dataLength_l = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
-        dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
         //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6870,9 +6870,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       
       
       var buffer = WebGPU.mgrBuffer.get(bufferId);
-      var start = (assert(start_h < 0x200000), start_h * 0x100000000 + start_l)
+      var start = (assert(start_high < 0x200000), start_high * 0x100000000 + start_low)
   ;
-      var count = (assert(count_h < 0x200000), count_h * 0x100000000 + count_l)
+      var count = (assert(count_high < 0x200000), count_high * 0x100000000 + count_low)
   ;
       buffer["setSubData"](start, HEAPU8, data, count);
     }
@@ -6984,11 +6984,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var src = WebGPU.mgrBuffer.get(srcId);
       var dst = WebGPU.mgrBuffer.get(dstId);
       commandEncoder["copyBufferToBuffer"](
-        src, (assert(srcOffset_h < 0x200000), srcOffset_h * 0x100000000 + srcOffset_l)
+        src, (assert(srcOffset_high < 0x200000), srcOffset_high * 0x100000000 + srcOffset_low)
   ,
-        dst, (assert(dstOffset_h < 0x200000), dstOffset_h * 0x100000000 + dstOffset_l)
+        dst, (assert(dstOffset_high < 0x200000), dstOffset_high * 0x100000000 + dstOffset_low)
   ,
-        (assert(size_h < 0x200000), size_h * 0x100000000 + size_l)
+        (assert(size_high < 0x200000), size_high * 0x100000000 + size_low)
   );
     }
 
@@ -7034,7 +7034,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _wgpuComputePassEncoderDispatchIndirect(passId, indirectBufferId, indirectOffset_low, indirectOffset_high) {
       
       var indirectBuffer = WebGPU.mgrBuffer.get(indirectBufferId);
-      var indirectOffset = (assert(indirectOffset_h < 0x200000), indirectOffset_h * 0x100000000 + indirectOffset_l)
+      var indirectOffset = (assert(indirectOffset_high < 0x200000), indirectOffset_high * 0x100000000 + indirectOffset_low)
   ;
       var pass = WebGPU.mgrComputePassEncoder.get(passId);
       pass["dispatchIndirect"](indirectBuffer, indirectOffset);
@@ -7611,7 +7611,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _wgpuRenderPassEncoderDrawIndexedIndirect(passId, indirectBufferId, indirectOffset_low, indirectOffset_high) {
       
       var indirectBuffer = WebGPU.mgrBuffer.get(indirectBufferId);
-      var indirectOffset = (assert(indirectOffset_h < 0x200000), indirectOffset_h * 0x100000000 + indirectOffset_l)
+      var indirectOffset = (assert(indirectOffset_high < 0x200000), indirectOffset_high * 0x100000000 + indirectOffset_low)
   ;
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       pass["drawIndexedIndirect"](indirectBuffer, indirectOffset);
@@ -7620,7 +7620,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _wgpuRenderPassEncoderDrawIndirect(passId, indirectBufferId, indirectOffset_low, indirectOffset_high) {
       
       var indirectBuffer = WebGPU.mgrBuffer.get(indirectBufferId);
-      var indirectOffset = (assert(indirectOffset_h < 0x200000), indirectOffset_h * 0x100000000 + indirectOffset_l)
+      var indirectOffset = (assert(indirectOffset_high < 0x200000), indirectOffset_high * 0x100000000 + indirectOffset_low)
   ;
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       pass["drawIndirect"](indirectBuffer, indirectOffset);
