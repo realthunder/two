@@ -7484,7 +7484,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       canvas.height = HEAPU32[(((descriptor)+(20))>>2)];
   
       var ctx = canvas.getContext('gpupresent');
-      assert(1 ===
+      assert(0 ===
         HEAPU32[(((descriptor)+(24))>>2)]);
   
       var desc = {
