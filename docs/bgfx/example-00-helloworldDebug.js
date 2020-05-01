@@ -716,8 +716,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 479,
-  'maximum': 479 + 0,
+  'initial': 478,
+  'maximum': 478 + 0,
   'element': 'anyfunc'
 });
 
@@ -1338,11 +1338,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5939024,
+    STACK_BASE = 5938992,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 696144,
-    DYNAMIC_BASE = 5939024,
-    DYNAMICTOP_PTR = 695984;
+    STACK_MAX = 696112,
+    DYNAMIC_BASE = 5938992,
+    DYNAMICTOP_PTR = 695952;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1927,7 +1927,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 695120;
+// STATICTOP = STATIC_BASE + 695088;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4520,7 +4520,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 695984;
+      return 695952;
     }
 
   
@@ -6652,7 +6652,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           "entryPoint": UTF8ToString(
             HEAP32[(((ptr)+(8))>>2)]),
         };
-      },AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","sampled-texture","storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:["never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PresentMode:["no-v-sync","v-sync"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
+      },AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","comparison-sampler","sampler","sampled-texture","storage-texture","readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:["never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PresentMode:["no-v-sync","v-sync"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
       assert(Module['preinitializedWebGPUDevice']);
       return WebGPU["mgrDevice"].create(Module['preinitializedWebGPUDevice']);
     }
