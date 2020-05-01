@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_particle.bin", "start": 0, "end": 1982, "audio": 0}, {"filename": "/shaders/spirv/fs_particle.bin", "start": 1982, "end": 3344, "audio": 0}, {"filename": "/shaders/spirv/cs_init_instances.bin", "start": 3344, "end": 13902, "audio": 0}, {"filename": "/shaders/spirv/cs_update_instances.bin", "start": 13902, "end": 17698, "audio": 0}, {"filename": "/shaders/spirv/cs_indirect.bin", "start": 17698, "end": 18922, "audio": 0}], "remote_package_size": 18922, "package_uuid": "a8cc1337-0da7-48ae-b988-99175a1a23b2"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_particle.bin", "start": 0, "end": 1982, "audio": 0}, {"filename": "/shaders/spirv/fs_particle.bin", "start": 1982, "end": 3344, "audio": 0}, {"filename": "/shaders/spirv/cs_init_instances.bin", "start": 3344, "end": 13902, "audio": 0}, {"filename": "/shaders/spirv/cs_update_instances.bin", "start": 13902, "end": 17698, "audio": 0}, {"filename": "/shaders/spirv/cs_indirect.bin", "start": 17698, "end": 18922, "audio": 0}], "remote_package_size": 18922, "package_uuid": "dfb1ae8b-4fb3-4a01-b784-d0c187237da2"});
   
   })();
   
@@ -7681,7 +7681,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

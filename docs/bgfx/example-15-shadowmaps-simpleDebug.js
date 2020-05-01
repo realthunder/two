@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 971, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 971, "end": 2127, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2127, "end": 4317, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4317, "end": 13364, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13364, "end": 14247, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14247, "end": 14609, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14609, "end": 23628, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23628, "end": 2612038, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612038, "end": 2612968, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612968, "end": 2650849, "audio": 0}], "remote_package_size": 2650849, "package_uuid": "07a4d0e6-3e75-482a-a9c5-c5b6bc311f42"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 971, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 971, "end": 2127, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2127, "end": 4317, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4317, "end": 13364, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13364, "end": 14247, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14247, "end": 14609, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14609, "end": 23628, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23628, "end": 2612038, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612038, "end": 2612968, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612968, "end": 2650849, "audio": 0}], "remote_package_size": 2650849, "package_uuid": "4821a8a9-5c95-4825-b3a0-ab42a5b24383"});
   
   })();
   
@@ -7682,7 +7682,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/font/fontawesome-webfont.ttf", "start": 0, "end": 165548, "audio": 0}, {"filename": "/font/kenney-icon-font.ttf", "start": 165548, "end": 211732, "audio": 0}, {"filename": "/font/visitor1.ttf", "start": 211732, "end": 239284, "audio": 0}, {"filename": "/font/droidsans.ttf", "start": 239284, "end": 429328, "audio": 0}, {"filename": "/font/chp-fire.ttf", "start": 429328, "end": 476140, "audio": 0}, {"filename": "/font/bleeding_cowboys.ttf", "start": 476140, "end": 625036, "audio": 0}, {"filename": "/font/mias_scribblings.ttf", "start": 625036, "end": 727068, "audio": 0}, {"filename": "/font/ruritania.ttf", "start": 727068, "end": 853568, "audio": 0}, {"filename": "/font/signika-regular.ttf", "start": 853568, "end": 994700, "audio": 0}, {"filename": "/font/five_minutes.otf", "start": 994700, "end": 1021856, "audio": 0}], "remote_package_size": 1021856, "package_uuid": "530c11d5-e2fe-4ba2-87e6-29bc359bd5bd"});
+   loadPackage({"files": [{"filename": "/font/fontawesome-webfont.ttf", "start": 0, "end": 165548, "audio": 0}, {"filename": "/font/kenney-icon-font.ttf", "start": 165548, "end": 211732, "audio": 0}, {"filename": "/font/visitor1.ttf", "start": 211732, "end": 239284, "audio": 0}, {"filename": "/font/droidsans.ttf", "start": 239284, "end": 429328, "audio": 0}, {"filename": "/font/chp-fire.ttf", "start": 429328, "end": 476140, "audio": 0}, {"filename": "/font/bleeding_cowboys.ttf", "start": 476140, "end": 625036, "audio": 0}, {"filename": "/font/mias_scribblings.ttf", "start": 625036, "end": 727068, "audio": 0}, {"filename": "/font/ruritania.ttf", "start": 727068, "end": 853568, "audio": 0}, {"filename": "/font/signika-regular.ttf", "start": 853568, "end": 994700, "audio": 0}, {"filename": "/font/five_minutes.otf", "start": 994700, "end": 1021856, "audio": 0}], "remote_package_size": 1021856, "package_uuid": "1af0ca2f-e079-4af2-a642-0b32e96c6ed9"});
   
   })();
   
@@ -7740,7 +7740,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

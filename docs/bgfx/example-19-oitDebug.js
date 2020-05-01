@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1575, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1575, "end": 2224, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2224, "end": 3325, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3325, "end": 4418, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4418, "end": 5698, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5698, "end": 6943, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 6943, "end": 8223, "audio": 0}], "remote_package_size": 8223, "package_uuid": "3f85247c-aba8-4488-b42e-4a6ad38eec32"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1575, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1575, "end": 2224, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2224, "end": 3325, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3325, "end": 4418, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4418, "end": 5698, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5698, "end": 6943, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 6943, "end": 8223, "audio": 0}], "remote_package_size": 8223, "package_uuid": "cc5892ce-e903-4bb1-af91-4e454d1e149f"});
   
   })();
   
@@ -7681,7 +7681,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

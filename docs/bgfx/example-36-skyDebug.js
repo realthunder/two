@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4680, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4680, "end": 6424, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6424, "end": 9116, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9116, "end": 10882, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10882, "end": 14267, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14267, "end": 156127, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156127, "end": 1204771, "audio": 0}], "remote_package_size": 1204771, "package_uuid": "a36ba372-167a-40d2-b80f-379e0f3c9373"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4680, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4680, "end": 6424, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6424, "end": 9116, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9116, "end": 10882, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10882, "end": 14267, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14267, "end": 156127, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156127, "end": 1204771, "audio": 0}], "remote_package_size": 1204771, "package_uuid": "8d31d969-c08c-45a8-b6b8-5bb7e5a69bae"});
   
   })();
   
@@ -8080,7 +8080,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

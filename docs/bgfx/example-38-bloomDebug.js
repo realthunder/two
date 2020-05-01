@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 1197, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 1197, "end": 1886, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 1886, "end": 2979, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 2979, "end": 6237, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 6237, "end": 8818, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 8818, "end": 10159, "audio": 0}], "remote_package_size": 10159, "package_uuid": "542b46fb-745e-4adf-a08c-565070910366"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 1197, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 1197, "end": 1886, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 1886, "end": 2979, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 2979, "end": 6237, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 6237, "end": 8818, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 8818, "end": 10159, "audio": 0}], "remote_package_size": 10159, "package_uuid": "011f98d3-0fff-4a41-84e4-276089b9b532"});
   
   })();
   
@@ -7681,7 +7681,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

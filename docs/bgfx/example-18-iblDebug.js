@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2024, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2024, "end": 7967, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 7967, "end": 10014, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10014, "end": 13461, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13461, "end": 2601871, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2601871, "end": 5419973, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5419973, "end": 9614409, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614409, "end": 10400989, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10400989, "end": 14595425, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595425, "end": 15382005, "audio": 0}], "remote_package_size": 15382005, "package_uuid": "ed2a7b69-0efb-47c8-9cf8-06ae47c5b631"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2024, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2024, "end": 7967, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 7967, "end": 10014, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10014, "end": 13461, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13461, "end": 2601871, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2601871, "end": 5419973, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5419973, "end": 9614409, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614409, "end": 10400989, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10400989, "end": 14595425, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595425, "end": 15382005, "audio": 0}], "remote_package_size": 15382005, "package_uuid": "05cc24c9-816f-4715-9e6e-6f9fde0f2eb5"});
   
   })();
   
@@ -8080,7 +8080,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

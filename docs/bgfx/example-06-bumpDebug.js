@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2965, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 2965, "end": 7900, "audio": 0}, {"filename": "/textures/fieldstone-rgba.png", "start": 7900, "end": 540996, "audio": 0}, {"filename": "/textures/fieldstone-n.png", "start": 540996, "end": 1090238, "audio": 0}], "remote_package_size": 1090238, "package_uuid": "9af6386a-53b6-4c8f-bd29-9da59edb03fd"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2965, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 2965, "end": 7900, "audio": 0}, {"filename": "/textures/fieldstone-rgba.png", "start": 7900, "end": 540996, "audio": 0}, {"filename": "/textures/fieldstone-n.png", "start": 540996, "end": 1090238, "audio": 0}], "remote_package_size": 1090238, "package_uuid": "cf39ecc7-17e9-482d-94fc-0e364bb80999"});
   
   })();
   
@@ -8079,7 +8079,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

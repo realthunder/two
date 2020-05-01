@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1407, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1407, "end": 4072, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4072, "end": 5772, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 5772, "end": 9932400, "audio": 0}], "remote_package_size": 9932400, "package_uuid": "6712d42e-d8bb-495c-9887-308944a51de3"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1407, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1407, "end": 4072, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4072, "end": 5772, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 5772, "end": 9932400, "audio": 0}], "remote_package_size": 9932400, "package_uuid": "a60d10c0-0c07-474c-962b-d638517b4c05"});
   
   })();
   
@@ -8079,7 +8079,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

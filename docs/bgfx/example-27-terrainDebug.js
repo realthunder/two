@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1197, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1197, "end": 1863, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1863, "end": 3487, "audio": 0}], "remote_package_size": 3487, "package_uuid": "aaf164a2-96ce-4b95-9081-f2792193330f"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1197, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1197, "end": 1863, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1863, "end": 3487, "audio": 0}], "remote_package_size": 3487, "package_uuid": "1965fe86-2ef7-4de2-b9d4-0048e041fa67"});
   
   })();
   
@@ -7681,7 +7681,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

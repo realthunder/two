@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2094, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2094, "end": 3620, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3620, "end": 4550, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4550, "end": 2822652, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822652, "end": 2876671, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876671, "end": 5465081, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465081, "end": 5466011, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466011, "end": 5520319, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520319, "end": 5558200, "audio": 0}], "remote_package_size": 5558200, "package_uuid": "a0de89c8-598b-4786-8c6c-6fc8a2b739e9"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2094, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2094, "end": 3620, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3620, "end": 4550, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4550, "end": 2822652, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822652, "end": 2876671, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876671, "end": 5465081, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465081, "end": 5466011, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466011, "end": 5520319, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520319, "end": 5558200, "audio": 0}], "remote_package_size": 5558200, "package_uuid": "d9b6e876-16c3-4dd5-a731-b04451db38b7"});
   
   })();
   
@@ -7682,7 +7682,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

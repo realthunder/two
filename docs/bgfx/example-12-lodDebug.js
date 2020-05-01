@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2094, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2094, "end": 5077, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5077, "end": 30628, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30628, "end": 49448, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49448, "end": 61045, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61045, "end": 78239, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78239, "end": 88049, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88049, "end": 92744, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92744, "end": 1491000, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491000, "end": 1665904, "audio": 0}], "remote_package_size": 1665904, "package_uuid": "f66480ad-18e7-44de-9f66-62048316a288"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2094, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2094, "end": 5077, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5077, "end": 30628, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30628, "end": 49448, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49448, "end": 61045, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61045, "end": 78239, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78239, "end": 88049, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88049, "end": 92744, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92744, "end": 1491000, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491000, "end": 1665904, "audio": 0}], "remote_package_size": 1665904, "package_uuid": "9dc0e17a-8f00-4722-9a15-c2a7b07301d3"});
   
   })();
   
@@ -8080,7 +8080,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

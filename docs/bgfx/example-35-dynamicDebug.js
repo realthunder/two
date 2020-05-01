@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1057, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1057, "end": 1463, "audio": 0}], "remote_package_size": 1463, "package_uuid": "b3a8377c-bf57-4252-87bd-91480f65d4de"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1057, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1057, "end": 1463, "audio": 0}], "remote_package_size": 1463, "package_uuid": "f963e0ff-c593-4361-9540-6dc3bbf661b0"});
   
   })();
   
@@ -7681,7 +7681,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

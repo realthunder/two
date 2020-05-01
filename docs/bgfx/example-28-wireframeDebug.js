@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_wf_wireframe.bin", "start": 0, "end": 1728, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_wireframe.bin", "start": 1728, "end": 3382, "audio": 0}, {"filename": "/shaders/spirv/vs_wf_mesh.bin", "start": 3382, "end": 5544, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_mesh.bin", "start": 5544, "end": 9354, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 9354, "end": 2597764, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2597764, "end": 2635645, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2635645, "end": 5453747, "audio": 0}], "remote_package_size": 5453747, "package_uuid": "8d0a996c-01da-4d3e-adf3-ed79f415818b"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_wf_wireframe.bin", "start": 0, "end": 1728, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_wireframe.bin", "start": 1728, "end": 3382, "audio": 0}, {"filename": "/shaders/spirv/vs_wf_mesh.bin", "start": 3382, "end": 5544, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_mesh.bin", "start": 5544, "end": 9354, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 9354, "end": 2597764, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2597764, "end": 2635645, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2635645, "end": 5453747, "audio": 0}], "remote_package_size": 5453747, "package_uuid": "7441a59f-0eb2-4449-a455-6de3bf3669ed"});
   
   })();
   
@@ -7682,7 +7682,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[

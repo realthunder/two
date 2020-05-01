@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2710, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2710, "end": 5466, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5466, "end": 2593876, "audio": 0}], "remote_package_size": 2593876, "package_uuid": "cf882ff3-b4c5-4e9b-8ce1-1cc10fcfdb72"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2710, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2710, "end": 5466, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5466, "end": 2593876, "audio": 0}], "remote_package_size": 2593876, "package_uuid": "894a3c28-5398-46b6-8493-b08b626e2fe8"});
   
   })();
   
@@ -7682,7 +7682,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        //"arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
+        "arrayLayerCount": HEAPU32[(((descriptor)+(28))>>2)],
         "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
         "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[
