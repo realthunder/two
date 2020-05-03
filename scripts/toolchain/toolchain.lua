@@ -314,6 +314,12 @@ function toolchain(_buildDir, _libDir)
 			premake.gcc.ar  = "ar"
 			location (path.join(_buildDir, "projects", _ACTION .. "-linux"))
 
+		elseif "linux-gcc-8" == _OPTIONS["gcc"] then
+			premake.gcc.cc  = "gcc-8"
+			premake.gcc.cxx = "g++-8"
+			premake.gcc.ar  = "ar"
+			location (path.join(_buildDir, "projects", _ACTION .. "-linux-gcc-8"))
+
 		elseif "linux-clang" == _OPTIONS["gcc"] then
 			premake.gcc.cc  = "clang"
 			premake.gcc.cxx = "clang++"
