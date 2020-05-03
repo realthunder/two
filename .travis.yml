@@ -11,29 +11,36 @@ addons:
       - libglu1-mesa-dev
       - xorg-dev
 
-matrix:
-  include:
-    - os: linux
-      compiler: gcc
-    - os: linux
-      compiler: clang
-    - os: osx
-      compiler: clang
-      osx_image: xcode10
-
-install:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then export GENIE_FOLDER="linux"; fi
-  - if [ "$CXX" = "g++" ]; then export TOOLCHAIN="linux-gcc-8" GMAKE_FOLDER="gmake-linux-gcc-8"; fi
-  - if [ "$CXX" = "clang++" ]; then export TOOLCHAIN="linux-clang" GMAKE_FOLDER="gmake-linux-clang"; fi
-
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export GENIE_FOLDER="darwin" TOOLCHAIN="osx" GMAKE_FOLDER="gmake-osx"; fi
-
 before_script:
   - git clone --depth 1 https://github.com/bkaradzic/bx ../bx
   - git clone --depth 1 https://github.com/hugoam/bimg ../bimg
   - git clone --depth 1 https://github.com/hugoam/bgfx ../bgfx
 
-script:
-  - bin/$GENIE_FOLDER/genie --gcc=$TOOLCHAIN gmake
-  - cd build/projects/$GMAKE_FOLDER
-  - time make config=debug64
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+      script:
+          - bin/linux/genie --gcc=linux-gcc-8 gmake
+          - cd build/projects/gmake-linux-gcc-8
+          - time make config=debug64
+    - os: linux
+      compiler: clang
+      script:
+          - bin/linux/genie --gcc=linux-clang gmake
+          - cd build/projects/gmake-linux-clang
+          - time make config=debug64
+    - os: osx
+      compiler: clang
+      osx_image: xcode10
+      script:
+          - bin/darwin/genie --gcc=osx gmake
+          - cd build/projects/gmake-osx
+          - time make config=debug64
+    - os: windows
+      script:
+          - bin\windows\genie vs2017
+          - cd build\projects\vs2017
+          - MSBuild.exe two.sln
+
+
