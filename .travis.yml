@@ -21,26 +21,29 @@ matrix:
     - os: linux
       compiler: gcc
       script:
-          - bin/linux/genie --gcc=linux-gcc-8 gmake
-          - cd build/projects/gmake-linux-gcc-8
-          - time make config=debug64
+        - bin/linux/genie --gcc=linux-gcc-8 gmake
+        - cd build/projects/gmake-linux-gcc-8
+        - time make config=debug64
     - os: linux
       compiler: clang
       script:
-          - bin/linux/genie --gcc=linux-clang gmake
-          - cd build/projects/gmake-linux-clang
-          - time make config=debug64
+        - bin/linux/genie --gcc=linux-clang gmake
+        - cd build/projects/gmake-linux-clang
+        - time make config=debug64
     - os: osx
       compiler: clang
       osx_image: xcode10
       script:
-          - bin/darwin/genie --gcc=osx gmake
-          - cd build/projects/gmake-osx
-          - time make config=debug64
+        - bin/darwin/genie --gcc=osx gmake
+        - cd build/projects/gmake-osx
+        - time make config=debug64
     - os: windows
+      env:
+        - MSBUILD_PATH="c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
       script:
-          - bin\windows\genie vs2017
-          - cd build\projects\vs2017
-          - MSBuild.exe two.sln
+        - bin/windows/genie vs2017
+        - cd build/projects/vs2017
+        - export PATH=$MSBUILD_PATH:$PATH
+        - MSBuild.exe two.sln //m //nologo //verbosity:minimal //p:Configuration=Debug //p:Platform=x64
 
 
