@@ -30,8 +30,8 @@ install:
 
 before_script:
   - git clone --depth 1 https://github.com/bkaradzic/bx ../bx
-  - git clone --depth 1 https://github.com/bkaradzic/bimg ../bimg
-  - git clone --depth 1 https://github.com/bkaradzic/bgfx ../bgfx
+  - git clone --depth 1 https://github.com/hugoam/bimg ../bimg
+  - git clone --depth 1 https://github.com/hugoam/bgfx ../bgfx
 
 script:
   - bin/$GENIE_FOLDER/genie --gcc=$TOOLCHAIN gmake
