@@ -55,8 +55,10 @@ namespace two
 		attr_ GpuCSMShadow csm;
 	};
 
+#ifdef _DEBUG
 	export_ TWO_GFX_PBR_EXPORT void debug_draw_light_clusters(Gnode& parent, Viewport& viewport, Camera& camera);
 	export_ TWO_GFX_PBR_EXPORT void debug_draw_light_slices(Gnode& parent, Light& light, bool frustums = true, bool bounds = true);
+#endif
 
 #ifdef TWO_PLATFORM_EMSCRIPTEN
 	constexpr size_t c_max_forward_lights = 32;

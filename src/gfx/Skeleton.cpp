@@ -151,6 +151,11 @@ namespace two
 			// quicksort(span<MorphWeight>(m_weights), [](const MorphWeight& a, const MorphWeight& b) { return a.weight < b.weight; });
 		}
 	}
+
+	mat4 fix_bone_pose(Node3& bone)
+	{
+		return bxrotation(angle_axis(-c_pi * 0.5f, x3)) * bxscale(vec3(0.009999999776482582f)) * bone.m_transform;
+	}
 }
 
 #ifdef _DEBUG
@@ -160,11 +165,6 @@ namespace two
 #include <geom/Symbol.h>
 namespace two
 {
-	mat4 fix_bone_pose(Node3& bone)
-	{
-		return bxrotation(angle_axis(-c_pi * 0.5f, x3)) * bxscale(vec3(0.009999999776482582f)) * bone.m_transform;
-	}
-
 	void debug_draw_skeleton(Gnode& parent, const vec3& position, const quat& rotation, Rig& rig)
 	{
 		for(Node3& bone : rig.m_skeleton.m_bones)
