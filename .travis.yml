@@ -28,6 +28,11 @@ install:
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export GENIE_FOLDER="darwin" TOOLCHAIN="osx" GMAKE_FOLDER="gmake/osx"; fi
 
+before_script:
+  - git clone --depth 1 https://github.com/bkaradzic/bx ../bx
+  - git clone --depth 1 https://github.com/bkaradzic/bimg ../bimg
+  - git clone --depth 1 https://github.com/bkaradzic/bgfx ../bgfx
+
 script:
   - bin/$GENIE_FOLDER/genie --gcc=$TOOLCHAIN gmake
   - cd build/projects/$GMAKE_FOLDER
