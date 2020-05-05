@@ -197,7 +197,7 @@ Module['FS_createPath']('/', 'font', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/images/image1.jpg", "start": 0, "end": 25760, "audio": 0}, {"filename": "/images/image2.jpg", "start": 25760, "end": 49851, "audio": 0}, {"filename": "/images/image3.jpg", "start": 49851, "end": 79133, "audio": 0}, {"filename": "/images/image4.jpg", "start": 79133, "end": 102963, "audio": 0}, {"filename": "/images/image5.jpg", "start": 102963, "end": 130094, "audio": 0}, {"filename": "/images/image6.jpg", "start": 130094, "end": 155210, "audio": 0}, {"filename": "/images/image7.jpg", "start": 155210, "end": 180800, "audio": 0}, {"filename": "/images/image8.jpg", "start": 180800, "end": 205407, "audio": 0}, {"filename": "/images/image9.jpg", "start": 205407, "end": 209442, "audio": 0}, {"filename": "/images/image10.jpg", "start": 209442, "end": 212881, "audio": 0}, {"filename": "/images/image11.jpg", "start": 212881, "end": 216699, "audio": 0}, {"filename": "/images/image12.jpg", "start": 216699, "end": 222151, "audio": 0}, {"filename": "/images/blender_icons16.png", "start": 222151, "end": 462995, "audio": 0}, {"filename": "/font/entypo.ttf", "start": 462995, "end": 498387, "audio": 0}, {"filename": "/font/roboto-regular.ttf", "start": 498387, "end": 643735, "audio": 0}, {"filename": "/font/roboto-bold.ttf", "start": 643735, "end": 779555, "audio": 0}, {"filename": "/font/NotoEmoji-Regular.ttf", "start": 779555, "end": 1198359, "audio": 0}], "remote_package_size": 1198359, "package_uuid": "ae283553-da19-443b-b629-6ad0bb4d17b4"});
+   loadPackage({"files": [{"filename": "/images/image1.jpg", "start": 0, "end": 25760, "audio": 0}, {"filename": "/images/image2.jpg", "start": 25760, "end": 49851, "audio": 0}, {"filename": "/images/image3.jpg", "start": 49851, "end": 79133, "audio": 0}, {"filename": "/images/image4.jpg", "start": 79133, "end": 102963, "audio": 0}, {"filename": "/images/image5.jpg", "start": 102963, "end": 130094, "audio": 0}, {"filename": "/images/image6.jpg", "start": 130094, "end": 155210, "audio": 0}, {"filename": "/images/image7.jpg", "start": 155210, "end": 180800, "audio": 0}, {"filename": "/images/image8.jpg", "start": 180800, "end": 205407, "audio": 0}, {"filename": "/images/image9.jpg", "start": 205407, "end": 209442, "audio": 0}, {"filename": "/images/image10.jpg", "start": 209442, "end": 212881, "audio": 0}, {"filename": "/images/image11.jpg", "start": 212881, "end": 216699, "audio": 0}, {"filename": "/images/image12.jpg", "start": 216699, "end": 222151, "audio": 0}, {"filename": "/images/blender_icons16.png", "start": 222151, "end": 462995, "audio": 0}, {"filename": "/font/entypo.ttf", "start": 462995, "end": 498387, "audio": 0}, {"filename": "/font/roboto-regular.ttf", "start": 498387, "end": 643735, "audio": 0}, {"filename": "/font/roboto-bold.ttf", "start": 643735, "end": 779555, "audio": 0}, {"filename": "/font/NotoEmoji-Regular.ttf", "start": 779555, "end": 1198359, "audio": 0}], "remote_package_size": 1198359, "package_uuid": "17714d45-e6ea-42bc-bfb0-df85e220070a"});
   
   })();
   
@@ -896,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 790,
-  'maximum': 790 + 0,
+  'initial': 785,
+  'maximum': 785 + 0,
   'element': 'anyfunc'
 });
 
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5991968,
+    STACK_BASE = 5992224,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 749088,
-    DYNAMIC_BASE = 5991968,
-    DYNAMICTOP_PTR = 748928;
+    STACK_MAX = 749344,
+    DYNAMIC_BASE = 5992224,
+    DYNAMICTOP_PTR = 749184;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  592252: function() {debugger;}
+  592172: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 748064;
+// STATICTOP = STATIC_BASE + 748320;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4735,7 +4735,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 748928;
+      return 749184;
     }
 
   

@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1938, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1938, "end": 6505, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6505, "end": 8233, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8233, "end": 12178, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12178, "end": 13271, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13271, "end": 14878, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14878, "end": 15761, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15761, "end": 16123, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16123, "end": 17216, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17216, "end": 17968, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 17968, "end": 2606378, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606378, "end": 2660397, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660397, "end": 2835301, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835301, "end": 3184981, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3184981, "end": 3534661, "audio": 0}], "remote_package_size": 3534661, "package_uuid": "6a9b847d-8a12-4fc2-8032-1a4e0dca6f6a"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "5e43a5f6-edb2-4dd4-91f0-70252cada6b6"});
   
   })();
   
@@ -898,8 +898,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 782,
-  'maximum': 782 + 0,
+  'initial': 777,
+  'maximum': 777 + 0,
   'element': 'anyfunc'
 });
 
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5965760,
+    STACK_BASE = 5966080,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 722880,
-    DYNAMIC_BASE = 5965760,
-    DYNAMICTOP_PTR = 722720;
+    STACK_MAX = 723200,
+    DYNAMIC_BASE = 5966080,
+    DYNAMICTOP_PTR = 723040;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2099,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  583244: function() {debugger;}
+  583228: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 721856;
+// STATICTOP = STATIC_BASE + 722176;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 722720;
+      return 723040;
     }
 
   

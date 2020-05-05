@@ -121,7 +121,6 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       }
   Module['FS_createPath']('/', 'shaders', true, true);
 Module['FS_createPath']('/shaders', 'spirv', true, true);
-Module['FS_createPath']('/', 'textures', true, true);
 
       /** @constructor */
       function DataRequest(start, end, audio) {
@@ -198,7 +197,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2965, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 2965, "end": 7900, "audio": 0}, {"filename": "/textures/fieldstone-rgba.png", "start": 7900, "end": 540996, "audio": 0}, {"filename": "/textures/fieldstone-n.png", "start": 540996, "end": 1090238, "audio": 0}], "remote_package_size": 1090238, "package_uuid": "cf39ecc7-17e9-482d-94fc-0e364bb80999"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 2968, "end": 7907, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 7907, "end": 11087, "audio": 0}], "remote_package_size": 11087, "package_uuid": "edc0b554-25fe-489f-bdcb-5a9e199891f9"});
   
   })();
   
@@ -897,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 779,
-  'maximum': 779 + 0,
+  'initial': 774,
+  'maximum': 774 + 0,
   'element': 'anyfunc'
 });
 
@@ -1519,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5963024,
+    STACK_BASE = 5963280,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 720144,
-    DYNAMIC_BASE = 5963024,
-    DYNAMICTOP_PTR = 719984;
+    STACK_MAX = 720400,
+    DYNAMIC_BASE = 5963280,
+    DYNAMICTOP_PTR = 720240;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2098,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  581340: function() {debugger;}
+  581260: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2108,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 719120;
+// STATICTOP = STATIC_BASE + 719376;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4736,7 +4735,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 719984;
+      return 720240;
     }
 
   

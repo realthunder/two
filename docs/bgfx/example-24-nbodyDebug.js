@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_particle.bin", "start": 0, "end": 1982, "audio": 0}, {"filename": "/shaders/spirv/fs_particle.bin", "start": 1982, "end": 3344, "audio": 0}, {"filename": "/shaders/spirv/cs_init_instances.bin", "start": 3344, "end": 13902, "audio": 0}, {"filename": "/shaders/spirv/cs_update_instances.bin", "start": 13902, "end": 17698, "audio": 0}, {"filename": "/shaders/spirv/cs_indirect.bin", "start": 17698, "end": 18922, "audio": 0}], "remote_package_size": 18922, "package_uuid": "dfb1ae8b-4fb3-4a01-b784-d0c187237da2"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_particle.bin", "start": 0, "end": 1985, "audio": 0}, {"filename": "/shaders/spirv/fs_particle.bin", "start": 1985, "end": 3348, "audio": 0}, {"filename": "/shaders/spirv/cs_init_instances.bin", "start": 3348, "end": 13909, "audio": 0}, {"filename": "/shaders/spirv/cs_update_instances.bin", "start": 13909, "end": 17710, "audio": 0}, {"filename": "/shaders/spirv/cs_indirect.bin", "start": 17710, "end": 18936, "audio": 0}], "remote_package_size": 18936, "package_uuid": "52e2326d-d7db-46e3-a5cf-f2d9181a7690"});
   
   })();
   
@@ -896,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 481,
-  'maximum': 481 + 0,
+  'initial': 476,
+  'maximum': 476 + 0,
   'element': 'anyfunc'
 });
 
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5938512,
+    STACK_BASE = 5938832,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 695632,
-    DYNAMIC_BASE = 5938512,
-    DYNAMICTOP_PTR = 695472;
+    STACK_MAX = 695952,
+    DYNAMIC_BASE = 5938832,
+    DYNAMICTOP_PTR = 695792;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  572332: function() {debugger;}
+  572316: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 694608;
+// STATICTOP = STATIC_BASE + 694928;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 695472;
+      return 695792;
     }
 
   

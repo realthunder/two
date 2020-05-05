@@ -121,7 +121,6 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       }
   Module['FS_createPath']('/', 'shaders', true, true);
 Module['FS_createPath']('/shaders', 'spirv', true, true);
-Module['FS_createPath']('/', 'textures', true, true);
 
       /** @constructor */
       function DataRequest(start, end, audio) {
@@ -198,7 +197,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3381, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom_depthpacked.bin", "start": 3381, "end": 6425, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 6425, "end": 7518, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_depthpacked.bin", "start": 7518, "end": 10422, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 10422, "end": 12986, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 12986, "end": 15814, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 15814, "end": 16907, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 16907, "end": 18572, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 18572, "end": 19665, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 19665, "end": 20417, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 20417, "end": 21474, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 21474, "end": 21880, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 21880, "end": 24836, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 24836, "end": 27955, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 27955, "end": 28656, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 28656, "end": 378336, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 378336, "end": 728016, "audio": 0}], "remote_package_size": 728016, "package_uuid": "0eaeee01-a812-4de9-9b9e-12bd2f01c9f7"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 6957, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 6957, "end": 9791, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9791, "end": 10885, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 10885, "end": 12552, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12552, "end": 13646, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13646, "end": 14399, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14399, "end": 15457, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15457, "end": 15863, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 15863, "end": 18825, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 18825, "end": 21951, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 21951, "end": 22653, "audio": 0}], "remote_package_size": 22653, "package_uuid": "32d29e4b-61ae-49a4-9a67-01f6de7183a9"});
   
   })();
   
@@ -897,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 782,
-  'maximum': 782 + 0,
+  'initial': 777,
+  'maximum': 777 + 0,
   'element': 'anyfunc'
 });
 
@@ -1519,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5965920,
+    STACK_BASE = 5966256,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 723040,
-    DYNAMIC_BASE = 5965920,
-    DYNAMICTOP_PTR = 722880;
+    STACK_MAX = 723376,
+    DYNAMIC_BASE = 5966256,
+    DYNAMICTOP_PTR = 723216;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2108,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 722016;
+// STATICTOP = STATIC_BASE + 722352;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4736,7 +4735,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 722880;
+      return 723216;
     }
 
   

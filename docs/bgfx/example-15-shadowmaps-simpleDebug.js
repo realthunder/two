@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 971, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 971, "end": 2127, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2127, "end": 4317, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4317, "end": 13364, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13364, "end": 14247, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14247, "end": 14609, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14609, "end": 23628, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23628, "end": 2612038, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612038, "end": 2612968, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612968, "end": 2650849, "audio": 0}], "remote_package_size": 2650849, "package_uuid": "4821a8a9-5c95-4825-b3a0-ab42a5b24383"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13371, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13371, "end": 14255, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14255, "end": 14457, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14457, "end": 23478, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23478, "end": 2611888, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2611888, "end": 2612818, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612818, "end": 2650699, "audio": 0}], "remote_package_size": 2650699, "package_uuid": "ebc93765-d4ed-4059-a64f-4ef47392241e"});
   
   })();
   
@@ -897,8 +897,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 480,
-  'maximum': 480 + 0,
+  'initial': 475,
+  'maximum': 475 + 0,
   'element': 'anyfunc'
 });
 
@@ -1519,11 +1519,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5936848,
+    STACK_BASE = 5937152,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 693968,
-    DYNAMIC_BASE = 5936848,
-    DYNAMICTOP_PTR = 693808;
+    STACK_MAX = 694272,
+    DYNAMIC_BASE = 5937152,
+    DYNAMICTOP_PTR = 694112;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2098,7 +2098,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  570620: function() {debugger;}
+  570588: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2108,7 +2108,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 692944;
+// STATICTOP = STATIC_BASE + 693248;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4701,7 +4701,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 693808;
+      return 694112;
     }
 
   

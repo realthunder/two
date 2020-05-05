@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2710, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2710, "end": 5466, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5466, "end": 2593876, "audio": 0}], "remote_package_size": 2593876, "package_uuid": "894a3c28-5398-46b6-8493-b08b626e2fe8"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5470, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5470, "end": 2593880, "audio": 0}], "remote_package_size": 2593880, "package_uuid": "e3bcd798-aeb0-4a7c-a081-a9f3de15ff70"});
   
   })();
   
@@ -897,8 +897,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 480,
-  'maximum': 480 + 0,
+  'initial': 475,
+  'maximum': 475 + 0,
   'element': 'anyfunc'
 });
 
@@ -1519,11 +1519,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5935504,
+    STACK_BASE = 5935792,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 692624,
-    DYNAMIC_BASE = 5935504,
-    DYNAMICTOP_PTR = 692464;
+    STACK_MAX = 692912,
+    DYNAMIC_BASE = 5935792,
+    DYNAMICTOP_PTR = 692752;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2098,7 +2098,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  569420: function() {debugger;}
+  569372: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2108,7 +2108,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 691600;
+// STATICTOP = STATIC_BASE + 691888;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4701,7 +4701,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 692464;
+      return 692752;
     }
 
   

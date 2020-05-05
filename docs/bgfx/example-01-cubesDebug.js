@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1057, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1057, "end": 1463, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes_color.bin", "start": 1463, "end": 2220, "audio": 0}], "remote_package_size": 2220, "package_uuid": "5e42c435-6639-42c0-a4dd-70f73f5f5aa1"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1464, "audio": 0}], "remote_package_size": 1464, "package_uuid": "5cc144fd-f63a-4ac5-8fa9-6bc433c4a26b"});
   
   })();
   
@@ -896,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 478,
-  'maximum': 478 + 0,
+  'initial': 473,
+  'maximum': 473 + 0,
   'element': 'anyfunc'
 });
 
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5935616,
+    STACK_BASE = 5935888,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 692736,
-    DYNAMIC_BASE = 5935616,
-    DYNAMICTOP_PTR = 692576;
+    STACK_MAX = 693008,
+    DYNAMIC_BASE = 5935888,
+    DYNAMICTOP_PTR = 692848;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  569324: function() {debugger;}
+  569260: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 691712;
+// STATICTOP = STATIC_BASE + 691984;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 692576;
+      return 692848;
     }
 
   

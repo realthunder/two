@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1197, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1197, "end": 1863, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1863, "end": 3487, "audio": 0}], "remote_package_size": 3487, "package_uuid": "1965fe86-2ef7-4de2-b9d4-0048e041fa67"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1198, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1198, "end": 1864, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1864, "end": 3490, "audio": 0}], "remote_package_size": 3490, "package_uuid": "44b84532-856f-4fc2-9a51-e85f5a3bc01c"});
   
   })();
   
@@ -896,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 481,
-  'maximum': 481 + 0,
+  'initial': 476,
+  'maximum': 476 + 0,
   'element': 'anyfunc'
 });
 
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5938288,
+    STACK_BASE = 5938608,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 695408,
-    DYNAMIC_BASE = 5938288,
-    DYNAMICTOP_PTR = 695248;
+    STACK_MAX = 695728,
+    DYNAMIC_BASE = 5938608,
+    DYNAMICTOP_PTR = 695568;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  572044: function() {debugger;}
+  572028: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 694384;
+// STATICTOP = STATIC_BASE + 694704;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 695248;
+      return 695568;
     }
 
   

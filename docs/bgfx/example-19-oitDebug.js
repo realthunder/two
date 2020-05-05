@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1575, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1575, "end": 2224, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2224, "end": 3325, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3325, "end": 4418, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4418, "end": 5698, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5698, "end": 6943, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 6943, "end": 8223, "audio": 0}], "remote_package_size": 8223, "package_uuid": "cc5892ce-e903-4bb1-af91-4e454d1e149f"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5706, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5706, "end": 6952, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 6952, "end": 8234, "audio": 0}], "remote_package_size": 8234, "package_uuid": "589808d8-f005-46d2-ab5d-379bc4a29b89"});
   
   })();
   
@@ -896,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 478,
-  'maximum': 478 + 0,
+  'initial': 473,
+  'maximum': 473 + 0,
   'element': 'anyfunc'
 });
 
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5936528,
+    STACK_BASE = 5936816,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 693648,
-    DYNAMIC_BASE = 5936528,
-    DYNAMICTOP_PTR = 693488;
+    STACK_MAX = 693936,
+    DYNAMIC_BASE = 5936816,
+    DYNAMICTOP_PTR = 693776;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  570172: function() {debugger;}
+  570124: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 692624;
+// STATICTOP = STATIC_BASE + 692912;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 693488;
+      return 693776;
     }
 
   

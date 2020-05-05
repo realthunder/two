@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2024, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2024, "end": 7967, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 7967, "end": 10014, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10014, "end": 13461, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13461, "end": 2601871, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2601871, "end": 5419973, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5419973, "end": 9614409, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614409, "end": 10400989, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10400989, "end": 14595425, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595425, "end": 15382005, "audio": 0}], "remote_package_size": 15382005, "package_uuid": "05cc24c9-816f-4715-9e6e-6f9fde0f2eb5"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 7973, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 7973, "end": 10023, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10023, "end": 13473, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13473, "end": 2601883, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2601883, "end": 5419985, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5419985, "end": 9614421, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614421, "end": 10401001, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401001, "end": 14595437, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595437, "end": 15382017, "audio": 0}], "remote_package_size": 15382017, "package_uuid": "82e9b3c5-643e-4ce1-be98-c1dbc6292614"});
   
   })();
   
@@ -898,8 +898,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 785,
-  'maximum': 785 + 0,
+  'initial': 780,
+  'maximum': 780 + 0,
   'element': 'anyfunc'
 });
 
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5966912,
+    STACK_BASE = 5967232,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 724032,
-    DYNAMIC_BASE = 5966912,
-    DYNAMICTOP_PTR = 723872;
+    STACK_MAX = 724352,
+    DYNAMIC_BASE = 5967232,
+    DYNAMICTOP_PTR = 724192;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2099,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  585500: function() {debugger;}
+  585484: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 723008;
+// STATICTOP = STATIC_BASE + 723328;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 723872;
+      return 724192;
     }
 
   

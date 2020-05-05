@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_instancing.bin", "start": 0, "end": 1546, "audio": 0}, {"filename": "/shaders/spirv/fs_instancing.bin", "start": 1546, "end": 1952, "audio": 0}], "remote_package_size": 1952, "package_uuid": "53235a81-baf8-45e0-b8b6-534c48ffda80"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_instancing.bin", "start": 0, "end": 1547, "audio": 0}, {"filename": "/shaders/spirv/fs_instancing.bin", "start": 1547, "end": 1953, "audio": 0}], "remote_package_size": 1953, "package_uuid": "945dc149-6a07-4d7f-8ed7-4b950694d6ae"});
   
   })();
   
@@ -896,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 478,
-  'maximum': 478 + 0,
+  'initial': 473,
+  'maximum': 473 + 0,
   'element': 'anyfunc'
 });
 
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5936016,
+    STACK_BASE = 5936304,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 693136,
-    DYNAMIC_BASE = 5936016,
-    DYNAMICTOP_PTR = 692976;
+    STACK_MAX = 693424,
+    DYNAMIC_BASE = 5936304,
+    DYNAMICTOP_PTR = 693264;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  569756: function() {debugger;}
+  569708: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 692112;
+// STATICTOP = STATIC_BASE + 692400;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 692976;
+      return 693264;
     }
 
   

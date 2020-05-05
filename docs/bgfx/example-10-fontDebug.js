@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/font/fontawesome-webfont.ttf", "start": 0, "end": 165548, "audio": 0}, {"filename": "/font/kenney-icon-font.ttf", "start": 165548, "end": 211732, "audio": 0}, {"filename": "/font/visitor1.ttf", "start": 211732, "end": 239284, "audio": 0}, {"filename": "/font/droidsans.ttf", "start": 239284, "end": 429328, "audio": 0}, {"filename": "/font/chp-fire.ttf", "start": 429328, "end": 476140, "audio": 0}, {"filename": "/font/bleeding_cowboys.ttf", "start": 476140, "end": 625036, "audio": 0}, {"filename": "/font/mias_scribblings.ttf", "start": 625036, "end": 727068, "audio": 0}, {"filename": "/font/ruritania.ttf", "start": 727068, "end": 853568, "audio": 0}, {"filename": "/font/signika-regular.ttf", "start": 853568, "end": 994700, "audio": 0}, {"filename": "/font/five_minutes.otf", "start": 994700, "end": 1021856, "audio": 0}], "remote_package_size": 1021856, "package_uuid": "1af0ca2f-e079-4af2-a642-0b32e96c6ed9"});
+   loadPackage({"files": [{"filename": "/font/fontawesome-webfont.ttf", "start": 0, "end": 165548, "audio": 0}, {"filename": "/font/kenney-icon-font.ttf", "start": 165548, "end": 211732, "audio": 0}, {"filename": "/font/visitor1.ttf", "start": 211732, "end": 239284, "audio": 0}, {"filename": "/font/droidsans.ttf", "start": 239284, "end": 429328, "audio": 0}, {"filename": "/font/chp-fire.ttf", "start": 429328, "end": 476140, "audio": 0}, {"filename": "/font/bleeding_cowboys.ttf", "start": 476140, "end": 625036, "audio": 0}, {"filename": "/font/mias_scribblings.ttf", "start": 625036, "end": 727068, "audio": 0}, {"filename": "/font/ruritania.ttf", "start": 727068, "end": 853568, "audio": 0}, {"filename": "/font/signika-regular.ttf", "start": 853568, "end": 994700, "audio": 0}, {"filename": "/font/five_minutes.otf", "start": 994700, "end": 1021856, "audio": 0}], "remote_package_size": 1021856, "package_uuid": "59347e77-19a2-4edb-a1a8-0cac3b99743f"});
   
   })();
   
@@ -895,8 +895,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 958,
-  'maximum': 958 + 0,
+  'initial': 953,
+  'maximum': 953 + 0,
   'element': 'anyfunc'
 });
 
@@ -1517,11 +1517,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 6036032,
+    STACK_BASE = 6036368,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 793152,
-    DYNAMIC_BASE = 6036032,
-    DYNAMICTOP_PTR = 792992;
+    STACK_MAX = 793488,
+    DYNAMIC_BASE = 6036368,
+    DYNAMICTOP_PTR = 793328;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2106,7 +2106,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 792128;
+// STATICTOP = STATIC_BASE + 792464;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4699,7 +4699,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 792992;
+      return 793328;
     }
 
   

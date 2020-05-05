@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1093, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1093, "end": 2833, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2833, "end": 3926, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3926, "end": 8126, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8126, "end": 9219, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9219, "end": 15059, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15059, "end": 17715, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17715, "end": 19735, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19735, "end": 20828, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 20828, "end": 25929, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 25929, "end": 27749, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 27749, "end": 30925, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 30925, "end": 33337, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33337, "end": 38159, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38159, "end": 2626569, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2626569, "end": 15209549, "audio": 0}], "remote_package_size": 15209549, "package_uuid": "87492c58-0899-40ba-8c92-d6093f249c8d"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2836, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2836, "end": 3930, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3930, "end": 8132, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8132, "end": 9226, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9226, "end": 15068, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15068, "end": 17726, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17726, "end": 19747, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19747, "end": 20841, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 20841, "end": 25946, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 25946, "end": 27768, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 27768, "end": 30946, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 30946, "end": 33360, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33360, "end": 38186, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38186, "end": 2626596, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2626596, "end": 15209576, "audio": 0}], "remote_package_size": 15209576, "package_uuid": "78451c09-b42b-4fd7-85b7-0ad386de19ac"});
   
   })();
   
@@ -898,8 +898,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 782,
-  'maximum': 782 + 0,
+  'initial': 777,
+  'maximum': 777 + 0,
   'element': 'anyfunc'
 });
 
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5966032,
+    STACK_BASE = 5966368,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 723152,
-    DYNAMIC_BASE = 5966032,
-    DYNAMICTOP_PTR = 722992;
+    STACK_MAX = 723488,
+    DYNAMIC_BASE = 5966368,
+    DYNAMICTOP_PTR = 723328;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 722128;
+// STATICTOP = STATIC_BASE + 722464;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 722992;
+      return 723328;
     }
 
   

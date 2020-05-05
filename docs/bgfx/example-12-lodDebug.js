@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2094, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2094, "end": 5077, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5077, "end": 30628, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30628, "end": 49448, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49448, "end": 61045, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61045, "end": 78239, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78239, "end": 88049, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88049, "end": 92744, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92744, "end": 1491000, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491000, "end": 1665904, "audio": 0}], "remote_package_size": 1665904, "package_uuid": "9dc0e17a-8f00-4722-9a15-c2a7b07301d3"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5083, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5083, "end": 30634, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30634, "end": 49454, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49454, "end": 61051, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61051, "end": 78245, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78245, "end": 88055, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88055, "end": 92750, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92750, "end": 1491006, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491006, "end": 1665910, "audio": 0}], "remote_package_size": 1665910, "package_uuid": "1b05c8f8-3f67-4055-b03d-c8759897db58"});
   
   })();
   
@@ -898,8 +898,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 782,
-  'maximum': 782 + 0,
+  'initial': 777,
+  'maximum': 777 + 0,
   'element': 'anyfunc'
 });
 
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5964112,
+    STACK_BASE = 5964432,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 721232,
-    DYNAMIC_BASE = 5964112,
-    DYNAMICTOP_PTR = 721072;
+    STACK_MAX = 721552,
+    DYNAMIC_BASE = 5964432,
+    DYNAMICTOP_PTR = 721392;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2099,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  582972: function() {debugger;}
+  582956: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 720208;
+// STATICTOP = STATIC_BASE + 720528;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 721072;
+      return 721392;
     }
 
   
