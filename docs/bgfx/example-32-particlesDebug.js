@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-32-particlesDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-32-particlesDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-32-particlesDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -172,10 +172,10 @@ var Module = typeof Module !== 'undefined' ? Module : {};
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-32-particlesDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-32-particlesDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-32-particlesDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-32-particlesDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/textures/particle.ktx", "start": 0, "end": 262212, "audio": 0}], "remote_package_size": 262212, "package_uuid": "0fbf1e80-4088-484f-a086-35632171446a"});
+   loadPackage({"files": [{"filename": "/textures/particle.ktx", "start": 0, "end": 262212, "audio": 0}], "remote_package_size": 262212, "package_uuid": "9c464fd1-c345-4fbe-a8af-e8194dca948a"});
   
   })();
   
@@ -895,8 +895,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 829,
-  'maximum': 829 + 0,
+  'initial': 824,
+  'maximum': 824 + 0,
   'element': 'anyfunc'
 });
 
@@ -1517,11 +1517,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 6055680,
+    STACK_BASE = 6056016,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 812800,
-    DYNAMIC_BASE = 6055680,
-    DYNAMICTOP_PTR = 812640;
+    STACK_MAX = 813136,
+    DYNAMIC_BASE = 6056016,
+    DYNAMICTOP_PTR = 812976;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2096,7 +2096,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  608124: function() {debugger;}
+  608188: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2106,7 +2106,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 811776;
+// STATICTOP = STATIC_BASE + 812112;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4734,7 +4734,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 812640;
+      return 812976;
     }
 
   

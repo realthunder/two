@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-24-nbodyDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-24-nbodyDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-24-nbodyDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -173,10 +173,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-24-nbodyDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-24-nbodyDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-24-nbodyDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-24-nbodyDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_particle.bin", "start": 0, "end": 1985, "audio": 0}, {"filename": "/shaders/spirv/fs_particle.bin", "start": 1985, "end": 3348, "audio": 0}, {"filename": "/shaders/spirv/cs_init_instances.bin", "start": 3348, "end": 13909, "audio": 0}, {"filename": "/shaders/spirv/cs_update_instances.bin", "start": 13909, "end": 17710, "audio": 0}, {"filename": "/shaders/spirv/cs_indirect.bin", "start": 17710, "end": 18936, "audio": 0}], "remote_package_size": 18936, "package_uuid": "52e2326d-d7db-46e3-a5cf-f2d9181a7690"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_particle.bin", "start": 0, "end": 1985, "audio": 0}, {"filename": "/shaders/spirv/fs_particle.bin", "start": 1985, "end": 3348, "audio": 0}, {"filename": "/shaders/spirv/cs_init_instances.bin", "start": 3348, "end": 13909, "audio": 0}, {"filename": "/shaders/spirv/cs_update_instances.bin", "start": 13909, "end": 17710, "audio": 0}, {"filename": "/shaders/spirv/cs_indirect.bin", "start": 17710, "end": 18936, "audio": 0}], "remote_package_size": 18936, "package_uuid": "de04569c-f42f-4479-bcc8-f13e781f2512"});
   
   })();
   
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5938832,
+    STACK_BASE = 5938656,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 695952,
-    DYNAMIC_BASE = 5938832,
-    DYNAMICTOP_PTR = 695792;
+    STACK_MAX = 695776,
+    DYNAMIC_BASE = 5938656,
+    DYNAMICTOP_PTR = 695616;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  572316: function() {debugger;}
+  572188: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 694928;
+// STATICTOP = STATIC_BASE + 694752;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 695792;
+      return 695616;
     }
 
   

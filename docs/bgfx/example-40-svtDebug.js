@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-40-svtDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-40-svtDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-40-svtDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -174,10 +174,10 @@ Module['FS_createPath']('/', 'textures', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-40-svtDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-40-svtDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-40-svtDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-40-svtDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1407, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1407, "end": 4072, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4072, "end": 5772, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 5772, "end": 9932400, "audio": 0}], "remote_package_size": 9932400, "package_uuid": "a60d10c0-0c07-474c-962b-d638517b4c05"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1409, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1409, "end": 4078, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4078, "end": 5780, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 5780, "end": 9932408, "audio": 0}], "remote_package_size": 9932408, "package_uuid": "0f0f8f9c-fcb0-4dec-8175-9d47a62f7886"});
   
   })();
   
@@ -897,8 +897,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 800,
-  'maximum': 800 + 0,
+  'initial': 795,
+  'maximum': 795 + 0,
   'element': 'anyfunc'
 });
 
@@ -1519,11 +1519,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5964880,
+    STACK_BASE = 5965024,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 722000,
-    DYNAMIC_BASE = 5964880,
-    DYNAMICTOP_PTR = 721840;
+    STACK_MAX = 722144,
+    DYNAMIC_BASE = 5965024,
+    DYNAMICTOP_PTR = 721984;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1533,7 +1533,7 @@ assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
 var TOTAL_STACK = 5242880;
 if (Module['TOTAL_STACK']) assert(TOTAL_STACK === Module['TOTAL_STACK'], 'the stack size can no longer be determined at runtime')
 
-var INITIAL_INITIAL_MEMORY = Module['INITIAL_MEMORY'] || 1073741824;if (!Object.getOwnPropertyDescriptor(Module, 'INITIAL_MEMORY')) Object.defineProperty(Module, 'INITIAL_MEMORY', { configurable: true, get: function() { abort('Module.INITIAL_MEMORY has been replaced with plain INITIAL_INITIAL_MEMORY') } });
+var INITIAL_INITIAL_MEMORY = Module['INITIAL_MEMORY'] || 268435456;if (!Object.getOwnPropertyDescriptor(Module, 'INITIAL_MEMORY')) Object.defineProperty(Module, 'INITIAL_MEMORY', { configurable: true, get: function() { abort('Module.INITIAL_MEMORY has been replaced with plain INITIAL_INITIAL_MEMORY') } });
 
 assert(INITIAL_INITIAL_MEMORY >= TOTAL_STACK, 'INITIAL_MEMORY should be larger than TOTAL_STACK, was ' + INITIAL_INITIAL_MEMORY + '! (TOTAL_STACK=' + TOTAL_STACK + ')');
 
@@ -2098,7 +2098,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  583660: function() {debugger;}
+  583516: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2108,7 +2108,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 720976;
+// STATICTOP = STATIC_BASE + 721120;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4736,7 +4736,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 721840;
+      return 721984;
     }
 
   

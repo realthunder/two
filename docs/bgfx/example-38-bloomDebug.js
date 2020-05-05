@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-38-bloomDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-38-bloomDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-38-bloomDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -173,10 +173,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-38-bloomDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-38-bloomDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-38-bloomDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-38-bloomDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 1197, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 1197, "end": 1886, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 1886, "end": 2979, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 2979, "end": 6237, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 6237, "end": 8818, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 8818, "end": 10159, "audio": 0}], "remote_package_size": 10159, "package_uuid": "011f98d3-0fff-4a41-84e4-276089b9b532"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2093, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2093, "end": 3175, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3175, "end": 4269, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4269, "end": 7529, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7529, "end": 10113, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10113, "end": 11456, "audio": 0}], "remote_package_size": 11456, "package_uuid": "b07ce713-403c-40a6-bf58-9e0992183323"});
   
   })();
   
@@ -896,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 481,
-  'maximum': 481 + 0,
+  'initial': 476,
+  'maximum': 476 + 0,
   'element': 'anyfunc'
 });
 
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5938848,
+    STACK_BASE = 5938976,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 695968,
-    DYNAMIC_BASE = 5938848,
-    DYNAMICTOP_PTR = 695808;
+    STACK_MAX = 696096,
+    DYNAMIC_BASE = 5938976,
+    DYNAMICTOP_PTR = 695936;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  572220: function() {debugger;}
+  572060: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 694944;
+// STATICTOP = STATIC_BASE + 695072;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 695808;
+      return 695936;
     }
 
   

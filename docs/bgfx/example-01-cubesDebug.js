@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-01-cubesDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-01-cubesDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-01-cubesDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -173,10 +173,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-01-cubesDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-01-cubesDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-01-cubesDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-01-cubesDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1464, "audio": 0}], "remote_package_size": 1464, "package_uuid": "5cc144fd-f63a-4ac5-8fa9-6bc433c4a26b"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1464, "audio": 0}], "remote_package_size": 1464, "package_uuid": "ca62637b-390f-4f10-b599-69005c561202"});
   
   })();
   
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5935888,
+    STACK_BASE = 5935728,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 693008,
-    DYNAMIC_BASE = 5935888,
-    DYNAMICTOP_PTR = 692848;
+    STACK_MAX = 692848,
+    DYNAMIC_BASE = 5935728,
+    DYNAMICTOP_PTR = 692688;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  569260: function() {debugger;}
+  569148: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 691984;
+// STATICTOP = STATIC_BASE + 691824;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 692848;
+      return 692688;
     }
 
   

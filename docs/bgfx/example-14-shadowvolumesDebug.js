@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-14-shadowvolumesDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-14-shadowvolumesDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-14-shadowvolumesDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -175,10 +175,10 @@ Module['FS_createPath']('/', 'textures', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-14-shadowvolumesDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-14-shadowvolumesDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-14-shadowvolumesDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-14-shadowvolumesDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowvolume_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture_lighting.bin", "start": 1940, "end": 7238, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_lighting.bin", "start": 7238, "end": 9116, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_lighting.bin", "start": 9116, "end": 13971, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_texture.bin", "start": 13971, "end": 15065, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_texture.bin", "start": 15065, "end": 16674, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_texture.bin", "start": 16674, "end": 17768, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture.bin", "start": 17768, "end": 18521, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svback.bin", "start": 18521, "end": 19785, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svside.bin", "start": 19785, "end": 21399, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svfront.bin", "start": 21399, "end": 22283, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackblank.bin", "start": 22283, "end": 22645, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsideblank.bin", "start": 22645, "end": 23071, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontblank.bin", "start": 23071, "end": 23533, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackcolor.bin", "start": 23533, "end": 24203, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidecolor.bin", "start": 24203, "end": 24937, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontcolor.bin", "start": 24937, "end": 25607, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidetex.bin", "start": 25607, "end": 27192, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex1.bin", "start": 27192, "end": 28274, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex2.bin", "start": 28274, "end": 29356, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex1.bin", "start": 29356, "end": 30422, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex2.bin", "start": 30422, "end": 31488, "audio": 0}, {"filename": "/meshes/bunny_patched.bin", "start": 31488, "end": 1007099, "audio": 0}, {"filename": "/meshes/bunny_decimated.bin", "start": 1007099, "end": 1107152, "audio": 0}, {"filename": "/meshes/column.bin", "start": 1107152, "end": 1161171, "audio": 0}, {"filename": "/meshes/platform.bin", "start": 1161171, "end": 1162778, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 1162778, "end": 1163708, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 1163708, "end": 1338612, "audio": 0}, {"filename": "/textures/flare.dds", "start": 1338612, "end": 1688292, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 1688292, "end": 2037972, "audio": 0}], "remote_package_size": 2037972, "package_uuid": "80188d2a-de41-4d98-9aa0-9eb2066abc98"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowvolume_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture_lighting.bin", "start": 1940, "end": 7238, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_lighting.bin", "start": 7238, "end": 9116, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_lighting.bin", "start": 9116, "end": 13971, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_texture.bin", "start": 13971, "end": 15065, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_texture.bin", "start": 15065, "end": 16674, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_texture.bin", "start": 16674, "end": 17768, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture.bin", "start": 17768, "end": 18521, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svback.bin", "start": 18521, "end": 19785, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svside.bin", "start": 19785, "end": 21399, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svfront.bin", "start": 21399, "end": 22283, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackblank.bin", "start": 22283, "end": 22645, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsideblank.bin", "start": 22645, "end": 23071, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontblank.bin", "start": 23071, "end": 23533, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackcolor.bin", "start": 23533, "end": 24203, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidecolor.bin", "start": 24203, "end": 24937, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontcolor.bin", "start": 24937, "end": 25607, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidetex.bin", "start": 25607, "end": 27192, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex1.bin", "start": 27192, "end": 28274, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex2.bin", "start": 28274, "end": 29356, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex1.bin", "start": 29356, "end": 30422, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex2.bin", "start": 30422, "end": 31488, "audio": 0}, {"filename": "/meshes/bunny_patched.bin", "start": 31488, "end": 1007099, "audio": 0}, {"filename": "/meshes/bunny_decimated.bin", "start": 1007099, "end": 1107152, "audio": 0}, {"filename": "/meshes/column.bin", "start": 1107152, "end": 1161171, "audio": 0}, {"filename": "/meshes/platform.bin", "start": 1161171, "end": 1162778, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 1162778, "end": 1163708, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 1163708, "end": 1338612, "audio": 0}, {"filename": "/textures/flare.dds", "start": 1338612, "end": 1688292, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 1688292, "end": 2037972, "audio": 0}], "remote_package_size": 2037972, "package_uuid": "f1b15859-4463-4c38-aec2-31ebeb771e4c"});
   
   })();
   
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5968128,
+    STACK_BASE = 5967920,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 725248,
-    DYNAMIC_BASE = 5968128,
-    DYNAMICTOP_PTR = 725088;
+    STACK_MAX = 725040,
+    DYNAMIC_BASE = 5967920,
+    DYNAMICTOP_PTR = 724880;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2099,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  585836: function() {debugger;}
+  585676: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 724224;
+// STATICTOP = STATIC_BASE + 724016;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 725088;
+      return 724880;
     }
 
   

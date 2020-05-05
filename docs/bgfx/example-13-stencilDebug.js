@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-13-stencilDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-13-stencilDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-13-stencilDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -175,10 +175,10 @@ Module['FS_createPath']('/', 'textures', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-13-stencilDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-13-stencilDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-13-stencilDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-13-stencilDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "5e43a5f6-edb2-4dd4-91f0-70252cada6b6"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "1c445d05-3c54-4d27-a7c6-b5fd1d3800af"});
   
   })();
   
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5966080,
+    STACK_BASE = 5965920,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 723200,
-    DYNAMIC_BASE = 5966080,
-    DYNAMICTOP_PTR = 723040;
+    STACK_MAX = 723040,
+    DYNAMIC_BASE = 5965920,
+    DYNAMICTOP_PTR = 722880;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2099,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  583228: function() {debugger;}
+  583116: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 722176;
+// STATICTOP = STATIC_BASE + 722016;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 723040;
+      return 722880;
     }
 
   

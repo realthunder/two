@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-36-skyDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-36-skyDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-36-skyDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -175,10 +175,10 @@ Module['FS_createPath']('/', 'textures', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-36-skyDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-36-skyDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-36-skyDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-36-skyDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4680, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4680, "end": 6424, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6424, "end": 9116, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9116, "end": 10882, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10882, "end": 14267, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14267, "end": 156127, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156127, "end": 1204771, "audio": 0}], "remote_package_size": 1204771, "package_uuid": "8d31d969-c08c-45a8-b6b8-5bb7e5a69bae"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6431, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6431, "end": 9125, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9125, "end": 10893, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10893, "end": 14283, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14283, "end": 156143, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156143, "end": 1204787, "audio": 0}], "remote_package_size": 1204787, "package_uuid": "81fabd31-2cb1-47b7-af86-e59c32b378ed"});
   
   })();
   
@@ -898,8 +898,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 786,
-  'maximum': 786 + 0,
+  'initial': 781,
+  'maximum': 781 + 0,
   'element': 'anyfunc'
 });
 
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5965360,
+    STACK_BASE = 5965488,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 722480,
-    DYNAMIC_BASE = 5965360,
-    DYNAMICTOP_PTR = 722320;
+    STACK_MAX = 722608,
+    DYNAMIC_BASE = 5965488,
+    DYNAMICTOP_PTR = 722448;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2099,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  583932: function() {debugger;}
+  583772: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 721456;
+// STATICTOP = STATIC_BASE + 721584;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 722320;
+      return 722448;
     }
 
   

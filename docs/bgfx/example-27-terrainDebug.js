@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-27-terrainDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-27-terrainDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-27-terrainDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -173,10 +173,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-27-terrainDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-27-terrainDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-27-terrainDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-27-terrainDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1198, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1198, "end": 1864, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1864, "end": 3490, "audio": 0}], "remote_package_size": 3490, "package_uuid": "44b84532-856f-4fc2-9a51-e85f5a3bc01c"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1198, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1198, "end": 1864, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1864, "end": 3490, "audio": 0}], "remote_package_size": 3490, "package_uuid": "802ba893-b702-4fd8-b7e7-bc3d0435758f"});
   
   })();
   
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5938608,
+    STACK_BASE = 5938416,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 695728,
-    DYNAMIC_BASE = 5938608,
-    DYNAMICTOP_PTR = 695568;
+    STACK_MAX = 695536,
+    DYNAMIC_BASE = 5938416,
+    DYNAMICTOP_PTR = 695376;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  572028: function() {debugger;}
+  571884: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 694704;
+// STATICTOP = STATIC_BASE + 694512;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 695568;
+      return 695376;
     }
 
   

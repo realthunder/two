@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-19-oitDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-19-oitDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-19-oitDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -173,10 +173,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-19-oitDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-19-oitDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-19-oitDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-19-oitDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5706, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5706, "end": 6952, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 6952, "end": 8234, "audio": 0}], "remote_package_size": 8234, "package_uuid": "589808d8-f005-46d2-ab5d-379bc4a29b89"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5706, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5706, "end": 6952, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 6952, "end": 8234, "audio": 0}], "remote_package_size": 8234, "package_uuid": "c1c40870-7221-4cb6-882f-9bcc7e8da5b8"});
   
   })();
   
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5936816,
+    STACK_BASE = 5936688,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 693936,
-    DYNAMIC_BASE = 5936816,
-    DYNAMICTOP_PTR = 693776;
+    STACK_MAX = 693808,
+    DYNAMIC_BASE = 5936688,
+    DYNAMICTOP_PTR = 693648;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  570124: function() {debugger;}
+  570044: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 692912;
+// STATICTOP = STATIC_BASE + 692784;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 693776;
+      return 693648;
     }
 
   

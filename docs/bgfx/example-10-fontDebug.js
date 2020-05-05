@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-10-fontDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-10-fontDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-10-fontDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -172,10 +172,10 @@ var Module = typeof Module !== 'undefined' ? Module : {};
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-10-fontDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-10-fontDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-10-fontDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-10-fontDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -196,7 +196,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/font/fontawesome-webfont.ttf", "start": 0, "end": 165548, "audio": 0}, {"filename": "/font/kenney-icon-font.ttf", "start": 165548, "end": 211732, "audio": 0}, {"filename": "/font/visitor1.ttf", "start": 211732, "end": 239284, "audio": 0}, {"filename": "/font/droidsans.ttf", "start": 239284, "end": 429328, "audio": 0}, {"filename": "/font/chp-fire.ttf", "start": 429328, "end": 476140, "audio": 0}, {"filename": "/font/bleeding_cowboys.ttf", "start": 476140, "end": 625036, "audio": 0}, {"filename": "/font/mias_scribblings.ttf", "start": 625036, "end": 727068, "audio": 0}, {"filename": "/font/ruritania.ttf", "start": 727068, "end": 853568, "audio": 0}, {"filename": "/font/signika-regular.ttf", "start": 853568, "end": 994700, "audio": 0}, {"filename": "/font/five_minutes.otf", "start": 994700, "end": 1021856, "audio": 0}], "remote_package_size": 1021856, "package_uuid": "59347e77-19a2-4edb-a1a8-0cac3b99743f"});
+   loadPackage({"files": [{"filename": "/font/fontawesome-webfont.ttf", "start": 0, "end": 165548, "audio": 0}, {"filename": "/font/kenney-icon-font.ttf", "start": 165548, "end": 211732, "audio": 0}, {"filename": "/font/visitor1.ttf", "start": 211732, "end": 239284, "audio": 0}, {"filename": "/font/droidsans.ttf", "start": 239284, "end": 429328, "audio": 0}, {"filename": "/font/chp-fire.ttf", "start": 429328, "end": 476140, "audio": 0}, {"filename": "/font/bleeding_cowboys.ttf", "start": 476140, "end": 625036, "audio": 0}, {"filename": "/font/mias_scribblings.ttf", "start": 625036, "end": 727068, "audio": 0}, {"filename": "/font/ruritania.ttf", "start": 727068, "end": 853568, "audio": 0}, {"filename": "/font/signika-regular.ttf", "start": 853568, "end": 994700, "audio": 0}, {"filename": "/font/five_minutes.otf", "start": 994700, "end": 1021856, "audio": 0}], "remote_package_size": 1021856, "package_uuid": "780995e6-f753-40fe-a449-9d553bb924ad"});
   
   })();
   
@@ -1517,11 +1517,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 6036368,
+    STACK_BASE = 6036208,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 793488,
-    DYNAMIC_BASE = 6036368,
-    DYNAMICTOP_PTR = 793328;
+    STACK_MAX = 793328,
+    DYNAMIC_BASE = 6036208,
+    DYNAMICTOP_PTR = 793168;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2096,7 +2096,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  669932: function() {debugger;}
+  669820: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2106,7 +2106,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 792464;
+// STATICTOP = STATIC_BASE + 792304;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4699,7 +4699,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 793328;
+      return 793168;
     }
 
   

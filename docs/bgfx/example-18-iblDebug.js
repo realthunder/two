@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-18-iblDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-18-iblDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-18-iblDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -175,10 +175,10 @@ Module['FS_createPath']('/', 'textures', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-18-iblDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-18-iblDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-18-iblDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-18-iblDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 7973, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 7973, "end": 10023, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10023, "end": 13473, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13473, "end": 2601883, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2601883, "end": 5419985, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5419985, "end": 9614421, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614421, "end": 10401001, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401001, "end": 14595437, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595437, "end": 15382017, "audio": 0}], "remote_package_size": 15382017, "package_uuid": "82e9b3c5-643e-4ce1-be98-c1dbc6292614"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 7973, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 7973, "end": 10023, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10023, "end": 13473, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13473, "end": 2601883, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2601883, "end": 5419985, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5419985, "end": 9614421, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614421, "end": 10401001, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401001, "end": 14595437, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595437, "end": 15382017, "audio": 0}], "remote_package_size": 15382017, "package_uuid": "45191323-109a-4652-87b7-3c4020095c5c"});
   
   })();
   
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5967232,
+    STACK_BASE = 5967040,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 724352,
-    DYNAMIC_BASE = 5967232,
-    DYNAMICTOP_PTR = 724192;
+    STACK_MAX = 724160,
+    DYNAMIC_BASE = 5967040,
+    DYNAMICTOP_PTR = 724000;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2099,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  585484: function() {debugger;}
+  585340: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 723328;
+// STATICTOP = STATIC_BASE + 723136;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 724192;
+      return 724000;
     }
 
   

@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-04-meshDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-04-meshDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-04-meshDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -174,10 +174,10 @@ Module['FS_createPath']('/', 'meshes', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-04-meshDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-04-meshDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-04-meshDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-04-meshDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5470, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5470, "end": 2593880, "audio": 0}], "remote_package_size": 2593880, "package_uuid": "e3bcd798-aeb0-4a7c-a081-a9f3de15ff70"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5470, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5470, "end": 2593880, "audio": 0}], "remote_package_size": 2593880, "package_uuid": "531e6be6-5f5e-41c6-b525-8f311b5cf360"});
   
   })();
   
@@ -1519,11 +1519,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5935792,
+    STACK_BASE = 5935616,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 692912,
-    DYNAMIC_BASE = 5935792,
-    DYNAMICTOP_PTR = 692752;
+    STACK_MAX = 692736,
+    DYNAMIC_BASE = 5935616,
+    DYNAMICTOP_PTR = 692576;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2098,7 +2098,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  569372: function() {debugger;}
+  569244: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2108,7 +2108,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 691888;
+// STATICTOP = STATIC_BASE + 691712;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4701,7 +4701,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 692752;
+      return 692576;
     }
 
   

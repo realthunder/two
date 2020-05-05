@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-35-dynamicDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-35-dynamicDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-35-dynamicDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -173,10 +173,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-35-dynamicDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-35-dynamicDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-35-dynamicDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-35-dynamicDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1057, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1057, "end": 1463, "audio": 0}], "remote_package_size": 1463, "package_uuid": "f963e0ff-c593-4361-9540-6dc3bbf661b0"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1464, "audio": 0}], "remote_package_size": 1464, "package_uuid": "81045bf8-57fc-4796-a599-ecc41de9b703"});
   
   })();
   
@@ -896,8 +896,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 478,
-  'maximum': 478 + 0,
+  'initial': 473,
+  'maximum': 473 + 0,
   'element': 'anyfunc'
 });
 
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5936128,
+    STACK_BASE = 5936272,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 693248,
-    DYNAMIC_BASE = 5936128,
-    DYNAMICTOP_PTR = 693088;
+    STACK_MAX = 693392,
+    DYNAMIC_BASE = 5936272,
+    DYNAMICTOP_PTR = 693232;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  569868: function() {debugger;}
+  569724: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 692224;
+// STATICTOP = STATIC_BASE + 692368;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 693088;
+      return 693232;
     }
 
   

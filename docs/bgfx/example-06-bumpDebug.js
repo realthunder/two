@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-06-bumpDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-06-bumpDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-06-bumpDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -121,6 +121,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       }
   Module['FS_createPath']('/', 'shaders', true, true);
 Module['FS_createPath']('/shaders', 'spirv', true, true);
+Module['FS_createPath']('/', 'textures', true, true);
 
       /** @constructor */
       function DataRequest(start, end, audio) {
@@ -173,10 +174,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-06-bumpDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-06-bumpDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-06-bumpDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-06-bumpDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +198,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 2968, "end": 7907, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 7907, "end": 11087, "audio": 0}], "remote_package_size": 11087, "package_uuid": "edc0b554-25fe-489f-bdcb-5a9e199891f9"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 2968, "end": 7907, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 7907, "end": 11087, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11087, "end": 360767, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360767, "end": 710447, "audio": 0}], "remote_package_size": 710447, "package_uuid": "80beadb0-4635-477d-ab2d-df6dfc7bb9b1"});
   
   })();
   
@@ -1518,11 +1519,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5963280,
+    STACK_BASE = 5963120,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 720400,
-    DYNAMIC_BASE = 5963280,
-    DYNAMICTOP_PTR = 720240;
+    STACK_MAX = 720240,
+    DYNAMIC_BASE = 5963120,
+    DYNAMICTOP_PTR = 720080;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2098,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  581260: function() {debugger;}
+  581148: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2108,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 719376;
+// STATICTOP = STATIC_BASE + 719216;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4735,7 +4736,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 720240;
+      return 720080;
     }
 
   

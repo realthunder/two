@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-09-hdrDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-09-hdrDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-09-hdrDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -175,10 +175,10 @@ Module['FS_createPath']('/', 'textures', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-09-hdrDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-09-hdrDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-09-hdrDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-09-hdrDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2836, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2836, "end": 3930, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3930, "end": 8132, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8132, "end": 9226, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9226, "end": 15068, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15068, "end": 17726, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17726, "end": 19747, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19747, "end": 20841, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 20841, "end": 25946, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 25946, "end": 27768, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 27768, "end": 30946, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 30946, "end": 33360, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33360, "end": 38186, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38186, "end": 2626596, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2626596, "end": 15209576, "audio": 0}], "remote_package_size": 15209576, "package_uuid": "78451c09-b42b-4fd7-85b7-0ad386de19ac"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2836, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2836, "end": 3930, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3930, "end": 8132, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8132, "end": 9226, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9226, "end": 15068, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15068, "end": 17726, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17726, "end": 19747, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19747, "end": 20841, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 20841, "end": 25946, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 25946, "end": 27768, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 27768, "end": 30946, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 30946, "end": 33360, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33360, "end": 38186, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38186, "end": 2626596, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2626596, "end": 15209576, "audio": 0}], "remote_package_size": 15209576, "package_uuid": "839b5434-e548-4d6b-8b22-14e2cff4bb73"});
   
   })();
   
@@ -1520,11 +1520,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5966368,
+    STACK_BASE = 5966176,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 723488,
-    DYNAMIC_BASE = 5966368,
-    DYNAMICTOP_PTR = 723328;
+    STACK_MAX = 723296,
+    DYNAMIC_BASE = 5966176,
+    DYNAMICTOP_PTR = 723136;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2099,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  584780: function() {debugger;}
+  584636: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2109,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 722464;
+// STATICTOP = STATIC_BASE + 722272;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4737,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 723328;
+      return 723136;
     }
 
   

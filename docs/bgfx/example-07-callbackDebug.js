@@ -1338,11 +1338,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5939008,
+    STACK_BASE = 5938832,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 696128,
-    DYNAMIC_BASE = 5939008,
-    DYNAMICTOP_PTR = 695968;
+    STACK_MAX = 695952,
+    DYNAMIC_BASE = 5938832,
+    DYNAMICTOP_PTR = 695792;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -1917,7 +1917,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  569316: function() {debugger;}
+  569204: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -1927,7 +1927,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 695104;
+// STATICTOP = STATIC_BASE + 694928;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4520,7 +4520,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 695968;
+      return 695792;
     }
 
   

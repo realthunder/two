@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-30-pickingDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-30-pickingDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-30-pickingDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -174,10 +174,10 @@ Module['FS_createPath']('/', 'meshes', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-30-pickingDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-30-pickingDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-30-pickingDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-30-pickingDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2094, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2094, "end": 3620, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3620, "end": 4550, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4550, "end": 2822652, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822652, "end": 2876671, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876671, "end": 5465081, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465081, "end": 5466011, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466011, "end": 5520319, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520319, "end": 5558200, "audio": 0}], "remote_package_size": 5558200, "package_uuid": "d9b6e876-16c3-4dd5-a731-b04451db38b7"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3623, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3623, "end": 4554, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4554, "end": 2822656, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822656, "end": 2876675, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876675, "end": 5465085, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465085, "end": 5466015, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466015, "end": 5520323, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520323, "end": 5558204, "audio": 0}], "remote_package_size": 5558204, "package_uuid": "b57dba26-5477-4146-b33e-89e43fcfa6df"});
   
   })();
   
@@ -897,8 +897,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 481,
-  'maximum': 481 + 0,
+  'initial': 476,
+  'maximum': 476 + 0,
   'element': 'anyfunc'
 });
 
@@ -1519,11 +1519,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5939392,
+    STACK_BASE = 5939520,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 696512,
-    DYNAMIC_BASE = 5939392,
-    DYNAMICTOP_PTR = 696352;
+    STACK_MAX = 696640,
+    DYNAMIC_BASE = 5939520,
+    DYNAMICTOP_PTR = 696480;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2098,7 +2098,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  573196: function() {debugger;}
+  573036: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2108,7 +2108,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 695488;
+// STATICTOP = STATIC_BASE + 695616;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4701,7 +4701,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 696352;
+      return 696480;
     }
 
   

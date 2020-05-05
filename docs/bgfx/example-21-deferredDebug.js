@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-21-deferredDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-21-deferredDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-21-deferredDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -173,10 +173,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-21-deferredDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-21-deferredDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-21-deferredDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-21-deferredDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 6957, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 6957, "end": 9791, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9791, "end": 10885, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 10885, "end": 12552, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12552, "end": 13646, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13646, "end": 14399, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14399, "end": 15457, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15457, "end": 15863, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 15863, "end": 18825, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 18825, "end": 21951, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 21951, "end": 22653, "audio": 0}], "remote_package_size": 22653, "package_uuid": "32d29e4b-61ae-49a4-9a67-01f6de7183a9"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 6957, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 6957, "end": 9791, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9791, "end": 10885, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 10885, "end": 12552, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12552, "end": 13646, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13646, "end": 14399, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14399, "end": 15457, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15457, "end": 15863, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 15863, "end": 18825, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 18825, "end": 21951, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 21951, "end": 22653, "audio": 0}], "remote_package_size": 22653, "package_uuid": "1be6dbd0-f3de-4a2f-be1d-a8f0885aca87"});
   
   })();
   
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5966256,
+    STACK_BASE = 5966064,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 723376,
-    DYNAMIC_BASE = 5966256,
-    DYNAMICTOP_PTR = 723216;
+    STACK_MAX = 723184,
+    DYNAMIC_BASE = 5966064,
+    DYNAMICTOP_PTR = 723024;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  583980: function() {debugger;}
+  583836: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 722352;
+// STATICTOP = STATIC_BASE + 722160;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4735,7 +4735,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 723216;
+      return 723024;
     }
 
   

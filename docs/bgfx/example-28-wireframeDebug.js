@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-28-wireframeDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-28-wireframeDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-28-wireframeDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -174,10 +174,10 @@ Module['FS_createPath']('/', 'meshes', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-28-wireframeDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-28-wireframeDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-28-wireframeDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-28-wireframeDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_wf_wireframe.bin", "start": 0, "end": 1731, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_wireframe.bin", "start": 1731, "end": 3386, "audio": 0}, {"filename": "/shaders/spirv/vs_wf_mesh.bin", "start": 3386, "end": 5551, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_mesh.bin", "start": 5551, "end": 9362, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 9362, "end": 2597772, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2597772, "end": 2635653, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2635653, "end": 5453755, "audio": 0}], "remote_package_size": 5453755, "package_uuid": "0dae9eec-bab0-40af-a657-361b2995b866"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_wf_wireframe.bin", "start": 0, "end": 1731, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_wireframe.bin", "start": 1731, "end": 3386, "audio": 0}, {"filename": "/shaders/spirv/vs_wf_mesh.bin", "start": 3386, "end": 5551, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_mesh.bin", "start": 5551, "end": 9362, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 9362, "end": 2597772, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2597772, "end": 2635653, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2635653, "end": 5453755, "audio": 0}], "remote_package_size": 5453755, "package_uuid": "653bf628-2cbf-493b-a301-5d8183615502"});
   
   })();
   
@@ -1519,11 +1519,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5939744,
+    STACK_BASE = 5939568,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 696864,
-    DYNAMIC_BASE = 5939744,
-    DYNAMICTOP_PTR = 696704;
+    STACK_MAX = 696688,
+    DYNAMIC_BASE = 5939568,
+    DYNAMICTOP_PTR = 696528;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2098,7 +2098,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  573036: function() {debugger;}
+  572908: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2108,7 +2108,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 695840;
+// STATICTOP = STATIC_BASE + 695664;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4701,7 +4701,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 696704;
+      return 696528;
     }
 
   

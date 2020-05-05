@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-15-shadowmaps-simpleDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-15-shadowmaps-simpleDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-15-shadowmaps-simpleDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -174,10 +174,10 @@ Module['FS_createPath']('/', 'meshes', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-15-shadowmaps-simpleDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-15-shadowmaps-simpleDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-15-shadowmaps-simpleDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-15-shadowmaps-simpleDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13371, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13371, "end": 14255, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14255, "end": 14457, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14457, "end": 23478, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23478, "end": 2611888, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2611888, "end": 2612818, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612818, "end": 2650699, "audio": 0}], "remote_package_size": 2650699, "package_uuid": "ebc93765-d4ed-4059-a64f-4ef47392241e"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13371, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13371, "end": 14255, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14255, "end": 14457, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14457, "end": 23478, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23478, "end": 2611888, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2611888, "end": 2612818, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612818, "end": 2650699, "audio": 0}], "remote_package_size": 2650699, "package_uuid": "cb3fdfb6-f84e-467a-bca0-22dd9ce5d01d"});
   
   })();
   
@@ -1519,11 +1519,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5937152,
+    STACK_BASE = 5936976,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 694272,
-    DYNAMIC_BASE = 5937152,
-    DYNAMICTOP_PTR = 694112;
+    STACK_MAX = 694096,
+    DYNAMIC_BASE = 5936976,
+    DYNAMICTOP_PTR = 693936;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2098,7 +2098,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  570588: function() {debugger;}
+  570460: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2108,7 +2108,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 693248;
+// STATICTOP = STATIC_BASE + 693072;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4701,7 +4701,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 694112;
+      return 693936;
     }
 
   

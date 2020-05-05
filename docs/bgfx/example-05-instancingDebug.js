@@ -39,7 +39,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
       } else {
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
-      var PACKAGE_NAME = '../../../asmjs/bin/example-05-instancingDebug.data';
+      var PACKAGE_NAME = '../../asmjs/bin/example-05-instancingDebug.data';
       var REMOTE_PACKAGE_BASE = 'example-05-instancingDebug.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
@@ -173,10 +173,10 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
             for (var i = 0; i < files.length; ++i) {
               DataRequest.prototype.requests[files[i].filename].onload();
             }
-                Module['removeRunDependency']('datafile_../../../asmjs/bin/example-05-instancingDebug.data');
+                Module['removeRunDependency']('datafile_../../asmjs/bin/example-05-instancingDebug.data');
 
       };
-      Module['addRunDependency']('datafile_../../../asmjs/bin/example-05-instancingDebug.data');
+      Module['addRunDependency']('datafile_../../asmjs/bin/example-05-instancingDebug.data');
     
       if (!Module.preloadResults) Module.preloadResults = {};
     
@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_instancing.bin", "start": 0, "end": 1547, "audio": 0}, {"filename": "/shaders/spirv/fs_instancing.bin", "start": 1547, "end": 1953, "audio": 0}], "remote_package_size": 1953, "package_uuid": "945dc149-6a07-4d7f-8ed7-4b950694d6ae"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_instancing.bin", "start": 0, "end": 1547, "audio": 0}, {"filename": "/shaders/spirv/fs_instancing.bin", "start": 1547, "end": 1953, "audio": 0}], "remote_package_size": 1953, "package_uuid": "5a4db99d-7fc9-4dcb-8bde-0227b16f8465"});
   
   })();
   
@@ -1518,11 +1518,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5936304,
+    STACK_BASE = 5936176,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 693424,
-    DYNAMIC_BASE = 5936304,
-    DYNAMICTOP_PTR = 693264;
+    STACK_MAX = 693296,
+    DYNAMIC_BASE = 5936176,
+    DYNAMICTOP_PTR = 693136;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2097,7 +2097,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  569708: function() {debugger;}
+  569628: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2107,7 +2107,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 692400;
+// STATICTOP = STATIC_BASE + 692272;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4700,7 +4700,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 693264;
+      return 693136;
     }
 
   
