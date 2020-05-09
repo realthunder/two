@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5706, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5706, "end": 6952, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 6952, "end": 8234, "audio": 0}], "remote_package_size": 8234, "package_uuid": "610eefaf-e89a-4278-9a0c-61531a8d5a6d"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5706, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5706, "end": 6952, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 6952, "end": 8234, "audio": 0}], "remote_package_size": 8234, "package_uuid": "d54ba3b6-4391-4662-8d93-b736728936ef"});
   
   })();
   

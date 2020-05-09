@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5470, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5470, "end": 2593880, "audio": 0}], "remote_package_size": 2593880, "package_uuid": "260320af-1e28-4837-8335-057fd103b907"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5470, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5470, "end": 2593880, "audio": 0}], "remote_package_size": 2593880, "package_uuid": "0f211f2e-f279-4456-b571-f004f1177ad8"});
   
   })();
   

@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_raymarching.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_raymarching.bin", "start": 1268, "end": 11383, "audio": 0}], "remote_package_size": 11383, "package_uuid": "77a311c6-6e6d-494f-98e6-55f0d9d52d0e"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_raymarching.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_raymarching.bin", "start": 1268, "end": 11383, "audio": 0}], "remote_package_size": 11383, "package_uuid": "e9f31259-a8d5-4dc3-8c8d-d423a78aa3c4"});
   
   })();
   
