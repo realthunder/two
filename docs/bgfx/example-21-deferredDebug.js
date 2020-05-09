@@ -197,7 +197,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 6957, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 6957, "end": 9791, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9791, "end": 10885, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 10885, "end": 12552, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12552, "end": 13646, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13646, "end": 14399, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14399, "end": 15457, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15457, "end": 15863, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 15863, "end": 18825, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 18825, "end": 21951, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 21951, "end": 22653, "audio": 0}], "remote_package_size": 22653, "package_uuid": "cdcc1628-bcaa-4c90-8222-b3138299c28d"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 6957, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 6957, "end": 9791, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9791, "end": 10885, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 10885, "end": 12552, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12552, "end": 13646, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13646, "end": 14399, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14399, "end": 15457, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15457, "end": 15863, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 15863, "end": 18825, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 18825, "end": 21951, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 21951, "end": 22653, "audio": 0}], "remote_package_size": 22653, "package_uuid": "68caaaf6-63f0-4464-afd9-b52ee523c8be"});
   
   })();
   
@@ -7423,11 +7423,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
         var data = _malloc(mapped.byteLength);
         HEAPU8.set(new Uint8Array(mapped), data);
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7445,11 +7445,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         WebGPU.trackMapWrite(bufferWrapper, mapped);
   
         var data = bufferWrapper.mapWriteSrc;
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7816,8 +7816,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var bufferId = WebGPU.mgrBuffer.create(buffer, bufferWrapper);
       WebGPU.trackMapWrite(bufferWrapper, mapped);
   
-      var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-      var dataLength_l = mapped.byteLength | 0;
+      var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+      var dataLength_low = mapped.byteLength | 0;
   
       HEAP32[((returnPtr)>>2)]=bufferId
       HEAP32[(((returnPtr)+(8))>>2)]=dataLength_low

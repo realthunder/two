@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6431, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6431, "end": 9125, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9125, "end": 10893, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10893, "end": 14283, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14283, "end": 156143, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156143, "end": 1204787, "audio": 0}], "remote_package_size": 1204787, "package_uuid": "d99eb773-9df1-4825-b95f-23e7b8922e87"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6431, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6431, "end": 9125, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9125, "end": 10893, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10893, "end": 14283, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14283, "end": 156143, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156143, "end": 1204787, "audio": 0}], "remote_package_size": 1204787, "package_uuid": "bd8ebf24-89c4-4649-946c-f0f18764bfd2"});
   
   })();
   
@@ -7425,11 +7425,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
         var data = _malloc(mapped.byteLength);
         HEAPU8.set(new Uint8Array(mapped), data);
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7447,11 +7447,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         WebGPU.trackMapWrite(bufferWrapper, mapped);
   
         var data = bufferWrapper.mapWriteSrc;
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7818,8 +7818,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var bufferId = WebGPU.mgrBuffer.create(buffer, bufferWrapper);
       WebGPU.trackMapWrite(bufferWrapper, mapped);
   
-      var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-      var dataLength_l = mapped.byteLength | 0;
+      var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+      var dataLength_low = mapped.byteLength | 0;
   
       HEAP32[((returnPtr)>>2)]=bufferId
       HEAP32[(((returnPtr)+(8))>>2)]=dataLength_low

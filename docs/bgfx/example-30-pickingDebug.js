@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3623, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3623, "end": 4554, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4554, "end": 2822656, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822656, "end": 2876675, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876675, "end": 5465085, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465085, "end": 5466015, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466015, "end": 5520323, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520323, "end": 5558204, "audio": 0}], "remote_package_size": 5558204, "package_uuid": "3f72afdc-52de-4431-b5b3-dc36d8945793"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3623, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3623, "end": 4554, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4554, "end": 2822656, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822656, "end": 2876675, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876675, "end": 5465085, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465085, "end": 5466015, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466015, "end": 5520323, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520323, "end": 5558204, "audio": 0}], "remote_package_size": 5558204, "package_uuid": "7fbda38a-b971-4798-b666-fad2ae6c2c25"});
   
   })();
   
@@ -7027,11 +7027,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
         var data = _malloc(mapped.byteLength);
         HEAPU8.set(new Uint8Array(mapped), data);
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7049,11 +7049,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         WebGPU.trackMapWrite(bufferWrapper, mapped);
   
         var data = bufferWrapper.mapWriteSrc;
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7420,8 +7420,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var bufferId = WebGPU.mgrBuffer.create(buffer, bufferWrapper);
       WebGPU.trackMapWrite(bufferWrapper, mapped);
   
-      var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-      var dataLength_l = mapped.byteLength | 0;
+      var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+      var dataLength_low = mapped.byteLength | 0;
   
       HEAP32[((returnPtr)>>2)]=bufferId
       HEAP32[(((returnPtr)+(8))>>2)]=dataLength_low

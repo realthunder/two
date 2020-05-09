@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5083, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5083, "end": 30634, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30634, "end": 49454, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49454, "end": 61051, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61051, "end": 78245, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78245, "end": 88055, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88055, "end": 92750, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92750, "end": 1491006, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491006, "end": 1665910, "audio": 0}], "remote_package_size": 1665910, "package_uuid": "b9dc39a6-1c4e-4def-8baa-3af1a4e44102"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5083, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5083, "end": 30634, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30634, "end": 49454, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49454, "end": 61051, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61051, "end": 78245, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78245, "end": 88055, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88055, "end": 92750, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92750, "end": 1491006, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491006, "end": 1665910, "audio": 0}], "remote_package_size": 1665910, "package_uuid": "90e2b4e0-80e1-4392-af5c-0fd0a4e797cb"});
   
   })();
   
@@ -7425,11 +7425,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
         var data = _malloc(mapped.byteLength);
         HEAPU8.set(new Uint8Array(mapped), data);
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7447,11 +7447,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         WebGPU.trackMapWrite(bufferWrapper, mapped);
   
         var data = bufferWrapper.mapWriteSrc;
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7818,8 +7818,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var bufferId = WebGPU.mgrBuffer.create(buffer, bufferWrapper);
       WebGPU.trackMapWrite(bufferWrapper, mapped);
   
-      var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-      var dataLength_l = mapped.byteLength | 0;
+      var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+      var dataLength_low = mapped.byteLength | 0;
   
       HEAP32[((returnPtr)>>2)]=bufferId
       HEAP32[(((returnPtr)+(8))>>2)]=dataLength_low

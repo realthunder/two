@@ -198,7 +198,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 2968, "end": 7907, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 7907, "end": 11087, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11087, "end": 360767, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360767, "end": 710447, "audio": 0}], "remote_package_size": 710447, "package_uuid": "1daaa379-3ad9-4a2d-8941-3b342475ea5b"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 2968, "end": 7907, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 7907, "end": 11087, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11087, "end": 360767, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360767, "end": 710447, "audio": 0}], "remote_package_size": 710447, "package_uuid": "dcfbbd9a-8d57-4040-995b-a163c187ffac"});
   
   })();
   
@@ -7424,11 +7424,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
         var data = _malloc(mapped.byteLength);
         HEAPU8.set(new Uint8Array(mapped), data);
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7446,11 +7446,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         WebGPU.trackMapWrite(bufferWrapper, mapped);
   
         var data = bufferWrapper.mapWriteSrc;
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7817,8 +7817,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var bufferId = WebGPU.mgrBuffer.create(buffer, bufferWrapper);
       WebGPU.trackMapWrite(bufferWrapper, mapped);
   
-      var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-      var dataLength_l = mapped.byteLength | 0;
+      var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+      var dataLength_low = mapped.byteLength | 0;
   
       HEAP32[((returnPtr)>>2)]=bufferId
       HEAP32[(((returnPtr)+(8))>>2)]=dataLength_low

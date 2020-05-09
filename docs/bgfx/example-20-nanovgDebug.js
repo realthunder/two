@@ -197,7 +197,7 @@ Module['FS_createPath']('/', 'font', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/images/image1.jpg", "start": 0, "end": 25760, "audio": 0}, {"filename": "/images/image2.jpg", "start": 25760, "end": 49851, "audio": 0}, {"filename": "/images/image3.jpg", "start": 49851, "end": 79133, "audio": 0}, {"filename": "/images/image4.jpg", "start": 79133, "end": 102963, "audio": 0}, {"filename": "/images/image5.jpg", "start": 102963, "end": 130094, "audio": 0}, {"filename": "/images/image6.jpg", "start": 130094, "end": 155210, "audio": 0}, {"filename": "/images/image7.jpg", "start": 155210, "end": 180800, "audio": 0}, {"filename": "/images/image8.jpg", "start": 180800, "end": 205407, "audio": 0}, {"filename": "/images/image9.jpg", "start": 205407, "end": 209442, "audio": 0}, {"filename": "/images/image10.jpg", "start": 209442, "end": 212881, "audio": 0}, {"filename": "/images/image11.jpg", "start": 212881, "end": 216699, "audio": 0}, {"filename": "/images/image12.jpg", "start": 216699, "end": 222151, "audio": 0}, {"filename": "/images/blender_icons16.png", "start": 222151, "end": 462995, "audio": 0}, {"filename": "/font/entypo.ttf", "start": 462995, "end": 498387, "audio": 0}, {"filename": "/font/roboto-regular.ttf", "start": 498387, "end": 643735, "audio": 0}, {"filename": "/font/roboto-bold.ttf", "start": 643735, "end": 779555, "audio": 0}, {"filename": "/font/NotoEmoji-Regular.ttf", "start": 779555, "end": 1198359, "audio": 0}], "remote_package_size": 1198359, "package_uuid": "5dc88eed-5d9b-43d6-87d9-72134826b8af"});
+   loadPackage({"files": [{"filename": "/images/image1.jpg", "start": 0, "end": 25760, "audio": 0}, {"filename": "/images/image2.jpg", "start": 25760, "end": 49851, "audio": 0}, {"filename": "/images/image3.jpg", "start": 49851, "end": 79133, "audio": 0}, {"filename": "/images/image4.jpg", "start": 79133, "end": 102963, "audio": 0}, {"filename": "/images/image5.jpg", "start": 102963, "end": 130094, "audio": 0}, {"filename": "/images/image6.jpg", "start": 130094, "end": 155210, "audio": 0}, {"filename": "/images/image7.jpg", "start": 155210, "end": 180800, "audio": 0}, {"filename": "/images/image8.jpg", "start": 180800, "end": 205407, "audio": 0}, {"filename": "/images/image9.jpg", "start": 205407, "end": 209442, "audio": 0}, {"filename": "/images/image10.jpg", "start": 209442, "end": 212881, "audio": 0}, {"filename": "/images/image11.jpg", "start": 212881, "end": 216699, "audio": 0}, {"filename": "/images/image12.jpg", "start": 216699, "end": 222151, "audio": 0}, {"filename": "/images/blender_icons16.png", "start": 222151, "end": 462995, "audio": 0}, {"filename": "/font/entypo.ttf", "start": 462995, "end": 498387, "audio": 0}, {"filename": "/font/roboto-regular.ttf", "start": 498387, "end": 643735, "audio": 0}, {"filename": "/font/roboto-bold.ttf", "start": 643735, "end": 779555, "audio": 0}, {"filename": "/font/NotoEmoji-Regular.ttf", "start": 779555, "end": 1198359, "audio": 0}], "remote_package_size": 1198359, "package_uuid": "147f2b7f-34c7-4fbf-9904-a5c44868c63f"});
   
   })();
   
@@ -7423,11 +7423,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
         var data = _malloc(mapped.byteLength);
         HEAPU8.set(new Uint8Array(mapped), data);
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7445,11 +7445,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         WebGPU.trackMapWrite(bufferWrapper, mapped);
   
         var data = bufferWrapper.mapWriteSrc;
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7816,8 +7816,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var bufferId = WebGPU.mgrBuffer.create(buffer, bufferWrapper);
       WebGPU.trackMapWrite(bufferWrapper, mapped);
   
-      var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-      var dataLength_l = mapped.byteLength | 0;
+      var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+      var dataLength_low = mapped.byteLength | 0;
   
       HEAP32[((returnPtr)>>2)]=bufferId
       HEAP32[(((returnPtr)+(8))>>2)]=dataLength_low

@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "a8454fcc-6d0d-44b4-8b21-bc7f676962cd"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "5d227b60-faf4-4199-a0f7-e137d1bbfb91"});
   
   })();
   
@@ -7425,11 +7425,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
         var data = _malloc(mapped.byteLength);
         HEAPU8.set(new Uint8Array(mapped), data);
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7447,11 +7447,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         WebGPU.trackMapWrite(bufferWrapper, mapped);
   
         var data = bufferWrapper.mapWriteSrc;
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7818,8 +7818,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var bufferId = WebGPU.mgrBuffer.create(buffer, bufferWrapper);
       WebGPU.trackMapWrite(bufferWrapper, mapped);
   
-      var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-      var dataLength_l = mapped.byteLength | 0;
+      var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+      var dataLength_low = mapped.byteLength | 0;
   
       HEAP32[((returnPtr)>>2)]=bufferId
       HEAP32[(((returnPtr)+(8))>>2)]=dataLength_low

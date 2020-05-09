@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 7973, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 7973, "end": 10023, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10023, "end": 13473, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13473, "end": 2601883, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2601883, "end": 5419985, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5419985, "end": 9614421, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614421, "end": 10401001, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401001, "end": 14595437, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595437, "end": 15382017, "audio": 0}], "remote_package_size": 15382017, "package_uuid": "cf8533fa-7677-4183-ab91-1ef146b9468f"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 7973, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 7973, "end": 10023, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10023, "end": 13473, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13473, "end": 2601883, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2601883, "end": 5419985, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5419985, "end": 9614421, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614421, "end": 10401001, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401001, "end": 14595437, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595437, "end": 15382017, "audio": 0}], "remote_package_size": 15382017, "package_uuid": "abe96408-4ce1-441b-98c9-0e272c49876c"});
   
   })();
   
@@ -7425,11 +7425,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS = 0;
         var data = _malloc(mapped.byteLength);
         HEAPU8.set(new Uint8Array(mapped), data);
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7447,11 +7447,11 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         WebGPU.trackMapWrite(bufferWrapper, mapped);
   
         var data = bufferWrapper.mapWriteSrc;
-        var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-        var dataLength_l = mapped.byteLength | 0;
+        var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+        var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_l, dataLength_h, userdata]);
+        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7818,8 +7818,8 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       var bufferId = WebGPU.mgrBuffer.create(buffer, bufferWrapper);
       WebGPU.trackMapWrite(bufferWrapper, mapped);
   
-      var dataLength_h = (mapped.byteLength / 0x100000000) | 0;
-      var dataLength_l = mapped.byteLength | 0;
+      var dataLength_high = (mapped.byteLength / 0x100000000) | 0;
+      var dataLength_low = mapped.byteLength | 0;
   
       HEAP32[((returnPtr)>>2)]=bufferId
       HEAP32[(((returnPtr)+(8))>>2)]=dataLength_low
