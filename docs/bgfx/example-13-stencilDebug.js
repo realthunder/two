@@ -199,7 +199,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "5bc3fc88-8518-4d6b-99cf-08653fcdb084"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "cd3121c7-02ad-4983-a9f3-c83b05e4dfee"});
   
   })();
   
@@ -6855,8 +6855,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           "buffer": this.mgrBuffer.get(
             HEAP32[(((ptr)+(4))>>2)]),
           "offset": HEAPU32[((((ptr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((ptr)+(8))>>2)],
-          //"rowPitch": HEAPU32[(((ptr)+(16))>>2)],
-          //"imageHeight": HEAPU32[(((ptr)+(20))>>2)],
           "bytesPerRow": HEAPU32[(((ptr)+(24))>>2)],
           "rowsPerImage": HEAPU32[(((ptr)+(28))>>2)],
         };
@@ -6869,7 +6867,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           "entryPoint": UTF8ToString(
             HEAP32[(((ptr)+(8))>>2)]),
         };
-      },AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","comparison-sampler","sampled-texture","storage-texture","readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:[,"never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PresentMode:["immediate","mailbox","fifo"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
+      },defaultQueues:{0:0},AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","comparison-sampler","sampled-texture","storage-texture","readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:[,"never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PresentMode:["immediate","mailbox","fifo"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
       assert(Module['preinitializedWebGPUDevice']);
       return WebGPU["mgrDevice"].create(Module['preinitializedWebGPUDevice']);
     }
@@ -7429,7 +7427,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7451,7 +7448,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7706,13 +7702,13 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         }
       }
   
-      function makeEntries(count, bindingsPtrs) {
-        var bindings = [];
+      function makeEntries(count, entriesPtrs) {
+        var entries = [];
         for (var i = 0; i < count; ++i) {
-          bindings.push(makeEntry(bindingsPtrs +
+          entries.push(makeEntry(entriesPtrs +
               32 * i));
         }
-        return bindings;
+        return entries;
       }
   
       var desc = {
@@ -7746,10 +7742,10 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((entryPtr)+(20))>>2)]],
-          "textureDimension": WebGPU.TextureViewDimension[
-            HEAPU32[(((entryPtr)+(16))>>2)]],
           "textureComponentType": WebGPU.TextureComponentType[
             HEAPU32[(((entryPtr)+(24))>>2)]],
+          "storageTextureFormat": WebGPU.TextureFormat[
+            HEAPU32[(((entryPtr)+(28))>>2)]],
           "multisampled":
             (HEAP8[(((entryPtr)+(13))>>0)] !== 0),
           "hasDynamicOffset":
@@ -7757,20 +7753,20 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         };
       }
   
-      function makeEntries(count, bindingsPtrs) {
-        var bindings = [];
+      function makeEntries(count, entriesPtrs) {
+        var entries = [];
         for (var i = 0; i < count; ++i) {
-          bindings.push(makeEntry(bindingsPtrs +
+          entries.push(makeEntry(entriesPtrs +
               32 * i));
         }
-        return bindings;
+        return entries;
       }
-      var entries = makeEntries(
-        HEAPU32[(((descriptor)+(16))>>2)],
-        HEAP32[(((descriptor)+(20))>>2)]
-      );
+  
       var desc = {
-        "entries": entries,
+        "entries": makeEntries(
+          HEAPU32[(((descriptor)+(16))>>2)],
+          HEAP32[(((descriptor)+(20))>>2)]
+        ),
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
@@ -8060,15 +8056,29 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
     }
 
   function _wgpuDeviceCreateShaderModule(deviceId, descriptor) {
-      assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
-      var count = HEAPU32[(((descriptor)+(8))>>2)];
-      var start = HEAP32[(((descriptor)+(12))>>2)];
+      assert(descriptor);
+      var nextInChainPtr = HEAP32[((descriptor)>>2)];
+      assert(nextInChainPtr !== 0);
+      var sType = HEAPU32[(((nextInChainPtr)+(4))>>2)];
+      assert(sType === 5
+          || sType === 6);
       var desc = {
         "label": undefined,
-        "code": HEAPU32.subarray(start >> 2, (start >> 2) + count),
+        "code": "",
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
+  
+      if (sType === 5) {
+        var count = HEAPU32[(((nextInChainPtr)+(8))>>2)];
+        var start = HEAP32[(((nextInChainPtr)+(12))>>2)];
+        desc["code"] = HEAPU32.subarray(start >> 2, (start >> 2) + count);
+      } else if (sType === 6) {
+        var sourcePtr = HEAP32[(((nextInChainPtr)+(8))>>2)];
+        if (sourcePtr) {
+          desc["code"] = UTF8ToString(sourcePtr);
+        }
+      }
   
       var device = WebGPU["mgrDevice"].get(deviceId);
       return WebGPU.mgrShaderModule.create(device["createShaderModule"](desc));
@@ -8123,9 +8133,16 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
     }
 
   function _wgpuDeviceGetDefaultQueue(deviceId) {
-      assert(WebGPU.mgrQueue.objects.length === 1, 'there is only one queue');
-      var device = WebGPU["mgrDevice"].get(deviceId);
-      return WebGPU.mgrQueue.create(device["defaultQueue"]);
+      var queueId = WebGPU.defaultQueues[deviceId];
+      assert(queueId != 0, 'got invalid queue');
+      if (queueId === undefined) {
+        var device = WebGPU["mgrDevice"].get(deviceId);
+        WebGPU.defaultQueues[deviceId] = WebGPU.mgrQueue.create(device["defaultQueue"]);
+        queueId = WebGPU.defaultQueues[deviceId];
+      } else {
+        WebGPU.mgrQueue.reference(queueId);
+      }
+      return queueId;
     }
 
   function _wgpuDeviceReference(id) {
@@ -8264,10 +8281,10 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       pass["setBlendColor"](color);
     }
 
-  function _wgpuRenderPassEncoderSetIndexBuffer(passId, bufferId, offset) {
+  function _wgpuRenderPassEncoderSetIndexBuffer(passId, bufferId, offset, size) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       var buffer = WebGPU.mgrBuffer.get(bufferId);
-      pass["setIndexBuffer"](buffer, offset);
+      pass["setIndexBuffer"](buffer, offset, size);
     }
 
   function _wgpuRenderPassEncoderSetPipeline(passId, pipelineId) {
@@ -8286,9 +8303,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       pass["setStencilReference"](reference);
     }
 
-  function _wgpuRenderPassEncoderSetVertexBuffer(passId, slot, bufferId, offset) {
+  function _wgpuRenderPassEncoderSetVertexBuffer(passId, slot, bufferId, offset, size) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
-      pass["setVertexBuffer"](slot, WebGPU.mgrBuffer.get(bufferId), offset);
+      pass["setVertexBuffer"](slot, WebGPU.mgrBuffer.get(bufferId), offset, size);
     }
 
   function _wgpuRenderPassEncoderSetViewport(passId, x, y, w, h, minDepth, maxDepth) {
