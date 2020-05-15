@@ -19,188 +19,10 @@
 // can continue to use Module afterwards as well.
 var Module = typeof Module !== 'undefined' ? Module : {};
 
+
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-
-  if (!Module.expectedDataFileDownloads) {
-    Module.expectedDataFileDownloads = 0;
-    Module.finishedDataFileDownloads = 0;
-  }
-  Module.expectedDataFileDownloads++;
-  (function() {
-   var loadPackage = function(metadata) {
-  
-      var PACKAGE_PATH;
-      if (typeof window === 'object') {
-        PACKAGE_PATH = window['encodeURIComponent'](window.location.pathname.toString().substring(0, window.location.pathname.toString().lastIndexOf('/')) + '/');
-      } else if (typeof location !== 'undefined') {
-        // worker
-        PACKAGE_PATH = encodeURIComponent(location.pathname.toString().substring(0, location.pathname.toString().lastIndexOf('/')) + '/');
-      } else {
-        throw 'using preloaded data can only be done on a web page or in a web worker';
-      }
-      var PACKAGE_NAME = '../../asmjs/bin/example-10-fontDebug.data';
-      var REMOTE_PACKAGE_BASE = 'example-10-fontDebug.data';
-      if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
-        Module['locateFile'] = Module['locateFilePackage'];
-        err('warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)');
-      }
-      var REMOTE_PACKAGE_NAME = Module['locateFile'] ? Module['locateFile'](REMOTE_PACKAGE_BASE, '') : REMOTE_PACKAGE_BASE;
-    
-      var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
-      var PACKAGE_UUID = metadata['package_uuid'];
-    
-      function fetchRemotePackage(packageName, packageSize, callback, errback) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', packageName, true);
-        xhr.responseType = 'arraybuffer';
-        xhr.onprogress = function(event) {
-          var url = packageName;
-          var size = packageSize;
-          if (event.total) size = event.total;
-          if (event.loaded) {
-            if (!xhr.addedTotal) {
-              xhr.addedTotal = true;
-              if (!Module.dataFileDownloads) Module.dataFileDownloads = {};
-              Module.dataFileDownloads[url] = {
-                loaded: event.loaded,
-                total: size
-              };
-            } else {
-              Module.dataFileDownloads[url].loaded = event.loaded;
-            }
-            var total = 0;
-            var loaded = 0;
-            var num = 0;
-            for (var download in Module.dataFileDownloads) {
-            var data = Module.dataFileDownloads[download];
-              total += data.total;
-              loaded += data.loaded;
-              num++;
-            }
-            total = Math.ceil(total * Module.expectedDataFileDownloads/num);
-            if (Module['setStatus']) Module['setStatus']('Downloading data... (' + loaded + '/' + total + ')');
-          } else if (!Module.dataFileDownloads) {
-            if (Module['setStatus']) Module['setStatus']('Downloading data...');
-          }
-        };
-        xhr.onerror = function(event) {
-          throw new Error("NetworkError for: " + packageName);
-        }
-        xhr.onload = function(event) {
-          if (xhr.status == 200 || xhr.status == 304 || xhr.status == 206 || (xhr.status == 0 && xhr.response)) { // file URLs can return 0
-            var packageData = xhr.response;
-            callback(packageData);
-          } else {
-            throw new Error(xhr.statusText + " : " + xhr.responseURL);
-          }
-        };
-        xhr.send(null);
-      };
-
-      function handleError(error) {
-        console.error('package error:', error);
-      };
-    
-        var fetchedCallback = null;
-        var fetched = Module['getPreloadedPackage'] ? Module['getPreloadedPackage'](REMOTE_PACKAGE_NAME, REMOTE_PACKAGE_SIZE) : null;
-
-        if (!fetched) fetchRemotePackage(REMOTE_PACKAGE_NAME, REMOTE_PACKAGE_SIZE, function(data) {
-          if (fetchedCallback) {
-            fetchedCallback(data);
-            fetchedCallback = null;
-          } else {
-            fetched = data;
-          }
-        }, handleError);
-      
-    function runWithFS() {
-  
-      function assert(check, msg) {
-        if (!check) throw msg + new Error().stack;
-      }
-  Module['FS_createPath']('/', 'font', true, true);
-
-      /** @constructor */
-      function DataRequest(start, end, audio) {
-        this.start = start;
-        this.end = end;
-        this.audio = audio;
-      }
-      DataRequest.prototype = {
-        requests: {},
-        open: function(mode, name) {
-          this.name = name;
-          this.requests[name] = this;
-          Module['addRunDependency']('fp ' + this.name);
-        },
-        send: function() {},
-        onload: function() {
-          var byteArray = this.byteArray.subarray(this.start, this.end);
-          this.finish(byteArray);
-        },
-        finish: function(byteArray) {
-          var that = this;
-  
-          Module['FS_createDataFile'](this.name, null, byteArray, true, true, true); // canOwn this data in the filesystem, it is a slide into the heap that will never change
-          Module['removeRunDependency']('fp ' + that.name);
-  
-          this.requests[this.name] = null;
-        }
-      };
-  
-          var files = metadata['files'];
-          for (var i = 0; i < files.length; ++i) {
-            new DataRequest(files[i]['start'], files[i]['end'], files[i]['audio']).open('GET', files[i]['filename']);
-          }
-  
-    
-      function processPackageData(arrayBuffer) {
-        Module.finishedDataFileDownloads++;
-        assert(arrayBuffer, 'Loading data file failed.');
-        assert(arrayBuffer instanceof ArrayBuffer, 'bad input to processPackageData');
-        var byteArray = new Uint8Array(arrayBuffer);
-        var curr;
-        
-          // copy the entire loaded file into a spot in the heap. Files will refer to slices in that. They cannot be freed though
-          // (we may be allocating before malloc is ready, during startup).
-          var ptr = Module['getMemory'](byteArray.length);
-          Module['HEAPU8'].set(byteArray, ptr);
-          DataRequest.prototype.byteArray = Module['HEAPU8'].subarray(ptr, ptr+byteArray.length);
-    
-            var files = metadata['files'];
-            for (var i = 0; i < files.length; ++i) {
-              DataRequest.prototype.requests[files[i].filename].onload();
-            }
-                Module['removeRunDependency']('datafile_../../asmjs/bin/example-10-fontDebug.data');
-
-      };
-      Module['addRunDependency']('datafile_../../asmjs/bin/example-10-fontDebug.data');
-    
-      if (!Module.preloadResults) Module.preloadResults = {};
-    
-        Module.preloadResults[PACKAGE_NAME] = {fromCache: false};
-        if (fetched) {
-          processPackageData(fetched);
-          fetched = null;
-        } else {
-          fetchedCallback = processPackageData;
-        }
-      
-    }
-    if (Module['calledRun']) {
-      runWithFS();
-    } else {
-      if (!Module['preRun']) Module['preRun'] = [];
-      Module["preRun"].push(runWithFS); // FS is not initialized yet, wait for it
-    }
-  
-   }
-   loadPackage({"files": [{"filename": "/font/fontawesome-webfont.ttf", "start": 0, "end": 165548, "audio": 0}, {"filename": "/font/kenney-icon-font.ttf", "start": 165548, "end": 211732, "audio": 0}, {"filename": "/font/visitor1.ttf", "start": 211732, "end": 239284, "audio": 0}, {"filename": "/font/droidsans.ttf", "start": 239284, "end": 429328, "audio": 0}, {"filename": "/font/chp-fire.ttf", "start": 429328, "end": 476140, "audio": 0}, {"filename": "/font/bleeding_cowboys.ttf", "start": 476140, "end": 625036, "audio": 0}, {"filename": "/font/mias_scribblings.ttf", "start": 625036, "end": 727068, "audio": 0}, {"filename": "/font/ruritania.ttf", "start": 727068, "end": 853568, "audio": 0}, {"filename": "/font/signika-regular.ttf", "start": 853568, "end": 994700, "audio": 0}, {"filename": "/font/five_minutes.otf", "start": 994700, "end": 1021856, "audio": 0}], "remote_package_size": 1021856, "package_uuid": "99e3c8bd-2d5b-4bac-8c83-d3cf36440026"});
-  
-  })();
-  
-
+// {{PRE_JSES}}
 
 // Sometimes an existing Module object exists with properties
 // meant to overwrite the default module functionality. Here
@@ -887,6 +709,7 @@ function getValue(ptr, type, noSafe) {
 
 
 
+
 // Wasm globals
 
 var wasmMemory;
@@ -895,8 +718,8 @@ var wasmMemory;
 // In the wasm backend, we polyfill the WebAssembly object,
 // so this creates a (non-native-wasm) table for us.
 var wasmTable = new WebAssembly.Table({
-  'initial': 956,
-  'maximum': 956 + 0,
+  'initial': 481,
+  'maximum': 481 + 0,
   'element': 'anyfunc'
 });
 
@@ -1279,13 +1102,16 @@ function stringToAscii(str, outPtr) {
 
 var UTF16Decoder = typeof TextDecoder !== 'undefined' ? new TextDecoder('utf-16le') : undefined;
 
-function UTF16ToString(ptr) {
+function UTF16ToString(ptr, maxBytesToRead) {
   assert(ptr % 2 == 0, 'Pointer passed to UTF16ToString must be aligned to two bytes!');
   var endPtr = ptr;
   // TextDecoder needs to know the byte length in advance, it doesn't stop on null terminator by itself.
   // Also, use the length info to avoid running tiny strings through TextDecoder, since .subarray() allocates garbage.
   var idx = endPtr >> 1;
-  while (HEAP16[idx]) ++idx;
+  var maxIdx = idx + maxBytesToRead / 2;
+  // If maxBytesToRead is not passed explicitly, it will be undefined, and this
+  // will always evaluate to true. This saves on code size.
+  while (!(idx >= maxIdx) && HEAPU16[idx]) ++idx;
   endPtr = idx << 1;
 
   if (endPtr - ptr > 32 && UTF16Decoder) {
@@ -1296,7 +1122,7 @@ function UTF16ToString(ptr) {
     var str = '';
     while (1) {
       var codeUnit = HEAP16[(((ptr)+(i*2))>>1)];
-      if (codeUnit == 0) return str;
+      if (codeUnit == 0 || i == maxBytesToRead / 2) return str;
       ++i;
       // fromCharCode constructs a character from a UTF-16 code unit, so we can pass the UTF16 string right through.
       str += String.fromCharCode(codeUnit);
@@ -1343,14 +1169,16 @@ function lengthBytesUTF16(str) {
   return str.length*2;
 }
 
-function UTF32ToString(ptr) {
+function UTF32ToString(ptr, maxBytesToRead) {
   assert(ptr % 4 == 0, 'Pointer passed to UTF32ToString must be aligned to four bytes!');
   var i = 0;
 
   var str = '';
-  while (1) {
+  // If maxBytesToRead is not passed explicitly, it will be undefined, and this
+  // will always evaluate to true. This saves on code size.
+  while (!(i >= maxBytesToRead / 4)) {
     var utf32 = HEAP32[(((ptr)+(i*4))>>2)];
-    if (utf32 == 0) return str;
+    if (utf32 == 0) break;
     ++i;
     // Gotcha: fromCharCode constructs a character from a UTF-16 encoded code (pair), not from a Unicode code point! So encode the code point to UTF-16 for constructing.
     // See http://unicode.org/faq/utf_bom.html#utf16-3
@@ -1361,6 +1189,7 @@ function UTF32ToString(ptr) {
       str += String.fromCharCode(utf32);
     }
   }
+  return str;
 }
 
 // Copies the given Javascript String object 'str' to the emscripten HEAP at address 'outPtr',
@@ -1517,11 +1346,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 6036720,
+    STACK_BASE = 5952256,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 793840,
-    DYNAMIC_BASE = 6036720,
-    DYNAMICTOP_PTR = 793680;
+    STACK_MAX = 709376,
+    DYNAMIC_BASE = 5952256,
+    DYNAMICTOP_PTR = 709216;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2096,7 +1925,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  670332: function() {debugger;}
+  586044: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2106,7 +1935,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 792816;
+// STATICTOP = STATIC_BASE + 708352;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4699,7 +4528,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 793680;
+      return 709216;
     }
 
   
@@ -5285,60 +5114,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       _emscripten_log_js(flags, str);
     }
 
-  
-  
-  
-  var setjmpId=0;function _saveSetjmp(env, label, table, size) {
-      // Not particularly fast: slow table lookup of setjmpId to label. But setjmp
-      // prevents relooping anyhow, so slowness is to be expected. And typical case
-      // is 1 setjmp per invocation, or less.
-      env = env|0;
-      label = label|0;
-      table = table|0;
-      size = size|0;
-      var i = 0;
-      setjmpId = (setjmpId+1)|0;
-      HEAP32[((env)>>2)]=setjmpId;
-      while ((i|0) < (size|0)) {
-        if (((HEAP32[(((table)+((i<<3)))>>2)])|0) == 0) {
-          HEAP32[(((table)+((i<<3)))>>2)]=setjmpId;
-          HEAP32[(((table)+((i<<3)+4))>>2)]=label;
-          // prepare next slot
-          HEAP32[(((table)+((i<<3)+8))>>2)]=0;
-          setTempRet0((size) | 0);
-          return table | 0;
-        }
-        i = i+1|0;
-      }
-      // grow the table
-      size = (size*2)|0;
-      table = _realloc(table|0, 8*(size+1|0)|0) | 0;
-      table = _saveSetjmp(env|0, label|0, table|0, size|0) | 0;
-      setTempRet0((size) | 0);
-      return table | 0;
-    }
-  
-  function _testSetjmp(id, table, size) {
-      id = id|0;
-      table = table|0;
-      size = size|0;
-      var i = 0, curr = 0;
-      while ((i|0) < (size|0)) {
-        curr = ((HEAP32[(((table)+((i<<3)))>>2)])|0);
-        if ((curr|0) == 0) break;
-        if ((curr|0) == (id|0)) {
-          return ((HEAP32[(((table)+((i<<3)+4))>>2)])|0);
-        }
-        i = i+1|0;
-      }
-      return 0;
-    }function _longjmp(env, value) {
-      _setThrew(env, value || 1);
-      throw 'longjmp';
-    }function _emscripten_longjmp(env, value) {
-      _longjmp(env, value);
-    }
-
   function _emscripten_memcpy_big(dest, src, num) {
       HEAPU8.copyWithin(dest, src, src + num);
     }
@@ -5713,6 +5488,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function abortOnCannotGrowMemory(requestedSize) {
       abort('Cannot enlarge memory arrays to size ' + requestedSize + ' bytes (OOM). Either (1) compile with  -s INITIAL_MEMORY=X  with X higher than the current value ' + HEAP8.length + ', (2) compile with  -s ALLOW_MEMORY_GROWTH=1  which allows increasing the size at runtime, or (3) if you want malloc to return NULL (0) instead of this abort, compile with  -s ABORTING_MALLOC=0 ');
     }function _emscripten_resize_heap(requestedSize) {
+      requestedSize = requestedSize >>> 0;
       abortOnCannotGrowMemory(requestedSize);
     }
 
@@ -6761,13 +6537,12 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   var WebGPU={initManagers:function() {
         if (this["mgrDevice"]) return;
   
-        function makeManager(name) {
+        function makeManager() {
           return {
-            name: name,
             objects: [undefined],
             create: function(object, wrapper /* = {} */) {
-              //console.log("creating a " + this.name);
               wrapper = wrapper || {};
+  
               var id = this.objects.length;
               assert(typeof this.objects[id] === 'undefined');
               wrapper.refcount = 1;
@@ -6792,39 +6567,38 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
               assert(o.refcount > 0);
               o.refcount--;
               if (o.refcount <= 0) {
-                //console.log("destroying a " + this.name);
                 delete this.objects[id];
               }
             },
           };
         }
   
-        this.mgrSurface = this.mgrSurface || makeManager("Surface");
-        this.mgrSwapChain = this.mgrSwapChain || makeManager("SwapChain");
+        this.mgrSurface = this.mgrSurface || makeManager();
+        this.mgrSwapChain = this.mgrSwapChain || makeManager();
   
         this["mgrDevice"] = this["mgrDevice"] || makeManager();
-        this.mgrQueue = this.mgrQueue || makeManager("Queue");
-        this.mgrFence = this.mgrFence || makeManager("Fence");
+        this.mgrQueue = this.mgrQueue || makeManager();
+        this.mgrFence = this.mgrFence || makeManager();
   
-        this.mgrCommandBuffer = this.mgrCommandBuffer || makeManager("CommandBuffer");
-        this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager("CommandEncoder");
-        this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager("RenderPassEncoder");
-        this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager("ComputePassEncoder");
+        this.mgrCommandBuffer = this.mgrCommandBuffer || makeManager();
+        this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager();
+        this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager();
+        this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager();
   
-        this.mgrBindGroup = this.mgrBindGroup || makeManager("BindGroup");
-        this.mgrBuffer = this.mgrBuffer || makeManager("Buffer");
-        this.mgrSampler = this.mgrSampler || makeManager("Sampler");
-        this.mgrTexture = this.mgrTexture || makeManager("Texture");
-        this.mgrTextureView = this.mgrTextureView || makeManager("TextureView");
+        this.mgrBindGroup = this.mgrBindGroup || makeManager();
+        this.mgrBuffer = this.mgrBuffer || makeManager();
+        this.mgrSampler = this.mgrSampler || makeManager();
+        this.mgrTexture = this.mgrTexture || makeManager();
+        this.mgrTextureView = this.mgrTextureView || makeManager();
   
-        this.mgrBindGroupLayout = this.mgrBindGroupLayout || makeManager("BindGroupLayout");
-        this.mgrPipelineLayout = this.mgrPipelineLayout || makeManager("PipelineLayout");
-        this.mgrRenderPipeline = this.mgrRenderPipeline || makeManager("RenderPipeline");
-        this.mgrComputePipeline = this.mgrComputePipeline || makeManager("ComputePipeline");
-        this.mgrShaderModule = this.mgrShaderModule || makeManager("ShaderModule");
+        this.mgrBindGroupLayout = this.mgrBindGroupLayout || makeManager();
+        this.mgrPipelineLayout = this.mgrPipelineLayout || makeManager();
+        this.mgrRenderPipeline = this.mgrRenderPipeline || makeManager();
+        this.mgrComputePipeline = this.mgrComputePipeline || makeManager();
+        this.mgrShaderModule = this.mgrShaderModule || makeManager();
   
-        this.mgrRenderBundleEncoder = this.mgrRenderBundleEncoder || makeManager("RenderBundleEncoder");
-        this.mgrRenderBundle = this.mgrRenderBundle || makeManager("RenderBundle");
+        this.mgrRenderBundleEncoder = this.mgrRenderBundleEncoder || makeManager();
+        this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },trackMapWrite:function(obj, mapped) {
         var data = _malloc(mapped.byteLength);
         HEAPU8.fill(0, data, mapped.byteLength);
@@ -6871,8 +6645,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           "buffer": this.mgrBuffer.get(
             HEAP32[(((ptr)+(4))>>2)]),
           "offset": HEAPU32[((((ptr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((ptr)+(8))>>2)],
-          //"rowPitch": HEAPU32[(((ptr)+(16))>>2)],
-          //"imageHeight": HEAPU32[(((ptr)+(20))>>2)],
           "bytesPerRow": HEAPU32[(((ptr)+(24))>>2)],
           "rowsPerImage": HEAPU32[(((ptr)+(28))>>2)],
         };
@@ -6885,7 +6657,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           "entryPoint": UTF8ToString(
             HEAP32[(((ptr)+(8))>>2)]),
         };
-      },AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","comparison-sampler","sampled-texture","storage-texture","readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:[,"never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PresentMode:["immediate","mailbox","fifo"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
+      },defaultQueues:{0:0},AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","comparison-sampler","sampled-texture",,"readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:[,"never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
       assert(Module['preinitializedWebGPUDevice']);
       return WebGPU["mgrDevice"].create(Module['preinitializedWebGPUDevice']);
     }
@@ -7001,11 +6773,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   }
   }
 
-  function _getTempRet0() {
-      return (getTempRet0() | 0);
-    }
-
-
   function _setTempRet0($i) {
       setTempRet0(($i) | 0);
     }
@@ -7053,7 +6820,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       return -1;
     }
 
-
   function _time(ptr) {
       var ret = (Date.now()/1000)|0;
       if (ptr) {
@@ -7089,7 +6855,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, const void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         var WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR = 1;
@@ -7111,7 +6876,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         var dataLength_low = mapped.byteLength | 0;
         // WGPUBufferMapAsyncStatus status, void* data, uint64_t dataLength, void* userdata
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
-        //dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS, data, dataLength_low, dataLength_high, userdata]);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
         dynCall('viiji', callback, [WEBGPU_BUFFER_MAP_ASYNC_STATUS_ERROR, 0, 0, 0, userdata]);
@@ -7325,31 +7089,31 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _wgpuDeviceCreateBindGroup(deviceId, descriptor) {
       assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
   
-      function makeBinding(bindingPtr) {
-        assert(bindingPtr);
+      function makeEntry(entryPtr) {
+        assert(entryPtr);
   
-        var bufferId = HEAPU32[(((bindingPtr)+(4))>>2)];
-        var samplerId = HEAPU32[(((bindingPtr)+(24))>>2)];
-        var textureViewId = HEAPU32[(((bindingPtr)+(28))>>2)];
+        var bufferId = HEAPU32[(((entryPtr)+(4))>>2)];
+        var samplerId = HEAPU32[(((entryPtr)+(24))>>2)];
+        var textureViewId = HEAPU32[(((entryPtr)+(28))>>2)];
         assert((bufferId != 0) + (samplerId != 0) + (textureViewId != 0) == 1);
   
-        var binding = HEAPU32[((bindingPtr)>>2)];
+        var binding = HEAPU32[((entryPtr)>>2)];
   
         if (bufferId != 0) {
           var size = undefined;
   
           // Handle WGPU_WHOLE_SIZE.
-          var sizePart1 = HEAPU32[(((bindingPtr)+(16))>>2)];
-          var sizePart2 = HEAPU32[(((bindingPtr)+(20))>>2)];
+          var sizePart1 = HEAPU32[(((entryPtr)+(16))>>2)];
+          var sizePart2 = HEAPU32[(((entryPtr)+(20))>>2)];
           if (sizePart1 != 0xFFFFFFFF || sizePart2 != 0xFFFFFFFF) {
-            size = HEAPU32[((((bindingPtr + 4))+(16))>>2)] * 0x100000000 + HEAPU32[(((bindingPtr)+(16))>>2)];
+            size = HEAPU32[((((entryPtr + 4))+(16))>>2)] * 0x100000000 + HEAPU32[(((entryPtr)+(16))>>2)];
           }
   
           return {
             "binding": binding,
             "resource": {
               "buffer": WebGPU.mgrBuffer.get(bufferId),
-              "offset": HEAPU32[((((bindingPtr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((bindingPtr)+(8))>>2)],
+              "offset": HEAPU32[((((entryPtr + 4))+(8))>>2)] * 0x100000000 + HEAPU32[(((entryPtr)+(8))>>2)],
               "size": size,
             },
           };
@@ -7366,27 +7130,23 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
         }
       }
   
-      function makeBindings(count, bindingsPtrs) {
-        var bindings = [];
+      function makeEntries(count, entriesPtrs) {
+        var entries = [];
         for (var i = 0; i < count; ++i) {
-          bindings.push(makeBinding(bindingsPtrs +
+          entries.push(makeEntry(entriesPtrs +
               32 * i));
         }
-        return bindings;
+        return entries;
       }
   
       var desc = {
         "label": undefined,
         "layout": WebGPU.mgrBindGroupLayout.get(
           HEAP32[(((descriptor)+(8))>>2)]),
-        "entries": makeBindings(
+        "entries": makeEntries(
           HEAPU32[(((descriptor)+(20))>>2)],
           HEAP32[(((descriptor)+(24))>>2)]
         ),
-        //"bindings": makeBindings(
-        //  HEAPU32[(((descriptor)+(12))>>2)],
-        //  HEAP32[(((descriptor)+(16))>>2)]
-        //),
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
@@ -7398,48 +7158,43 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function _wgpuDeviceCreateBindGroupLayout(deviceId, descriptor) {
       assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
   
-      function makeBinding(bindingPtr) {
-        assert(bindingPtr);
+      function makeEntry(entryPtr) {
+        assert(entryPtr);
   
         return {
           "binding":
-            HEAPU32[((bindingPtr)>>2)],
+            HEAPU32[((entryPtr)>>2)],
           "visibility":
-            HEAPU32[(((bindingPtr)+(4))>>2)],
+            HEAPU32[(((entryPtr)+(4))>>2)],
           "type": WebGPU.BindingType[
-            HEAPU32[(((bindingPtr)+(8))>>2)]],
+            HEAPU32[(((entryPtr)+(8))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
-            HEAPU32[(((bindingPtr)+(20))>>2)]],
-          "textureDimension": WebGPU.TextureViewDimension[
-            HEAPU32[(((bindingPtr)+(16))>>2)]],
+            HEAPU32[(((entryPtr)+(20))>>2)]],
           "textureComponentType": WebGPU.TextureComponentType[
-            HEAPU32[(((bindingPtr)+(24))>>2)]],
+            HEAPU32[(((entryPtr)+(24))>>2)]],
+          "storageTextureFormat": WebGPU.TextureFormat[
+            HEAPU32[(((entryPtr)+(28))>>2)]],
           "multisampled":
-            (HEAP8[(((bindingPtr)+(13))>>0)] !== 0),
+            (HEAP8[(((entryPtr)+(13))>>0)] !== 0),
           "hasDynamicOffset":
-            (HEAP8[(((bindingPtr)+(12))>>0)] !== 0),
+            (HEAP8[(((entryPtr)+(12))>>0)] !== 0),
         };
       }
   
-      function makeBindings(count, bindingsPtrs) {
-        var bindings = [];
+      function makeEntries(count, entriesPtrs) {
+        var entries = [];
         for (var i = 0; i < count; ++i) {
-          bindings.push(makeBinding(bindingsPtrs +
+          entries.push(makeEntry(entriesPtrs +
               32 * i));
         }
-        return bindings;
+        return entries;
       }
-      var entries = makeBindings(
-        HEAPU32[(((descriptor)+(16))>>2)],
-        HEAP32[(((descriptor)+(20))>>2)]
-      );
-      //var bindings = makeBindings(
-      //  HEAPU32[(((descriptor)+(8))>>2)],
-      //  HEAP32[(((descriptor)+(12))>>2)]
-      //);
+  
       var desc = {
-        "entries": entries,
-        //"bindings": bindings,
+        "entries": makeEntries(
+          HEAPU32[(((descriptor)+(16))>>2)],
+          HEAP32[(((descriptor)+(20))>>2)]
+        ),
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
@@ -7729,15 +7484,29 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
     }
 
   function _wgpuDeviceCreateShaderModule(deviceId, descriptor) {
-      assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
-      var count = HEAPU32[(((descriptor)+(8))>>2)];
-      var start = HEAP32[(((descriptor)+(12))>>2)];
+      assert(descriptor);
+      var nextInChainPtr = HEAP32[((descriptor)>>2)];
+      assert(nextInChainPtr !== 0);
+      var sType = HEAPU32[(((nextInChainPtr)+(4))>>2)];
+      assert(sType === 5
+          || sType === 6);
       var desc = {
         "label": undefined,
-        "code": HEAPU32.subarray(start >> 2, (start >> 2) + count),
+        "code": "",
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
+  
+      if (sType === 5) {
+        var count = HEAPU32[(((nextInChainPtr)+(8))>>2)];
+        var start = HEAP32[(((nextInChainPtr)+(12))>>2)];
+        desc["code"] = HEAPU32.subarray(start >> 2, (start >> 2) + count);
+      } else if (sType === 6) {
+        var sourcePtr = HEAP32[(((nextInChainPtr)+(8))>>2)];
+        if (sourcePtr) {
+          desc["code"] = UTF8ToString(sourcePtr);
+        }
+      }
   
       var device = WebGPU["mgrDevice"].get(deviceId);
       return WebGPU.mgrShaderModule.create(device["createShaderModule"](desc));
@@ -7752,7 +7521,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       canvas.height = HEAPU32[(((descriptor)+(20))>>2)];
   
       var ctx = canvas.getContext('gpupresent');
-      assert(0 ===
+      assert(2 ===
         HEAPU32[(((descriptor)+(24))>>2)]);
   
       var desc = {
@@ -7792,9 +7561,16 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
     }
 
   function _wgpuDeviceGetDefaultQueue(deviceId) {
-      assert(WebGPU.mgrQueue.objects.length === 1, 'there is only one queue');
-      var device = WebGPU["mgrDevice"].get(deviceId);
-      return WebGPU.mgrQueue.create(device["defaultQueue"]);
+      var queueId = WebGPU.defaultQueues[deviceId];
+      assert(queueId != 0, 'got invalid queue');
+      if (queueId === undefined) {
+        var device = WebGPU["mgrDevice"].get(deviceId);
+        WebGPU.defaultQueues[deviceId] = WebGPU.mgrQueue.create(device["defaultQueue"]);
+        queueId = WebGPU.defaultQueues[deviceId];
+      } else {
+        WebGPU.mgrQueue.reference(queueId);
+      }
+      return queueId;
     }
 
   function _wgpuDeviceReference(id) {
@@ -7933,10 +7709,10 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       pass["setBlendColor"](color);
     }
 
-  function _wgpuRenderPassEncoderSetIndexBuffer(passId, bufferId, offset) {
+  function _wgpuRenderPassEncoderSetIndexBuffer(passId, bufferId, offset, size) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
       var buffer = WebGPU.mgrBuffer.get(bufferId);
-      pass["setIndexBuffer"](buffer, offset);
+      pass["setIndexBuffer"](buffer, offset, size);
     }
 
   function _wgpuRenderPassEncoderSetPipeline(passId, pipelineId) {
@@ -7955,9 +7731,9 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       pass["setStencilReference"](reference);
     }
 
-  function _wgpuRenderPassEncoderSetVertexBuffer(passId, slot, bufferId, offset) {
+  function _wgpuRenderPassEncoderSetVertexBuffer(passId, slot, bufferId, offset, size) {
       var pass = WebGPU.mgrRenderPassEncoder.get(passId);
-      pass["setVertexBuffer"](slot, WebGPU.mgrBuffer.get(bufferId), offset);
+      pass["setVertexBuffer"](slot, WebGPU.mgrBuffer.get(bufferId), offset, size);
     }
 
   function _wgpuRenderPassEncoderSetViewport(passId, x, y, w, h, minDepth, maxDepth) {
@@ -8063,7 +7839,6 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
       }
       return args;
     }
-
 var FSNode = /** @constructor */ function(parent, name, mode, rdev) {
     if (!parent) {
       parent = this;  // root node sets parent to itself
@@ -8109,7 +7884,7 @@ var FSNode = /** @constructor */ function(parent, name, mode, rdev) {
    }
   });
   FS.FSNode = FSNode;
-  FS.staticInit();Module["FS_createFolder"] = FS.createFolder;Module["FS_createPath"] = FS.createPath;Module["FS_createDataFile"] = FS.createDataFile;Module["FS_createPreloadedFile"] = FS.createPreloadedFile;Module["FS_createLazyFile"] = FS.createLazyFile;Module["FS_createLink"] = FS.createLink;Module["FS_createDevice"] = FS.createDevice;Module["FS_unlink"] = FS.unlink;;
+  FS.staticInit();;
 Module["requestFullscreen"] = function Module_requestFullscreen(lockPointer, resizeCanvas) { Browser.requestFullscreen(lockPointer, resizeCanvas) };
   Module["requestFullScreen"] = function Module_requestFullScreen() { Browser.requestFullScreen() };
   Module["requestAnimationFrame"] = function Module_requestAnimationFrame(func) { Browser.requestAnimationFrame(func) };
@@ -8153,7 +7928,7 @@ function intArrayToString(array) {
 
 
 var asmGlobalArg = {};
-var asmLibraryArg = { "__assert_fail": ___assert_fail, "__cxa_atexit": ___cxa_atexit, "__handle_stack_overflow": ___handle_stack_overflow, "__sys_fcntl64": ___sys_fcntl64, "__sys_ioctl": ___sys_ioctl, "__sys_open": ___sys_open, "abort": _abort, "emscripten_asm_const_iii": _emscripten_asm_const_iii, "emscripten_get_now": _emscripten_get_now, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_log": _emscripten_log, "emscripten_longjmp": _emscripten_longjmp, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_request_fullscreen_strategy": _emscripten_request_fullscreen_strategy, "emscripten_resize_heap": _emscripten_resize_heap, "emscripten_set_focus_callback_on_thread": _emscripten_set_focus_callback_on_thread, "emscripten_set_focusin_callback_on_thread": _emscripten_set_focusin_callback_on_thread, "emscripten_set_focusout_callback_on_thread": _emscripten_set_focusout_callback_on_thread, "emscripten_set_keydown_callback_on_thread": _emscripten_set_keydown_callback_on_thread, "emscripten_set_keypress_callback_on_thread": _emscripten_set_keypress_callback_on_thread, "emscripten_set_keyup_callback_on_thread": _emscripten_set_keyup_callback_on_thread, "emscripten_set_main_loop": _emscripten_set_main_loop, "emscripten_set_mousedown_callback_on_thread": _emscripten_set_mousedown_callback_on_thread, "emscripten_set_mousemove_callback_on_thread": _emscripten_set_mousemove_callback_on_thread, "emscripten_set_mouseup_callback_on_thread": _emscripten_set_mouseup_callback_on_thread, "emscripten_set_resize_callback_on_thread": _emscripten_set_resize_callback_on_thread, "emscripten_set_wheel_callback_on_thread": _emscripten_set_wheel_callback_on_thread, "emscripten_webgpu_get_device": _emscripten_webgpu_get_device, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "fd_close": _fd_close, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_write": _fd_write, "getTempRet0": _getTempRet0, "invoke_iii": invoke_iii, "invoke_iiii": invoke_iiii, "invoke_iiiii": invoke_iiiii, "invoke_vi": invoke_vi, "invoke_viiii": invoke_viiii, "memory": wasmMemory, "saveSetjmp": _saveSetjmp, "setTempRet0": _setTempRet0, "system": _system, "table": wasmTable, "testSetjmp": _testSetjmp, "time": _time, "wgpuBindGroupLayoutReference": _wgpuBindGroupLayoutReference, "wgpuBindGroupLayoutRelease": _wgpuBindGroupLayoutRelease, "wgpuBindGroupRelease": _wgpuBindGroupRelease, "wgpuBufferDestroy": _wgpuBufferDestroy, "wgpuBufferMapReadAsync": _wgpuBufferMapReadAsync, "wgpuBufferMapWriteAsync": _wgpuBufferMapWriteAsync, "wgpuBufferReference": _wgpuBufferReference, "wgpuBufferRelease": _wgpuBufferRelease, "wgpuBufferUnmap": _wgpuBufferUnmap, "wgpuCommandBufferRelease": _wgpuCommandBufferRelease, "wgpuCommandEncoderBeginComputePass": _wgpuCommandEncoderBeginComputePass, "wgpuCommandEncoderBeginRenderPass": _wgpuCommandEncoderBeginRenderPass, "wgpuCommandEncoderCopyBufferToBuffer": _wgpuCommandEncoderCopyBufferToBuffer, "wgpuCommandEncoderCopyBufferToTexture": _wgpuCommandEncoderCopyBufferToTexture, "wgpuCommandEncoderCopyTextureToBuffer": _wgpuCommandEncoderCopyTextureToBuffer, "wgpuCommandEncoderCopyTextureToTexture": _wgpuCommandEncoderCopyTextureToTexture, "wgpuCommandEncoderFinish": _wgpuCommandEncoderFinish, "wgpuCommandEncoderReference": _wgpuCommandEncoderReference, "wgpuCommandEncoderRelease": _wgpuCommandEncoderRelease, "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch, "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect, "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass, "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease, "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup, "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline, "wgpuComputePipelineRelease": _wgpuComputePipelineRelease, "wgpuDeviceCreateBindGroup": _wgpuDeviceCreateBindGroup, "wgpuDeviceCreateBindGroupLayout": _wgpuDeviceCreateBindGroupLayout, "wgpuDeviceCreateBuffer": _wgpuDeviceCreateBuffer, "wgpuDeviceCreateBufferMapped": _wgpuDeviceCreateBufferMapped, "wgpuDeviceCreateCommandEncoder": _wgpuDeviceCreateCommandEncoder, "wgpuDeviceCreateComputePipeline": _wgpuDeviceCreateComputePipeline, "wgpuDeviceCreatePipelineLayout": _wgpuDeviceCreatePipelineLayout, "wgpuDeviceCreateRenderPipeline": _wgpuDeviceCreateRenderPipeline, "wgpuDeviceCreateSampler": _wgpuDeviceCreateSampler, "wgpuDeviceCreateShaderModule": _wgpuDeviceCreateShaderModule, "wgpuDeviceCreateSwapChain": _wgpuDeviceCreateSwapChain, "wgpuDeviceCreateTexture": _wgpuDeviceCreateTexture, "wgpuDeviceGetDefaultQueue": _wgpuDeviceGetDefaultQueue, "wgpuDeviceReference": _wgpuDeviceReference, "wgpuDeviceRelease": _wgpuDeviceRelease, "wgpuDeviceSetUncapturedErrorCallback": _wgpuDeviceSetUncapturedErrorCallback, "wgpuInstanceCreateSurface": _wgpuInstanceCreateSurface, "wgpuInstanceRelease": _wgpuInstanceRelease, "wgpuPipelineLayoutReference": _wgpuPipelineLayoutReference, "wgpuPipelineLayoutRelease": _wgpuPipelineLayoutRelease, "wgpuQueueReference": _wgpuQueueReference, "wgpuQueueRelease": _wgpuQueueRelease, "wgpuQueueSubmit": _wgpuQueueSubmit, "wgpuRenderPassEncoderDraw": _wgpuRenderPassEncoderDraw, "wgpuRenderPassEncoderDrawIndexed": _wgpuRenderPassEncoderDrawIndexed, "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect, "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect, "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass, "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference, "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease, "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup, "wgpuRenderPassEncoderSetBlendColor": _wgpuRenderPassEncoderSetBlendColor, "wgpuRenderPassEncoderSetIndexBuffer": _wgpuRenderPassEncoderSetIndexBuffer, "wgpuRenderPassEncoderSetPipeline": _wgpuRenderPassEncoderSetPipeline, "wgpuRenderPassEncoderSetScissorRect": _wgpuRenderPassEncoderSetScissorRect, "wgpuRenderPassEncoderSetStencilReference": _wgpuRenderPassEncoderSetStencilReference, "wgpuRenderPassEncoderSetVertexBuffer": _wgpuRenderPassEncoderSetVertexBuffer, "wgpuRenderPassEncoderSetViewport": _wgpuRenderPassEncoderSetViewport, "wgpuRenderPipelineRelease": _wgpuRenderPipelineRelease, "wgpuSamplerReference": _wgpuSamplerReference, "wgpuSamplerRelease": _wgpuSamplerRelease, "wgpuShaderModuleReference": _wgpuShaderModuleReference, "wgpuShaderModuleRelease": _wgpuShaderModuleRelease, "wgpuSurfaceRelease": _wgpuSurfaceRelease, "wgpuSwapChainGetCurrentTextureView": _wgpuSwapChainGetCurrentTextureView, "wgpuSwapChainRelease": _wgpuSwapChainRelease, "wgpuTextureCreateView": _wgpuTextureCreateView, "wgpuTextureDestroy": _wgpuTextureDestroy, "wgpuTextureReference": _wgpuTextureReference, "wgpuTextureRelease": _wgpuTextureRelease, "wgpuTextureViewReference": _wgpuTextureViewReference, "wgpuTextureViewRelease": _wgpuTextureViewRelease };
+var asmLibraryArg = { "__assert_fail": ___assert_fail, "__cxa_atexit": ___cxa_atexit, "__handle_stack_overflow": ___handle_stack_overflow, "__sys_fcntl64": ___sys_fcntl64, "__sys_ioctl": ___sys_ioctl, "__sys_open": ___sys_open, "abort": _abort, "emscripten_asm_const_iii": _emscripten_asm_const_iii, "emscripten_get_now": _emscripten_get_now, "emscripten_get_sbrk_ptr": _emscripten_get_sbrk_ptr, "emscripten_log": _emscripten_log, "emscripten_memcpy_big": _emscripten_memcpy_big, "emscripten_request_fullscreen_strategy": _emscripten_request_fullscreen_strategy, "emscripten_resize_heap": _emscripten_resize_heap, "emscripten_set_focus_callback_on_thread": _emscripten_set_focus_callback_on_thread, "emscripten_set_focusin_callback_on_thread": _emscripten_set_focusin_callback_on_thread, "emscripten_set_focusout_callback_on_thread": _emscripten_set_focusout_callback_on_thread, "emscripten_set_keydown_callback_on_thread": _emscripten_set_keydown_callback_on_thread, "emscripten_set_keypress_callback_on_thread": _emscripten_set_keypress_callback_on_thread, "emscripten_set_keyup_callback_on_thread": _emscripten_set_keyup_callback_on_thread, "emscripten_set_main_loop": _emscripten_set_main_loop, "emscripten_set_mousedown_callback_on_thread": _emscripten_set_mousedown_callback_on_thread, "emscripten_set_mousemove_callback_on_thread": _emscripten_set_mousemove_callback_on_thread, "emscripten_set_mouseup_callback_on_thread": _emscripten_set_mouseup_callback_on_thread, "emscripten_set_resize_callback_on_thread": _emscripten_set_resize_callback_on_thread, "emscripten_set_wheel_callback_on_thread": _emscripten_set_wheel_callback_on_thread, "emscripten_webgpu_get_device": _emscripten_webgpu_get_device, "environ_get": _environ_get, "environ_sizes_get": _environ_sizes_get, "fd_close": _fd_close, "fd_read": _fd_read, "fd_seek": _fd_seek, "fd_write": _fd_write, "memory": wasmMemory, "setTempRet0": _setTempRet0, "system": _system, "table": wasmTable, "time": _time, "wgpuBindGroupLayoutReference": _wgpuBindGroupLayoutReference, "wgpuBindGroupLayoutRelease": _wgpuBindGroupLayoutRelease, "wgpuBindGroupRelease": _wgpuBindGroupRelease, "wgpuBufferDestroy": _wgpuBufferDestroy, "wgpuBufferMapReadAsync": _wgpuBufferMapReadAsync, "wgpuBufferMapWriteAsync": _wgpuBufferMapWriteAsync, "wgpuBufferReference": _wgpuBufferReference, "wgpuBufferRelease": _wgpuBufferRelease, "wgpuBufferUnmap": _wgpuBufferUnmap, "wgpuCommandBufferRelease": _wgpuCommandBufferRelease, "wgpuCommandEncoderBeginComputePass": _wgpuCommandEncoderBeginComputePass, "wgpuCommandEncoderBeginRenderPass": _wgpuCommandEncoderBeginRenderPass, "wgpuCommandEncoderCopyBufferToBuffer": _wgpuCommandEncoderCopyBufferToBuffer, "wgpuCommandEncoderCopyBufferToTexture": _wgpuCommandEncoderCopyBufferToTexture, "wgpuCommandEncoderCopyTextureToBuffer": _wgpuCommandEncoderCopyTextureToBuffer, "wgpuCommandEncoderCopyTextureToTexture": _wgpuCommandEncoderCopyTextureToTexture, "wgpuCommandEncoderFinish": _wgpuCommandEncoderFinish, "wgpuCommandEncoderReference": _wgpuCommandEncoderReference, "wgpuCommandEncoderRelease": _wgpuCommandEncoderRelease, "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch, "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect, "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass, "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease, "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup, "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline, "wgpuComputePipelineRelease": _wgpuComputePipelineRelease, "wgpuDeviceCreateBindGroup": _wgpuDeviceCreateBindGroup, "wgpuDeviceCreateBindGroupLayout": _wgpuDeviceCreateBindGroupLayout, "wgpuDeviceCreateBuffer": _wgpuDeviceCreateBuffer, "wgpuDeviceCreateBufferMapped": _wgpuDeviceCreateBufferMapped, "wgpuDeviceCreateCommandEncoder": _wgpuDeviceCreateCommandEncoder, "wgpuDeviceCreateComputePipeline": _wgpuDeviceCreateComputePipeline, "wgpuDeviceCreatePipelineLayout": _wgpuDeviceCreatePipelineLayout, "wgpuDeviceCreateRenderPipeline": _wgpuDeviceCreateRenderPipeline, "wgpuDeviceCreateSampler": _wgpuDeviceCreateSampler, "wgpuDeviceCreateShaderModule": _wgpuDeviceCreateShaderModule, "wgpuDeviceCreateSwapChain": _wgpuDeviceCreateSwapChain, "wgpuDeviceCreateTexture": _wgpuDeviceCreateTexture, "wgpuDeviceGetDefaultQueue": _wgpuDeviceGetDefaultQueue, "wgpuDeviceReference": _wgpuDeviceReference, "wgpuDeviceRelease": _wgpuDeviceRelease, "wgpuDeviceSetUncapturedErrorCallback": _wgpuDeviceSetUncapturedErrorCallback, "wgpuInstanceCreateSurface": _wgpuInstanceCreateSurface, "wgpuInstanceRelease": _wgpuInstanceRelease, "wgpuPipelineLayoutReference": _wgpuPipelineLayoutReference, "wgpuPipelineLayoutRelease": _wgpuPipelineLayoutRelease, "wgpuQueueReference": _wgpuQueueReference, "wgpuQueueRelease": _wgpuQueueRelease, "wgpuQueueSubmit": _wgpuQueueSubmit, "wgpuRenderPassEncoderDraw": _wgpuRenderPassEncoderDraw, "wgpuRenderPassEncoderDrawIndexed": _wgpuRenderPassEncoderDrawIndexed, "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect, "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect, "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass, "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference, "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease, "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup, "wgpuRenderPassEncoderSetBlendColor": _wgpuRenderPassEncoderSetBlendColor, "wgpuRenderPassEncoderSetIndexBuffer": _wgpuRenderPassEncoderSetIndexBuffer, "wgpuRenderPassEncoderSetPipeline": _wgpuRenderPassEncoderSetPipeline, "wgpuRenderPassEncoderSetScissorRect": _wgpuRenderPassEncoderSetScissorRect, "wgpuRenderPassEncoderSetStencilReference": _wgpuRenderPassEncoderSetStencilReference, "wgpuRenderPassEncoderSetVertexBuffer": _wgpuRenderPassEncoderSetVertexBuffer, "wgpuRenderPassEncoderSetViewport": _wgpuRenderPassEncoderSetViewport, "wgpuRenderPipelineRelease": _wgpuRenderPipelineRelease, "wgpuSamplerReference": _wgpuSamplerReference, "wgpuSamplerRelease": _wgpuSamplerRelease, "wgpuShaderModuleReference": _wgpuShaderModuleReference, "wgpuShaderModuleRelease": _wgpuShaderModuleRelease, "wgpuSurfaceRelease": _wgpuSurfaceRelease, "wgpuSwapChainGetCurrentTextureView": _wgpuSwapChainGetCurrentTextureView, "wgpuSwapChainRelease": _wgpuSwapChainRelease, "wgpuTextureCreateView": _wgpuTextureCreateView, "wgpuTextureDestroy": _wgpuTextureDestroy, "wgpuTextureReference": _wgpuTextureReference, "wgpuTextureRelease": _wgpuTextureRelease, "wgpuTextureViewReference": _wgpuTextureViewReference, "wgpuTextureViewRelease": _wgpuTextureViewRelease };
 var asm = createWasm();
 Module["asm"] = asm;
 /** @type {function(...*):?} */
@@ -8199,59 +7974,10 @@ var _main = Module["_main"] = function() {
 };
 
 /** @type {function(...*):?} */
-var _realloc = Module["_realloc"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["realloc"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var ___errno_location = Module["___errno_location"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["__errno_location"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _setThrew = Module["_setThrew"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["setThrew"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_vi = Module["dynCall_vi"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_vi"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_viiii = Module["dynCall_viiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_viiii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_iii = Module["dynCall_iii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_iii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_iiii = Module["dynCall_iiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_iiii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_iiiii = Module["dynCall_iiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_iiiii"].apply(null, arguments)
 };
 
 /** @type {function(...*):?} */
@@ -8297,6 +8023,13 @@ var dynCall_ii = Module["dynCall_ii"] = function() {
 };
 
 /** @type {function(...*):?} */
+var dynCall_vi = Module["dynCall_vi"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_vi"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
 var dynCall_viiiii = Module["dynCall_viiiii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -8318,6 +8051,27 @@ var dynCall_viii = Module["dynCall_viii"] = function() {
 };
 
 /** @type {function(...*):?} */
+var dynCall_viiii = Module["dynCall_viiii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_viiii"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
+var dynCall_iiii = Module["dynCall_iiii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_iiii"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
+var dynCall_iii = Module["dynCall_iii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_iii"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
 var dynCall_fii = Module["dynCall_fii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -8332,6 +8086,13 @@ var dynCall_v = Module["dynCall_v"] = function() {
 };
 
 /** @type {function(...*):?} */
+var dynCall_iiiii = Module["dynCall_iiiii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_iiiii"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
 var dynCall_jiji = Module["dynCall_jiji"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
@@ -8339,38 +8100,10 @@ var dynCall_jiji = Module["dynCall_jiji"] = function() {
 };
 
 /** @type {function(...*):?} */
-var dynCall_iiiiii = Module["dynCall_iiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_iiiiii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_viiiiii = Module["dynCall_viiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_viiiiii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_iiiiiiii = Module["dynCall_iiiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_iiiiiiii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var dynCall_iiiiiii = Module["dynCall_iiiiiii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_iiiiiii"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var dynCall_iiiiiiiiii = Module["dynCall_iiiiiiiiii"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["dynCall_iiiiiiiiii"].apply(null, arguments)
 };
 
 /** @type {function(...*):?} */
@@ -8399,6 +8132,13 @@ var dynCall_viiiiiiii = Module["dynCall_viiiiiiii"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["dynCall_viiiiiiii"].apply(null, arguments)
+};
+
+/** @type {function(...*):?} */
+var dynCall_viiiiii = Module["dynCall_viiiiii"] = function() {
+  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
+  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
+  return Module["asm"]["dynCall_viiiiii"].apply(null, arguments)
 };
 
 /** @type {function(...*):?} */
@@ -8437,61 +8177,6 @@ var dynCall_iidiiii = Module["dynCall_iidiiii"] = function() {
 };
 
 
-function invoke_viiii(index,a1,a2,a3,a4) {
-  var sp = stackSave();
-  try {
-    dynCall_viiii(index,a1,a2,a3,a4);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0 && e !== 'longjmp') throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_iii(index,a1,a2) {
-  var sp = stackSave();
-  try {
-    return dynCall_iii(index,a1,a2);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0 && e !== 'longjmp') throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_iiiii(index,a1,a2,a3,a4) {
-  var sp = stackSave();
-  try {
-    return dynCall_iiiii(index,a1,a2,a3,a4);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0 && e !== 'longjmp') throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_iiii(index,a1,a2,a3) {
-  var sp = stackSave();
-  try {
-    return dynCall_iiii(index,a1,a2,a3);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0 && e !== 'longjmp') throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_vi(index,a1) {
-  var sp = stackSave();
-  try {
-    dynCall_vi(index,a1);
-  } catch(e) {
-    stackRestore(sp);
-    if (e !== e+0 && e !== 'longjmp') throw e;
-    _setThrew(1, 0);
-  }
-}
-
 
 /**
  * @license
@@ -8510,7 +8195,7 @@ if (!Object.getOwnPropertyDescriptor(Module, "cwrap")) Module["cwrap"] = functio
 if (!Object.getOwnPropertyDescriptor(Module, "setValue")) Module["setValue"] = function() { abort("'setValue' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "getValue")) Module["getValue"] = function() { abort("'getValue' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "allocate")) Module["allocate"] = function() { abort("'allocate' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
-Module["getMemory"] = getMemory;
+if (!Object.getOwnPropertyDescriptor(Module, "getMemory")) Module["getMemory"] = function() { abort("'getMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
 if (!Object.getOwnPropertyDescriptor(Module, "UTF8ArrayToString")) Module["UTF8ArrayToString"] = function() { abort("'UTF8ArrayToString' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "UTF8ToString")) Module["UTF8ToString"] = function() { abort("'UTF8ToString' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "stringToUTF8Array")) Module["stringToUTF8Array"] = function() { abort("'stringToUTF8Array' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
@@ -8525,16 +8210,16 @@ if (!Object.getOwnPropertyDescriptor(Module, "addOnPostRun")) Module["addOnPostR
 if (!Object.getOwnPropertyDescriptor(Module, "writeStringToMemory")) Module["writeStringToMemory"] = function() { abort("'writeStringToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "writeArrayToMemory")) Module["writeArrayToMemory"] = function() { abort("'writeArrayToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "writeAsciiToMemory")) Module["writeAsciiToMemory"] = function() { abort("'writeAsciiToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
-Module["addRunDependency"] = addRunDependency;
-Module["removeRunDependency"] = removeRunDependency;
-Module["FS_createFolder"] = FS.createFolder;
-Module["FS_createPath"] = FS.createPath;
-Module["FS_createDataFile"] = FS.createDataFile;
-Module["FS_createPreloadedFile"] = FS.createPreloadedFile;
-Module["FS_createLazyFile"] = FS.createLazyFile;
-Module["FS_createLink"] = FS.createLink;
-Module["FS_createDevice"] = FS.createDevice;
-Module["FS_unlink"] = FS.unlink;
+if (!Object.getOwnPropertyDescriptor(Module, "addRunDependency")) Module["addRunDependency"] = function() { abort("'addRunDependency' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "removeRunDependency")) Module["removeRunDependency"] = function() { abort("'removeRunDependency' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createFolder")) Module["FS_createFolder"] = function() { abort("'FS_createFolder' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createPath")) Module["FS_createPath"] = function() { abort("'FS_createPath' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createDataFile")) Module["FS_createDataFile"] = function() { abort("'FS_createDataFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createPreloadedFile")) Module["FS_createPreloadedFile"] = function() { abort("'FS_createPreloadedFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createLazyFile")) Module["FS_createLazyFile"] = function() { abort("'FS_createLazyFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createLink")) Module["FS_createLink"] = function() { abort("'FS_createLink' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_createDevice")) Module["FS_createDevice"] = function() { abort("'FS_createDevice' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+if (!Object.getOwnPropertyDescriptor(Module, "FS_unlink")) Module["FS_unlink"] = function() { abort("'FS_unlink' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
 if (!Object.getOwnPropertyDescriptor(Module, "dynamicAlloc")) Module["dynamicAlloc"] = function() { abort("'dynamicAlloc' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "loadDynamicLibrary")) Module["loadDynamicLibrary"] = function() { abort("'loadDynamicLibrary' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "loadWebAssemblyModule")) Module["loadWebAssemblyModule"] = function() { abort("'loadWebAssemblyModule' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
@@ -8643,7 +8328,6 @@ if (!Object.getOwnPropertyDescriptor(Module, "ALLOC_NONE")) Object.definePropert
 
 
 var calledRun;
-
 
 /**
  * @constructor
@@ -8824,7 +8508,8 @@ function exit(status, implicit) {
   if (noExitRuntime) {
     // if exit() was called, we may warn the user if the runtime isn't actually being shut down
     if (!implicit) {
-      err('program exited (with status: ' + status + '), but EXIT_RUNTIME is not set, so halting execution but not exiting the runtime or preventing further async execution (build with EXIT_RUNTIME=1, if you want a true shutdown)');
+      var msg = 'program exited (with status: ' + status + '), but EXIT_RUNTIME is not set, so halting execution but not exiting the runtime or preventing further async execution (build with EXIT_RUNTIME=1, if you want a true shutdown)';
+      err(msg);
     }
   } else {
 

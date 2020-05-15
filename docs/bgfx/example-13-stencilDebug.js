@@ -19,6 +19,7 @@
 // can continue to use Module afterwards as well.
 var Module = typeof Module !== 'undefined' ? Module : {};
 
+
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
 
@@ -199,7 +200,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "cd3121c7-02ad-4983-a9f3-c83b05e4dfee"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6516, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6516, "end": 8336, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8336, "end": 12289, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12289, "end": 13383, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13383, "end": 14992, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 14992, "end": 15876, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15876, "end": 16238, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16238, "end": 17332, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17332, "end": 18085, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18085, "end": 2606495, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606495, "end": 2660514, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660514, "end": 2835418, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835418, "end": 3185098, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185098, "end": 3534778, "audio": 0}], "remote_package_size": 3534778, "package_uuid": "87d9755f-62a1-49dd-b8c7-072702ee3523"});
   
   })();
   
@@ -890,6 +891,7 @@ function getValue(ptr, type, noSafe) {
 
 
 
+
 // Wasm globals
 
 var wasmMemory;
@@ -1282,13 +1284,16 @@ function stringToAscii(str, outPtr) {
 
 var UTF16Decoder = typeof TextDecoder !== 'undefined' ? new TextDecoder('utf-16le') : undefined;
 
-function UTF16ToString(ptr) {
+function UTF16ToString(ptr, maxBytesToRead) {
   assert(ptr % 2 == 0, 'Pointer passed to UTF16ToString must be aligned to two bytes!');
   var endPtr = ptr;
   // TextDecoder needs to know the byte length in advance, it doesn't stop on null terminator by itself.
   // Also, use the length info to avoid running tiny strings through TextDecoder, since .subarray() allocates garbage.
   var idx = endPtr >> 1;
-  while (HEAP16[idx]) ++idx;
+  var maxIdx = idx + maxBytesToRead / 2;
+  // If maxBytesToRead is not passed explicitly, it will be undefined, and this
+  // will always evaluate to true. This saves on code size.
+  while (!(idx >= maxIdx) && HEAPU16[idx]) ++idx;
   endPtr = idx << 1;
 
   if (endPtr - ptr > 32 && UTF16Decoder) {
@@ -1299,7 +1304,7 @@ function UTF16ToString(ptr) {
     var str = '';
     while (1) {
       var codeUnit = HEAP16[(((ptr)+(i*2))>>1)];
-      if (codeUnit == 0) return str;
+      if (codeUnit == 0 || i == maxBytesToRead / 2) return str;
       ++i;
       // fromCharCode constructs a character from a UTF-16 code unit, so we can pass the UTF16 string right through.
       str += String.fromCharCode(codeUnit);
@@ -1346,14 +1351,16 @@ function lengthBytesUTF16(str) {
   return str.length*2;
 }
 
-function UTF32ToString(ptr) {
+function UTF32ToString(ptr, maxBytesToRead) {
   assert(ptr % 4 == 0, 'Pointer passed to UTF32ToString must be aligned to four bytes!');
   var i = 0;
 
   var str = '';
-  while (1) {
+  // If maxBytesToRead is not passed explicitly, it will be undefined, and this
+  // will always evaluate to true. This saves on code size.
+  while (!(i >= maxBytesToRead / 4)) {
     var utf32 = HEAP32[(((ptr)+(i*4))>>2)];
-    if (utf32 == 0) return str;
+    if (utf32 == 0) break;
     ++i;
     // Gotcha: fromCharCode constructs a character from a UTF-16 encoded code (pair), not from a Unicode code point! So encode the code point to UTF-16 for constructing.
     // See http://unicode.org/faq/utf_bom.html#utf16-3
@@ -1364,6 +1371,7 @@ function UTF32ToString(ptr) {
       str += String.fromCharCode(utf32);
     }
   }
+  return str;
 }
 
 // Copies the given Javascript String object 'str' to the emscripten HEAP at address 'outPtr',
@@ -1520,11 +1528,11 @@ function updateGlobalBufferAndViews(buf) {
 }
 
 var STATIC_BASE = 1024,
-    STACK_BASE = 5966400,
+    STACK_BASE = 5966272,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 723520,
-    DYNAMIC_BASE = 5966400,
-    DYNAMICTOP_PTR = 723360;
+    STACK_MAX = 723392,
+    DYNAMIC_BASE = 5966272,
+    DYNAMICTOP_PTR = 723232;
 
 assert(STACK_BASE % 16 === 0, 'stack must start aligned');
 assert(DYNAMIC_BASE % 16 === 0, 'heap must start aligned');
@@ -2099,7 +2107,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  583596: function() {debugger;}
+  583644: function() {debugger;}
 };
 
 function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
@@ -2109,7 +2117,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
 
 
 
-// STATICTOP = STATIC_BASE + 722496;
+// STATICTOP = STATIC_BASE + 722368;
 /* global initializers */  __ATINIT__.push({ func: function() { ___wasm_call_ctors() } });
 
 
@@ -4737,7 +4745,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   ;
 
   function _emscripten_get_sbrk_ptr() {
-      return 723360;
+      return 723232;
     }
 
   
@@ -5697,6 +5705,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   function abortOnCannotGrowMemory(requestedSize) {
       abort('Cannot enlarge memory arrays to size ' + requestedSize + ' bytes (OOM). Either (1) compile with  -s INITIAL_MEMORY=X  with X higher than the current value ' + HEAP8.length + ', (2) compile with  -s ALLOW_MEMORY_GROWTH=1  which allows increasing the size at runtime, or (3) if you want malloc to return NULL (0) instead of this abort, compile with  -s ABORTING_MALLOC=0 ');
     }function _emscripten_resize_heap(requestedSize) {
+      requestedSize = requestedSize >>> 0;
       abortOnCannotGrowMemory(requestedSize);
     }
 
@@ -6745,13 +6754,12 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
   var WebGPU={initManagers:function() {
         if (this["mgrDevice"]) return;
   
-        function makeManager(name) {
+        function makeManager() {
           return {
-            name: name,
             objects: [undefined],
             create: function(object, wrapper /* = {} */) {
-              //console.log("creating a " + this.name);
               wrapper = wrapper || {};
+  
               var id = this.objects.length;
               assert(typeof this.objects[id] === 'undefined');
               wrapper.refcount = 1;
@@ -6776,39 +6784,38 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
               assert(o.refcount > 0);
               o.refcount--;
               if (o.refcount <= 0) {
-                //console.log("destroying a " + this.name);
                 delete this.objects[id];
               }
             },
           };
         }
   
-        this.mgrSurface = this.mgrSurface || makeManager("Surface");
-        this.mgrSwapChain = this.mgrSwapChain || makeManager("SwapChain");
+        this.mgrSurface = this.mgrSurface || makeManager();
+        this.mgrSwapChain = this.mgrSwapChain || makeManager();
   
         this["mgrDevice"] = this["mgrDevice"] || makeManager();
-        this.mgrQueue = this.mgrQueue || makeManager("Queue");
-        this.mgrFence = this.mgrFence || makeManager("Fence");
+        this.mgrQueue = this.mgrQueue || makeManager();
+        this.mgrFence = this.mgrFence || makeManager();
   
-        this.mgrCommandBuffer = this.mgrCommandBuffer || makeManager("CommandBuffer");
-        this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager("CommandEncoder");
-        this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager("RenderPassEncoder");
-        this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager("ComputePassEncoder");
+        this.mgrCommandBuffer = this.mgrCommandBuffer || makeManager();
+        this.mgrCommandEncoder = this.mgrCommandEncoder || makeManager();
+        this.mgrRenderPassEncoder = this.mgrRenderPassEncoder || makeManager();
+        this.mgrComputePassEncoder = this.mgrComputePassEncoder || makeManager();
   
-        this.mgrBindGroup = this.mgrBindGroup || makeManager("BindGroup");
-        this.mgrBuffer = this.mgrBuffer || makeManager("Buffer");
-        this.mgrSampler = this.mgrSampler || makeManager("Sampler");
-        this.mgrTexture = this.mgrTexture || makeManager("Texture");
-        this.mgrTextureView = this.mgrTextureView || makeManager("TextureView");
+        this.mgrBindGroup = this.mgrBindGroup || makeManager();
+        this.mgrBuffer = this.mgrBuffer || makeManager();
+        this.mgrSampler = this.mgrSampler || makeManager();
+        this.mgrTexture = this.mgrTexture || makeManager();
+        this.mgrTextureView = this.mgrTextureView || makeManager();
   
-        this.mgrBindGroupLayout = this.mgrBindGroupLayout || makeManager("BindGroupLayout");
-        this.mgrPipelineLayout = this.mgrPipelineLayout || makeManager("PipelineLayout");
-        this.mgrRenderPipeline = this.mgrRenderPipeline || makeManager("RenderPipeline");
-        this.mgrComputePipeline = this.mgrComputePipeline || makeManager("ComputePipeline");
-        this.mgrShaderModule = this.mgrShaderModule || makeManager("ShaderModule");
+        this.mgrBindGroupLayout = this.mgrBindGroupLayout || makeManager();
+        this.mgrPipelineLayout = this.mgrPipelineLayout || makeManager();
+        this.mgrRenderPipeline = this.mgrRenderPipeline || makeManager();
+        this.mgrComputePipeline = this.mgrComputePipeline || makeManager();
+        this.mgrShaderModule = this.mgrShaderModule || makeManager();
   
-        this.mgrRenderBundleEncoder = this.mgrRenderBundleEncoder || makeManager("RenderBundleEncoder");
-        this.mgrRenderBundle = this.mgrRenderBundle || makeManager("RenderBundle");
+        this.mgrRenderBundleEncoder = this.mgrRenderBundleEncoder || makeManager();
+        this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },trackMapWrite:function(obj, mapped) {
         var data = _malloc(mapped.byteLength);
         HEAPU8.fill(0, data, mapped.byteLength);
@@ -6867,7 +6874,7 @@ function _emscripten_asm_const_iii(code, sigPtr, argbuf) {
           "entryPoint": UTF8ToString(
             HEAP32[(((ptr)+(8))>>2)]),
         };
-      },defaultQueues:{0:0},AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","comparison-sampler","sampled-texture","storage-texture","readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:[,"never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PresentMode:["immediate","mailbox","fifo"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
+      },defaultQueues:{0:0},AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:["uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","comparison-sampler","sampled-texture",,"readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferMapAsyncStatus:["success","error","unknown","device-lost"],CompareFunction:[,"never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:["uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10float","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-sfloat","bc7rgba-unorm","bc7rgba-unorm-srgb"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};function _emscripten_webgpu_get_device() {
       assert(Module['preinitializedWebGPUDevice']);
       return WebGPU["mgrDevice"].create(Module['preinitializedWebGPUDevice']);
     }
@@ -8547,24 +8554,10 @@ var _main = Module["_main"] = function() {
 };
 
 /** @type {function(...*):?} */
-var _realloc = Module["_realloc"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["realloc"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
 var ___errno_location = Module["___errno_location"] = function() {
   assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
   assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
   return Module["asm"]["__errno_location"].apply(null, arguments)
-};
-
-/** @type {function(...*):?} */
-var _setThrew = Module["_setThrew"] = function() {
-  assert(runtimeInitialized, 'you need to wait for the runtime to be ready (e.g. wait for main() to be called)');
-  assert(!runtimeExited, 'the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)');
-  return Module["asm"]["setThrew"].apply(null, arguments)
 };
 
 /** @type {function(...*):?} */
@@ -8972,7 +8965,6 @@ if (!Object.getOwnPropertyDescriptor(Module, "ALLOC_NONE")) Object.definePropert
 
 var calledRun;
 
-
 /**
  * @constructor
  * @this {ExitStatus}
@@ -9152,7 +9144,8 @@ function exit(status, implicit) {
   if (noExitRuntime) {
     // if exit() was called, we may warn the user if the runtime isn't actually being shut down
     if (!implicit) {
-      err('program exited (with status: ' + status + '), but EXIT_RUNTIME is not set, so halting execution but not exiting the runtime or preventing further async execution (build with EXIT_RUNTIME=1, if you want a true shutdown)');
+      var msg = 'program exited (with status: ' + status + '), but EXIT_RUNTIME is not set, so halting execution but not exiting the runtime or preventing further async execution (build with EXIT_RUNTIME=1, if you want a true shutdown)';
+      err(msg);
     }
   } else {
 
