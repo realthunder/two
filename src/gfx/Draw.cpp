@@ -39,7 +39,7 @@ namespace two
 
 	bool ShapeHash::operator==(const ShapeHash& other) const
 	{
-		return memcmp(&m_hash[0], &other.m_hash[0], 0);
+		return memcmp(&m_hash[0], &other.m_hash[0], sizeof(ShapeHash)) == 0;
 	}
 }
 
