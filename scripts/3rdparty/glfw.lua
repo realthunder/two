@@ -59,7 +59,7 @@ glfw = dep(nil, "glfw", false, uses_glfw)
             "-Wno-missing-field-initializers",
         }
         
-    configuration { "osx or *-clang* or asmjs" }
+    configuration { "osx or *-clang* or wasm*" }
         buildoptions {
             "-Wno-shadow",
         }

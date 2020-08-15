@@ -20,7 +20,7 @@ function two_ui_gl()
         "OpenGL32"
 	}
     
-    configuration { "not asmjs" }
+    configuration { "not wasm*" }
         defines { "NANOVG_GLEW" }
 
 	configuration {}

@@ -28,7 +28,7 @@ vg = dep(nil, "vg")
             "-Wno-empty-body",
         }
         
-	configuration { "osx or *-clang* or asmjs" }
+	configuration { "osx or *-clang* or wasm*" }
 		buildoptions {
             "-Wno-shadow",
 		}

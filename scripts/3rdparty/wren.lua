@@ -28,22 +28,22 @@ wren = dep(nil, "wren")
             "DEBUG",
         }
         
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         defines {
             "WREN_NAN_TAGGING=0",
         }
         
-    configuration { "mingw* or linux or osx or asmjs" }
+    configuration { "mingw* or linux or osx or wasm*" }
         buildoptions {
             "-Wno-unused-parameter",
         }
         
-    configuration { "osx or *-clang* or asmjs" }
+    configuration { "osx or *-clang* or wasm*" }
         buildoptions {
             "-Wno-macro-redefined", -- for __STDC_LIMIT_MACROS, we can't touch the source and don't want to touch the toolchain
         }
         
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/wd4100", -- warning C4100: 'vm': unreferenced formal parameter
             "/wd4200", -- warning C4200: nonstandard extension used: zero-sized array in struct/union

@@ -10,7 +10,7 @@ project "glsl-optimizer"
     removeflags { "Cpp17" }
     flags       { "Cpp14" }
 
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         defines {
             "HAVE___BUILTIN_FFS",
             "HAVE___BUILTIN_FFSLL",
@@ -19,7 +19,7 @@ project "glsl-optimizer"
     configuration {}
     
 project "spirv-opt"
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/wd4996", -- warning C4996: warning STL4015: The std::iterator class template (used as a base class to provide typedefs) is deprecated in C++17.
         }

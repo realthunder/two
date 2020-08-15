@@ -15,7 +15,7 @@ if _OPTIONS["renderer-bgfx"] then
 end
 
 function add_example_data(name)
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         linkoptions {
             "--preload-file ../../../data/examples/" .. name .. "@data/",
         }
@@ -82,7 +82,7 @@ end
 
 if _OPTIONS["renderer-bgfx"] then
     --project "09_live_shader"
-    --    configuration { "asmjs" }
+    --    configuration { "wasm*" }
     --        uses_shaderc()
 end
 

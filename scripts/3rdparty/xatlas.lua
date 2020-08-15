@@ -12,7 +12,7 @@ xatlas = dep(nil, "xatlas")
         path.join(TWO_3RDPARTY_DIR, "xatlas", "xatlas.cpp"),
     }
 
-    configuration { "mingw* or linux or osx or asmjs" }
+    configuration { "mingw* or linux or osx or wasm*" }
         buildoptions {
             "-Wno-sign-compare",
             "-Wno-reorder",
@@ -24,13 +24,13 @@ xatlas = dep(nil, "xatlas")
             "-Wno-type-limits",
         }
         
-    configuration { "osx or *-clang* or asmjs" }
+    configuration { "osx or *-clang* or wasm*" }
         buildoptions {
             "-Wno-macro-redefined", -- for __STDC_LIMIT_MACROS, we can't touch the source and don't want to touch the toolchain
             "-Wno-tautological-compare",
         }
         
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/wd4005", -- warning C4005: '__STDC_LIMIT_MACROS': macro redefinition
             "/wd4267", -- warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data

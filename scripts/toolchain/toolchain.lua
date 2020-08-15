@@ -52,7 +52,8 @@ function toolchain(_buildDir, _libDir)
 			{ "android-arm",     "Android - ARM"              },
 			{ "android-arm64",   "Android - ARM64"            },
 			{ "android-x86",     "Android - x86"              },
-			{ "asmjs",           "Emscripten/asm.js"          },
+			{ "wasm2js",         "Emscripten/Wasm2JS"         },
+			{ "wasm",            "Emscripten/Wasm"            },
 			{ "freebsd",         "FreeBSD"                    },
 			{ "linux-gcc",       "Linux (GCC compiler)"       },
 			{ "linux-gcc-afl",   "Linux (GCC + AFL fuzzer)"   },
@@ -252,7 +253,7 @@ function toolchain(_buildDir, _libDir)
 			premake.gcc.llvm = true
 			location (path.join(_buildDir, "projects", _ACTION .. "-android-x86"))
 
-		elseif "asmjs" == _OPTIONS["gcc"] then
+		elseif "wasm" == _OPTIONS["gcc"] then
 
 			if not os.getenv("EMSCRIPTEN") then
 				print("Set EMSCRIPTEN environment variable.")
@@ -263,7 +264,7 @@ function toolchain(_buildDir, _libDir)
 			premake.gcc.ar   = "\"$(EMSCRIPTEN)/emar\""
 			premake.gcc.llvm = true
 			premake.gcc.namestyle = "Emscripten"
-			location (path.join(_buildDir, "projects", _ACTION .. "-asmjs"))
+			location (path.join(_buildDir, "projects", _ACTION .. "-wasm"))
 
 		elseif "freebsd" == _OPTIONS["gcc"] then
 			location (path.join(_buildDir, "projects", _ACTION .. "-freebsd"))
@@ -942,10 +943,10 @@ function toolchain(_buildDir, _libDir)
 			"-target i686-none-linux-android",
 		}
 
-	configuration { "asmjs" }
-		targetdir (path.join(_buildDir, "asmjs/bin"))
-		objdir (path.join(_buildDir, "asmjs/obj"))
-		libdirs { path.join(_libDir, "lib/asmjs") }
+	configuration { "wasm" }
+		targetdir (path.join(_buildDir, "wasm/bin"))
+		objdir (path.join(_buildDir, "wasm/obj"))
+		libdirs { path.join(_libDir, "lib/wasm") }
 		buildoptions {
 			"-Wunused-value",
 			"-Wundef",

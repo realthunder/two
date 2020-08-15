@@ -13,7 +13,7 @@ base64 = dep(nil, "base64")
         path.join(TWO_3RDPARTY_DIR, "base64", "**.cpp"),
     }
     
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/wd4244", -- warning C4244: '=': conversion from 'int' to 'char', possible loss of data
         }

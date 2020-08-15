@@ -19,13 +19,13 @@ tracy = dep(nil, "tracy", false, uses_tracy)
         path.join(TWO_3RDPARTY_DIR, "tracy", "TracyClient.cpp"),
 	}
     
-    configuration { "mingw* or linux or osx or asmjs" }
+    configuration { "mingw* or linux or osx or wasm*" }
         buildoptions {
             "-Wno-unused-parameter",
             "-Wno-deprecated-declarations",
         }
         
-	configuration { "osx or *-clang* or asmjs" }
+	configuration { "osx or *-clang* or wasm*" }
 		buildoptions {
 			"-Wno-undef",
 			"-Wno-unused-private-field",

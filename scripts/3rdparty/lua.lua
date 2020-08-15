@@ -19,7 +19,7 @@ lua = dep(nil, "lua")
         path.join(TWO_3RDPARTY_DIR, "lua", "lbitlib.c"),
     }
     
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/wd4244", -- warning C4244: '=': conversion from 'int' to 'lu_byte', possible loss of data
 			"/wd4389", -- warning C4389: '==': signed/unsigned mismatch
@@ -30,7 +30,7 @@ lua = dep(nil, "lua")
             "/wd4702", -- warning C4702: unreachable code
         }
     
-	configuration { "osx or *-clang* or asmjs" }
+	configuration { "osx or *-clang* or wasm*" }
 		buildoptions {
 			"-Wno-expansion-to-defined",
 		}

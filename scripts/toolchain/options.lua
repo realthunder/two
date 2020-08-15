@@ -130,7 +130,7 @@ function default_options()
     end
 
     if not _OPTIONS["context-native"] and not _OPTIONS["context-glfw"] and not _OPTIONS["context-ogre"] then
-        if _OPTIONS["vs"] ~= "asmjs" and _OPTIONS["gcc"] ~= "asmjs" then
+        if _OPTIONS["vs"] ~= "wasm" and _OPTIONS["gcc"] ~= "wasm" then
             _OPTIONS["context-glfw"] = ""
         else
             _OPTIONS["context-wasm"] = ""
@@ -146,7 +146,7 @@ function default_options()
     end
     
     NO_SHARED_LIBS = false
-    if _OPTIONS["vs"] == "asmjs" or _OPTIONS["gcc"] == "asmjs" then
+    if _OPTIONS["vs"] == "wasm" or _OPTIONS["gcc"] == "wasm" then
         NO_SHARED_LIBS = true
     end
 end

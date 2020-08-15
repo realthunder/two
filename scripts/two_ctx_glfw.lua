@@ -8,12 +8,12 @@ function two_ctx_glfw()
 end
 
 function uses_two_ctx_glfw()
-    configuration { "not asmjs" }
+    configuration { "not wasm*" }
         links {
             "glfw",
         }
     
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         linkoptions {
             "-s USE_GLFW=3",
         }

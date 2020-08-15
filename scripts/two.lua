@@ -2,7 +2,7 @@
 
 function two_module()
     if _OPTIONS["webcompile"] then
-        configuration { "asmjs" }
+        configuration { "wasm*" }
             buildoptions {
                 "-s MAIN_MODULE=1",
                 "-fPIC",
@@ -192,10 +192,10 @@ function two_snd()
 end
 
 function uses_two_snd()
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         --links { "openal" }
         
-    configuration { "not asmjs" }
+    configuration { "not wasm*" }
         links { "OpenAL32" }
         
     configuration {}
@@ -255,7 +255,7 @@ function uses_two_bgfx()
         path.join(BGFX_DIR,  "include"),
     }
     
-    configuration { "vs*", "not orbis", "not asmjs" }
+    configuration { "vs*", "not orbis", "not wasm*" }
         includedirs { path.join(BX_DIR, "include/compat/msvc") }
     
     configuration {}
@@ -427,7 +427,7 @@ function two_libs()
             --    path.join(TWO_SRC_DIR, "two", "**.h"),
             --}
             
-            configuration { "vs*", "not asmjs", "Release" }
+            configuration { "vs*", "not wasm*", "Release" }
                 buildoptions {
                     "/bigobj",
                 }
@@ -464,7 +464,7 @@ function two_webcl(name)
     two_binary(name, { m })
 
     if _OPTIONS["webcompile"] then
-        configuration { "asmjs" }
+        configuration { "wasm*" }
             linkoptions {
                 "-s SIDE_MODULE=1",
                 "-s EXPORT_ALL=1",

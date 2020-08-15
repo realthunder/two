@@ -2,12 +2,12 @@
 -- defines
 
 function two_defines()
-    configuration { "osx or *-clang* or asmjs" }
+    configuration { "osx or *-clang* or wasm*" }
         buildoptions {
             "-Wno-invalid-offsetof",
         }
 
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/we4238", -- warning C4238: nonstandard extension used: class rvalue used as lvalue
         }
@@ -18,7 +18,7 @@ function two_defines()
             "TWO_MODULES",
         }
 
-    configuration { "windows", "not asmjs" }
+    configuration { "windows", "not wasm*" }
         defines { "TWO_PLATFORM_WINDOWS" }
 
     configuration { "linux" }
@@ -27,7 +27,7 @@ function two_defines()
     configuration { "osx" }
         defines { "TWO_PLATFORM_OSX" }
 
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         defines { "TWO_PLATFORM_EMSCRIPTEN" }
 
     configuration {}
@@ -55,7 +55,7 @@ function two_defines()
 
     configuration {}
 
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         defines { "TWO_STATIC" }
 
     configuration {}
@@ -66,7 +66,7 @@ function two_binary_config()
 
     two_defines()
 
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         linkoptions {
             --"--memory-init-file 1",
             --"--llvm-lto 3",
@@ -95,22 +95,22 @@ function two_binary_config()
             "TWO_RESOURCE_PATH=\"/data/\"",
         }
 
-    configuration { "asmjs", "not webgpu" }
+    configuration { "wasm*", "not webgpu" }
         linkoptions {
             "-s USE_WEBGL2=1",
         }
 
-    configuration { "asmjs", "webgpu" }
+    configuration { "wasm*", "webgpu" }
         linkoptions {
             "-s USE_WEBGPU=1",
         }
 
-    configuration { "not osx", "not asmjs" }
+    configuration { "not osx", "not wasm*" }
         defines {
             "TWO_RESOURCE_PATH=\"" .. path.join(TWO_DIR, "data") .. "\"",
         }
 
-    configuration { "osx", "not asmjs" }
+    configuration { "osx", "not wasm*" }
         defines {
             "TWO_RESOURCE_PATH=\\\"" .. path.join(TWO_DIR, "data") .. "\\\"",
         }

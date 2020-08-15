@@ -169,7 +169,7 @@ function decl(m)
         m.usage_decl()
     end
     
-    if _OPTIONS["gcc"] == "asmjs" and _OPTIONS["jsbind"] and m.reflect then
+    if _OPTIONS["gcc"] == "wasm" and _OPTIONS["jsbind"] and m.reflect then
         files {
             path.join(m.root, "bind", string.gsub(m.name, "-", ".") .. ".c.cpp")
         }

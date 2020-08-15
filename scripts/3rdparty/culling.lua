@@ -14,17 +14,17 @@ function culling_config()
         path.join(TWO_3RDPARTY_DIR, "culling"),
     }
 
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         removeflags {
             "OptimizeSpeed", -- emscripten SIMD bug
         }
 
-    configuration { "mingw* or linux or osx or asmjs" }
+    configuration { "mingw* or linux or osx or wasm*" }
         buildoptions {
             "-mssse3"
         }
 
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/wd4100", -- warning C4100: unreferenced formal parameter
             "/wd4005", -- warning C4005: macro redefinition
@@ -44,7 +44,7 @@ cullingavx2 = dep(nil, "cullingavx2", false, uses_culling)
         path.join(TWO_3RDPARTY_DIR, "culling", "MaskedOcclusionCullingAVX2.cpp"),
     }
 
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/arch:AVX2",
         }
@@ -58,7 +58,7 @@ cullingavx512 = dep(nil, "cullingavx512", false, uses_culling)
         path.join(TWO_3RDPARTY_DIR, "culling", "MaskedOcclusionCullingAVX512.cpp"),
     }
 
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/arch:AVX2",
         }

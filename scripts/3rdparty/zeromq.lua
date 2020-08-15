@@ -11,7 +11,7 @@ function uses_zeromq()
 		"NoExceptions",
 	}
 
-    configuration { "linux or osx or asmjs" }
+    configuration { "linux or osx or wasm*" }
         links {
             "pthread",
         }
@@ -61,7 +61,7 @@ zeromq = dep(nil, "zeromq", true, uses_zeromq)
         path.join(TWO_3RDPARTY_DIR, "libzmq", "src", "ws_connecter.cpp"),
     }
 
-    configuration { "linux or asmjs" }
+    configuration { "linux or wasm*" }
         defines {
             "ZMQ_IOTHREAD_POLLER_USE_EPOLL",
             "ZMQ_POLL_BASED_ON_POLL",

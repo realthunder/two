@@ -22,12 +22,12 @@ configuration { "Release" }
 
 configuration {}
 
-configuration { "asmjs", "Release" }
+configuration { "wasm*", "Release" }
     --flags { "Optimize" }
     --flags { "OptimizeSize" }
     flags { "OptimizeSpeed" }
 
-configuration { "asmjs", "Debug" }
+configuration { "wasm*", "Debug" }
     --removeflags { "NoExceptions" }
     --buildoptions { "-s SAFE_HEAP=1" }
     --linkoptions { "-s SAFE_HEAP=1" }

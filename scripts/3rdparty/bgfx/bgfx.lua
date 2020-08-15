@@ -22,7 +22,7 @@ project "bgfx"
         "BGFX_CONFIG_RENDERER_WEBGPU=1",
     }
 
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         defines {
             "BGFX_CONFIG_RENDERER_OPENGL=0",
             "BGFX_CONFIG_RENDERER_OPENGLES=0",
@@ -47,7 +47,7 @@ project "bgfx"
         }
 
 if not _OPTIONS["webgpu"] then
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         defines {
             "BGFX_CONFIG_RENDERER_OPENGLES=30",
         }
@@ -56,26 +56,26 @@ end
     configuration {}
 
 project "bimg_encode"
-    configuration { "asmjs" }
+    configuration { "wasm*" }
         buildoptions {
             "-Wno-fortify-source",
             "-Wno-deprecated-copy",
         }
 
-    configuration { "mingw* or linux or osx or asmjs" }
+    configuration { "mingw* or linux or osx or wasm*" }
         buildoptions {
             "-Wno-undef",
             "-Wno-class-memaccess",
         }
 
-    configuration { "osx or *-clang* or asmjs" }
+    configuration { "osx or *-clang* or wasm*" }
         buildoptions {
             "-Wno-shadow",
             "-Wno-macro-redefined",
             "-Wno-tautological-compare",
         }
 
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/wd4244", -- warning C4244: '=': conversion from 'int' to 'vtype', possible loss of data
         }
@@ -89,7 +89,7 @@ function uses_bx()
         path.join(BX_DIR,    "include"),
     }
     
-    configuration { "vs*", "not orbis", "not asmjs" }
+    configuration { "vs*", "not orbis", "not wasm*" }
         includedirs { path.join(BX_DIR, "include/compat/msvc") }
     
     configuration {}
@@ -111,7 +111,7 @@ function uses_bgfx()
         usesWebGPU()
     end
 
-    configuration { "linux", "not asmjs" }
+    configuration { "linux", "not wasm*" }
         links {
             "X11",
             "GLU",
@@ -125,12 +125,12 @@ function uses_bgfx()
             "-framework QuartzCore",
         }
         
-    configuration { "vs20*", "not asmjs" }
+    configuration { "vs20*", "not wasm*" }
         links {
             "psapi",
         }
     
-    configuration { "osx or linux*", "not asmjs" }
+    configuration { "osx or linux*", "not wasm*" }
         links {
             "pthread",
         }

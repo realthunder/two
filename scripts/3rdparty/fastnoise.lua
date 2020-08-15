@@ -13,12 +13,12 @@ fastnoise = dep(nil, "FastNoise")
         path.join(TWO_3RDPARTY_DIR, "FastNoise", "**.cpp"),
     }
         
-    configuration { "mingw* or linux or osx or asmjs" }
+    configuration { "mingw* or linux or osx or wasm*" }
         buildoptions {
             "-Wno-unused-function",
         }
         
-    configuration { "vs*", "not asmjs" }
+    configuration { "vs*", "not wasm*" }
         buildoptions {
             "/wd4244", -- warning C4244: '=': conversion from 'int' to 'unsigned char', possible loss of data
             "/wd4505", -- warning C4505: 'FastAbs': unreferenced local function has been removed
