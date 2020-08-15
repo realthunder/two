@@ -11,7 +11,7 @@
 
 namespace two
 {
-	namespace ANSIToken
+	export_ namespace ANSIToken
 	{
 		constexpr char Header[] = "\033[95m";
 		constexpr char OkBlue[] = "\033[94m";
@@ -25,7 +25,7 @@ namespace two
 
 	export_ TWO_INFRA_EXPORT void init_console();
 
-	template <class... Args>
+	export_ template <class... Args>
 	void info(const char* message, Args&&... args)
 	{
 		printf("[info] %s", ANSIToken::OkGreen);
@@ -33,7 +33,7 @@ namespace two
 		printf("%s\n", ANSIToken::End);
 	}
 
-	template <class... Args>
+	export_ template <class... Args>
 	void warn(const char* message, Args&&... args)
 	{
 		printf("[warning] %s", ANSIToken::Warn);
@@ -41,7 +41,7 @@ namespace two
 		printf("%s\n", ANSIToken::End);
 	}
 
-	template <class... Args>
+	export_ template <class... Args>
 	void error(const char* message, Args&&... args)
 	{
 		printf("[ERROR] %s", ANSIToken::Fail);

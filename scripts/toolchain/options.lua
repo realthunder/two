@@ -122,7 +122,7 @@ function default_options()
     end
 
     if _OPTIONS["cpp-modules"] then
-        --_OPTIONS["as-libs"] = ""
+        _OPTIONS["as-libs"] = ""
     end
 
     if not _OPTIONS["renderer-gl"] and not _OPTIONS["renderer-bgfx"] then

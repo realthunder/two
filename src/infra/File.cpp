@@ -2,6 +2,8 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
+#ifndef TWO_MODULES // todo fix this file
+
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
@@ -257,3 +259,5 @@ namespace two
 		visit_folders(path + suffix, visit_folder);
 	}
 }
+
+#endif

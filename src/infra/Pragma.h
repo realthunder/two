@@ -17,6 +17,7 @@
 #	pragma warning (disable : 4100)
 #	pragma warning (disable : 4244)
 #	pragma warning (disable : 4522)
+#	pragma warning (disable : 5050)
 #endif
 
 #endif

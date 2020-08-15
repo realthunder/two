@@ -7,7 +7,7 @@ export import std.core;
 export import std.threading;
 export import std.regex;
 
-export import stb.rect_pack;
+//export import stb.rect_pack;
 export import two.infra;
 export import two.type;
 

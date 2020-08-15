@@ -4,13 +4,14 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
+#include <cassert>
+#endif
 #include <stl/move.h>
 #include <stl/traits.h>
 #include <type/Type.h>
 #include <type/Ref.h>
 //#include <type/Types.h>
-
-#include <cassert>
 
 namespace two
 {

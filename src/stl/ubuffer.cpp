@@ -1,3 +1,4 @@
+#ifndef USE_STL
 #include <stl/vector.h>
 #include <stl/ubuffer.h>
 #include <stl/ubuffer.hpp>
@@ -356,3 +357,4 @@ namespace stl {
 		m_size = src.m_size;
 	}
 }
+#endif

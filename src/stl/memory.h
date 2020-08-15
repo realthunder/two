@@ -2,7 +2,9 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
+#ifndef TWO_MODULES
 #include <memory>
+#endif
 namespace stl
 {
 	using std::unique_ptr;

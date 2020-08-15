@@ -5,10 +5,9 @@
 #ifdef TWO_MODULES
 module two.infra;
 #else
+#include <cstdlib>
 #include <infra/ToValue.h>
 #endif
-
-#include <cstdlib>
 
 namespace two
 {

@@ -3,12 +3,13 @@
 //  This notice and the license may not be removed or altered from any source distribution.
 
 #ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
 module two.infra;
 #else
+#include <cstdio>
 #include <infra/ToString.h>
 #endif
-
-#include <cstdio>
 
 namespace two
 {

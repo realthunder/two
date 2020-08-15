@@ -9,6 +9,7 @@
 #include <infra/Generic.h>
 #include <infra/Global.h>
 #include <infra/Limits.h>
+#include <infra/Log.h>
 #include <infra/NonCopy.h>
 //#include <infra/Arena.h>
 #include <infra/Pragma.h>

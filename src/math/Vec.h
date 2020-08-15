@@ -193,7 +193,7 @@ namespace two
 	{
 		typedef float type;
 		constr_ constexpr quat() : float4() {}
-		constr_ constexpr quat(float x, float y, float z, float w) : float4(x, y, z, w) { }
+		constr_ constexpr quat(float x, float y, float z, float w) : float4(x, y, z, w) {}
 		constr_ explicit quat(const float3& euler_angles);
 	};
 
