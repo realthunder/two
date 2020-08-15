@@ -7,8 +7,10 @@
 #include <infra/Config.h>
 
 #include <stdint.h>
+#ifndef TWO_MODULES
 #include <cmath>
 #include <cstdlib>
+#endif
 
 namespace stl
 {

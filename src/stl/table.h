@@ -5,7 +5,9 @@
 #pragma once
 
 #include <infra/Config.h>
+#ifndef TWO_MODULES
 #include <cstddef>
+#endif
 
 namespace two
 {

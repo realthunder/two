@@ -4,11 +4,13 @@
 #include <stl/stddef.h>
 #include <stl/span.h>
 
+#ifndef TWO_MODULES
 #include <cassert>
 #include <cstdlib>
 
 #include <atomic>
 #include <utility>
+#endif
 
 #if defined(WIN32)
 #include <malloc.h>

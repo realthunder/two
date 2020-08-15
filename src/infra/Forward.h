@@ -8,7 +8,9 @@
 #endif
 
 #ifdef USE_STL
+#ifndef TWO_MODULES
 #include <cstddef>
+#endif
 namespace stl
 {
 	template <class T> struct span;

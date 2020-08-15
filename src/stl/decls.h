@@ -2,15 +2,19 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
+#ifndef TWO_MODULES
 #include <cstddef>
+#endif
 namespace stl
 {
 	template <class T> struct span;
 	template <class T, size_t Size> struct array;
 }
+#ifndef TWO_MODULES
 #include <string>
 #include <functional>
 #include <vector>
+#endif
 namespace stl
 {
 	using std::string;

@@ -2,16 +2,14 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-#ifndef TWO_CPP_20
-#include <array>
-#include <map>
-#include <cstring>
-#endif
-
 #ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
 module two.gfx;
 #else
+#include <cstring>
+#include <stl/array.h>
+#include <stl/map.h>
 #include <infra/ToString.h>
 #include <infra/Vector.h>
 #include <math/Vec.hpp>
@@ -190,8 +188,8 @@ namespace two
 
 	struct SymbolIndex::Impl
 	{
-		std::map<uint64_t, object<Material>> m_materials;
-		std::map<uint64_t, std::map<std::array<char, c_max_shape_size>, object<Model>>> m_symbols;
+		stl::map<uint64_t, object<Material>> m_materials;
+		stl::map<uint64_t, stl::map<stl::array<char, c_max_shape_size>, object<Model>>> m_symbols;
 	};
 
 	SymbolIndex::SymbolIndex()
@@ -235,7 +233,7 @@ namespace two
 	Model& SymbolIndex::symbol_model(const Symbol& symbol, const Shape& shape, DrawMode draw_mode)
 	{
 		uint64_t hash = hash_symbol(symbol, draw_mode);
-		std::array<char, c_max_shape_size> shape_mem = {};
+		stl::array<char, c_max_shape_size> shape_mem = {};
 		std::memcpy(&shape_mem[0], (void*) &shape, shape.m_type.m_size);
 
 		auto& shapes = m_impl->m_symbols[hash];

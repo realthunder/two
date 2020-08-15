@@ -2,17 +2,17 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
+#ifdef TWO_MODULES
+module;
 #include <infra/Cpp20.h>
-#ifndef TWO_CPP_20
+module two.fract;
+#else
 #include <cstdlib>
 #include <cstdio>
 #include <cmath>
 #include <ctime>
-#endif
 
-#ifdef TWO_MODULES
-module two.fract;
-#else
+#include <stl/string.h>
 #include <math/Colour.h>
 #include <math/Vec.hpp>
 #include <fract/Fract.h>
@@ -22,11 +22,6 @@ module two.fract;
 #define COEFF_TRANS 1.5f
 #define COEFF_ROTATION 15
 #define COEFF_V 0.004
-
-#ifndef TWO_CPP_20
-#include <cstdio>
-#include <stl/string.h>
-#endif
 
 float rnd_float()
 {

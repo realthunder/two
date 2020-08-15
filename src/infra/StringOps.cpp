@@ -14,8 +14,10 @@ module two.infra;
 #include <infra/ToValue.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <cctype>
 #include <cassert>
+#endif
 
 namespace two
 {

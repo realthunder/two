@@ -4,12 +4,11 @@
 
 #pragma once
 
-#include <geom/Forward.h>
-#include <geom/Shape/ProcShape.h>
-
-#ifndef TWO_CPP_20
+#ifndef TWO_MODULES
 #include <stl/vector.h>
 #endif
+#include <geom/Forward.h>
+#include <geom/Shape/ProcShape.h>
 
 namespace two
 {

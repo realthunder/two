@@ -1,7 +1,9 @@
 #pragma once
 
 #if 1 //def ENFORCE_STL_INITIALIZER_LIST
+#ifndef TWO_MODULES
 #include <initializer_list>
+#endif
 #else
 #include <stl/stddef.h>
 namespace std

@@ -2,14 +2,14 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <infra/Cpp20.h>
-#ifndef TWO_CPP_20
-#include <cstring>
-#endif
-
 #ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
 module two.ui;
 #else
+#include <cstring>
+#include <cstdarg>
+#include <cstdio>
 #include <infra/ToString.h>
 #include <math/Image256.h>
 #include <ui/Button.h>
@@ -19,9 +19,6 @@ module two.ui;
 #include <ui/ScrollSheet.h>
 #include <ui/UiWindow.h>
 #endif
-
-#include <cstdarg>
-#include <cstdio>
 
 namespace two
 {

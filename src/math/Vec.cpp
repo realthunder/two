@@ -2,15 +2,13 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <infra/Cpp20.h>
-#ifndef TWO_CPP_20
-#include <limits>
-#endif
-
 #ifdef TWO_MODULES
+module;
 #include <cstdlib>
+#include <infra/Cpp20.h>
 module two.math;
 #else
+#include <limits>
 #include <math/Vec.h>
 #include <math/Vec.hpp>
 #endif

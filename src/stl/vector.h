@@ -2,7 +2,9 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
+#ifndef TWO_MODULES
 #include <vector>
+#endif
 namespace stl
 {
 	export_ using std::vector;

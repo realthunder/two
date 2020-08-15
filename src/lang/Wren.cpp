@@ -2,8 +2,11 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
+#ifdef TWO_MODULES
+module;
 #include <infra/Cpp20.h>
-#ifndef TWO_CPP_20
+module two.lang;
+#else
 #include <cassert>
 #include <cmath>
 #include <cstdio>
@@ -11,11 +14,6 @@
 #include <cstdarg>
 #include <cctype>
 #include <cstring>
-#endif
-
-#ifdef TWO_MODULES
-module two.lang;
-#else
 #include <stl/new.h>
 #include <stl/math.h>
 #include <stl/vector.h>
