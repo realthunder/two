@@ -8,6 +8,7 @@
 #include <math/Vec.h>
 #include <geom/Shape/ProcShape.h>
 #endif
+#include <stl/array.h>
 #include <gfx/Forward.h>
 #include <gfx/Mesh.h>
 #include <gfx/Material.h>
@@ -15,6 +16,13 @@
 namespace two
 {
 	constexpr size_t c_max_shape_size = 256U;
+
+	struct ShapeHash
+	{
+		void hash(const Shape& shape);
+		bool operator==(const ShapeHash& other) const;
+		stl::array<char, c_max_shape_size> m_hash;
+	};
 
 	using cstring = const char*;
 

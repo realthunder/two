@@ -10,6 +10,7 @@ module two.gfx;
 #include <cstring>
 #include <stl/array.h>
 #include <stl/map.h>
+#include <stl/unordered_map.hpp>
 #include <infra/ToString.h>
 #include <infra/Vector.h>
 #include <math/Vec.hpp>
@@ -27,6 +28,30 @@ module two.gfx;
 #include <gfx/Mesh.h>
 #include <gfx/Model.h>
 #include <gfx/Item.h>
+#endif
+
+namespace two
+{
+	void ShapeHash::hash(const Shape& shape)
+	{
+		std::memcpy(&m_hash[0], (void*)&shape, shape.m_type.m_size);
+	}
+
+	bool ShapeHash::operator==(const ShapeHash& other) const
+	{
+		return memcmp(&m_hash[0], &other.m_hash[0], 0);
+	}
+}
+
+#ifndef USE_STL
+namespace stl
+{
+	template <>
+	inline size_t hash(const two::ShapeHash& value)
+	{
+		return hash_string(&value.m_hash[0], sizeof(two::ShapeHash));
+	}
+}
 #endif
 
 namespace two
@@ -189,7 +214,7 @@ namespace two
 	struct SymbolIndex::Impl
 	{
 		stl::map<uint64_t, object<Material>> m_materials;
-		stl::map<uint64_t, stl::map<stl::array<char, c_max_shape_size>, object<Model>>> m_symbols;
+		stl::map<uint64_t, stl::map<ShapeHash, object<Model>>> m_symbols;
 	};
 
 	SymbolIndex::SymbolIndex()
@@ -233,18 +258,18 @@ namespace two
 	Model& SymbolIndex::symbol_model(const Symbol& symbol, const Shape& shape, DrawMode draw_mode)
 	{
 		uint64_t hash = hash_symbol(symbol, draw_mode);
-		stl::array<char, c_max_shape_size> shape_mem = {};
-		std::memcpy(&shape_mem[0], (void*) &shape, shape.m_type.m_size);
+		ShapeHash shape_hash = {};
+		shape_hash.hash(shape);
 
 		auto& shapes = m_impl->m_symbols[hash];
-		if(shapes.find(shape_mem) == shapes.end())
+		if(shapes.find(shape_hash) == shapes.end())
 		{
 			//info("created indexed Shape %s %s", shape.m_type.m_name, pack_json(Ref(&shape)).c_str());
 			string name = "Shape:" + string(shape.m_type.m_name);
-			shapes[shape_mem] = gen_model(name.c_str(), ProcShape{ symbol, &shape, draw_mode }, true);
+			shapes[shape_hash] = gen_model(name.c_str(), ProcShape{ symbol, &shape, draw_mode }, true);
 		}
 
-		return *shapes[shape_mem];
+		return *shapes[shape_hash];
 	}
 
 	object<Model> gen_model(cstring id, const ProcShape& shape, bool readback)
