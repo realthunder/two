@@ -29,6 +29,9 @@ two is built with [GENie](https://github.com/bkaradzic/GENie) build system, whic
 To get a headstart and build two you should clone this repository, and run GENie which will generate projects for two libraries and for the examples.
 
 The build instructions for linux and gcc look like:
+- `git clone https://github.com/bkaradzic/bx`
+- `git clone https://github.com/hugoam/bimg`
+- `git clone https://github.com/hugoam/bgfx`
 - `git clone --recursive https://github.com/hugoam/two`
 - `cd two`
 - for linux (make):
