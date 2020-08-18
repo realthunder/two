@@ -2,7 +2,6 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-//#include <gfx/Cpp20.h>
 
 #include <GLFW/glfw3.h>
 
@@ -24,6 +23,8 @@
 	#undef far
 	#undef NEAR
 	#undef FAR
+#elif defined TWO_PLATFORM_LINUX
+	#undef None
 #endif
 
 #ifdef TWO_MODULES
