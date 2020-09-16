@@ -117,9 +117,7 @@ newoption {
 }
 
 function default_options()
-    if _OPTIONS["webgpu"] then
-        _OPTIONS["with-windows"] = "10.0"
-    end
+    _OPTIONS["with-windows"] = "10.0"
 
     if _OPTIONS["cpp-modules"] then
         _OPTIONS["as-libs"] = ""
