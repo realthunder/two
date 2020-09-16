@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module two.infra;
+module TWO(infra);
 #else
 #include <stl/vector.hpp>
 #include <infra/Api.h>

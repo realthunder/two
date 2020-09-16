@@ -4,13 +4,16 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
+#include <cassert>
+#endif
+
 #if defined(WIN32)
 #include <malloc.h>
 #else
 #include <cstdlib>
 #endif
 
-#include <cassert>
 
 namespace two
 {
@@ -49,7 +52,7 @@ namespace two
 		static inline void static_deallocate(T* ptr, size_t /*bytes*/) { aligned_free(ptr); }
 	};
 #else
-	template <class T>
+	export_ template <class T>
 	class STLAlignedAllocator
 	{
 		static_assert(!(alignof(T) & (alignof(T)-1)), "alignof(T) must be a power of two");

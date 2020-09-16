@@ -22,7 +22,13 @@ function modules(m)
     if _ACTION == "vs2017"
 	or _ACTION == "vs2019" then
         files {
-            path.join(m.path, m.dotname .. ".ixx"),
+          --path.join(m.path, m.dotname .. ".ixx"),
+            path.join(m.path, m.dotname2 .. ".ixx"),
+        }
+
+        buildoptions {
+            -- HACK for VS2019 preview 3 std.module bug
+            "/experimental:module /stdIfcDir \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Preview\\VC\\Tools\\MSVC\\14.28.29304\\ifc\\x64\""
         }
     else
         files {

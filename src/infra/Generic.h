@@ -4,9 +4,11 @@
 
 #pragma once
 
+#include <infra/Config.h>
+
 namespace two
 {
-	struct swallow {
+	export_ struct swallow {
 		template <class... T> swallow(T...) {}
 	};
 }

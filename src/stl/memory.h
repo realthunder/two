@@ -117,7 +117,7 @@ namespace two
 	export_ using stl::unique_ptr;
 	export_ using stl::make_unique;
 
-	template <class T, class... Types>
+	export_ template <class T, class... Types>
 	inline unique<T> construct(Types&&... args)
 	{
 		return unique<T>(new T(static_cast<Types&&>(args)...));

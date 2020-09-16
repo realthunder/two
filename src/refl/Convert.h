@@ -4,12 +4,14 @@
 
 #pragma once
 
-#include <refl/Forward.h>
-#include <refl/Meta.h>
-#include <type/DoubleDispatch.h>
-#include <type/DispatchDecl.h>
+#ifndef TWO_MODULES
 #include <infra/Global.h>
 #include <infra/StringOps.h>
+#include <type/DoubleDispatch.h>
+#include <type/DispatchDecl.h>
+#endif
+#include <refl/Forward.h>
+#include <refl/Meta.h>
 
 namespace two
 {
@@ -19,6 +21,7 @@ namespace two
 	export_ template <>
 	inline void to_string<Ref>(const Ref& object, string& str) { convert(*object.m_type).m_to_string(object.m_value, str); }
 
+#ifndef TWO_MODULES
 	export_ template <class T_Source, class T_Dest>
 	void convert(T_Source& from, T_Dest& to)
 	{
@@ -30,6 +33,7 @@ namespace two
 	{
 		to = T_Dest(from);
 	}
+#endif
 
 	export_ class TWO_REFL_EXPORT TypeConverter : public DoubleDispatch, public LazyGlobal<TypeConverter>
 	{
@@ -44,8 +48,11 @@ namespace two
 		template <class T_First, class T_Second>
 		void default_converter()
 		{
+#ifndef TWO_MODULES
+			// @todo modules
 			dispatch_branch<T_First, T_Second, copy_convert<T_First, T_Second>>(*this);
 			dispatch_branch<T_Second, T_First, copy_convert<T_Second, T_First>>(*this);
+#endif
 		}
 	};
 }

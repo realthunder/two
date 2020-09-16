@@ -4,9 +4,11 @@
 
 #pragma once
 
-#include <refl/Forward.h>
-#include <infra/TypeTraits.h>
+#ifndef TWO_MODULES
 #include <stl/algorithm.h>
+#include <infra/TypeTraits.h>
+#endif
+#include <refl/Forward.h>
 
 namespace two
 {

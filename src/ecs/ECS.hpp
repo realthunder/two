@@ -1,12 +1,14 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/tuple.h>
 #include <stl/algorithm.h>
 #include <infra/Generic.h>
+#include <pool/SparsePool.hpp>
+#endif
 #include <ecs/Forward.h>
 #include <ecs/ECS.h>
-#include <pool/SparsePool.hpp>
 
 //#include <cstdio>
 #include <cassert>

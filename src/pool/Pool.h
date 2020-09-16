@@ -4,12 +4,14 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
+#include <cstddef>
+#endif
 #include <stl/span.h>
 #include <type/Unique.h>
 #include <type/Ref.h>
 #include <pool/Forward.h>
 
-#include <cstddef>
 
 namespace two
 {

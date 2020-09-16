@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module two.jobs;
+module TWO(jobs);
 #else
 #include <stl/vector.hpp>
 #include <jobs/Api.h>

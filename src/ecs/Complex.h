@@ -4,11 +4,13 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/vector.h>
 #include <stl/span.h>
 #include <infra/Generic.h>
 #include <type/Ref.h>
 #include <type/Proto.h>
+#endif
 #include <ecs/Forward.h>
 
 namespace two

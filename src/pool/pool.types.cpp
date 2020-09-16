@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.pool;
+module TWO(pool);
 #else
 #include <pool/Types.h>
 #include <pool/Api.h>

@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.type;
+module TWO(type);
 #else
 #include <infra/Config.h>
 #include <type/Var.h>

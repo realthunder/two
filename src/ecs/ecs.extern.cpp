@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module two.ecs;
+module TWO(ecs);
 #else
 #include <stl/vector.hpp>
 #include <ecs/Api.h>

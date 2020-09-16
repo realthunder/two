@@ -2,7 +2,9 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
+#ifndef TWO_MODULES
 #include <algorithm>
+#endif
 namespace stl
 {
 	using std::move;
@@ -408,4 +410,18 @@ namespace two
 	export_ using stl::select;
 	export_ using stl::select_swap;
 	export_ using stl::transfer_unique;
+	
+#ifdef TWO_MODULES
+	export_ template <class T_Source, class T_Dest>
+	void convert(T_Source& from, T_Dest& to)
+	{
+		to = static_cast<T_Dest>(from);
+	}
+
+	export_ template <class T_Source, class T_Dest>
+	void copy_convert(T_Source& from, T_Dest& to)
+	{
+		to = T_Dest(from);
+	}
+#endif
 }

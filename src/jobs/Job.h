@@ -1,11 +1,13 @@
 #pragma once
 
+#ifndef TWO_MODULES
+#include <atomic>
+#endif
 #include <stl/move.h>
 #include <stl/new.h>
 #include <jobs/Forward.h>
 #include <jobs/JobSystem.h>
 
-#include <atomic>
 
 namespace two
 {

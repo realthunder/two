@@ -1,6 +1,7 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stdint.h>
 #include <stl/memory.h>
 #include <stl/map.h>
@@ -8,6 +9,7 @@
 #include <pool/SparsePool.h>
 #include <type/Type.h>
 #include <type/Ref.h>
+#endif
 #include <ecs/Forward.h>
 #include <ecs/Entity.h>
 #include <ecs/Buffer.h>

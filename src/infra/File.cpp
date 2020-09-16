@@ -2,8 +2,6 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#ifndef TWO_MODULES // todo fix this file
-
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
@@ -22,7 +20,7 @@ module;
 #endif
 
 #ifdef TWO_MODULES
-module two.infra;
+module TWO(infra);
 #else
 #include <infra/File.h>
 #include <infra/StringOps.h>
@@ -117,6 +115,10 @@ namespace two
 	bool file_exists(const string& path)
 	{
 		//return std::fstream(path.c_str()).good();
+#ifdef TWO_MODULES
+		// @todo MODULES
+		return true;
+#else
 #if defined WIN32
 		struct _stat info;
 		return _stat(path.c_str(), &info) == 0 && (info.st_mode & _S_IFMT) != 0;
@@ -124,16 +126,22 @@ namespace two
 		struct stat info;
 		return stat(path.c_str(), &info) == 0 && (info.st_mode & S_IFMT) != 0;
 #endif
+#endif
 	}
 
 	bool directory_exists(const string& path)
 	{
+#ifdef TWO_MODULES
+		// @todo MODULES
+		return true;
+#else
 #if defined WIN32
 		struct _stat info;
 		return _stat(path.c_str(), &info) == 0 && (info.st_mode & _S_IFDIR) != 0;
 #else 
 		struct stat info;
 		return stat(path.c_str(), &info) == 0 && (info.st_mode & S_IFDIR) != 0;
+#endif
 #endif
 	}
 
@@ -259,5 +267,3 @@ namespace two
 		visit_folders(path + suffix, visit_folder);
 	}
 }
-
-#endif

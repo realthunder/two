@@ -4,8 +4,10 @@
 
 #pragma once
 
-#include <refl/Forward.h>
+#ifndef TWO_MODULES
 #include <type/Ref.h>
+#endif
+#include <refl/Forward.h>
 
 namespace two
 {

@@ -8,6 +8,7 @@ export import std.threading;
 export import std.regex;
 
 export import two.infra;
+export import two.type;
 
 #include <jobs/Api.h>
 

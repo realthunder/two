@@ -1,3 +1,9 @@
+
+#ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
+module TWO(jobs);
+#else
 #include <stl/vector.hpp>
 #include <stl/span.h>
 #include <stl/math.h>
@@ -25,6 +31,7 @@
 #endif
 
 #include <Tracy.hpp>
+#endif
 
 #define __i386__
 
@@ -257,7 +264,9 @@ namespace two
 
 			if(job->function) //[[likely]]
 			{
+#ifndef TWO_MODULES
 				ZoneScopedN("job");
+#endif
 				job->function(job->storage, *this, job);
 			}
 

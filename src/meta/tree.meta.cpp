@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.tree;
+module TWO(tree);
 #else
 #include <refl/Module.h>
 #include <meta/infra.meta.h>

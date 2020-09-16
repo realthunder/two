@@ -2,7 +2,9 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
+#ifndef TWO_MODULES
 #include <map>
+#endif
 namespace stl
 {
 	using std::map;

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <jobs/Forward.h>
-
-#include <atomic>
-
-#include <stl/stddef.h>
+#ifndef TWO_MODULES
 #include <cassert>
+#include <atomic>
+#endif
+#include <stl/stddef.h>
+#include <jobs/Forward.h>
 
 namespace two
 {

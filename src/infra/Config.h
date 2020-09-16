@@ -6,6 +6,9 @@
 
 #include <infra/Pragma.h>
 
+//#define TWO(m) two.m
+#define TWO(m) m
+
 #ifndef TWO_META_GENERATOR
 #define base_   // Base type
 #define refl_   // Reflect

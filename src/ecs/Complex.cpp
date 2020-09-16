@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.ecs;
+module TWO(ecs);
 #else
 #include <type/Indexer.h>
 #include <type/Proto.h>

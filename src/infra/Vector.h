@@ -78,8 +78,8 @@ namespace two
 		return result;
 	}
 
-	template <class U, class T, class F>
-	export_ vector<U> transform(span<T> vec, F func)
+	export_ template <class U, class T, class F>
+	vector<U> transform(span<T> vec, F func)
 	{
 		vector<U> result;
 		for(const T& value : vec)
@@ -87,8 +87,8 @@ namespace two
 		return result;
 	}
 
-	template <class V, class T, class U, class F>
-	export_ vector<V> transform(span<T> a, span<U> b, F func)
+	export_ template <class V, class T, class U, class F>
+	vector<V> transform(span<T> a, span<U> b, F func)
 	{
 		vector<V> result;
 		for(size_t i = 0; i < a.size(); ++i)
@@ -96,8 +96,8 @@ namespace two
 		return result;
 	}
 
-	template <class T, class F>
-	export_ vector<T> transform(size_t begin, size_t end, F func)
+	export_ template <class T, class F>
+	vector<T> transform(size_t begin, size_t end, F func)
 	{
 		vector<T> result;
 		for(size_t i = begin; i < end; ++i)

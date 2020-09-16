@@ -1,12 +1,13 @@
 #pragma once
 
+#ifndef TWO_MODULES
+#include <cassert>
+#include <stdint.h>
+#endif
+#include <stl/stddef.h>
 #include <stl/vector.h>
 #include <stl/memory.h>
 #include <jobs/Forward.h>
-
-#include <cassert>
-#include <stl/stddef.h>
-#include <stdint.h>
 
 // Size is chosen so that we can store at least std::function<> and a job size is a multiple of a cacheline.
 #define JOB_PADDING (6+8)

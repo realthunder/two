@@ -38,5 +38,5 @@ namespace two
 
 	export_ extern TWO_TYPE_EXPORT vector<Prototype*> g_prototypes;
 
-	inline Prototype& proto(Type& type) { return *g_prototypes[type.m_id]; }
+	export_ inline Prototype& proto(Type& type) { return *g_prototypes[type.m_id]; }
 }

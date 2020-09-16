@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.refl;
+module TWO(refl);
 #else
 #include <stl/string.h>
 #include <stl/algorithm.h>
