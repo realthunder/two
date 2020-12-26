@@ -190,7 +190,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowvolume_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture_lighting.bin", "start": 1940, "end": 7346, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_lighting.bin", "start": 7346, "end": 9224, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_lighting.bin", "start": 9224, "end": 14135, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_texture.bin", "start": 14135, "end": 15229, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_texture.bin", "start": 15229, "end": 16890, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_texture.bin", "start": 16890, "end": 17984, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture.bin", "start": 17984, "end": 18789, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svback.bin", "start": 18789, "end": 20053, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svside.bin", "start": 20053, "end": 21667, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svfront.bin", "start": 21667, "end": 22551, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackblank.bin", "start": 22551, "end": 22913, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsideblank.bin", "start": 22913, "end": 23339, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontblank.bin", "start": 23339, "end": 23801, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackcolor.bin", "start": 23801, "end": 24471, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidecolor.bin", "start": 24471, "end": 25205, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontcolor.bin", "start": 25205, "end": 25875, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidetex.bin", "start": 25875, "end": 27460, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex1.bin", "start": 27460, "end": 28542, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex2.bin", "start": 28542, "end": 29624, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex1.bin", "start": 29624, "end": 30690, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex2.bin", "start": 30690, "end": 31756, "audio": 0}, {"filename": "/meshes/bunny_patched.bin", "start": 31756, "end": 1007367, "audio": 0}, {"filename": "/meshes/bunny_decimated.bin", "start": 1007367, "end": 1107420, "audio": 0}, {"filename": "/meshes/column.bin", "start": 1107420, "end": 1161439, "audio": 0}, {"filename": "/meshes/platform.bin", "start": 1161439, "end": 1163046, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 1163046, "end": 1163976, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 1163976, "end": 1338880, "audio": 0}, {"filename": "/textures/flare.dds", "start": 1338880, "end": 1688560, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 1688560, "end": 2038240, "audio": 0}], "remote_package_size": 2038240, "package_uuid": "ed1fcace-de4a-46ff-8277-d0a475cf5e64"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowvolume_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture_lighting.bin", "start": 1940, "end": 7346, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_lighting.bin", "start": 7346, "end": 9224, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_lighting.bin", "start": 9224, "end": 14135, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_texture.bin", "start": 14135, "end": 15229, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_texture.bin", "start": 15229, "end": 16890, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_texture.bin", "start": 16890, "end": 17984, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture.bin", "start": 17984, "end": 18789, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svback.bin", "start": 18789, "end": 20053, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svside.bin", "start": 20053, "end": 21667, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svfront.bin", "start": 21667, "end": 22551, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackblank.bin", "start": 22551, "end": 22913, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsideblank.bin", "start": 22913, "end": 23339, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontblank.bin", "start": 23339, "end": 23801, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackcolor.bin", "start": 23801, "end": 24471, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidecolor.bin", "start": 24471, "end": 25205, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontcolor.bin", "start": 25205, "end": 25875, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidetex.bin", "start": 25875, "end": 27460, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex1.bin", "start": 27460, "end": 28542, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex2.bin", "start": 28542, "end": 29624, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex1.bin", "start": 29624, "end": 30690, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex2.bin", "start": 30690, "end": 31756, "audio": 0}, {"filename": "/meshes/bunny_patched.bin", "start": 31756, "end": 1007367, "audio": 0}, {"filename": "/meshes/bunny_decimated.bin", "start": 1007367, "end": 1107420, "audio": 0}, {"filename": "/meshes/column.bin", "start": 1107420, "end": 1161439, "audio": 0}, {"filename": "/meshes/platform.bin", "start": 1161439, "end": 1163046, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 1163046, "end": 1163976, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 1163976, "end": 1338880, "audio": 0}, {"filename": "/textures/flare.dds", "start": 1338880, "end": 1688560, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 1688560, "end": 2038240, "audio": 0}], "remote_package_size": 2038240, "package_uuid": "5250a6e6-8135-47a2-9fcd-6d2f0cb944d9"});
   
   })();
   
@@ -1760,7 +1760,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  591276: function() {debugger;}
+  591260: function() {debugger;}
 };
 
 
@@ -7351,16 +7351,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuComputePassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
@@ -7971,21 +7961,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuRenderPassEncoderInsertDebugMarker(encoderId, markerLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["insertDebugMarker"](UTF8ToString(markerLabelPtr));
-    }
-
-  function _wgpuRenderPassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuRenderPassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuRenderPassEncoderReference(id) {
     WebGPU.mgrRenderPassEncoder.reference(id);
   }
@@ -8292,8 +8267,6 @@ var asmLibraryArg = {
   "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch,
   "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect,
   "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass,
-  "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup,
-  "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup,
   "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease,
   "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup,
   "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline,
@@ -8326,9 +8299,6 @@ var asmLibraryArg = {
   "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect,
   "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect,
   "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass,
-  "wgpuRenderPassEncoderInsertDebugMarker": _wgpuRenderPassEncoderInsertDebugMarker,
-  "wgpuRenderPassEncoderPopDebugGroup": _wgpuRenderPassEncoderPopDebugGroup,
-  "wgpuRenderPassEncoderPushDebugGroup": _wgpuRenderPassEncoderPushDebugGroup,
   "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference,
   "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease,
   "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup,

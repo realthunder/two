@@ -188,7 +188,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2093, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2093, "end": 3175, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3175, "end": 4269, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4269, "end": 7571, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7571, "end": 10197, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10197, "end": 11634, "audio": 0}], "remote_package_size": 11634, "package_uuid": "8311e4b8-fff9-4fb3-a2c3-fb44062a1ab2"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2093, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2093, "end": 3175, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3175, "end": 4269, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4269, "end": 7571, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7571, "end": 10197, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10197, "end": 11634, "audio": 0}], "remote_package_size": 11634, "package_uuid": "e6f06ca0-e3db-4672-b00d-cecbcf98679c"});
   
   })();
   
@@ -1758,7 +1758,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  576220: function() {debugger;}
+  576204: function() {debugger;}
 };
 
 
@@ -6924,16 +6924,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuComputePassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
@@ -7544,21 +7534,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuRenderPassEncoderInsertDebugMarker(encoderId, markerLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["insertDebugMarker"](UTF8ToString(markerLabelPtr));
-    }
-
-  function _wgpuRenderPassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuRenderPassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuRenderPassEncoderReference(id) {
     WebGPU.mgrRenderPassEncoder.reference(id);
   }
@@ -7862,8 +7837,6 @@ var asmLibraryArg = {
   "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch,
   "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect,
   "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass,
-  "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup,
-  "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup,
   "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease,
   "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup,
   "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline,
@@ -7896,9 +7869,6 @@ var asmLibraryArg = {
   "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect,
   "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect,
   "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass,
-  "wgpuRenderPassEncoderInsertDebugMarker": _wgpuRenderPassEncoderInsertDebugMarker,
-  "wgpuRenderPassEncoderPopDebugGroup": _wgpuRenderPassEncoderPopDebugGroup,
-  "wgpuRenderPassEncoderPushDebugGroup": _wgpuRenderPassEncoderPushDebugGroup,
   "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference,
   "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease,
   "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup,

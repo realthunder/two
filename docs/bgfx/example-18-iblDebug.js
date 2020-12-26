@@ -190,7 +190,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 8079, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 8079, "end": 10129, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10129, "end": 13685, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13685, "end": 2602095, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2602095, "end": 5420197, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5420197, "end": 9614633, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614633, "end": 10401213, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401213, "end": 14595649, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595649, "end": 15382229, "audio": 0}], "remote_package_size": 15382229, "package_uuid": "7c828b09-c36d-4404-adf7-99fd681534bc"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 8079, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 8079, "end": 10129, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10129, "end": 13685, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13685, "end": 2602095, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2602095, "end": 5420197, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5420197, "end": 9614633, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614633, "end": 10401213, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401213, "end": 14595649, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595649, "end": 15382229, "audio": 0}], "remote_package_size": 15382229, "package_uuid": "75ea1ec4-b86b-488e-8e9b-3f2d758b218b"});
   
   })();
   
@@ -1760,7 +1760,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  591116: function() {debugger;}
+  591100: function() {debugger;}
 };
 
 
@@ -7351,16 +7351,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuComputePassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
@@ -7971,21 +7961,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuRenderPassEncoderInsertDebugMarker(encoderId, markerLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["insertDebugMarker"](UTF8ToString(markerLabelPtr));
-    }
-
-  function _wgpuRenderPassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuRenderPassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuRenderPassEncoderReference(id) {
     WebGPU.mgrRenderPassEncoder.reference(id);
   }
@@ -8292,8 +8267,6 @@ var asmLibraryArg = {
   "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch,
   "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect,
   "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass,
-  "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup,
-  "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup,
   "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease,
   "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup,
   "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline,
@@ -8326,9 +8299,6 @@ var asmLibraryArg = {
   "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect,
   "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect,
   "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass,
-  "wgpuRenderPassEncoderInsertDebugMarker": _wgpuRenderPassEncoderInsertDebugMarker,
-  "wgpuRenderPassEncoderPopDebugGroup": _wgpuRenderPassEncoderPopDebugGroup,
-  "wgpuRenderPassEncoderPushDebugGroup": _wgpuRenderPassEncoderPushDebugGroup,
   "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference,
   "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease,
   "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup,

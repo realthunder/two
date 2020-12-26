@@ -189,7 +189,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13425, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13425, "end": 14309, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14309, "end": 14511, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14511, "end": 23596, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23596, "end": 2612006, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612006, "end": 2612936, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612936, "end": 2650817, "audio": 0}], "remote_package_size": 2650817, "package_uuid": "1a4d8587-c95b-4461-9c21-a0f3704d6d4d"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13425, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13425, "end": 14309, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14309, "end": 14511, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14511, "end": 23596, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23596, "end": 2612006, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612006, "end": 2612936, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612936, "end": 2650817, "audio": 0}], "remote_package_size": 2650817, "package_uuid": "6668fd49-f295-490f-a00a-c9f2fa9db085"});
   
   })();
   
@@ -1759,7 +1759,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  574092: function() {debugger;}
+  574076: function() {debugger;}
 };
 
 
@@ -6925,16 +6925,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuComputePassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
@@ -7545,21 +7535,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuRenderPassEncoderInsertDebugMarker(encoderId, markerLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["insertDebugMarker"](UTF8ToString(markerLabelPtr));
-    }
-
-  function _wgpuRenderPassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuRenderPassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuRenderPassEncoderReference(id) {
     WebGPU.mgrRenderPassEncoder.reference(id);
   }
@@ -7863,8 +7838,6 @@ var asmLibraryArg = {
   "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch,
   "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect,
   "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass,
-  "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup,
-  "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup,
   "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease,
   "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup,
   "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline,
@@ -7897,9 +7870,6 @@ var asmLibraryArg = {
   "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect,
   "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect,
   "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass,
-  "wgpuRenderPassEncoderInsertDebugMarker": _wgpuRenderPassEncoderInsertDebugMarker,
-  "wgpuRenderPassEncoderPopDebugGroup": _wgpuRenderPassEncoderPopDebugGroup,
-  "wgpuRenderPassEncoderPushDebugGroup": _wgpuRenderPassEncoderPushDebugGroup,
   "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference,
   "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease,
   "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup,

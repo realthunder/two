@@ -190,7 +190,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2886, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2886, "end": 3980, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3980, "end": 8234, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8234, "end": 9328, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9328, "end": 15222, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15222, "end": 17880, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17880, "end": 19953, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19953, "end": 21047, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 21047, "end": 26252, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 26252, "end": 28074, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 28074, "end": 31302, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 31302, "end": 33716, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33716, "end": 38692, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38692, "end": 2627102, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2627102, "end": 15210082, "audio": 0}], "remote_package_size": 15210082, "package_uuid": "aaa1d038-3700-4fdf-8e53-43b9145b649f"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2886, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2886, "end": 3980, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3980, "end": 8234, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8234, "end": 9328, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9328, "end": 15222, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15222, "end": 17880, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17880, "end": 19953, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19953, "end": 21047, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 21047, "end": 26252, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 26252, "end": 28074, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 28074, "end": 31302, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 31302, "end": 33716, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33716, "end": 38692, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38692, "end": 2627102, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2627102, "end": 15210082, "audio": 0}], "remote_package_size": 15210082, "package_uuid": "cc12a976-4a31-434e-9c09-27317bf1ce12"});
   
   })();
   
@@ -1760,7 +1760,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  590780: function() {debugger;}
+  590764: function() {debugger;}
 };
 
 
@@ -7351,16 +7351,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuComputePassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
@@ -7971,21 +7961,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuRenderPassEncoderInsertDebugMarker(encoderId, markerLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["insertDebugMarker"](UTF8ToString(markerLabelPtr));
-    }
-
-  function _wgpuRenderPassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuRenderPassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuRenderPassEncoderReference(id) {
     WebGPU.mgrRenderPassEncoder.reference(id);
   }
@@ -8292,8 +8267,6 @@ var asmLibraryArg = {
   "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch,
   "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect,
   "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass,
-  "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup,
-  "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup,
   "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease,
   "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup,
   "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline,
@@ -8326,9 +8299,6 @@ var asmLibraryArg = {
   "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect,
   "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect,
   "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass,
-  "wgpuRenderPassEncoderInsertDebugMarker": _wgpuRenderPassEncoderInsertDebugMarker,
-  "wgpuRenderPassEncoderPopDebugGroup": _wgpuRenderPassEncoderPopDebugGroup,
-  "wgpuRenderPassEncoderPushDebugGroup": _wgpuRenderPassEncoderPushDebugGroup,
   "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference,
   "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease,
   "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup,

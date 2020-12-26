@@ -190,7 +190,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5191, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5191, "end": 30742, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30742, "end": 49562, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49562, "end": 61159, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61159, "end": 78353, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78353, "end": 88163, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88163, "end": 92858, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92858, "end": 1491114, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491114, "end": 1666018, "audio": 0}], "remote_package_size": 1666018, "package_uuid": "365ef121-6d89-4e9e-bd6f-407a32c3953f"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5191, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5191, "end": 30742, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30742, "end": 49562, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49562, "end": 61159, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61159, "end": 78353, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78353, "end": 88163, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88163, "end": 92858, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92858, "end": 1491114, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491114, "end": 1666018, "audio": 0}], "remote_package_size": 1666018, "package_uuid": "e7f0236a-b8a3-439a-b187-a8f140221e01"});
   
   })();
   
@@ -1760,7 +1760,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  587996: function() {debugger;}
+  587980: function() {debugger;}
 };
 
 
@@ -7351,16 +7351,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuComputePassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
@@ -7971,21 +7961,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuRenderPassEncoderInsertDebugMarker(encoderId, markerLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["insertDebugMarker"](UTF8ToString(markerLabelPtr));
-    }
-
-  function _wgpuRenderPassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuRenderPassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuRenderPassEncoderReference(id) {
     WebGPU.mgrRenderPassEncoder.reference(id);
   }
@@ -8292,8 +8267,6 @@ var asmLibraryArg = {
   "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch,
   "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect,
   "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass,
-  "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup,
-  "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup,
   "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease,
   "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup,
   "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline,
@@ -8326,9 +8299,6 @@ var asmLibraryArg = {
   "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect,
   "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect,
   "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass,
-  "wgpuRenderPassEncoderInsertDebugMarker": _wgpuRenderPassEncoderInsertDebugMarker,
-  "wgpuRenderPassEncoderPopDebugGroup": _wgpuRenderPassEncoderPopDebugGroup,
-  "wgpuRenderPassEncoderPushDebugGroup": _wgpuRenderPassEncoderPushDebugGroup,
   "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference,
   "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease,
   "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup,

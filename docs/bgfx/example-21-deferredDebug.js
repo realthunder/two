@@ -189,7 +189,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 7063, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 7063, "end": 9991, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9991, "end": 11085, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 11085, "end": 12846, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12846, "end": 13940, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13940, "end": 14745, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14745, "end": 15803, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15803, "end": 16209, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 16209, "end": 19265, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 19265, "end": 22508, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 22508, "end": 23233, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 23233, "end": 372913, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 372913, "end": 722593, "audio": 0}], "remote_package_size": 722593, "package_uuid": "ab76c58e-e799-4dad-856e-7f7f3f6a6ff8"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 7063, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 7063, "end": 9991, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9991, "end": 11085, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 11085, "end": 12846, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12846, "end": 13940, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13940, "end": 14745, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14745, "end": 15803, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15803, "end": 16209, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 16209, "end": 19265, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 19265, "end": 22508, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 22508, "end": 23233, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 23233, "end": 372913, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 372913, "end": 722593, "audio": 0}], "remote_package_size": 722593, "package_uuid": "93d09928-8b0d-4779-b489-00115101784d"});
   
   })();
   
@@ -1759,7 +1759,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  589564: function() {debugger;}
+  589548: function() {debugger;}
 };
 
 
@@ -7350,16 +7350,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuComputePassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
@@ -7970,21 +7960,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuRenderPassEncoderInsertDebugMarker(encoderId, markerLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["insertDebugMarker"](UTF8ToString(markerLabelPtr));
-    }
-
-  function _wgpuRenderPassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuRenderPassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuRenderPassEncoderReference(id) {
     WebGPU.mgrRenderPassEncoder.reference(id);
   }
@@ -8291,8 +8266,6 @@ var asmLibraryArg = {
   "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch,
   "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect,
   "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass,
-  "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup,
-  "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup,
   "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease,
   "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup,
   "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline,
@@ -8325,9 +8298,6 @@ var asmLibraryArg = {
   "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect,
   "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect,
   "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass,
-  "wgpuRenderPassEncoderInsertDebugMarker": _wgpuRenderPassEncoderInsertDebugMarker,
-  "wgpuRenderPassEncoderPopDebugGroup": _wgpuRenderPassEncoderPopDebugGroup,
-  "wgpuRenderPassEncoderPushDebugGroup": _wgpuRenderPassEncoderPushDebugGroup,
   "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference,
   "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease,
   "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup,

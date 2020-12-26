@@ -190,7 +190,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6568, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6568, "end": 8388, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8388, "end": 12341, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12341, "end": 13435, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13435, "end": 15096, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 15096, "end": 15980, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15980, "end": 16342, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16342, "end": 17436, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17436, "end": 18241, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18241, "end": 2606651, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606651, "end": 2660670, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660670, "end": 2835574, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835574, "end": 3185254, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185254, "end": 3534934, "audio": 0}], "remote_package_size": 3534934, "package_uuid": "a1e9b798-7b71-4bd2-88ad-5c1a00b6601b"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6568, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6568, "end": 8388, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8388, "end": 12341, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12341, "end": 13435, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13435, "end": 15096, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 15096, "end": 15980, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15980, "end": 16342, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16342, "end": 17436, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17436, "end": 18241, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18241, "end": 2606651, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606651, "end": 2660670, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660670, "end": 2835574, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835574, "end": 3185254, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185254, "end": 3534934, "audio": 0}], "remote_package_size": 3534934, "package_uuid": "d781787a-135d-48c6-b097-20501faf6af6"});
   
   })();
   
@@ -1760,7 +1760,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  588252: function() {debugger;}
+  588236: function() {debugger;}
 };
 
 
@@ -7351,16 +7351,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuComputePassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuComputePassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrComputePassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuComputePassEncoderRelease(id) {
     WebGPU.mgrComputePassEncoder.release(id);
   }
@@ -7971,21 +7961,6 @@ var ASM_CONSTS = {
       pass["endPass"]();
     }
 
-  function _wgpuRenderPassEncoderInsertDebugMarker(encoderId, markerLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["insertDebugMarker"](UTF8ToString(markerLabelPtr));
-    }
-
-  function _wgpuRenderPassEncoderPopDebugGroup(encoderId) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["popDebugGroup"]();
-    }
-
-  function _wgpuRenderPassEncoderPushDebugGroup(encoderId, groupLabelPtr) {
-      var encoder = WebGPU.mgrRenderPassEncoder.get(encoderId);
-      encoder["pushDebugGroup"](UTF8ToString(groupLabelPtr));
-    }
-
   function _wgpuRenderPassEncoderReference(id) {
     WebGPU.mgrRenderPassEncoder.reference(id);
   }
@@ -8292,8 +8267,6 @@ var asmLibraryArg = {
   "wgpuComputePassEncoderDispatch": _wgpuComputePassEncoderDispatch,
   "wgpuComputePassEncoderDispatchIndirect": _wgpuComputePassEncoderDispatchIndirect,
   "wgpuComputePassEncoderEndPass": _wgpuComputePassEncoderEndPass,
-  "wgpuComputePassEncoderPopDebugGroup": _wgpuComputePassEncoderPopDebugGroup,
-  "wgpuComputePassEncoderPushDebugGroup": _wgpuComputePassEncoderPushDebugGroup,
   "wgpuComputePassEncoderRelease": _wgpuComputePassEncoderRelease,
   "wgpuComputePassEncoderSetBindGroup": _wgpuComputePassEncoderSetBindGroup,
   "wgpuComputePassEncoderSetPipeline": _wgpuComputePassEncoderSetPipeline,
@@ -8326,9 +8299,6 @@ var asmLibraryArg = {
   "wgpuRenderPassEncoderDrawIndexedIndirect": _wgpuRenderPassEncoderDrawIndexedIndirect,
   "wgpuRenderPassEncoderDrawIndirect": _wgpuRenderPassEncoderDrawIndirect,
   "wgpuRenderPassEncoderEndPass": _wgpuRenderPassEncoderEndPass,
-  "wgpuRenderPassEncoderInsertDebugMarker": _wgpuRenderPassEncoderInsertDebugMarker,
-  "wgpuRenderPassEncoderPopDebugGroup": _wgpuRenderPassEncoderPopDebugGroup,
-  "wgpuRenderPassEncoderPushDebugGroup": _wgpuRenderPassEncoderPushDebugGroup,
   "wgpuRenderPassEncoderReference": _wgpuRenderPassEncoderReference,
   "wgpuRenderPassEncoderRelease": _wgpuRenderPassEncoderRelease,
   "wgpuRenderPassEncoderSetBindGroup": _wgpuRenderPassEncoderSetBindGroup,
