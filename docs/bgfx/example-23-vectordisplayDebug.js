@@ -188,7 +188,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vectordisplay_fb.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_fb.bin", "start": 1268, "end": 2550, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blur.bin", "start": 2550, "end": 6476, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blit.bin", "start": 6476, "end": 7902, "audio": 0}], "remote_package_size": 7902, "package_uuid": "ad02b44a-1213-47ad-a7b3-3b01b232ec35"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vectordisplay_fb.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_fb.bin", "start": 1268, "end": 2550, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blur.bin", "start": 2550, "end": 6476, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blit.bin", "start": 6476, "end": 7902, "audio": 0}], "remote_package_size": 7902, "package_uuid": "0f06417a-2737-4d44-b163-ae89893a44ac"});
   
   })();
   
@@ -1758,7 +1758,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  584332: function() {debugger;}
+  584380: function() {debugger;}
 };
 
 

@@ -189,7 +189,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3623, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3623, "end": 4554, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4554, "end": 2822656, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822656, "end": 2876675, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876675, "end": 5465085, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465085, "end": 5466015, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466015, "end": 5520323, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520323, "end": 5558204, "audio": 0}], "remote_package_size": 5558204, "package_uuid": "52fbf00e-c470-4eed-a5a8-16b1051971de"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3623, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3623, "end": 4554, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4554, "end": 2822656, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822656, "end": 2876675, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876675, "end": 5465085, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465085, "end": 5466015, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466015, "end": 5520323, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520323, "end": 5558204, "audio": 0}], "remote_package_size": 5558204, "package_uuid": "f8ccb940-945b-4811-811f-7fd3a010fdbe"});
   
   })();
   
@@ -1759,7 +1759,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  577612: function() {debugger;}
+  577660: function() {debugger;}
 };
 
 

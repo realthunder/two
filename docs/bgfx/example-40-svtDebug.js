@@ -189,7 +189,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1409, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1409, "end": 4208, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4208, "end": 6040, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 6040, "end": 9932668, "audio": 0}], "remote_package_size": 9932668, "package_uuid": "3f2f9d9e-c39e-4b7b-8e2f-f8039730c5e4"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1409, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1409, "end": 4208, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4208, "end": 6040, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 6040, "end": 9932668, "audio": 0}], "remote_package_size": 9932668, "package_uuid": "47b74f49-351a-4db9-bba3-5263b2d892d0"});
   
   })();
   
@@ -1759,7 +1759,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  589420: function() {debugger;}
+  589468: function() {debugger;}
 };
 
 
