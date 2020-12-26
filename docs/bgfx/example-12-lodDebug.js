@@ -190,7 +190,7 @@ Module['FS_createPath']('/', 'textures', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5191, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5191, "end": 30742, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30742, "end": 49562, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49562, "end": 61159, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61159, "end": 78353, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78353, "end": 88163, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88163, "end": 92858, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92858, "end": 1491114, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491114, "end": 1666018, "audio": 0}], "remote_package_size": 1666018, "package_uuid": "451529aa-7826-4ecc-bbce-5b73a6d93e24"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5191, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5191, "end": 30742, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30742, "end": 49562, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49562, "end": 61159, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61159, "end": 78353, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78353, "end": 88163, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88163, "end": 92858, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92858, "end": 1491114, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491114, "end": 1666018, "audio": 0}], "remote_package_size": 1666018, "package_uuid": "76f41e89-587f-4dda-9584-33685bac991e"});
   
   })();
   
@@ -1760,7 +1760,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  587868: function() {debugger;}
+  587996: function() {debugger;}
 };
 
 

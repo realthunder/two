@@ -189,7 +189,7 @@ Module['FS_createPath']('/', 'meshes', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13425, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13425, "end": 14309, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14309, "end": 14511, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14511, "end": 23596, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23596, "end": 2612006, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612006, "end": 2612936, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612936, "end": 2650817, "audio": 0}], "remote_package_size": 2650817, "package_uuid": "64efd7e4-fa91-4c54-b20e-c9687c96b1d8"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13425, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13425, "end": 14309, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14309, "end": 14511, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14511, "end": 23596, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23596, "end": 2612006, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612006, "end": 2612936, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612936, "end": 2650817, "audio": 0}], "remote_package_size": 2650817, "package_uuid": "72ecb944-38d7-48fd-9369-fea8334444fc"});
   
   })();
   
@@ -1759,7 +1759,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  573964: function() {debugger;}
+  574092: function() {debugger;}
 };
 
 
