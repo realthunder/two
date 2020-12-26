@@ -17,7 +17,193 @@ var Module = typeof Module !== 'undefined' ? Module : {};
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// {{PRE_JSES}}
+
+  if (!Module.expectedDataFileDownloads) {
+    Module.expectedDataFileDownloads = 0;
+  }
+  Module.expectedDataFileDownloads++;
+  (function() {
+   var loadPackage = function(metadata) {
+  
+      var PACKAGE_PATH;
+      if (typeof window === 'object') {
+        PACKAGE_PATH = window['encodeURIComponent'](window.location.pathname.toString().substring(0, window.location.pathname.toString().lastIndexOf('/')) + '/');
+      } else if (typeof location !== 'undefined') {
+        // worker
+        PACKAGE_PATH = encodeURIComponent(location.pathname.toString().substring(0, location.pathname.toString().lastIndexOf('/')) + '/');
+      } else {
+        throw 'using preloaded data can only be done on a web page or in a web worker';
+      }
+      var PACKAGE_NAME = '../../wasm/bin/example-16-shadowmapsDebug.data';
+      var REMOTE_PACKAGE_BASE = 'example-16-shadowmapsDebug.data';
+      if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
+        Module['locateFile'] = Module['locateFilePackage'];
+        err('warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)');
+      }
+      var REMOTE_PACKAGE_NAME = Module['locateFile'] ? Module['locateFile'](REMOTE_PACKAGE_BASE, '') : REMOTE_PACKAGE_BASE;
+    
+      var REMOTE_PACKAGE_SIZE = metadata['remote_package_size'];
+      var PACKAGE_UUID = metadata['package_uuid'];
+    
+      function fetchRemotePackage(packageName, packageSize, callback, errback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', packageName, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onprogress = function(event) {
+          var url = packageName;
+          var size = packageSize;
+          if (event.total) size = event.total;
+          if (event.loaded) {
+            if (!xhr.addedTotal) {
+              xhr.addedTotal = true;
+              if (!Module.dataFileDownloads) Module.dataFileDownloads = {};
+              Module.dataFileDownloads[url] = {
+                loaded: event.loaded,
+                total: size
+              };
+            } else {
+              Module.dataFileDownloads[url].loaded = event.loaded;
+            }
+            var total = 0;
+            var loaded = 0;
+            var num = 0;
+            for (var download in Module.dataFileDownloads) {
+            var data = Module.dataFileDownloads[download];
+              total += data.total;
+              loaded += data.loaded;
+              num++;
+            }
+            total = Math.ceil(total * Module.expectedDataFileDownloads/num);
+            if (Module['setStatus']) Module['setStatus']('Downloading data... (' + loaded + '/' + total + ')');
+          } else if (!Module.dataFileDownloads) {
+            if (Module['setStatus']) Module['setStatus']('Downloading data...');
+          }
+        };
+        xhr.onerror = function(event) {
+          throw new Error("NetworkError for: " + packageName);
+        }
+        xhr.onload = function(event) {
+          if (xhr.status == 200 || xhr.status == 304 || xhr.status == 206 || (xhr.status == 0 && xhr.response)) { // file URLs can return 0
+            var packageData = xhr.response;
+            callback(packageData);
+          } else {
+            throw new Error(xhr.statusText + " : " + xhr.responseURL);
+          }
+        };
+        xhr.send(null);
+      };
+
+      function handleError(error) {
+        console.error('package error:', error);
+      };
+    
+        var fetchedCallback = null;
+        var fetched = Module['getPreloadedPackage'] ? Module['getPreloadedPackage'](REMOTE_PACKAGE_NAME, REMOTE_PACKAGE_SIZE) : null;
+
+        if (!fetched) fetchRemotePackage(REMOTE_PACKAGE_NAME, REMOTE_PACKAGE_SIZE, function(data) {
+          if (fetchedCallback) {
+            fetchedCallback(data);
+            fetchedCallback = null;
+          } else {
+            fetched = data;
+          }
+        }, handleError);
+      
+    function runWithFS() {
+  
+      function assert(check, msg) {
+        if (!check) throw msg + new Error().stack;
+      }
+  Module['FS_createPath']('/', 'shaders', true, true);
+Module['FS_createPath']('/shaders', 'spirv', true, true);
+Module['FS_createPath']('/', 'meshes', true, true);
+Module['FS_createPath']('/', 'textures', true, true);
+
+      /** @constructor */
+      function DataRequest(start, end, audio) {
+        this.start = start;
+        this.end = end;
+        this.audio = audio;
+      }
+      DataRequest.prototype = {
+        requests: {},
+        open: function(mode, name) {
+          this.name = name;
+          this.requests[name] = this;
+          Module['addRunDependency']('fp ' + this.name);
+        },
+        send: function() {},
+        onload: function() {
+          var byteArray = this.byteArray.subarray(this.start, this.end);
+          this.finish(byteArray);
+        },
+        finish: function(byteArray) {
+          var that = this;
+  
+          Module['FS_createDataFile'](this.name, null, byteArray, true, true, true); // canOwn this data in the filesystem, it is a slide into the heap that will never change
+          Module['removeRunDependency']('fp ' + that.name);
+  
+          this.requests[this.name] = null;
+        }
+      };
+  
+          var files = metadata['files'];
+          for (var i = 0; i < files.length; ++i) {
+            new DataRequest(files[i]['start'], files[i]['end'], files[i]['audio']).open('GET', files[i]['filename']);
+          }
+  
+    
+      function processPackageData(arrayBuffer) {
+        assert(arrayBuffer, 'Loading data file failed.');
+        assert(arrayBuffer instanceof ArrayBuffer, 'bad input to processPackageData');
+        var byteArray = new Uint8Array(arrayBuffer);
+        var curr;
+        
+          // Reuse the bytearray from the XHR as the source for file reads.
+          DataRequest.prototype.byteArray = byteArray;
+    
+            var files = metadata['files'];
+            for (var i = 0; i < files.length; ++i) {
+              DataRequest.prototype.requests[files[i].filename].onload();
+            }
+                Module['removeRunDependency']('datafile_../../wasm/bin/example-16-shadowmapsDebug.data');
+
+      };
+      Module['addRunDependency']('datafile_../../wasm/bin/example-16-shadowmapsDebug.data');
+    
+      if (!Module.preloadResults) Module.preloadResults = {};
+    
+        Module.preloadResults[PACKAGE_NAME] = {fromCache: false};
+        if (fetched) {
+          processPackageData(fetched);
+          fetched = null;
+        } else {
+          fetchedCallback = processPackageData;
+        }
+      
+    }
+    if (Module['calledRun']) {
+      runWithFS();
+    } else {
+      if (!Module['preRun']) Module['preRun'] = [];
+      Module["preRun"].push(runWithFS); // FS is not initialized yet, wait for it
+    }
+  
+   }
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowmaps_color.bin", "start": 0, "end": 884, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_black.bin", "start": 884, "end": 1246, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_texture.bin", "start": 1246, "end": 2340, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_texture.bin", "start": 2340, "end": 3145, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_texture.bin", "start": 3145, "end": 4239, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_texture.bin", "start": 4239, "end": 5900, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_vblur.bin", "start": 5900, "end": 8453, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_vblur.bin", "start": 8453, "end": 11044, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_hblur.bin", "start": 11044, "end": 13597, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_hblur.bin", "start": 13597, "end": 16188, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_vblur_vsm.bin", "start": 16188, "end": 19807, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_hblur_vsm.bin", "start": 19807, "end": 23426, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_unpackdepth.bin", "start": 23426, "end": 24520, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_unpackdepth.bin", "start": 24520, "end": 25929, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_unpackdepth_vsm.bin", "start": 25929, "end": 27326, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_packdepth.bin", "start": 27326, "end": 28298, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth.bin", "start": 28298, "end": 29092, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm.bin", "start": 29092, "end": 30086, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_packdepth_linear.bin", "start": 30086, "end": 31146, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_linear.bin", "start": 31146, "end": 31820, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm_linear.bin", "start": 31820, "end": 32694, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting.bin", "start": 32694, "end": 35041, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard.bin", "start": 35041, "end": 41649, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf.bin", "start": 41649, "end": 58061, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm.bin", "start": 58061, "end": 65161, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm.bin", "start": 65161, "end": 71953, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear.bin", "start": 71953, "end": 74380, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear.bin", "start": 74380, "end": 81044, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear.bin", "start": 81044, "end": 97612, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear.bin", "start": 97612, "end": 104768, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear.bin", "start": 104768, "end": 111616, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_omni.bin", "start": 111616, "end": 115051, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_omni.bin", "start": 115051, "end": 124121, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_omni.bin", "start": 124121, "end": 143031, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_omni.bin", "start": 143031, "end": 152593, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_omni.bin", "start": 152593, "end": 161847, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_omni.bin", "start": 161847, "end": 165554, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_omni.bin", "start": 165554, "end": 174680, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_omni.bin", "start": 174680, "end": 193746, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_omni.bin", "start": 193746, "end": 203364, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_omni.bin", "start": 203364, "end": 212674, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_csm.bin", "start": 212674, "end": 216298, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_csm.bin", "start": 216298, "end": 227165, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_csm.bin", "start": 227165, "end": 275904, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_csm.bin", "start": 275904, "end": 288811, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_csm.bin", "start": 288811, "end": 300366, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_csm.bin", "start": 300366, "end": 304262, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_csm.bin", "start": 304262, "end": 315353, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_csm.bin", "start": 315353, "end": 364716, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_csm.bin", "start": 364716, "end": 377847, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_csm.bin", "start": 377847, "end": 389626, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 389626, "end": 2978036, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 2978036, "end": 3032344, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 3032344, "end": 3033274, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 3033274, "end": 3071155, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 3071155, "end": 3246059, "audio": 0}, {"filename": "/textures/flare.dds", "start": 3246059, "end": 3595739, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3595739, "end": 3945419, "audio": 0}], "remote_package_size": 3945419, "package_uuid": "53f16e44-e0b0-4bd3-8c78-6c08172e3cd2"});
+  
+  })();
+  
+
+    // All the pre-js content up to here must remain later on, we need to run
+    // it.
+    var necessaryPreJSTasks = Module['preRun'].slice();
+  
+    if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
+    necessaryPreJSTasks.forEach(function(task) {
+      if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
+    });
+  
 
 // Sometimes an existing Module object exists with properties
 // meant to overwrite the default module functionality. Here
@@ -7960,6 +8146,7 @@ var ASM_CONSTS = {
       }
       return readAsmConstArgsArray;
     }
+
 var FSNode = /** @constructor */ function(parent, name, mode, rdev) {
     if (!parent) {
       parent = this;  // root node sets parent to itself
@@ -8005,7 +8192,7 @@ var FSNode = /** @constructor */ function(parent, name, mode, rdev) {
    }
   });
   FS.FSNode = FSNode;
-  FS.staticInit();;
+  FS.staticInit();Module["FS_createPath"] = FS.createPath;Module["FS_createDataFile"] = FS.createDataFile;Module["FS_createPreloadedFile"] = FS.createPreloadedFile;Module["FS_createLazyFile"] = FS.createLazyFile;Module["FS_createDevice"] = FS.createDevice;Module["FS_unlink"] = FS.unlink;;
 Module["requestFullscreen"] = function Module_requestFullscreen(lockPointer, resizeCanvas) { Browser.requestFullscreen(lockPointer, resizeCanvas) };
   Module["requestFullScreen"] = function Module_requestFullScreen() { Browser.requestFullScreen() };
   Module["requestAnimationFrame"] = function Module_requestAnimationFrame(func) { Browser.requestAnimationFrame(func) };
@@ -8267,16 +8454,16 @@ if (!Object.getOwnPropertyDescriptor(Module, "addOnPostRun")) Module["addOnPostR
 if (!Object.getOwnPropertyDescriptor(Module, "writeStringToMemory")) Module["writeStringToMemory"] = function() { abort("'writeStringToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "writeArrayToMemory")) Module["writeArrayToMemory"] = function() { abort("'writeArrayToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "writeAsciiToMemory")) Module["writeAsciiToMemory"] = function() { abort("'writeAsciiToMemory' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
-if (!Object.getOwnPropertyDescriptor(Module, "addRunDependency")) Module["addRunDependency"] = function() { abort("'addRunDependency' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
-if (!Object.getOwnPropertyDescriptor(Module, "removeRunDependency")) Module["removeRunDependency"] = function() { abort("'removeRunDependency' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+Module["addRunDependency"] = addRunDependency;
+Module["removeRunDependency"] = removeRunDependency;
 if (!Object.getOwnPropertyDescriptor(Module, "FS_createFolder")) Module["FS_createFolder"] = function() { abort("'FS_createFolder' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
-if (!Object.getOwnPropertyDescriptor(Module, "FS_createPath")) Module["FS_createPath"] = function() { abort("'FS_createPath' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
-if (!Object.getOwnPropertyDescriptor(Module, "FS_createDataFile")) Module["FS_createDataFile"] = function() { abort("'FS_createDataFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
-if (!Object.getOwnPropertyDescriptor(Module, "FS_createPreloadedFile")) Module["FS_createPreloadedFile"] = function() { abort("'FS_createPreloadedFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
-if (!Object.getOwnPropertyDescriptor(Module, "FS_createLazyFile")) Module["FS_createLazyFile"] = function() { abort("'FS_createLazyFile' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+Module["FS_createPath"] = FS.createPath;
+Module["FS_createDataFile"] = FS.createDataFile;
+Module["FS_createPreloadedFile"] = FS.createPreloadedFile;
+Module["FS_createLazyFile"] = FS.createLazyFile;
 if (!Object.getOwnPropertyDescriptor(Module, "FS_createLink")) Module["FS_createLink"] = function() { abort("'FS_createLink' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
-if (!Object.getOwnPropertyDescriptor(Module, "FS_createDevice")) Module["FS_createDevice"] = function() { abort("'FS_createDevice' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
-if (!Object.getOwnPropertyDescriptor(Module, "FS_unlink")) Module["FS_unlink"] = function() { abort("'FS_unlink' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ). Alternatively, forcing filesystem support (-s FORCE_FILESYSTEM=1) can export this for you") };
+Module["FS_createDevice"] = FS.createDevice;
+Module["FS_unlink"] = FS.unlink;
 if (!Object.getOwnPropertyDescriptor(Module, "getLEB")) Module["getLEB"] = function() { abort("'getLEB' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "getFunctionTables")) Module["getFunctionTables"] = function() { abort("'getFunctionTables' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
 if (!Object.getOwnPropertyDescriptor(Module, "alignFunctionTables")) Module["alignFunctionTables"] = function() { abort("'alignFunctionTables' was not exported. add it to EXTRA_EXPORTED_RUNTIME_METHODS (see the FAQ)") };
