@@ -188,7 +188,7 @@ Module['FS_createPath']('/shaders', 'spirv', true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_particle.bin", "start": 0, "end": 1985, "audio": 0}, {"filename": "/shaders/spirv/fs_particle.bin", "start": 1985, "end": 3348, "audio": 0}, {"filename": "/shaders/spirv/cs_init_instances.bin", "start": 3348, "end": 13909, "audio": 0}, {"filename": "/shaders/spirv/cs_update_instances.bin", "start": 13909, "end": 17710, "audio": 0}, {"filename": "/shaders/spirv/cs_indirect.bin", "start": 17710, "end": 18936, "audio": 0}], "remote_package_size": 18936, "package_uuid": "d36879bf-c179-4cee-92fe-5a4ad340ab61"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_particle.bin", "start": 0, "end": 1985, "audio": 0}, {"filename": "/shaders/spirv/fs_particle.bin", "start": 1985, "end": 3348, "audio": 0}, {"filename": "/shaders/spirv/cs_init_instances.bin", "start": 3348, "end": 13909, "audio": 0}, {"filename": "/shaders/spirv/cs_update_instances.bin", "start": 13909, "end": 17710, "audio": 0}, {"filename": "/shaders/spirv/cs_indirect.bin", "start": 17710, "end": 18936, "audio": 0}], "remote_package_size": 18936, "package_uuid": "3a985e2a-0a68-4626-8900-493231bee0bb"});
   
   })();
   
