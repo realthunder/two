@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1464, "audio": 0}], "remote_package_size": 1464, "package_uuid": "8c5e4496-d1af-42ba-b3ba-aaf5ad101f1f"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1464, "audio": 0}], "remote_package_size": 1464, "package_uuid": "78dfe158-3210-4dfa-83e3-803ca39c131c"});
   
   })();
   
@@ -7194,7 +7194,7 @@ var ASM_CONSTS = {
           var type;
           if (entry.texture.multisampled)
             type = 'multisampled-texture'
-          else if (entry.sampler.type === 'comparison')
+          else
             type = 'sampled-texture'
   
           var componentType;
