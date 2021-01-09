@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_raymarching.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_raymarching.bin", "start": 1268, "end": 11383, "audio": 0}], "remote_package_size": 11383, "package_uuid": "be2deb98-377f-42b8-a658-76a17571ed64"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_raymarching.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_raymarching.bin", "start": 1268, "end": 11383, "audio": 0}], "remote_package_size": 11383, "package_uuid": "16c39643-a78f-48b9-8e11-54d21de0fba9"});
   
   })();
   
@@ -6506,10 +6506,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

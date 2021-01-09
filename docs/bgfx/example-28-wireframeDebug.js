@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_wf_wireframe.bin", "start": 0, "end": 1731, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_wireframe.bin", "start": 1731, "end": 3386, "audio": 0}, {"filename": "/shaders/spirv/vs_wf_mesh.bin", "start": 3386, "end": 5551, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_mesh.bin", "start": 5551, "end": 9362, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 9362, "end": 2597772, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2597772, "end": 2635653, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2635653, "end": 5453755, "audio": 0}], "remote_package_size": 5453755, "package_uuid": "e6b51370-cce0-40b0-ab36-a95c4c986128"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_wf_wireframe.bin", "start": 0, "end": 1731, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_wireframe.bin", "start": 1731, "end": 3386, "audio": 0}, {"filename": "/shaders/spirv/vs_wf_mesh.bin", "start": 3386, "end": 5551, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_mesh.bin", "start": 5551, "end": 9362, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 9362, "end": 2597772, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2597772, "end": 2635653, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2635653, "end": 5453755, "audio": 0}], "remote_package_size": 5453755, "package_uuid": "af949b46-766d-478d-bc17-ab620efad777"});
   
   })();
   
@@ -6507,10 +6507,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

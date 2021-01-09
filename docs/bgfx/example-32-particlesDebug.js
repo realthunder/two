@@ -187,7 +187,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/textures/particle.ktx", "start": 0, "end": 262212, "audio": 0}], "remote_package_size": 262212, "package_uuid": "96056ec1-266e-4330-947e-1b130ab5bfc0"});
+   loadPackage({"files": [{"filename": "/textures/particle.ktx", "start": 0, "end": 262212, "audio": 0}], "remote_package_size": 262212, "package_uuid": "8b2af8a4-11b1-4116-a150-ff65253667d2"});
   
   })();
   
@@ -6505,10 +6505,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

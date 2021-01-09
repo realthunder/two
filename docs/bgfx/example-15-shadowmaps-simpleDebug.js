@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13425, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13425, "end": 14309, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14309, "end": 14511, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14511, "end": 23596, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23596, "end": 2612006, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612006, "end": 2612936, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612936, "end": 2650817, "audio": 0}], "remote_package_size": 2650817, "package_uuid": "80dc5558-df66-4141-8798-44ba8f48bce4"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13425, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13425, "end": 14309, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14309, "end": 14511, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14511, "end": 23596, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23596, "end": 2612006, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612006, "end": 2612936, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612936, "end": 2650817, "audio": 0}], "remote_package_size": 2650817, "package_uuid": "c63002ff-9155-440f-b1d9-3a9b7cfbce1d"});
   
   })();
   
@@ -6507,10 +6507,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

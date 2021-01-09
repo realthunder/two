@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1198, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1198, "end": 1864, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1864, "end": 3552, "audio": 0}], "remote_package_size": 3552, "package_uuid": "deb25e57-38bf-43e2-9373-da3252905fcc"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1198, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1198, "end": 1864, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1864, "end": 3552, "audio": 0}], "remote_package_size": 3552, "package_uuid": "795ff8f3-ad14-433e-b925-186970244417"});
   
   })();
   
@@ -6506,10 +6506,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

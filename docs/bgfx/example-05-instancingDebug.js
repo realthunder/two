@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_instancing.bin", "start": 0, "end": 1547, "audio": 0}, {"filename": "/shaders/spirv/fs_instancing.bin", "start": 1547, "end": 1953, "audio": 0}], "remote_package_size": 1953, "package_uuid": "0145287e-ec5e-4b16-8177-08b2e4ae9f0d"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_instancing.bin", "start": 0, "end": 1547, "audio": 0}, {"filename": "/shaders/spirv/fs_instancing.bin", "start": 1547, "end": 1953, "audio": 0}], "remote_package_size": 1953, "package_uuid": "7584829b-f6b7-4794-ab12-59faad622bd1"});
   
   })();
   
@@ -6506,10 +6506,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

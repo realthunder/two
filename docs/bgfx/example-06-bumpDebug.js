@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 2968, "end": 6148, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 6148, "end": 11193, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11193, "end": 360873, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360873, "end": 710553, "audio": 0}], "remote_package_size": 710553, "package_uuid": "0e6f57a1-d233-421a-a0a9-88a58879e196"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 2968, "end": 6148, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 6148, "end": 11193, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11193, "end": 360873, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360873, "end": 710553, "audio": 0}], "remote_package_size": 710553, "package_uuid": "b2dd7bed-65fd-4d9a-908b-e9b24e20160a"});
   
   })();
   
@@ -6507,10 +6507,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

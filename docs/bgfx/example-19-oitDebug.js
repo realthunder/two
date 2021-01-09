@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5814, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5814, "end": 7060, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 7060, "end": 8450, "audio": 0}], "remote_package_size": 8450, "package_uuid": "a08df9fb-3698-4272-9f7a-79ec6e01cd69"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5814, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5814, "end": 7060, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 7060, "end": 8450, "audio": 0}], "remote_package_size": 8450, "package_uuid": "b783940a-0a82-4500-883b-462fe33c1f0f"});
   
   })();
   
@@ -6506,10 +6506,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

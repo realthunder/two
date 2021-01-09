@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6431, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6431, "end": 9125, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9125, "end": 10893, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10893, "end": 14341, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14341, "end": 156201, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156201, "end": 1204845, "audio": 0}], "remote_package_size": 1204845, "package_uuid": "45ea7ddc-a562-4746-8543-a0c61feb0ba1"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6431, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6431, "end": 9125, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9125, "end": 10893, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10893, "end": 14341, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14341, "end": 156201, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156201, "end": 1204845, "audio": 0}], "remote_package_size": 1204845, "package_uuid": "beee085d-c219-4db6-b7db-5968a8822e7c"});
   
   })();
   
@@ -6508,10 +6508,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6568, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6568, "end": 8388, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8388, "end": 12341, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12341, "end": 13435, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13435, "end": 15096, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 15096, "end": 15980, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15980, "end": 16342, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16342, "end": 17436, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17436, "end": 18241, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18241, "end": 2606651, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606651, "end": 2660670, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660670, "end": 2835574, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835574, "end": 3185254, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185254, "end": 3534934, "audio": 0}], "remote_package_size": 3534934, "package_uuid": "12087ffb-dd77-4502-acc1-d7ef9584350b"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6568, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6568, "end": 8388, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8388, "end": 12341, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12341, "end": 13435, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13435, "end": 15096, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 15096, "end": 15980, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15980, "end": 16342, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16342, "end": 17436, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17436, "end": 18241, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18241, "end": 2606651, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606651, "end": 2660670, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660670, "end": 2835574, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835574, "end": 3185254, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185254, "end": 3534934, "audio": 0}], "remote_package_size": 3534934, "package_uuid": "5e9bcb56-9a08-4ed1-83b0-003b39831b81"});
   
   })();
   
@@ -6508,10 +6508,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

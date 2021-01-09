@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 8079, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 8079, "end": 10129, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10129, "end": 13685, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13685, "end": 2602095, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2602095, "end": 5420197, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5420197, "end": 9614633, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614633, "end": 10401213, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401213, "end": 14595649, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595649, "end": 15382229, "audio": 0}], "remote_package_size": 15382229, "package_uuid": "8b6dcad5-0d2f-4e39-99e1-266f4045179d"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 8079, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 8079, "end": 10129, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10129, "end": 13685, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13685, "end": 2602095, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2602095, "end": 5420197, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5420197, "end": 9614633, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614633, "end": 10401213, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401213, "end": 14595649, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595649, "end": 15382229, "audio": 0}], "remote_package_size": 15382229, "package_uuid": "57d14f9a-09d9-4412-9376-224818e24084"});
   
   })();
   
@@ -6508,10 +6508,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

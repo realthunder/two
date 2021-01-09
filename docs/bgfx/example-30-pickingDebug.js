@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3623, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3623, "end": 4554, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4554, "end": 2822656, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822656, "end": 2876675, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876675, "end": 5465085, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465085, "end": 5466015, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466015, "end": 5520323, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520323, "end": 5558204, "audio": 0}], "remote_package_size": 5558204, "package_uuid": "3a5dcf2d-91a4-4520-b356-2a7026f3b5be"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3623, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3623, "end": 4554, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4554, "end": 2822656, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822656, "end": 2876675, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876675, "end": 5465085, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465085, "end": 5466015, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466015, "end": 5520323, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520323, "end": 5558204, "audio": 0}], "remote_package_size": 5558204, "package_uuid": "5465e7e3-b369-4ed6-8903-e3d5f528618d"});
   
   })();
   
@@ -6507,10 +6507,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {

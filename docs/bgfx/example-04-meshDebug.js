@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5470, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5470, "end": 2593880, "audio": 0}], "remote_package_size": 2593880, "package_uuid": "5275a090-2ce5-4e3b-a8ec-a0c1e1d5a167"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5470, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5470, "end": 2593880, "audio": 0}], "remote_package_size": 2593880, "package_uuid": "d51a1741-cce5-47fb-840b-15efe2342933"});
   
   })();
   
@@ -6507,10 +6507,10 @@ var ASM_CONSTS = {
         this.mgrRenderBundle = this.mgrRenderBundle || makeManager();
       },makeColor:function(ptr) {
         return {
-          "r": HEAPF32[((ptr)>>2)],
-          "g": HEAPF32[(((ptr)+(4))>>2)],
-          "b": HEAPF32[(((ptr)+(8))>>2)],
-          "a": HEAPF32[(((ptr)+(12))>>2)],
+          "r": HEAPF64[((ptr)>>3)],
+          "g": HEAPF64[(((ptr)+(8))>>3)],
+          "b": HEAPF64[(((ptr)+(16))>>3)],
+          "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
         return {
