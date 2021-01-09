@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5814, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5814, "end": 7060, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 7060, "end": 8450, "audio": 0}], "remote_package_size": 8450, "package_uuid": "4e3e8aa4-62fb-4eb5-bc31-4e28147caee5"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1578, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1578, "end": 2228, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2228, "end": 3330, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3330, "end": 4424, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4424, "end": 5814, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5814, "end": 7060, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 7060, "end": 8450, "audio": 0}], "remote_package_size": 8450, "package_uuid": "a08df9fb-3698-4272-9f7a-79ec6e01cd69"});
   
   })();
   
@@ -6718,7 +6718,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7272,7 +7272,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

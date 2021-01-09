@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1409, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1409, "end": 4208, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4208, "end": 6040, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 6040, "end": 9932668, "audio": 0}], "remote_package_size": 9932668, "package_uuid": "24bb238e-468b-4f50-bb48-6638d1e3bfe4"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1409, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1409, "end": 4208, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4208, "end": 6040, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 6040, "end": 9932668, "audio": 0}], "remote_package_size": 9932668, "package_uuid": "24c9a361-fbd6-4b07-9135-93a2bc7e71a5"});
   
   })();
   
@@ -7144,7 +7144,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7698,7 +7698,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

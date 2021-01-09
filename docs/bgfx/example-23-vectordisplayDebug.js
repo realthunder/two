@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vectordisplay_fb.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_fb.bin", "start": 1268, "end": 2550, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blur.bin", "start": 2550, "end": 6476, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blit.bin", "start": 6476, "end": 7902, "audio": 0}], "remote_package_size": 7902, "package_uuid": "75b05c13-5733-4f4a-8c12-f817f59c5241"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vectordisplay_fb.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_fb.bin", "start": 1268, "end": 2550, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blur.bin", "start": 2550, "end": 6476, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blit.bin", "start": 6476, "end": 7902, "audio": 0}], "remote_package_size": 7902, "package_uuid": "796a70f7-5b4d-4882-b7f5-8d1e2628dceb"});
   
   })();
   
@@ -6718,7 +6718,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7272,7 +7272,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

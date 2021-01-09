@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_raymarching.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_raymarching.bin", "start": 1268, "end": 11383, "audio": 0}], "remote_package_size": 11383, "package_uuid": "9698883f-7a06-438e-bc67-28ed18bc2c12"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_raymarching.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_raymarching.bin", "start": 1268, "end": 11383, "audio": 0}], "remote_package_size": 11383, "package_uuid": "be2deb98-377f-42b8-a658-76a17571ed64"});
   
   })();
   
@@ -6718,7 +6718,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7272,7 +7272,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

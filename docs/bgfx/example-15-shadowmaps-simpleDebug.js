@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13425, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13425, "end": 14309, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14309, "end": 14511, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14511, "end": 23596, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23596, "end": 2612006, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612006, "end": 2612936, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612936, "end": 2650817, "audio": 0}], "remote_package_size": 2650817, "package_uuid": "72484467-dab3-49c0-b21c-020c27272767"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2129, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2129, "end": 4322, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4322, "end": 13425, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13425, "end": 14309, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14309, "end": 14511, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14511, "end": 23596, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23596, "end": 2612006, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612006, "end": 2612936, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2612936, "end": 2650817, "audio": 0}], "remote_package_size": 2650817, "package_uuid": "80dc5558-df66-4141-8798-44ba8f48bce4"});
   
   })();
   
@@ -6719,7 +6719,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7273,7 +7273,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

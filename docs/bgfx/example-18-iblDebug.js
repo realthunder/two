@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 8079, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 8079, "end": 10129, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10129, "end": 13685, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13685, "end": 2602095, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2602095, "end": 5420197, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5420197, "end": 9614633, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614633, "end": 10401213, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401213, "end": 14595649, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595649, "end": 15382229, "audio": 0}], "remote_package_size": 15382229, "package_uuid": "3bfed94c-bdf9-4c58-b258-6a94d91bdc1b"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 2027, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 2027, "end": 8079, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 8079, "end": 10129, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10129, "end": 13685, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13685, "end": 2602095, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2602095, "end": 5420197, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5420197, "end": 9614633, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614633, "end": 10401213, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401213, "end": 14595649, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595649, "end": 15382229, "audio": 0}], "remote_package_size": 15382229, "package_uuid": "8b6dcad5-0d2f-4e39-99e1-266f4045179d"});
   
   })();
   
@@ -7145,7 +7145,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7699,7 +7699,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

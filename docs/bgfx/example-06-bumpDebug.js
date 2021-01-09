@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 2968, "end": 6148, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 6148, "end": 11193, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11193, "end": 360873, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360873, "end": 710553, "audio": 0}], "remote_package_size": 710553, "package_uuid": "2ff124c8-c305-4a1e-bacf-6ea5ea52773e"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2968, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 2968, "end": 6148, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 6148, "end": 11193, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11193, "end": 360873, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360873, "end": 710553, "audio": 0}], "remote_package_size": 710553, "package_uuid": "0e6f57a1-d233-421a-a0a9-88a58879e196"});
   
   })();
   
@@ -7144,7 +7144,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7698,7 +7698,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

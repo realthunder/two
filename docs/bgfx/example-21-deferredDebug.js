@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 7063, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 7063, "end": 9991, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9991, "end": 11085, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 11085, "end": 12846, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12846, "end": 13940, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13940, "end": 14745, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14745, "end": 15803, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15803, "end": 16209, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 16209, "end": 19265, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 19265, "end": 22508, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 22508, "end": 23233, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 23233, "end": 372913, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 372913, "end": 722593, "audio": 0}], "remote_package_size": 722593, "package_uuid": "bf3c7c95-da2e-44aa-808a-2b0cd176092a"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3296, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3296, "end": 4390, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4390, "end": 7063, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 7063, "end": 9991, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 9991, "end": 11085, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 11085, "end": 12846, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12846, "end": 13940, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 13940, "end": 14745, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14745, "end": 15803, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 15803, "end": 16209, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 16209, "end": 19265, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 19265, "end": 22508, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 22508, "end": 23233, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 23233, "end": 372913, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 372913, "end": 722593, "audio": 0}], "remote_package_size": 722593, "package_uuid": "5ef15ef0-6742-4441-911c-d08f5e2c7bdb"});
   
   })();
   
@@ -7144,7 +7144,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7698,7 +7698,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

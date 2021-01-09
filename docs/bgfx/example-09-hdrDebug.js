@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2886, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2886, "end": 3980, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3980, "end": 8234, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8234, "end": 9328, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9328, "end": 15222, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15222, "end": 17880, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17880, "end": 19953, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19953, "end": 21047, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 21047, "end": 26252, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 26252, "end": 28074, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 28074, "end": 31302, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 31302, "end": 33716, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33716, "end": 38692, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38692, "end": 2627102, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2627102, "end": 15210082, "audio": 0}], "remote_package_size": 15210082, "package_uuid": "7fc25de1-abd1-4fce-8a74-547fdce3bc02"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2886, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2886, "end": 3980, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3980, "end": 8234, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8234, "end": 9328, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9328, "end": 15222, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15222, "end": 17880, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17880, "end": 19953, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19953, "end": 21047, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 21047, "end": 26252, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 26252, "end": 28074, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 28074, "end": 31302, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 31302, "end": 33716, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33716, "end": 38692, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38692, "end": 2627102, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2627102, "end": 15210082, "audio": 0}], "remote_package_size": 15210082, "package_uuid": "4b4dbbc1-c06c-4314-8b79-0adf7ea89261"});
   
   })();
   
@@ -7145,7 +7145,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7699,7 +7699,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;

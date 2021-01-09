@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2093, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2093, "end": 3175, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3175, "end": 4269, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4269, "end": 7571, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7571, "end": 10197, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10197, "end": 11634, "audio": 0}], "remote_package_size": 11634, "package_uuid": "c4cb9e63-277c-4ecd-83ca-5d7096095bb0"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2093, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2093, "end": 3175, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3175, "end": 4269, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4269, "end": 7571, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7571, "end": 10197, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10197, "end": 11634, "audio": 0}], "remote_package_size": 11634, "package_uuid": "d9a18ab7-2068-4cfa-9ca8-dfd06a028b1d"});
   
   })();
   
@@ -6718,7 +6718,7 @@ var ASM_CONSTS = {
       // TODO: if the sentinel value becomes WGPU_WHOLE_SIZE instead of 0, update this.
       if (size === 0) size = undefined;
   
-      if (bufferWrapper.mapMode !== gpu.MapMode.Write) {
+      if (bufferWrapper.mapMode !== 2) {
         abort("GetMappedRange called, but buffer not mapped for writing");
         // TODO(kainino0x): Somehow inject a validation error?
         return 0;
@@ -7272,7 +7272,7 @@ var ASM_CONSTS = {
       var id = WebGPU.mgrBuffer.create(device["createBuffer"](desc));
       if (mappedAtCreation) {
         var bufferWrapper = WebGPU.mgrBuffer.objects[id];
-        bufferWrapper.mapMode = gpu.MapMode.Write;
+        bufferWrapper.mapMode = 2;
         bufferWrapper.onUnmap = [];
       }
       return id;
