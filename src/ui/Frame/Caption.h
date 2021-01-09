@@ -78,7 +78,7 @@ namespace two
 	using PaletteIndex = uint16_t;
 	using ColourPalette = span<uint32_t>;
 
-	enum class TextMarkerKind
+	export_ enum class TextMarkerKind
 	{
 		Error,
 	};

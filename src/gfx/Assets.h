@@ -15,10 +15,10 @@
 
 namespace two
 {
-	export_ extern template class refl_ AssetStore<Texture>;
-	export_ extern template class refl_ AssetStore<Program>;
-	export_ extern template class refl_ AssetStore<Material>;
-	export_ extern template class refl_ AssetStore<Model>;
-	export_ extern template class refl_ AssetStore<Flow>;
-	export_ extern template class refl_ AssetStore<Prefab>;
+	extern template class refl_ AssetStore<Texture>;
+	extern template class refl_ AssetStore<Program>;
+	extern template class refl_ AssetStore<Material>;
+	extern template class refl_ AssetStore<Model>;
+	extern template class refl_ AssetStore<Flow>;
+	extern template class refl_ AssetStore<Prefab>;
 }

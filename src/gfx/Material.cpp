@@ -2,13 +2,17 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
-#include <bgfx/bgfx.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <cstring>
+#include <cstdio>
+#include <bgfx/bgfx.h>
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <cstring>
+#include <cstdio>
+#include <bgfx/bgfx.h>
 #include <type/Type.h>
 #include <type/Indexer.h>
 #include <math/Vec.hpp>
@@ -28,9 +32,6 @@ module two.gfx;
 //#include <gfx-pbr/VoxelGI.h>
 //#include <gfx-pbr/Lightmap.h>
 #endif
-
-#include <cstring>
-#include <cstdio>
 
 namespace two
 {

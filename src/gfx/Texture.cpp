@@ -2,18 +2,23 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
+#ifdef TWO_MODULES
+module;
 #include <bgfx/bgfx.h>
 #include <bimg/bimg.h>
 #include <bimg/decode.h>
 #include <bimg/encode.h>
 #include <bx/readerwriter.h>
 #include <bx/file.h>
-
-#ifdef TWO_MODULES
-module two.gfx;
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <bgfx/bgfx.h>
+#include <bimg/bimg.h>
+#include <bimg/decode.h>
+#include <bimg/encode.h>
+#include <bx/readerwriter.h>
+#include <bx/file.h>
 #include <stl/string.h>
 #include <infra/Log.h>
 #include <infra/Vector.h>

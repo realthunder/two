@@ -11,5 +11,5 @@
 
 namespace two
 {
-    class GlfwContext;
+    export_ class GlfwContext;
 }

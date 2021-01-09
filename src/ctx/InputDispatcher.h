@@ -20,7 +20,11 @@ namespace two
 	struct EventMap
 	{
 		table<DeviceType, table<EventType, T>> m_events = {};
+#ifdef TWO_MODULES
+		table<DeviceType, table<EventType, unordered_map<int, T>>> m_keyed_events = {};
+#else
 		table<DeviceType, table<EventType, map<int, T>>> m_keyed_events = {};
+#endif
 
 		void clear() { *this = {}; }
 	};

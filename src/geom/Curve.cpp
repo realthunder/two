@@ -3,7 +3,9 @@
 //  This notice and the license may not be removed or altered from any source distribution.
 
 #ifdef TWO_MODULES
-module two.geom;
+module;
+#include <infra/Cpp20.h>
+module TWO(geom);
 #else
 #include <stl/string.h>
 #include <stl/span.h>

@@ -2,18 +2,18 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <bgfx/bgfx.h>
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <bgfx/bgfx.h>
 #include <geom/Geom.hpp>
 #include <gfx/Camera.h>
 #include <gfx/Viewport.h>
 #include <gfx/Froxel.h>
 #endif
-
-#include <bgfx/bgfx.h>
 
 namespace two
 {

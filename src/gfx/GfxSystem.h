@@ -10,9 +10,9 @@
 #include <stl/function.h>
 #include <stl/span.h>
 #include <type/Unique.h>
-#endif
 #include <geom/Primitive.h>
 #include <geom/Symbol.h>
+#endif
 #include <gfx/Forward.h>
 #include <gfx/Renderer.h>
 #ifndef TWO_BGFX_EXPORT

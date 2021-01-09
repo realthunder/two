@@ -1,7 +1,7 @@
 #pragma once
 
 #if 1 //def ENFORCE_STL_INITIALIZER_LIST
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <initializer_list>
 #endif
 #else

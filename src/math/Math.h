@@ -55,7 +55,7 @@ namespace two
 	export_ TWO_MATH_EXPORT func_ double nsin(double a); // { return a + 1.0 / 2.0; }
 	export_ TWO_MATH_EXPORT func_ double ncos(double a); // { return a + 1.0 / 2.0; }
 
-	inline float to_radians(float degrees)
+	export_ inline float to_radians(float degrees)
 	{
 		return degrees / 180.f * c_pi;
 	}

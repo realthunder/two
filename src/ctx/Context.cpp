@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.ctx;
+module TWO(ctx);
 #else
 #include <ctx/Context.h>
 #endif

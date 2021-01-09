@@ -58,7 +58,9 @@ namespace two // export_ namespace two// @todo evaluate export at namespace leve
 	{
 		static Type& type()
 		{
+#ifndef TWO_MODULES
 			static_assert(sizeof(T) == 0, "Types must be declared by defining a type<T>() function");
+#endif
 			static Type ty("INVALID"); return ty;
 		}
 	};

@@ -2,17 +2,19 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <cstdio>
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <cstdio>
 #include <stl/algorithm.h>
 #include <infra/Log.h>
 #include <infra/Copy.h>
 #include <pool/Pool.hpp>
-#include <tree/Graph.hpp>
 #include <pool/ObjectPool.hpp>
+#include <tree/Graph.hpp>
 #include <math/Math.h>
 #include <math/ImageAtlas.h>
 #include <math/Vec.hpp>
@@ -36,8 +38,6 @@ module two.gfx;
 #include <gfx/GfxSystem.h>
 #include <gfx/Pipeline.h>
 #endif
-
-#include <cstdio>
 
 namespace two
 {

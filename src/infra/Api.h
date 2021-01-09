@@ -1,11 +1,17 @@
 #include <stl/span.h>
 #include <infra/Config.h>
 #include <infra/Cpp20.h>
+#include <stl/new.h>
+#include <stl/bitset.h>
 #include <stl/table.h>
+#include <stl/move.h>
 #include <stl/math.h>
 #include <stl/algorithm.h>
 #include <stl/map.h>
+#include <stl/set.h>
 #include <infra/Arena.h>
+#include <infra/Copy.h>
+#include <infra/Sort.h>
 #include <infra/File.h>
 #include <infra/Forward.h>
 #include <infra/Generic.h>

@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef USE_STL
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <unordered_map>
 #endif
 namespace stl

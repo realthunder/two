@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.wfc-gfx;
+module TWO(wfc)-gfx;
 #else
 #include <wfc-gfx/Types.h>
 #include <wfc-gfx/Api.h>

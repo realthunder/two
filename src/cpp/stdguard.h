@@ -1,5 +1,7 @@
 #include <cpp/preimport.h>
 
+#ifdef _MSC_VER
+#else
 #define __EXCEPTION__
 #define _GLIBCXX_CMATH
 #define _GLIBCXX_NUMERIC_LIMITS
@@ -17,3 +19,5 @@
 #define _MOVE_H
 #define _MATH_H
 #define _INITIALIZER_LIST
+#endif
+

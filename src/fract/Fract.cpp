@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.fract;
+module TWO(fract);
 #else
 #include <cstdlib>
 #include <cstdio>

@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.gfx-pbr;
+module TWO(gfx)-pbr;
 #else
 #include <gfx-pbr/Types.h>
 #include <gfx-pbr/Api.h>

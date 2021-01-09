@@ -7,7 +7,7 @@
 #include <bgfx/bgfx.h>
 
 #ifdef TWO_MODULES
-module two.gfx.ui;
+module TWO(gfx).ui;
 #else
 #include <stl/algorithm.h>
 #include <tree/Graph.hpp>

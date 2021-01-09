@@ -2,17 +2,32 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
+#ifdef TWO_MODULES
+module;
 #include <bx/allocator.h>
+#include <gfx/Cpp20.h>
+#endif
+
+#if defined WIN32
+#include <BaseTsd.h>
+#endif
 
 #ifdef TWO_MODULES
-module two.gfx;
-#else
+module TWO(gfx);
+#endif
+
+#ifndef TWO_MODULES
+#include <bx/allocator.h>
+#include <stl/stddef.h>
+#include <stdint.h>
+#include <cstring>
+#include <cstdio>
+#include <limits>
 #include <stl/bitset.h>
 #include <stl/swap.h>
 #include <stl/span.h>
 #include <stl/array.h>
+#include <stl/vector.hpp>
 #include <jobs/Job.h>
 #include <geom/Aabb.h>
 #include <geom/Intersect.h>
@@ -25,20 +40,13 @@ module two.gfx;
 #include <gfx/GfxSystem.h>
 #endif
 
-#include <stl/stddef.h>
-#include <stdint.h>
-#include <cstring>
-#include <cstdio>
-#include <limits>
-
 #if defined WIN32
-#include <BaseTsd.h>
 typedef SSIZE_T ssize_t;
 #endif
 
-//#define USE_STD_BITSET
+#include <infra/Swap.h>
 
-#include <stl/vector.hpp>
+//#define USE_STD_BITSET
 
 namespace two
 {

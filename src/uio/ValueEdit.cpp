@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.uio;
+module TWO(uio);
 #else
 #include <stl/algorithm.h>
 #include <refl/Meta.h>

@@ -10,6 +10,12 @@
 #include <math/Axis.h>
 #include <math/Forward.h>
 
+#ifndef TWO_MODULES
+#define CONSTEXPR constexpr
+#else
+#define CONSTEXPR
+#endif
+
 namespace two
 {
 	export_ template <class T>
@@ -17,17 +23,17 @@ namespace two
 	{
 		typedef uint length_type;
 		typedef T type;
-		constr_ constexpr v2() {}
-		constr_ constexpr explicit v2(T v) : x(v), y(v) {}
-		constr_ constexpr v2(T x, T y) : x(x), y(y) {}
+		constr_ CONSTEXPR v2() {}
+		constr_ CONSTEXPR explicit v2(T v) : x(v), y(v) {}
+		constr_ CONSTEXPR v2(T x, T y) : x(x), y(y) {}
 		template <class V>
-		explicit v2(V v);
-		T operator[](uint index) const;
-		T& operator[](uint index);
-		T operator[](Axis axis) const;
-		T& operator[](Axis axis);
-		bool operator==(const v2& other) const;
-		bool operator!=(const v2& other) const;
+		explicit v2(V v) : x(T(v.x)), y(T(v.y)) {}
+		T operator[](uint index) const { return f[index]; }
+		T& operator[](uint index) { return f[index]; }
+		T operator[](Axis axis) const { return f[size_t(axis)]; }
+		T& operator[](Axis axis) { return f[size_t(axis)]; }
+		bool operator==(const v2& other) const { return x == other.x && y == other.y; }
+		bool operator!=(const v2& other) const { return x != other.x || y != other.y; }
 		union {
 			struct { attr_ T x; attr_ T y; };
 			T f[2];
@@ -40,18 +46,18 @@ namespace two
 		typedef uint length_type;
 		typedef T type;
 		typedef v2<T> type2;
-		constr_ constexpr v3() {}
-		constr_ constexpr explicit v3(T v) : x(v), y(v), z(v) {}
-		constr_ constexpr v3(T x, T y, T z) : x(x), y(y), z(z) {}
-		v3(v2<T> a, T z);
+		constr_ CONSTEXPR v3() {}
+		constr_ CONSTEXPR explicit v3(T v) : x(v), y(v), z(v) {}
+		constr_ CONSTEXPR v3(T x, T y, T z) : x(x), y(y), z(z) {}
+		v3(v2<T> a, T z) : x(a.x), y(a.y), z(z) {}
 		template <class V>
-		explicit v3(V v);
-		T operator[](uint index) const;
-		T& operator[](uint index);
-		T operator[](Axis axis) const;
-		T& operator[](Axis axis);
-		bool operator==(const v3& other) const;
-		bool operator!=(const v3& other) const;
+		explicit v3(V v) : x(T(v.x)), y(T(v.y)), z(T(v.z)) {}
+		T operator[](uint index) const { return f[index]; }
+		T& operator[](uint index) { return f[index]; }
+		T operator[](Axis axis) const { return f[size_t(axis)]; }
+		T& operator[](Axis axis) { return f[size_t(axis)]; }
+		bool operator==(const v3& other) const { return x == other.x && y == other.y && z == other.z; }
+		bool operator!=(const v3& other) const { return x != other.x || y != other.y || z != other.z; }
 		union {
 			struct { attr_ T x; attr_ T y; attr_ T z; };
 			struct { T r; T g; T b; };
@@ -66,22 +72,22 @@ namespace two
 		typedef T type;
 		typedef v2<T> type2;
 		typedef v3<T> type3;
-		constr_ constexpr v4() {}
-		constr_ constexpr explicit v4(T v) : x(v), y(v), z(v), w(v) {}
-		constr_ constexpr v4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
-		v4(v3<T> a, T w);
-		v4(T x, v3<T> b);
-		v4(v2<T> a, v2<T> b);
-		v4(v2<T> a, T z, T w);
-		v4(T x, T y, v2<T> b);
+		constr_ CONSTEXPR v4() {}
+		constr_ CONSTEXPR explicit v4(T v) : x(v), y(v), z(v), w(v) {}
+		constr_ CONSTEXPR v4(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
+		v4(v3<T> a, T w) : x(a.x), y(a.y), z(a.z), w(w) {}
+		v4(T x, v3<T> b) : x(x), y(b.x), z(b.y), w(b.z) {}
+		v4(v2<T> a, v2<T> b) : x(a.x), y(a.y), z(b.x), w(b.y) {}
+		v4(v2<T> a, T z, T w) : x(a.x), y(a.y), z(z), w(w) {}
+		v4(T x, T y, v2<T> b) : x(x), y(y), z(b.x), w(b.y) {}
 		template <class V>
-		explicit v4(V v);
-		T operator[](uint index) const;
-		T& operator[](uint index);
-		T operator[](Axis axis) const;
-		T& operator[](Axis axis);
-		bool operator==(const v4& other) const;
-		bool operator!=(const v4& other) const;
+		explicit v4(V v) : x(T(v.x)), y(T(v.y)), z(T(v.z)), w(T(v.w)) {}
+		T operator[](uint index) const { return f[index]; }
+		T& operator[](uint index) { return f[index]; }
+		T operator[](Axis axis) const { return f[size_t(axis)]; }
+		T& operator[](Axis axis) { return f[size_t(axis)]; }
+		bool operator==(const v4& other) const { return x == other.x && y == other.y && z == other.z && w == other.w; }
+		bool operator!=(const v4& other) const { return x != other.x || y != other.y || z != other.z || w != other.w; }
 		union {
 			struct { attr_ T x; attr_ T y; attr_ T z; attr_ T w; };
 			struct { T r; T g; T b; T a; };
@@ -91,28 +97,28 @@ namespace two
 		};
 	};
 
-	template <class T> inline constexpr v2<T> operator-(const v2<T>& a) { return v2<T>(-a.x, -a.y); }
-	template <class T> inline constexpr v3<T> operator-(const v3<T>& a) { return v3<T>(-a.x, -a.y, -a.z); }
-	template <class T> inline constexpr v4<T> operator-(const v4<T>& a) { return v4<T>(-a.x, -a.y, -a.z, -a.w); }
+	export_ template <class T> inline CONSTEXPR v2<T> operator-(const v2<T>& a) { return v2<T>(-a.x, -a.y); }
+	export_ template <class T> inline CONSTEXPR v3<T> operator-(const v3<T>& a) { return v3<T>(-a.x, -a.y, -a.z); }
+	export_ template <class T> inline CONSTEXPR v4<T> operator-(const v4<T>& a) { return v4<T>(-a.x, -a.y, -a.z, -a.w); }
 
 #ifdef TWO_META_GENERATOR
 	// extern is not actually necessary, only hiding the implementations + explicit instantiation
 	// deactived because of an apparent gcc bug with the inline definition of constructors above not playing well with those extern declarations
-	export_ extern template struct refl_ v2<float>;
-	export_ extern template struct refl_ v3<float>;
-	export_ extern template struct refl_ v4<float>;
+	extern template struct refl_ v2<float>;
+	extern template struct refl_ v3<float>;
+	extern template struct refl_ v4<float>;
 
-	export_ extern template struct refl_ v2<int>;
-	export_ extern template struct refl_ v3<int>;
-	export_ extern template struct refl_ v4<int>;
+	extern template struct refl_ v2<int>;
+	extern template struct refl_ v3<int>;
+	extern template struct refl_ v4<int>;
 
-	export_ extern template struct refl_ v2<uint>;
-	export_ extern template struct refl_ v3<uint>;
-	export_ extern template struct refl_ v4<uint>;
+	extern template struct refl_ v2<uint>;
+	extern template struct refl_ v3<uint>;
+	extern template struct refl_ v4<uint>;
 
-	export_ extern template struct refl_ v2<bool>;
-	export_ extern template struct refl_ v3<bool>;
-	export_ extern template struct refl_ v4<bool>;
+	extern template struct refl_ v2<bool>;
+	extern template struct refl_ v3<bool>;
+	extern template struct refl_ v4<bool>;
 #endif
 
 	export_ using half2 = v2<ushort>;
@@ -192,8 +198,8 @@ namespace two
 	export_ struct refl_ struct_ quat : public float4 // array_
 	{
 		typedef float type;
-		constr_ constexpr quat() : float4() {}
-		constr_ constexpr quat(float x, float y, float z, float w) : float4(x, y, z, w) {}
+		constr_ CONSTEXPR quat() : float4() {}
+		constr_ CONSTEXPR quat(float x, float y, float z, float w) : float4(x, y, z, w) {}
 		constr_ explicit quat(const float3& euler_angles);
 	};
 
@@ -206,13 +212,17 @@ namespace two
 
 namespace two
 {
-	export_ constexpr inline vec3 x3 = { 1.f, 0.f, 0.f };
-	export_ constexpr inline vec3 y3 = { 0.f, 1.f, 0.f };
-	export_ constexpr inline vec3 z3 = { 0.f, 0.f, 1.f };
+	export_ CONSTEXPR vec3 x3 = { 1.f, 0.f, 0.f };
+	export_ CONSTEXPR vec3 y3 = { 0.f, 1.f, 0.f };
+	export_ CONSTEXPR vec3 z3 = { 0.f, 0.f, 1.f };
 
-	export_ constexpr inline quat ZeroQuat = { 0.f, 0.f, 0.f, 1.f };
+#ifdef TWO_MODULES
+	export_ extern quat ZeroQuat; // = { 0.f, 0.f, 0.f, 1.f };
+#else
+	export_ CONSTEXPR quat ZeroQuat = { 0.f, 0.f, 0.f, 1.f };
+#endif
 
-	export_ constexpr inline vec4 Rect4 = { 0.f, 0.f, 1.f, 1.f };
+	export_ CONSTEXPR vec4 Rect4 = { 0.f, 0.f, 1.f, 1.f };
 
 	export_ inline bool rect_intersects(const vec4& first, const vec4& second)
 	{

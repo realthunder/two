@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 #include <cpp/preimport.h>
 
-module stb.rect_pack;
+module rect_pack;
 
 #ifdef STBRP_STATIC
 #define STBRP_DEF static

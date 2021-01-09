@@ -125,9 +125,9 @@ namespace two
 		Hollow = 2
 	};
 
-	export_ extern template struct refl_ array_ struct_ v2<bool>;
-	export_ extern template struct refl_ array_ struct_ v2<AutoLayout>;
-	export_ extern template struct refl_ array_ struct_ v2<Sizing>;
-	export_ extern template struct refl_ array_ struct_ v2<Align>;
-	export_ extern template struct refl_ array_ struct_ v2<Pivot>;
+	extern template struct refl_ array_ struct_ v2<bool>;
+	extern template struct refl_ array_ struct_ v2<AutoLayout>;
+	extern template struct refl_ array_ struct_ v2<Sizing>;
+	extern template struct refl_ array_ struct_ v2<Align>;
+	extern template struct refl_ array_ struct_ v2<Pivot>;
 }

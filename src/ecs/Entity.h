@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include <stl/swap.h>
 #endif
+#include <infra/Swap.h>
 #include <ecs/Forward.h>
 
 namespace two
@@ -20,7 +21,7 @@ namespace two
 	struct TypedBuffer
 	{};
 
-	struct refl_ struct_ TWO_ECS_EXPORT Entity
+	export_ struct refl_ struct_ TWO_ECS_EXPORT Entity
 	{
 		explicit operator bool() const { return m_handle != UINT32_MAX; }
 		//operator uint32_t() const { return m_handle; }
@@ -39,7 +40,7 @@ namespace two
 		uint64_t as_uint() { return uint64_t(m_ecs) << 48ULL | uint64_t(m_stream) << 32ULL | uint64_t(m_handle); }
 	};
 
-	struct refl_ struct_ TWO_ECS_EXPORT Entt
+	export_ struct refl_ struct_ TWO_ECS_EXPORT Entt
 	{
 		GridECS* m_ecs = nullptr;
 		uint32_t m_handle = UINT32_MAX;
@@ -48,7 +49,7 @@ namespace two
 		T& comp();
 	};
 
-	class refl_ TWO_ECS_EXPORT OEntt : public Entt
+	export_ class refl_ TWO_ECS_EXPORT OEntt : public Entt
 	{
 	public:
 		OEntt() {}

@@ -42,7 +42,7 @@ namespace two
 		Count
 	};
 
-	export_ extern TWO_GFX_EXPORT GridECS* g_viewer_ecs;
+	extern TWO_GFX_EXPORT GridECS* g_viewer_ecs;
 
 	export_ class refl_ TWO_GFX_EXPORT Viewport : public OEntt
 	{

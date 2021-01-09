@@ -4,8 +4,9 @@
 
 #ifdef TWO_MODULES
 module;
+#include <cstdarg>
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
 #include <cstring>
 #include <cstdarg>

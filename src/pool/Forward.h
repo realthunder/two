@@ -11,15 +11,15 @@
 
 namespace two
 {
-	template <class T> class VecPool;
-	template <class T> class TPool;
+	export_ template <class T> class VecPool;
+	export_ template <class T> class TPool;
 
-	template <class T> struct SparseHandle;
-	template <class T> struct OwnedHandle;
+	export_ template <class T> struct SparseHandle;
+	export_ template <class T> struct OwnedHandle;
 
-	class HandlePool;
-    class Pool;
-    class ObjectPool;
+	export_ class HandlePool;
+    export_ class Pool;
+    export_ class ObjectPool;
 }
 
 #ifdef TWO_META_GENERATOR

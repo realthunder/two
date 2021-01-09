@@ -18,7 +18,7 @@ namespace two
 	export_ template <class T>
 	span<T> to_array(vector<T>& vec, size_t offset, size_t count) { return { &vec[offset], count }; }
 
-	template <class T, class U>
+	export_ template <class T, class U>
 	span<T> to_array_cast(vector<U>& vec) { return{ (T*)&vec[0], vec.size() }; }
 
 	export_ template <class T>

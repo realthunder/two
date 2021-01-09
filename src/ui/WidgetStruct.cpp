@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
 #include <infra/StringOps.h>
 #include <infra/Reverse.h>
@@ -27,27 +27,30 @@ namespace two
 
 	Frame* pinpoint(Frame& frame, vec2 pos, const FrameFilter& filter)
 	{
-		if(!frame.d_style || frame.hollow() || (clip(frame) && !frame.inside(pos)))
+		if (!frame.d_style || frame.hollow() || (clip(frame) && !frame.inside(pos)))
 			return nullptr;
 
-		if(frame.m_layer)
-			for(Layer* layer : reverse_adapt(frame.m_layer->d_sublayers))
+#ifndef TWO_MODULES
+		// TODO (hugoam) ICE reverse_adapt
+		if (frame.m_layer)
+			for (Layer* layer : reverse_adapt(frame.m_layer->d_sublayers))
 			{
 				vec2 local = layer->m_frame.integrate_position(pos, frame);
 				Frame* target = pinpoint(layer->m_frame, local, filter);
-				if(target)
+				if (target)
 					return target;
 			}
 
-		for(auto& widget : reverse_adapt(frame.d_widget.m_nodes))
+		for (auto& widget : reverse_adapt(frame.d_widget.m_nodes))
 		{
 			vec2 local = widget->m_frame.integrate_position(pos, frame);
 			Frame* target = pinpoint(widget->m_frame, local, filter);
-			if(target)
+			if (target)
 				return target;
 		}
+#endif
 
-		if(filter(frame) && frame.inside(pos))
+		if (filter(frame) && frame.inside(pos))
 			return &frame;
 		return nullptr;
 	}

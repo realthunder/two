@@ -5,8 +5,10 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.lang;
+#include <lang/WrenLib.h>
+module TWO(lang);
 #else
+#include <lang/WrenLib.h>
 #include <cassert>
 #include <cmath>
 #include <cstdio>
@@ -38,16 +40,6 @@ module two.lang;
 #include <lang/Types.h>
 #include <lang/Wren.h>
 #endif
-
-extern "C"
-{
-#include <wren.h>
-
-void wrenBegin(WrenVM* vm);
-
-void wrenAssignVariable(WrenVM* vm, const char* module, const char* name,
-						int value_slot);
-}
 
 //#define TWO_WREN_DEBUG_DECLS
 //#define TWO_WREN_DEBUG

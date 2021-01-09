@@ -32,7 +32,7 @@ namespace two
 	export_ TWO_GEOM_EXPORT vec3 nearest_point_on_face(const Face3& face, const vec3& point);
 	export_ TWO_GEOM_EXPORT vec3 nearest_point_on_line(const vec3& origin, const vec3& dir, const vec3& point);
 
-	inline vec4 sphere_plane_intersection(const vec3& sphere_position, float sphere_radius_squared, const vec3& plane_normal, float plane_d)
+	export_ inline vec4 sphere_plane_intersection(const vec3& sphere_position, float sphere_radius_squared, const vec3& plane_normal, float plane_d)
 	{
 		const float d = dot(sphere_position, plane_normal) + plane_d;
 		const float rr = sphere_radius_squared - d * d;
@@ -40,7 +40,7 @@ namespace two
 	}
 
 	// this version returns a false-positive intersection in a small area near the origin of the cone extended outward by the sphere's radius.
-	inline bool sphere_cone_intersection_fast(const vec3& sphere_position, float sphere_radius_squared, const vec3& cone_position, const vec3& cone_axis, float cone_sin_inverse, float cone_cos_squared)
+	export_ inline bool sphere_cone_intersection_fast(const vec3& sphere_position, float sphere_radius_squared, const vec3& cone_position, const vec3& cone_axis, float cone_sin_inverse, float cone_cos_squared)
 	{
 		const vec3 u = cone_position - (sphere_radius_squared * cone_sin_inverse) * cone_axis;
 		vec3 d = sphere_position - u;
@@ -50,7 +50,7 @@ namespace two
 		return (e * e >= dd * cone_cos_squared && e > 0);
 	}
 
-	inline bool sphere_cone_intersection(const vec3& sphere_position, float sphere_radius_squared, const vec3& cone_position, const vec3& cone_axis, float cone_sin_inverse, float cone_cos_squared)
+	export_ inline bool sphere_cone_intersection(const vec3& sphere_position, float sphere_radius_squared, const vec3& cone_position, const vec3& cone_axis, float cone_sin_inverse, float cone_cos_squared)
 	{
 		if(sphere_cone_intersection_fast(sphere_position, sphere_radius_squared, cone_position, cone_axis, cone_sin_inverse, cone_cos_squared))
 		{

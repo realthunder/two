@@ -9,7 +9,7 @@
 #include <xatlas.h>
 
 #ifdef TWO_MODULES
-module two.gfx.pbr;
+module TWO(gfx).pbr;
 #else
 #include <stl/algorithm.h>
 #include <infra/Log.h>

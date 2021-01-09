@@ -2,7 +2,7 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <functional>
 #endif
 namespace stl

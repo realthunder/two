@@ -36,7 +36,7 @@ namespace two
 		vector<size_t> m_hash_parts;
 	};
 
-	export_ extern TWO_TYPE_EXPORT vector<Prototype*> g_prototypes;
+	extern TWO_TYPE_EXPORT vector<Prototype*> g_prototypes;
 
 	export_ inline Prototype& proto(Type& type) { return *g_prototypes[type.m_id]; }
 }

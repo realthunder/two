@@ -2,11 +2,11 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <infra/Cpp20.h>
-
 #ifdef TWO_MODULES
+module;
 #include <cstdlib>
-module two.math;
+#include <infra/Cpp20.h>
+module TWO(math);
 #else
 #include <stl/span.h>
 #include <math/Types.h>

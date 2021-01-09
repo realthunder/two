@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.noise;
+module TWO(noise);
 #else
 #include <noise/Types.h>
 #include <noise/Api.h>

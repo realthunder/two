@@ -2,17 +2,21 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
+#ifdef TWO_MODULES
+module;
+//#include <Tracy.hpp> // TODO (hugoam) modules FIX THIS SHIT 
 #include <bx/timer.h>
 #include <bx/file.h>
-
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
-
-#ifdef TWO_MODULES
-module two.gfx;
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <Tracy.hpp>
+#include <bx/timer.h>
+#include <bx/file.h>
+#include <bgfx/bgfx.h>
+#include <bgfx/platform.h>
 #include <stl/array.h>
 #include <stl/string.h>
 #include <stl/map.h>
@@ -41,8 +45,6 @@ module two.gfx;
 #include <gfx/Filter.h>
 #include <gfx/Skeleton.h>
 #endif
-
-#include <Tracy.hpp>
 
 //#define TWO_GFX_THREADED
 #define POLL_AT_END 0

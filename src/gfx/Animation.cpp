@@ -2,11 +2,14 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <cassert>
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <cassert>
+#include <algorithm>
 #include <stl/algorithm.h>
 #include <stl/table.h>
 #include <math/Interp.h>
@@ -18,9 +21,6 @@ module two.gfx;
 #include <gfx/Mesh.h>
 #include <gfx/Skeleton.h>
 #endif
-
-#include <cassert>
-#include <algorithm>
 
 namespace two
 {

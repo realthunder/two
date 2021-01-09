@@ -5,8 +5,11 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.lang;
+#include <lang/LuaLib.h>
+module TWO(lang);
+#include <infra/Swap.h>
 #else
+#include <lang/LuaLib.h>
 #include <cassert>
 #include <cmath>
 #include <cstdio>
@@ -34,13 +37,6 @@ module two.lang;
 #include <lang/Types.h>
 #include <lang/Lua.h>
 #endif
-
-extern "C"
-{
-#include <lua.h>
-#include <lauxlib.h>
-#include <lualib.h>
-}
 
 #define TWO_LUA_DEBUG 0
 #define TWO_LUA_DEBUG_IO 0
@@ -151,7 +147,7 @@ namespace two
 		Stack(lua_State* state, int num = 1) : m_state(state), m_num(num) {}
 		~Stack() { assert(lua_gettop(m_state) >= m_num); if(m_num >= 1) lua_pop(m_state, m_num); }
 
-		Stack& operator=(Stack&& other) { using stl::swap; swap(m_state, other.m_state); swap(m_num, other.m_num); return *this; }
+		Stack& operator=(Stack&& other) { using two::swap; swap(m_state, other.m_state); swap(m_num, other.m_num); return *this; }
 		Stack(Stack&& other) : m_state(other.m_state), m_num(other.m_num) { other.m_num = 0; }
 
 		Stack operator+(Stack&& other) && { Stack obj(m_state, m_num + other.m_num); m_num = 0; other.m_num = 0; return obj; }

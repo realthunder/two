@@ -4,9 +4,11 @@
 
 #ifdef TWO_MODULES
 module;
+#include <cstdio>
 #include <infra/Cpp20.h>
-module two.lang;
+module TWO(lang);
 #else
+#include <cstdio>
 #include <stl/math.h>
 #include <stl/algorithm.h>
 #include <infra/ToString.h>
@@ -18,9 +20,7 @@ module two.lang;
 #include <lang/VisualScript.h>
 #endif
 
-#include <cstdio>
-
-#include <algorithm>
+//#include <algorithm>
 
 #define TWO_DEBUG_SCRIPT
 
@@ -421,7 +421,10 @@ namespace two
 			m_execution.push_back(process.get());
 
 		//quicksort<Process*>(m_execution, [](Process* lhs, Process* rhs) { return lhs->m_order < rhs->m_order; });
+#ifndef TWO_MODULES
+		// TODO (hugoam) fix swap() ADL issues
 		std::sort(m_execution.begin(), m_execution.end(), [](Process* lhs, Process* rhs) { return lhs->m_order < rhs->m_order; });
+#endif
 	}
 
 	void VisualScript::connect(Valve& output, Valve& input, StreamModifier modifier)

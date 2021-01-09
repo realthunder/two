@@ -11,7 +11,7 @@
 
 namespace two
 {
-	struct alignas(CACHELINE_SIZE)Job
+	export_ struct alignas(CACHELINE_SIZE)Job
 	{
 		Job() {}
 		Job(const Job&) = delete;

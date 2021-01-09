@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.geom;
+module TWO(geom);
 #else
 #include <geom/Types.h>
 #include <geom/Api.h>

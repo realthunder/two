@@ -21,7 +21,7 @@ namespace two
 	class Sound;
 
 #ifndef _MSC_VER
-	export_ extern template class Graph<Gnode>;
+	extern template class Graph<Gnode>;
 #endif
 
 	export_ class refl_ TWO_GFX_EXPORT Gnode : public Graph<Gnode>
@@ -50,13 +50,13 @@ namespace two
 		Sound* m_sound = nullptr;
 	};
 
-	export_ extern template class refl_ TPool<Node3>;
-	export_ extern template class refl_ TPool<Item>;
-	export_ extern template class refl_ TPool<Batch>;
-	export_ extern template class refl_ TPool<Direct>;
-	export_ extern template class refl_ TPool<Mime>;
-	export_ extern template class refl_ TPool<Light>;
-	export_ extern template class refl_ TPool<Flare>;
+	extern template class refl_ TPool<Node3>;
+	extern template class refl_ TPool<Item>;
+	extern template class refl_ TPool<Batch>;
+	extern template class refl_ TPool<Direct>;
+	extern template class refl_ TPool<Mime>;
+	extern template class refl_ TPool<Light>;
+	extern template class refl_ TPool<Flare>;
 
 	export_ TWO_GFX_EXPORT void debug_tree(Gnode& node, size_t index = 0, size_t depth = 0);
 }

@@ -2,18 +2,12 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
-#include <bgfx/bgfx.h>
-
-#ifdef TWO_MODULES
-module two.gfx;
-#else
-#include <math/Vec.hpp>
-#include <gfx/Material.h>
-#endif
-
+#ifndef TWO_MODULES
 #include <cstring>
+#include <bgfx/bgfx.h>
+#include <math/Vec.hpp>
+#endif
+#include <gfx/Material.h>
 
 #define PAD 0.f
 

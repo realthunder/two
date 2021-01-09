@@ -5,9 +5,10 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.geom;
+module TWO(geom);
 #else
 #include <stl/array.h>
+#include <stl/vector.hpp>
 #include <math/Vec.hpp>
 #include <geom/Shape/Cube.h>
 #include <geom/Shapes.h>
@@ -16,7 +17,11 @@ module two.geom;
 #include <geom/Shape/Quad.h>
 #endif
 
-#include <stl/vector.hpp>
+#ifndef TWO_MODULES
+#define CONSTEXPR constexpr
+#else
+#define CONSTEXPR
+#endif
 
 namespace two
 {
@@ -340,11 +345,11 @@ namespace two
 
 	void draw_shape_triangles(const ProcShape& shape, const Tetraedr& tetra, MeshAdapter& writer)
 	{
-		constexpr vec3 vertices[] = {
+		CONSTEXPR vec3 vertices[] = {
 			vec3(1, 1, 1), vec3(-1, -1, 1), vec3(-1, 1, -1), vec3(1, -1, -1)
 		};
 
-		constexpr uint32_t indices[] = {
+		CONSTEXPR uint32_t indices[] = {
 			2, 1, 0, 0, 3, 2, 1, 3, 0, 2, 3, 1
 		};
 

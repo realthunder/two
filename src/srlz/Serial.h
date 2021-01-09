@@ -11,12 +11,10 @@
 #endif
 #include <srlz/Forward.h>
 
-//#ifndef TWO_MODULES
 namespace json11
 {
 	class Json;
 }
-//#endif
 
 namespace two
 {

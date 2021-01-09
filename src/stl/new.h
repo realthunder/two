@@ -1,14 +1,15 @@
 #pragma once
+#include <infra/Config.h>
 
 #include <stl/stddef.h>
 
 namespace stl {
 
-	struct placeholder {};
+	export_ struct placeholder {};
 }
 
-inline void* operator new(size_t, stl::placeholder, void* ptr) {
+export_ inline void* operator new(size_t, stl::placeholder, void* ptr) {
 	return ptr;
 }
 
-inline void operator delete(void*, stl::placeholder, void*) throw() {}
+export_ inline void operator delete(void*, stl::placeholder, void*) throw() {}

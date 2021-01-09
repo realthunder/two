@@ -5,8 +5,9 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
+#include <algorithm>
 #include <stl/algorithm.h>
 #include <infra/Reverse.h>
 #include <infra/Sort.h>
@@ -14,8 +15,6 @@ module two.ui;
 #include <ui/Sheet.h>
 #include <ui/Style/Layout.h>
 #endif
-
-#include <algorithm>
 
 namespace two
 {

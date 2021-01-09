@@ -35,6 +35,6 @@ namespace two
 #ifdef TWO_META_GENERATOR
 namespace stl
 {
-	export_ extern template class refl_ seque_ vector<two::Var>;
+	extern template class refl_ seque_ vector<two::Var>;
 }
 #endif

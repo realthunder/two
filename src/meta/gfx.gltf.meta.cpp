@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.gfx-gltf;
+module TWO(gfx)-gltf;
 #else
 #include <cstddef>
 #include <stl/new.h>

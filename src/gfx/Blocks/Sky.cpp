@@ -2,14 +2,16 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
+#ifdef TWO_MODULES
+module;
 #include <bx/allocator.h>
 #include <bx/math.h>
-
-#ifdef TWO_MODULES
-module two.gfx;
+#include <bgfx/bgfx.h>
+#include <infra/Cpp20.h>
+module TWO(gfx);
 #else
+#include <bx/allocator.h>
+#include <bx/math.h>
 #include <math/Vec.hpp>
 #include <gfx/Types.h>
 #include <gfx/Blocks/Sky.h>

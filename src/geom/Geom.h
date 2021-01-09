@@ -49,6 +49,7 @@ namespace two
 
 	export_ inline float distance(const Plane& plane, const vec3& p);
 	export_ inline vec3 project(const Plane& plane, const vec3& p);
+	export_ inline Plane operator*(const mat4& mat, const Plane& p);
 
 	export_ inline Plane normalize(const Plane& plane);
 

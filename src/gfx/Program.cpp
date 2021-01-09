@@ -2,15 +2,21 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
+#ifdef TWO_MODULES
+module;
+#include <cstring>
+#include <cstdio>
 #include <bx/platform.h>
 #include <bx/readerwriter.h>
 #include <bgfx/bgfx.h>
-
-#ifdef TWO_MODULES
-module two.gfx;
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <cstring>
+#include <cstdio>
+#include <bx/platform.h>
+#include <bx/readerwriter.h>
+#include <bgfx/bgfx.h>
 #include <stl/string.h>
 #include <stl/vector.h>
 #include <stl/map.h>
@@ -28,9 +34,6 @@ module two.gfx;
 #include <gfx/Renderer.h>
 #include <gfx/Pipeline.h>
 #endif
-
-#include <cstring>
-#include <cstdio>
 
 namespace bgfx
 {

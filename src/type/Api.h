@@ -1,4 +1,4 @@
-//#include <type/Any.h>
+#include <type/Any.h>
 #include <type/Cls.h>
 #include <type/Dispatch.h>
 #include <type/DispatchDecl.h>

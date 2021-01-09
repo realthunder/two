@@ -2,10 +2,10 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
 #include <stl/algorithm.h>
 #include <infra/Log.h>

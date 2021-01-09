@@ -27,7 +27,7 @@ namespace two
 #include <stl/vector.h>
 namespace stl
 {
-	export_ extern template class refl_ seque_ vector<two::Circle>;
-	export_ extern template class refl_ seque_ vector<two::Image256>;
+	extern template class refl_ seque_ vector<two::Circle>;
+	extern template class refl_ seque_ vector<two::Image256>;
 }
 #endif

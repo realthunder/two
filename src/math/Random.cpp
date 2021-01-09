@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.math;
+module TWO(math);
 #else
 #include <random>
 #include <stl/limits.h>

@@ -6,14 +6,16 @@
 module;
 #include <cstdlib>
 #include <infra/Cpp20.h>
-module two.math;
+module TWO(math);
 #else
 #include <limits>
 #include <math/Vec.h>
 #include <math/Vec.hpp>
 #endif
 
+#ifndef TWO_MODULES
 #include <algorithm>
+#endif
 
 namespace two
 {

@@ -12,36 +12,36 @@
 
 namespace two
 {
-    enum class ConstructorIndex : unsigned int;
-    enum class TypeClass : unsigned int;
+    export_ enum class ConstructorIndex : unsigned int;
+    export_ enum class TypeClass : unsigned int;
     
-	struct QualType;
-    class Param;
-    class Signature;
-    class Callable;
-    class Function;
-	struct Operator;
-    class Method;
-    class Constructor;
-    class CopyConstructor;
-    class Destructor;
-    struct Call;
-    class Meta;
-    class Static;
-    class Member;
-	struct Alias;
-    class Class;
-    class Convert;
-    class TypeConverter;
-    class Enum;
-    class Injector;
-    class Creator;
-    class Iterable;
-    class Sequence;
-    class Namespace;
-    class Module;
-    class System;
-	class Prototype;
+	export_ struct QualType;
+    export_ class Param;
+    export_ class Signature;
+    export_ class Callable;
+    export_ class Function;
+	export_ struct Operator;
+    export_ class Method;
+    export_ class Constructor;
+    export_ class CopyConstructor;
+    export_ class Destructor;
+    export_ struct Call;
+    export_ class Meta;
+    export_ class Static;
+    export_ class Member;
+	export_ struct Alias;
+    export_ class Class;
+    export_ class Convert;
+    export_ class TypeConverter;
+    export_ class Enum;
+    export_ class Injector;
+    export_ class Creator;
+    export_ class Iterable;
+    export_ class Sequence;
+    export_ class Namespace;
+    export_ class Module;
+    export_ class System;
+	export_ class Prototype;
 }
 
 #ifdef TWO_META_GENERATOR
@@ -49,14 +49,14 @@ namespace two
 #include <stl/vector.h>
 namespace stl
 {
-	export_ extern template struct refl_ span_ span<two::Type*>;
+	extern template struct refl_ span_ span<two::Type*>;
 
-	export_ extern template class refl_ seque_ vector<two::Var>;
-	export_ extern template class refl_ seque_ vector<void*>;
+	extern template class refl_ seque_ vector<two::Var>;
+	extern template class refl_ seque_ vector<void*>;
 
-	export_ extern template class refl_ seque_ vector<two::Module*>;
-	export_ extern template class refl_ seque_ vector<two::Type*>;
-	export_ extern template class refl_ seque_ vector<two::Alias*>;
-	export_ extern template class refl_ seque_ vector<two::Function*>;
+	extern template class refl_ seque_ vector<two::Module*>;
+	extern template class refl_ seque_ vector<two::Type*>;
+	extern template class refl_ seque_ vector<two::Alias*>;
+	extern template class refl_ seque_ vector<two::Function*>;
 }
 #endif

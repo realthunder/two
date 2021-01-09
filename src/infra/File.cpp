@@ -36,8 +36,13 @@ namespace two
 {
 	void copy_file(const string& source, const string& dest)
 	{
+#ifdef TWO_MODULES
+		std::ifstream source_file(source.c_str());// , std::ios::binary);
+		std::ofstream dest_file(dest.c_str());// , std::ios::binary);
+#else
 		std::ifstream source_file(source.c_str(), std::ios::binary);
 		std::ofstream dest_file(dest.c_str(), std::ios::binary);
+#endif
 		dest_file << source_file.rdbuf();
 	}
 
@@ -115,10 +120,6 @@ namespace two
 	bool file_exists(const string& path)
 	{
 		//return std::fstream(path.c_str()).good();
-#ifdef TWO_MODULES
-		// @todo MODULES
-		return true;
-#else
 #if defined WIN32
 		struct _stat info;
 		return _stat(path.c_str(), &info) == 0 && (info.st_mode & _S_IFMT) != 0;
@@ -126,22 +127,16 @@ namespace two
 		struct stat info;
 		return stat(path.c_str(), &info) == 0 && (info.st_mode & S_IFMT) != 0;
 #endif
-#endif
 	}
 
 	bool directory_exists(const string& path)
 	{
-#ifdef TWO_MODULES
-		// @todo MODULES
-		return true;
-#else
 #if defined WIN32
 		struct _stat info;
 		return _stat(path.c_str(), &info) == 0 && (info.st_mode & _S_IFDIR) != 0;
 #else 
 		struct stat info;
 		return stat(path.c_str(), &info) == 0 && (info.st_mode & S_IFDIR) != 0;
-#endif
 #endif
 	}
 

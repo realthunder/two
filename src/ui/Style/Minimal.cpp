@@ -3,8 +3,11 @@
 //  This notice and the license may not be removed or altered from any source distribution.
 
 #ifdef TWO_MODULES
-module two.ui;
+module;
+#include <infra/Cpp20.h>
+module TWO(ui);
 #else
+#include <cstdio>
 #include <stl/hash_base.hpp>
 #include <infra/Log.h>
 #include <math/Vec.hpp>
@@ -12,8 +15,6 @@ module two.ui;
 #include <ui/UiWindow.h>
 #include <ui/Ui.h>
 #endif
-
-#include <cstdio>
 
 namespace two
 {

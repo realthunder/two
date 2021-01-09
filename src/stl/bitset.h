@@ -57,7 +57,7 @@ namespace stl
 	// the exact storage size. This is useful for small bitset (e.g. < 64, on 64-bits machines).
 	// It also allows for lexicographical compares (i.e. sorting).
 
-	template <class T, size_t N = 1, typename = enable_if<is_integral<T> && is_unsigned<T>>>
+	export_ template <class T, size_t N = 1, typename = enable_if<is_integral<T> && is_unsigned<T>>>
 	class bitset {
 		T storage[N] = {};
 
@@ -201,5 +201,5 @@ namespace stl
 
 namespace two
 {
-	using stl::bitset;
+	export_ using stl::bitset;
 }

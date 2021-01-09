@@ -2,13 +2,13 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <bgfx/bgfx.h>
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
 #include <bgfx/bgfx.h>
-
 #include <ecs/ECS.hpp>
 #include <geom/Intersect.h>
 #include <gfx/Viewport.h>

@@ -9,9 +9,9 @@
 #ifndef TWO_MODULES
 #include <ctx/Forward.h>
 #include <ctx/Context.h>
+#endif
 
 struct GLFWwindow;
-#endif
 
 #ifndef TWO_CTX_GLFW_EXPORT
 #define TWO_CTX_GLFW_EXPORT TWO_IMPORT

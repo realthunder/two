@@ -4,9 +4,11 @@
 
 #ifdef TWO_MODULES
 module;
+#include <cstdio>
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
+#include <cstdio>
 #include <stl/algorithm.h>
 #include <stl/unordered_map.hpp>
 #include <infra/Log.h>
@@ -18,8 +20,6 @@ module two.ui;
 #include <ui/UiWindow.h>
 #include <ui/Api.h>
 #endif
-
-#include <cstdio>
 
 namespace two
 {

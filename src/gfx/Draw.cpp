@@ -4,8 +4,8 @@
 
 #ifdef TWO_MODULES
 module;
-#include <infra/Cpp20.h>
-module two.gfx;
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
 #include <cstring>
 #include <stl/array.h>

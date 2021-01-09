@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.lang;
+module TWO(lang);
 #else
 #include <infra/ToString.h>
 #include <stl/algorithm.h>

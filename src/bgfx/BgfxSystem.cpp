@@ -11,7 +11,7 @@
 #include <bgfx/platform.h>
 
 #ifdef TWO_MODULES
-module two.bgfx;
+module TWO(bgfx);
 #else
 #include <infra/Log.h>
 #include <type/Type.h>

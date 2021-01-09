@@ -2,11 +2,15 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <type_traits>
+//#include <limits>
+#include <stdint.h>
+#include <cassert>
 #include <stl/stddef.h>
 #include <stl/limits.h>
 #include <stl/algorithm.h>
@@ -15,11 +19,6 @@ module two.gfx;
 #include <geom/Geom.hpp>
 #include <gfx/FrustumCluster.h>
 #endif
-
-#include <type_traits>
-//#include <limits>
-#include <stdint.h>
-#include <cassert>
 
 namespace two
 {

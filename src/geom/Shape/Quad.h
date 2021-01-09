@@ -4,7 +4,9 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/span.h>
+#endif
 #include <geom/Forward.h>
 #include <geom/Shape/ProcShape.h>
 

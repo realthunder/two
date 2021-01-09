@@ -1,7 +1,9 @@
 #pragma once
 
 #ifdef USE_STL
+#ifndef TWO_STD_MODULES
 #include <vector>
+#endif
 #else
 #include <stl/vector.h>
 #include <stl/buffer.h>

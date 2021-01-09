@@ -8,6 +8,7 @@
 
 //#define TWO(m) two.m
 #define TWO(m) m
+#define TWO2(m, s) m##s
 
 #ifndef TWO_META_GENERATOR
 #define base_   // Base type

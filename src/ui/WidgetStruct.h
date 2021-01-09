@@ -23,7 +23,7 @@ namespace two
 	using FrameFilter = bool(*)(Frame&);
 
 #ifndef _MSC_VER
-	export_ extern template class Graph<Widget>;
+	extern template class Graph<Widget>;
 #endif
 
 	export_ class refl_ TWO_UI_EXPORT Widget : public Graph<Widget>, public ControlNode

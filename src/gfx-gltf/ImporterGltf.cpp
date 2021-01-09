@@ -8,7 +8,7 @@
 #include <bgfx/bgfx.h>
 
 #ifdef TWO_MODULES
-module two.gfx.gltf;
+module TWO(gfx).gltf;
 #else
 #include <stl/algorithm.h>
 #include <stl/hash_base.hpp>

@@ -18,23 +18,23 @@ using stl::string;
 #ifndef USE_STL
 namespace stl
 {
-	export_ extern template class refl_ seque_ vector<glTFAnimationSampler>;
-	export_ extern template class refl_ seque_ vector<glTFAnimationChannel>;
-	export_ extern template class refl_ seque_ vector<glTFMorphTarget>;
-	export_ extern template class refl_ seque_ vector<glTFPrimitive>;
-	export_ extern template class refl_ seque_ vector<glTFBuffer>;
-	export_ extern template class refl_ seque_ vector<glTFBufferView>;
-	export_ extern template class refl_ seque_ vector<glTFAccessor>;
-	export_ extern template class refl_ seque_ vector<glTFImage>;
-	export_ extern template class refl_ seque_ vector<glTFTexture>;
-	export_ extern template class refl_ seque_ vector<glTFMaterial>;
-	export_ extern template class refl_ seque_ vector<glTFMesh>;
-	export_ extern template class refl_ seque_ vector<glTFNode>;
-	export_ extern template class refl_ seque_ vector<glTFSkin>;
-	export_ extern template class refl_ seque_ vector<glTFAnimation>;
-	export_ extern template class refl_ seque_ vector<glTFCamera>;
-	export_ extern template class refl_ seque_ vector<glTFSampler>;
-	export_ extern template class refl_ seque_ vector<glTFScene>;
+	extern template class refl_ seque_ vector<glTFAnimationSampler>;
+	extern template class refl_ seque_ vector<glTFAnimationChannel>;
+	extern template class refl_ seque_ vector<glTFMorphTarget>;
+	extern template class refl_ seque_ vector<glTFPrimitive>;
+	extern template class refl_ seque_ vector<glTFBuffer>;
+	extern template class refl_ seque_ vector<glTFBufferView>;
+	extern template class refl_ seque_ vector<glTFAccessor>;
+	extern template class refl_ seque_ vector<glTFImage>;
+	extern template class refl_ seque_ vector<glTFTexture>;
+	extern template class refl_ seque_ vector<glTFMaterial>;
+	extern template class refl_ seque_ vector<glTFMesh>;
+	extern template class refl_ seque_ vector<glTFNode>;
+	extern template class refl_ seque_ vector<glTFSkin>;
+	extern template class refl_ seque_ vector<glTFAnimation>;
+	extern template class refl_ seque_ vector<glTFCamera>;
+	extern template class refl_ seque_ vector<glTFSampler>;
+	extern template class refl_ seque_ vector<glTFScene>;
 }
 #endif
 

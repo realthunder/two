@@ -2,15 +2,17 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
+#ifdef TWO_MODULES
+module;
 #include <bx/allocator.h>
 #include <bimg/bimg.h>
 #include <bgfx/bgfx.h>
-
-#ifdef TWO_MODULES
-module two.gfx;
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <bx/allocator.h>
+#include <bimg/bimg.h>
+#include <bgfx/bgfx.h>
 #include <stl/string.h>
 #include <stl/algorithm.h>
 #include <pool/Pool.hpp>

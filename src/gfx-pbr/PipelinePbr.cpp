@@ -7,7 +7,7 @@
 #include <bgfx/bgfx.h>
 
 #ifdef TWO_MODULES
-module two.gfx.pbr;
+module TWO(gfx).pbr;
 #else
 #include <ecs/ECS.hpp>
 #include <pool/ObjectPool.hpp>

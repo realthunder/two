@@ -3,12 +3,12 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <utility>
 #endif
 namespace stl
 {
-	using std::swap;
+	export_ using std::swap;
 }
 #else
 #include <stl/move.h>
@@ -30,7 +30,8 @@ namespace stl
 #include <stl/move.h>
 namespace two
 {
-#ifdef TWO_MODULES
+#if 0 //def TWO_MODULES
+	// TODO (hugoam) fix swap() ADL issues
 	export_ template <class T>
 	inline void swap(T& t1, T& t2)
 	{

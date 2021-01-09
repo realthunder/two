@@ -105,9 +105,9 @@ namespace two
 		attr_ TextureChannel m_channel = TextureChannel::All;
 	};
 
-	export_ extern template struct refl_ MaterialParam<Colour>;
-	export_ extern template struct refl_ MaterialParam<float>;
-	export_ extern template struct refl_ MaterialParam<vec4>;
+	extern template struct refl_ MaterialParam<Colour>;
+	extern template struct refl_ MaterialParam<float>;
+	extern template struct refl_ MaterialParam<vec4>;
 
 	export_ struct refl_ TWO_GFX_EXPORT MaterialBase
 	{

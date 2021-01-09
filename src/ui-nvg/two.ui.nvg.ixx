@@ -3,9 +3,9 @@ module;
 #include <infra/Config.h>
 
 export module two.ui.nvg;
-export import std.core;
-export import std.threading;
-export import std.regex;
+import std.core;
+import std.threading;
+import std.regex;
 
 
 #include <ui-nvg/Api.h>

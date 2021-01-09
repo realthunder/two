@@ -21,52 +21,64 @@ namespace two
 		attr_ T m_max = limits<T>::max();
 		attr_ T m_step = T(1);
 
-		T rincrement(T& value, T amount) const;
-		T rdecrement(T& value, T amount) const;
-		void increment(T& value, T amount) const;
-		void decrement(T& value, T amount) const;
+		T rincrement(T& value, T amount) const { T diff = min(m_max - value, amount); value += diff; update(value); return diff; }
+		T rdecrement(T& value, T amount) const { T diff = max(-m_min + value, amount); value -= diff; update(value); return diff; }
+		void increment(T& value, T amount) const { value += amount; update(value); }
+		void decrement(T& value, T amount) const { value -= amount; update(value); }
 
-		void increment(T& value) const;
-		void decrement(T& value) const;
+		void increment(T& value) const { value += m_step; update(value); }
+		void decrement(T& value) const { value -= m_step; update(value); }
 
-		void multiply(T& value, T& base, T multiplier) const;
+		void multiply(T& value, T& base, T multiplier) const { T diff = value - base; base *= multiplier; value = base + diff; update(value); }
 		
-		void modify(T& value, T& base, T val) const;
-		void modify(T& value, T val) const;
+		void modify(T& value, T& base, T val) const { value += val - base; base = value; update(value); }
+		void modify(T& value, T val) const { value = val; update(value); }
 
-		void update(T& value) const;
+		void update(T& value) const
+		{
+			if (value < m_min)
+				value = m_min;
+			if (value > m_max)
+				value = m_max;
+		}
+
 	};
 
-	export_ extern template struct refl_ StatDef<int>;
-	export_ extern template struct refl_ StatDef<float>;
+	extern template struct refl_ StatDef<int>;
+	extern template struct refl_ StatDef<float>;
 
 	export_ template <class T>
 	struct Stat
 	{
 	public:
-		Stat(T& value, const StatDef<T>& def);
+		Stat(T& value, const StatDef<T>& def)
+			//: m_base(base)
+			: m_ref(&value)
+			, m_def(&def)
+		{}
 
-		operator T() const;
 
-		inline T& ref() const;
-		inline T value() const;
+		operator T() const { return *m_ref; }
 
-		inline T min() const;
-		inline T max() const;
-		inline T step() const;
+		inline T& ref() const { return *m_ref; }
+		inline T value() const { return *m_ref; }
 
-		inline void modify(T value);
+		inline T min() const { return m_def->m_min; }
+		inline T max() const { return m_def->m_max; }
+		inline T step() const { return m_def->m_step; }
 
-		inline void increment();
-		inline void decrement();
+		inline void modify(T value) { m_def->modify(*m_ref, value); }
+
+		inline void increment() { m_def->increment(*m_ref); }
+		inline void decrement() { m_def->decrement(*m_ref); }
 
 		//T m_base;
 		T* m_ref;
 		const StatDef<T>* m_def;
 	};
 
-	export_ extern template struct Stat<int>;
-	export_ extern template struct Stat<float>;
+	extern template struct Stat<int>;
+	extern template struct Stat<float>;
 
 #if 0
 	export_ struct refl_ TWO_MATH_EXPORT Ratio : public Stat<float>

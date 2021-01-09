@@ -10,18 +10,18 @@
 
 namespace two
 {
-    enum class VarMode : unsigned int;
+    export_ enum class VarMode : unsigned int;
     
-    struct Address;
-    class Type;
-    class Ref;
-    class None;
-    class Any;
-    class Var;
-    class DoubleDispatch;
-    class Indexer;
-    class Index;
-	class Prototype;
+    export_ struct Address;
+    export_ class Type;
+    export_ class Ref;
+    export_ class None;
+    export_ class Any;
+    export_ class Var;
+    export_ class DoubleDispatch;
+    export_ class Indexer;
+    export_ class Index;
+	export_ class Prototype;
 }
 
 #ifdef TWO_META_GENERATOR
@@ -29,7 +29,7 @@ namespace two
 #include <stl/vector.h>
 namespace stl
 {
-	export_ extern template class refl_ seque_ vector<string>;
-	export_ extern template class refl_ seque_ vector<two::Ref>;
+	extern template class refl_ seque_ vector<string>;
+	extern template class refl_ seque_ vector<two::Ref>;
 }
 #endif

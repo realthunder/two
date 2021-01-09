@@ -2,25 +2,20 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <stdint.h>
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <stdint.h>
+#include <stl/stddef.h>
 #include <math/Axis.h>
 #include <geom/Geom.hpp>
 #include <geom/Intersect.h>
 #include <gfx/Frustum.h>
 #include <gfx/Camera.h>
 #include <gfx/Item.h>
-#endif
-
-#include <stl/stddef.h>
-#include <stdint.h>
-
-#if defined WIN32
-#include <BaseTsd.h>
-typedef SSIZE_T ssize_t;
 #endif
 
 namespace two

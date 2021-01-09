@@ -4,9 +4,12 @@
 
 #ifdef TWO_MODULES
 module;
+#include <mikktspace.h>
 #include <infra/Cpp20.h>
-module two.geom;
+module TWO(geom);
 #else
+#include <mikktspace.h>
+#include <cassert>
 #include <cstdio>
 #include <stl/unordered_map.h>
 #include <stl/map.h>
@@ -19,10 +22,6 @@ module two.geom;
 #include <geom/Geom.h>
 #include <geom/Primitive.hpp>
 #endif
-
-#include <cassert>
-
-#include <mikktspace.h>
 
 namespace two
 {

@@ -14,8 +14,8 @@ function two_defines()
 
     configuration { "cpp-modules" }
         defines {
-            "TWO_CPP_20",
             "TWO_MODULES",
+            "TWO_STD_MODULES",
         }
 
     configuration { "windows", "not wasm*" }

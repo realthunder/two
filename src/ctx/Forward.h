@@ -14,25 +14,25 @@
 
 namespace two
 {
-    enum class Key : uint16_t;
-    enum MouseButtonCode : unsigned int;
-    enum class InputMod : uint8_t;
-    enum class DeviceType : unsigned int;
-    enum class DeviceMask : unsigned int;
-    enum class EventType : unsigned int;
+    export_ enum class Key : uint16_t;
+    export_ enum MouseButtonCode : unsigned int;
+    export_ enum class InputMod : uint8_t;
+    export_ enum class DeviceType : unsigned int;
+    export_ enum class DeviceMask : unsigned int;
+    export_ enum class EventType : unsigned int;
     
     
-    class RenderSystem;
-    class Context;
-    struct InputEvent;
-    struct MouseEvent;
-    struct KeyEvent;
-    struct ModalControl;
-    class ControlNode;
-    struct EventBatch;
-    class EventDispatcher;
-    class InputDevice;
-    class Keyboard;
-    class MouseButton;
-    class Mouse;
+    export_ class RenderSystem;
+    export_ class Context;
+    export_ struct InputEvent;
+    export_ struct MouseEvent;
+    export_ struct KeyEvent;
+    export_ struct ModalControl;
+    export_ class ControlNode;
+    export_ struct EventBatch;
+    export_ class EventDispatcher;
+    export_ class InputDevice;
+    export_ class Keyboard;
+    export_ class MouseButton;
+    export_ class Mouse;
 }

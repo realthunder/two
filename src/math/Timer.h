@@ -11,7 +11,7 @@
 
 namespace two
 {
-	export_ extern TWO_MATH_EXPORT const double c_tick_interval;
+	extern TWO_MATH_EXPORT const double c_tick_interval;
 
 	inline size_t globalTick()
 	{

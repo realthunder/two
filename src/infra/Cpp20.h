@@ -6,7 +6,7 @@
 #include <cfloat>
 #include <climits>
 //#include <cmath>
-//#include <ctime>
+#include <ctime>
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>

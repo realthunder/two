@@ -11,7 +11,7 @@
 namespace two
 {
 #if 0
-	template <class T_Key, class T_Value, class T_Indices, class T_Greater>
+	export_ template <class T_Key, class T_Value, class T_Indices, class T_Greater>
 	void quicksort(span<T_Key> keys, span<T_Value> values, T_Indices& indices, T_Greater greater, const size_t left, const size_t right)
 	{
 		auto swap = [&](size_t first, size_t second)
@@ -69,12 +69,12 @@ namespace two
 	}
 #endif
 	
-	template <class T, class Pred>
+	export_ template <class T, class Pred>
 	void quicksort(span<T> vec, Pred greater, const size_t left, const size_t right)
 	{
 		auto partition = [&](const size_t left, const size_t right)
 		{
-			using stl::swap;
+			using two::swap;
 			const size_t mid = left + (right - left) / 2;
 			const T& pivot = vec[mid];
 			// move the mid point value to the front.
@@ -104,14 +104,14 @@ namespace two
 			quicksort(vec, greater, part + 1, right);
 	}
 
-	template <class T, class Pred>
+	export_ template <class T, class Pred>
 	void quicksort(span<T> values, Pred greater)
 	{
 		if(values.size() > 0)
 			quicksort(values, greater, 0, values.size() - 1);
 	}
 
-	template <class T>
+	export_ template <class T>
 	void quicksort(span<T> values)
 	{
 		auto greater = [](T a, T b) { return a > b; };

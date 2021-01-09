@@ -1,6 +1,14 @@
 -- two library
 
 function two_module()
+    configuration { "cpp-modules" }
+        defines {
+            "TWO_MODULES",
+            "TWO_STD_MODULES",
+        }
+
+    configuration {}
+
     if _OPTIONS["webcompile"] then
         configuration { "wasm*" }
             buildoptions {
@@ -315,7 +323,7 @@ two.ecs     = module("two", "ecs",      TWO_SRC_DIR,    "ecs",      two_module, 
 two.srlz    = module("two", "srlz",     TWO_SRC_DIR,    "srlz",     two_srlz,   nil,            true,       { json11, two.infra, two.type, two.refl })
 -- math
 if TWO_STATIC then      
-  two.math  = module("two", "math",     TWO_SRC_DIR,    "math",     two_math,   uses_two_math,  true,       { stb.rect_pack, two.infra, two.type })
+  two.math  = module("two", "math",     TWO_SRC_DIR,    "math",     two_math,   uses_two_math,  true,       { json11, stb.rect_pack, two.infra, two.type })
 else        
   two.math  = module("two", "math",     TWO_SRC_DIR,    "math",     two_math,   uses_two_math,  true,       { stb.image, stb.rect_pack, two.infra, two.type })
 end     
@@ -329,8 +337,8 @@ two.fract   = module("two", "fract",    TWO_SRC_DIR,    "fract",    two_module, 
 two.lang    = module("two", "lang",     TWO_SRC_DIR,    "lang",     two_lang,   nil,            true,       { lua, wren, two.infra, two.type, two.pool, two.refl })
 -- ui
 two.ctx     = module("two", "ctx",      TWO_SRC_DIR,    "ctx",      two_module, nil,            true,       { two.infra, two.type, two.math })
-two.ui      = module("two", "ui",       TWO_SRC_DIR,    "ui",       two_ui,     uses_two_ui,    true,       { two.infra, two.type, two.math, two.ctx })
-two.uio     = module("two", "uio",      TWO_SRC_DIR,    "uio",      two_module, nil,            true,       { two.infra, two.tree, two.type, two.ecs, two.pool, two.refl, two.math, two.lang, two.ctx, two.ui })
+two.ui      = module("two", "ui",       TWO_SRC_DIR,    "ui",       two_ui,     uses_two_ui,    true,       { two.infra, two.type, two.tree, two.math, two.ctx })
+two.uio     = module("two", "uio",      TWO_SRC_DIR,    "uio",      two_module, nil,            true,       { two.infra, two.type, two.tree, two.ecs, two.pool, two.refl, two.math, two.lang, two.ctx, two.ui })
 -- snd
 two.snd     = module("two", "snd",      TWO_SRC_DIR,    "snd",      two_snd,    uses_two_snd,   true,       { ogg, vorbis, vorbisfile, two.type, two.math })
 
@@ -353,8 +361,8 @@ two.uibackend   = two_ui_backend()
 
 --                   base   name        root path       sub path    self decl   usage decl      reflect     dependencies
 -- gfx
-two.bgfx    = module("two", "bgfx",     TWO_SRC_DIR,    "bgfx",     two_module, uses_two_bgfx,  true,       { bx, bimg, bimg.decode, bimg.encode, bgfx, two.infra, two.type, two.math, two.ctx })
-two.gfx     = module("two", "gfx",      TWO_SRC_DIR,    "gfx",      two_gfx,    uses_two_gfx,   true,       { tracy, json11, meshopt, culling, bgfx, shaderc, two.infra, two.jobs, two.type, two.pool, two.ecs, two.math, two.geom, two.ctx, two.bgfx })
+two.bgfx    = module("two", "bgfx",     TWO_SRC_DIR,    "bgfx",     two_module, uses_two_bgfx,  true,       { bx, bimg, bimg.decode, bimg.encode, bgfx, two.infra, two.type, two.math, two.ctx, two.ctxbackend })
+two.gfx     = module("two", "gfx",      TWO_SRC_DIR,    "gfx",      two_gfx,    uses_two_gfx,   true,       { tracy, json11, meshopt, culling, bgfx, shaderc, two.infra, two.type, two.tree, two.jobs, two.pool, two.ecs, two.math, two.geom, two.ctx, two.bgfx })
 -- gltf                                                     
 two.gltf    = module("two", "gltf",     TWO_SRC_DIR,    "gltf",     two_gltf,   nil,            true,       { json11, base64, two.infra, two.type, two.refl, two.srlz, two.math })
 -- gfx exts                                                 
@@ -380,8 +388,8 @@ end
 --two_vec(true)
 --two.db = module("two", "db", TWO_SRC_DIR, "db", { two.type, two.util })
 
-two.two = { two.infra, two.type, two.tree, two.jobs, two.pool, two.refl, two.ecs, two.srlz, two.math, two.geom, two.lang, two.ctx, two.ui, two.uio, two.bgfx, two.gfx, two.gfx.ui,
-            two.ctxbackend, two.uibackend, two.frame }
+two.two = { two.infra, two.type, two.tree, two.jobs, two.pool, two.refl, two.ecs, two.srlz, two.math, two.geom, two.lang, two.ctx, two.ctxbackend, two.ui, two.uio, two.bgfx, two.gfx, two.gfx.ui,
+            two.uibackend, two.frame }
 two.opts = { two.noise, two.wfc, two.fract, two.gfx.pbr, two.gfx.obj, two.gltf, two.gfx.gltf, two.gfx.edit, two.tool, two.wfc.gfx }
 
 if _OPTIONS["sound"] then

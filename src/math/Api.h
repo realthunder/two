@@ -12,12 +12,13 @@
 #include <math/Random.h>
 #include <math/Range.h>
 #include <math/Stat.h>
+#include <math/Stat.hpp>
 //#include <math/Stream.h>
 #include <math/Structs.h>
 #include <math/Timer.h>
 #include <math/Types.h>
 #include <math/Vec.h>
-//#include <math/VecJson.h>
+#include <math/VecJson.h>
 //#include <math/Vec.hpp>
 #include <math/Vec.hpp>
 

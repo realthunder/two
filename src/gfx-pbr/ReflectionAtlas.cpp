@@ -7,7 +7,7 @@
 #include <bgfx/bgfx.h>
 
 #ifdef TWO_MODULES
-module two.gfx.pbr;
+module TWO(gfx).pbr;
 #else
 #include <stl/algorithm.h>
 #include <gfx/Renderer.h>

@@ -5,7 +5,10 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.ui;
+#include <cstring>
+#include <stb_rect_pack.h>
+#include <stb_image.h>
+module TWO(math);
 #else
 #include <stb_rect_pack.h>
 #include <stb_image.h>
@@ -14,8 +17,6 @@ module two.ui;
 #include <math/Interp.h>
 #include <math/ImageAtlas.h>
 #endif
-
-#include <cstring>
 
 namespace two
 {

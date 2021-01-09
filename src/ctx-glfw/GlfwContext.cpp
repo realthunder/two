@@ -3,33 +3,13 @@
 //  This notice and the license may not be removed or altered from any source distribution.
 
 
-#include <GLFW/glfw3.h>
-
-#if defined TWO_PLATFORM_WINDOWS
-	#define GLFW_EXPOSE_NATIVE_WIN32
-#elif defined TWO_PLATFORM_LINUX
-	#define GLFW_EXPOSE_NATIVE_X11
-	#define GLFW_EXPOSE_NATIVE_GLX
-#elif defined TWO_PLATFORM_OSX
-	#define GLFW_EXPOSE_NATIVE_COCOA
-#endif
-
-#include <GLFW/glfw3native.h>
-
-#if defined TWO_PLATFORM_WINDOWS
-	#undef max
-	#undef min
-	#undef near
-	#undef far
-	#undef NEAR
-	#undef FAR
-#elif defined TWO_PLATFORM_LINUX
-	#undef None
-#endif
-
 #ifdef TWO_MODULES
-module two.ctx.glfw;
+module;
+#include <infra/Cpp20.h>
+#include <ctx-glfw/Glfw.h>
+module TWO2(ctx, glfw);
 #else
+#include <ctx-glfw/Glfw.h>
 #include <cstdio>
 #include <infra/Log.h>
 #include <math/Math.h>

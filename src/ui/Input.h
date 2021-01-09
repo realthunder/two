@@ -119,7 +119,7 @@ namespace ui
 	template <> func_ bool field<float>(Widget& parent, cstring name, float& value, StatDef<float> def, bool reverse = false
 #endif
 
-	inline void field_label(Widget& parent, cstring field, cstring value)
+	export_ inline void field_label(Widget& parent, cstring field, cstring value)
 	{
 		Widget& self = row(parent);
 		label(self, field);

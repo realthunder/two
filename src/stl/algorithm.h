@@ -2,21 +2,21 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <algorithm>
 #endif
 namespace stl
 {
-	using std::move;
-	using std::swap;
-	using std::find;
-	using std::find_if;
-	using std::equal;
-	using std::includes;
-	using std::remove;
-	using std::remove_if;
-	using std::transform;
-	using std::reverse;
+	export_ using std::move;
+	export_ using std::swap;
+	export_ using std::find;
+	export_ using std::find_if;
+	export_ using std::equal;
+	export_ using std::includes;
+	export_ using std::remove;
+	export_ using std::remove_if;
+	export_ using std::transform;
+	export_ using std::reverse;
 }
 #else
 #include <stl/vector.h>

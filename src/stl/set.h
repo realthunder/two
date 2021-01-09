@@ -2,10 +2,13 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
+#ifndef TWO_STD_MODULES
 #include <set>
+#endif
 namespace stl
 {
-	using std::set;
+	export_ using std::set;
+	export_ using std::unordered_set;
 }
 #else
 #include <stl/unordered_set.h>
@@ -19,4 +22,5 @@ namespace stl
 namespace two
 {
 	export_ using stl::set;
+	export_ using stl::unordered_set;
 }

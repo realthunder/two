@@ -3,12 +3,12 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <utility>
 #endif
 namespace stl
 {
-	using std::move;
+	export_ using std::move;
 }
 #else
 #include <stl/traits.h>
@@ -24,5 +24,5 @@ namespace stl
 
 namespace two
 {
-	using stl::move;
+	export_ using stl::move;
 }

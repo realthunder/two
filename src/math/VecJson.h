@@ -4,9 +4,6 @@
 
 #pragma once
 
-#ifndef TWO_MODULES
-#include <srlz/Serial.h>
-#endif
 #include <math/Colour.h>
 #include <math/Vec.h>
 
@@ -17,8 +14,15 @@ namespace glm
 }
 #endif
 
+namespace json11
+{
+	class Json;
+}
+
 namespace two
 {
+	export_ using Json = json11::Json;
+
 	export_ TWO_MATH_EXPORT void from_json(const Json& j, vec3& vec);
 	export_ TWO_MATH_EXPORT void from_json(const Json& j, quat& quat);
 	export_ TWO_MATH_EXPORT void from_json(const Json& j, mat4& mat);

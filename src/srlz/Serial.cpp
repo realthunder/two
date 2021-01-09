@@ -5,7 +5,6 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-#include <json11.hpp>
 module TWO(srlz);
 #else
 #include <string>

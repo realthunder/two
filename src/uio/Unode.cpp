@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.uio;
+module TWO(uio);
 #else
 #include <ui/WindowStruct.h>
 #include <ui/ContainerStruct.h>

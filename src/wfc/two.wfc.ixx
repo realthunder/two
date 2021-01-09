@@ -3,9 +3,9 @@ module;
 #include <infra/Config.h>
 
 export module two.wfc;
-export import std.core;
-export import std.threading;
-export import std.regex;
+import std.core;
+import std.threading;
+import std.regex;
 
 export import json11;
 export import two.infra;

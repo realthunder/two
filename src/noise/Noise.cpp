@@ -6,7 +6,7 @@
 #include <climits>
 
 #ifdef TWO_MODULES
-module two.noise;
+module TWO(noise);
 #else
 #include <math/Random.h>
 #include <noise/Noise.h>

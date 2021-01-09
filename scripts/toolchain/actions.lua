@@ -58,10 +58,10 @@ function write_module_xx(m, hack2)
     else
         p("export module TWO(" .. m.dotname2 .. ");")
     end
-    p("export import std.core;")
-  --p("export import std.io;")
-    p("export import std.threading;")
-    p("export import std.regex;")
+    p("import std.core;")
+  --p("import std.io;")
+    p("import std.threading;")
+    p("import std.regex;")
     p("")
     for _, dep in ipairs(m.deps or {}) do
         if dep.cppmodule then

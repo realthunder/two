@@ -2,18 +2,19 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <map>
 #endif
 namespace stl
 {
-	using std::map;
+	export_ using std::map;
+	export_ using std::unordered_map;
 }
 #else
 #include <stl/unordered_map.h>
 namespace stl
 {
-	template <class K, class T>
+	export_ template <class K, class T>
 	using map = stl::unordered_map<K, T>;
 }
 #endif
@@ -21,4 +22,5 @@ namespace stl
 namespace two
 {
 	export_ using stl::map;
+	export_ using stl::unordered_map;
 }

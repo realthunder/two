@@ -5,7 +5,7 @@
 #pragma once
 
 #include <infra/Config.h>
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <cstddef>
 #endif
 

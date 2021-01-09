@@ -164,7 +164,7 @@ namespace two
 		Translated = uint16_t(1 << 15) // last bit reserved for translated flag
 	};
 
-	inline Key translate(Key key) { return Key(unsigned(key) | unsigned(Key::Translated)); }
+	export_ inline Key translate(Key key) { return Key(unsigned(key) | unsigned(Key::Translated)); }
 
 	export_ enum refl_ MouseButtonCode : unsigned int
 	{

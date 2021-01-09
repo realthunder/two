@@ -16,7 +16,7 @@
 
 namespace two
 {
-	class BufferArray
+	export_ class BufferArray
 	{
 	public:
 		BufferArray();
@@ -73,7 +73,7 @@ namespace two
 
 	using cstring = const char*;
 
-	class EntityStream : public BufferArray
+	export_ class EntityStream : public BufferArray
 	{
 	public:
 		EntityStream();
@@ -87,7 +87,7 @@ namespace two
 		uint64_t m_prototype;
 	};
 
-	class GridECS : public BufferArray
+	export_ class GridECS : public BufferArray
 	{
 	public:
 		vector<uint32_t> m_available;
@@ -99,7 +99,7 @@ namespace two
 		void destroy(uint32_t handle);
 	};
 
-	class ECS
+	export_ class ECS
 	{
 	public:
 		uint8_t m_index = 0;
@@ -167,7 +167,7 @@ namespace two
 		void loop_ent(T_Function action);
 	};
 
-	template <unsigned EcsType, unsigned NumComponents>
+	export_ template <unsigned EcsType, unsigned NumComponents>
 	class tECS : public ECS
 	{
 	public:
@@ -196,12 +196,12 @@ namespace two
 	inline T* try_asa(const Entity* entity) { if(entity && isa<T>(*entity)) return &asa<T>(*entity); else return nullptr; }
 
 #ifdef TWO_ECS_TYPED
-	struct EntityRef {};
+	export_ struct EntityRef {};
 
 	export_ template <> TWO_ECS_EXPORT Type& type<EntityRef>();
 
-	inline Ref ent_ref(uint32_t entity) { return Ref((void*)uintptr_t(entity), type<EntityRef>()); }
-	inline uint32_t as_ent(const Ref& ref) { return ref.m_type->is<EntityRef>() ? uint32_t((uintptr_t)ref.m_value) : UINT32_MAX; }
+	export_ inline Ref ent_ref(uint32_t entity) { return Ref((void*)uintptr_t(entity), type<EntityRef>()); }
+	export_ inline uint32_t as_ent(const Ref& ref) { return ref.m_type->is<EntityRef>() ? uint32_t((uintptr_t)ref.m_value) : UINT32_MAX; }
 #endif
 
 	inline string entity_prototype(const Entity& entity)
@@ -210,7 +210,7 @@ namespace two
 		return stream.m_name;
 	}
 
-	template <class T>
+	export_ template <class T>
 	struct refl_ struct_ ComponentHandle : public Entity
 	{
 		ComponentHandle();
@@ -226,7 +226,7 @@ namespace two
 		const T& operator*() const;
 	};
 
-	template <class T>
+	export_ template <class T>
 	struct refl_ struct_ nocopy_ EntityHandle : public ComponentHandle<T>
 	{
 		EntityHandle();

@@ -10,6 +10,7 @@ function dep(namespace, name, cppmodule, usage_decl, deps)
         dotname = string.gsub(name, "-", "."),
         dotname2 = string.gsub(name, "-", "."),
         idname = name,
+        path = path.join(TWO_SRC_DIR, "3rdparty"),
         usage_decl = usage_decl,
         deps = deps,
     }

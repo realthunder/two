@@ -7,7 +7,7 @@
 #include <infra/Config.h>
 
 #include <stdint.h>
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <cmath>
 #include <cstdlib>
 #endif

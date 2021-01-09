@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.gfx.obj;
+module TWO(gfx).obj;
 #else
 #include <stl/algorithm.h>
 #include <infra/Log.h>

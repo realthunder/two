@@ -32,9 +32,9 @@ namespace two
 		vector<unique<Pool>> m_pools;
 	};
 
-	//export_ extern TWO_POOL_EXPORT vector<unique<Pool>> g_pool_makers;
+	//export_extern TWO_POOL_EXPORT vector<unique<Pool>> g_pool_makers;
 	export_ extern TWO_POOL_EXPORT vector<unique<Pool>> g_pools;
 
-	template <class T>
+	export_ template <class T>
 	inline TPool<T>& global_pool();
 }

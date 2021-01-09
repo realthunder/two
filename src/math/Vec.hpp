@@ -19,66 +19,6 @@
 
 namespace two
 {
-	template <class T>
-	template <class V>
-	inline v2<T>::v2(V v) : x(T(v.x)), y(T(v.y)) {}
-	template <class T>
-	inline T v2<T>::operator[](uint index) const { return f[index]; }
-	template <class T>
-	inline T& v2<T>::operator[](uint index) { return f[index]; }
-	template <class T>
-	inline T v2<T>::operator[](Axis a) const { return f[size_t(a)]; }
-	template <class T>
-	inline T& v2<T>::operator[](Axis a) { return f[size_t(a)]; }
-	template <class T>
-	inline bool v2<T>::operator==(const v2& other) const { return x == other.x && y == other.y; }
-	template <class T>
-	inline bool v2<T>::operator!=(const v2& other) const { return x != other.x || y != other.y; }
-
-	template <class T>
-	inline v3<T>::v3(v2<T> a, T z) : x(a.x), y(a.y), z(z) {}
-	template <class T>
-	template <class V>
-	inline v3<T>::v3(V v) : x(T(v.x)), y(T(v.y)), z(T(v.z)) {}
-	template <class T>
-	inline T v3<T>::operator[](uint index) const { return f[index]; }
-	template <class T>
-	inline T& v3<T>::operator[](uint index) { return f[index]; }
-	template <class T>
-	inline T v3<T>::operator[](Axis a) const { return f[size_t(a)]; }
-	template <class T>
-	inline T& v3<T>::operator[](Axis a) { return f[size_t(a)]; }
-	template <class T>
-	inline bool v3<T>::operator==(const v3& other) const { return x == other.x && y == other.y && z == other.z; }
-	template <class T>
-	inline bool v3<T>::operator!=(const v3& other) const { return x != other.x || y != other.y || z != other.z; }
-
-	template <class T>
-	inline v4<T>::v4(v3<T> a, T w) : x(a.x), y(a.y), z(a.z), w(w) {}
-	template <class T>
-	inline v4<T>::v4(T x, v3<T> b) : x(x), y(b.x), z(b.y), w(b.z) {}
-	template <class T>
-	inline v4<T>::v4(v2<T> a, v2<T> b) : x(a.x), y(a.y), z(b.x), w(b.y) {}
-	template <class T>
-	inline v4<T>::v4(v2<T> a, T z, T w) : x(a.x), y(a.y), z(z), w(w) {}
-	template <class T>
-	inline v4<T>::v4(T x, T y, v2<T> b) : x(x), y(y), z(b.x), w(b.y) {}
-	template <class T>
-	template <class V>
-	inline v4<T>::v4(V v) : x(T(v.x)), y(T(v.y)), z(T(v.z)), w(T(v.w)) {}
-	template <class T>
-	inline T v4<T>::operator[](uint index) const { return f[index]; }
-	template <class T>
-	inline T& v4<T>::operator[](uint index) { return f[index]; }
-	template <class T>
-	inline T v4<T>::operator[](Axis axis) const { return f[size_t(axis)]; }
-	template <class T>
-	inline T& v4<T>::operator[](Axis axis) { return f[size_t(axis)]; }
-	template <class T>
-	inline bool v4<T>::operator==(const v4& other) const { return x == other.x && y == other.y && z == other.z && w == other.w; }
-	template <class T>
-	inline bool v4<T>::operator!=(const v4& other) const { return x != other.x || y != other.y || z != other.z || w != other.w; }
-
 	// Experimental swizzling
 	export_ template <class T> inline typename T::type2 xy(const T& v)
 	{
@@ -515,13 +455,13 @@ namespace two
 	//export_ inline vec3 muln(const mat4& mat, const vec3& n) { return vec3(normalize(mat * vec4(n, 0.f))); }
 	export_ inline vec4 mult(const mat4& mat, const vec4& t) { return vec4(vec3(mat * vec4(vec3(t), 0.f)), t.w); }
 
-	inline quat facing(const vec3& direction)
+	export_ inline quat facing(const vec3& direction)
 	{
 		float angle = atan2(direction.x, direction.z);
 		return { cosf(angle / 2.f), 0.f, sinf(angle / 2.f), 0.f };
 	}
 
-	inline mat4 rotation(const mat4& mat)
+	export_ inline mat4 rotation(const mat4& mat)
 	{
 		mat4 result = mat;
 		result[3] = vec4(0.f, 0.f, 0.f, 1.f);

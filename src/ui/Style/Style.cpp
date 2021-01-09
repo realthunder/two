@@ -4,9 +4,11 @@
 
 #ifdef TWO_MODULES
 module;
+#include <cstdio>
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
+#include <cstdio>
 #include <stl/algorithm.h>
 #include <infra/StringConvert.h>
 #include <infra/Reverse.h>
@@ -18,8 +20,6 @@ module two.ui;
 #include <ui/Input.h>
 #include <ui/UiWindow.h>
 #endif
-
-#include <cstdio>
 
 namespace two
 {
@@ -137,12 +137,15 @@ namespace two
 	{
 		// turn off non-skinnable state flags
 		state = static_cast<WidgetState>(state & ~(CREATED | ACTIVATED | CLOSED));
+#ifndef TWO_MODULES
+		// TODO (hugoam) reverse_adapt
 		for(Subskin& subskin : reverse_adapt(m_skins))
 			if(state == subskin.state) // exact match
 				return subskin.skin;
 		for(Subskin& subskin : reverse_adapt(m_skins))
 			if(state & subskin.state) // partial match
 				return subskin.skin;
+#endif
 		return m_skin;
 	}
 

@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
 #include <ui/Button.h>
 #include <ui/Scrollbar.h>

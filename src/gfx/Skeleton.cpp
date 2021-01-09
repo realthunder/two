@@ -2,20 +2,19 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
 #ifdef TWO_MODULES
-module two.gfx;
+module;
+#include <cstdio>
+#include <gfx/Cpp20.h>
+module TWO(gfx);
 #else
+#include <algorithm>
+#include <cstdio>
 #include <infra/Sort.h>
 #include <math/Vec.hpp>
 #include <gfx/Skeleton.h>
 #include <gfx/Renderer.h>
 #endif
-
-#include <algorithm>
-
-#include <cstdio>
 
 #define SKELETON_TEXTURE_SIZE 256
 

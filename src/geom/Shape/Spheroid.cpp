@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.geom;
+module TWO(geom);
 #else
 #include <geom/Shape/Spheroid.h>
 #include <geom/Shape/Circle.h>

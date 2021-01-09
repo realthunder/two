@@ -4,17 +4,17 @@
 
 #ifdef TWO_MODULES
 module;
+#include <cassert>
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
+#include <cassert>
 #include <stl/string.h>
 #include <tree/Graph.hpp>
 #include <ui/Widget.h>
 #include <ui/WidgetStruct.h>
 #include <ui/Style/Styles.h>
 #endif
-
-#include <cassert>
 
 namespace two
 {

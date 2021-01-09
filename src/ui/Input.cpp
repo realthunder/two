@@ -5,8 +5,9 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
+#include <iostream>
 #include <math/Vec.hpp>
 #include <ui/Input.h>
 #include <ui/Input.hpp>
@@ -18,8 +19,6 @@ module two.ui;
 #include <ui/Container.h>
 #include <ui/Style/Skin.h>
 #endif
-
-#include <iostream>
 
 namespace two
 {

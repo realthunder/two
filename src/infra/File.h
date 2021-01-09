@@ -54,24 +54,24 @@ namespace two
 
 	export_ TWO_INFRA_EXPORT void visit_files_recursive(const string& path, FileVisitor visit_file, const string& prefix = "");
 
-	inline string file_name(const string& path)
+	export_ inline string file_name(const string& path)
 	{
 		string directory = file_directory(path);
 		return path.substr(directory.size() + 1);
 	}
 
-	inline string file_label(const string& path)
+	export_ inline string file_label(const string& path)
 	{
 		string directory = file_directory(path);
 		return path.substr(directory.size() + 1, path.rfind(".") + 1);
 	}
 
-	inline string file_noext(const string& path)
+	export_ inline string file_noext(const string& path)
 	{
 		return path.substr(0, path.rfind("."));
 	}
 
-	inline string file_extension(const string& path)
+	export_ inline string file_extension(const string& path)
 	{
 		return path.substr(path.rfind(".") + 1);
 	}

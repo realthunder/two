@@ -5,8 +5,9 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.geom;
+module TWO(geom);
 #else
+#include <cassert>
 #include <geom/Geom.hpp>
 #include <math/Axes.h>
 #include <geom/Shape/Circle.h>
@@ -15,8 +16,6 @@ module two.geom;
 #include <geom/Intersect.h>
 #include <geom/Geom.h>
 #endif
-
-#include <cassert>
 
 namespace two
 {

@@ -5,7 +5,9 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.geom;
+module TWO(geom);
+// TODO (hugoam) modules FUCK THIS SHIT
+// #include <infra/Swap.h>
 #else
 #include <math/Axes.h>
 #include <geom/Types.h>
@@ -16,7 +18,23 @@ module two.geom;
 #include <geom/Aabb.h>
 #endif
 
-#include <stl/swap.h>
+#ifdef TWO_MODULES
+// TODO (hugoam) modules FUCK THIS SHIT
+namespace two
+{
+	namespace
+	{
+		template <class T>
+		inline void swap(T& t1, T& t2)
+		{
+			T temp = move(t1);
+			t1 = move(t2);
+			t2 = move(temp);
+		}
+	}
+}
+
+#endif
 
 namespace two
 {

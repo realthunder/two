@@ -3,11 +3,11 @@ module;
 #include <infra/Config.h>
 
 export module two.math;
-export import std.core;
-export import std.threading;
-export import std.regex;
+import std.core;
+import std.threading;
+import std.regex;
 
-//export import stb.rect_pack;
+export import stb.rect_pack;
 export import two.infra;
 export import two.type;
 

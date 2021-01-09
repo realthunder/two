@@ -4,10 +4,9 @@
 #include <stl/stddef.h>
 #include <stl/span.h>
 
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <cassert>
 #include <cstdlib>
-
 #include <atomic>
 #include <utility>
 #endif

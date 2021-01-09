@@ -5,8 +5,9 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.ui;
+module TWO(ui);
 #else
+#include <cstdio>
 #include <infra/Reverse.h>
 #include <math/Vec.hpp>
 #include <ui/Frame/Solver.h>
@@ -15,8 +16,6 @@ module two.ui;
 #include <ui/Frame/Caption.h>
 #include <ui/Frame/Layer.h>
 #endif
-
-#include <cstdio>
 
 #define DEBUG_BOUNDS 0
 #define DEBUG_LAYOUT 0
@@ -59,8 +58,11 @@ namespace two
 		//for(FrameSolver* solver : solvers)
 		//	solver->sync();
 
+#ifndef TWO_MODULES
+		// TODO (hugoam) reverse_adapt
 		for(FrameSolver* solver : reverse_adapt(solvers))
 			solver->compute();
+#endif
 
 		for(FrameSolver* solver : solvers)
 			solver->layout();

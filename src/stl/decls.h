@@ -2,13 +2,13 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
-#ifndef TWO_MODULES
+#ifndef TWO_STD_MODULES
 #include <cstddef>
 #endif
 namespace stl
 {
-	template <class T> struct span;
-	template <class T, size_t Size> struct array;
+	export_ template <class T> struct span;
+	export_ template <class T, size_t Size> struct array;
 }
 #ifndef TWO_MODULES
 #include <string>
@@ -17,9 +17,9 @@ namespace stl
 #endif
 namespace stl
 {
-	using std::string;
-	using std::function;
-	using std::vector;
+	export_ using std::string;
+	export_ using std::function;
+	export_ using std::vector;
 }
 #else
 #include <stl/allocator.h>

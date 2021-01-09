@@ -4,8 +4,10 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/vector.h>
 #include <math/Vec.h>
+#endif
 #include <geom/Forward.h>
 
 namespace two

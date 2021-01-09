@@ -5,7 +5,7 @@
 #include <gfx/Cpp20.h>
 
 #ifdef TWO_MODULES
-module two.gfx;
+module TWO(gfx);
 #else
 #include <stl/algorithm.h>
 #include <gfx/Types.h>
