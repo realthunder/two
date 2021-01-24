@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6568, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6568, "end": 8388, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8388, "end": 12341, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12341, "end": 13435, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13435, "end": 15096, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 15096, "end": 15980, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15980, "end": 16342, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16342, "end": 17436, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17436, "end": 18241, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18241, "end": 2606651, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606651, "end": 2660670, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660670, "end": 2835574, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835574, "end": 3185254, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185254, "end": 3534934, "audio": 0}], "remote_package_size": 3534934, "package_uuid": "5e9bcb56-9a08-4ed1-83b0-003b39831b81"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6568, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6568, "end": 8388, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8388, "end": 12341, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12341, "end": 13435, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13435, "end": 15096, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 15096, "end": 15980, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 15980, "end": 16342, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16342, "end": 17436, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17436, "end": 18241, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18241, "end": 2606651, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2606651, "end": 2660670, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2660670, "end": 2835574, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835574, "end": 3185254, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185254, "end": 3534934, "audio": 0}], "remote_package_size": 3534934, "package_uuid": "f202ec7f-2a5e-4f45-806b-740acb1e13ab"});
   
   })();
   
@@ -7478,14 +7478,12 @@ var ASM_CONSTS = {
       function makeBufferEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BufferBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.BufferBindingType[typeInt],
           "hasDynamicOffset":
             (HEAP8[(((entryPtr)+(8))>>0)] !== 0),
           "minBindingSize":
@@ -7496,28 +7494,24 @@ var ASM_CONSTS = {
       function makeSamplerEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.SamplerBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.SamplerBindingType[typeInt],
         };
       }
   
       function makeTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var sampleType = WebGPU.TextureSampleType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (sampleType === undefined)
-          return undefined;
+        var sampleTypeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (sampleTypeInt === 0) return undefined;
   
         return {
-          "sampleType": sampleType,
+          "sampleType": WebGPU.TextureSampleType[sampleTypeInt],
           "viewDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "multisampled":
@@ -7528,14 +7522,12 @@ var ASM_CONSTS = {
       function makeStorageTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var access = WebGPU.StorageTextureAccess[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (access === undefined)
-          return undefined;
+        var accessInt =
+          HEAPU32[(((entryPtr)+(4))>>2)]
+        if (accessInt === 0) return undefined;
   
         return {
-          "access": access,
+          "access": WebGPU.StorageTextureAccess[accessInt],
           "format": WebGPU.TextureFormat[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
@@ -7567,10 +7559,10 @@ var ASM_CONSTS = {
       function makeEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BindingType[
-          HEAPU32[(((entryPtr)+(8))>>2)]]
+        var typeInt =
+          HEAPU32[(((entryPtr)+(8))>>2)];
   
-        if (type !== undefined)
+        if (typeInt !== 0)
           return makeDeprecatedEntry(entryPtr);
   
         return {
@@ -7585,84 +7577,10 @@ var ASM_CONSTS = {
         };
       }
   
-      function makeDeprecatedEntryFromNewModel(entryPtr) {
-        var entry = makeEntry(entryPtr);
-        if (entry.type !== undefined)
-          return entry;
-  
-        if (entry.buffer !== undefined) {
-          var type;
-          if (entry.buffer.type === 'uniform')
-            type = 'uniform-buffer'
-          else if (entry.buffer.type === 'storage')
-            type = 'storage-buffer'
-          else if (entry.buffer.type === 'read-only-storage')
-            type = 'readonly-storage-buffer'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "hasDynamicOffset": entry.buffer.hasDynamicOffset,
-            "minBufferBindingSize": entry.buffer.minBindingSize,
-          };
-        } else if (entry.sampler !== undefined) {
-          var type;
-          if (entry.sampler.type === 'filtering')
-            type = 'sampler'
-          else if (entry.sampler.type === 'comparison')
-            type = 'comparison-sampler'
-            
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type
-          };
-        } else if (entry.texture !== undefined) {
-          var type;
-          if (entry.texture.multisampled)
-            type = 'multisampled-texture'
-          else
-            type = 'sampled-texture'
-  
-          var componentType;
-          if (entry.texture.sampleType === 'float')
-            componentType = 'float'
-          else if (entry.texture.sampleType === 'uint')
-            componentType = 'uint'
-          else if (entry.texture.sampleType === 'sint')
-            componentType = 'sint'
-          else if (entry.texture.sampleType === 'depth')
-            componentType = 'depth-comparison'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.texture.viewDimension,
-            "textureComponentType": componentType,
-          };
-        } else if (entry.storageTexture !== undefined) {
-          var type;
-          if (entry.storageTexture.access === 'read-only')
-            type = 'readonly-storage-texture'
-          else if (entry.storageTexture.access === 'write-only')
-            type = 'writeonly-storage-texture'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.storageTexture.viewDimension,
-            "storageTextureFormat": entry.storageTexture.format,
-          };
-        }
-      }
-  
       function makeEntries(count, entriesPtrs) {
         var entries = [];
         for (var i = 0; i < count; ++i) {
-          entries.push(makeDeprecatedEntryFromNewModel(entriesPtrs +
+          entries.push(makeEntry(entriesPtrs +
               104 * i));
         }
         return entries;

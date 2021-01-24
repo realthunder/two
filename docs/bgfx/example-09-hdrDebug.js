@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2886, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2886, "end": 3980, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3980, "end": 8234, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8234, "end": 9328, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9328, "end": 15222, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15222, "end": 17880, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17880, "end": 19953, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19953, "end": 21047, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 21047, "end": 26252, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 26252, "end": 28074, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 28074, "end": 31302, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 31302, "end": 33716, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33716, "end": 38692, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38692, "end": 2627102, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2627102, "end": 15210082, "audio": 0}], "remote_package_size": 15210082, "package_uuid": "69379d8a-dede-4eed-9684-c2b148059ced"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2886, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2886, "end": 3980, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 3980, "end": 8234, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8234, "end": 9328, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9328, "end": 15222, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15222, "end": 17880, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 17880, "end": 19953, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 19953, "end": 21047, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 21047, "end": 26252, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 26252, "end": 28074, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 28074, "end": 31302, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 31302, "end": 33716, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 33716, "end": 38692, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 38692, "end": 2627102, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2627102, "end": 15210082, "audio": 0}], "remote_package_size": 15210082, "package_uuid": "288c9745-0a18-4eb8-ac45-11cd6ae59020"});
   
   })();
   
@@ -7478,14 +7478,12 @@ var ASM_CONSTS = {
       function makeBufferEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BufferBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.BufferBindingType[typeInt],
           "hasDynamicOffset":
             (HEAP8[(((entryPtr)+(8))>>0)] !== 0),
           "minBindingSize":
@@ -7496,28 +7494,24 @@ var ASM_CONSTS = {
       function makeSamplerEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.SamplerBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.SamplerBindingType[typeInt],
         };
       }
   
       function makeTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var sampleType = WebGPU.TextureSampleType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (sampleType === undefined)
-          return undefined;
+        var sampleTypeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (sampleTypeInt === 0) return undefined;
   
         return {
-          "sampleType": sampleType,
+          "sampleType": WebGPU.TextureSampleType[sampleTypeInt],
           "viewDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "multisampled":
@@ -7528,14 +7522,12 @@ var ASM_CONSTS = {
       function makeStorageTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var access = WebGPU.StorageTextureAccess[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (access === undefined)
-          return undefined;
+        var accessInt =
+          HEAPU32[(((entryPtr)+(4))>>2)]
+        if (accessInt === 0) return undefined;
   
         return {
-          "access": access,
+          "access": WebGPU.StorageTextureAccess[accessInt],
           "format": WebGPU.TextureFormat[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
@@ -7567,10 +7559,10 @@ var ASM_CONSTS = {
       function makeEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BindingType[
-          HEAPU32[(((entryPtr)+(8))>>2)]]
+        var typeInt =
+          HEAPU32[(((entryPtr)+(8))>>2)];
   
-        if (type !== undefined)
+        if (typeInt !== 0)
           return makeDeprecatedEntry(entryPtr);
   
         return {
@@ -7585,84 +7577,10 @@ var ASM_CONSTS = {
         };
       }
   
-      function makeDeprecatedEntryFromNewModel(entryPtr) {
-        var entry = makeEntry(entryPtr);
-        if (entry.type !== undefined)
-          return entry;
-  
-        if (entry.buffer !== undefined) {
-          var type;
-          if (entry.buffer.type === 'uniform')
-            type = 'uniform-buffer'
-          else if (entry.buffer.type === 'storage')
-            type = 'storage-buffer'
-          else if (entry.buffer.type === 'read-only-storage')
-            type = 'readonly-storage-buffer'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "hasDynamicOffset": entry.buffer.hasDynamicOffset,
-            "minBufferBindingSize": entry.buffer.minBindingSize,
-          };
-        } else if (entry.sampler !== undefined) {
-          var type;
-          if (entry.sampler.type === 'filtering')
-            type = 'sampler'
-          else if (entry.sampler.type === 'comparison')
-            type = 'comparison-sampler'
-            
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type
-          };
-        } else if (entry.texture !== undefined) {
-          var type;
-          if (entry.texture.multisampled)
-            type = 'multisampled-texture'
-          else
-            type = 'sampled-texture'
-  
-          var componentType;
-          if (entry.texture.sampleType === 'float')
-            componentType = 'float'
-          else if (entry.texture.sampleType === 'uint')
-            componentType = 'uint'
-          else if (entry.texture.sampleType === 'sint')
-            componentType = 'sint'
-          else if (entry.texture.sampleType === 'depth')
-            componentType = 'depth-comparison'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.texture.viewDimension,
-            "textureComponentType": componentType,
-          };
-        } else if (entry.storageTexture !== undefined) {
-          var type;
-          if (entry.storageTexture.access === 'read-only')
-            type = 'readonly-storage-texture'
-          else if (entry.storageTexture.access === 'write-only')
-            type = 'writeonly-storage-texture'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.storageTexture.viewDimension,
-            "storageTextureFormat": entry.storageTexture.format,
-          };
-        }
-      }
-  
       function makeEntries(count, entriesPtrs) {
         var entries = [];
         for (var i = 0; i < count; ++i) {
-          entries.push(makeDeprecatedEntryFromNewModel(entriesPtrs +
+          entries.push(makeEntry(entriesPtrs +
               104 * i));
         }
         return entries;

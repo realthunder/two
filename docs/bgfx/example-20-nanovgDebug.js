@@ -188,7 +188,7 @@ Module['FS_createPath']("/", "font", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/images/image1.jpg", "start": 0, "end": 25760, "audio": 0}, {"filename": "/images/image2.jpg", "start": 25760, "end": 49851, "audio": 0}, {"filename": "/images/image3.jpg", "start": 49851, "end": 79133, "audio": 0}, {"filename": "/images/image4.jpg", "start": 79133, "end": 102963, "audio": 0}, {"filename": "/images/image5.jpg", "start": 102963, "end": 130094, "audio": 0}, {"filename": "/images/image6.jpg", "start": 130094, "end": 155210, "audio": 0}, {"filename": "/images/image7.jpg", "start": 155210, "end": 180800, "audio": 0}, {"filename": "/images/image8.jpg", "start": 180800, "end": 205407, "audio": 0}, {"filename": "/images/image9.jpg", "start": 205407, "end": 209442, "audio": 0}, {"filename": "/images/image10.jpg", "start": 209442, "end": 212881, "audio": 0}, {"filename": "/images/image11.jpg", "start": 212881, "end": 216699, "audio": 0}, {"filename": "/images/image12.jpg", "start": 216699, "end": 222151, "audio": 0}, {"filename": "/images/blender_icons16.png", "start": 222151, "end": 462995, "audio": 0}, {"filename": "/font/entypo.ttf", "start": 462995, "end": 498387, "audio": 0}, {"filename": "/font/roboto-regular.ttf", "start": 498387, "end": 643735, "audio": 0}, {"filename": "/font/roboto-bold.ttf", "start": 643735, "end": 779555, "audio": 0}, {"filename": "/font/NotoEmoji-Regular.ttf", "start": 779555, "end": 1198359, "audio": 0}], "remote_package_size": 1198359, "package_uuid": "4d273f96-cde4-4c03-9ccb-4ceeb5d06b97"});
+   loadPackage({"files": [{"filename": "/images/image1.jpg", "start": 0, "end": 25760, "audio": 0}, {"filename": "/images/image2.jpg", "start": 25760, "end": 49851, "audio": 0}, {"filename": "/images/image3.jpg", "start": 49851, "end": 79133, "audio": 0}, {"filename": "/images/image4.jpg", "start": 79133, "end": 102963, "audio": 0}, {"filename": "/images/image5.jpg", "start": 102963, "end": 130094, "audio": 0}, {"filename": "/images/image6.jpg", "start": 130094, "end": 155210, "audio": 0}, {"filename": "/images/image7.jpg", "start": 155210, "end": 180800, "audio": 0}, {"filename": "/images/image8.jpg", "start": 180800, "end": 205407, "audio": 0}, {"filename": "/images/image9.jpg", "start": 205407, "end": 209442, "audio": 0}, {"filename": "/images/image10.jpg", "start": 209442, "end": 212881, "audio": 0}, {"filename": "/images/image11.jpg", "start": 212881, "end": 216699, "audio": 0}, {"filename": "/images/image12.jpg", "start": 216699, "end": 222151, "audio": 0}, {"filename": "/images/blender_icons16.png", "start": 222151, "end": 462995, "audio": 0}, {"filename": "/font/entypo.ttf", "start": 462995, "end": 498387, "audio": 0}, {"filename": "/font/roboto-regular.ttf", "start": 498387, "end": 643735, "audio": 0}, {"filename": "/font/roboto-bold.ttf", "start": 643735, "end": 779555, "audio": 0}, {"filename": "/font/NotoEmoji-Regular.ttf", "start": 779555, "end": 1198359, "audio": 0}], "remote_package_size": 1198359, "package_uuid": "b63e8a0f-4064-4599-ade2-fd77cb42c53d"});
   
   })();
   
@@ -7476,14 +7476,12 @@ var ASM_CONSTS = {
       function makeBufferEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BufferBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.BufferBindingType[typeInt],
           "hasDynamicOffset":
             (HEAP8[(((entryPtr)+(8))>>0)] !== 0),
           "minBindingSize":
@@ -7494,28 +7492,24 @@ var ASM_CONSTS = {
       function makeSamplerEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.SamplerBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.SamplerBindingType[typeInt],
         };
       }
   
       function makeTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var sampleType = WebGPU.TextureSampleType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (sampleType === undefined)
-          return undefined;
+        var sampleTypeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (sampleTypeInt === 0) return undefined;
   
         return {
-          "sampleType": sampleType,
+          "sampleType": WebGPU.TextureSampleType[sampleTypeInt],
           "viewDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "multisampled":
@@ -7526,14 +7520,12 @@ var ASM_CONSTS = {
       function makeStorageTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var access = WebGPU.StorageTextureAccess[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (access === undefined)
-          return undefined;
+        var accessInt =
+          HEAPU32[(((entryPtr)+(4))>>2)]
+        if (accessInt === 0) return undefined;
   
         return {
-          "access": access,
+          "access": WebGPU.StorageTextureAccess[accessInt],
           "format": WebGPU.TextureFormat[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
@@ -7565,10 +7557,10 @@ var ASM_CONSTS = {
       function makeEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BindingType[
-          HEAPU32[(((entryPtr)+(8))>>2)]]
+        var typeInt =
+          HEAPU32[(((entryPtr)+(8))>>2)];
   
-        if (type !== undefined)
+        if (typeInt !== 0)
           return makeDeprecatedEntry(entryPtr);
   
         return {
@@ -7583,84 +7575,10 @@ var ASM_CONSTS = {
         };
       }
   
-      function makeDeprecatedEntryFromNewModel(entryPtr) {
-        var entry = makeEntry(entryPtr);
-        if (entry.type !== undefined)
-          return entry;
-  
-        if (entry.buffer !== undefined) {
-          var type;
-          if (entry.buffer.type === 'uniform')
-            type = 'uniform-buffer'
-          else if (entry.buffer.type === 'storage')
-            type = 'storage-buffer'
-          else if (entry.buffer.type === 'read-only-storage')
-            type = 'readonly-storage-buffer'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "hasDynamicOffset": entry.buffer.hasDynamicOffset,
-            "minBufferBindingSize": entry.buffer.minBindingSize,
-          };
-        } else if (entry.sampler !== undefined) {
-          var type;
-          if (entry.sampler.type === 'filtering')
-            type = 'sampler'
-          else if (entry.sampler.type === 'comparison')
-            type = 'comparison-sampler'
-            
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type
-          };
-        } else if (entry.texture !== undefined) {
-          var type;
-          if (entry.texture.multisampled)
-            type = 'multisampled-texture'
-          else
-            type = 'sampled-texture'
-  
-          var componentType;
-          if (entry.texture.sampleType === 'float')
-            componentType = 'float'
-          else if (entry.texture.sampleType === 'uint')
-            componentType = 'uint'
-          else if (entry.texture.sampleType === 'sint')
-            componentType = 'sint'
-          else if (entry.texture.sampleType === 'depth')
-            componentType = 'depth-comparison'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.texture.viewDimension,
-            "textureComponentType": componentType,
-          };
-        } else if (entry.storageTexture !== undefined) {
-          var type;
-          if (entry.storageTexture.access === 'read-only')
-            type = 'readonly-storage-texture'
-          else if (entry.storageTexture.access === 'write-only')
-            type = 'writeonly-storage-texture'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.storageTexture.viewDimension,
-            "storageTextureFormat": entry.storageTexture.format,
-          };
-        }
-      }
-  
       function makeEntries(count, entriesPtrs) {
         var entries = [];
         for (var i = 0; i < count; ++i) {
-          entries.push(makeDeprecatedEntryFromNewModel(entriesPtrs +
+          entries.push(makeEntry(entriesPtrs +
               104 * i));
         }
         return entries;

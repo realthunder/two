@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowmaps_color.bin", "start": 0, "end": 884, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_black.bin", "start": 884, "end": 1246, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_texture.bin", "start": 1246, "end": 2340, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_texture.bin", "start": 2340, "end": 3145, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_texture.bin", "start": 3145, "end": 4239, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_texture.bin", "start": 4239, "end": 5900, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_vblur.bin", "start": 5900, "end": 8453, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_vblur.bin", "start": 8453, "end": 11044, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_hblur.bin", "start": 11044, "end": 13597, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_hblur.bin", "start": 13597, "end": 16188, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_vblur_vsm.bin", "start": 16188, "end": 19807, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_hblur_vsm.bin", "start": 19807, "end": 23426, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_unpackdepth.bin", "start": 23426, "end": 24520, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_unpackdepth.bin", "start": 24520, "end": 25929, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_unpackdepth_vsm.bin", "start": 25929, "end": 27326, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_packdepth.bin", "start": 27326, "end": 28298, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth.bin", "start": 28298, "end": 29092, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm.bin", "start": 29092, "end": 30086, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_packdepth_linear.bin", "start": 30086, "end": 31146, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_linear.bin", "start": 31146, "end": 31820, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm_linear.bin", "start": 31820, "end": 32694, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting.bin", "start": 32694, "end": 35041, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard.bin", "start": 35041, "end": 41649, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf.bin", "start": 41649, "end": 58061, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm.bin", "start": 58061, "end": 65161, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm.bin", "start": 65161, "end": 71953, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear.bin", "start": 71953, "end": 74380, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear.bin", "start": 74380, "end": 81044, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear.bin", "start": 81044, "end": 97612, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear.bin", "start": 97612, "end": 104768, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear.bin", "start": 104768, "end": 111616, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_omni.bin", "start": 111616, "end": 115051, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_omni.bin", "start": 115051, "end": 124121, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_omni.bin", "start": 124121, "end": 143031, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_omni.bin", "start": 143031, "end": 152593, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_omni.bin", "start": 152593, "end": 161847, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_omni.bin", "start": 161847, "end": 165554, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_omni.bin", "start": 165554, "end": 174680, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_omni.bin", "start": 174680, "end": 193746, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_omni.bin", "start": 193746, "end": 203364, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_omni.bin", "start": 203364, "end": 212674, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_csm.bin", "start": 212674, "end": 216298, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_csm.bin", "start": 216298, "end": 227165, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_csm.bin", "start": 227165, "end": 275904, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_csm.bin", "start": 275904, "end": 288811, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_csm.bin", "start": 288811, "end": 300366, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_csm.bin", "start": 300366, "end": 304262, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_csm.bin", "start": 304262, "end": 315353, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_csm.bin", "start": 315353, "end": 364716, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_csm.bin", "start": 364716, "end": 377847, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_csm.bin", "start": 377847, "end": 389626, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 389626, "end": 2978036, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 2978036, "end": 3032344, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 3032344, "end": 3033274, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 3033274, "end": 3071155, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 3071155, "end": 3246059, "audio": 0}, {"filename": "/textures/flare.dds", "start": 3246059, "end": 3595739, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3595739, "end": 3945419, "audio": 0}], "remote_package_size": 3945419, "package_uuid": "f628642d-bd88-4376-88f9-0628e3319e93"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowmaps_color.bin", "start": 0, "end": 884, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_black.bin", "start": 884, "end": 1246, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_texture.bin", "start": 1246, "end": 2340, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_texture.bin", "start": 2340, "end": 3145, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_texture.bin", "start": 3145, "end": 4239, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_texture.bin", "start": 4239, "end": 5900, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_vblur.bin", "start": 5900, "end": 8453, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_vblur.bin", "start": 8453, "end": 11044, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_hblur.bin", "start": 11044, "end": 13597, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_hblur.bin", "start": 13597, "end": 16188, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_vblur_vsm.bin", "start": 16188, "end": 19807, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_hblur_vsm.bin", "start": 19807, "end": 23426, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_unpackdepth.bin", "start": 23426, "end": 24520, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_unpackdepth.bin", "start": 24520, "end": 25929, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_unpackdepth_vsm.bin", "start": 25929, "end": 27326, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_packdepth.bin", "start": 27326, "end": 28298, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth.bin", "start": 28298, "end": 29092, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm.bin", "start": 29092, "end": 30086, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_packdepth_linear.bin", "start": 30086, "end": 31146, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_linear.bin", "start": 31146, "end": 31820, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_packdepth_vsm_linear.bin", "start": 31820, "end": 32694, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting.bin", "start": 32694, "end": 35041, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard.bin", "start": 35041, "end": 41649, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf.bin", "start": 41649, "end": 58061, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm.bin", "start": 58061, "end": 65161, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm.bin", "start": 65161, "end": 71953, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear.bin", "start": 71953, "end": 74380, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear.bin", "start": 74380, "end": 81044, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear.bin", "start": 81044, "end": 97612, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear.bin", "start": 97612, "end": 104768, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear.bin", "start": 104768, "end": 111616, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_omni.bin", "start": 111616, "end": 115051, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_omni.bin", "start": 115051, "end": 124121, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_omni.bin", "start": 124121, "end": 143031, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_omni.bin", "start": 143031, "end": 152593, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_omni.bin", "start": 152593, "end": 161847, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_omni.bin", "start": 161847, "end": 165554, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_omni.bin", "start": 165554, "end": 174680, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_omni.bin", "start": 174680, "end": 193746, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_omni.bin", "start": 193746, "end": 203364, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_omni.bin", "start": 203364, "end": 212674, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_csm.bin", "start": 212674, "end": 216298, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_csm.bin", "start": 216298, "end": 227165, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_csm.bin", "start": 227165, "end": 275904, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_csm.bin", "start": 275904, "end": 288811, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_csm.bin", "start": 288811, "end": 300366, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowmaps_color_lighting_linear_csm.bin", "start": 300366, "end": 304262, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_hard_linear_csm.bin", "start": 304262, "end": 315353, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_pcf_linear_csm.bin", "start": 315353, "end": 364716, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_vsm_linear_csm.bin", "start": 364716, "end": 377847, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowmaps_color_lighting_esm_linear_csm.bin", "start": 377847, "end": 389626, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 389626, "end": 2978036, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 2978036, "end": 3032344, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 3032344, "end": 3033274, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 3033274, "end": 3071155, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 3071155, "end": 3246059, "audio": 0}, {"filename": "/textures/flare.dds", "start": 3246059, "end": 3595739, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3595739, "end": 3945419, "audio": 0}], "remote_package_size": 3945419, "package_uuid": "359435f4-e4ba-4761-94af-da78e4faf104"});
   
   })();
   
@@ -7478,14 +7478,12 @@ var ASM_CONSTS = {
       function makeBufferEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BufferBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.BufferBindingType[typeInt],
           "hasDynamicOffset":
             (HEAP8[(((entryPtr)+(8))>>0)] !== 0),
           "minBindingSize":
@@ -7496,28 +7494,24 @@ var ASM_CONSTS = {
       function makeSamplerEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.SamplerBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.SamplerBindingType[typeInt],
         };
       }
   
       function makeTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var sampleType = WebGPU.TextureSampleType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (sampleType === undefined)
-          return undefined;
+        var sampleTypeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (sampleTypeInt === 0) return undefined;
   
         return {
-          "sampleType": sampleType,
+          "sampleType": WebGPU.TextureSampleType[sampleTypeInt],
           "viewDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "multisampled":
@@ -7528,14 +7522,12 @@ var ASM_CONSTS = {
       function makeStorageTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var access = WebGPU.StorageTextureAccess[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (access === undefined)
-          return undefined;
+        var accessInt =
+          HEAPU32[(((entryPtr)+(4))>>2)]
+        if (accessInt === 0) return undefined;
   
         return {
-          "access": access,
+          "access": WebGPU.StorageTextureAccess[accessInt],
           "format": WebGPU.TextureFormat[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
@@ -7567,10 +7559,10 @@ var ASM_CONSTS = {
       function makeEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BindingType[
-          HEAPU32[(((entryPtr)+(8))>>2)]]
+        var typeInt =
+          HEAPU32[(((entryPtr)+(8))>>2)];
   
-        if (type !== undefined)
+        if (typeInt !== 0)
           return makeDeprecatedEntry(entryPtr);
   
         return {
@@ -7585,84 +7577,10 @@ var ASM_CONSTS = {
         };
       }
   
-      function makeDeprecatedEntryFromNewModel(entryPtr) {
-        var entry = makeEntry(entryPtr);
-        if (entry.type !== undefined)
-          return entry;
-  
-        if (entry.buffer !== undefined) {
-          var type;
-          if (entry.buffer.type === 'uniform')
-            type = 'uniform-buffer'
-          else if (entry.buffer.type === 'storage')
-            type = 'storage-buffer'
-          else if (entry.buffer.type === 'read-only-storage')
-            type = 'readonly-storage-buffer'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "hasDynamicOffset": entry.buffer.hasDynamicOffset,
-            "minBufferBindingSize": entry.buffer.minBindingSize,
-          };
-        } else if (entry.sampler !== undefined) {
-          var type;
-          if (entry.sampler.type === 'filtering')
-            type = 'sampler'
-          else if (entry.sampler.type === 'comparison')
-            type = 'comparison-sampler'
-            
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type
-          };
-        } else if (entry.texture !== undefined) {
-          var type;
-          if (entry.texture.multisampled)
-            type = 'multisampled-texture'
-          else
-            type = 'sampled-texture'
-  
-          var componentType;
-          if (entry.texture.sampleType === 'float')
-            componentType = 'float'
-          else if (entry.texture.sampleType === 'uint')
-            componentType = 'uint'
-          else if (entry.texture.sampleType === 'sint')
-            componentType = 'sint'
-          else if (entry.texture.sampleType === 'depth')
-            componentType = 'depth-comparison'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.texture.viewDimension,
-            "textureComponentType": componentType,
-          };
-        } else if (entry.storageTexture !== undefined) {
-          var type;
-          if (entry.storageTexture.access === 'read-only')
-            type = 'readonly-storage-texture'
-          else if (entry.storageTexture.access === 'write-only')
-            type = 'writeonly-storage-texture'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.storageTexture.viewDimension,
-            "storageTextureFormat": entry.storageTexture.format,
-          };
-        }
-      }
-  
       function makeEntries(count, entriesPtrs) {
         var entries = [];
         for (var i = 0; i < count; ++i) {
-          entries.push(makeDeprecatedEntryFromNewModel(entriesPtrs +
+          entries.push(makeEntry(entriesPtrs +
               104 * i));
         }
         return entries;

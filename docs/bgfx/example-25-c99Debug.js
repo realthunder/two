@@ -6824,14 +6824,12 @@ var ASM_CONSTS = {
       function makeBufferEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BufferBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.BufferBindingType[typeInt],
           "hasDynamicOffset":
             (HEAP8[(((entryPtr)+(8))>>0)] !== 0),
           "minBindingSize":
@@ -6842,28 +6840,24 @@ var ASM_CONSTS = {
       function makeSamplerEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.SamplerBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.SamplerBindingType[typeInt],
         };
       }
   
       function makeTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var sampleType = WebGPU.TextureSampleType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (sampleType === undefined)
-          return undefined;
+        var sampleTypeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (sampleTypeInt === 0) return undefined;
   
         return {
-          "sampleType": sampleType,
+          "sampleType": WebGPU.TextureSampleType[sampleTypeInt],
           "viewDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "multisampled":
@@ -6874,14 +6868,12 @@ var ASM_CONSTS = {
       function makeStorageTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var access = WebGPU.StorageTextureAccess[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (access === undefined)
-          return undefined;
+        var accessInt =
+          HEAPU32[(((entryPtr)+(4))>>2)]
+        if (accessInt === 0) return undefined;
   
         return {
-          "access": access,
+          "access": WebGPU.StorageTextureAccess[accessInt],
           "format": WebGPU.TextureFormat[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
@@ -6913,10 +6905,10 @@ var ASM_CONSTS = {
       function makeEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BindingType[
-          HEAPU32[(((entryPtr)+(8))>>2)]]
+        var typeInt =
+          HEAPU32[(((entryPtr)+(8))>>2)];
   
-        if (type !== undefined)
+        if (typeInt !== 0)
           return makeDeprecatedEntry(entryPtr);
   
         return {
@@ -6931,84 +6923,10 @@ var ASM_CONSTS = {
         };
       }
   
-      function makeDeprecatedEntryFromNewModel(entryPtr) {
-        var entry = makeEntry(entryPtr);
-        if (entry.type !== undefined)
-          return entry;
-  
-        if (entry.buffer !== undefined) {
-          var type;
-          if (entry.buffer.type === 'uniform')
-            type = 'uniform-buffer'
-          else if (entry.buffer.type === 'storage')
-            type = 'storage-buffer'
-          else if (entry.buffer.type === 'read-only-storage')
-            type = 'readonly-storage-buffer'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "hasDynamicOffset": entry.buffer.hasDynamicOffset,
-            "minBufferBindingSize": entry.buffer.minBindingSize,
-          };
-        } else if (entry.sampler !== undefined) {
-          var type;
-          if (entry.sampler.type === 'filtering')
-            type = 'sampler'
-          else if (entry.sampler.type === 'comparison')
-            type = 'comparison-sampler'
-            
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type
-          };
-        } else if (entry.texture !== undefined) {
-          var type;
-          if (entry.texture.multisampled)
-            type = 'multisampled-texture'
-          else
-            type = 'sampled-texture'
-  
-          var componentType;
-          if (entry.texture.sampleType === 'float')
-            componentType = 'float'
-          else if (entry.texture.sampleType === 'uint')
-            componentType = 'uint'
-          else if (entry.texture.sampleType === 'sint')
-            componentType = 'sint'
-          else if (entry.texture.sampleType === 'depth')
-            componentType = 'depth-comparison'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.texture.viewDimension,
-            "textureComponentType": componentType,
-          };
-        } else if (entry.storageTexture !== undefined) {
-          var type;
-          if (entry.storageTexture.access === 'read-only')
-            type = 'readonly-storage-texture'
-          else if (entry.storageTexture.access === 'write-only')
-            type = 'writeonly-storage-texture'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.storageTexture.viewDimension,
-            "storageTextureFormat": entry.storageTexture.format,
-          };
-        }
-      }
-  
       function makeEntries(count, entriesPtrs) {
         var entries = [];
         for (var i = 0; i < count; ++i) {
-          entries.push(makeDeprecatedEntryFromNewModel(entriesPtrs +
+          entries.push(makeEntry(entriesPtrs +
               104 * i));
         }
         return entries;

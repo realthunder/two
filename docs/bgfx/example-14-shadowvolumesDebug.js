@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowvolume_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture_lighting.bin", "start": 1940, "end": 7346, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_lighting.bin", "start": 7346, "end": 9224, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_lighting.bin", "start": 9224, "end": 14135, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_texture.bin", "start": 14135, "end": 15229, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_texture.bin", "start": 15229, "end": 16890, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_texture.bin", "start": 16890, "end": 17984, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture.bin", "start": 17984, "end": 18789, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svback.bin", "start": 18789, "end": 20053, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svside.bin", "start": 20053, "end": 21667, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svfront.bin", "start": 21667, "end": 22551, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackblank.bin", "start": 22551, "end": 22913, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsideblank.bin", "start": 22913, "end": 23339, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontblank.bin", "start": 23339, "end": 23801, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackcolor.bin", "start": 23801, "end": 24471, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidecolor.bin", "start": 24471, "end": 25205, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontcolor.bin", "start": 25205, "end": 25875, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidetex.bin", "start": 25875, "end": 27460, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex1.bin", "start": 27460, "end": 28542, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex2.bin", "start": 28542, "end": 29624, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex1.bin", "start": 29624, "end": 30690, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex2.bin", "start": 30690, "end": 31756, "audio": 0}, {"filename": "/meshes/bunny_patched.bin", "start": 31756, "end": 1007367, "audio": 0}, {"filename": "/meshes/bunny_decimated.bin", "start": 1007367, "end": 1107420, "audio": 0}, {"filename": "/meshes/column.bin", "start": 1107420, "end": 1161439, "audio": 0}, {"filename": "/meshes/platform.bin", "start": 1161439, "end": 1163046, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 1163046, "end": 1163976, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 1163976, "end": 1338880, "audio": 0}, {"filename": "/textures/flare.dds", "start": 1338880, "end": 1688560, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 1688560, "end": 2038240, "audio": 0}], "remote_package_size": 2038240, "package_uuid": "29878aaa-3cbb-436c-80db-4d42166a7836"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_shadowvolume_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture_lighting.bin", "start": 1940, "end": 7346, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_lighting.bin", "start": 7346, "end": 9224, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_lighting.bin", "start": 9224, "end": 14135, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_color_texture.bin", "start": 14135, "end": 15229, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_color_texture.bin", "start": 15229, "end": 16890, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_texture.bin", "start": 16890, "end": 17984, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_texture.bin", "start": 17984, "end": 18789, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svback.bin", "start": 18789, "end": 20053, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svside.bin", "start": 20053, "end": 21667, "audio": 0}, {"filename": "/shaders/spirv/vs_shadowvolume_svfront.bin", "start": 21667, "end": 22551, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackblank.bin", "start": 22551, "end": 22913, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsideblank.bin", "start": 22913, "end": 23339, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontblank.bin", "start": 23339, "end": 23801, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbackcolor.bin", "start": 23801, "end": 24471, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidecolor.bin", "start": 24471, "end": 25205, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfrontcolor.bin", "start": 25205, "end": 25875, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svsidetex.bin", "start": 25875, "end": 27460, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex1.bin", "start": 27460, "end": 28542, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svbacktex2.bin", "start": 28542, "end": 29624, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex1.bin", "start": 29624, "end": 30690, "audio": 0}, {"filename": "/shaders/spirv/fs_shadowvolume_svfronttex2.bin", "start": 30690, "end": 31756, "audio": 0}, {"filename": "/meshes/bunny_patched.bin", "start": 31756, "end": 1007367, "audio": 0}, {"filename": "/meshes/bunny_decimated.bin", "start": 1007367, "end": 1107420, "audio": 0}, {"filename": "/meshes/column.bin", "start": 1107420, "end": 1161439, "audio": 0}, {"filename": "/meshes/platform.bin", "start": 1161439, "end": 1163046, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 1163046, "end": 1163976, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 1163976, "end": 1338880, "audio": 0}, {"filename": "/textures/flare.dds", "start": 1338880, "end": 1688560, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 1688560, "end": 2038240, "audio": 0}], "remote_package_size": 2038240, "package_uuid": "1e055aae-6520-4ca7-a5eb-7edc9a48d734"});
   
   })();
   
@@ -7478,14 +7478,12 @@ var ASM_CONSTS = {
       function makeBufferEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BufferBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.BufferBindingType[typeInt],
           "hasDynamicOffset":
             (HEAP8[(((entryPtr)+(8))>>0)] !== 0),
           "minBindingSize":
@@ -7496,28 +7494,24 @@ var ASM_CONSTS = {
       function makeSamplerEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.SamplerBindingType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (type === undefined)
-          return undefined;
+        var typeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (typeInt === 0) return undefined;
   
         return {
-          "type": type,
+          "type": WebGPU.SamplerBindingType[typeInt],
         };
       }
   
       function makeTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var sampleType = WebGPU.TextureSampleType[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (sampleType === undefined)
-          return undefined;
+        var sampleTypeInt =
+          HEAPU32[(((entryPtr)+(4))>>2)];
+        if (sampleTypeInt === 0) return undefined;
   
         return {
-          "sampleType": sampleType,
+          "sampleType": WebGPU.TextureSampleType[sampleTypeInt],
           "viewDimension": WebGPU.TextureViewDimension[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "multisampled":
@@ -7528,14 +7522,12 @@ var ASM_CONSTS = {
       function makeStorageTextureEntry(entryPtr) {
         assert(entryPtr);
   
-        var access = WebGPU.StorageTextureAccess[
-          HEAPU32[(((entryPtr)+(4))>>2)]]
-  
-        if (access === undefined)
-          return undefined;
+        var accessInt =
+          HEAPU32[(((entryPtr)+(4))>>2)]
+        if (accessInt === 0) return undefined;
   
         return {
-          "access": access,
+          "access": WebGPU.StorageTextureAccess[accessInt],
           "format": WebGPU.TextureFormat[
             HEAPU32[(((entryPtr)+(8))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
@@ -7567,10 +7559,10 @@ var ASM_CONSTS = {
       function makeEntry(entryPtr) {
         assert(entryPtr);
   
-        var type = WebGPU.BindingType[
-          HEAPU32[(((entryPtr)+(8))>>2)]]
+        var typeInt =
+          HEAPU32[(((entryPtr)+(8))>>2)];
   
-        if (type !== undefined)
+        if (typeInt !== 0)
           return makeDeprecatedEntry(entryPtr);
   
         return {
@@ -7585,84 +7577,10 @@ var ASM_CONSTS = {
         };
       }
   
-      function makeDeprecatedEntryFromNewModel(entryPtr) {
-        var entry = makeEntry(entryPtr);
-        if (entry.type !== undefined)
-          return entry;
-  
-        if (entry.buffer !== undefined) {
-          var type;
-          if (entry.buffer.type === 'uniform')
-            type = 'uniform-buffer'
-          else if (entry.buffer.type === 'storage')
-            type = 'storage-buffer'
-          else if (entry.buffer.type === 'read-only-storage')
-            type = 'readonly-storage-buffer'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "hasDynamicOffset": entry.buffer.hasDynamicOffset,
-            "minBufferBindingSize": entry.buffer.minBindingSize,
-          };
-        } else if (entry.sampler !== undefined) {
-          var type;
-          if (entry.sampler.type === 'filtering')
-            type = 'sampler'
-          else if (entry.sampler.type === 'comparison')
-            type = 'comparison-sampler'
-            
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type
-          };
-        } else if (entry.texture !== undefined) {
-          var type;
-          if (entry.texture.multisampled)
-            type = 'multisampled-texture'
-          else
-            type = 'sampled-texture'
-  
-          var componentType;
-          if (entry.texture.sampleType === 'float')
-            componentType = 'float'
-          else if (entry.texture.sampleType === 'uint')
-            componentType = 'uint'
-          else if (entry.texture.sampleType === 'sint')
-            componentType = 'sint'
-          else if (entry.texture.sampleType === 'depth')
-            componentType = 'depth-comparison'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.texture.viewDimension,
-            "textureComponentType": componentType,
-          };
-        } else if (entry.storageTexture !== undefined) {
-          var type;
-          if (entry.storageTexture.access === 'read-only')
-            type = 'readonly-storage-texture'
-          else if (entry.storageTexture.access === 'write-only')
-            type = 'writeonly-storage-texture'
-  
-          return {
-            "binding": entry.binding,
-            "visibility": entry.visibility,
-            "type": type,
-            "viewDimension": entry.storageTexture.viewDimension,
-            "storageTextureFormat": entry.storageTexture.format,
-          };
-        }
-      }
-  
       function makeEntries(count, entriesPtrs) {
         var entries = [];
         for (var i = 0; i < count; ++i) {
-          entries.push(makeDeprecatedEntryFromNewModel(entriesPtrs +
+          entries.push(makeEntry(entriesPtrs +
               104 * i));
         }
         return entries;
