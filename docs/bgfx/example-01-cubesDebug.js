@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "9878e76f-f6f4-44d8-897d-3c4ecbbc06c2"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "4abb3882-863e-49d5-9edd-4769c811edf7"});
   
   })();
   
@@ -7435,7 +7435,7 @@ var ASM_CONSTS = {
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
       var device = WebGPU["mgrDevice"].get(deviceId);
-      return WebGPU.mgrRenderPipeline.create(device["createRenderPipeline"](desc));
+      return WebGPU.mgrRenderPipeline.create(device["createRenderPipeline2"](desc));
     }
 
   function _wgpuDeviceCreateSampler(deviceId, descriptor) {
