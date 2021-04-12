@@ -7435,7 +7435,7 @@ var ASM_CONSTS = {
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
   
       var device = WebGPU["mgrDevice"].get(deviceId);
-      return WebGPU.mgrRenderPipeline.create(device["createRenderPipeline2"](desc));
+      return WebGPU.mgrRenderPipeline.create(device["createRenderPipeline"](desc));
     }
 
   function _wgpuDeviceCreateSampler(deviceId, descriptor) {
