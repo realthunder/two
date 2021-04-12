@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "e07c2e41-e345-448d-822e-5b8ecf5d2e47"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "015b5d93-3df7-4d7a-9af9-eaba2f8e6244"});
   
   })();
   
@@ -7255,9 +7255,9 @@ var ASM_CONSTS = {
         assert(rsPtr);assert(HEAP32[((rsPtr)>>2)] === 0);
         return {
           "topology": WebGPU.PrimitiveTopology[
-            HEAPU32[(((descriptor)+(4))>>2)]],
+            HEAPU32[(((rsPtr)+(4))>>2)]],
           "stripIndexFormat": WebGPU.IndexFormat[
-            HEAPU32[(((viPtr)+(8))>>2)]],
+            HEAPU32[(((rsPtr)+(8))>>2)]],
           "frontFace": WebGPU.FrontFace[
             HEAPU32[(((rsPtr)+(12))>>2)]],
           "cullMode": WebGPU.CullMode[
@@ -7296,12 +7296,12 @@ var ASM_CONSTS = {
         };
       }
   
-      function makeColorStates(count, csPtr) {
+      function makeColorStates(count, csArrayPtr) {
         if (count === 0) return undefined;
   
         var states = [];
         for (var i = 0; i < count; ++i) {
-          states.push(makeColorState(csPtr + 16 * i));
+          states.push(makeColorState(csArrayPtr + 16 * i));
         }
         return states;
       }
