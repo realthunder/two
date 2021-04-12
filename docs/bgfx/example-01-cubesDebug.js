@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "4e2f3d20-c33a-43f3-be13-dac51f32d1b3"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "0c1138ab-5192-46be-a99b-e6270d91cae3"});
   
   })();
   
@@ -7513,8 +7513,17 @@ var ASM_CONSTS = {
       return WebGPU.mgrTexture.create(device["createTexture"](desc));
     }
 
-  function _wgpuDeviceGetDefaultQueue(deviceId) {
-      return wgpuDeviceGetQueue(deviceId);
+  function _wgpuDeviceGetQueue(deviceId) {
+      var queueId = WebGPU.deviceQueues[deviceId];
+      assert(queueId != 0, 'got invalid queue');
+      if (queueId === undefined) {
+        var device = WebGPU["mgrDevice"].get(deviceId);
+        WebGPU.deviceQueues[deviceId] = WebGPU.mgrQueue.create(device["queue"]);
+        queueId = WebGPU.deviceQueues[deviceId];
+      } else {
+        WebGPU.mgrQueue.reference(queueId);
+      }
+      return queueId;
     }
 
   function _wgpuDeviceReference(id) {
@@ -7944,7 +7953,7 @@ var asmLibraryArg = {
   "wgpuDeviceCreateShaderModule": _wgpuDeviceCreateShaderModule,
   "wgpuDeviceCreateSwapChain": _wgpuDeviceCreateSwapChain,
   "wgpuDeviceCreateTexture": _wgpuDeviceCreateTexture,
-  "wgpuDeviceGetDefaultQueue": _wgpuDeviceGetDefaultQueue,
+  "wgpuDeviceGetQueue": _wgpuDeviceGetQueue,
   "wgpuDeviceReference": _wgpuDeviceReference,
   "wgpuDeviceRelease": _wgpuDeviceRelease,
   "wgpuDeviceSetUncapturedErrorCallback": _wgpuDeviceSetUncapturedErrorCallback,
