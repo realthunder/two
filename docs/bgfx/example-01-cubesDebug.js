@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "27ad0892-b1d6-46f6-bbbe-4bc3aaadec64"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "e07c2e41-e345-448d-822e-5b8ecf5d2e47"});
   
   })();
   
@@ -1773,7 +1773,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  572380: function() {debugger;}
+  572556: function() {debugger;}
 };
 
 
@@ -6515,7 +6515,7 @@ var ASM_CONSTS = {
         return {
           "width": HEAPU32[((ptr)>>2)],
           "height": HEAPU32[(((ptr)+(4))>>2)],
-          "depth": HEAPU32[(((ptr)+(12))>>2)],
+          "depthOrArrayLayers": HEAPU32[(((ptr)+(8))>>2)],
         };
       },makeOrigin3D:function(ptr) {
         return {
