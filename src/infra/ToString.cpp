@@ -13,6 +13,10 @@ module TWO(infra);
 
 namespace two
 {
+#ifdef TWO_MODULES
+	using std::string;
+#endif
+
 	template <> void to_string(const bool&    value, string& str) { str.resize(snprintf(nullptr, 0, "%d",   value)); sprintf(&str[0], "%d",   value); }
 	template <> void to_string(const char&    value, string& str) { str.resize(snprintf(nullptr, 0, "%d",   value)); sprintf(&str[0], "%d",   value); }
 	template <> void to_string(const schar&   value, string& str) { str.resize(snprintf(nullptr, 0, "%d",   value)); sprintf(&str[0], "%d",   value); }

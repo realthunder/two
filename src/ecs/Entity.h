@@ -13,11 +13,11 @@
 
 namespace two
 {
-	template <size_t EcsType, size_t Index>
+	export_ template <size_t EcsType, size_t Index>
 	struct TypeBuffer
 	{};
 
-	template <class T>
+	export_ template <class T>
 	struct TypedBuffer
 	{};
 

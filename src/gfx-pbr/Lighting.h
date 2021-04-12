@@ -10,6 +10,9 @@
 #endif
 #include <gfx-pbr/Forward.h>
 
+#include <bgfx/bgfx.h>
+#include <bimg/bimg.h>
+
 namespace two
 {
 	enum ShaderOptionLight : unsigned int

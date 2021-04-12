@@ -2,12 +2,10 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
-
-#include <bgfx/bgfx.h>
-
 #ifdef TWO_MODULES
-module TWO(gfx).pbr;
+module;
+#include <gfx/Cpp20.h>
+module TWO2(gfx, pbr);
 #else
 #include <ecs/ECS.hpp>
 #include <pool/ObjectPool.hpp>

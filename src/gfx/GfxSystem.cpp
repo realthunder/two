@@ -254,14 +254,18 @@ namespace two
 		m_render_frame = { m_frame, m_time, m_delta_time, Render::s_render_pass_id };
 
 		{
+#if !TWO_MODULES
 			ZoneScopedNC("programs", tracy::Color::Cyan);
+#endif
 
 			for(Program* program : m_impl->m_programs->m_vector)
 				program->update(*this);
 		}
 
 		{
+#if !TWO_MODULES
 			ZoneScopedNC("renderers", tracy::Color::Cyan);
+#endif
 
 			for(auto& block : m_renderer.m_gfx_blocks)
 				block->begin_frame(m_render_frame);
@@ -269,7 +273,9 @@ namespace two
 
 		bool pursue = true;
 		{
+#if !TWO_MODULES
 			ZoneScopedNC("gfx contexts begin", tracy::Color::Cyan);
+#endif
 		
 			for(GfxWindow* context : m_impl->m_contexts)
 				pursue &= context->begin_frame();
@@ -296,7 +302,9 @@ namespace two
 			for(Viewport* viewport : context->m_viewports)
 				if(viewport->m_autorender)
 				{
+#if !TWO_MODULES
 					ZoneScopedNC("gfx viewport", tracy::Color::Cyan);
+#endif
 
 					RenderFunc renderer = this->renderer(viewport->m_shading);
 					this->render(viewport->m_shading, renderer, *context->m_target, *viewport);
@@ -306,7 +314,9 @@ namespace two
 	void GfxSystem::end_frame()
 	{
 		{
+#if !TWO_MODULES
 			ZoneScopedNC("gfx contexts render", tracy::Color::Cyan);
+#endif
 
 			for(GfxWindow* context : m_impl->m_contexts)
 				context->render_frame();
@@ -322,7 +332,9 @@ namespace two
 #endif
 
 		{
+#if !TWO_MODULES
 			ZoneScopedNC("gfx contexts end", tracy::Color::Cyan);
+#endif
 		
 			for(GfxWindow* context : m_impl->m_contexts)
 				context->end_frame();
@@ -332,7 +344,9 @@ namespace two
 			program->update(*this);
 
 		{
+#if !TWO_MODULES
 			ZoneScopedNC("gfx frame", tracy::Color::Cyan);
+#endif
 			BgfxSystem::end_frame();
 		}
 

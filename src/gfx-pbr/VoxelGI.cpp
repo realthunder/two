@@ -2,15 +2,14 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx-pbr/Types.h>
-#include <gfx/Cpp20.h>
-
-#include <bgfx/bgfx.h>
-#include <xatlas.h>
-
 #ifdef TWO_MODULES
-module TWO(gfx).pbr;
+module;
+#include <xatlas.h>
+#include <gfx/Cpp20.h>
+module TWO2(gfx, pbr);
 #else
+
+#include <cstdio>
 #include <stl/algorithm.h>
 #include <infra/Log.h>
 #include <math/Vec.hpp>
@@ -25,14 +24,13 @@ module TWO(gfx).pbr;
 #include <gfx/Assets.h>
 #include <gfx/GfxSystem.h>
 #include <gfx/Pipeline.h>
+#include <gfx-pbr/Types.h>
 #include <gfx-pbr/VoxelGI.h>
 #include <gfx-pbr/Lighting.h>
 #include <gfx-pbr/Shadow.h>
 #include <gfx-pbr/Lightmap.h>
 #include <gfx-pbr/Gpu/VoxelGI.hpp>
 #endif
-
-#include <cstdio>
 
 #define LIGHTMAP_XATLAS
 

@@ -38,7 +38,11 @@ namespace two
 
 		TextureAtlas m_atlas;
 
+#if !TWO_MODULES
 		Texture m_texture = {};
+#else
+		Texture m_texture;
+#endif
 
 		vector<LightmapItem> m_items;
 

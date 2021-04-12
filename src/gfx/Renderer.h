@@ -161,7 +161,7 @@ namespace two
 		attr_ uint32_t m_num_triangles = 0;
 	};
 
-	using RenderFunc = void(*)(GfxSystem&, Render&);
+	export_ using RenderFunc = void(*)(GfxSystem&, Render&);
 
 	export_ struct refl_ TWO_GFX_EXPORT Render
 	{

@@ -2,26 +2,26 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx/Cpp20.h>
+#pragma once
 
-#include <bgfx/bgfx.h>
-
-#ifdef TWO_MODULES
-module TWO(gfx).pbr;
-#else
+#ifndef TWO_MODULES
+#include <cstring>
 #include <math/Vec.hpp>
 #include <gfx/Scene.h>
-#include <gfx-pbr/Lighting.h>
 #endif
-
-#include <cstring>
+#include <gfx-pbr/Lighting.h>
 
 #define PAD 1.f
 
 namespace two
 {
+#ifdef TWO_MODULES
+	template <class T>
+	struct GpuState {};
+#endif
+
 #if !ZONES_LIGHTS_BUFFER
-	template <>
+	export_ template <>
 	struct GpuState<ZoneLights>
 	{
 		void init()
@@ -46,7 +46,7 @@ namespace two
 		static GpuState me;
 	};
 #else
-	template <>
+	export_ template <>
 	struct GpuState<ZoneLights>
 	{
 		constexpr static size_t rows = 1 + BlockLight::ShotUniform::max_lights;
@@ -68,7 +68,7 @@ namespace two
 #endif
 
 #if !ZONES_BUFFER
-	template <>
+	export_ template <>
 	struct GpuState<Radiance>
 	{
 		void init()
@@ -92,7 +92,7 @@ namespace two
 		static GpuState me;
 	};
 
-	template <>
+	export_ template <>
 	struct GpuState<Skylight>
 	{
 		void init()
@@ -120,7 +120,7 @@ namespace two
 		static GpuState me;
 	};
 
-	template <>
+	export_ template <>
 	struct GpuState<Fog>
 	{
 		void init()
@@ -152,7 +152,7 @@ namespace two
 		static GpuState me;
 	};
 
-	template <>
+	export_ template <>
 	struct GpuState<Zone>
 	{
 		void upload(const Pass& pass, const Zone& zone) const
@@ -165,7 +165,7 @@ namespace two
 		static GpuState me;
 	};
 #else
-	template <>
+export_ template <>
 	struct GpuState<Radiance>
 	{
 		constexpr static size_t rows = 2;
@@ -185,7 +185,7 @@ namespace two
 		static GpuState me;
 	};
 
-	template <>
+	export_ template <>
 	struct GpuState<Skylight>
 	{
 		constexpr static size_t rows = 3;
@@ -209,7 +209,7 @@ namespace two
 		static GpuState me;
 	};
 
-	template <>
+	export_ template <>
 	struct GpuState<Fog>
 	{
 		constexpr static size_t rows = 4;
@@ -237,7 +237,7 @@ namespace two
 		static GpuState me;
 	};
 
-	template <>
+	export_ template <>
 	struct GpuState<Zone>
 	{
 		void pack(const Zone& zone, size_t offset, GpuTexture& buffer, float* dest)

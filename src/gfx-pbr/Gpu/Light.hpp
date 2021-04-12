@@ -19,7 +19,7 @@
 
 namespace two
 {
-	template <>
+	export_ template <>
 	struct GpuState<GpuShadow>
 	{
 		void init()
@@ -38,7 +38,7 @@ namespace two
 	};
 
 #if !LIGHTS_BUFFER
-	template <>
+	export_ template <>
 	struct GpuState<GpuLight>
 	{
 		void init()
@@ -110,7 +110,7 @@ namespace two
 		static GpuState me;
 	};
 #else
-	template <>
+	export_ template <>
 	struct GpuState<GpuLight>
 	{
 		void pack(GpuLight& gpu_light, size_t index, const GpuTexture& buffer, float* dest)

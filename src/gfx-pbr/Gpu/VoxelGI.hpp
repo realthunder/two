@@ -11,7 +11,7 @@
 
 namespace two
 {
-	template <>
+	export_ template <>
 	struct GpuState<GIProbe>
 	{
 		void init(uint16_t array_size = 1U)
@@ -50,7 +50,7 @@ namespace two
 		static GpuState me;
 	};
 
-	template <>
+	export_ template <>
 	struct GpuState<GpuVoxelGI>
 	{
 		void init()

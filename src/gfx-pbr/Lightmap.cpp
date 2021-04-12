@@ -2,14 +2,11 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-#include <gfx-pbr/Types.h>
-#include <gfx/Cpp20.h>
-
-#include <bgfx/bgfx.h>
-#include <xatlas.h>
-
 #ifdef TWO_MODULES
-module TWO(gfx).pbr;
+module;
+#include <gfx/Cpp20.h>
+#include <xatlas.h>
+module TWO2(gfx, pbr);
 #else
 #include <infra/ToString.h>
 #include <infra/Log.h>
@@ -28,6 +25,7 @@ module TWO(gfx).pbr;
 #include <gfx/GfxSystem.h>
 #include <gfx/Pipeline.h>
 #include <gfx/Gpu/Material.hpp>
+#include <gfx-pbr/Types.h>
 #include <gfx-pbr/Lightmap.h>
 #include <gfx-pbr/VoxelGI.h>
 #include <gfx-pbr/Lighting.h>

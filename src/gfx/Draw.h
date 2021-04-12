@@ -21,6 +21,7 @@ namespace two
 	{
 		void hash(const Shape& shape);
 		bool operator==(const ShapeHash& other) const;
+		bool operator<(const ShapeHash& other) const;
 		stl::array<char, c_max_shape_size> m_hash;
 	};
 

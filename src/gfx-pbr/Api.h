@@ -19,4 +19,12 @@
 #include <gfx-pbr/Filters/Glow.h>
 #include <gfx-pbr/Filters/Tonemap.h>
 #include <gfx-pbr/Handles.h>
-
+#ifdef TWO_MODULES
+#include <gfx-pbr/Gpu/Zone.hpp>
+#include <gfx-pbr/Gpu/Light.hpp>
+#include <gfx-pbr/Gpu/VoxelGI.hpp>
+#include <gfx-pbr/Gpu/Blur.hpp>
+#include <gfx-pbr/Gpu/DofBlur.hpp>
+#include <gfx-pbr/Gpu/Glow.hpp>
+#include <gfx-pbr/Gpu/Tonemap.hpp>
+#endif

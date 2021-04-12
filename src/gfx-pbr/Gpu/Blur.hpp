@@ -11,7 +11,7 @@
 
 namespace two
 {
-	template <>
+	export_ template <>
 	struct GpuState<GpuBlurKernel>
 	{
 		void init()

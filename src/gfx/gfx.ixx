@@ -1,6 +1,8 @@
 module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
+#include <bgfx/bgfx.h>
+#include <bimg/bimg.h>
 
 export module TWO(gfx);
 import std.core;

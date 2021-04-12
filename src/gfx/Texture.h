@@ -136,7 +136,7 @@ namespace two
 		Texture& operator=(const Texture& other) = default;
 	};
 
-	struct GpuTexture
+	export_ struct GpuTexture
 	{
 		Texture texture;
 		vector<float> memory;
