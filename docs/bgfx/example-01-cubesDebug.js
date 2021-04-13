@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "81831fb8-9d1d-4892-a7df-730460588df3"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "49e4dc1a-5fff-4744-9f0f-2be4d6f72a9d"});
   
   })();
   
@@ -6987,7 +6987,7 @@ var ASM_CONSTS = {
         var textureViewId = HEAPU32[(((entryPtr)+(28))>>2)];
         assert((bufferId != 0) + (samplerId != 0) + (textureViewId != 0) == 1);
   
-        var binding = HEAPU32[(((entryPtr)+(4))>>2)];
+        var binding = HEAPU32[((entryPtr)>>2)];
   
         if (bufferId != 0) {
           var size = undefined;
