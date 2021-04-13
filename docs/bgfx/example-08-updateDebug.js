@@ -1589,7 +1589,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  588668: function() {debugger;}
+  588828: function() {debugger;}
 };
 
 
@@ -6331,7 +6331,7 @@ var ASM_CONSTS = {
         return {
           "width": HEAPU32[((ptr)>>2)],
           "height": HEAPU32[(((ptr)+(4))>>2)],
-          "depth": HEAPU32[(((ptr)+(8))>>2)],
+          "depthOrArrayLayers": HEAPU32[(((ptr)+(8))>>2)],
         };
       },makeOrigin3D:function(ptr) {
         return {
@@ -6371,7 +6371,7 @@ var ASM_CONSTS = {
           "entryPoint": UTF8ToString(
             HEAP32[(((ptr)+(8))>>2)]),
         };
-      },defaultQueues:{0:0},AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:[,"uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","comparison-sampler","sampled-texture","multisampled-texture","readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferBindingType:[,"uniform","storage","read-only-storage"],BufferMapAsyncStatus:["success","error","unknown","device-lost","destroyed-before-callback","unmapped-before-callback"],CompareFunction:[,"never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:[,"uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PipelineStatisticName:["vertex-shader-invocations","clipper-invocations","clipper-primitives-out","fragment-shader-invocations","compute-shader-invocations"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],QueryType:["occlusion","pipeline-statistics","timestamp"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only"],TextureComponentType:["float","sint","uint","depth-comparison"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10ufloat","rgb9e5ufloat","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","depth24plus-stencil8","bc1-rgba-unorm","bc1-rgba-unorm-srgb","bc2-rgba-unorm","bc2-rgba-unorm-srgb","bc3-rgba-unorm","bc3-rgba-unorm-srgb","bc4-r-unorm","bc4-r-snorm","bc5-rg-unorm","bc5-rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-float","bc7-rgba-unorm","bc7-rgba-unorm-srgb"],TextureSampleType:[,"float","unfilterable-float","depth","sint","uint"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],SamplerBindingType:[,"filtering","non-filtering","comparison"],StorageTextureAccess:[,"read-only","write-only"],VertexFormat:["uchar2","uchar4","char2","char4","uchar2norm","uchar4norm","char2norm","char4norm","ushort2","ushort4","short2","short4","ushort2norm","ushort4norm","short2norm","short4norm","half2","half4","float","float2","float3","float4","uint","uint2","uint3","uint4","int","int2","int3","int4"]};
+      },deviceQueues:{0:0},AddressMode:["repeat","mirror-repeat","clamp-to-edge"],BindingType:[,"uniform-buffer","storage-buffer","readonly-storage-buffer","sampler","comparison-sampler","sampled-texture","multisampled-texture","readonly-storage-texture","writeonly-storage-texture"],BlendFactor:["zero","one","src-color","one-minus-src-color","src-alpha","one-minus-src-alpha","dst-color","one-minus-dst-color","dst-alpha","one-minus-dst-alpha","src-alpha-saturated","blend-color","one-minus-blend-color"],BlendOperation:["add","subtract","reverse-subtract","min","max"],BufferBindingType:[,"uniform","storage","read-only-storage"],BufferMapAsyncStatus:["success","error","unknown","device-lost","destroyed-before-callback","unmapped-before-callback"],CompareFunction:[,"never","less","less-equal","greater","greater-equal","equal","not-equal","always"],CompilationInfoRequestStatus:["success","error","device-lost","unknown"],CompilationMessageType:["error","warning","info"],CreatePipelineAsyncStatus:["success","error","device-lost","device-destroyed","unknown"],CullMode:["none","front","back"],ErrorFilter:["none","validation","out-of-memory"],ErrorType:["no-error","validation","out-of-memory","unknown","device-lost"],FenceCompletionStatus:["success","error","unknown","device-lost"],FilterMode:["nearest","linear"],FrontFace:["ccw","cw"],IndexFormat:[,"uint16","uint32"],InputStepMode:["vertex","instance"],LoadOp:["clear","load"],PipelineStatisticName:["vertex-shader-invocations","clipper-invocations","clipper-primitives-out","fragment-shader-invocations","compute-shader-invocations"],PresentMode:["immediate","mailbox","fifo"],PrimitiveTopology:["point-list","line-list","line-strip","triangle-list","triangle-strip"],QueryType:["occlusion","pipeline-statistics","timestamp"],QueueWorkDoneStatus:["success","error","unknown","device-lost"],SamplerBindingType:[,"filtering","non-filtering","comparison"],StencilOperation:["keep","zero","replace","invert","increment-clamp","decrement-clamp","increment-wrap","decrement-wrap"],StorageTextureAccess:[,"readonly","writeonly"],StoreOp:["store","clear"],TextureAspect:["all","stencil-only","depth-only","plane-0only","plane-1only"],TextureComponentType:["float","sint","uint","depth-comparison"],TextureDimension:["1d","2d","3d"],TextureFormat:[,"r8unorm","r8snorm","r8uint","r8sint","r16uint","r16sint","r16float","rg8unorm","rg8snorm","rg8uint","rg8sint","r32float","r32uint","r32sint","rg16uint","rg16sint","rg16float","rgba8unorm","rgba8unorm-srgb","rgba8snorm","rgba8uint","rgba8sint","bgra8unorm","bgra8unorm-srgb","rgb10a2unorm","rg11b10ufloat","rgb9e5ufloat","rg32float","rg32uint","rg32sint","rgba16uint","rgba16sint","rgba16float","rgba32float","rgba32uint","rgba32sint","depth32float","depth24plus","stencil8","depth24plus-stencil8","bc1rgba-unorm","bc1rgba-unorm-srgb","bc2rgba-unorm","bc2rgba-unorm-srgb","bc3rgba-unorm","bc3rgba-unorm-srgb","bc4r-unorm","bc4r-snorm","bc5rg-unorm","bc5rg-snorm","bc6h-rgb-ufloat","bc6h-rgb-float","bc7rgba-unorm","bc7rgba-unorm-srgb","r8bg8biplanar-420unorm"],TextureSampleType:[,"float","unfilterable-float","depth","sint","uint"],TextureViewDimension:[,"1d","2d","2d-array","cube","cube-array","3d"],VertexFormat:{0:undefined,1:"uint8x2",2:"uint8x4",3:"sint8x2",4:"sint8x4",5:"unorm8x2",6:"unorm8x4",7:"snorm8x2",8:"snorm8x4",9:"uint16x2",10:"uint16x4",11:"sint16x2",12:"sint16x4",13:"unorm16x2",14:"unorm16x4",15:"snorm16x2",16:"snorm16x4",17:"float16x2",18:"float16x4",19:"float32",20:"float32x2",21:"float32x3",22:"float32x4",23:"uint32",24:"uint32x2",25:"uint32x3",26:"uint32x4",27:"sint32",28:"sint32x2",29:"sint32x3",30:"sint32x4",101:"uchar2",102:"uchar4",103:"char2",104:"char4",105:"uchar2norm",106:"uchar4norm",107:"char2norm",108:"char4norm",109:"ushort2",110:"ushort4",111:"short2",112:"short4",113:"ushort2norm",114:"ushort4norm",115:"short2norm",116:"short4norm",117:"half2",118:"half4",119:"float",120:"float2",121:"float3",122:"float4",123:"uint",124:"uint2",125:"uint3",126:"uint4",127:"int",128:"int2",129:"int3",130:"int4"}};
   function _emscripten_webgpu_get_device() {
       assert(Module['preinitializedWebGPUDevice']);
       return WebGPU["mgrDevice"].create(Module['preinitializedWebGPUDevice']);
@@ -7352,21 +7352,21 @@ var ASM_CONSTS = {
       function makeDeprecatedEntry(entryPtr) {
         return {
           "binding":
-            HEAPU32[((entryPtr)>>2)],
-          "visibility":
             HEAPU32[(((entryPtr)+(4))>>2)],
+          "visibility":
+            HEAPU32[(((entryPtr)+(8))>>2)],
           "type": WebGPU.BindingType[
-            HEAPU32[(((entryPtr)+(8))>>2)]],
+            HEAPU32[(((entryPtr)+(12))>>2)]],
           "viewDimension": WebGPU.TextureViewDimension[
-            HEAPU32[(((entryPtr)+(24))>>2)]],
-          "textureComponentType": WebGPU.TextureComponentType[
-            HEAPU32[(((entryPtr)+(28))>>2)]],
-          "storageTextureFormat": WebGPU.TextureFormat[
             HEAPU32[(((entryPtr)+(32))>>2)]],
+          "textureComponentType": WebGPU.TextureComponentType[
+            HEAPU32[(((entryPtr)+(36))>>2)]],
+          "storageTextureFormat": WebGPU.TextureFormat[
+            HEAPU32[(((entryPtr)+(40))>>2)]],
           "hasDynamicOffset":
-            (HEAP8[(((entryPtr)+(12))>>0)] !== 0),
+            (HEAP8[(((entryPtr)+(16))>>0)] !== 0),
           "minBufferBindingSize":
-            HEAPU32[((((entryPtr + 4))+(16))>>2)] * 0x100000000 + HEAPU32[(((entryPtr)+(16))>>2)],
+            HEAPU32[((((entryPtr + 4))+(24))>>2)] * 0x100000000 + HEAPU32[(((entryPtr)+(24))>>2)],
         };
       }
   
@@ -7374,20 +7374,20 @@ var ASM_CONSTS = {
         assert(entryPtr);
   
         var typeInt =
-          HEAPU32[(((entryPtr)+(8))>>2)];
+          HEAPU32[(((entryPtr)+(12))>>2)];
   
         if (typeInt !== 0)
           return makeDeprecatedEntry(entryPtr);
   
         return {
           "binding":
-            HEAPU32[((entryPtr)>>2)],
-          "visibility":
             HEAPU32[(((entryPtr)+(4))>>2)],
-          "buffer": makeBufferEntry(entryPtr + 40),
-          "sampler": makeSamplerEntry(entryPtr + 64),
-          "texture": makeTextureEntry(entryPtr + 72),
-          "storageTexture": makeStorageTextureEntry(entryPtr + 88),
+          "visibility":
+            HEAPU32[(((entryPtr)+(8))>>2)],
+          "buffer": makeBufferEntry(entryPtr + 48),
+          "sampler": makeSamplerEntry(entryPtr + 72),
+          "texture": makeTextureEntry(entryPtr + 80),
+          "storageTexture": makeStorageTextureEntry(entryPtr + 96),
         };
       }
   
@@ -7395,7 +7395,7 @@ var ASM_CONSTS = {
         var entries = [];
         for (var i = 0; i < count; ++i) {
           entries.push(makeEntry(entriesPtrs +
-              104 * i));
+              112 * i));
         }
         return entries;
       }
@@ -7488,21 +7488,25 @@ var ASM_CONSTS = {
       return WebGPU.mgrPipelineLayout.create(device["createPipelineLayout"](desc));
     }
 
-  function _wgpuDeviceCreateRenderPipeline(deviceId, descriptor) {
+  function _wgpuDeviceCreateRenderPipeline2(deviceId, descriptor) {
       assert(descriptor);assert(HEAP32[((descriptor)>>2)] === 0);
   
-      function makeRasterizationState(rsPtr) {
+      function makePrimitiveState(rsPtr) {
         if (rsPtr === 0) return undefined;
         assert(rsPtr);assert(HEAP32[((rsPtr)>>2)] === 0);
         return {
-          "frontFace": WebGPU.FrontFace[
+          "topology": WebGPU.PrimitiveTopology[
             HEAPU32[(((rsPtr)+(4))>>2)]],
-          "cullMode": WebGPU.CullMode[
+          "stripIndexFormat": WebGPU.IndexFormat[
             HEAPU32[(((rsPtr)+(8))>>2)]],
+          "frontFace": WebGPU.FrontFace[
+            HEAPU32[(((rsPtr)+(12))>>2)]],
+          "cullMode": WebGPU.CullMode[
+            HEAPU32[(((rsPtr)+(16))>>2)]],
         };
       }
   
-      function makeBlendDescriptor(bdPtr) {
+      function makeBlendComponent(bdPtr) {
         if (bdPtr === 0) return undefined;
         return {
           "operation": WebGPU.BlendOperation[
@@ -7514,23 +7518,31 @@ var ASM_CONSTS = {
         };
       }
   
+      function makeBlendState(bsPtr) {
+        if (bsPtr === 0) return undefined;
+        assert(bsPtr);assert(HEAP32[((bsPtr)>>2)] === 0);
+        return {
+          "alpha": makeBlendComponent(bsPtr + 12),
+          "color": makeBlendComponent(bsPtr + 0),
+        };
+      }
+  
       function makeColorState(csPtr) {
         assert(csPtr);assert(HEAP32[((csPtr)>>2)] === 0);
         return {
           "format": WebGPU.TextureFormat[
             HEAPU32[(((csPtr)+(4))>>2)]],
-          "alphaBlend": makeBlendDescriptor(csPtr + 8),
-          "colorBlend": makeBlendDescriptor(csPtr + 20),
-          "writeMask": HEAPU32[(((csPtr)+(32))>>2)],
+          "blend": makeBlendState(HEAP32[(((csPtr)+(8))>>2)]),
+          "writeMask": HEAPU32[(((csPtr)+(12))>>2)],
         };
       }
   
-      function makeColorStates(count, csPtr) {
+      function makeColorStates(count, csArrayPtr) {
         if (count === 0) return undefined;
   
         var states = [];
         for (var i = 0; i < count; ++i) {
-          states.push(makeColorState(csPtr + 36 * i));
+          states.push(makeColorState(csArrayPtr + 16 * i));
         }
         return states;
       }
@@ -7611,11 +7623,37 @@ var ASM_CONSTS = {
         if (viPtr === 0) return undefined;
         assert(viPtr);assert(HEAP32[((viPtr)>>2)] === 0);
         return {
-          "indexFormat": WebGPU.IndexFormat[
-            HEAPU32[(((viPtr)+(4))>>2)]],
-          "vertexBuffers": makeVertexBuffers(
-            HEAPU32[(((viPtr)+(8))>>2)],
-            HEAP32[(((viPtr)+(12))>>2)]),
+          "module": WebGPU.mgrShaderModule.get(
+            HEAP32[(((viPtr)+(4))>>2)]),
+          "entryPoint": UTF8ToString(
+            HEAP32[(((viPtr)+(8))>>2)]),
+          "buffers": makeVertexBuffers(
+            HEAPU32[(((viPtr)+(12))>>2)],
+            HEAP32[(((viPtr)+(16))>>2)]),
+        };
+      }
+  
+      function makeMultisampleState(msPtr) {
+        if (msPtr === 0) return undefined;
+        assert(msPtr);assert(HEAP32[((msPtr)>>2)] === 0);
+        return {
+          "count": HEAPU32[(((msPtr)+(4))>>2)],
+          "mask": HEAPU32[(((msPtr)+(8))>>2)],
+          "alphaToCoverageEnabled": (HEAP8[(((msPtr)+(12))>>0)] !== 0),
+        };
+      }
+  
+      function makeFragmentState(fsPtr) {
+        if (fsPtr === 0) return undefined;
+        assert(fsPtr);assert(HEAP32[((fsPtr)>>2)] === 0);
+        return {
+          "module": WebGPU.mgrShaderModule.get(
+            HEAP32[(((fsPtr)+(4))>>2)]),
+          "entryPoint": UTF8ToString(
+            HEAP32[(((fsPtr)+(8))>>2)]),
+          "targets": makeColorStates(
+            HEAPU32[(((fsPtr)+(12))>>2)],
+            HEAP32[(((fsPtr)+(16))>>2)]),
         };
       }
   
@@ -7623,24 +7661,16 @@ var ASM_CONSTS = {
         "label": undefined,
         "layout": WebGPU.mgrPipelineLayout.get(
           HEAP32[(((descriptor)+(8))>>2)]),
-        "vertexStage": WebGPU.makeProgrammableStageDescriptor(
+        "vertex": makeVertexState(
           descriptor + 12),
-        "fragmentStage": WebGPU.makeProgrammableStageDescriptor(
-          HEAP32[(((descriptor)+(24))>>2)]),
-        "primitiveTopology": WebGPU.PrimitiveTopology[
-          HEAPU32[(((descriptor)+(32))>>2)]],
-        "rasterizationState": makeRasterizationState(
-          HEAP32[(((descriptor)+(36))>>2)]),
-        "colorStates": makeColorStates(
-          HEAPU32[(((descriptor)+(48))>>2)],
+        "primitive": makePrimitiveState(
+          descriptor + 32),
+        "depthStencil": makeDepthStencilState(
           HEAP32[(((descriptor)+(52))>>2)]),
-        "depthStencilState": makeDepthStencilState(
-          HEAP32[(((descriptor)+(44))>>2)]),
-        "vertexState": makeVertexState(
-          HEAP32[(((descriptor)+(28))>>2)]),
-        "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
-        "sampleMask": HEAPU32[(((descriptor)+(56))>>2)],
-        "alphaToCoverageEnabled": (HEAP8[(((descriptor)+(60))>>0)] !== 0),
+        "multisample": makeMultisampleState(
+          descriptor + 56),
+        "fragment": makeFragmentState(
+          HEAP32[(((descriptor)+(72))>>2)]),
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
       if (labelPtr) desc["label"] = UTF8ToString(labelPtr);
@@ -7739,12 +7769,12 @@ var ASM_CONSTS = {
       var desc = {
         "label": undefined,
         "size": WebGPU.makeExtent3D(descriptor + 16),
-        "mipLevelCount": HEAPU32[(((descriptor)+(32))>>2)],
-        "sampleCount": HEAPU32[(((descriptor)+(36))>>2)],
+        "mipLevelCount": HEAPU32[(((descriptor)+(36))>>2)],
+        "sampleCount": HEAPU32[(((descriptor)+(40))>>2)],
         "dimension": WebGPU.TextureDimension[
           HEAPU32[(((descriptor)+(12))>>2)]],
         "format": WebGPU.TextureFormat[
-          HEAPU32[(((descriptor)+(28))>>2)]],
+          HEAPU32[(((descriptor)+(32))>>2)]],
         "usage": HEAPU32[(((descriptor)+(8))>>2)],
       };
       var labelPtr = HEAP32[(((descriptor)+(4))>>2)];
@@ -7754,13 +7784,13 @@ var ASM_CONSTS = {
       return WebGPU.mgrTexture.create(device["createTexture"](desc));
     }
 
-  function _wgpuDeviceGetDefaultQueue(deviceId) {
-      var queueId = WebGPU.defaultQueues[deviceId];
+  function _wgpuDeviceGetQueue(deviceId) {
+      var queueId = WebGPU.deviceQueues[deviceId];
       assert(queueId != 0, 'got invalid queue');
       if (queueId === undefined) {
         var device = WebGPU["mgrDevice"].get(deviceId);
-        WebGPU.defaultQueues[deviceId] = WebGPU.mgrQueue.create(device["defaultQueue"]);
-        queueId = WebGPU.defaultQueues[deviceId];
+        WebGPU.deviceQueues[deviceId] = WebGPU.mgrQueue.create(device["queue"]);
+        queueId = WebGPU.deviceQueues[deviceId];
       } else {
         WebGPU.mgrQueue.reference(queueId);
       }
@@ -8191,12 +8221,12 @@ var asmLibraryArg = {
   "wgpuDeviceCreateCommandEncoder": _wgpuDeviceCreateCommandEncoder,
   "wgpuDeviceCreateComputePipeline": _wgpuDeviceCreateComputePipeline,
   "wgpuDeviceCreatePipelineLayout": _wgpuDeviceCreatePipelineLayout,
-  "wgpuDeviceCreateRenderPipeline": _wgpuDeviceCreateRenderPipeline,
+  "wgpuDeviceCreateRenderPipeline2": _wgpuDeviceCreateRenderPipeline2,
   "wgpuDeviceCreateSampler": _wgpuDeviceCreateSampler,
   "wgpuDeviceCreateShaderModule": _wgpuDeviceCreateShaderModule,
   "wgpuDeviceCreateSwapChain": _wgpuDeviceCreateSwapChain,
   "wgpuDeviceCreateTexture": _wgpuDeviceCreateTexture,
-  "wgpuDeviceGetDefaultQueue": _wgpuDeviceGetDefaultQueue,
+  "wgpuDeviceGetQueue": _wgpuDeviceGetQueue,
   "wgpuDeviceReference": _wgpuDeviceReference,
   "wgpuDeviceRelease": _wgpuDeviceRelease,
   "wgpuDeviceSetUncapturedErrorCallback": _wgpuDeviceSetUncapturedErrorCallback,
