@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "49e4dc1a-5fff-4744-9f0f-2be4d6f72a9d"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "1f9e08cb-f9c0-4e5a-83bb-4387eb733953"});
   
   })();
   
@@ -6809,6 +6809,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
