@@ -1589,7 +1589,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  588828: function() {debugger;}
+  588716: function() {debugger;}
 };
 
 
@@ -6992,6 +6992,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7050,6 +7051,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7084,6 +7087,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

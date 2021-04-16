@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5267, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5267, "end": 30818, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30818, "end": 49638, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49638, "end": 61235, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61235, "end": 78429, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78429, "end": 88239, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88239, "end": 92934, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92934, "end": 1491190, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491190, "end": 1666094, "audio": 0}], "remote_package_size": 1666094, "package_uuid": "d7b2cc61-68c8-4fdf-8841-b9a43fced6c1"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_tree.bin", "start": 0, "end": 2096, "audio": 0}, {"filename": "/shaders/spirv/fs_tree.bin", "start": 2096, "end": 5267, "audio": 0}, {"filename": "/meshes/tree1b_lod0_1.bin", "start": 5267, "end": 30818, "audio": 0}, {"filename": "/meshes/tree1b_lod1_1.bin", "start": 30818, "end": 49638, "audio": 0}, {"filename": "/meshes/tree1b_lod2_1.bin", "start": 49638, "end": 61235, "audio": 0}, {"filename": "/meshes/tree1b_lod0_2.bin", "start": 61235, "end": 78429, "audio": 0}, {"filename": "/meshes/tree1b_lod1_2.bin", "start": 78429, "end": 88239, "audio": 0}, {"filename": "/meshes/tree1b_lod2_2.bin", "start": 88239, "end": 92934, "audio": 0}, {"filename": "/textures/leafs1.dds", "start": 92934, "end": 1491190, "audio": 0}, {"filename": "/textures/bark1.dds", "start": 1491190, "end": 1666094, "audio": 0}], "remote_package_size": 1666094, "package_uuid": "6d42c3cb-2b3a-426c-a79b-4e9d789d6b5c"});
   
   })();
   
@@ -1775,7 +1775,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  588172: function() {debugger;}
+  588060: function() {debugger;}
 };
 
 
@@ -7178,6 +7178,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7236,6 +7237,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7270,6 +7273,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

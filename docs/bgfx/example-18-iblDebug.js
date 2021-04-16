@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 1971, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 1971, "end": 8099, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 8099, "end": 10149, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10149, "end": 13781, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13781, "end": 2602191, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2602191, "end": 5420293, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5420293, "end": 9614729, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614729, "end": 10401309, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401309, "end": 14595745, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595745, "end": 15382325, "audio": 0}], "remote_package_size": 15382325, "package_uuid": "5a4e9772-a032-4736-8040-a125eb01333b"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_ibl_mesh.bin", "start": 0, "end": 1971, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_mesh.bin", "start": 1971, "end": 8099, "audio": 0}, {"filename": "/shaders/spirv/vs_ibl_skybox.bin", "start": 8099, "end": 10149, "audio": 0}, {"filename": "/shaders/spirv/fs_ibl_skybox.bin", "start": 10149, "end": 13781, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 13781, "end": 2602191, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2602191, "end": 5420293, "audio": 0}, {"filename": "/textures/bolonga_lod.dds", "start": 5420293, "end": 9614729, "audio": 0}, {"filename": "/textures/bolonga_irr.dds", "start": 9614729, "end": 10401309, "audio": 0}, {"filename": "/textures/kyoto_lod.dds", "start": 10401309, "end": 14595745, "audio": 0}, {"filename": "/textures/kyoto_irr.dds", "start": 14595745, "end": 15382325, "audio": 0}], "remote_package_size": 15382325, "package_uuid": "3a4ea1ed-3b18-43f0-bc94-44ebf15f3d7c"});
   
   })();
   
@@ -1775,7 +1775,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  591308: function() {debugger;}
+  591196: function() {debugger;}
 };
 
 
@@ -7178,6 +7178,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7236,6 +7237,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7270,6 +7273,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

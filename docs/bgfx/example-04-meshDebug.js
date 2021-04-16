@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5530, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5530, "end": 2593940, "audio": 0}], "remote_package_size": 2593940, "package_uuid": "59e6dd5f-c77e-4069-9691-7a0f812a01a5"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_mesh.bin", "start": 0, "end": 2713, "audio": 0}, {"filename": "/shaders/spirv/fs_mesh.bin", "start": 2713, "end": 5530, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 5530, "end": 2593940, "audio": 0}], "remote_package_size": 2593940, "package_uuid": "465006ee-fb51-4e31-bab5-457ef5748e1f"});
   
   })();
   
@@ -1774,7 +1774,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  572652: function() {debugger;}
+  572540: function() {debugger;}
 };
 
 
@@ -6752,6 +6752,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6810,6 +6811,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -6844,6 +6847,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

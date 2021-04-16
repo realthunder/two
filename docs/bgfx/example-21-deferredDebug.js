@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3220, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3220, "end": 4314, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4314, "end": 7063, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 7063, "end": 10067, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 10067, "end": 11161, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 11161, "end": 12998, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12998, "end": 14092, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 14092, "end": 14973, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14973, "end": 16031, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 16031, "end": 16497, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 16497, "end": 19629, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 19629, "end": 22872, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 22872, "end": 23597, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 23597, "end": 373277, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 373277, "end": 722957, "audio": 0}], "remote_package_size": 722957, "package_uuid": "e658ee10-1f7d-4344-b397-d3460d5765b8"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_deferred_geom.bin", "start": 0, "end": 3220, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_light.bin", "start": 3220, "end": 4314, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_geom.bin", "start": 4314, "end": 7063, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light.bin", "start": 7063, "end": 10067, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_combine.bin", "start": 10067, "end": 11161, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_combine.bin", "start": 11161, "end": 12998, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug.bin", "start": 12998, "end": 14092, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug.bin", "start": 14092, "end": 14973, "audio": 0}, {"filename": "/shaders/spirv/vs_deferred_debug_line.bin", "start": 14973, "end": 16031, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_debug_line.bin", "start": 16031, "end": 16497, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_ta.bin", "start": 16497, "end": 19629, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_light_uav.bin", "start": 19629, "end": 22872, "audio": 0}, {"filename": "/shaders/spirv/fs_deferred_clear_uav.bin", "start": 22872, "end": 23597, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 23597, "end": 373277, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 373277, "end": 722957, "audio": 0}], "remote_package_size": 722957, "package_uuid": "e27ebd31-7b8c-4472-b30e-f29448b92ecd"});
   
   })();
   
@@ -1774,7 +1774,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  589820: function() {debugger;}
+  589708: function() {debugger;}
 };
 
 
@@ -7177,6 +7177,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7235,6 +7236,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7269,6 +7272,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

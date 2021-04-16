@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2189, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2189, "end": 4382, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4382, "end": 13545, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13545, "end": 14429, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14429, "end": 14735, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14735, "end": 23880, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23880, "end": 2612290, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612290, "end": 2613220, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2613220, "end": 2651101, "audio": 0}], "remote_package_size": 2651101, "package_uuid": "46e97d10-6112-4aad-8350-f2d1ee491984"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sms_shadow_pd.bin", "start": 0, "end": 972, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow_pd.bin", "start": 972, "end": 2189, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_mesh.bin", "start": 2189, "end": 4382, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh_pd.bin", "start": 4382, "end": 13545, "audio": 0}, {"filename": "/shaders/spirv/vs_sms_shadow.bin", "start": 13545, "end": 14429, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_shadow.bin", "start": 14429, "end": 14735, "audio": 0}, {"filename": "/shaders/spirv/fs_sms_mesh.bin", "start": 14735, "end": 23880, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 23880, "end": 2612290, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 2612290, "end": 2613220, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2613220, "end": 2651101, "audio": 0}], "remote_package_size": 2651101, "package_uuid": "5e2b8118-f91c-4f35-9f7d-3f1924eed2e4"});
   
   })();
   
@@ -1774,7 +1774,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  574284: function() {debugger;}
+  574172: function() {debugger;}
 };
 
 
@@ -6752,6 +6752,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6810,6 +6811,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -6844,6 +6847,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

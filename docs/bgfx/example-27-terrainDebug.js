@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1198, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1198, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1940, "end": 3628, "audio": 0}], "remote_package_size": 3628, "package_uuid": "989ec5c3-6e6b-4d6e-ae8b-c4900736e5b6"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_terrain.bin", "start": 0, "end": 1198, "audio": 0}, {"filename": "/shaders/spirv/fs_terrain.bin", "start": 1198, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/vs_terrain_height_texture.bin", "start": 1940, "end": 3628, "audio": 0}], "remote_package_size": 3628, "package_uuid": "3d2de680-dd5d-4f55-9c98-70a74a9bcdf5"});
   
   })();
   
@@ -1773,7 +1773,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  575852: function() {debugger;}
+  575740: function() {debugger;}
 };
 
 
@@ -6751,6 +6751,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6809,6 +6810,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -6843,6 +6846,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

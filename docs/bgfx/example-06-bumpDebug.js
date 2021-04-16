@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2892, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 2892, "end": 6072, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 6072, "end": 11193, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11193, "end": 360873, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360873, "end": 710553, "audio": 0}], "remote_package_size": 710553, "package_uuid": "7d451550-5685-4897-9491-94018623f8d9"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_bump.bin", "start": 0, "end": 2892, "audio": 0}, {"filename": "/shaders/spirv/vs_bump_instanced.bin", "start": 2892, "end": 6072, "audio": 0}, {"filename": "/shaders/spirv/fs_bump.bin", "start": 6072, "end": 11193, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 11193, "end": 360873, "audio": 0}, {"filename": "/textures/fieldstone-n.dds", "start": 360873, "end": 710553, "audio": 0}], "remote_package_size": 710553, "package_uuid": "02e6fd66-a123-46e3-9f64-b9d3b3deaa09"});
   
   })();
   
@@ -1774,7 +1774,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  585964: function() {debugger;}
+  585852: function() {debugger;}
 };
 
 
@@ -7177,6 +7177,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7235,6 +7236,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7269,6 +7272,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

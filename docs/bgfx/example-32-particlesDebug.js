@@ -187,7 +187,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/textures/particle.ktx", "start": 0, "end": 262212, "audio": 0}], "remote_package_size": 262212, "package_uuid": "7dd7941a-25ae-4efe-a538-e2962b87f6c5"});
+   loadPackage({"files": [{"filename": "/textures/particle.ktx", "start": 0, "end": 262212, "audio": 0}], "remote_package_size": 262212, "package_uuid": "0b4b632a-5206-4ec6-b529-0a6a27b34805"});
   
   })();
   
@@ -1772,7 +1772,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  613900: function() {debugger;}
+  613788: function() {debugger;}
 };
 
 
@@ -7175,6 +7175,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7233,6 +7234,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7267,6 +7270,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

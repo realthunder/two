@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1341, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1341, "end": 4216, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4216, "end": 6124, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 6124, "end": 9932752, "audio": 0}], "remote_package_size": 9932752, "package_uuid": "9e910e12-50b2-408b-af19-1c68f667c7da"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vt_generic.bin", "start": 0, "end": 1341, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_unlit.bin", "start": 1341, "end": 4216, "audio": 0}, {"filename": "/shaders/spirv/fs_vt_mip.bin", "start": 4216, "end": 6124, "audio": 0}, {"filename": "/textures/8k_mars.jpg", "start": 6124, "end": 9932752, "audio": 0}], "remote_package_size": 9932752, "package_uuid": "79f5931e-f9eb-43f8-b372-d1ac6a62716f"});
   
   })();
   
@@ -1774,7 +1774,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  589868: function() {debugger;}
+  589756: function() {debugger;}
 };
 
 
@@ -7177,6 +7177,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7235,6 +7236,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7269,6 +7272,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

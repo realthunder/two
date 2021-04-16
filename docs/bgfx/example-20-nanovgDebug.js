@@ -188,7 +188,7 @@ Module['FS_createPath']("/", "font", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/images/image1.jpg", "start": 0, "end": 25760, "audio": 0}, {"filename": "/images/image2.jpg", "start": 25760, "end": 49851, "audio": 0}, {"filename": "/images/image3.jpg", "start": 49851, "end": 79133, "audio": 0}, {"filename": "/images/image4.jpg", "start": 79133, "end": 102963, "audio": 0}, {"filename": "/images/image5.jpg", "start": 102963, "end": 130094, "audio": 0}, {"filename": "/images/image6.jpg", "start": 130094, "end": 155210, "audio": 0}, {"filename": "/images/image7.jpg", "start": 155210, "end": 180800, "audio": 0}, {"filename": "/images/image8.jpg", "start": 180800, "end": 205407, "audio": 0}, {"filename": "/images/image9.jpg", "start": 205407, "end": 209442, "audio": 0}, {"filename": "/images/image10.jpg", "start": 209442, "end": 212881, "audio": 0}, {"filename": "/images/image11.jpg", "start": 212881, "end": 216699, "audio": 0}, {"filename": "/images/image12.jpg", "start": 216699, "end": 222151, "audio": 0}, {"filename": "/images/blender_icons16.png", "start": 222151, "end": 462995, "audio": 0}, {"filename": "/font/entypo.ttf", "start": 462995, "end": 498387, "audio": 0}, {"filename": "/font/roboto-regular.ttf", "start": 498387, "end": 643735, "audio": 0}, {"filename": "/font/roboto-bold.ttf", "start": 643735, "end": 779555, "audio": 0}, {"filename": "/font/NotoEmoji-Regular.ttf", "start": 779555, "end": 1198359, "audio": 0}], "remote_package_size": 1198359, "package_uuid": "9cf6d5e8-6b2c-4d20-9820-9400ec0ae9eb"});
+   loadPackage({"files": [{"filename": "/images/image1.jpg", "start": 0, "end": 25760, "audio": 0}, {"filename": "/images/image2.jpg", "start": 25760, "end": 49851, "audio": 0}, {"filename": "/images/image3.jpg", "start": 49851, "end": 79133, "audio": 0}, {"filename": "/images/image4.jpg", "start": 79133, "end": 102963, "audio": 0}, {"filename": "/images/image5.jpg", "start": 102963, "end": 130094, "audio": 0}, {"filename": "/images/image6.jpg", "start": 130094, "end": 155210, "audio": 0}, {"filename": "/images/image7.jpg", "start": 155210, "end": 180800, "audio": 0}, {"filename": "/images/image8.jpg", "start": 180800, "end": 205407, "audio": 0}, {"filename": "/images/image9.jpg", "start": 205407, "end": 209442, "audio": 0}, {"filename": "/images/image10.jpg", "start": 209442, "end": 212881, "audio": 0}, {"filename": "/images/image11.jpg", "start": 212881, "end": 216699, "audio": 0}, {"filename": "/images/image12.jpg", "start": 216699, "end": 222151, "audio": 0}, {"filename": "/images/blender_icons16.png", "start": 222151, "end": 462995, "audio": 0}, {"filename": "/font/entypo.ttf", "start": 462995, "end": 498387, "audio": 0}, {"filename": "/font/roboto-regular.ttf", "start": 498387, "end": 643735, "audio": 0}, {"filename": "/font/roboto-bold.ttf", "start": 643735, "end": 779555, "audio": 0}, {"filename": "/font/NotoEmoji-Regular.ttf", "start": 779555, "end": 1198359, "audio": 0}], "remote_package_size": 1198359, "package_uuid": "c288e354-8aeb-48db-803f-302ff3d8701e"});
   
   })();
   
@@ -1773,7 +1773,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  596908: function() {debugger;}
+  596796: function() {debugger;}
 };
 
 
@@ -7176,6 +7176,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7234,6 +7235,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7268,6 +7271,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1510, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1510, "end": 2220, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2220, "end": 3382, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3382, "end": 4476, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4476, "end": 5942, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5942, "end": 7248, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 7248, "end": 8714, "audio": 0}], "remote_package_size": 8714, "package_uuid": "b11ee961-b5d7-4eb0-8e10-8478c60e74ac"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_oit.bin", "start": 0, "end": 1510, "audio": 0}, {"filename": "/shaders/spirv/fs_oit.bin", "start": 1510, "end": 2220, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate.bin", "start": 2220, "end": 3382, "audio": 0}, {"filename": "/shaders/spirv/vs_oit_blit.bin", "start": 3382, "end": 4476, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_separate_blit.bin", "start": 4476, "end": 5942, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb.bin", "start": 5942, "end": 7248, "audio": 0}, {"filename": "/shaders/spirv/fs_oit_wb_blit.bin", "start": 7248, "end": 8714, "audio": 0}], "remote_package_size": 8714, "package_uuid": "b33b8401-7c5b-4b3e-b89c-4ef88a8485d8"});
   
   })();
   
@@ -1773,7 +1773,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  573836: function() {debugger;}
+  573724: function() {debugger;}
 };
 
 
@@ -6751,6 +6751,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6809,6 +6810,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -6843,6 +6846,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

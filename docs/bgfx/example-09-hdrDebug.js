@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2962, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2962, "end": 4056, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 4056, "end": 8386, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8386, "end": 9480, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9480, "end": 15450, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15450, "end": 18108, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 18108, "end": 20241, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 20241, "end": 21335, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 21335, "end": 26616, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 26616, "end": 28438, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 28438, "end": 31742, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 31742, "end": 34156, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 34156, "end": 39192, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 39192, "end": 2627602, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2627602, "end": 15210582, "audio": 0}], "remote_package_size": 15210582, "package_uuid": "1b192c28-df1f-47a7-b33f-8ee821513b8a"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_hdr_skybox.bin", "start": 0, "end": 1094, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_skybox.bin", "start": 1094, "end": 2962, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lum.bin", "start": 2962, "end": 4056, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lum.bin", "start": 4056, "end": 8386, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_lumavg.bin", "start": 8386, "end": 9480, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_lumavg.bin", "start": 9480, "end": 15450, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_blur.bin", "start": 15450, "end": 18108, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_blur.bin", "start": 18108, "end": 20241, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_bright.bin", "start": 20241, "end": 21335, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_bright.bin", "start": 21335, "end": 26616, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_mesh.bin", "start": 26616, "end": 28438, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_mesh.bin", "start": 28438, "end": 31742, "audio": 0}, {"filename": "/shaders/spirv/vs_hdr_tonemap.bin", "start": 31742, "end": 34156, "audio": 0}, {"filename": "/shaders/spirv/fs_hdr_tonemap.bin", "start": 34156, "end": 39192, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 39192, "end": 2627602, "audio": 0}, {"filename": "/textures/uffizi.ktx", "start": 2627602, "end": 15210582, "audio": 0}], "remote_package_size": 15210582, "package_uuid": "cfc94fb6-6d14-442b-862d-f10e571b1ea7"});
   
   })();
   
@@ -1775,7 +1775,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  590988: function() {debugger;}
+  590876: function() {debugger;}
 };
 
 
@@ -7178,6 +7178,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7236,6 +7237,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7270,6 +7273,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

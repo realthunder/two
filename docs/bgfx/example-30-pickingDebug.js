@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3683, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3683, "end": 4674, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4674, "end": 2822776, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822776, "end": 2876795, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876795, "end": 5465205, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465205, "end": 5466135, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466135, "end": 5520443, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520443, "end": 5558324, "audio": 0}], "remote_package_size": 5558324, "package_uuid": "5ef0068e-9736-4c1d-8887-0327e18fc4f1"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_picking_shaded.bin", "start": 0, "end": 2097, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_shaded.bin", "start": 2097, "end": 3683, "audio": 0}, {"filename": "/shaders/spirv/fs_picking_id.bin", "start": 3683, "end": 4674, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 4674, "end": 2822776, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2822776, "end": 2876795, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 2876795, "end": 5465205, "audio": 0}, {"filename": "/meshes/cube.bin", "start": 5465205, "end": 5466135, "audio": 0}, {"filename": "/meshes/tree.bin", "start": 5466135, "end": 5520443, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 5520443, "end": 5558324, "audio": 0}], "remote_package_size": 5558324, "package_uuid": "cff9bd1b-ef0b-415e-93d7-34926176e330"});
   
   })();
   
@@ -1774,7 +1774,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  577964: function() {debugger;}
+  577852: function() {debugger;}
 };
 
 
@@ -6752,6 +6752,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6810,6 +6811,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -6844,6 +6847,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

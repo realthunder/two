@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6644, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6644, "end": 8464, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8464, "end": 12493, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12493, "end": 13587, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13587, "end": 15324, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 15324, "end": 16208, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 16208, "end": 16646, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16646, "end": 17740, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17740, "end": 18621, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18621, "end": 2607031, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2607031, "end": 2661050, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2661050, "end": 2835954, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835954, "end": 3185634, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185634, "end": 3535314, "audio": 0}], "remote_package_size": 3535314, "package_uuid": "2c32b2bf-80f2-483b-922a-055f5feaf0c7"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_stencil_texture_lighting.bin", "start": 0, "end": 1940, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture_lighting.bin", "start": 1940, "end": 6644, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_lighting.bin", "start": 6644, "end": 8464, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_lighting.bin", "start": 8464, "end": 12493, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color_texture.bin", "start": 12493, "end": 13587, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_texture.bin", "start": 13587, "end": 15324, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_color.bin", "start": 15324, "end": 16208, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_color_black.bin", "start": 16208, "end": 16646, "audio": 0}, {"filename": "/shaders/spirv/vs_stencil_texture.bin", "start": 16646, "end": 17740, "audio": 0}, {"filename": "/shaders/spirv/fs_stencil_texture.bin", "start": 17740, "end": 18621, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 18621, "end": 2607031, "audio": 0}, {"filename": "/meshes/column.bin", "start": 2607031, "end": 2661050, "audio": 0}, {"filename": "/textures/figure-rgba.dds", "start": 2661050, "end": 2835954, "audio": 0}, {"filename": "/textures/flare.dds", "start": 2835954, "end": 3185634, "audio": 0}, {"filename": "/textures/fieldstone-rgba.dds", "start": 3185634, "end": 3535314, "audio": 0}], "remote_package_size": 3535314, "package_uuid": "582128d9-64b6-43b2-ac46-e6957d7930de"});
   
   })();
   
@@ -1775,7 +1775,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  588428: function() {debugger;}
+  588316: function() {debugger;}
 };
 
 
@@ -7178,6 +7178,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7236,6 +7237,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7270,6 +7273,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

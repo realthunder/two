@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vectordisplay_fb.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_fb.bin", "start": 1268, "end": 2610, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blur.bin", "start": 2610, "end": 6596, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blit.bin", "start": 6596, "end": 8082, "audio": 0}], "remote_package_size": 8082, "package_uuid": "eabb38ec-aec2-48b1-aacc-939397ae948d"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_vectordisplay_fb.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_fb.bin", "start": 1268, "end": 2610, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blur.bin", "start": 2610, "end": 6596, "audio": 0}, {"filename": "/shaders/spirv/fs_vectordisplay_blit.bin", "start": 6596, "end": 8082, "audio": 0}], "remote_package_size": 8082, "package_uuid": "55c71bff-c259-4af2-98a4-bca124002d92"});
   
   })();
   
@@ -1773,7 +1773,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  584700: function() {debugger;}
+  584588: function() {debugger;}
 };
 
 
@@ -6751,6 +6751,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6809,6 +6810,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -6843,6 +6846,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

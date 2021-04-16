@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2025, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2025, "end": 3183, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3183, "end": 4277, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4277, "end": 7655, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7655, "end": 10357, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10357, "end": 11870, "audio": 0}], "remote_package_size": 11870, "package_uuid": "6f77e092-8022-4e40-a2f5-c214db61c72c"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2025, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2025, "end": 3183, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3183, "end": 4277, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4277, "end": 7655, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7655, "end": 10357, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10357, "end": 11870, "audio": 0}], "remote_package_size": 11870, "package_uuid": "8ef2939d-fe92-4fd1-9fe6-1432b57f3550"});
   
   })();
   
@@ -1773,7 +1773,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  576492: function() {debugger;}
+  576380: function() {debugger;}
 };
 
 
@@ -6751,6 +6751,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6809,6 +6810,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -6843,6 +6846,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

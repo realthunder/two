@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6507, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6507, "end": 9277, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9277, "end": 10977, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10977, "end": 14425, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14425, "end": 156285, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156285, "end": 1204929, "audio": 0}], "remote_package_size": 1204929, "package_uuid": "97044fab-942f-4830-8170-e00d2cb9e424"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6507, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6507, "end": 9277, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9277, "end": 10977, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10977, "end": 14425, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14425, "end": 156285, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156285, "end": 1204929, "audio": 0}], "remote_package_size": 1204929, "package_uuid": "1a213ba3-2efa-4a37-a44a-564f129d869f"});
   
   })();
   
@@ -1775,7 +1775,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  589116: function() {debugger;}
+  589004: function() {debugger;}
 };
 
 
@@ -7178,6 +7178,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -7236,6 +7237,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -7270,6 +7273,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[

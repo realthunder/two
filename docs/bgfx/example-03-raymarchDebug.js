@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_raymarching.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_raymarching.bin", "start": 1268, "end": 11443, "audio": 0}], "remote_package_size": 11443, "package_uuid": "cd1b1f10-1898-4fc6-b492-9a37f95cfaa2"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_raymarching.bin", "start": 0, "end": 1268, "audio": 0}, {"filename": "/shaders/spirv/fs_raymarching.bin", "start": 1268, "end": 11443, "audio": 0}], "remote_package_size": 11443, "package_uuid": "30f81da7-f228-461d-a3e8-5152b223349d"});
   
   })();
   
@@ -1773,7 +1773,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  572092: function() {debugger;}
+  571980: function() {debugger;}
 };
 
 
@@ -6751,6 +6751,7 @@ var ASM_CONSTS = {
       // `callback` takes (WGPUBufferMapAsyncStatus status, void * userdata)
   
       buffer["mapAsync"](mode, offset, size).then(function() {
+        console.log(`mapped buffer ${bufferId}`);
         wasmTable.get(callback)(0 /* WGPUBufferMapAsyncStatus_Success */, userdata);
       }, function() {
         // TODO(kainino0x): Figure out how to pick other error status values.
@@ -6809,6 +6810,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((caPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((caPtr)>>2)]),
           "resolveTarget": WebGPU.mgrTextureView.get(
@@ -6843,6 +6846,8 @@ var ASM_CONSTS = {
         }
   
         return {
+          "view": WebGPU.mgrTextureView.get(
+            HEAPU32[((dsaPtr)>>2)]),
           "attachment": WebGPU.mgrTextureView.get(
             HEAPU32[((dsaPtr)>>2)]),
           "depthStoreOp": WebGPU.StoreOp[
