@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2025, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2025, "end": 3183, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3183, "end": 4277, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4277, "end": 7655, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7655, "end": 10357, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10357, "end": 11870, "audio": 0}], "remote_package_size": 11870, "package_uuid": "f3bf35a5-2b4a-4633-8871-1aab952a2c66"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_albedo_output.bin", "start": 0, "end": 2025, "audio": 0}, {"filename": "/shaders/spirv/fs_albedo_output.bin", "start": 2025, "end": 3183, "audio": 0}, {"filename": "/shaders/spirv/vs_fullscreen.bin", "start": 3183, "end": 4277, "audio": 0}, {"filename": "/shaders/spirv/fs_downsample.bin", "start": 4277, "end": 7655, "audio": 0}, {"filename": "/shaders/spirv/fs_upsample.bin", "start": 7655, "end": 10357, "audio": 0}, {"filename": "/shaders/spirv/fs_bloom_combine.bin", "start": 10357, "end": 11870, "audio": 0}], "remote_package_size": 11870, "package_uuid": "78ee40d3-5979-49a6-9f69-8b5f26f50cb6"});
   
   })();
   

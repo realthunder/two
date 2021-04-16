@@ -187,7 +187,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
     }
   
    }
-   loadPackage({"files": [{"filename": "/textures/particle.ktx", "start": 0, "end": 262212, "audio": 0}], "remote_package_size": 262212, "package_uuid": "61d451c4-ddce-49d4-9658-59241858c360"});
+   loadPackage({"files": [{"filename": "/textures/particle.ktx", "start": 0, "end": 262212, "audio": 0}], "remote_package_size": 262212, "package_uuid": "eb2daee7-5b83-449e-b3f9-6b86b000bb00"});
   
   })();
   

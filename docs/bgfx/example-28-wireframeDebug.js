@@ -189,7 +189,7 @@ Module['FS_createPath']("/", "meshes", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_wf_wireframe.bin", "start": 0, "end": 1679, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_wireframe.bin", "start": 1679, "end": 3410, "audio": 0}, {"filename": "/shaders/spirv/vs_wf_mesh.bin", "start": 3410, "end": 5519, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_mesh.bin", "start": 5519, "end": 9406, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 9406, "end": 2597816, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2597816, "end": 2635697, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2635697, "end": 5453799, "audio": 0}], "remote_package_size": 5453799, "package_uuid": "9f66fe58-aa68-41eb-8ee6-3556f53409fe"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_wf_wireframe.bin", "start": 0, "end": 1679, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_wireframe.bin", "start": 1679, "end": 3410, "audio": 0}, {"filename": "/shaders/spirv/vs_wf_mesh.bin", "start": 3410, "end": 5519, "audio": 0}, {"filename": "/shaders/spirv/fs_wf_mesh.bin", "start": 5519, "end": 9406, "audio": 0}, {"filename": "/meshes/bunny.bin", "start": 9406, "end": 2597816, "audio": 0}, {"filename": "/meshes/hollowcube.bin", "start": 2597816, "end": 2635697, "audio": 0}, {"filename": "/meshes/orb.bin", "start": 2635697, "end": 5453799, "audio": 0}], "remote_package_size": 5453799, "package_uuid": "56b7254a-eba8-4415-99cc-04652c051b2b"});
   
   })();
   

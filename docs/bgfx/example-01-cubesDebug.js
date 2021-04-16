@@ -188,7 +188,7 @@ Module['FS_createPath']("/shaders", "spirv", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "1afc06a9-6d70-4d8d-8f13-12af980ab1d3"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_cubes.bin", "start": 0, "end": 1058, "audio": 0}, {"filename": "/shaders/spirv/fs_cubes.bin", "start": 1058, "end": 1524, "audio": 0}], "remote_package_size": 1524, "package_uuid": "e0f6e019-0778-4f84-8cb4-c1c8f9bebc8e"});
   
   })();
   

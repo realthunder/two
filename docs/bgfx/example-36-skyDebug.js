@@ -190,7 +190,7 @@ Module['FS_createPath']("/", "textures", true, true);
     }
   
    }
-   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6507, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6507, "end": 9277, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9277, "end": 10977, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10977, "end": 14425, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14425, "end": 156285, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156285, "end": 1204929, "audio": 0}], "remote_package_size": 1204929, "package_uuid": "0b33f899-3985-465f-99ba-95228aceb46b"});
+   loadPackage({"files": [{"filename": "/shaders/spirv/vs_sky.bin", "start": 0, "end": 4685, "audio": 0}, {"filename": "/shaders/spirv/fs_sky.bin", "start": 4685, "end": 6507, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_color_banding_fix.bin", "start": 6507, "end": 9277, "audio": 0}, {"filename": "/shaders/spirv/vs_sky_landscape.bin", "start": 9277, "end": 10977, "audio": 0}, {"filename": "/shaders/spirv/fs_sky_landscape.bin", "start": 10977, "end": 14425, "audio": 0}, {"filename": "/meshes/test_scene.bin", "start": 14425, "end": 156285, "audio": 0}, {"filename": "/textures/lightmap.ktx", "start": 156285, "end": 1204929, "audio": 0}], "remote_package_size": 1204929, "package_uuid": "e8424036-b663-4cbd-84f1-74b728364cee"});
   
   })();
   
