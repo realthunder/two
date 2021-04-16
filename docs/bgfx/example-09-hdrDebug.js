@@ -6632,17 +6632,27 @@ var ASM_CONSTS = {
           "a": HEAPF64[(((ptr)+(24))>>3)],
         };
       },makeExtent3D:function(ptr) {
-        return {
+        var e = {
           "width": HEAPU32[((ptr)>>2)],
           "height": HEAPU32[(((ptr)+(4))>>2)],
           "depthOrArrayLayers": HEAPU32[(((ptr)+(8))>>2)],
         };
+        if (e.depthOrArrayLayers > 1)
+        {
+          console.log('caca');
+        }
+        return e;
       },makeOrigin3D:function(ptr) {
-        return {
+        var o = {
           "x": HEAPU32[((ptr)>>2)],
           "y": HEAPU32[(((ptr)+(4))>>2)],
           "z": HEAPU32[(((ptr)+(8))>>2)],
         };
+        if (o.z > 0)
+        {
+          console.log('pipi');
+        }
+        return o;
       },makeImageCopyTexture:function(ptr) {
         assert(ptr);assert(HEAP32[((ptr)>>2)] === 0);
         return {
