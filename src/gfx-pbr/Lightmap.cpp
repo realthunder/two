@@ -8,6 +8,7 @@ module;
 #include <xatlas.h>
 module TWO2(gfx, pbr);
 #else
+#include <xatlas.h>
 #include <infra/ToString.h>
 #include <infra/Log.h>
 #include <infra/File.h>

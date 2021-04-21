@@ -30,16 +30,6 @@ namespace stl
 #include <stl/move.h>
 namespace two
 {
-#if 0 //def TWO_MODULES
-	// TODO (hugoam) fix swap() ADL issues
-	export_ template <class T>
-	inline void swap(T& t1, T& t2)
-	{
-		T temp = move(t1);
-		t1 = move(t2);
-		t2 = move(temp);
-	}
-#else
 	namespace
 	{
 		template <class T>
@@ -50,6 +40,5 @@ namespace two
 			t2 = move(temp);
 		}
 	}
-#endif
 }
 

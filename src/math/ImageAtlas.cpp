@@ -10,6 +10,7 @@ module;
 #include <stb_image.h>
 module TWO(math);
 #else
+#include <cstring>
 #include <stb_rect_pack.h>
 #include <stb_image.h>
 #include <infra/StringOps.h>

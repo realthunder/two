@@ -9,6 +9,8 @@
 #include <stl/string.h>
 #include <stl/vector.h>
 #include <stl/map.h>
+#include <stl/algorithm.h>
+#include <infra/Log.h>
 #include <type/Unique.h>
 #endif
 #include <gfx/Forward.h>

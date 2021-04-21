@@ -7,6 +7,7 @@ module;
 #include <infra/Cpp20.h>
 module TWO(refl);
 #else
+#include <infra/Vector.h>
 #include <type/Types.h>
 //#include <ecs/Proto.h>
 #include <refl/Injector.h>

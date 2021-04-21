@@ -3,6 +3,10 @@
 
 group "bgfx"
 
+if _OPTIONS["webgpu"] then
+    _OPTIONS["with-webgpu"] = ""
+end
+
 dofile(path.join(BX_DIR, "scripts/bx.lua"))
 dofile(path.join(BIMG_DIR, "scripts/bimg.lua"))
 dofile(path.join(BIMG_DIR, "scripts/bimg_decode.lua"))

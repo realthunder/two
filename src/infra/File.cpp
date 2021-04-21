@@ -34,15 +34,14 @@ module TWO(infra);
 
 namespace two
 {
+#ifdef TWO_MODULES
+	using std::string;
+#endif
+
 	void copy_file(const string& source, const string& dest)
 	{
-#ifdef TWO_MODULES
-		std::ifstream source_file(source.c_str());// , std::ios::binary);
-		std::ofstream dest_file(dest.c_str());// , std::ios::binary);
-#else
 		std::ifstream source_file(source.c_str(), std::ios::binary);
 		std::ofstream dest_file(dest.c_str(), std::ios::binary);
-#endif
 		dest_file << source_file.rdbuf();
 	}
 

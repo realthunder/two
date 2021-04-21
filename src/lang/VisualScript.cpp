@@ -9,6 +9,7 @@ module;
 module TWO(lang);
 #else
 #include <cstdio>
+#include <algorithm>
 #include <stl/math.h>
 #include <stl/algorithm.h>
 #include <infra/ToString.h>
@@ -19,8 +20,6 @@ module TWO(lang);
 #include <lang/Types.h>
 #include <lang/VisualScript.h>
 #endif
-
-//#include <algorithm>
 
 #define TWO_DEBUG_SCRIPT
 

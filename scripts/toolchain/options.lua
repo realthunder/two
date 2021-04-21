@@ -116,6 +116,11 @@ newoption {
     description = "Use NanoVG",
 }
 
+newoption {
+    trigger = "with-webgpu",
+    description = "Experimental WebGPU (dawn) renderer",
+}
+
 function default_options()
     _OPTIONS["with-windows"] = "10.0"
 

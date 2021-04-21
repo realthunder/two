@@ -5,20 +5,4 @@
 #pragma once
 
 #include <infra/Config.h>
-
-#define PLOP 0
-
-namespace two
-{
-	namespace
-	{
-		template <class T>
-		inline void swap(T& t1, T& t2)
-		{
-			T temp = move(t1);
-			t1 = move(t2);
-			t2 = move(temp);
-		}
-	}
-}
-
+#include <stl/swap.h>
