@@ -135,6 +135,7 @@ namespace two
 
 	void VgVg::end_frame(uint16_t view)
 	{
+		UNUSED(view);
 		vg::end(m_vg);
 		vg::frame(m_vg);
 	}

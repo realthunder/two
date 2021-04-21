@@ -83,6 +83,7 @@ namespace two
 
 	void BlockLight::options(Render& render, const DrawElement& element, ProgramVersion& program) const
 	{
+		UNUSED(element);
 		if(render.m_viewport->m_clustered)
 			program.set_option(0, CLUSTERED, true);
 

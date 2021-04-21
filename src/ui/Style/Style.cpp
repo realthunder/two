@@ -151,6 +151,7 @@ namespace two
 
 	InkStyle& Style::decline_skin(WidgetState state, bool inherit)
 	{
+		UNUSED(inherit);
 		for(Subskin& subskin : m_skins)
 			if(state == subskin.state)
 			{

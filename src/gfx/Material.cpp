@@ -107,6 +107,7 @@ namespace two
 		MaterialBlockAlpha(GfxSystem& gfx)
 			: s_alpha(bgfx::createUniform("s_alpha", bgfx::UniformType::Sampler, 1U, bgfx::UniformSet::View))
 		{
+			UNUSED(gfx);
 #if !MATERIALS_BUFFER
 			GpuState<MaterialAlpha>::me.init();
 #endif
@@ -136,6 +137,7 @@ namespace two
 		MaterialBlockSolid(GfxSystem& gfx)
 			: s_color(bgfx::createUniform("s_color", bgfx::UniformType::Sampler, 1U, bgfx::UniformSet::View))
 		{
+			UNUSED(gfx);
 #if !MATERIALS_BUFFER
 			GpuState<MaterialSolid>::me.init();
 #endif
@@ -367,6 +369,7 @@ namespace two
 			, s_depth(bgfx::createUniform("s_depth", bgfx::UniformType::Sampler, 1U, bgfx::UniformSet::View))
 			//, s_lightmap(bgfx::createUniform("s_lightmap", bgfx::UniformType::Sampler, 1U, bgfx::UniformSet::View))
 		{
+			UNUSED(gfx);
 #if !MATERIALS_BUFFER
 			GpuState<MaterialPbr>::me.init();
 #endif
@@ -419,6 +422,7 @@ namespace two
 			, s_shininess(bgfx::createUniform("s_shininess", bgfx::UniformType::Sampler, 1U, bgfx::UniformSet::View))
 			//, s_lightmap(bgfx::createUniform("s_lightmap", bgfx::UniformType::Sampler, 1U, bgfx::UniformSet::View))
 		{
+			UNUSED(gfx);
 #if !MATERIALS_BUFFER
 			GpuState<MaterialPhong>::me.init();
 #endif
@@ -669,6 +673,7 @@ namespace two
 
 	void BlockMaterial::submit(Render& render, const Pass& pass)
 	{
+		UNUSED(render);
 		uint32_t materials = uint32_t(TextureSampler::Materials);
 		bgfx::setViewUniform(pass.m_index, s_materials, &materials);
 

@@ -151,7 +151,7 @@ namespace gfx
 
 		auto queue_draw_element = [](GfxSystem& gfx, Render& render, Pass& pass, DrawElement& element)
 		{
-			UNUSED(render);
+			UNUSED(gfx); UNUSED(render); UNUSED(pass);
 			const Program& program = *element.m_program.m_program;
 			if(!program.m_blocks[MaterialBlock::Lit])
 				return false;
@@ -318,7 +318,7 @@ namespace gfx
 
 	void BlockGIBake::options(Render& render, const DrawElement& element, ProgramVersion& program) const
 	{
-		UNUSED(render); UNUSED(program);
+		UNUSED(render); UNUSED(element); UNUSED(program);
 	}
 
 	void BlockGIBake::submit(Render& render, const Pass& pass) const
@@ -366,6 +366,7 @@ namespace gfx
 
 	void BlockGITrace::options(Render& render, const DrawElement& element, ProgramVersion& program) const
 	{
+		UNUSED(element);
 		for(GIProbe* gi_probe : render.m_shot.m_gi_probes)
 			if(gi_probe->m_enabled)
 			{

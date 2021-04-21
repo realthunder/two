@@ -31,7 +31,7 @@ namespace two
 		});
 		
 		select({ "DropdownHead", "DropdownChoice", "MenuChoice" }) // "DropdownInput", "DropdownInputCompact", "TypedownInput", 
-		.declare([&](Layout& l, InkStyle& i) { UNUSED(l);
+		.declare([&](Layout& l, InkStyle& i) { UNUSED(l); UNUSED(i);
 			l.m_padding = vec4(look.FramePadding, look.FramePadding);
 		});
 
@@ -262,34 +262,35 @@ namespace two
 		}
 
 		Style& treenode_header = ui::treenode_styles().header;
+		UNUSED(treenode_header);
 
 		select({ "ExpandboxToggle" })
 		.declare([&](Layout& l, InkStyle& i) {
-			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { render_arrow(vg, rect.pos, SignedAxis::PlusX, 13.f, 1.f, Colour(1.f)); };
+			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) {  UNUSED(frame); render_arrow(vg, rect.pos, SignedAxis::PlusX, 13.f, 1.f, Colour(1.f)); };
 			l.m_size = vec2(13.f);
 		})
 		.decline({ ACTIVE }, [&](InkStyle& i) {
-			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { render_arrow(vg, rect.pos, SignedAxis::MinusY, 13.f, 1.f, Colour(1.f)); };
+			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { UNUSED(frame); render_arrow(vg, rect.pos, SignedAxis::MinusY, 13.f, 1.f, Colour(1.f)); };
 		})
 		.decline({ DISABLED }, [&](InkStyle& i) {
-			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) {};
+			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { UNUSED(frame); UNUSED(rect); UNUSED(vg); };
 		});
 		
 		select({ "TreeNodeNoToggle" })
-		.declare([&](Layout& l, InkStyle& i) {
+		.declare([&](Layout& l, InkStyle& i) { UNUSED(i);
 			l.m_size = vec2(13.f) * 0.7f;
 		});
 
 		select({ "TreeNodeToggle" })
 		.declare([&](Layout& l, InkStyle& i) {
-			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { render_arrow(vg, rect.pos, SignedAxis::PlusX, 13.f, 0.7f, Colour(1.f)); };
+			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { UNUSED(frame); render_arrow(vg, rect.pos, SignedAxis::PlusX, 13.f, 0.7f, Colour(1.f)); };
 			l.m_size = vec2(13.f) * 0.7f;
 		})
 		.decline({ ACTIVE }, [&](InkStyle& i) {
-			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { render_arrow(vg, rect.pos, SignedAxis::MinusY, 13.f, 0.7f, Colour(1.f)); };
+			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { UNUSED(frame); render_arrow(vg, rect.pos, SignedAxis::MinusY, 13.f, 0.7f, Colour(1.f)); };
 		})
 		.decline({ DISABLED }, [&](InkStyle& i) {
-			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) {};
+			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { UNUSED(frame); UNUSED(rect); UNUSED(vg); };
 		});
 #if 0
 		select({ "Element", "TreeNodeHeader" })
@@ -343,14 +344,14 @@ namespace two
 		});
 		
 		select({  "Checkbox" })
-		.declare([&](Layout& l, InkStyle& i) { UNUSED(l);
+		.declare([&](Layout& l, InkStyle& i) { UNUSED(i);
 			l.m_size = vec2(13.f + 6.f);
 		});
 		
 		static Colour Checkmark = style.CheckMark;
 		select({  "Checkmark" })
 		.declare([&](Layout& l, InkStyle& i) { UNUSED(l);
-			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { render_checkmark(vg, rect.pos + vec2(3.f), Checkmark, 13.f); };
+			i.m_custom_draw = [](const Frame& frame, const vec4& rect, Vg& vg) { UNUSED(frame); render_checkmark(vg, rect.pos + vec2(3.f), Checkmark, 13.f); };
 		});
 		
 		select({ "Menubar" })

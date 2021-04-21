@@ -469,7 +469,7 @@ namespace two
 
 		for(const CSMShadow& csm : m_csm_shadows)
 		{
-			size_t i = 0;
+			uint32_t i = 0;
 			for(const CSMSlice& slice : csm.m_slices)
 			{
 				GpuCSMShadow& gpu = m_block_light.m_gpu_lights[slice.m_light->m_index].csm;
@@ -509,7 +509,7 @@ namespace two
 
 	void BlockShadow::options(Render& render, const DrawElement& element, ProgramVersion& program) const
 	{
-		UNUSED(render);
+		UNUSED(render); UNUSED(element);
 
 		bool shadow_sampler = SHADOW_SAMPLER; // m_pcf_level != PCF_HARD
 
@@ -614,7 +614,7 @@ namespace two
 			setup_block(*shadow.m_light, shadow.m_depth_method, shadow.m_bias_scale);
 
 			RenderFunc renderer = gfx.renderer(Shading::Volume);
-			gfx.m_renderer.subrender(render, shadow_render, gfx.renderer(Shading::Volume));
+			gfx.m_renderer.subrender(render, shadow_render, renderer);
 		};
 
 		for(CSMShadow& csm : block_shadow.m_csm_shadows)

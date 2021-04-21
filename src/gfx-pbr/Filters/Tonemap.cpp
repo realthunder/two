@@ -27,6 +27,7 @@ namespace two
 		: GfxBlock(gfx, *this)
 		, m_program(gfx.programs().create("filter/tonemap"))
 	{
+		UNUSED(filter); UNUSED(copy);
 		m_options = { "TO_GAMMA", "ADJUST_BCS", "COLOR_LUT" };
 		m_modes = { "TONEMAP_MODE" };
 

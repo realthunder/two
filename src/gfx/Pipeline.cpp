@@ -147,7 +147,7 @@ namespace two
 
 		auto queue_draw_element = [](GfxSystem& gfx, Render& render, Pass& pass, DrawElement& element)
 		{
-			UNUSED(render);
+			UNUSED(gfx); UNUSED(render); UNUSED(pass);
 			const Program& program = *element.m_program.m_program;
 			if(!program.m_blocks[MaterialBlock::Solid] && !program.m_blocks[MaterialBlock::Fresnel])
 				return false;

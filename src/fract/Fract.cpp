@@ -225,7 +225,7 @@ namespace two
 		for(size_t y = 0; y < subdiv.y; ++y)
 			for(size_t x = 0; x < subdiv.x; ++x)
 			{
-				const uvec2 coord = uvec2(x, y);
+				const uvec2 coord = uvec2(uint(x), uint(y));
 				Rect rect(vec2(coord) / vec2(subdiv), vec2(1.f) / vec2(subdiv));
 				images.emplace_back();
 				this->render(rect, pattern, resolution, images.back());

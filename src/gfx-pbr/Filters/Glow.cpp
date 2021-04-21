@@ -33,6 +33,7 @@ namespace two
 		, m_bleed_program(gfx.programs().create("filter/glow_bleed"))
 		, m_merge_program(gfx.programs().create("filter/glow"))
 	{
+		UNUSED(filter); UNUSED(copy);
 		m_options = { "GLOW_FILTER_BICUBIC" };
 
 		blur.m_program.register_block(*this);
@@ -83,7 +84,7 @@ namespace two
 			blur.gaussian_pass(render, *render.m_target, render.m_rect, i, false, kernel);
 
 			//bool blit_support = (bgfx::getCaps()->supported & BGFX_CAPS_TEXTURE_BLIT) != 0;
-			bool blit_support = false;
+			//bool blit_support = false;
 
 			RenderQuad quad = { render.m_rect, render.m_rect, true };
 

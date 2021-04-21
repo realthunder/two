@@ -140,6 +140,7 @@ namespace two
 
 	SceneViewer& asset_empty_viewer(Widget& parent, Ref object, vec3 offset, float radius)
 	{
+		UNUSED(object);
 		static float time = 0.f;
 		time += 0.01f;
 

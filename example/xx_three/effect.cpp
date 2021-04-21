@@ -182,13 +182,13 @@ EX(xx_effect)
 		camera.m_fov = 70.f; camera.m_near = 1.f; camera.m_far = 1000.f;
 		camera.m_eye.z = 400.f;
 
-		static Program& rgbshift = app.m_gfx.programs().create("rgbshift");
-		rgbshift.set_source(ShaderType::Vertex, rgbshift_vertex);
-		rgbshift.set_source(ShaderType::Fragment, rgbshift_fragment);
+		static Program& prog_rgbshift = app.m_gfx.programs().create("rgbshift");
+		prog_rgbshift.set_source(ShaderType::Vertex, rgbshift_vertex);
+		prog_rgbshift.set_source(ShaderType::Fragment, rgbshift_fragment);
 
-		static Program& dotscreen = app.m_gfx.programs().create("dotscreen");
-		dotscreen.set_source(ShaderType::Vertex, dotscreen_vertex);
-		dotscreen.set_source(ShaderType::Fragment, dotscreen_fragment);
+		static Program& prog_dotscreen = app.m_gfx.programs().create("dotscreen");
+		prog_dotscreen.set_source(ShaderType::Vertex, dotscreen_vertex);
+		prog_dotscreen.set_source(ShaderType::Fragment, dotscreen_fragment);
 
 		scene.m_env.m_radiance.m_ambient = rgb(0x222222);
 

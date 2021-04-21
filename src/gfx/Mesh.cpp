@@ -343,7 +343,7 @@ namespace two
 			morph_decl(VertexAttribute::MorphNormal3, bgfx::Attrib::Color2),
 		};
 
-		encoder.setVertexBuffer(1 + index, m_morphs[morph].m_vertices, 0, m_vertex_count, morph_decls[index]);
+		encoder.setVertexBuffer(uint8_t(1 + index), m_morphs[morph].m_vertices, 0, m_vertex_count, morph_decls[index]);
 	}
 
 	uint64_t Mesh::submit(bgfx::Encoder& encoder) const

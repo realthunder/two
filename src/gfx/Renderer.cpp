@@ -263,6 +263,7 @@ namespace two
 
 	void Renderer::shader_options(Render& render, Pass& pass, ProgramVersion& version) const
 	{
+		UNUSED(render); UNUSED(pass); UNUSED(version);
 		//for(GfxBlock* block : m_gfx.m_renderer.m_pass_blocks[pass.m_pass_type])
 		//	if(block->m_draw_block)
 		//		((DrawBlock*)block)->options(render, version);

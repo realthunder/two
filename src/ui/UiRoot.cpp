@@ -79,6 +79,7 @@ namespace two
 	{
 		visit([](Widget& widget, bool& visit)
 		{
+			UNUSED(visit);
 			widget.m_frame.update_style(true);
 		});
 	}

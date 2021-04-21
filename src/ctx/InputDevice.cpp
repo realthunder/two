@@ -247,11 +247,13 @@ namespace two
 
 	ControlNode* InputContext::control_event(InputEvent& event)
 	{
+		UNUSED(event);
 		return this;
 	}
 
 	void InputContext::receive_event(InputEvent& inputEvent)
 	{
+		UNUSED(inputEvent);
 	}
 
 	KeyEvent ControlNode::key_event(Key code, EventType event_type, InputMod modifier)

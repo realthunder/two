@@ -41,7 +41,7 @@ namespace two
 	{
 		for(size_t i = 0; i < m_names.size(); i++)
 			if(m_names[i] == name)
-				return i;
+				return uint32_t(i);
 		return UINT32_MAX;
 	}
 
@@ -54,7 +54,9 @@ namespace two
 	Skin::Skin() {}
 	Skin::Skin(Skeleton& skeleton, int num_joints)
 		: m_skeleton(&skeleton)
-	{}
+	{
+		UNUSED(num_joints);
+	}
 
 	Skin::Skin(const Skin& copy, Skeleton& skeleton)
 		: Skin(skeleton, int(copy.m_joints.size()))
@@ -83,7 +85,7 @@ namespace two
 		const uvec2 size = uvec2(SKELETON_TEXTURE_SIZE, height * 4);
 
 		if(!bgfx::isValid(m_texture))
-			m_texture = bgfx::createTexture2D(size.x, size.y, false, 1, bgfx::TextureFormat::RGBA32F, TEXTURE_POINT | TEXTURE_CLAMP);
+			m_texture = bgfx::createTexture2D(uint16_t(size.x), uint16_t(size.y), false, 1, bgfx::TextureFormat::RGBA32F, TEXTURE_POINT | TEXTURE_CLAMP);
 			//m_texture = { size, false, bgfx::TextureFormat::RGBA32F, TEXTURE_POINT | TEXTURE_CLAMP };
 		
 		m_memory = bgfx::alloc(size.x * size.y * 4 * sizeof(float));

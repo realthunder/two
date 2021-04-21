@@ -84,7 +84,7 @@ namespace two
 		multi_button = Style("MultiButton", wrap_button, {});
 		toggle = Style("Toggle", control, {});
 		checkbox = Style("Checkbox", toggle, [](Layout& l) { l.m_align = { Align::Left, Align::Center }; }); // @todo why doesn't work ?? why u checkbox not aligned ??
-		checkmark = Style("Checkmark", screen, [](Layout& l) {});
+		checkmark = Style("Checkmark", screen, [](Layout& l) { UNUSED(l); });
 
 		dummy = Style("Dummy", wedge, [](Layout& l) { l.m_space = Preset::Block; });
 		tooltip = Style("Tooltip", decal, [](Layout& l) { l.m_space = Preset::Unit; l.m_zorder = -2; });

@@ -56,6 +56,7 @@ namespace two
 		for(Elem& elem : m_items)
 		{
 			Item& it = gfx::items(scene).add(Item(nodes[elem.node], *elem.item.m_model, elem.item.m_flags));
+			UNUSED(it);
 		}
 
 		if(mime)

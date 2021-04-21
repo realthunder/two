@@ -290,8 +290,6 @@ namespace two
 
 	void Frame::sync_solver(FrameSolver& solver)
 	{
-		if(d_style->m_name == "Text")
-			int i = 0;
 		const vec2 content = m_content + rect_sum(d_inkstyle->m_padding);
 		solver.setup(m_position, m_size, m_span, !empty() ? &content : nullptr);
 

@@ -231,14 +231,14 @@ namespace two
 		, m_format(format)
 	{
 		bgfx::TextureFormat::Enum bformat = bgfx::TextureFormat::Enum(format);
-		m_tex = bgfx::createTexture2D(uint16_t(size.x), uint16_t(size.y), mips, layers, bformat, flags);
+		m_tex = bgfx::createTexture2D(uint16_t(size.x), uint16_t(size.y), mips, uint16_t(layers), bformat, flags);
 		m_is_depth = bformat >= bgfx::TextureFormat::D16 && bformat <= bgfx::TextureFormat::D0S8;
 		m_is_array = true;
 	}
 
 	Texture::Texture(const uvec3& size, bool mips, TextureFormat format, uint64_t flags)
 		: m_size(size.x, size.y)
-		, m_depth(size.z)
+		, m_depth(uint16_t(size.z))
 		, m_format(format)
 	{
 		bgfx::TextureFormat::Enum bformat = bgfx::TextureFormat::Enum(format);
@@ -311,6 +311,7 @@ namespace two
 
 	void Texture::load_float(const uvec2& size, const bgfx::Memory& memory, uint8_t num_components)
 	{
+		UNUSED(num_components);
 		if(m_size == size)
 		{
 			bgfx::updateTexture2D(m_tex, 0, 0, 0, 0, uint16_t(size.x), uint16_t(size.y), &memory);
@@ -338,7 +339,7 @@ namespace two
 	void Texture::load_rgba(const uvec2& size, span<uint32_t> data, bool ref)
 	{
 		const bgfx::Memory* memory = ref
-			? bgfx::makeRef(data.data(), data.size())
+			? bgfx::makeRef(data.data(), uint32_t(data.size()))
 			: bgfx::alloc(uint32_t(data.m_count * sizeof(uint32_t)));
 		if(!ref)
 			memcpy(memory->data, data.m_pointer, data.m_count * sizeof(uint32_t));
@@ -348,7 +349,7 @@ namespace two
 	void Texture::load_float(const uvec2& size, span<float> data, bool ref)
 	{
 		const bgfx::Memory* memory = ref
-			? bgfx::makeRef(data.data(), data.size())
+			? bgfx::makeRef(data.data(), uint32_t(data.size()))
 			: bgfx::alloc(uint32_t(data.m_count * sizeof(float)));
 		if(!ref)
 			memcpy(memory->data, data.m_pointer, data.m_count * sizeof(float));

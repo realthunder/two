@@ -22,6 +22,7 @@ namespace two
 {
 	bool queue_depth(GfxSystem& gfx, Render& render, Pass& pass, DrawElement& element)
 	{
+		UNUSED(render); UNUSED(pass); UNUSED(element);
 		static BlockDepth& block_depth = *gfx.m_renderer.block<BlockDepth>();
 
 		if(element.m_material->m_base.m_depth_draw != DepthDraw::Enabled
@@ -101,7 +102,7 @@ namespace two
 
 	void BlockDepth::options(Render& render, const DrawElement& element, ProgramVersion& program) const
 	{
-		UNUSED(render); UNUSED(program);
+		UNUSED(render); UNUSED(element); UNUSED(program);
 	}
 
 	void BlockDepth::submit(Render& render, const Pass& pass) const

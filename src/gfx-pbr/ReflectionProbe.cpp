@@ -76,6 +76,7 @@ namespace two
 
 	Render CubeCamera::render(GfxSystem& gfx, Render& render, SignedAxis axis)
 	{
+		UNUSED(gfx);
 		Render probe_render = { Shading::Shaded, m_viewports[size_t(axis)], *render.m_target, m_cubemap.m_fbos[size_t(axis)], *render.m_frame };
 		probe_render.m_vflip = true;
 
@@ -135,12 +136,12 @@ namespace two
 
 	void BlockReflection::options(Render& render, const DrawElement& element, ProgramVersion& program) const
 	{
-		UNUSED(render); UNUSED(program);
+		UNUSED(render); UNUSED(element); UNUSED(program);
 	}
 
 	void BlockReflection::submit(Render& render, const Pass& pass) const
 	{
-		UNUSED(render);
+		UNUSED(render); UNUSED(pass);
 		//uint32_t stage = uint32_t(TextureSampler::ReflectionProbe);
 		//bgfx::setViewUniform(pass.m_index, u_uniform.s_atlas, &stage);
 	}
@@ -190,7 +191,7 @@ namespace two
 	CubeTarget& BlockReflection::find_cubemap(uint16_t size)
 	{
 		for(CubeTarget& cubemap : m_cubemaps)
-			if(cubemap.m_size > size * 2)
+			if(cubemap.m_size > uint16_t(size * 2))
 				return cubemap;
 		return m_cubemaps[0];
 	}

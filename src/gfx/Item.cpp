@@ -91,6 +91,7 @@ namespace two
 
 	void Batch::submit(bgfx::Encoder& encoder, const ModelElem& item) // const
 	{
+		UNUSED(item);
 		if(m_cache.size() > 0)
 			this->commit(m_cache);
 

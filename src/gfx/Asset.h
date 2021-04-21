@@ -121,7 +121,7 @@ namespace two
 		}
 
 		meth_ T_Asset& file_at(const string& path, const string& name) { return this->file_at(path, name, {}); }
-			  T_Asset* load(const string& path, const string& name, const Config& config)
+			  T_Asset* load(const string& path, const string& file, const Config& config)
 		{
 			string filename = file;
 			for (size_t i = 0; i < m_formats.size(); ++i)

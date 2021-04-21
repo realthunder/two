@@ -157,7 +157,7 @@ namespace two
 
 		auto subdivideFace = [&](vec3 a, vec3 b, vec3 c, int detail) {
 
-			size_t cols = pow(2, detail);
+			int cols = int(pow(2, detail));
 
 			// we use this multidimensional array as a data structure for creating the subdivision
 

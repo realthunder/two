@@ -86,14 +86,14 @@ namespace two
 
 		auto at = [&](uint x, uint y) -> uint32_t { return x + y*subdiv; };
 
-		uint16_t i = 0;
+		uint16_t slot = 0;
 		for(uint16_t y = 0; y < subdiv; ++y)
 			for(uint16_t x = 0; x < subdiv; ++x)
 			{
 				vec4 slot_rect = { coord + vec2(x, y) * slot_size, slot_size };
 				uvec4 slot_trect = uvec4(slot_rect * vec2(m_size));
 
-				slice.m_slots.push_back({ i++, nullptr, slot_rect, slot_trect });
+				slice.m_slots.push_back({ slot++, nullptr, slot_rect, slot_trect });
 
 				bool at_block = x % 4 == 0 && y % 2 == 0;
 				bool has_space = subdiv - x >= 4 && subdiv - y >= 2;
@@ -101,7 +101,7 @@ namespace two
 				{
 					Block block = { { at(x+0, y+0), at(x+1, y+0), at(x+2, y+0), at(x+3, y+0),
 									  at(x+0, y+1), at(x+1, y+1), at(x+2, y+1), at(x+3, y+1) } };
-					slice.m_slots.back().m_block = slice.m_blocks.size();
+					slice.m_slots.back().m_block = uint16_t(slice.m_blocks.size());
 					slice.m_blocks.push_back(block);
 				}
 			}
@@ -150,6 +150,7 @@ namespace two
 	}
 	void ShadowAtlas::remove_light(Light& light, bool block)
 	{
+		UNUSED(block);
 		Slice& slice = m_slices[light.m_shadow_index.slice];
 		this->yield(slice, light.m_shadow_index.slot);
 	}

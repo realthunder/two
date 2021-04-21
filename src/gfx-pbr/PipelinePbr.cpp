@@ -181,7 +181,7 @@ namespace gfx
 			lights.register_blocks(shading_blocks);
 
 			Program& fresnel = gfx.programs().create("fresnel");
-			geometry.set_blocks({ MaterialBlock::Alpha, MaterialBlock::Fresnel });
+			fresnel.set_blocks({ MaterialBlock::Alpha, MaterialBlock::Fresnel });
 
 			Program& gi_voxelize = gfx.programs().create("gi/voxelize");
 			gi_voxelize.register_blocks(gi_blocks);
@@ -449,7 +449,7 @@ namespace gfx
 
 		auto queue_draw_element = [](GfxSystem& gfx, Render& render, Pass& pass, DrawElement& element)
 		{
-			UNUSED(render); UNUSED(pass);
+			UNUSED(gfx); UNUSED(render); UNUSED(pass);
 			const Program& program = *element.m_program.m_program;
 			bool lit = program.m_blocks[MaterialBlock::Lit] && !element.m_material->m_alpha.m_is_alpha;
 			bool opaque = program.m_passes[PassType::Opaque];
@@ -558,7 +558,7 @@ namespace gfx
 
 	void BlockGeometry::options(Render& render, const DrawElement& element, ProgramVersion& program) const
 	{
-		UNUSED(render); UNUSED(program);
+		UNUSED(render); UNUSED(element); UNUSED(program);
 	}
 
 	void BlockGeometry::submit(Render& render, const Pass& pass) const

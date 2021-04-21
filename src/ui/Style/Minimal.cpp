@@ -221,7 +221,7 @@ namespace two
 		});
 
 		select({ "ExpandboxToggle", "TreeNodeToggle" })
-		.declare([&](Layout& l, InkStyle& i) {
+		.declare([&](Layout& l, InkStyle& i) { UNUSED(l);
 			i.m_image = ui_window.find_image("toggle_closed");
 		})
 		.decline({ ACTIVE }, [&](InkStyle& i) {

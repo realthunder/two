@@ -114,18 +114,18 @@ namespace two
 	void BlockFilter::uniforms(const Pass& pass, const string& name, span<float> values)
 	{
 		if(m_uniforms.find(name) == m_uniforms.end())
-			m_uniforms[name] = bgfx::createUniform(name.c_str(), bgfx::UniformType::Vec4, values.size() / 4, bgfx::UniformSet::View);
+			m_uniforms[name] = bgfx::createUniform(name.c_str(), bgfx::UniformType::Vec4, uint16_t(values.size() / 4), bgfx::UniformSet::View);
 
-		bgfx::setViewUniform(pass.m_index, m_uniforms[name], values.data(), values.size() / 4);
+		bgfx::setViewUniform(pass.m_index, m_uniforms[name], values.data(), uint16_t(values.size() / 4));
 	}
 
 	void BlockFilter::uniforms4(const Pass& pass, const string& name, span<vec4> values)
 	{
 		//if(!has(m_uniforms, name))			
 		if(m_uniforms.find(name) == m_uniforms.end())
-			m_uniforms[name] = bgfx::createUniform(name.c_str(), bgfx::UniformType::Vec4, values.size(), bgfx::UniformSet::View);
+			m_uniforms[name] = bgfx::createUniform(name.c_str(), bgfx::UniformType::Vec4, uint16_t(values.size()), bgfx::UniformSet::View);
 
-		bgfx::setViewUniform(pass.m_index, m_uniforms[name], values.data(), values.size());
+		bgfx::setViewUniform(pass.m_index, m_uniforms[name], values.data(), uint16_t(values.size()));
 	}
 
 	struct GpuTargetRect

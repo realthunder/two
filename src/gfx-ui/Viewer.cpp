@@ -1113,6 +1113,7 @@ namespace ui
 
 	void viewport_picker(Viewer& viewer, Widget& widget, vector<Ref>& selection)
 	{
+		UNUSED(selection);
 		if(MouseEvent event = widget.mouse_event(DeviceType::Mouse, EventType::Moved, InputMod::None, false))
 		{
 			auto callback = [&](Item* item) { viewer.m_hovered = item; };

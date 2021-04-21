@@ -63,7 +63,8 @@ namespace two
 	FrameBuffer::FrameBuffer(const uvec2& size, Texture& texture, span<bgfx::Attachment> attach)
 		: FrameBuffer(size)
 	{
-		m_fbo = bgfx::createFrameBuffer(attach.size(), attach.data(), false);
+		UNUSED(texture);
+		m_fbo = bgfx::createFrameBuffer(uint8_t(attach.size()), attach.data(), false);
 	}
 
 	FrameBuffer::FrameBuffer(Texture& texture)

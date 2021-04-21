@@ -162,7 +162,7 @@ namespace two
 		m_impl->m_rigs = make_unique<TPool<Rig>>();
 		m_impl->m_animations = make_unique<TPool<Animation>>();
 		
-		auto load_tex = [&](Texture& texture, const string& path, const NoConfig& config) { texture.load(*this, path); };
+		auto load_tex = [&](Texture& texture, const string& path, const NoConfig& config) { UNUSED(config); texture.load(*this, path); };
 
 		m_impl->m_textures = make_unique<AssetStore<Texture>>(*this, "textures/", load_tex);
 		m_impl->m_programs = make_unique<AssetStore<Program>>(*this, "programs/", ".prg");

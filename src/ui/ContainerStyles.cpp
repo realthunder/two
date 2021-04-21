@@ -33,7 +33,7 @@ namespace ui
 		expandbox = Style("Expandbox", styles().stack, {});
 		header = Style("ExpandboxHeader", styles().wrap_button, {});
 		toggle = Style("ExpandboxToggle", styles().toggle, {});
-		body = Style("ExpandboxBody", styles().stack, [](Layout& l) {}); //  l.m_padding = vec4(12.f, 2.f, 0.f, 2.f); l.m_spacing = vec2(0.f); 
+		body = Style("ExpandboxBody", styles().stack, [](Layout& l) { UNUSED(l); }); //  l.m_padding = vec4(12.f, 2.f, 0.f, 2.f); l.m_spacing = vec2(0.f); 
 
 		register_styles({ &expandbox, &header, &toggle, &body });
 	}
@@ -44,7 +44,7 @@ namespace ui
 		header = Style("TreeNodeHeader", expandbox_styles().header, {});
 		toggle = Style("TreeNodeToggle", expandbox_styles().toggle, {});
 		no_toggle = Style("TreeNodeNoToggle", toggle, {});
-		body = Style("TreeNodeBody", expandbox_styles().body, [](Layout& l) {}); // l.m_padding = vec4(18.f, 0.f, 0.f, 0.f); l.m_spacing = vec2(0.f); 
+		body = Style("TreeNodeBody", expandbox_styles().body, [](Layout& l) { UNUSED(l); }); // l.m_padding = vec4(18.f, 0.f, 0.f, 0.f); l.m_spacing = vec2(0.f); 
 
 		register_styles({ &treenode, &header, &toggle, &no_toggle, &body });
 	}

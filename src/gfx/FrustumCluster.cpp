@@ -46,7 +46,7 @@ constexpr inline float ilog2(float x) noexcept {
         float val;
         int32_t x;
     } u = { x };
-    return ((u.x >> 23) & 0xff) - 127;
+    return float(((u.x >> 23) & 0xff) - 127);
 }
 
 constexpr inline float log2(float x) noexcept {

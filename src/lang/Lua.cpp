@@ -860,7 +860,7 @@ namespace two
 
 			for(size_t i = 0; i < e.m_names.size(); ++i)
 			{
-				set_table(m_state, e.m_names[i], e.varn(i));
+				set_table(m_state, e.m_names[i], e.varn(uint32_t(i)));
 			}
 		}
 

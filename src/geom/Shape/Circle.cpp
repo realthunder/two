@@ -25,7 +25,7 @@ namespace two
 	{
 		return symbol.m_subdiv == uvec2(0U)
 			? circle_subdiv(uint(symbol.m_detail))
-			: symbol.m_subdiv.x;
+			: (uint16_t) symbol.m_subdiv.x;
 	}
 
 	vec3 flip_point_axis(const vec3& point, SignedAxis axis)
@@ -177,14 +177,14 @@ namespace two
 	{
 		return symbol.m_subdiv == uvec2(0U)
 			? torus_sides(uint(symbol.m_detail))
-			: symbol.m_subdiv.x;
+			: uint16_t(symbol.m_subdiv.x);
 	}
 
 	uint16_t torus_rings(const Symbol& symbol)
 	{
 		return symbol.m_subdiv == uvec2(0U)
 			? torus_rings(uint(symbol.m_detail))
-			: symbol.m_subdiv.y;
+			: uint16_t(symbol.m_subdiv.y);
 	}
 
 	ShapeSize size_shape_lines(const ProcShape& shape, const Torus& torus)
@@ -254,21 +254,21 @@ namespace two
 			}
 	}
 
-	uint16_t torus_tube_subdiv(uint lod) { return uint16_t(64U); }
-	uint16_t torus_radial_subdiv(uint lod) { return uint16_t(8U); }
+	uint16_t torus_tube_subdiv(uint lod) { UNUSED(lod); return uint16_t(64U); }
+	uint16_t torus_radial_subdiv(uint lod) { UNUSED(lod); return uint16_t(8U); }
 
 	uint16_t torus_tube_subdiv(const Symbol& symbol)
 	{
 		return symbol.m_subdiv == uvec2(0U)
 			? torus_tube_subdiv(uint(symbol.m_detail))
-			: symbol.m_subdiv.x;
+			: uint16_t(symbol.m_subdiv.x);
 	}
 
 	uint16_t torus_radial_subdiv(const Symbol& symbol)
 	{
 		return symbol.m_subdiv == uvec2(0U)
 			? torus_radial_subdiv(uint(symbol.m_detail))
-			: symbol.m_subdiv.y;
+			: uint16_t(symbol.m_subdiv.y);
 	}
 
 	ShapeSize size_shape_triangles(const ProcShape& shape, const TorusKnot& torus)
@@ -331,12 +331,12 @@ namespace two
 				const float y = P1.y + (cx * N.y + cy * B.y);
 				const float z = P1.z + (cx * N.z + cy * B.z);
 				
-				const vec3 p = vec3(x, y, z);
+				const vec3 pos = vec3(x, y, z);
 				// normal (P1 is always the center/origin of the extrusion, thus we can use it to calculate the normal)
-				const vec3 n = normalize(p - P1);
+				const vec3 n = normalize(pos - P1);
 				const vec2 uv = vec2(float(i) / float(tubular), float(j) / float(radial));
 
-				writer.position(p)
+				writer.position(pos)
 					  .normal(n)
 					  .colour(shape.m_symbol.m_fill)
 					  .uv0(uv);

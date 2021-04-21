@@ -103,9 +103,13 @@ namespace two
 
 	static vector<uint8_t> read_base64_uri(const string& uri)
 	{
-		//std::string base64 = uri.substr(uri.find(",") + 1).c_str();
-		string decoded;// = decode_base64(base64).c_str();
-		return {};//convert<uint8_t>(decoded);
+		UNUSED(uri);
+#if 0
+		string base64 = uri.substr(uri.find(",") + 1).c_str();
+		string decoded = decode_base64(base64).c_str();
+		convert<uint8_t>(decoded);
+#endif
+		return {};
 	}
 
 	vector<uint8_t> read_uri(const string& base_path, const string& uri)
@@ -286,8 +290,6 @@ namespace two
 				{
 					MeshPacker morph;
 					
-					auto test = gltf.m_accessors[morph_target.POSITION].type;
-
 					if(morph_target.POSITION != -1)
 						morph.m_positions = unpack_accessor<vec3, 3>(gltf, morph_target.POSITION, true);
 					if(morph_target.NORMAL != -1)
@@ -441,7 +443,7 @@ namespace two
 		for(size_t i = 0; i < gltf.m_nodes.size(); i++)
 		{
 			if(gltf.m_nodes[i].mesh != -1)
-				gltf.m_meshes[gltf.m_nodes[i].mesh].node = i;
+				gltf.m_meshes[gltf.m_nodes[i].mesh].node = int(i);
 
 			for(size_t j = 0; j < gltf.m_nodes[i].children.size(); j++)
 			{
@@ -615,7 +617,7 @@ namespace two
 				: config.m_transform * derive_transform(gltf, node);
 
 			state.m_nodes.push_back(Node3(transform, node.parent));
-			Node3& n = state.m_nodes.back();
+			//Node3& n = state.m_nodes.back();
 
 			if(node.mesh > -1)
 			{

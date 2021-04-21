@@ -241,6 +241,7 @@ namespace two
 
 	void face(const Header& header, Buffer& buffer, const Element& element, span<double> data)
 	{
+		UNUSED(header);
 		size_t i = 0;
 		for(const Property& prop : element.properties)
 		{
@@ -339,7 +340,7 @@ namespace two
 
 	void read_binary(const Header& header, vector<uint8_t> data, MeshPacker& geometry)
 	{
-		bool little_endian = (header.format == "binary_little_endian");
+		//bool little_endian = (header.format == "binary_little_endian");
 		uchar* cursor = data.data() + header.length;
 
 		auto read = [](const string& type, uchar*& data) -> double
@@ -354,6 +355,7 @@ namespace two
 			if(type == "uint32"  || type == "uint")   return double(*((uint32_t*&)data)++);
 			if(type == "float32" || type == "float")  return double(*((float*&)data)++);
 			if(type == "float64" || type == "double") return double(*((double*&)data)++);
+			return 0.0;
 		};
 
 		Buffer buffer;
