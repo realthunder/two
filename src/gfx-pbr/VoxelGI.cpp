@@ -261,9 +261,9 @@ namespace gfx
 		Pass pass = render.next_pass("gi direct", PassType::VoxelGI);
 		bgfx::Encoder& encoder = *pass.m_encoder;
 
-		encoder.setImage(0, u_voxelgi.s_voxels_albedo,  gi_probe.m_voxels_color,   0, bgfx::Access::Read,      bgfx::TextureFormat::R32U);
-		encoder.setImage(1, u_voxelgi.s_voxels_normals, gi_probe.m_voxels_normals, 0, bgfx::Access::Read,      bgfx::TextureFormat::R32U);
-		encoder.setImage(2, u_voxelgi.s_voxels_light,   gi_probe.m_voxels_light,   0, bgfx::Access::ReadWrite, bgfx::TextureFormat::R32U);
+		encoder.setImage(0, gi_probe.m_voxels_color,   0, bgfx::Access::Read,      bgfx::TextureFormat::R32U);
+		encoder.setImage(1, gi_probe.m_voxels_normals, 0, bgfx::Access::Read,      bgfx::TextureFormat::R32U);
+		encoder.setImage(2, gi_probe.m_voxels_light,   0, bgfx::Access::ReadWrite, bgfx::TextureFormat::R32U);
 
 		GpuState<GpuVoxelGI>::me.upload(encoder, gi_probe);
 
@@ -283,10 +283,10 @@ namespace gfx
 		Pass pass = render.next_pass("gi bounce", PassType::VoxelGI);
 		bgfx::Encoder& encoder = *pass.m_encoder;
 
-		encoder.setImage(0,   u_voxelgi.s_voxels_normals,    gi_probe.m_voxels_normals,    0, bgfx::Access::Read,  bgfx::TextureFormat::R32U);
-		//encoder.setImage(1,   u_voxelgi.s_voxels_light,      gi_probe.m_voxels_light,      0, bgfx::Access::Read,  bgfx::TextureFormat::R32U);
-		encoder.setTexture(1, u_voxelgi.s_voxels_light_rgba, gi_probe.m_voxels_light_rgba);
-		encoder.setImage(2,   u_voxelgi.s_voxels_light,      gi_probe.m_voxels_light,      0, bgfx::Access::Write, bgfx::TextureFormat::R32U);
+		encoder.setImage(0,   gi_probe.m_voxels_normals,    0, bgfx::Access::Read,  bgfx::TextureFormat::R32U);
+		//encoder.setImage(1, gi_probe.m_voxels_light,      0, bgfx::Access::Read,  bgfx::TextureFormat::R32U);
+		encoder.setTexture(1, gi_probe.m_voxels_light_rgba);
+		encoder.setImage(2,   gi_probe.m_voxels_light,      0, bgfx::Access::Write, bgfx::TextureFormat::R32U);
 
 		GpuState<GpuVoxelGI>::me.upload(encoder, gi_probe);
 		GpuState<GIProbe>::me.upload(encoder, gi_probe, bxidentity());
@@ -302,8 +302,8 @@ namespace gfx
 		Pass pass = render.next_pass("output light", PassType::VoxelGI);
 		bgfx::Encoder& encoder = *pass.m_encoder;
 
-		encoder.setImage(0, u_voxelgi.s_voxels_light,      gi_probe.m_voxels_light,      0, bgfx::Access::ReadWrite, bgfx::TextureFormat::R32U);
-		encoder.setImage(1, u_voxelgi.s_voxels_light_rgba, gi_probe.m_voxels_light_rgba, 0, bgfx::Access::ReadWrite, bgfx::TextureFormat::RGBA16F);
+		encoder.setImage(0, gi_probe.m_voxels_light,      0, bgfx::Access::ReadWrite, bgfx::TextureFormat::R32U);
+		encoder.setImage(1, gi_probe.m_voxels_light_rgba, 0, bgfx::Access::ReadWrite, bgfx::TextureFormat::RGBA16F);
 
 		uint16_t subdiv = gi_probe.m_subdiv;
 		bgfx::ProgramHandle program = m_output_light->default_version();
