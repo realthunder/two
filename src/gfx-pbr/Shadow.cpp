@@ -307,7 +307,7 @@ namespace two
 
 		for(int i = 0; i < 6; i++)
 		{
-			bgfx::Attachment attach = { bgfx::Access::Write, m_depth, 0, uint16_t(i), BGFX_RESOLVE_AUTO_GEN_MIPS };
+			bgfx::Attachment attach = { bgfx::Access::Write, m_depth, 0, uint16_t(i), 1, BGFX_RESOLVE_AUTO_GEN_MIPS };
 			m_fbos[i] = { uvec2(size), m_depth, { attach } };
 		}
 	}

@@ -148,10 +148,10 @@ namespace two
 
 		//const uint8_t view_id = Render::s_preprocess_pass_id; //render.preprocess_pass();
 
-		auto blit_level = [&](Texture& source, const uvec2& size, int level, int face = 0)
+		auto blit_level = [&](Texture& source, const uvec2& size, uint16_t level, uint16_t face)
 		{
 			const uvec2 level_size = uvec2(size.x >> level, size.y >> level);
-			bgfx::Attachment attach = { bgfx::Access::Write, filtered, uint16_t(level), uint16_t(face), BGFX_RESOLVE_NONE };
+			bgfx::Attachment attach = { bgfx::Access::Write, filtered, level, face, 1, BGFX_RESOLVE_NONE };
 			FrameBuffer render_target = { level_size, filtered, { attach } }; // @todo fix ownership
 			m_copy.submit(Pass(), render_target, source, RenderQuad(), 0U, true);
 		};

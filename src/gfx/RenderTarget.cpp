@@ -118,7 +118,7 @@ namespace two
 		for(uint16_t i = 0; size.x > 1 && i < 9; ++i)
 		{
 			uvec2 level_size = uvec2(size.x >> i, size.y >> i);
-			bgfx::Attachment attach = { bgfx::Access::Write, m_texture, i, 0, BGFX_RESOLVE_NONE };
+			bgfx::Attachment attach = { bgfx::Access::Write, m_texture, i, 0, 1, BGFX_RESOLVE_NONE };
 			m_fbos[i] = make_unique<FrameBuffer>(level_size, m_texture, span<bgfx::Attachment>{ attach });
 		}
 	}

@@ -21,18 +21,18 @@ namespace two
 		: m_size(size)
 		, m_subdiv(subdiv)
 	{
-#if 0 // @todo: crashes in D3D11
-		bgfx::TextureFormat::Enum color_format = bgfx::TextureFormat::RGBA16F;
+#if 1 // @todo: crashes in D3D11
+		TextureFormat color_format = TextureFormat::RGBA16F;
 
-		if(!bgfx::isTextureValid(0, true, 1, color_format, TEXTURE_CLAMP))
-			color_format = bgfx::TextureFormat::RGB10A2;
+		if(!bgfx::isTextureValid(0, true, 1, bgfx::TextureFormat::Enum(color_format), TEXTURE_CLAMP))
+			color_format = TextureFormat::RGB10A2;
 
-		m_color = bgfx::createTextureCube(size, true, 1, color_format, TEXTURE_CLAMP);
+		m_color = { uvec2(uint(size)), true, color_format, TEXTURE_CLAMP, true };
 
 		for(int i = 0; i < 6; i++)
 		{
-			bgfx::Attachment attachment = { m_color, 0, uint16_t(i), BGFX_RESOLVE_AUTO_GEN_MIPS };
-			m_fbo[i] = bgfx::createFrameBuffer(1, &attachment, true);
+			bgfx::Attachment attachment = { bgfx::Access::Write, m_color, 0, uint16_t(i), 1, BGFX_RESOLVE_AUTO_GEN_MIPS };
+			m_fbo[i] = { uvec2(uint(size)), m_color, span<bgfx::Attachment>{ attachment } };
 			// clear it ? 
 		}
 
