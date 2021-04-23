@@ -10,6 +10,8 @@
 #include <gfx/Material.h>
 #include <gfx/Forward.h>
 
+#include <bgfx/bgfx.h>
+
 namespace two
 {
 	export_ enum class refl_ DepthMethod : unsigned int

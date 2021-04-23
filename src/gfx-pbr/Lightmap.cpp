@@ -5,9 +5,11 @@
 #ifdef TWO_MODULES
 module;
 #include <gfx/Cpp20.h>
+#include <cstddef>
 #include <xatlas.h>
 module TWO2(gfx, pbr);
 #else
+#include <cstddef>
 #include <xatlas.h>
 #include <infra/ToString.h>
 #include <infra/Log.h>
