@@ -14,6 +14,7 @@
 #include <type/Unique.h>
 #endif
 #include <gfx/Forward.h>
+#include <gfx/GfxSystem.h>
 
 namespace two
 {
