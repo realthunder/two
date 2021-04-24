@@ -36,7 +36,7 @@
 	url = https://github.com/septag/deboost.context
 [submodule "3rdparty/tracy"]
 	path = 3rdparty/tracy
-	url = https://bitbucket.org/wolfpld/tracy.git
+	url = https://github.com/wolfpld/tracy
 [submodule "3rdparty/xatlas"]
 	path = 3rdparty/xatlas
 	url = https://github.com/jpcy/xatlas
