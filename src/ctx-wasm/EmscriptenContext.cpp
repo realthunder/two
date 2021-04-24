@@ -197,7 +197,7 @@ namespace two
 			//this->create_context(name);
 		}
 
-		emscripten_set_resize_callback(0, this, true, [](int, const EmscriptenUiEvent* event, void* w) { UNUSED(event); static_cast<EmContext*>(w)->resize(); return EM_BOOL(true); });
+		emscripten_set_resize_callback(EMSCRIPTEN_EVENT_TARGET_WINDOW, this, true, [](int, const EmscriptenUiEvent* event, void* w) { UNUSED(event); static_cast<EmContext*>(w)->resize(); return EM_BOOL(true); });
 
 		emscripten_set_mousemove_callback("#canvas", this, true, [](int, const EmscriptenMouseEvent* event, void* w) { return EM_BOOL(static_cast<EmContext*>(w)->inject_mouse_move(*event)); });
 
