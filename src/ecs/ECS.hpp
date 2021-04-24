@@ -5,6 +5,7 @@
 #include <stl/tuple.h>
 #include <stl/algorithm.h>
 #include <infra/Generic.h>
+#include <infra/Log.h>
 #include <pool/SparsePool.hpp>
 #endif
 #include <ecs/Forward.h>
@@ -156,7 +157,9 @@ namespace two
 	inline T& BufferArray::get(uint32_t handle)
 	{
 		const uint32_t index = m_handles[handle];
-		return this->buffer<T>().m_data[index];
+		TBuffer<T>& buffer = this->buffer<T>();
+		TWO_ASSERT(buffer.m_data.size() > index, "Accessing out of bounds component %s at index %d", type<T>().m_name, index);
+		return buffer.m_data[index];
 	}
 
 	inline EntityStream::EntityStream() {}

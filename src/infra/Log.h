@@ -8,6 +8,7 @@
 #include <infra/Forward.h>
 
 #include <cstdio>
+#include <cassert>
 
 namespace two
 {
@@ -48,4 +49,15 @@ namespace two
 		printf(message, args...);
 		printf("%s\n", ANSIToken::End);
 	}
+
+#define TWO_MACRO_BLOCK_BEGIN for(;;) {
+#define TWO_MACRO_BLOCK_END break; }
+#define TWO_ASSERT(condition, message, ...)                       \
+				TWO_MACRO_BLOCK_BEGIN                             \
+					if (!(condition) )                            \
+					{                                             \
+						error("CHECK " message, ##__VA_ARGS__);   \
+						assert(false);						      \
+					}                                             \
+				TWO_MACRO_BLOCK_END
 }
