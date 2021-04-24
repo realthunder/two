@@ -35,7 +35,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
       var PACKAGE_NAME = '../../wasm/bin/ex_godot.data';
-      var REMOTE_PACKAGE_BASE = 'http://95.217.208.117/ex_godot.data';
+      var REMOTE_PACKAGE_BASE = 'https://95.217.208.117/ex_godot.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
         err('warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)');
