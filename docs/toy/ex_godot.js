@@ -35,7 +35,7 @@ var Module = typeof Module !== 'undefined' ? Module : {};
         throw 'using preloaded data can only be done on a web page or in a web worker';
       }
       var PACKAGE_NAME = '../../wasm/bin/ex_godot.data';
-      var REMOTE_PACKAGE_BASE = 'ex_godot.data';
+      var REMOTE_PACKAGE_BASE = 'https://libtwo.s3.amazonaws.com/ex_godot.data';
       if (typeof Module['locateFilePackage'] === 'function' && !Module['locateFile']) {
         Module['locateFile'] = Module['locateFilePackage'];
         err('warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)');
