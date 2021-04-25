@@ -84,7 +84,7 @@ namespace two
 
 		cstring m_name;
 		uint16_t m_index;
-		uint64_t m_prototype;
+		uint64_t m_prototype = 0;
 	};
 
 	export_ class GridECS : public BufferArray
