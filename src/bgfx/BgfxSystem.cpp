@@ -82,6 +82,7 @@ namespace two
 		params.resolution.width = uint32_t(context.m_size.x);
 		params.resolution.height = uint32_t(context.m_size.y);
 		params.resolution.reset = BGFX_RESET_NONE;
+		params.debug = false;
 		bgfx::init(params);
 
 		//bgfx::reset(uint32_t(context.m_width), uint32_t(context.m_height), BGFX_RESET_NONE);
