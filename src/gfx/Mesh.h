@@ -18,7 +18,7 @@
 
 namespace two
 {
-	export_ extern const bool c_normalize_bone_indices;
+	export_ TWO_GFX_EXPORT bool normalize_bone_indices();
 
 	export_ struct refl_ TWO_GFX_EXPORT GpuMesh
 	{

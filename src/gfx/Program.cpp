@@ -30,6 +30,7 @@ module TWO(gfx);
 #include <gfx/GfxSystem.h>
 #include <gfx/Texture.h>
 #include <gfx/Material.h>
+#include <gfx/Mesh.h>
 #include <gfx/Shader.h>
 #include <gfx/Renderer.h>
 #include <gfx/Pipeline.h>
@@ -258,6 +259,9 @@ namespace two
 		this->register_options(0, options);
 
 		this->set_block(MaterialBlock::Base);
+
+		if (normalize_bone_indices())
+			m_defines.push_back({ "NORMALIZED_BONES", "" });
 
 		if constexpr(ZONES_BUFFER)
 			m_defines.push_back({ "ZONES_BUFFER" , "" });

@@ -26,11 +26,14 @@ module TWO(gfx);
 
 namespace two
 {
+	bool normalize_bone_indices()
+	{
 #ifdef TWO_PLATFORM_EMSCRIPTEN
-	const bool c_normalize_bone_indices = true;
+		return bgfx::getRendererType() == bgfx::RendererType::OpenGL;
 #else
-	const bool c_normalize_bone_indices = false;
+		return false;
 #endif
+	}
 
 	bgfx::VertexLayout create_vertex_decl(uint32_t vertex_format)
 	{
@@ -71,7 +74,7 @@ namespace two
 		if((vertex_format & VertexAttribute::QTexCoord1) != 0)
 			decl.add(bgfx::Attrib::TexCoord1, 2, bgfx::AttribType::Half);
 		if((vertex_format & VertexAttribute::Joints) != 0)
-			decl.add(bgfx::Attrib::Indices, 4, bgfx::AttribType::Uint8, c_normalize_bone_indices);
+			decl.add(bgfx::Attrib::Indices, 4, bgfx::AttribType::Uint8, normalize_bone_indices());
 		if((vertex_format & VertexAttribute::Weights) != 0)
 			decl.add(bgfx::Attrib::Weight, 4, bgfx::AttribType::Float);
 		

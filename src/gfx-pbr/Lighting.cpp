@@ -48,9 +48,6 @@ namespace two
 			{ "MAX_LIGHTS", to_string(c_max_forward_lights)  },
 			{ "MAX_SHADOWS", to_string(c_max_shadows) }
 		};
-
-		if (c_normalize_bone_indices)
-			m_defines.push_back({ "NORMALIZED_BONES", "" });
 	}
 
 	void BlockLight::init_block()
