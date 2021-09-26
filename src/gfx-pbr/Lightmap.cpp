@@ -103,7 +103,7 @@ namespace two
 		//Texture* texture = valid ? &m_texture : nullptr;
 		if(valid)
 			m_items.push_back({ index, m_texture, uv_scale_offset });
-		item.m_lightmaps.push_back(&m_items.back());
+		item.m_lightmaps.push_back((void*) &m_items.back());
 	}
 
 	LightmapAtlas::LightmapAtlas(uint32_t size, float density)
@@ -518,7 +518,7 @@ namespace two
 		const ModelElem& elem = *element.m_elem;
 		if(item.m_lightmaps.size() > 0)
 		{
-			LightmapItem& binding = *item.m_lightmaps[elem.m_index];
+			LightmapItem& binding = *(LightmapItem*)item.m_lightmaps[elem.m_index];
 			if(binding.m_lightmap->valid())
 			{
 				program.set_option(MaterialLit::s_block.m_index, LIGHTMAP);
@@ -541,7 +541,7 @@ namespace two
 
 		if(element.m_item->m_lightmaps.size() > 0)
 		{
-			LightmapItem& binding = *element.m_item->m_lightmaps[element.m_elem->m_index];
+			LightmapItem& binding = *(LightmapItem*)element.m_item->m_lightmaps[element.m_elem->m_index];
 
 			encoder.setUniform(GpuState<MaterialBase>::me.u_uv1_scale_offset, &binding.m_uv_scale_offset);
 
