@@ -32,6 +32,10 @@ namespace stl
 	template class TWO_GFX_PBR_EXPORT vector<ReflectionAtlas::Slot*>;
 	template class TWO_GFX_PBR_EXPORT vector<BlockLightmap::BakeEntry>;
 	template class TWO_GFX_PBR_EXPORT vector<unique<Lightmap>>;
+	template class TWO_GFX_PBR_EXPORT vector<ReflectionProbe*>;
+	template class TWO_GFX_PBR_EXPORT vector<GIProbe*>;
+	template class TWO_GFX_PBR_EXPORT vector<LightmapAtlas*>;
+	template class TWO_GFX_PBR_EXPORT vector<LightmapItem*>;
 	template class TWO_GFX_PBR_EXPORT unordered_map<Model*, ModelUnwrap>;
 	template class TWO_GFX_PBR_EXPORT unordered_map<Texture*, Texture*>;
 	//template class TWO_GFX_PBR_EXPORT unordered_map<uint32_t, Shadowmap>;

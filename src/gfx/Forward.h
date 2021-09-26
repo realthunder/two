@@ -171,13 +171,6 @@ namespace two
     export_ struct Sampler;
     export_ struct UniformBlock;
     export_ class BlockSky;
-
-    // gfx-pbr
-	class GIProbe;
-	class ReflectionProbe;
-	class Lightmap;
-	class LightmapAtlas;
-	class LightmapItem;
 }
 
 #ifdef TWO_META_GENERATOR

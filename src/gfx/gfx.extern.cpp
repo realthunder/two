@@ -29,10 +29,6 @@ namespace stl
 	template class TWO_GFX_EXPORT vector<Batch*>;
 	template class TWO_GFX_EXPORT vector<Sound*>;
 	template class TWO_GFX_EXPORT vector<Node3*>;
-	template class TWO_GFX_EXPORT vector<ReflectionProbe*>;
-	template class TWO_GFX_EXPORT vector<GIProbe*>;
-	template class TWO_GFX_EXPORT vector<LightmapAtlas*>;
-	template class TWO_GFX_EXPORT vector<LightmapItem*>;
 	template class TWO_GFX_EXPORT vector<ImmediateDraw*>;
 	template class TWO_GFX_EXPORT vector<Scene*>;
 	template class TWO_GFX_EXPORT vector<Viewport*>;

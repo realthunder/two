@@ -92,7 +92,7 @@ namespace two
 
 		void submit(bgfx::Encoder& encoder, uint64_t& bgfx_state, const ModelElem& item) const;
 
-		vector<LightmapItem*> m_lightmaps;
+		//vector<LightmapItem*> m_lightmaps;
 
 		float m_depth = 0.f;
 		uint32_t m_layer_mask = 1;
