@@ -230,7 +230,7 @@ namespace two
 		
 		slice.m_light_bounds = light_slice_bounds(slice.m_frustum, light_transform);
 
-		slice.m_items = render.m_shot.m_items;
+		slice.m_items = render.m_shot->m_items;
 		light_slice_cull(render, light, slice.m_light_bounds, slice.m_items);
 
 		if(false)//light.m_shadow_flags == CSM_Stabilize)
@@ -342,7 +342,7 @@ namespace two
 	{
 		UNUSED(render);
 
-		for(Light* light : render.m_shot.m_lights)
+		for(Light* light : render.m_shot->m_lights)
 			if(light->m_shadows)
 			{
 				if(m_atlas.m_side == 0)
@@ -368,7 +368,7 @@ namespace two
 
 	void BlockShadow::setup_shadows(Render& render)
 	{
-		span<Light*> lights = render.m_shot.m_lights;
+		span<Light*> lights = render.m_shot->m_lights;
 		lights.m_count = min(lights.m_count, size_t(c_max_forward_lights));
 		
 		m_csm_shadows.clear();
@@ -431,7 +431,7 @@ namespace two
 					shadow.m_proj = projection;
 					//shadow.m_light_bounds = 
 
-					shadow.m_items = render.m_shot.m_items;
+					shadow.m_items = render.m_shot->m_items;
 					cull_shadow_render(render, shadow.m_items, shadow.m_proj, shadow.m_transform);
 
 					shadow.m_fbo = &m_atlas.m_fbo;
@@ -449,7 +449,7 @@ namespace two
 				shadow.m_proj = bxproj(light.m_spot_angle * 2.f, 1.f, 0.01f, light.m_range, bgfx::getCaps()->homogeneousDepth);
 				shadow.m_transform = light.m_node->m_transform;
 
-				shadow.m_items = render.m_shot.m_items;
+				shadow.m_items = render.m_shot->m_items;
 				cull_shadow_render(render, shadow.m_items, shadow.m_proj, shadow.m_transform);
 
 				shadow.m_fbo = &m_atlas.m_fbo;
@@ -610,8 +610,8 @@ namespace two
 			Viewport viewport = Viewport(camera, *render.m_scene, rect);
 
 			Render shadow_render = { Shading::Volume, viewport, *render.m_target, *shadow.m_fbo, *render.m_frame };
-			shadow_render.m_shot.m_lights = render.m_shot.m_lights;
-			shadow_render.m_shot.m_items = shadow.m_items;
+			shadow_render.m_shot->m_lights = render.m_shot->m_lights;
+			shadow_render.m_shot->m_items = shadow.m_items;
 
 			setup_block(*shadow.m_light, shadow.m_depth_method, shadow.m_bias_scale);
 

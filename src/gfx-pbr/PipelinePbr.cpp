@@ -29,54 +29,6 @@ namespace gfx
 	}
 }
 
-	void gather_gi_probes(Scene& scene, vector<GIProbe*>& gi_probes)
-	{
-		//gi_probes.reserve(m_pool->pool<GIProbe>().size());
-		scene.m_pool->pool<GIProbe>().iterate([&](GIProbe& gi_probe)
-		{
-			gi_probes.push_back(&gi_probe);
-		});
-	}
-
-	void gather_lightmaps(Scene& scene, vector<LightmapAtlas*>& atlases)
-	{
-		//atlases.reserve(m_pool->pool<LightmapAtlas>().size());
-		scene.m_pool->pool<LightmapAtlas>().iterate([&](LightmapAtlas& atlas)
-		{
-			atlases.push_back(&atlas);
-		});
-	}
-
-	void gather_reflection_probes(Scene& scene, vector<ReflectionProbe*>& reflection_probes)
-	{
-		scene.m_pool->pool<ReflectionProbe>().iterate([&](ReflectionProbe& probe)
-		{
-			if(probe.m_visible)
-			{
-				reflection_probes.push_back(&probe);
-				probe.m_dirty = true; // force dirty for now
-			}
-		});
-	}
-
-	void gather_render_pbr(Scene& scene, Render& render)
-	{
-		gather_items(scene, *render.m_camera, render.m_shot.m_items);
-		gather_occluders(scene, *render.m_camera, render.m_shot.m_occluders);
-		gather_lights(scene, render.m_shot.m_lights);
-		gather_gi_probes(scene, render.m_shot.m_gi_probes);
-		gather_lightmaps(scene, render.m_shot.m_lightmaps);
-		gather_reflection_probes(scene, render.m_shot.m_reflection_probes);
-
-		render.m_frustum = optimized_frustum(*render.m_camera, render.m_shot.m_items);
-
-		render.m_shot.m_immediate = { scene.m_immediate.get() };
-
-#if DEBUG_ITEMS
-		scene.debug_items(render);
-#endif
-	}
-
 	void pipeline_pbr(GfxSystem& gfx, Renderer& pipeline, bool deferred)
 	{
 		BlockMaterial& material = pipeline.add_block<BlockMaterial>(gfx);
@@ -278,6 +230,59 @@ namespace gfx
 			block->submit(render, element, pass);
 	}
 
+	void gather_gi_probes(Scene& scene, vector<GIProbe*>& gi_probes)
+	{
+		//gi_probes.reserve(m_pool->pool<GIProbe>().size());
+		scene.m_pool->pool<GIProbe>().iterate([&](GIProbe& gi_probe)
+		{
+			gi_probes.push_back(&gi_probe);
+		});
+	}
+
+	void gather_lightmaps(Scene& scene, vector<LightmapAtlas*>& atlases)
+	{
+		//atlases.reserve(m_pool->pool<LightmapAtlas>().size());
+		scene.m_pool->pool<LightmapAtlas>().iterate([&](LightmapAtlas& atlas)
+		{
+			atlases.push_back(&atlas);
+		});
+	}
+
+	void gather_reflection_probes(Scene& scene, vector<ReflectionProbe*>& reflection_probes)
+	{
+		scene.m_pool->pool<ReflectionProbe>().iterate([&](ReflectionProbe& probe)
+		{
+			if(probe.m_visible)
+			{
+				reflection_probes.push_back(&probe);
+				probe.m_dirty = true; // force dirty for now
+			}
+		});
+	}
+
+	void gather_render_pbr(Scene& scene, Render& render)
+	{
+		unique<PBRShot> shot = make_unique<PBRShot>();
+		render.m_shot = shot.get();
+
+		gather_items(scene, *render.m_camera, shot->m_items);
+		gather_occluders(scene, *render.m_camera, shot->m_occluders);
+		gather_lights(scene, shot->m_lights);
+		gather_gi_probes(scene, shot->m_gi_probes);
+		gather_lightmaps(scene, shot->m_lightmaps);
+		gather_reflection_probes(scene, shot->m_reflection_probes);
+
+		render.m_frustum = optimized_frustum(*render.m_camera, shot->m_items);
+
+		shot->m_immediate = { scene.m_immediate.get() };
+
+#if DEBUG_ITEMS
+		scene.debug_items(render);
+#endif
+
+		render.m_ushot = std::move(shot);
+	}
+
 	void render_pbr_forward(GfxSystem& gfx, Render& render)
 	{
 		begin_pbr_render(gfx, render);
@@ -476,7 +481,7 @@ namespace gfx
 		submit_pbr_pass(gfx, render, pass);
 
 		DrawCluster cluster;
-		cluster.m_lights = render.m_shot.m_lights;
+		cluster.m_lights = render.m_shot->m_lights;
 		cluster.m_shader_version = { program };
 
 		for(auto& block : gfx.m_renderer.m_gfx_blocks)

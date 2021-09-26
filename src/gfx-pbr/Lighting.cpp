@@ -139,7 +139,7 @@ namespace two
 		const vec3 skylight = muln(view, normalize(render.m_env->m_skylight.m_position));
 		render.m_env->m_skylight.m_direction = skylight;
 
-		span<Light*> lights = render.m_shot.m_lights;
+		span<Light*> lights = render.m_shot->m_lights;
 		lights.m_count = min(lights.m_count, size_t(c_max_forward_lights));
 
 		ZoneLights& zone = m_zones[0];

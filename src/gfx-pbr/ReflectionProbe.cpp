@@ -80,10 +80,10 @@ namespace two
 		Render probe_render = { Shading::Shaded, m_viewports[size_t(axis)], *render.m_target, m_cubemap.m_fbos[size_t(axis)], *render.m_frame };
 		probe_render.m_vflip = true;
 
-		//probe_render.m_shot.m_lights = render.m_shot.m_lights;
-		//probe_render.m_shot.m_items = render.m_shot.m_items;
+		//probe_render.m_shot->m_lights = render.m_shot->m_lights;
+		//probe_render.m_shot->m_items = render.m_shot->m_items;
 
-		return probe_render;
+		return std::move(probe_render);
 	}
 
 	void CubeCamera::render(GfxSystem& gfx, Render& render, RenderFunc renderer)
@@ -154,7 +154,7 @@ namespace two
 		if(m_atlas.m_color.valid() && m_atlas.m_size > 0)
 			encoder.setTexture(uint8_t(TextureSampler::ReflectionProbe), m_atlas.m_color);
 
-		//upload_reflection_probes(render, to_array(render.m_shot.m_reflection_probes));
+		//upload_reflection_probes(render, to_array(render.m_shot->m_reflection_probes));
 	}
 
 	void BlockReflection::upload_reflection_probes(Render& render, Pass& pass, span<ReflectionProbe*> probes)
@@ -230,7 +230,7 @@ namespace two
 		block_reflection.m_reflection_multiplier = 1.f;
 
 #if 0
-		for(ReflectionProbe* probe : render.m_shot.m_reflection_probes)
+		for(ReflectionProbe* probe : render.m_shot->m_reflection_probes)
 		{
 			if(!probe->m_dirty)
 				continue;

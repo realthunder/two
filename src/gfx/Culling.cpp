@@ -56,7 +56,7 @@ namespace two
 		rect.m_vertices[1] = mulp(mat, vec3(hi.x * nw, lo.y * nh, -near));
 		rect.m_vertices[2] = mulp(mat, vec3(lo.x * nw, lo.y * nh, -near));
 		rect.m_vertices[3] = mulp(mat, vec3(lo.x * nw, hi.y * nh, -near));
-		render.m_shot.m_immediate[0]->shape(identity, { Symbol::wire(colour, true), &rect, OUTLINE });
+		render.m_shot->m_immediate[0]->shape(identity, { Symbol::wire(colour, true), &rect, OUTLINE });
 	}
 
 	// ref: https://github.com/erich666/jgt-code
@@ -248,7 +248,7 @@ namespace two
 
 	void Culler::render(Render& render)
 	{
-		if(render.m_shot.m_occluders.empty())
+		if(render.m_shot->m_occluders.empty())
 			return;
 		if(render.m_rect.width == 0 || render.m_rect.height == 0)
 			return;
@@ -262,11 +262,11 @@ namespace two
 		mat4 identity = bxidentity();
 		bool debug = render.m_target != nullptr;
 		if(debug)
-			for(Item* item : render.m_shot.m_items)
+			for(Item* item : render.m_shot->m_items)
 				if((item->m_flags & ItemFlag::Occluder) == 0)
 				{
 					Colour colour = { 1.f, 1.f, 0.f, 0.15f };
-					render.m_shot.m_immediate[0]->draw(identity, { Symbol::wire(colour, true), &item->m_aabb, OUTLINE });
+					render.m_shot->m_immediate[0]->draw(identity, { Symbol::wire(colour, true), &item->m_aabb, OUTLINE });
 				}
 #endif
 	}
@@ -275,7 +275,7 @@ namespace two
 	{
 		const mat4 world_to_clip = render.m_camera->m_proj * render.m_camera->m_view;
 
-		for(Item* item : render.m_shot.m_occluders)
+		for(Item* item : render.m_shot->m_occluders)
 		{
 			const mat4 model_to_clip = world_to_clip * item->m_node->m_transform;
 
@@ -313,8 +313,8 @@ namespace two
 		const mat4 world_to_clip = render.m_camera->m_proj * render.m_camera->m_view;
 		const mat4 camera_to_world = inverse(render.m_camera->m_view);
 
-		vector<Item*> items = render.m_shot.m_items;
-		render.m_shot.m_items.clear();
+		vector<Item*> items = render.m_shot->m_items;
+		render.m_shot->m_items.clear();
 
 		Plane near = render.m_camera->near_plane();
 
@@ -323,7 +323,7 @@ namespace two
 		{
 			if((item->m_flags & ItemFlag::Occluder) != 0)
 			{
-				render.m_shot.m_items.push_back(item);
+				render.m_shot->m_items.push_back(item);
 				continue;
 			}
 
@@ -336,7 +336,7 @@ namespace two
 
 			MaskedOcclusionCulling::CullingResult result = m_moc->TestRect(bounds.lo.x, bounds.lo.y, bounds.hi.x, bounds.hi.y, bounds.depth);
 			if(result == MaskedOcclusionCulling::VISIBLE)
-				render.m_shot.m_items.push_back(item);
+				render.m_shot->m_items.push_back(item);
 			else
 				culled.push_back(item);
 
@@ -355,7 +355,7 @@ namespace two
 			for(Item* item : culled)
 			{
 				Colour colour = { 1.f, 0.f, 1.f, 0.15f };
-				render.m_shot.m_immediate[0]->draw(identity, { Symbol::wire(colour, true), &item->m_aabb, OUTLINE });
+				render.m_shot->m_immediate[0]->draw(identity, { Symbol::wire(colour, true), &item->m_aabb, OUTLINE });
 			}
 #endif
 	}

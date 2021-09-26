@@ -466,9 +466,13 @@ namespace two
 			viewport.m_clear_colour = Colour::None;
 
 			for(LightmapItem& item : lightmap->m_items)
-				lightmap_render.m_shot.m_items.push_back(items[item.m_item]);
+				lightmap_render.m_shot->m_items.push_back(items[item.m_item]);
 
-			lightmap_render.m_shot.m_gi_probes = gi_probes;
+			unique<PBRShot> shot = make_unique<PBRShot>();
+			shot->m_gi_probes = gi_probes;
+			lightmap_render.m_shot = shot.get();
+			lightmap_render.m_ushot = std::move(shot);
+
 			m_gfx.m_renderer.render(lightmap_render, renderer);
 
 			bgfx::frame();
@@ -498,7 +502,8 @@ namespace two
 			return;
 
 		UNUSED(render);
-		for(LightmapAtlas* atlas : render.m_shot.m_lightmaps)
+		PBRShot& shot = static_cast<PBRShot&>(*render.m_shot);
+		for(LightmapAtlas* atlas : shot.m_lightmaps)
 			if(atlas->m_dirty)
 			{
 				m_bake_queue.push_back({ render.m_scene, atlas });

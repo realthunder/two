@@ -76,6 +76,9 @@ namespace two
 	Render::~Render()
 	{}
 
+	Render::Render(Render&& other) = default;
+	Render& Render::operator=(Render && other) = default;
+
 	void Render::subrender(const Render& render)
 	{
 		m_shot = render.m_shot;
@@ -181,12 +184,6 @@ namespace two
 
 	void Renderer::submit(Render& render, RenderFunc renderer)
 	{
-		this->gather(render);
-
-#ifdef DEBUG_ITEMS
-		scene.debug_items(render);
-#endif
-
 		if(render.m_viewport->m_rect.width != 0 && render.m_viewport->m_rect.height != 0)
 			this->render(render, renderer);
 
@@ -336,7 +333,7 @@ namespace two
 
 	void Renderer::gather_draw_elements(Render& render, Pass& pass)
 	{
-		for(Item* item : render.m_shot.m_items)
+		for(Item* item : render.m_shot->m_items)
 			for(const ModelElem& elem : item->m_model->m_items)
 			{
 				DrawElement element = this->draw_element(*item, elem);
@@ -453,7 +450,7 @@ namespace two
 
 		this->clear_draw_elements(render, pass);
 
-		for(Item* item : render.m_shot.m_items)
+		for(Item* item : render.m_shot->m_items)
 			for(const ModelElem& elem : item->m_model->m_items)
 			{
 				DrawElement element = this->draw_element(*item, elem);
@@ -468,7 +465,7 @@ namespace two
 	{
 		this->begin_render_pass(render, pass.m_pass_type);
 
-		for(Item* item : render.m_shot.m_items)
+		for(Item* item : render.m_shot->m_items)
 			for(const ModelElem& elem : item->m_model->m_items)
 			{
 				DrawElement element = this->draw_element(*item, elem);

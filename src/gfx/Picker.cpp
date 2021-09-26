@@ -78,7 +78,7 @@ namespace two
 
 	void Picker::process(Render& render, PickQuery& query)
 	{
-		if(!query || render.m_shot.m_items.empty()) return;
+		if(!query || render.m_shot->m_items.empty()) return;
 
 		uint8_t view = render.picking_pass();
 
@@ -95,9 +95,9 @@ namespace two
 		
 		//Frustum frustum = { pickProj, pickView, 0.1f, 1000.f, query.m_fov, query.m_aspect };
 
-		for(uint32_t index = 0; index < render.m_shot.m_items.size(); ++index)
+		for(uint32_t index = 0; index < render.m_shot->m_items.size(); ++index)
 		{
-			Item& item = *render.m_shot.m_items[index];
+			Item& item = *render.m_shot->m_items[index];
 
 			//if(!frustum_aabb_intersection(frustum.m_planes, item.m_aabb))
 			//	continue;
@@ -152,16 +152,16 @@ namespace two
 					size_t offset = x + y * m_size.x;
 					const uint32_t& id = m_data[offset];
 
-					if(id == uint32_t(255 << 24) || id >= render.m_shot.m_items.size())
+					if(id == uint32_t(255 << 24) || id >= render.m_shot->m_items.size())
 						continue;
 
-					add(items, render.m_shot.m_items[id]);
+					add(items, render.m_shot->m_items[id]);
 
 					uint32_t count = ++counts[id];
-					if(count > maxAmount && id < render.m_shot.m_items.size())
+					if(count > maxAmount && id < render.m_shot->m_items.size())
 					{
 						maxAmount = count;
-						item = render.m_shot.m_items[id];
+						item = render.m_shot->m_items[id];
 					}
 				}
 

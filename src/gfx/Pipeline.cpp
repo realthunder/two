@@ -142,7 +142,7 @@ namespace two
 							  | BGFX_STATE_MSAA | BGFX_STATE_CULL_CW;// | BGFX_STATE_BLEND_ALPHA;
 
 		bgfx::Encoder& encoder = *pass.m_encoder;
-		for(ImmediateDraw* immediate : render.m_shot.m_immediate)
+		for(ImmediateDraw* immediate : render.m_shot->m_immediate)
 			immediate->submit(encoder, pass.m_index, pass.m_bgfx_state);
 
 		auto queue_draw_element = [](GfxSystem& gfx, Render& render, Pass& pass, DrawElement& element)

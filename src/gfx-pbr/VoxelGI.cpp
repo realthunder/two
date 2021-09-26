@@ -170,7 +170,8 @@ namespace gfx
 		if(!check_lighting(render.m_lighting, Lighting::VoxelGI))
 			return;
 
-		for(GIProbe* gi_probe : render.m_shot.m_gi_probes)
+		PBRShot& shot = static_cast<PBRShot&>(*render.m_shot);
+		for(GIProbe* gi_probe : shot.m_gi_probes)
 		{
 			if(!gi_probe->m_enabled || !gi_probe->m_dirty)
 				continue;
@@ -242,8 +243,8 @@ namespace gfx
 		//}
 
 		Plane6 planes = frustum_planes(camera.m_proj, camera.m_view);
-		voxel_render.m_shot.m_lights = render.m_shot.m_lights;
-		cull_items(*render.m_scene, planes, voxel_render.m_shot.m_items);
+		voxel_render.m_shot->m_lights = render.m_shot->m_lights;
+		cull_items(*render.m_scene, planes, voxel_render.m_shot->m_items);
 		m_gfx.m_renderer.subrender(render, voxel_render, m_gfx.renderer(Shading::Voxels));
 
 		//if(m_block_light.m_direct_light)
@@ -367,7 +368,8 @@ namespace gfx
 	void BlockGITrace::options(Render& render, const DrawElement& element, ProgramVersion& program) const
 	{
 		UNUSED(element);
-		for(GIProbe* gi_probe : render.m_shot.m_gi_probes)
+		PBRShot& shot = static_cast<PBRShot&>(*render.m_shot);
+		for(GIProbe* gi_probe : shot.m_gi_probes)
 			if(gi_probe->m_enabled)
 			{
 				program.set_option(m_index, GI_CONETRACE, true);
@@ -388,7 +390,8 @@ namespace gfx
 		bgfx::Encoder& encoder = *pass.m_encoder;
 
 		uint8_t index = 0;
-		for(GIProbe* gi_probe : render.m_shot.m_gi_probes)
+		PBRShot& shot = static_cast<PBRShot&>(*render.m_shot);
+		for(GIProbe* gi_probe : shot.m_gi_probes)
 		{
 			if(gi_probe->m_enabled)
 			{

@@ -14,12 +14,10 @@ namespace two
 	export_ class refl_ TWO_GFX_EXPORT Shot
 	{
 	public:
+		virtual ~Shot() {}
 		vector<Item*> m_items;
 		vector<Item*> m_occluders;
 		vector<Light*> m_lights;
-		vector<ReflectionProbe*> m_reflection_probes;
-		vector<GIProbe*> m_gi_probes;
-		vector<LightmapAtlas*> m_lightmaps;
 		vector<ImmediateDraw*> m_immediate;
 	};
 }

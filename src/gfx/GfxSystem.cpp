@@ -357,6 +357,7 @@ namespace two
 	void GfxSystem::render(Shading shading, RenderFunc renderer, RenderTarget& target, Viewport& viewport)
 	{
 		Render render = { shading, viewport, target, m_render_frame };
+		m_renderer.gather(render);
 		m_renderer.submit(render, renderer);
 	}
 

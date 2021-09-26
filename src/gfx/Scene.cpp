@@ -76,7 +76,7 @@ namespace two
 		mat4 identity = bxidentity();
 		bool debug = render.m_target != nullptr;
 		if(debug)
-			for(Item* item : render.m_shot.m_items)
+			for(Item* item : render.m_shot->m_items)
 			{
 				Colour colour = { 1.f, 0.f, 1.f, 0.15f };
 				Cube cube = Cube(item->m_aabb);
@@ -163,16 +163,21 @@ namespace two
 
 	void gather_render(Scene& scene, Render& render)
 	{
-		gather_items(scene, *render.m_camera, render.m_shot.m_items);
-		gather_occluders(scene, *render.m_camera, render.m_shot.m_occluders);
-		gather_lights(scene, render.m_shot.m_lights);
+		unique<Shot> shot = make_unique<Shot>();
+		render.m_shot = shot.get();
 
-		render.m_frustum = optimized_frustum(*render.m_camera, render.m_shot.m_items);
+		gather_items(scene, *render.m_camera, shot->m_items);
+		gather_occluders(scene, *render.m_camera, shot->m_occluders);
+		gather_lights(scene, shot->m_lights);
 
-		render.m_shot.m_immediate = { scene.m_immediate.get() };
+		render.m_frustum = optimized_frustum(*render.m_camera, shot->m_items);
+
+		shot->m_immediate = { scene.m_immediate.get() };
 
 #if DEBUG_ITEMS
 		scene.debug_items(render);
 #endif
+
+		render.m_ushot = std::move(shot);
 	}
 }

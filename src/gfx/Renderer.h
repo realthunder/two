@@ -171,6 +171,9 @@ namespace two
 		constr_ Render(Shading shading, Viewport& viewport, RenderTarget& target, FrameBuffer& target_fbo, RenderFrame& frame);
 		~Render();
 
+		Render(Render&& other);
+		Render& operator=(Render&& other);
+
 		attr_ Shading m_shading;
 		attr_ Scene* m_scene;
 		attr_ RenderTarget* m_target;
@@ -200,7 +203,8 @@ namespace two
 		uint8_t m_picking_pass_index = s_picking_pass_id;
 		uint8_t m_debug_pass_index = s_debug_pass_id;
 
-		Shot m_shot;
+		unique<Shot> m_ushot;
+		Shot* m_shot = nullptr;
 
 		uint32_t m_num_draw_calls = 0;
 		uint32_t m_num_vertices = 0;
