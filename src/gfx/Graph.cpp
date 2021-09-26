@@ -24,6 +24,7 @@ module TWO(gfx);
 #include <geom/Shapes.h>
 #include <gfx/Types.h>
 #include <gfx/Graph.h>
+#include <gfx/Graph.hpp>
 #include <gfx/Gfx.h>
 #include <gfx/Draw.h>
 #include <gfx/Prefab.h>
@@ -63,42 +64,7 @@ namespace two
 	void Gnode::clear()
 	{
 		m_nodes.clear();
-		if(m_node)
-		{
-			m_scene->m_pool->pool<Node3>().tdestroy(*m_node);
-			m_node = nullptr;
-		}
-		if(m_item)
-		{
-			m_scene->m_pool->pool<Item>().tdestroy(*m_item);
-			m_item = nullptr;
-		}
-		if(m_batch)
-		{
-			m_scene->m_pool->pool<Batch>().tdestroy(*m_batch);
-			m_batch = nullptr;
-		}
-		if(m_direct)
-		{
-			m_scene->m_pool->pool<Direct>().tdestroy(*m_direct);
-			m_direct = nullptr;
-		}
-		if(m_animated)
-		{
-			m_scene->m_pool->pool<Mime>().tdestroy(*m_animated);
-			m_animated = nullptr;
-		}
-		if(m_particles)
-		{
-			m_scene->m_pool->pool<Flare>().tdestroy(*m_particles);
-			m_particles = nullptr;
-		}
-		if(m_light)
-		{
-			m_scene->m_pool->pool<Light>().tdestroy(*m_light);
-			m_light = nullptr;
-		}
-
+		
 		if(m_sound)
 		{
 			m_scene->m_orphan_sounds.push_back(m_sound);
@@ -112,19 +78,13 @@ namespace two
 		auto print_depth = [](size_t depth) { for(size_t i = 0; i < depth; ++i) printf("    "); };
 		print_depth(depth);
 		printf("node %i\n", int(index));
-		if(node.m_item)
+		if(Item* item = node.as<Item>())
 		{
 			print_depth(depth + 1);
-			printf("item %s\n", node.m_item->m_model->m_name.c_str());
+			printf("item %s\n", item->m_model->m_name.c_str());
 		}
 		for(size_t i = 0; i < node.m_nodes.size(); ++i)
 			debug_tree(*node.m_nodes[i], i, depth + 1);
-	}
-
-	template <class T, class... Args>
-	inline T& create(Scene& scene, Args&&... args)
-	{
-		return scene.m_pool->pool<T>().construct(static_cast<Args&&>(args)...);
 	}
 
 namespace gfx
@@ -146,12 +106,13 @@ namespace gfx
 	{
 		Gnode& self = parent.suba();
 		//Gnode& self = parent.subi((void*)object.as_uint());
-		if(!self.m_node)
+		Node3* node = self.as<Node3>();
+		if(node == nullptr)
 		{
-			self.m_node = &create<Node3>(*parent.m_scene);
-			self.m_attach = self.m_node;
+			node = self.instantiate<Node3>(*parent.m_scene);
+			self.m_attach = node;
 		}
-		self.m_node->m_transform = transform;
+		node->m_transform = transform;
 		return self;
 	}
 
@@ -179,42 +140,45 @@ namespace gfx
 	{
 		Gnode& self = parent.suba<Gnode>();
 		bool update = (flags & ItemFlag::NoUpdate) == 0;
-		if(!self.m_item)
+		Item* item = self.as<Item>();
+		if(item == nullptr)
 		{
-			self.m_item = &create<Item>(*self.m_scene, *self.m_attach, model, flags, material);
+			item = self.instantiate<Item>(*self.m_scene, *self.m_attach, model, flags, material);
 			update = true;
 		}
-		self.m_item->m_model = const_cast<Model*>(&model);
-		self.m_item->m_material = material;
+		item->m_model = const_cast<Model*>(&model);
+		item->m_material = material;
 		if(update)
 		{
-			self.m_item->update_aabb();
+			item->update_aabb();
 		}
-		return *self.m_item;
+		return *item;
 	}
 
 	Batch& batch(Gnode& parent, Item& item, uint16_t stride)
 	{
 		Gnode& self = parent.suba<Gnode>();
-		if(!self.m_batch)
+		Batch* batch = self.as<Batch>();
+		if (batch == nullptr)
 		{
-			self.m_batch = &create<Batch>(*self.m_scene, item, stride);
-			item.m_batch = self.m_batch;
+			batch = self.instantiate<Batch>(*self.m_scene, item, stride);
+			item.m_batch = batch;
 		}
-		return *self.m_batch;
+		return *batch;
 	}
 
 	Batch& instances(Gnode& parent, Item& item, span<mat4> transforms)
 	{
 		Gnode& self = parent.suba<Gnode>();
-		if(!self.m_batch)
+		Batch* batch = self.as<Batch>();
+		if (batch == nullptr)
 		{
-			self.m_batch = &create<Batch>(*self.m_scene, item, uint16_t(sizeof(mat4)));
-			item.m_batch = self.m_batch;
+			batch = self.instantiate<Batch>(*self.m_scene, item, uint16_t(sizeof(mat4)));
+			item.m_batch = batch;
 		}
-		self.m_batch->transforms(transforms);
-		self.m_batch->update_aabb(transforms);
-		return *self.m_batch;
+		batch->transforms(transforms);
+		batch->update_aabb(transforms);
+		return *batch;
 	}
 
 	void prefab(Gnode& parent, const Prefab& prefab, bool transform, uint32_t flags, Material* material)
@@ -283,38 +247,41 @@ namespace gfx
 	Mime& animated(Gnode& parent, Item& item)
 	{
 		Gnode& self = parent.suba();
-		if(!self.m_animated)
+		Mime* animated = self.as<Mime>();
+		if (animated == nullptr)
 		{
-			self.m_animated = &create<Mime>(*self.m_scene);
-			self.m_animated->add_item(item);
+			animated = self.instantiate<Mime>(*self.m_scene);
+			animated->add_item(item);
 		}
-		return *self.m_animated;
+		return *animated;
 	}
 
 	Flare& flows(Gnode& parent, const Flow& emitter, uint32_t flags)
 	{
 		UNUSED(flags);
 		Gnode& self = parent.suba();
-		if(!self.m_particles)
-			self.m_particles = &create<Flare>(*self.m_scene, self.m_attach, Sphere(1.f), 1024);
-		as<Flow>(*self.m_particles) = emitter;
-		self.m_particles->m_node = self.m_attach;
-		self.m_particles->m_sprite = &parent.m_scene->m_particle_system->m_block.m_sprites->find_sprite(emitter.m_sprite_name.c_str());
-		return *self.m_particles;
+		Flare* particles = self.as<Flare>();
+		if(particles == nullptr)
+			particles = self.instantiate<Flare>(*self.m_scene, self.m_attach, Sphere(1.f), 1024);
+		as<Flow>(*particles) = emitter;
+		particles->m_node = self.m_attach;
+		particles->m_sprite = &parent.m_scene->m_particle_system->m_block.m_sprites->find_sprite(emitter.m_sprite_name.c_str());
+		return *particles;
 	}
 
 	Light& light(Gnode& parent, LightType light_type, bool shadows, Colour colour, float range, float attenuation)
 	{
 		Gnode& self = parent.suba();
-		if(!self.m_light)
+		Light* light = self.as<Light>();
+		if(light == nullptr)
 		{
-			self.m_light = &create<Light>(*self.m_scene, *self.m_attach, light_type, shadows);
+			light = self.instantiate<Light>(*self.m_scene, *self.m_attach, light_type, shadows);
 		}
-		self.m_light->m_type = light_type;
-		self.m_light->m_colour = colour;
-		self.m_light->m_range = range;
-		self.m_light->m_attenuation = attenuation;
-		return *self.m_light;
+		light->m_type = light_type;
+		light->m_colour = colour;
+		light->m_range = range;
+		light->m_attenuation = attenuation;
+		return *light;
 	}
 
 	Light& direct_light_node(Gnode& parent, const quat& rotation)

@@ -34,20 +34,21 @@ namespace two
 		
 		void clear();
 
-		// @todo fix this shit by making each node contain one object from one pool and destroy it with that pool
+		template <class T, class... Args>
+		T* instantiate(Scene& scene, Args&&... args);
+		
+		template <class T>
+		T* as();
+
 		Scene* m_scene = nullptr;
 		Node3* m_attach = nullptr;
-		Node3* m_node = nullptr;
-		Item* m_item = nullptr;
-		Batch* m_batch = nullptr;
-		Direct* m_direct = nullptr;
-		Mime* m_animated = nullptr;
-		Flare* m_particles = nullptr;
-		Light* m_light = nullptr;
-		GIProbe* m_gi_probe = nullptr;
-		LightmapAtlas* m_lightmap_atlas = nullptr;
-		SoundManager* m_sound_manager = nullptr;
+		
+		Type* m_type = nullptr;
+		void* m_object = nullptr;
+		function<void()> m_deleter;
+
 		Sound* m_sound = nullptr;
+		SoundManager* m_sound_manager = nullptr;
 	};
 
 	extern template class refl_ TPool<Node3>;

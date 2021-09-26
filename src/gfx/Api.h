@@ -46,6 +46,7 @@
 #include <gfx/Blocks/Sky.h>
 #ifdef TWO_MODULES
 #include <gfx/Asset.hpp>
+#include <gfx/Graph.hpp>
 #include <gfx/Gpu/Depth.hpp>
 #include <gfx/Gpu/Material.hpp>
 #endif

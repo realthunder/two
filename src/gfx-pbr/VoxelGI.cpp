@@ -50,23 +50,25 @@ namespace gfx
 	GIProbe& gi_probe(Gnode& parent, uint16_t subdiv, const vec3& extents)
 	{
 		Gnode& self = parent.suba();
-		if(!self.m_gi_probe)
-			self.m_gi_probe = &create<GIProbe>(*self.m_scene, *self.m_attach);
-		if(subdiv != self.m_gi_probe->m_subdiv || extents != self.m_gi_probe->m_extents)
-			self.m_gi_probe->resize(subdiv, extents);
-		return *self.m_gi_probe;
+		GIProbe* gi_probe = self.as<GIProbe>();
+		if(!gi_probe)
+			gi_probe = self.instantiate<GIProbe>(*self.m_scene, *self.m_attach);
+		if(subdiv != gi_probe->m_subdiv || extents != gi_probe->m_extents)
+			gi_probe->resize(subdiv, extents);
+		return *gi_probe;
 	}
 
 	LightmapAtlas& lightmap(Gnode& parent, uint32_t resolution, float density, const string& save_path)
 	{
 		Gnode& self = parent.suba();
-		if(!self.m_lightmap_atlas)
+		LightmapAtlas* lightmap_atlas = self.as<LightmapAtlas>();
+		if(!lightmap_atlas)
 		{
-			self.m_lightmap_atlas = &create<LightmapAtlas>(*self.m_scene, resolution, density);
-			self.m_lightmap_atlas->m_dirty = true;
+			lightmap_atlas = self.instantiate<LightmapAtlas>(*self.m_scene, resolution, density);
+			lightmap_atlas->m_dirty = true;
 		}
-		self.m_lightmap_atlas->m_save_path = save_path;
-		return *self.m_lightmap_atlas;
+		lightmap_atlas->m_save_path = save_path;
+		return *lightmap_atlas;
 	}
 }
 
