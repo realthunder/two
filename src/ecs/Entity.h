@@ -31,7 +31,7 @@ namespace two
 
 		void destroy(); // { if(m_handle != UINT32_MAX) s_ecs[m_ecs]->destroy(m_handle); }
 
-		void swap(Entity& other) { using two::swap; swap(m_handle, other.m_handle); swap(m_stream, other.m_stream); swap(m_ecs, other.m_ecs); }
+		void swap(Entity& other) { using stl::swap; swap(m_handle, other.m_handle); swap(m_stream, other.m_stream); swap(m_ecs, other.m_ecs); }
 
 		uint8_t m_ecs = UINT8_MAX;
 		uint16_t m_stream = UINT16_MAX;
