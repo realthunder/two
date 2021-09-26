@@ -57,7 +57,7 @@ namespace two
 #endif
 			
 
-		m_reset_vg = [](GfxWindow& context, Vg& vg) { return vg.load_texture(context.m_target->m_diffuse.m_tex.idx); };
+		m_reset_vg = [](GfxWindow& context, void* vg) { return ((Vg*)vg)->load_texture(context.m_target->m_diffuse.m_tex.idx); };
 
 		m_ui_window.init();
 		m_ui = m_ui_window.m_ui.get();

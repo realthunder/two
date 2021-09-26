@@ -110,7 +110,7 @@ namespace two
 			if(!m_target || size != m_target->m_size)
 				m_target = oconstruct<RenderTarget>(size);
 		}
-		m_vg_handle = m_reset_vg(*this, *m_vg);
+		m_vg_handle = m_reset_vg(*this, m_vg);
 	}
 
 	GfxSystem::GfxSystem(const string& resource_path)

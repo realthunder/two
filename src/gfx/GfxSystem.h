@@ -35,11 +35,6 @@ namespace bgfx
 
 namespace two
 {
-#if 1
-//#ifndef TWO_MODULES
-	class Vg;
-#endif
-
 	export_ class refl_ TWO_GFX_EXPORT GfxWindow : public BgfxContext
 	{
 	public:
@@ -49,12 +44,12 @@ namespace two
 		virtual void reset_fb(const uvec2& size) override;
 
 		GfxSystem& m_gfx;
-		Vg* m_vg = nullptr;
+		void* m_vg = nullptr;
 
 		object<RenderTarget> m_target;
 
 		uint16_t m_vg_handle = UINT16_MAX;
-		using ResetVg = uint16_t(*)(GfxWindow&, Vg&); ResetVg m_reset_vg;
+		using ResetVg = uint16_t(*)(GfxWindow&, void*); ResetVg m_reset_vg;
 
 		vector<Viewport*> m_viewports;
 	};
