@@ -5,6 +5,7 @@
 #pragma once
 
 #ifndef TWO_MODULES
+#include <cstdio>
 #include <infra/Log.h>
 #include <infra/File.h>
 #include <stl/span.h>
@@ -13,8 +14,6 @@
 #endif
 #include <gfx/Asset.h>
 #include <gfx/GfxSystem.h>
-
-#include <cstdio>
 
 namespace two
 {

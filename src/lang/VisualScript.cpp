@@ -93,7 +93,7 @@ namespace two
 		m_stream.visit(true, [&](StreamBranch& branch)
 		{
 			info += to_string(branch.m_index);
-			if(branch.m_value == Ref())
+			if(branch.m_value == Var(Ref()))
 				info += "null";
 			else
 			{

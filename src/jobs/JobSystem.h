@@ -3,10 +3,10 @@
 #ifndef TWO_MODULES
 #include <cassert>
 #include <stdint.h>
-#endif
 #include <stl/stddef.h>
 #include <stl/vector.h>
 #include <stl/memory.h>
+#endif
 #include <jobs/Forward.h>
 
 // Size is chosen so that we can store at least std::function<> and a job size is a multiple of a cacheline.

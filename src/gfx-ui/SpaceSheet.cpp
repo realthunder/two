@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx).ui;
+module TWO(gfx.ui);
 #else
 #include <geom/Intersect.h>
 #include <geom/Shapes.h>

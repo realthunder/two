@@ -1,12 +1,10 @@
 module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
-#include <bx/allocator.h>
-#include <bx/timer.h>
 #include <bgfx/bgfx.h>
-#include <bgfx/platform.h>
+#include <bimg/bimg.h>
 
-export module TWO(bgfx);
+export module TWO2(gfx, pbr);
 import std.core;
 import std.threading;
 import std.regex;
@@ -14,8 +12,8 @@ import std.regex;
 export import TWO(infra);
 export import TWO(type);
 export import TWO(math);
-export import TWO(ctx);
-export import TWO2(ctx, glfw);
+export import TWO(geom);
+export import TWO(gfx);
 
-#include <bgfx/Api.h>
+#include <gfx-pbr/Api.h>
 

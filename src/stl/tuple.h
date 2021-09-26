@@ -2,7 +2,9 @@
 #include <infra/Config.h>
 
 #ifdef USE_STL
+#ifndef TWO_STD_MODULES
 #include <tuple>
+#endif
 namespace two
 {
 	export_ using std::tuple;

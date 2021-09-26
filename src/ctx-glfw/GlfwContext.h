@@ -11,8 +11,6 @@
 #include <ctx/Context.h>
 #endif
 
-struct GLFWwindow;
-
 #ifndef TWO_CTX_GLFW_EXPORT
 #define TWO_CTX_GLFW_EXPORT TWO_IMPORT
 #endif

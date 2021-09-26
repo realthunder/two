@@ -7,5 +7,6 @@
 #ifdef TWO_MODULES
 #include <pool/Pool.hpp>
 #include <pool/ObjectPool.hpp>
+#include <pool/SparsePool.hpp>
 #endif
 

@@ -4,11 +4,13 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/new.h>
 #include <stl/move.h>
+#include <type/RefVal.h>
+#endif
 #include <pool/Pool.h>
 #include <pool/VecPool.hpp>
-#include <type/RefVal.h>
 
 namespace two
 {

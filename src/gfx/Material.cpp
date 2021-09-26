@@ -49,6 +49,7 @@ namespace two
 	GpuState<MaterialLit> GpuState<MaterialLit>::me;
 	GpuState<MaterialPbr> GpuState<MaterialPbr>::me;
 	GpuState<MaterialPhong> GpuState<MaterialPhong>::me;
+	GpuState<MaterialFresnel> GpuState<MaterialFresnel>::me;
 	GpuState<MaterialUser> GpuState<MaterialUser>::me;
 	GpuState<Material> GpuState<Material>::me;
 

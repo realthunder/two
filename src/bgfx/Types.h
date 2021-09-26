@@ -1,8 +1,10 @@
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stdint.h>
 #include <stl/string.h>
 #include <stl/vector.h>
+#endif
 #include <bgfx/Forward.h>
 
 #if !defined TWO_MODULES || defined TWO_TYPE_LIB

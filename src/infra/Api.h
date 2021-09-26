@@ -3,7 +3,10 @@
 #include <infra/Cpp20.h>
 #include <stl/new.h>
 #include <stl/bitset.h>
+#include <stl/array.h>
 #include <stl/table.h>
+#include <stl/tuple.h>
+#include <stl/memory.h>
 #include <stl/move.h>
 #include <stl/math.h>
 #include <stl/algorithm.h>

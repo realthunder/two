@@ -4,7 +4,9 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/vector.h>
+#endif
 #include <type/Ref.h>
 #include <type/Type.h>
 

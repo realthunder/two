@@ -4,8 +4,10 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/algorithm.h>
 #include <stl/swap.h>
+#endif
 #include <pool/SparsePool.h>
 
 namespace two

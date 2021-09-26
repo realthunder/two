@@ -4,8 +4,10 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/decls.h>
 #include <stl/span.h>
+#endif
 #include <ui/Forward.h>
 #include <ui/Frame/Dim.h>
 

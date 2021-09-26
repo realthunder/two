@@ -85,7 +85,7 @@ namespace two
 
 	void StreamBranch::write(const Var& value, bool multiplex)
 	{
-		if(multiplex && !(value == Ref()) && is_sequence(type(value)))
+		if(multiplex && !(value == Var(Ref())) && is_sequence(type(value)))
 		{
 			Iterable& it = iter(value);
 			this->resize(it.size(value));
@@ -122,7 +122,7 @@ namespace two
 	Stream::Stream(const Var& value, bool nullable, bool reference)
 		: StreamBranch(this, value, { 0 })
 		, m_default(value)
-		, m_type(value == Ref() ? &type<Ref>() : &type(value))
+		, m_type(value == Var(Ref()) ? &type<Ref>() : &type(value))
 		, m_nullable(nullable)
 		, m_reference(reference)
 	{}

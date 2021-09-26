@@ -6,10 +6,10 @@
 
 #ifndef TWO_MODULES
 #include <cstddef>
-#endif
 #include <stl/span.h>
 #include <type/Unique.h>
 #include <type/Ref.h>
+#endif
 #include <pool/Forward.h>
 
 

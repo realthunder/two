@@ -17,7 +17,7 @@ module TWO(lang);
 namespace two
 {
 	ProcessValue::ProcessValue(VisualScript& script, const Var& value)
-		: Process(script, value == Ref() ? "Ref" : type(value).m_name, type<ProcessValue>())
+		: Process(script, value == Var(Ref()) ? "Ref" : type(value).m_name, type<ProcessValue>())
 		, m_output(*this, "output", OUTPUT_VALVE, value, false, false)
 	{
 		m_output.m_edit = true;

@@ -7,7 +7,6 @@ module;
 #include <infra/Cpp20.h>
 #include <lang/LuaLib.h>
 module TWO(lang);
-#include <infra/Swap.h>
 #else
 #include <lang/LuaLib.h>
 #include <cassert>
@@ -37,6 +36,8 @@ module TWO(lang);
 #include <lang/Types.h>
 #include <lang/Lua.h>
 #endif
+
+#include <infra/Swap.h>
 
 #define TWO_LUA_DEBUG 0
 #define TWO_LUA_DEBUG_IO 0

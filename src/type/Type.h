@@ -4,8 +4,10 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/stddef.h>
 #include <stdint.h>
+#endif
 #include <type/Forward.h>
 #include <type/Cls.h>
 

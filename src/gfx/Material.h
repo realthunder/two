@@ -16,10 +16,12 @@
 #include <gfx/Texture.h>
 #include <gfx/Renderer.h>
 
+#ifndef TWO_MODULES
 namespace bgfx
 {
 	struct Encoder;
 }
+#endif
 
 namespace two
 {
@@ -105,9 +107,11 @@ namespace two
 		attr_ TextureChannel m_channel = TextureChannel::All;
 	};
 
+#ifndef TWO_MODULES
 	extern template struct refl_ MaterialParam<Colour>;
 	extern template struct refl_ MaterialParam<float>;
 	extern template struct refl_ MaterialParam<vec4>;
+#endif
 
 	export_ struct refl_ TWO_GFX_EXPORT MaterialBase
 	{

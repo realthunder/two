@@ -5,6 +5,7 @@
 #pragma once
 
 #ifndef TWO_MODULES
+#include <cstring>
 #include <math/Vec.hpp>
 #include <gfx/Light.h>
 #include <gfx/Node3.h>
@@ -12,8 +13,6 @@
 #endif
 #include <gfx-pbr/Lighting.h>
 #include <gfx-pbr/Shadow.h>
-
-#include <cstring>
 
 #define PAD 0.f
 

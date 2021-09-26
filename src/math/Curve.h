@@ -41,18 +41,20 @@ namespace two
 		attr_ vector<T> m_keys;
 	};
 
+#ifndef TWO_MODULES
 	extern template struct refl_ ValueCurve<float>;
 	extern template struct refl_ ValueCurve<uint32_t>;
 	extern template struct refl_ ValueCurve<vec3>;
 	extern template struct refl_ ValueCurve<quat>;
 	extern template struct refl_ ValueCurve<Colour>;
+#endif
 
-	template <class T>
+	export_ template <class T>
 	struct One { static T value() { return T(1); } };
 
-	template <> struct One<vec3> { static vec3 value() { return vec3(1.f); } };
-	template <> struct One<quat> { static quat value() { return ZeroQuat; } };
-	template <> struct One<Colour> { static Colour value() { return Colour(1.f); } };
+	export_ template <> struct One<vec3> { static vec3 value() { return vec3(1.f); } };
+	export_ template <> struct One<quat> { static quat value() { return ZeroQuat; } };
+	export_ template <> struct One<Colour> { static Colour value() { return Colour(1.f); } };
 
 	export_ template <class T>
 	struct refl_ struct_ ValueTrack
@@ -101,9 +103,11 @@ namespace two
 		attr_ ValueCurve<T> m_max_curve;
 	};
 
+#ifndef TWO_MODULES
 	extern template struct refl_ ValueTrack<vec3>;
 	extern template struct refl_ ValueTrack<quat>;
 	extern template struct refl_ ValueTrack<float>;
 	extern template struct refl_ ValueTrack<uint32_t>;
 	extern template struct refl_ ValueTrack<Colour>;
+#endif
 }

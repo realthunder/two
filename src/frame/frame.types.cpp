@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.frame;
+module TWO(frame);
 #else
 #include <frame/Types.h>
 #include <frame/Api.h>

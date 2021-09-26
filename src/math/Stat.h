@@ -44,8 +44,10 @@ namespace two
 
 	};
 
+#ifndef TWO_MODULES
 	extern template struct refl_ StatDef<int>;
 	extern template struct refl_ StatDef<float>;
+#endif
 
 	export_ template <class T>
 	struct Stat

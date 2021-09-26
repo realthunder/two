@@ -4,7 +4,9 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/map.h>
+#endif
 #include <gfx/Forward.h>
 #include <gfx/Renderer.h>
 #include <gfx/Filter.h>

@@ -2,9 +2,11 @@
 
 #include <infra/Config.h>
 
+#ifndef TWO_MODULES
 #include <infra/Forward.h>
 #include <type/Forward.h>
 #include <math/Forward.h>
+#endif
 
 #ifndef TWO_CTX_EXPORT
 #define TWO_CTX_EXPORT TWO_IMPORT

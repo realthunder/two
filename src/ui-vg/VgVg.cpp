@@ -2,17 +2,14 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
-
-#ifdef TWO_MODULES
-#define _GLIBCXX_TYPE_TRAITS
-#endif
-#include <vg/vg.h>
-#include <bgfx/bgfx.h>
-
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(ui).vg;
+#include <vg/vg.h>
+#include <bgfx/bgfx.h>
+#include <stb_image.h>
+#include <stb_truetype.h>
+module TWO2(ui, vg);
 #else
 #include <cmath>
 #include <cfloat>

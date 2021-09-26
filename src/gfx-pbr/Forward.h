@@ -2,11 +2,13 @@
 
 #include <infra/Config.h>
 
+#ifndef TWO_MODULES
 #include <infra/Forward.h>
 #include <type/Forward.h>
 #include <math/Forward.h>
 #include <geom/Forward.h>
 #include <gfx/Forward.h>
+#endif
 
 #ifndef TWO_GFX_PBR_EXPORT
 #define TWO_GFX_PBR_EXPORT TWO_IMPORT

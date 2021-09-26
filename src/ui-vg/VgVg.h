@@ -7,9 +7,9 @@
 #ifndef TWO_MODULES
 #include <stl/string.h>
 #include <stl/map.h>
-#endif
 #include <ui/Forward.h>
 #include <ui/UiRenderer.h>
+#endif
 
 #ifndef TWO_MODULES
 #include <vg/vg.h>

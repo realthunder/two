@@ -36,6 +36,8 @@ module TWO2(gfx, pbr);
 #define DEBUG_ATLAS_DEPTH 0
 #define DEBUG_ATLAS_COLOR 0
 
+#define SHADOW_SAMPLER 0
+
 namespace two
 {
 	GpuState<GpuShadow> GpuState<GpuShadow>::me;

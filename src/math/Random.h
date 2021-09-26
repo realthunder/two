@@ -20,6 +20,7 @@ namespace two
 	export_ template <class T = float>
 	T randf(T min, T max);
 
+#ifndef TWO_MODULES
 	extern template float randf();
 
 	extern template float randf(float min, float max);
@@ -29,4 +30,5 @@ namespace two
 	extern template uint randi<uint>(uint min, uint max);
 	extern template ulong randi<ulong>(ulong min, ulong max);
 	extern template ullong randi<ullong>(ullong min, ullong max);
+#endif
 }

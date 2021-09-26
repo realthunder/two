@@ -3,8 +3,8 @@
 #ifndef TWO_MODULES
 #include <cassert>
 #include <atomic>
-#endif
 #include <stl/stddef.h>
+#endif
 #include <jobs/Forward.h>
 
 namespace two

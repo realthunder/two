@@ -4,8 +4,10 @@
 
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stl/vector.h>
 #include <ctx/Forward.h>
+#endif
 #include <bgfx/Forward.h>
 
 #ifndef TWO_MODULES
@@ -20,10 +22,12 @@
 	#endif
 #endif
 
+#ifndef TWO_MODULES
 namespace bx
 {
 	struct AllocatorI;
 }
+#endif
 
 namespace two
 {

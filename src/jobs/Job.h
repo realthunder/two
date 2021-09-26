@@ -2,9 +2,9 @@
 
 #ifndef TWO_MODULES
 #include <atomic>
-#endif
 #include <stl/move.h>
 #include <stl/new.h>
+#endif
 #include <jobs/Forward.h>
 #include <jobs/JobSystem.h>
 

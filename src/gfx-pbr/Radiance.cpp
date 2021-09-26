@@ -25,6 +25,12 @@ module TWO2(gfx, pbr);
 #define DEBUG_ENVMAP 0
 #define DEBUG_RADIANCE 0
 
+#ifndef TWO_MODULES
+#define CONSTEXPR constexpr
+#else
+#define CONSTEXPR
+#endif
+
 namespace two
 {
 	BlockRadiance::BlockRadiance(GfxSystem& gfx, BlockFilter& filter, BlockCopy& copy)
@@ -182,8 +188,8 @@ namespace two
 
 				if(cube)
 				{
-					constexpr vec3 up[6] = { y3, y3, -z3, z3, y3, y3 };
-					constexpr vec3 dir[6] = { x3, -x3, y3, -y3, z3, -z3 };
+					CONSTEXPR vec3 up[6] = { y3, y3, -z3, z3, y3, y3 };
+					CONSTEXPR vec3 dir[6] = { x3, -x3, y3, -y3, z3, -z3 };
 
 					const mat4 cubemat = bxlookat(vec3(0.f), vec3(0.f) + dir[face], up[face]);
 					bgfx::setUniform(u_prefilter.u_prefilter_cube, &cubemat);

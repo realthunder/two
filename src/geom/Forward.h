@@ -2,8 +2,10 @@
 
 #include <infra/Config.h>
 
+#ifndef TWO_MODULES
 #include <type/Forward.h>
 #include <math/Forward.h>
+#endif
 
 #ifndef TWO_GEOM_EXPORT
 #define TWO_GEOM_EXPORT TWO_IMPORT

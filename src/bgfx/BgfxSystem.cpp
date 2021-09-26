@@ -2,15 +2,15 @@
 //  This software is provided 'as-is' under the zlib License, see the LICENSE.txt file.
 //  This notice and the license may not be removed or altered from any source distribution.
 
+#ifdef TWO_MODULES
+module;
+#include <cassert>
 #include <gfx/Cpp20.h>
 #include <cstdio>
-
 #include <bx/allocator.h>
 #include <bx/timer.h>
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
-
-#ifdef TWO_MODULES
 module TWO(bgfx);
 #else
 #include <infra/Log.h>

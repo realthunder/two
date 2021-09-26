@@ -1,4 +1,6 @@
+#ifndef TWO_MODULES
 #include <math/Image256.h>
+#endif
 #include <geom/Aabb.h>
 #include <geom/Curve.h>
 #include <geom/Geom.h>
@@ -28,4 +30,6 @@
 #include <geom/Shape/Sphere.h>
 #include <geom/Shape/Spheroid.h>
 #include <geom/Shape/Triangle.h>
-
+#ifdef TWO_MODULES
+#include <geom/Primitive.hpp>
+#endif

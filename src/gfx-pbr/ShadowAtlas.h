@@ -5,16 +5,15 @@
 #pragma once
 
 #ifndef TWO_MODULES
+#include <bgfx/bgfx.h>
 #include <stl/vector.h>
 #include <stl/map.h>
 #include <math/Vec.h>
-#endif
 #include <gfx/Depth.h>
 #include <gfx/Texture.h>
 #include <gfx/RenderTarget.h>
+#endif
 #include <gfx-pbr/Forward.h>
-
-#include <bgfx/bgfx.h>
 
 namespace two
 {

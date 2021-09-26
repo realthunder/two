@@ -225,7 +225,7 @@ namespace two
 		//if(is_struct(*value.m_type) && !nullable && !value)
 		//	return object_creator(parent, *value.m_type);
 
-		if(value == Ref() || value == Var() || type(value).is<Type>())
+		if(value == Ref() || /* @TODO fix me  value == Var() || */ type(value).is<Type>())
 			return false;
 		else if(DispatchInput::me.check(value))
 			return DispatchInput::me.dispatch(value, parent);

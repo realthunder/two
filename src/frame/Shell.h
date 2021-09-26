@@ -2,6 +2,7 @@
 
 #include <frame/Forward.h>
 
+#ifndef TWO_MODULES
 #include <infra/Api.h>
 #include <ecs/Api.h>
 #include <jobs/Api.h>
@@ -10,12 +11,13 @@
 #include <geom/Api.h>
 #include <gfx/Api.h>
 #include <gfx-ui/Api.h>
+#endif
 
 #define GLOBAL_VG 0
 
 namespace two
 {
-	struct refl_ ShellContext
+	export_ struct refl_ ShellContext
 	{
 		Docksystem m_docksystem;
 		attr_ Widget* m_screen = nullptr;
@@ -25,7 +27,7 @@ namespace two
 	using ShellUpdate = void(*)(Shell&, ShellWindow&);
 	//using ShellUpdate = std::function<void(Shell&)>;
 
-	class refl_ ShellWindow : public GfxWindow
+	export_ class refl_ ShellWindow : public GfxWindow
 	{
 	public:
 		ShellWindow(GfxSystem& gfx, uint32_t index, const string& name, const uvec2& size, bool fullscreen = false);
@@ -43,7 +45,7 @@ namespace two
 		//virtual void end_frame() override;
 	};
 
-	class refl_ Shell
+	export_ class refl_ Shell
 	{
 	public:
 		constr_ Shell(const string& resource_path, const string& exec_path = "", bool window = true);
@@ -80,6 +82,6 @@ namespace two
 		ShellUpdate m_pump = nullptr;
 	};
 
-	void shell_context(Widget& parent, ShellContext& context);
+	export_ void shell_context(Widget& parent, ShellContext& context);
 }
 

@@ -7,8 +7,8 @@
 #ifndef TWO_MODULES
 #include <stl/string.h>
 #include <lang/Script.h>
-#endif
 #include <ui/Section.h>
+#endif
 
 namespace two
 {

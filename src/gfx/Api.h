@@ -1,6 +1,8 @@
+#ifndef TWO_MODULES
 #include <math/Image256.h>
 #include <geom/Geometry.h>
 #include <geom/Curve.h>
+#endif
 #include <gfx/Node3.h>
 #include <gfx/Animated.h>
 #include <gfx/Animation.h>
@@ -9,7 +11,6 @@
 #include <gfx/Assets.h>
 #include <gfx/Buffer.h>
 #include <gfx/Camera.h>
-#include <gfx/Cpp20.h>
 #include <gfx/Depth.h>
 #include <gfx/Draw.h>
 #include <gfx/Effects.h>

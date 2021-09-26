@@ -218,11 +218,15 @@ namespace two
 }
 
 #ifdef _DEBUG
+
+#ifndef TWO_MODULES
 #include <gfx/GfxSystem.h>
 #include <gfx/Pipeline.h>
 #include <gfx/Gfx.h>
 #include <geom/ShapesComplex.h>
 #include <geom/Symbol.h>
+#endif
+
 namespace two
 {
 	void debug_draw_light_clusters(Gnode& parent, Viewport& viewport, Camera& camera)

@@ -1,5 +1,7 @@
+#ifndef TWO_MODULES
 #include <ui/Style/Layout.h>
 #include <ui/Style/Skin.h>
+#endif
 #include <uio/Unode.h>
 #include <uio/Dropper.h>
 #include <uio/Forward.h>

@@ -31,7 +31,7 @@ namespace two
 		Signature m_signature;
 	};
 
-	enum class refl_ Language : unsigned int
+	export_ enum class refl_ Language : unsigned int
 	{
 		Cpp,
 		Lua,

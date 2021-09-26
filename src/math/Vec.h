@@ -216,11 +216,7 @@ namespace two
 	export_ CONSTEXPR vec3 y3 = { 0.f, 1.f, 0.f };
 	export_ CONSTEXPR vec3 z3 = { 0.f, 0.f, 1.f };
 
-#ifdef TWO_MODULES
-	export_ extern quat ZeroQuat; // = { 0.f, 0.f, 0.f, 1.f };
-#else
 	export_ CONSTEXPR quat ZeroQuat = { 0.f, 0.f, 0.f, 1.f };
-#endif
 
 	export_ CONSTEXPR vec4 Rect4 = { 0.f, 0.f, 1.f, 1.f };
 

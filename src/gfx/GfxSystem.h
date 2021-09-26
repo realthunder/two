@@ -12,14 +12,15 @@
 #include <type/Unique.h>
 #include <geom/Primitive.h>
 #include <geom/Symbol.h>
-#endif
-#include <gfx/Forward.h>
-#include <gfx/Renderer.h>
 #ifndef TWO_BGFX_EXPORT
 #define TWO_BGFX_EXPORT TWO_GFX_EXPORT
 #endif
 #include <bgfx/BgfxSystem.h>
+#endif
+#include <gfx/Forward.h>
+#include <gfx/Renderer.h>
 
+#ifndef TWO_MODULES
 namespace bx
 {
 	struct FileReaderI;
@@ -30,10 +31,14 @@ namespace bgfx
 {
 	struct Encoder;
 }
+#endif
 
 namespace two
 {
+#if 1
+//#ifndef TWO_MODULES
 	class Vg;
+#endif
 
 	export_ class refl_ TWO_GFX_EXPORT GfxWindow : public BgfxContext
 	{

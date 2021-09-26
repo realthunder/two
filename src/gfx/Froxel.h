@@ -17,10 +17,12 @@
 #include <gfx/Uniform.h>
 #endif
 
+#ifndef TWO_MODULES
 namespace bgfx
 {
 	struct Encoder;
 }
+#endif
 
 namespace two
 {

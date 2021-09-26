@@ -108,7 +108,7 @@ namespace two
 		return Lighting(uint(clustered) | uint(deferred) | uint(gi));
 	}
 
-	inline bool check_lighting(Lighting lighting, Lighting option)
+	export_ inline bool check_lighting(Lighting lighting, Lighting option)
 	{
 		return (uint(lighting) & uint(option)) != 0;
 	}
@@ -120,7 +120,7 @@ namespace two
 		Texture,
 	};
 
-	template <class T>
+	export_ template <class T>
 	struct GpuState {};
 
 	// initial idea (reality is quite far from that)
@@ -161,6 +161,7 @@ namespace two
 		attr_ uint32_t m_num_triangles = 0;
 	};
 
+	export_ using GatherFunc = void(*)(Scene&, Render&);
 	export_ using RenderFunc = void(*)(GfxSystem&, Render&);
 
 	export_ struct refl_ TWO_GFX_EXPORT Render
@@ -316,7 +317,6 @@ namespace two
 		void sorted_pass(Render& render, Pass& pass, Enqueue enqueue, Submit submit = nullptr);
 		void direct_pass(Render& render, Pass& pass, Enqueue enqueue, Submit submit = nullptr);
 
-		using GatherFunc = void(*)(Scene&, Render&);
 		GatherFunc m_gather_func;
 
 		template <class T_Block>

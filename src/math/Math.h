@@ -83,5 +83,5 @@ namespace two
 		return remap(number, -1.f, 1.f, low, high);
 	}
 
-	TWO_MATH_EXPORT void register_math_conversions();
+	export_ TWO_MATH_EXPORT void register_math_conversions();
 }

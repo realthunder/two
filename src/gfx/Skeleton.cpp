@@ -160,10 +160,14 @@ namespace two
 }
 
 #ifdef _DEBUG
+
+#ifndef TWO_MODULES
 #include <gfx/Gfx.h>
 #include <math/Vec.hpp>
 #include <geom/Shapes.h>
 #include <geom/Symbol.h>
+#endif
+
 namespace two
 {
 	void debug_draw_skeleton(Gnode& parent, const vec3& position, const quat& rotation, Rig& rig)

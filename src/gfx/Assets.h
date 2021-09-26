@@ -15,10 +15,12 @@
 
 namespace two
 {
+#ifndef TWO_MODULES
 	extern template class refl_ AssetStore<Texture>;
 	extern template class refl_ AssetStore<Program>;
 	extern template class refl_ AssetStore<Material>;
 	extern template class refl_ AssetStore<Model>;
 	extern template class refl_ AssetStore<Flow>;
 	extern template class refl_ AssetStore<Prefab>;
+#endif
 }

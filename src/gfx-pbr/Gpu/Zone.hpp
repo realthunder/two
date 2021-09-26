@@ -15,11 +15,6 @@
 
 namespace two
 {
-#ifdef TWO_MODULES
-	template <class T>
-	struct GpuState {};
-#endif
-
 #if !ZONES_LIGHTS_BUFFER
 	export_ template <>
 	struct GpuState<ZoneLights>

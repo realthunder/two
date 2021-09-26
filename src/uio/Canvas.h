@@ -6,8 +6,8 @@
 
 #ifndef TWO_MODULES
 #include <lang/Script.h>
-#endif
 #include <ui/Section.h>
+#endif
 
 namespace two
 {

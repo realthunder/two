@@ -20,6 +20,7 @@
 #	pragma warning (disable : 4244)
 #	pragma warning (disable : 4522)
 #	pragma warning (disable : 5050)
+#	pragma warning (disable : 5202) // warning C5202: a global module fragment can only contain preprocessor directives
 #endif
 
 #endif

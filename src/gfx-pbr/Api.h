@@ -1,7 +1,9 @@
+#ifndef TWO_MODULES
 #include <gfx/Node3.h>
 #include <gfx/Graph.h>
 #include <gfx/Scene.h>
 #include <gfx/GfxSystem.h>
+#endif
 #include <gfx-pbr/Forward.h>
 #include <gfx-pbr/Lighting.h>
 #include <gfx-pbr/Lightmap.h>

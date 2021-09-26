@@ -13,6 +13,10 @@ module TWO(infra);
 
 namespace two
 {
+#ifdef TWO_MODULES
+	using std::string;
+#endif
+
 #ifndef USE_STL
 	template <> void to_value(const string& str, bool& val) { val = atoi(str.c_str()) != 0; } //str == "true" ? true : false; }
 	template <> void to_value(const string& str, char& val) { val = char(atoi(str.c_str())); }
