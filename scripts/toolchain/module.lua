@@ -67,7 +67,7 @@ function module(namespace, name, rootpath, subpath, self_decl, usage_decl, refle
     end
     
     if reflect and not NO_REFL then
-        m.refl = refl(m)
+        m.meta = refl(m)
     end
     
     return m
@@ -78,17 +78,17 @@ function refl(m, force_project)
     table.extend(deps, m.deps)
     table.extend(deps, { m })
     for _, m in ipairs(m.deps) do
-        if m.refl then
-            table.insert(deps, m.refl)
+        if m.meta then
+            table.insert(deps, m.meta)
         end
     end
-    m.refl = module(m.namespace, m.name .. "-refl", m.root, path.join("meta", m.subdir), nil, m.usage_decl, false, deps, true)
-    m.refl.headers = { path.join(m.root, "meta", string.gsub(m.name, "-", ".") .. ".meta.h") }
-    m.refl.sources = { path.join(m.root, "meta", string.gsub(m.name, "-", ".") .. ".meta.cpp") }
+    m.meta = module(m.namespace, m.name .. "-meta", m.root, "meta", nil, m.usage_decl, false, deps, true)
+    m.meta.headers = { path.join(m.root, "meta", string.gsub(m.name, "-", ".") .. ".meta.h") }
+    m.meta.sources = { path.join(m.root, "meta", string.gsub(m.name, "-", ".") .. ".meta.cpp") }
     m.decl = refl_decl
-    m.refl.force_project = force_project
-    m.refl.reflected = m
-    return m.refl
+    m.meta.force_project = force_project
+    m.meta.reflected = m
+    return m.meta
 end
 
 function link(lib, dep)
@@ -202,10 +202,10 @@ function lib(name, modules, libkind, optdeps, norefl)
         table.insert(lib.modules, m)
         m.lib = lib
         m.decl(m)
-        if m.refl and not norefl then
-            table.insert(lib.modules, m.refl)
-            m.refl.lib = lib
-            m.refl.decl(m.refl)
+        if m.meta and not norefl then
+            table.insert(lib.modules, m.meta)
+            m.meta.lib = lib
+            m.meta.decl(m.meta)
         end
     end
     
@@ -222,11 +222,15 @@ end
 
 function libs(modules, libkind, deps)
     for k, m  in pairs(modules) do
-        m.lib = lib(m.idname, { m }, libkind, deps, true)
-        if m.refl then
-            m.refl.lib = lib(m.refl.idname, { m.refl }, libkind, deps)
-            table.insert(modules, m.refl)
+        if m.meta then
+            table.insert(modules, m.meta)
         end
+    end
+
+    modules = sort_topological(modules, 'deps', true)
+    
+    for k, m  in pairs(modules) do
+        m.lib = lib(m.idname, { m }, libkind, deps, true)
     end
 end
 
@@ -234,7 +238,7 @@ function unity(m)
     m.headers = { path.join(m.root, m.namespace, string.gsub(m.name, "-", ".") .. ".h") }
     m.sources = { path.join(m.root, m.namespace, string.gsub(m.name, "-", ".") .. ".cpp") }
     m.header_only = true
-    if m.refl then
-        unity(m.refl)
+    if m.meta then
+        unity(m.meta)
     end
 end

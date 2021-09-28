@@ -322,11 +322,11 @@ two.ecs     = module("two", "ecs",      TWO_SRC_DIR,    "ecs",      two_module, 
 -- srlz
 two.srlz    = module("two", "srlz",     TWO_SRC_DIR,    "srlz",     two_srlz,   nil,            true,       { json11, two.infra, two.type, two.refl })
 -- math
-if TWO_STATIC then      
+if TWO_STATIC then
   two.math  = module("two", "math",     TWO_SRC_DIR,    "math",     two_math,   uses_two_math,  true,       { json11, stb.rect_pack, two.infra, two.type })
-else        
+else
   two.math  = module("two", "math",     TWO_SRC_DIR,    "math",     two_math,   uses_two_math,  true,       { stb.image, stb.rect_pack, two.infra, two.type })
-end     
+end
 -- geom
 two.geom    = module("two", "geom",     TWO_SRC_DIR,    "geom",     two_geom,   nil,            true,       { mikktspace, two.type, two.math })
 -- procgen
@@ -368,7 +368,7 @@ two.gltf    = module("two", "gltf",     TWO_SRC_DIR,    "gltf",     two_gltf,   
 -- gfx exts                                                 
 two.gfx.pbr = module("two", "gfx-pbr",  TWO_SRC_DIR,    "gfx-pbr",  two_gfx_pbr,nil,            true,       { xatlas, two.infra, two.type, two.math, two.geom, two.gfx })
 two.gfx.obj = module("two", "gfx-obj",  TWO_SRC_DIR,    "gfx-obj",  two_module, nil,            true,       { two.infra, two.type, two.srlz, two.math, two.geom, two.gfx })
-two.gfx.gltf= module("two", "gfx-gltf", TWO_SRC_DIR,    "gfx-gltf", two_gltf,   nil,            true,       { json11, two.infra, two.type, two.refl, two.srlz, two.math, two.geom, two.gfx, two.gltf, two.gltf.refl })
+two.gfx.gltf= module("two", "gfx-gltf", TWO_SRC_DIR,    "gfx-gltf", two_gltf,   nil,            true,       { json11, two.infra, two.type, two.refl, two.srlz, two.math, two.geom, two.gfx, two.gltf })
 two.gfx.ui  = module("two", "gfx-ui",   TWO_SRC_DIR,    "gfx-ui",   two_module, nil,            true,       { two.infra, two.tree, two.type, two.math, two.geom, two.ctx, two.ui, two.gfx })
 two.gfx.edit= module("two", "gfx-edit", TWO_SRC_DIR,    "gfx-edit", two_module, nil,            true,       { two.infra, two.type, two.refl, two.srlz, two.math, two.geom, two.ui, two.uio, two.gfx, two.gfx.pbr })
 -- tool                                                     
@@ -401,6 +401,14 @@ two.all = table.union(two.two, two.opts)
 if _OPTIONS["as-libs"] then
     FORCE_REFL_PROJECTS = true
 end
+
+for _, m  in pairs(two.all) do
+    if m.reflect and not NO_REFL then
+        m.meta = refl(m)
+    end
+end
+
+table.extend(two.gfx.gltf.deps, { two.gltf.meta })
 
 function two_libs()
     local lgfx = {}

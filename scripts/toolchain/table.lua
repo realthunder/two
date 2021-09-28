@@ -51,7 +51,7 @@ function table.traverse(tables, children, callback, visited)
     end
 end
 
-function sort_topological(nodes, children)
+function sort_topological(nodes, children, nowalk)
     local sorted = {}
     local queue = table.copy(nodes)
     
@@ -61,7 +61,9 @@ function sort_topological(nodes, children)
         n.temp_mark = true
         
         for _, c in ipairs(n[children] or {}) do
-            visit(c)
+            if not nowalk or table.contains(nodes, c) then
+                visit(c)
+            end
         end
         
         n.perm_mark = true

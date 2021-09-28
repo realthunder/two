@@ -157,7 +157,7 @@ function reflect(modules)
     local temp_refl_path = path.join(BUILD_DIR, "refl")
     local jsons = {}
     for _, m in ipairs(modules) do
-        if m.refl then
+        if m.meta then
             print('two reflect ' .. m.idname)
             current = {
                 namespace = iif(m.namespace, m.namespace, ''),
@@ -172,7 +172,7 @@ function reflect(modules)
             }
             
             for i, dep in ipairs(m.deps or {}) do
-                if dep.refl then
+                if dep.meta then
                     table.insert(current.dependencies, dep.idname)
                 end
             end
