@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx);
+module two.gfx.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -11,8 +11,9 @@ module TWO(gfx);
 #include <refl/MetaDecl.h>
 #include <refl/Module.h>
 #include <meta/infra.meta.h>
-#include <meta/jobs.meta.h>
 #include <meta/type.meta.h>
+#include <meta/tree.meta.h>
+#include <meta/jobs.meta.h>
 #include <meta/pool.meta.h>
 #include <meta/ecs.meta.h>
 #include <meta/math.meta.h>
@@ -21,9 +22,8 @@ module TWO(gfx);
 #include <meta/bgfx.meta.h>
 #include <meta/gfx.meta.h>
 #include <meta/gfx.conv.h>
-#endif
-
 #include <gfx/Api.h>
+#endif
 
 using namespace two;
 
@@ -145,7 +145,9 @@ void two_Node3_direction(void* object, span<void*> args, void*& result) { UNUSED
 void two_Texture__construct_0(void* ref, span<void*> args) { new(stl::placeholder(), ref) two::Texture( *static_cast<stl::string*>(args[0]) ); }
 void two_Texture__construct_1(void* ref, span<void*> args) { new(stl::placeholder(), ref) two::Texture( *static_cast<two::uvec2*>(args[0]), *static_cast<bool*>(args[1]), *static_cast<two::TextureFormat*>(args[2]), *static_cast<uint64_t*>(args[3]), *static_cast<bool*>(args[4]) ); }
 void two_Texture_valid(void* object, span<void*> args, void*& result) { UNUSED(args); (*static_cast<bool*>(result)) = (*static_cast<two::Texture*>(object)).valid(); }
+void two_Texture_load(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Texture*>(object)).load(*static_cast<two::GfxSystem*>(args[0]), *static_cast<stl::string*>(args[1]), *static_cast<bool*>(args[2]), *static_cast<bool*>(args[3])); }
 void two_Texture_reload(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Texture*>(object)).reload(*static_cast<two::GfxSystem*>(args[0]), *static_cast<bool*>(args[1]), *static_cast<bool*>(args[2])); }
+void two_Texture_load_mem(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Texture*>(object)).load_mem(*static_cast<two::GfxSystem*>(args[0]), *static_cast<stl::span<uint8_t>*>(args[1])); }
 void two_Texture_load_rgba(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Texture*>(object)).load_rgba(*static_cast<two::uvec2*>(args[0]), *static_cast<stl::span<uint32_t>*>(args[1]), *static_cast<bool*>(args[2])); }
 void two_Texture_load_float(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Texture*>(object)).load_float(*static_cast<two::uvec2*>(args[0]), *static_cast<stl::span<float>*>(args[1]), *static_cast<bool*>(args[2])); }
 void two_Joint__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::Joint(  ); }
@@ -165,6 +167,8 @@ void two_Mime_next_animation(void* object, span<void*> args, void*& result) { UN
 void two_Mime_add_item(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Mime*>(object)).add_item(*static_cast<two::Item*>(args[0])); }
 void two_Mime_add_nodes(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Mime*>(object)).add_nodes(*static_cast<stl::span<two::Node3>*>(args[0])); }
 void two_Mime_playing(void* object, span<void*> args, void*& result) { UNUSED(args); (*static_cast<stl::string*>(result)) = (*static_cast<two::Mime*>(object)).playing(); }
+void two_FrustumSlice__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::FrustumSlice(  ); }
+void two_FrustumSlice__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::FrustumSlice((*static_cast<two::FrustumSlice*>(other))); }
 void two_ShaderDefine__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::ShaderDefine(  ); }
 void two_ShaderDefine__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::ShaderDefine((*static_cast<two::ShaderDefine*>(other))); }
 void two_ShaderBlock__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::ShaderBlock(  ); }
@@ -181,8 +185,6 @@ void two_Program_set_pass(void* object, span<void*> args, void*& result) { UNUSE
 void two_Program_set_source(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Program*>(object)).set_source(*static_cast<two::ShaderType*>(args[0]), *static_cast<stl::string*>(args[1])); }
 void two_Program_register_blocks(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Program*>(object)).register_blocks(*static_cast<two::Program*>(args[0])); }
 void two_Program_register_block(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Program*>(object)).register_block(*static_cast<two::ShaderBlock*>(args[0])); }
-void two_FrustumSlice__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::FrustumSlice(  ); }
-void two_FrustumSlice__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::FrustumSlice((*static_cast<two::FrustumSlice*>(other))); }
 void two_ProgramVersion__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::ProgramVersion(  ); }
 void two_ProgramVersion__construct_1(void* ref, span<void*> args) { new(stl::placeholder(), ref) two::ProgramVersion( *static_cast<two::Program*>(args[0]) ); }
 void two_ProgramVersion__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::ProgramVersion((*static_cast<two::ProgramVersion*>(other))); }
@@ -197,14 +199,31 @@ void two_RenderFrame__copy_construct(void* ref, void* other) { new(stl::placehol
 void two_Render__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::Render(  ); }
 void two_Render__construct_1(void* ref, span<void*> args) { new(stl::placeholder(), ref) two::Render( *static_cast<two::Shading*>(args[0]), *static_cast<two::Viewport*>(args[1]), *static_cast<two::RenderTarget*>(args[2]), *static_cast<two::RenderFrame*>(args[3]) ); }
 void two_Render__construct_2(void* ref, span<void*> args) { new(stl::placeholder(), ref) two::Render( *static_cast<two::Shading*>(args[0]), *static_cast<two::Viewport*>(args[1]), *static_cast<two::RenderTarget*>(args[2]), *static_cast<two::FrameBuffer*>(args[3]), *static_cast<two::RenderFrame*>(args[4]) ); }
-void two_Render__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::Render((*static_cast<two::Render*>(other))); }
 void two_Render_subrender(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Render*>(object)).subrender(*static_cast<two::Render*>(args[0])); }
-void two_Render_next_pass(void* object, span<void*> args, void*& result) { (*static_cast<two::Pass*>(result)) = (*static_cast<two::Render*>(object)).next_pass(static_cast<const char*>(args[0]), *static_cast<two::PassType*>(args[1])); }
+void two_Render_next_pass(void* object, span<void*> args, void*& result) { (*static_cast<two::Pass*>(result)) = (*static_cast<two::Render*>(object)).next_pass(static_cast<const char*>(args[0]), *static_cast<two::PassType*>(args[1]), *static_cast<uint8_t*>(args[2])); }
 void two_Render_composite_pass(void* object, span<void*> args, void*& result) { (*static_cast<two::Pass*>(result)) = (*static_cast<two::Render*>(object)).composite_pass(static_cast<const char*>(args[0]), *static_cast<two::FrameBuffer*>(args[1]), *static_cast<two::vec4*>(args[2])); }
 void* two_GfxBlock__get_type(void* object) { return &(*static_cast<two::GfxBlock*>(object)).m_type; }
 void two_Renderer_gather(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Renderer*>(object)).gather(*static_cast<two::Render*>(args[0])); }
 void two_Renderer_begin(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Renderer*>(object)).begin(*static_cast<two::Render*>(args[0])); }
 void two_Renderer_end(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Renderer*>(object)).end(*static_cast<two::Render*>(args[0])); }
+void two_GfxSystem__construct_0(void* ref, span<void*> args) { new(stl::placeholder(), ref) two::GfxSystem( *static_cast<stl::string*>(args[0]) ); }
+void* two_GfxSystem__get_textures(void* object) { return &(*static_cast<two::GfxSystem*>(object)).textures(); }
+void* two_GfxSystem__get_programs(void* object) { return &(*static_cast<two::GfxSystem*>(object)).programs(); }
+void* two_GfxSystem__get_materials(void* object) { return &(*static_cast<two::GfxSystem*>(object)).materials(); }
+void* two_GfxSystem__get_models(void* object) { return &(*static_cast<two::GfxSystem*>(object)).models(); }
+void* two_GfxSystem__get_flows(void* object) { return &(*static_cast<two::GfxSystem*>(object)).flows(); }
+void* two_GfxSystem__get_prefabs(void* object) { return &(*static_cast<two::GfxSystem*>(object)).prefabs(); }
+void two_GfxSystem_main_target(void* object, span<void*> args, void*& result) { UNUSED(args); result = &(*static_cast<two::GfxSystem*>(object)).main_target(); }
+void two_GfxSystem_default_pipeline(void* object, span<void*> args, void*& result) { UNUSED(result); UNUSED(args); (*static_cast<two::GfxSystem*>(object)).default_pipeline(); }
+void two_GfxSystem_add_resource_path(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::GfxSystem*>(object)).add_resource_path(*static_cast<stl::string*>(args[0]), *static_cast<bool*>(args[1])); }
+void two_GfxSystem_debug_material(void* object, span<void*> args, void*& result) { UNUSED(args); result = &(*static_cast<two::GfxSystem*>(object)).debug_material(); }
+void two_GfxSystem_create_model(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).create_model(*static_cast<stl::string*>(args[0])); }
+void two_GfxSystem_create_model_geo(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).create_model_geo(*static_cast<stl::string*>(args[0]), *static_cast<two::MeshPacker*>(args[1]), *static_cast<bool*>(args[2]), *static_cast<bool*>(args[3])); }
+void two_GfxSystem_create_model_gpu(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).create_model_gpu(*static_cast<stl::string*>(args[0]), *static_cast<two::GpuMesh*>(args[1]), *static_cast<bool*>(args[2]), *static_cast<bool*>(args[3])); }
+void two_GfxSystem_fetch_material(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).fetch_material(*static_cast<stl::string*>(args[0]), *static_cast<stl::string*>(args[1]), *static_cast<bool*>(args[2])); }
+void two_GfxSystem_fetch_image256_material(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).fetch_image256_material(*static_cast<two::Image256*>(args[0])); }
+void two_GfxSystem_shape(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).shape(*static_cast<two::Shape*>(args[0]), *static_cast<two::Symbol*>(args[1]), *static_cast<two::DrawMode*>(args[2])); }
+void two_GfxSystem_symbol_material(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).symbol_material(*static_cast<two::Symbol*>(args[0]), *static_cast<two::DrawMode*>(args[1])); }
 void two_MaterialParam_two_Colour__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::MaterialParam<two::Colour>(  ); }
 void two_MaterialParam_two_Colour__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::MaterialParam<two::Colour>((*static_cast<two::MaterialParam<two::Colour>*>(other))); }
 void two_MaterialParam_float__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::MaterialParam<float>(  ); }
@@ -348,30 +367,13 @@ void two_BlockFilter_source3(void* object, span<void*> args, void*& result) { UN
 void two_BlockFilter_sourcedepth(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockFilter*>(object)).sourcedepth(*static_cast<two::Texture*>(args[0]), *static_cast<uint32_t*>(args[1])); }
 void two_BlockFilter_uniform(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockFilter*>(object)).uniform(*static_cast<two::Pass*>(args[0]), *static_cast<stl::string*>(args[1]), *static_cast<two::vec4*>(args[2])); }
 void two_BlockFilter_uniforms(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockFilter*>(object)).uniforms(*static_cast<two::Pass*>(args[0]), *static_cast<stl::string*>(args[1]), *static_cast<stl::span<float>*>(args[2])); }
-void two_BlockCopy_submit(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockCopy*>(object)).submit(*static_cast<two::Pass*>(args[0]), *static_cast<two::FrameBuffer*>(args[1]), *static_cast<two::Texture*>(args[2]), *static_cast<two::RenderQuad*>(args[3]), *static_cast<uint64_t*>(args[4])); }
-void two_BlockCopy_quad(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockCopy*>(object)).quad(*static_cast<two::Pass*>(args[0]), *static_cast<two::FrameBuffer*>(args[1]), *static_cast<two::Texture*>(args[2]), *static_cast<uint64_t*>(args[3])); }
+void two_BlockCopy_submit(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockCopy*>(object)).submit(*static_cast<two::Pass*>(args[0]), *static_cast<two::FrameBuffer*>(args[1]), *static_cast<two::Texture*>(args[2]), *static_cast<two::RenderQuad*>(args[3]), *static_cast<uint64_t*>(args[4]), *static_cast<bool*>(args[5])); }
+void two_BlockCopy_quad(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockCopy*>(object)).quad(*static_cast<two::Pass*>(args[0]), *static_cast<two::FrameBuffer*>(args[1]), *static_cast<two::Texture*>(args[2]), *static_cast<uint64_t*>(args[3]), *static_cast<bool*>(args[4])); }
 void two_BlockCopy_debug_show_texture(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockCopy*>(object)).debug_show_texture(*static_cast<two::Render*>(args[0]), *static_cast<two::Texture*>(args[1]), *static_cast<two::vec4*>(args[2]), *static_cast<int*>(args[3])); }
+void two_BlockCopy_debug_show_texturep(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::BlockCopy*>(object)).debug_show_texturep(*static_cast<two::Render*>(args[0]), static_cast<two::Texture*>(args[1]), *static_cast<two::vec4*>(args[2]), *static_cast<int*>(args[3])); }
 void two_ClusteredFrustum__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::ClusteredFrustum(  ); }
 void two_ClusteredFrustum__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::ClusteredFrustum((*static_cast<two::ClusteredFrustum*>(other))); }
 void two_Light__construct_0(void* ref, span<void*> args) { new(stl::placeholder(), ref) two::Light( *static_cast<two::Node3*>(args[0]), *static_cast<two::LightType*>(args[1]), *static_cast<bool*>(args[2]), *static_cast<two::Colour*>(args[3]), *static_cast<float*>(args[4]), *static_cast<float*>(args[5]) ); }
-void two_GfxSystem__construct_0(void* ref, span<void*> args) { new(stl::placeholder(), ref) two::GfxSystem( *static_cast<stl::string*>(args[0]) ); }
-void* two_GfxSystem__get_textures(void* object) { return &(*static_cast<two::GfxSystem*>(object)).textures(); }
-void* two_GfxSystem__get_programs(void* object) { return &(*static_cast<two::GfxSystem*>(object)).programs(); }
-void* two_GfxSystem__get_materials(void* object) { return &(*static_cast<two::GfxSystem*>(object)).materials(); }
-void* two_GfxSystem__get_models(void* object) { return &(*static_cast<two::GfxSystem*>(object)).models(); }
-void* two_GfxSystem__get_flows(void* object) { return &(*static_cast<two::GfxSystem*>(object)).flows(); }
-void* two_GfxSystem__get_prefabs(void* object) { return &(*static_cast<two::GfxSystem*>(object)).prefabs(); }
-void two_GfxSystem_main_target(void* object, span<void*> args, void*& result) { UNUSED(args); result = &(*static_cast<two::GfxSystem*>(object)).main_target(); }
-void two_GfxSystem_default_pipeline(void* object, span<void*> args, void*& result) { UNUSED(result); UNUSED(args); (*static_cast<two::GfxSystem*>(object)).default_pipeline(); }
-void two_GfxSystem_add_resource_path(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::GfxSystem*>(object)).add_resource_path(*static_cast<stl::string*>(args[0]), *static_cast<bool*>(args[1])); }
-void two_GfxSystem_debug_material(void* object, span<void*> args, void*& result) { UNUSED(args); result = &(*static_cast<two::GfxSystem*>(object)).debug_material(); }
-void two_GfxSystem_create_model(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).create_model(*static_cast<stl::string*>(args[0])); }
-void two_GfxSystem_create_model_geo(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).create_model_geo(*static_cast<stl::string*>(args[0]), *static_cast<two::MeshPacker*>(args[1]), *static_cast<bool*>(args[2]), *static_cast<bool*>(args[3])); }
-void two_GfxSystem_create_model_gpu(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).create_model_gpu(*static_cast<stl::string*>(args[0]), *static_cast<two::GpuMesh*>(args[1]), *static_cast<bool*>(args[2]), *static_cast<bool*>(args[3])); }
-void two_GfxSystem_fetch_material(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).fetch_material(*static_cast<stl::string*>(args[0]), *static_cast<stl::string*>(args[1]), *static_cast<bool*>(args[2])); }
-void two_GfxSystem_fetch_image256_material(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).fetch_image256_material(*static_cast<two::Image256*>(args[0])); }
-void two_GfxSystem_shape(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).shape(*static_cast<two::Shape*>(args[0]), *static_cast<two::Symbol*>(args[1]), *static_cast<two::DrawMode*>(args[2])); }
-void two_GfxSystem_symbol_material(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::GfxSystem*>(object)).symbol_material(*static_cast<two::Symbol*>(args[0]), *static_cast<two::DrawMode*>(args[1])); }
 void two_TPool_two_Node3_add(void* object, span<void*> args, void*& result) { result = &(*static_cast<two::TPool<two::Node3>*>(object)).add(*static_cast<two::Node3*>(args[0])); }
 void two_TPool_two_Node3_addvec(void* object, span<void*> args, void*& result) { (*static_cast<stl::span<two::Node3>*>(result)) = (*static_cast<two::TPool<two::Node3>*>(object)).addvec(*static_cast<stl::span<two::Node3>*>(args[0])); }
 void two_TPool_two_Node3_talloc(void* object, span<void*> args, void*& result) { UNUSED(args); result = (*static_cast<two::TPool<two::Node3>*>(object)).talloc(); }
@@ -551,10 +553,10 @@ namespace two
 	{
 		Type& t = type<two::TextureFormat>();
 		static Meta meta = { t, &namspc({ "two" }), "TextureFormat", sizeof(two::TextureFormat), TypeClass::Enum };
-		static cstring ids[] = { "R8", "R16F", "R32U", "R32F", "RG8", "RG16F", "RG32F", "RGB8", "BGRA8", "RGBA8", "RGB10A2", "RGBA16F", "RGBA32F", "D16", "D24", "D24S8", "D32", "Count" };
-		static uint32_t values[] = { 29, 36, 39, 40, 41, 48, 52, 53, 58, 59, 74, 66, 70, 77, 78, 79, 80, 81 };
-		static two::TextureFormat vars[] = { two::TextureFormat::R8, two::TextureFormat::R16F, two::TextureFormat::R32U, two::TextureFormat::R32F, two::TextureFormat::RG8, two::TextureFormat::RG16F, two::TextureFormat::RG32F, two::TextureFormat::RGB8, two::TextureFormat::BGRA8, two::TextureFormat::RGBA8, two::TextureFormat::RGB10A2, two::TextureFormat::RGBA16F, two::TextureFormat::RGBA32F, two::TextureFormat::D16, two::TextureFormat::D24, two::TextureFormat::D24S8, two::TextureFormat::D32, two::TextureFormat::Count};
-		static void* refs[] = { &vars[0], &vars[1], &vars[2], &vars[3], &vars[4], &vars[5], &vars[6], &vars[7], &vars[8], &vars[9], &vars[10], &vars[11], &vars[12], &vars[13], &vars[14], &vars[15], &vars[16], &vars[17]};
+		static cstring ids[] = { "None", "R8", "R16F", "R32U", "R32F", "RG8", "RG16F", "RG32F", "RGB8", "BGRA8", "RGBA8", "RGB10A2", "RGBA16F", "RGBA32F", "D16", "D24", "D24S8", "D32", "D32F", "Count" };
+		static uint32_t values[] = { 26, 29, 36, 39, 40, 41, 48, 52, 53, 58, 59, 74, 66, 70, 77, 78, 79, 80, 83, 84 };
+		static two::TextureFormat vars[] = { two::TextureFormat::None, two::TextureFormat::R8, two::TextureFormat::R16F, two::TextureFormat::R32U, two::TextureFormat::R32F, two::TextureFormat::RG8, two::TextureFormat::RG16F, two::TextureFormat::RG32F, two::TextureFormat::RGB8, two::TextureFormat::BGRA8, two::TextureFormat::RGBA8, two::TextureFormat::RGB10A2, two::TextureFormat::RGBA16F, two::TextureFormat::RGBA32F, two::TextureFormat::D16, two::TextureFormat::D24, two::TextureFormat::D24S8, two::TextureFormat::D32, two::TextureFormat::D32F, two::TextureFormat::Count};
+		static void* refs[] = { &vars[0], &vars[1], &vars[2], &vars[3], &vars[4], &vars[5], &vars[6], &vars[7], &vars[8], &vars[9], &vars[10], &vars[11], &vars[12], &vars[13], &vars[14], &vars[15], &vars[16], &vars[17], &vars[18], &vars[19]};
 		static Enum enu = { t, true, ids, values, refs };
 		static Convert convert = { two_TextureFormat__to_string,
 		                           two_TextureFormat__to_value };
@@ -1132,6 +1134,8 @@ namespace two
 		static stl::string construct_0_name_default = "";
 		static uint64_t construct_1_flags_default = 0U;
 		static bool construct_1_cube_default = false;
+		static bool load_0_srgb_default = false;
+		static bool load_0_mips_default = false;
 		static bool reload_0_srgb_default = false;
 		static bool reload_0_mips_default = false;
 		static bool load_rgba_0_ref_default = false;
@@ -1161,7 +1165,9 @@ namespace two
 		// methods
 		static Method methods[] = {
 			{ t, "valid", Address(), two_Texture_valid, {}, { &type<bool>(), QualType::None } },
+			{ t, "load", Address(), two_Texture_load, { { "gfx", type<two::GfxSystem>(),  }, { "path", type<stl::string>(),  }, { "srgb", type<bool>(), Param::Default, &load_0_srgb_default }, { "mips", type<bool>(), Param::Default, &load_0_mips_default } }, g_qvoid },
 			{ t, "reload", Address(), two_Texture_reload, { { "gfx", type<two::GfxSystem>(),  }, { "srgb", type<bool>(), Param::Default, &reload_0_srgb_default }, { "mips", type<bool>(), Param::Default, &reload_0_mips_default } }, g_qvoid },
+			{ t, "load_mem", Address(), two_Texture_load_mem, { { "gfx", type<two::GfxSystem>(),  }, { "data", type<stl::span<uint8_t>>(),  } }, g_qvoid },
 			{ t, "load_rgba", Address(), two_Texture_load_rgba, { { "size", type<two::uvec2>(),  }, { "data", type<stl::span<uint32_t>>(),  }, { "ref", type<bool>(), Param::Default, &load_rgba_0_ref_default } }, g_qvoid },
 			{ t, "load_float", Address(), two_Texture_load_float, { { "size", type<two::uvec2>(),  }, { "data", type<stl::span<float>>(),  }, { "ref", type<bool>(), Param::Default, &load_float_0_ref_default } }, g_qvoid }
 		};
@@ -1333,6 +1339,48 @@ namespace two
 		// static members
 		static Class cls = { t, {}, {}, constructors, {}, members, methods, {}, };
 	}
+	// two::Frustum
+	{
+		Type& t = type<two::Frustum>();
+		static Meta meta = { t, &namspc({ "two" }), "Frustum", sizeof(two::Frustum), TypeClass::Object };
+		// bases
+		// defaults
+		static float fov_default = 60.f;
+		static float aspect_default = 1.f;
+		// constructors
+		// copy constructor
+		// members
+		static Member members[] = {
+			{ t, offsetof(two::Frustum, m_fov), type<float>(), "fov", &fov_default, Member::Value, nullptr },
+			{ t, offsetof(two::Frustum, m_aspect), type<float>(), "aspect", &aspect_default, Member::Value, nullptr },
+			{ t, offsetof(two::Frustum, m_near), type<float>(), "near", nullptr, Member::Value, nullptr },
+			{ t, offsetof(two::Frustum, m_far), type<float>(), "far", nullptr, Member::Value, nullptr },
+			{ t, offsetof(two::Frustum, m_center), type<two::vec3>(), "center", nullptr, Member::Value, nullptr },
+			{ t, offsetof(two::Frustum, m_radius), type<float>(), "radius", nullptr, Member::Value, nullptr }
+		};
+		// methods
+		// static members
+		static Class cls = { t, {}, {}, {}, {}, members, {}, {}, };
+	}
+	// two::FrustumSlice
+	{
+		Type& t = type<two::FrustumSlice>();
+		static Meta meta = { t, &namspc({ "two" }), "FrustumSlice", sizeof(two::FrustumSlice), TypeClass::Struct };
+		// bases
+		// defaults
+		// constructors
+		static Constructor constructors[] = {
+			{ t, two_FrustumSlice__construct_0, {} }
+		};
+		// copy constructor
+		static CopyConstructor copy_constructor[] = {
+			{ t, two_FrustumSlice__copy_construct }
+		};
+		// members
+		// methods
+		// static members
+		static Class cls = { t, {}, {}, constructors, copy_constructor, {}, {}, {}, };
+	}
 	// two::ShaderDefine
 	{
 		Type& t = type<two::ShaderDefine>();
@@ -1462,48 +1510,6 @@ namespace two
 		// static members
 		static Class cls = { t, {}, {}, {}, {}, members, methods, {}, };
 	}
-	// two::Frustum
-	{
-		Type& t = type<two::Frustum>();
-		static Meta meta = { t, &namspc({ "two" }), "Frustum", sizeof(two::Frustum), TypeClass::Object };
-		// bases
-		// defaults
-		static float fov_default = 60.f;
-		static float aspect_default = 1.f;
-		// constructors
-		// copy constructor
-		// members
-		static Member members[] = {
-			{ t, offsetof(two::Frustum, m_fov), type<float>(), "fov", &fov_default, Member::Value, nullptr },
-			{ t, offsetof(two::Frustum, m_aspect), type<float>(), "aspect", &aspect_default, Member::Value, nullptr },
-			{ t, offsetof(two::Frustum, m_near), type<float>(), "near", nullptr, Member::Value, nullptr },
-			{ t, offsetof(two::Frustum, m_far), type<float>(), "far", nullptr, Member::Value, nullptr },
-			{ t, offsetof(two::Frustum, m_center), type<two::vec3>(), "center", nullptr, Member::Value, nullptr },
-			{ t, offsetof(two::Frustum, m_radius), type<float>(), "radius", nullptr, Member::Value, nullptr }
-		};
-		// methods
-		// static members
-		static Class cls = { t, {}, {}, {}, {}, members, {}, {}, };
-	}
-	// two::FrustumSlice
-	{
-		Type& t = type<two::FrustumSlice>();
-		static Meta meta = { t, &namspc({ "two" }), "FrustumSlice", sizeof(two::FrustumSlice), TypeClass::Struct };
-		// bases
-		// defaults
-		// constructors
-		static Constructor constructors[] = {
-			{ t, two_FrustumSlice__construct_0, {} }
-		};
-		// copy constructor
-		static CopyConstructor copy_constructor[] = {
-			{ t, two_FrustumSlice__copy_construct }
-		};
-		// members
-		// methods
-		// static members
-		static Class cls = { t, {}, {}, constructors, copy_constructor, {}, {}, {}, };
-	}
 	// two::ProgramVersion
 	{
 		Type& t = type<two::ProgramVersion>();
@@ -1623,15 +1629,12 @@ namespace two
 		static bool needs_mrt_default = false;
 		static bool is_mrt_default = false;
 		static uint8_t pass_index_default = two::Render::s_render_pass_id;
+		static uint8_t next_pass_0_index_default = UINT8_MAX;
 		// constructors
 		static Constructor constructors[] = {
 			{ t, two_Render__construct_0, {} },
 			{ t, two_Render__construct_1, { { "shading", type<two::Shading>(),  }, { "viewport", type<two::Viewport>(),  }, { "target", type<two::RenderTarget>(),  }, { "frame", type<two::RenderFrame>(),  } } },
 			{ t, two_Render__construct_2, { { "shading", type<two::Shading>(),  }, { "viewport", type<two::Viewport>(),  }, { "target", type<two::RenderTarget>(),  }, { "target_fbo", type<two::FrameBuffer>(),  }, { "frame", type<two::RenderFrame>(),  } } }
-		};
-		// copy constructor
-		static CopyConstructor copy_constructor[] = {
-			{ t, two_Render__copy_construct }
 		};
 		// members
 		static Member members[] = {
@@ -1654,11 +1657,11 @@ namespace two
 		// methods
 		static Method methods[] = {
 			{ t, "subrender", Address(), two_Render_subrender, { { "render", type<two::Render>(),  } }, g_qvoid },
-			{ t, "next_pass", Address(), two_Render_next_pass, { { "name", type<const char*>(), Param::Nullable }, { "type", type<two::PassType>(),  } }, { &type<two::Pass>(), QualType::None } },
+			{ t, "next_pass", Address(), two_Render_next_pass, { { "name", type<const char*>(), Param::Nullable }, { "type", type<two::PassType>(),  }, { "index", type<uint8_t>(), Param::Default, &next_pass_0_index_default } }, { &type<two::Pass>(), QualType::None } },
 			{ t, "composite_pass", Address(), two_Render_composite_pass, { { "name", type<const char*>(), Param::Nullable }, { "fbo", type<two::FrameBuffer>(),  }, { "rect", type<two::vec4>(),  } }, { &type<two::Pass>(), QualType::None } }
 		};
 		// static members
-		static Class cls = { t, {}, {}, constructors, copy_constructor, members, methods, {}, };
+		static Class cls = { t, {}, {}, constructors, {}, members, methods, {}, };
 	}
 	// two::GfxBlock
 	{
@@ -1710,6 +1713,75 @@ namespace two
 		};
 		// static members
 		static Class cls = { t, {}, {}, {}, {}, {}, methods, {}, };
+	}
+	// two::GfxWindow
+	{
+		Type& t = type<two::GfxWindow>();
+		static Meta meta = { t, &namspc({ "two" }), "GfxWindow", sizeof(two::GfxWindow), TypeClass::Object };
+		// bases
+		// defaults
+		// constructors
+		// copy constructor
+		// members
+		// methods
+		// static members
+		static Class cls = { t, {}, {}, {}, {}, {}, {}, {}, };
+	}
+	// two::GfxSystem
+	{
+		Type& t = type<two::GfxSystem>();
+		static Meta meta = { t, &namspc({ "two" }), "GfxSystem", sizeof(two::GfxSystem), TypeClass::Object };
+		// bases
+		static Type* bases[] = { &type<two::BgfxSystem>() };
+		static size_t bases_offsets[] = { base_offset<two::GfxSystem, two::BgfxSystem>() };
+		// defaults
+		static two::BlockCopy* copy_default = nullptr;
+		static two::BlockFilter* filter_default = nullptr;
+		static bool flip_y_default = false;
+		static bool add_resource_path_0_relative_default = true;
+		static bool create_model_geo_0_readback_default = false;
+		static bool create_model_geo_0_optimize_default = false;
+		static bool create_model_gpu_0_readback_default = false;
+		static bool create_model_gpu_0_optimize_default = false;
+		static bool fetch_material_0_builtin_default = true;
+		static two::Symbol shape_0_symbol_default = {};
+		static two::DrawMode shape_0_draw_mode_default = PLAIN;
+		static two::DrawMode symbol_material_0_draw_mode_default = PLAIN;
+		// constructors
+		static Constructor constructors[] = {
+			{ t, two_GfxSystem__construct_0, { { "resource_path", type<stl::string>(),  } } }
+		};
+		// copy constructor
+		// members
+		static Member members[] = {
+			{ t, offsetof(two::GfxSystem, m_renderer), type<two::Renderer>(), "renderer", nullptr, Member::NonMutable, nullptr },
+			{ t, offsetof(two::GfxSystem, m_copy), type<two::BlockCopy>(), "copy", copy_default, Member::Flags(Member::Pointer|Member::Link), nullptr },
+			{ t, offsetof(two::GfxSystem, m_filter), type<two::BlockFilter>(), "filter", filter_default, Member::Flags(Member::Pointer|Member::Link), nullptr },
+			{ t, offsetof(two::GfxSystem, m_flip_y), type<bool>(), "flip_y", &flip_y_default, Member::Value, nullptr },
+			{ t, offsetof(two::GfxSystem, m_render_frame), type<two::RenderFrame>(), "render_frame", nullptr, Member::Value, nullptr },
+			{ t, SIZE_MAX, type<two::AssetStore<two::Texture>>(), "textures", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_textures },
+			{ t, SIZE_MAX, type<two::AssetStore<two::Program>>(), "programs", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_programs },
+			{ t, SIZE_MAX, type<two::AssetStore<two::Material>>(), "materials", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_materials },
+			{ t, SIZE_MAX, type<two::AssetStore<two::Model>>(), "models", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_models },
+			{ t, SIZE_MAX, type<two::AssetStore<two::Flow>>(), "flows", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_flows },
+			{ t, SIZE_MAX, type<two::AssetStore<two::Prefab>>(), "prefabs", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_prefabs }
+		};
+		// methods
+		static Method methods[] = {
+			{ t, "main_target", Address(), two_GfxSystem_main_target, {}, { &type<two::RenderTarget>(), QualType::None } },
+			{ t, "default_pipeline", Address(), two_GfxSystem_default_pipeline, {}, g_qvoid },
+			{ t, "add_resource_path", Address(), two_GfxSystem_add_resource_path, { { "path", type<stl::string>(),  }, { "relative", type<bool>(), Param::Default, &add_resource_path_0_relative_default } }, g_qvoid },
+			{ t, "debug_material", Address(), two_GfxSystem_debug_material, {}, { &type<two::Material>(), QualType::None } },
+			{ t, "create_model", Address(), two_GfxSystem_create_model, { { "name", type<stl::string>(),  } }, { &type<two::Model>(), QualType::None } },
+			{ t, "create_model_geo", Address(), two_GfxSystem_create_model_geo, { { "name", type<stl::string>(),  }, { "geometry", type<two::MeshPacker>(),  }, { "readback", type<bool>(), Param::Default, &create_model_geo_0_readback_default }, { "optimize", type<bool>(), Param::Default, &create_model_geo_0_optimize_default } }, { &type<two::Model>(), QualType::None } },
+			{ t, "create_model_gpu", Address(), two_GfxSystem_create_model_gpu, { { "name", type<stl::string>(),  }, { "gpu_mesh", type<two::GpuMesh>(),  }, { "readback", type<bool>(), Param::Default, &create_model_gpu_0_readback_default }, { "optimize", type<bool>(), Param::Default, &create_model_gpu_0_optimize_default } }, { &type<two::Model>(), QualType::None } },
+			{ t, "fetch_material", Address(), two_GfxSystem_fetch_material, { { "name", type<stl::string>(),  }, { "shader", type<stl::string>(),  }, { "builtin", type<bool>(), Param::Default, &fetch_material_0_builtin_default } }, { &type<two::Material>(), QualType::None } },
+			{ t, "fetch_image256_material", Address(), two_GfxSystem_fetch_image256_material, { { "image", type<two::Image256>(),  } }, { &type<two::Material>(), QualType::None } },
+			{ t, "shape", Address(), two_GfxSystem_shape, { { "shape", type<two::Shape>(),  }, { "symbol", type<two::Symbol>(), Param::Default, &shape_0_symbol_default }, { "draw_mode", type<two::DrawMode>(), Param::Default, &shape_0_draw_mode_default } }, { &type<two::Model>(), QualType::None } },
+			{ t, "symbol_material", Address(), two_GfxSystem_symbol_material, { { "symbol", type<two::Symbol>(),  }, { "draw_mode", type<two::DrawMode>(), Param::Default, &symbol_material_0_draw_mode_default } }, { &type<two::Material>(), QualType::None } }
+		};
+		// static members
+		static Class cls = { t, bases, bases_offsets, constructors, {}, members, methods, {}, };
 	}
 	// two::MaterialParam<two::Colour>
 	{
@@ -2258,7 +2330,7 @@ namespace two
 		static two::ValueTrack<float> gravity_default = {0.f};
 		static two::ValueTrack<float> speed_default = {1.f};
 		static two::ValueTrack<float> angle_default = {0.f};
-		static two::ValueTrack<float> blend_default = {vector<float>({0.8f,0.0f})};
+		static two::ValueTrack<float> blend_default = {{0.8f,0.0f}};
 		static two::ValueTrack<two::Colour> colour_default = {Colour::White};
 		static two::ValueTrack<float> scale_default = {0.1f};
 		static two::ValueTrack<float> sprite_frame_default = {0.f};
@@ -2986,16 +3058,20 @@ namespace two
 		static size_t bases_offsets[] = { base_offset<two::BlockCopy, two::GfxBlock>() };
 		// defaults
 		static uint64_t submit_0_flags_default = 0U;
+		static bool submit_0_render_default = false;
 		static uint64_t quad_0_flags_default = 0U;
+		static bool quad_0_render_default = false;
 		static int debug_show_texture_0_level_default = 0;
+		static int debug_show_texturep_0_level_default = 0;
 		// constructors
 		// copy constructor
 		// members
 		// methods
 		static Method methods[] = {
-			{ t, "submit", Address(), two_BlockCopy_submit, { { "pass", type<two::Pass>(),  }, { "fbo", type<two::FrameBuffer>(),  }, { "texture", type<two::Texture>(),  }, { "quad", type<two::RenderQuad>(),  }, { "flags", type<uint64_t>(), Param::Default, &submit_0_flags_default } }, g_qvoid },
-			{ t, "quad", Address(), two_BlockCopy_quad, { { "pass", type<two::Pass>(),  }, { "fbo", type<two::FrameBuffer>(),  }, { "texture", type<two::Texture>(),  }, { "flags", type<uint64_t>(), Param::Default, &quad_0_flags_default } }, g_qvoid },
-			{ t, "debug_show_texture", Address(), two_BlockCopy_debug_show_texture, { { "render", type<two::Render>(),  }, { "texture", type<two::Texture>(),  }, { "rect", type<two::vec4>(),  }, { "level", type<int>(), Param::Default, &debug_show_texture_0_level_default } }, g_qvoid }
+			{ t, "submit", Address(), two_BlockCopy_submit, { { "pass", type<two::Pass>(),  }, { "fbo", type<two::FrameBuffer>(),  }, { "texture", type<two::Texture>(),  }, { "quad", type<two::RenderQuad>(),  }, { "flags", type<uint64_t>(), Param::Default, &submit_0_flags_default }, { "render", type<bool>(), Param::Default, &submit_0_render_default } }, g_qvoid },
+			{ t, "quad", Address(), two_BlockCopy_quad, { { "pass", type<two::Pass>(),  }, { "fbo", type<two::FrameBuffer>(),  }, { "texture", type<two::Texture>(),  }, { "flags", type<uint64_t>(), Param::Default, &quad_0_flags_default }, { "render", type<bool>(), Param::Default, &quad_0_render_default } }, g_qvoid },
+			{ t, "debug_show_texture", Address(), two_BlockCopy_debug_show_texture, { { "render", type<two::Render>(),  }, { "texture", type<two::Texture>(),  }, { "rect", type<two::vec4>(),  }, { "level", type<int>(), Param::Default, &debug_show_texture_0_level_default } }, g_qvoid },
+			{ t, "debug_show_texturep", Address(), two_BlockCopy_debug_show_texturep, { { "render", type<two::Render>(),  }, { "texture", type<two::Texture>(), Param::Nullable }, { "rect", type<two::vec4>(),  }, { "level", type<int>(), Param::Default, &debug_show_texturep_0_level_default } }, g_qvoid }
 		};
 		// static members
 		static Class cls = { t, bases, bases_offsets, {}, {}, {}, methods, {}, };
@@ -3082,75 +3158,6 @@ namespace two
 		// methods
 		// static members
 		static Class cls = { t, {}, {}, constructors, {}, members, {}, {}, };
-	}
-	// two::GfxWindow
-	{
-		Type& t = type<two::GfxWindow>();
-		static Meta meta = { t, &namspc({ "two" }), "GfxWindow", sizeof(two::GfxWindow), TypeClass::Object };
-		// bases
-		// defaults
-		// constructors
-		// copy constructor
-		// members
-		// methods
-		// static members
-		static Class cls = { t, {}, {}, {}, {}, {}, {}, {}, };
-	}
-	// two::GfxSystem
-	{
-		Type& t = type<two::GfxSystem>();
-		static Meta meta = { t, &namspc({ "two" }), "GfxSystem", sizeof(two::GfxSystem), TypeClass::Object };
-		// bases
-		static Type* bases[] = { &type<two::BgfxSystem>() };
-		static size_t bases_offsets[] = { base_offset<two::GfxSystem, two::BgfxSystem>() };
-		// defaults
-		static two::BlockCopy* copy_default = nullptr;
-		static two::BlockFilter* filter_default = nullptr;
-		static bool flip_y_default = false;
-		static bool add_resource_path_0_relative_default = true;
-		static bool create_model_geo_0_readback_default = false;
-		static bool create_model_geo_0_optimize_default = false;
-		static bool create_model_gpu_0_readback_default = false;
-		static bool create_model_gpu_0_optimize_default = false;
-		static bool fetch_material_0_builtin_default = true;
-		static two::Symbol shape_0_symbol_default = {};
-		static two::DrawMode shape_0_draw_mode_default = PLAIN;
-		static two::DrawMode symbol_material_0_draw_mode_default = PLAIN;
-		// constructors
-		static Constructor constructors[] = {
-			{ t, two_GfxSystem__construct_0, { { "resource_path", type<stl::string>(),  } } }
-		};
-		// copy constructor
-		// members
-		static Member members[] = {
-			{ t, offsetof(two::GfxSystem, m_renderer), type<two::Renderer>(), "renderer", nullptr, Member::NonMutable, nullptr },
-			{ t, offsetof(two::GfxSystem, m_copy), type<two::BlockCopy>(), "copy", copy_default, Member::Flags(Member::Pointer|Member::Link), nullptr },
-			{ t, offsetof(two::GfxSystem, m_filter), type<two::BlockFilter>(), "filter", filter_default, Member::Flags(Member::Pointer|Member::Link), nullptr },
-			{ t, offsetof(two::GfxSystem, m_flip_y), type<bool>(), "flip_y", &flip_y_default, Member::Value, nullptr },
-			{ t, offsetof(two::GfxSystem, m_render_frame), type<two::RenderFrame>(), "render_frame", nullptr, Member::Value, nullptr },
-			{ t, SIZE_MAX, type<two::AssetStore<two::Texture>>(), "textures", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_textures },
-			{ t, SIZE_MAX, type<two::AssetStore<two::Program>>(), "programs", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_programs },
-			{ t, SIZE_MAX, type<two::AssetStore<two::Material>>(), "materials", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_materials },
-			{ t, SIZE_MAX, type<two::AssetStore<two::Model>>(), "models", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_models },
-			{ t, SIZE_MAX, type<two::AssetStore<two::Flow>>(), "flows", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_flows },
-			{ t, SIZE_MAX, type<two::AssetStore<two::Prefab>>(), "prefabs", nullptr, Member::Flags(Member::NonMutable|Member::Link), two_GfxSystem__get_prefabs }
-		};
-		// methods
-		static Method methods[] = {
-			{ t, "main_target", Address(), two_GfxSystem_main_target, {}, { &type<two::RenderTarget>(), QualType::None } },
-			{ t, "default_pipeline", Address(), two_GfxSystem_default_pipeline, {}, g_qvoid },
-			{ t, "add_resource_path", Address(), two_GfxSystem_add_resource_path, { { "path", type<stl::string>(),  }, { "relative", type<bool>(), Param::Default, &add_resource_path_0_relative_default } }, g_qvoid },
-			{ t, "debug_material", Address(), two_GfxSystem_debug_material, {}, { &type<two::Material>(), QualType::None } },
-			{ t, "create_model", Address(), two_GfxSystem_create_model, { { "name", type<stl::string>(),  } }, { &type<two::Model>(), QualType::None } },
-			{ t, "create_model_geo", Address(), two_GfxSystem_create_model_geo, { { "name", type<stl::string>(),  }, { "geometry", type<two::MeshPacker>(),  }, { "readback", type<bool>(), Param::Default, &create_model_geo_0_readback_default }, { "optimize", type<bool>(), Param::Default, &create_model_geo_0_optimize_default } }, { &type<two::Model>(), QualType::None } },
-			{ t, "create_model_gpu", Address(), two_GfxSystem_create_model_gpu, { { "name", type<stl::string>(),  }, { "gpu_mesh", type<two::GpuMesh>(),  }, { "readback", type<bool>(), Param::Default, &create_model_gpu_0_readback_default }, { "optimize", type<bool>(), Param::Default, &create_model_gpu_0_optimize_default } }, { &type<two::Model>(), QualType::None } },
-			{ t, "fetch_material", Address(), two_GfxSystem_fetch_material, { { "name", type<stl::string>(),  }, { "shader", type<stl::string>(),  }, { "builtin", type<bool>(), Param::Default, &fetch_material_0_builtin_default } }, { &type<two::Material>(), QualType::None } },
-			{ t, "fetch_image256_material", Address(), two_GfxSystem_fetch_image256_material, { { "image", type<two::Image256>(),  } }, { &type<two::Material>(), QualType::None } },
-			{ t, "shape", Address(), two_GfxSystem_shape, { { "shape", type<two::Shape>(),  }, { "symbol", type<two::Symbol>(), Param::Default, &shape_0_symbol_default }, { "draw_mode", type<two::DrawMode>(), Param::Default, &shape_0_draw_mode_default } }, { &type<two::Model>(), QualType::None } },
-			{ t, "symbol_material", Address(), two_GfxSystem_symbol_material, { { "symbol", type<two::Symbol>(),  }, { "draw_mode", type<two::DrawMode>(), Param::Default, &symbol_material_0_draw_mode_default } }, { &type<two::Material>(), QualType::None } }
-		};
-		// static members
-		static Class cls = { t, bases, bases_offsets, constructors, {}, members, methods, {}, };
 	}
 	// two::Gnode
 	{
@@ -3331,6 +3338,7 @@ namespace two
 		// defaults
 		static uint16_t index_default = 0;
 		static bool autorender_default = true;
+		static bool autoflip_default = false;
 		static bool scissor_default = false;
 		static two::Colour clear_colour_default = two::Colour::Black;
 		static two::Shading shading_default = two::Shading::Shaded;
@@ -3351,6 +3359,7 @@ namespace two
 			{ t, offsetof(two::Viewport, m_scene), type<two::Scene>(), "scene", nullptr, Member::Flags(Member::Pointer|Member::Link), nullptr },
 			{ t, offsetof(two::Viewport, m_index), type<uint16_t>(), "index", &index_default, Member::Value, nullptr },
 			{ t, offsetof(two::Viewport, m_autorender), type<bool>(), "autorender", &autorender_default, Member::Value, nullptr },
+			{ t, offsetof(two::Viewport, m_autoflip), type<bool>(), "autoflip", &autoflip_default, Member::Value, nullptr },
 			{ t, offsetof(two::Viewport, m_rect), type<two::vec4>(), "rect", nullptr, Member::Value, nullptr },
 			{ t, offsetof(two::Viewport, m_scissor), type<bool>(), "scissor", &scissor_default, Member::Value, nullptr },
 			{ t, offsetof(two::Viewport, m_clear_colour), type<two::Colour>(), "clear_colour", &clear_colour_default, Member::Value, nullptr },
@@ -3810,6 +3819,8 @@ namespace two
 		m.m_types.push_back(&type<two::AnimNode>());
 		m.m_types.push_back(&type<two::AnimPlay>());
 		m.m_types.push_back(&type<two::Mime>());
+		m.m_types.push_back(&type<two::Frustum>());
+		m.m_types.push_back(&type<two::FrustumSlice>());
 		m.m_types.push_back(&type<two::ShaderType>());
 		m.m_types.push_back(&type<two::PassType>());
 		m.m_types.push_back(&type<two::ShaderDefine>());
@@ -3818,8 +3829,6 @@ namespace two
 		m.m_types.push_back(&type<two::ProgramBlock>());
 		m.m_types.push_back(&type<two::MaterialBlock>());
 		m.m_types.push_back(&type<two::Program>());
-		m.m_types.push_back(&type<two::Frustum>());
-		m.m_types.push_back(&type<two::FrustumSlice>());
 		m.m_types.push_back(&type<two::ProgramVersion>());
 		m.m_types.push_back(&type<two::Shot>());
 		m.m_types.push_back(&type<two::TextureSampler>());
@@ -3830,6 +3839,8 @@ namespace two
 		m.m_types.push_back(&type<two::GfxBlock>());
 		m.m_types.push_back(&type<two::DrawBlock>());
 		m.m_types.push_back(&type<two::Renderer>());
+		m.m_types.push_back(&type<two::GfxWindow>());
+		m.m_types.push_back(&type<two::GfxSystem>());
 		m.m_types.push_back(&type<two::BlendMode>());
 		m.m_types.push_back(&type<two::CullMode>());
 		m.m_types.push_back(&type<two::DepthDraw>());
@@ -3893,8 +3904,6 @@ namespace two
 		m.m_types.push_back(&type<two::LightType>());
 		m.m_types.push_back(&type<two::ShadowFlags>());
 		m.m_types.push_back(&type<two::Light>());
-		m.m_types.push_back(&type<two::GfxWindow>());
-		m.m_types.push_back(&type<two::GfxSystem>());
 		m.m_types.push_back(&type<two::Gnode>());
 		m.m_types.push_back(&type<two::TPool<two::Node3>>());
 		m.m_types.push_back(&type<two::TPool<two::Item>>());
@@ -4144,7 +4153,7 @@ namespace two
 namespace two
 {
 	two_gfx::two_gfx()
-		: Module("two::gfx", { &two_infra::m(), &two_jobs::m(), &two_type::m(), &two_pool::m(), &two_ecs::m(), &two_math::m(), &two_geom::m(), &two_ctx::m(), &two_bgfx::m() })
+		: Module("two::gfx", { &two_infra::m(), &two_type::m(), &two_tree::m(), &two_jobs::m(), &two_pool::m(), &two_ecs::m(), &two_math::m(), &two_geom::m(), &two_ctx::m(), &two_bgfx::m() })
 	{
 		// setup reflection meta data
 		two_gfx_meta(*this);

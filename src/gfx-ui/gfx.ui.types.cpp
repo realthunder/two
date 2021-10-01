@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx.ui);
+module two.gfx.ui;
 #else
 #include <gfx-ui/Types.h>
 #include <gfx-ui/Api.h>

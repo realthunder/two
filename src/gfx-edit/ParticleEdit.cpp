@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx)-edit;
+module two.gfx-edit;
 #else
 #include <infra/File.h>
 #include <type/Var.h>

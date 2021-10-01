@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 
 #if defined TWO_PLATFORM_WINDOWS
+#define WIN32_LEAN_AND_MEAN
 #define GLFW_EXPOSE_NATIVE_WIN32
 #elif defined TWO_PLATFORM_LINUX
 #define GLFW_EXPOSE_NATIVE_X11
@@ -24,6 +25,7 @@
 #undef far
 #undef NEAR
 #undef FAR
+#undef OPAQUE
 #elif defined TWO_PLATFORM_LINUX
 #undef None
 #endif

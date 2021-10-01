@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(math);
+module two.math.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -14,9 +14,8 @@ module TWO(math);
 #include <meta/type.meta.h>
 #include <meta/math.meta.h>
 #include <meta/math.conv.h>
-#endif
-
 #include <math/Api.h>
+#endif
 
 using namespace two;
 

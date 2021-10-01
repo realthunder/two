@@ -9,7 +9,7 @@ module;
 #include <bgfx/bgfx.h>
 #include <stb_image.h>
 #include <stb_truetype.h>
-module TWO2(ui, vg);
+module two.ui.vg;
 #else
 #include <cmath>
 #include <cfloat>

@@ -6,7 +6,7 @@
 #include <cfloat>
 
 #ifdef TWO_MODULES
-module TWO(ui);
+module two.ui;
 #else
 #include <tree/Graph.hpp>
 #include <math/Vec.hpp>

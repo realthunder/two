@@ -2,7 +2,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(jobs);
+module two.jobs;
 #else
 #include <stl/vector.hpp>
 #include <stl/span.h>

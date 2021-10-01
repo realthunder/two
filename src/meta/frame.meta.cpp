@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.frame;
+module two.frame.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -14,9 +14,8 @@ module two.frame;
 #include <meta/gfx.ui.meta.h>
 #include <meta/frame.meta.h>
 #include <meta/frame.conv.h>
-#endif
-
 #include <frame/Api.h>
+#endif
 
 using namespace two;
 

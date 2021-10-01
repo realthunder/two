@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module TWO(ctx);
+module two.ctx;
 #else
 #include <stl/vector.hpp>
 #include <stl/unordered_set.hpp>

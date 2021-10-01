@@ -238,6 +238,42 @@ extern "C" {
 	two::Type* DECL two_ControlNode__type() {
 		return &two::type<two::ControlNode>();
 	}
+	two::KeyEvent* DECL two_ControlNode_key_event_2(two::ControlNode* self, two::Key code, two::EventType event_type) {
+		static two::KeyEvent temp;
+		return (temp = self->key_event(code, event_type), &temp);
+	}
+	two::KeyEvent* DECL two_ControlNode_key_event_3(two::ControlNode* self, two::Key code, two::EventType event_type, two::InputMod modifier) {
+		static two::KeyEvent temp;
+		return (temp = self->key_event(code, event_type, modifier), &temp);
+	}
+	two::KeyEvent* DECL two_ControlNode_key_stroke_1(two::ControlNode* self, two::Key code) {
+		static two::KeyEvent temp;
+		return (temp = self->key_stroke(code), &temp);
+	}
+	two::KeyEvent* DECL two_ControlNode_key_stroke_2(two::ControlNode* self, two::Key code, two::InputMod modifier) {
+		static two::KeyEvent temp;
+		return (temp = self->key_stroke(code, modifier), &temp);
+	}
+	two::KeyEvent* DECL two_ControlNode_char_stroke_1(two::ControlNode* self, two::Key code) {
+		static two::KeyEvent temp;
+		return (temp = self->char_stroke(code), &temp);
+	}
+	two::KeyEvent* DECL two_ControlNode_char_stroke_2(two::ControlNode* self, two::Key code, two::InputMod modifier) {
+		static two::KeyEvent temp;
+		return (temp = self->char_stroke(code, modifier), &temp);
+	}
+	two::MouseEvent* DECL two_ControlNode_mouse_event_2(two::ControlNode* self, two::DeviceType device, two::EventType event_type) {
+		static two::MouseEvent temp;
+		return (temp = self->mouse_event(device, event_type), &temp);
+	}
+	two::MouseEvent* DECL two_ControlNode_mouse_event_3(two::ControlNode* self, two::DeviceType device, two::EventType event_type, two::InputMod modifier) {
+		static two::MouseEvent temp;
+		return (temp = self->mouse_event(device, event_type, modifier), &temp);
+	}
+	two::MouseEvent* DECL two_ControlNode_mouse_event_4(two::ControlNode* self, two::DeviceType device, two::EventType event_type, two::InputMod modifier, bool consume) {
+		static two::MouseEvent temp;
+		return (temp = self->mouse_event(device, event_type, modifier, consume), &temp);
+	}
 	void DECL two_ControlNode__destroy(two::ControlNode* self) {
 		delete self;
 	}

@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(fract);
+module two.fract.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -16,9 +16,8 @@ module TWO(fract);
 #include <meta/geom.meta.h>
 #include <meta/fract.meta.h>
 #include <meta/fract.conv.h>
-#endif
-
 #include <fract/Api.h>
+#endif
 
 using namespace two;
 

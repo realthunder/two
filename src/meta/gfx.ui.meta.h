@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <gfx-ui/Forward.h>
 //#include <gfx-ui/Types.h>
+#endif
 
-#ifndef TWO_GFX_UI_REFL_EXPORT
-#define TWO_GFX_UI_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_GFX_UI_META_EXPORT
+#define TWO_GFX_UI_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_GFX_UI_REFL_EXPORT two_gfx_ui : public two::Module
+	export_ class TWO_GFX_UI_META_EXPORT two_gfx_ui : public two::Module
 	{
 	private:
 		two_gfx_ui();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_GFX_UI_MODULE
 extern "C"
-TWO_GFX_UI_REFL_EXPORT Module& getModule();
+TWO_GFX_UI_META_EXPORT Module& getModule();
 #endif

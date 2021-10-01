@@ -40,41 +40,6 @@ Object.defineProperty(Space.prototype, "sizingDepth", {
 Space.prototype["__destroy"] = Space.prototype.__destroy = function() {
     _two_Space__destroy(this.__ptr);
 };
-// v2<size_t>
-function v2_size_t(a0, a1) {
-    if (a0 === undefined) {  }
-    else if (a1 === undefined) { if (typeof a0 !== 'number') throw Error('v2<T>(0:v): expected integer'); }
-    else { if (typeof a0 !== 'number') throw Error('v2<T>(0:x): expected integer'); if (typeof a1 !== 'number') throw Error('v2<T>(1:y): expected integer'); }
-    if (a0 === undefined) { this.__ptr = _two_v2_size_t__construct_0(); getCache(v2_size_t)[this.__ptr] = this; }
-    else if (a1 === undefined) { this.__ptr = _two_v2_size_t__construct_1(/*v*/a0); getCache(v2_size_t)[this.__ptr] = this; }
-    else { this.__ptr = _two_v2_size_t__construct_2(/*x*/a0, /*y*/a1); getCache(v2_size_t)[this.__ptr] = this; }
-};
-v2_size_t.prototype = Object.create(WrapperObject.prototype);
-v2_size_t.prototype.constructor = v2_size_t;
-v2_size_t.prototype.__class = v2_size_t;
-v2_size_t.__cache = {};
-Module['v2_size_t'] = v2_size_t;
-Object.defineProperty(v2_size_t.prototype, "x", {
-    get: function() {
-        return _two_v2_size_t__get_x(this.__ptr);
-    },
-    set: function(value) {
-        if (typeof value !== 'number') throw Error('v2<size_t>.x: expected integer');
-        _two_v2_size_t__set_x(this.__ptr, value);
-    }
-});
-Object.defineProperty(v2_size_t.prototype, "y", {
-    get: function() {
-        return _two_v2_size_t__get_y(this.__ptr);
-    },
-    set: function(value) {
-        if (typeof value !== 'number') throw Error('v2<size_t>.y: expected integer');
-        _two_v2_size_t__set_y(this.__ptr, value);
-    }
-});
-v2_size_t.prototype["__destroy"] = v2_size_t.prototype.__destroy = function() {
-    _two_v2_size_t__destroy(this.__ptr);
-};
 // v2<two::AutoLayout>
 function v2_two_AutoLayout(a0, a1) {
     if (a0 === undefined) {  }
@@ -1156,32 +1121,6 @@ Widget.prototype["yield_modal"] = Widget.prototype.yield_modal = function() {
     
     _two_Widget_yield_modal_0(this.__ptr);
 };
-Widget.prototype["key_event"] = Widget.prototype.key_event = function(a0, a1, a2) {
-    if (a2 === undefined) { if (typeof a0 !== 'number') throw Error('key_event(0:code): expected integer'); if (typeof a1 !== 'number') throw Error('key_event(1:event_type): expected integer'); }
-    else { if (typeof a0 !== 'number') throw Error('key_event(0:code): expected integer'); if (typeof a1 !== 'number') throw Error('key_event(1:event_type): expected integer'); if (typeof a2 !== 'number') throw Error('key_event(2:modifier): expected integer'); }
-    if (a2 === undefined) { return wrapPointer(_two_Widget_key_event_2(this.__ptr, /*code*/a0, /*event_type*/a1), KeyEvent); }
-    else { return wrapPointer(_two_Widget_key_event_3(this.__ptr, /*code*/a0, /*event_type*/a1, /*modifier*/a2), KeyEvent); }
-};
-Widget.prototype["key_stroke"] = Widget.prototype.key_stroke = function(a0, a1) {
-    if (a1 === undefined) { if (typeof a0 !== 'number') throw Error('key_stroke(0:code): expected integer'); }
-    else { if (typeof a0 !== 'number') throw Error('key_stroke(0:code): expected integer'); if (typeof a1 !== 'number') throw Error('key_stroke(1:modifier): expected integer'); }
-    if (a1 === undefined) { return wrapPointer(_two_Widget_key_stroke_1(this.__ptr, /*code*/a0), KeyEvent); }
-    else { return wrapPointer(_two_Widget_key_stroke_2(this.__ptr, /*code*/a0, /*modifier*/a1), KeyEvent); }
-};
-Widget.prototype["char_stroke"] = Widget.prototype.char_stroke = function(a0, a1) {
-    if (a1 === undefined) { if (typeof a0 !== 'number') throw Error('char_stroke(0:code): expected integer'); }
-    else { if (typeof a0 !== 'number') throw Error('char_stroke(0:code): expected integer'); if (typeof a1 !== 'number') throw Error('char_stroke(1:modifier): expected integer'); }
-    if (a1 === undefined) { return wrapPointer(_two_Widget_char_stroke_1(this.__ptr, /*code*/a0), KeyEvent); }
-    else { return wrapPointer(_two_Widget_char_stroke_2(this.__ptr, /*code*/a0, /*modifier*/a1), KeyEvent); }
-};
-Widget.prototype["mouse_event"] = Widget.prototype.mouse_event = function(a0, a1, a2, a3) {
-    if (a2 === undefined) { if (typeof a0 !== 'number') throw Error('mouse_event(0:device): expected integer'); if (typeof a1 !== 'number') throw Error('mouse_event(1:event_type): expected integer'); }
-    else if (a3 === undefined) { if (typeof a0 !== 'number') throw Error('mouse_event(0:device): expected integer'); if (typeof a1 !== 'number') throw Error('mouse_event(1:event_type): expected integer'); if (typeof a2 !== 'number') throw Error('mouse_event(2:modifier): expected integer'); }
-    else { if (typeof a0 !== 'number') throw Error('mouse_event(0:device): expected integer'); if (typeof a1 !== 'number') throw Error('mouse_event(1:event_type): expected integer'); if (typeof a2 !== 'number') throw Error('mouse_event(2:modifier): expected integer'); if (typeof a3 !== 'boolean') throw Error('mouse_event(3:consume): expected boolean'); }
-    if (a2 === undefined) { return wrapPointer(_two_Widget_mouse_event_2(this.__ptr, /*device*/a0, /*event_type*/a1), MouseEvent); }
-    else if (a3 === undefined) { return wrapPointer(_two_Widget_mouse_event_3(this.__ptr, /*device*/a0, /*event_type*/a1, /*modifier*/a2), MouseEvent); }
-    else { return wrapPointer(_two_Widget_mouse_event_4(this.__ptr, /*device*/a0, /*event_type*/a1, /*modifier*/a2, /*consume*/a3), MouseEvent); }
-};
 Object.defineProperty(Widget.prototype, "frame", {
     get: function() {
         return wrapPointer(_two_Widget__get_frame(this.__ptr), Frame);
@@ -1741,7 +1680,7 @@ Module['ui']['widget'] = function(a0, a1, a2, a3, a4) {
     if (a2 === undefined) { if (!checkClass(a0, Widget)) throw Error('widget(0:parent): expected Widget'); if (!checkClass(a1, Style)) throw Error('widget(1:style): expected Style'); }
     else if (a3 === undefined) { if (!checkClass(a0, Widget)) throw Error('widget(0:parent): expected Widget'); if (!checkClass(a1, Style)) throw Error('widget(1:style): expected Style'); if (typeof a2 !== 'boolean') throw Error('widget(2:open): expected boolean'); }
     else if (a4 === undefined) { if (!checkClass(a0, Widget)) throw Error('widget(0:parent): expected Widget'); if (!checkClass(a1, Style)) throw Error('widget(1:style): expected Style'); if (typeof a2 !== 'boolean') throw Error('widget(2:open): expected boolean'); if (typeof a3 !== 'number') throw Error('widget(3:length): expected integer'); }
-    else { if (!checkClass(a0, Widget)) throw Error('widget(0:parent): expected Widget'); if (!checkClass(a1, Style)) throw Error('widget(1:style): expected Style'); if (typeof a2 !== 'boolean') throw Error('widget(2:open): expected boolean'); if (typeof a3 !== 'number') throw Error('widget(3:length): expected integer'); if (!checkClass(a4, v2_size_t)) throw Error('widget(4:index): expected v2<size_t>'); }
+    else { if (!checkClass(a0, Widget)) throw Error('widget(0:parent): expected Widget'); if (!checkClass(a1, Style)) throw Error('widget(1:style): expected Style'); if (typeof a2 !== 'boolean') throw Error('widget(2:open): expected boolean'); if (typeof a3 !== 'number') throw Error('widget(3:length): expected integer'); if (!checkClass(a4, v2_uint)) throw Error('widget(4:index): expected v2<uint>'); }
     if (a2 === undefined) { return wrapPointer(_two_ui_widget_2(/*parent*/a0.__ptr, /*style*/a1.__ptr), Widget); }
     else if (a3 === undefined) { return wrapPointer(_two_ui_widget_3(/*parent*/a0.__ptr, /*style*/a1.__ptr, /*open*/a2), Widget); }
     else if (a4 === undefined) { return wrapPointer(_two_ui_widget_4(/*parent*/a0.__ptr, /*style*/a1.__ptr, /*open*/a2, /*length*/a3), Widget); }

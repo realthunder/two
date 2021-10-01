@@ -11,8 +11,12 @@ module;
 #include <bx/timer.h>
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
-module TWO(bgfx);
+module two.bgfx;
 #else
+#include <bx/allocator.h>
+#include <bx/timer.h>
+#include <bgfx/bgfx.h>
+#include <bgfx/platform.h>
 #include <infra/Log.h>
 #include <type/Type.h>
 #include <bgfx/BgfxSystem.h>

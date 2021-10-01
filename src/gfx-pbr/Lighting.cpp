@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <gfx/Cpp20.h>
-module TWO2(gfx, pbr);
+module two.gfx.pbr;
 #else
 #include <stl/algorithm.h>
 #include <infra/ToString.h>

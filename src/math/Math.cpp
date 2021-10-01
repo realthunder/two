@@ -6,7 +6,7 @@
 module;
 #include <cstdlib>
 #include <infra/Cpp20.h>
-module TWO(math);
+module two.math;
 #else
 #include <stl/span.h>
 #include <math/Types.h>

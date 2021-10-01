@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(ecs);
+module two.ecs.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -15,9 +15,8 @@ module TWO(ecs);
 #include <meta/type.meta.h>
 #include <meta/ecs.meta.h>
 #include <meta/ecs.conv.h>
-#endif
-
 #include <ecs/Api.h>
+#endif
 
 using namespace two;
 

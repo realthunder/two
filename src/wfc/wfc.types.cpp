@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(wfc);
+module two.wfc;
 #else
 #include <wfc/Types.h>
 #include <wfc/Api.h>

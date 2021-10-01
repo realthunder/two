@@ -4,7 +4,7 @@ module;
 #include <infra/Cpp20.h>
 #include <bx/allocator.h>
 #include <bgfx/bgfx.h>
-module TWO(frame);
+module two.frame;
 #else
 #include <stl/vector.hpp>
 #include <frame/Shell.h>

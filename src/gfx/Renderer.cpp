@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <Tracy.hpp>
 #include <stl/algorithm.h>

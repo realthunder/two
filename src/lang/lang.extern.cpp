@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module TWO(lang);
+module two.lang;
 #else
 #include <stl/vector.hpp>
 #include <stl/unordered_map.hpp>

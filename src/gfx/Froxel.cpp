@@ -13,7 +13,7 @@ module;
 #endif
 
 #ifdef TWO_MODULES
-module TWO(gfx);
+module two.gfx;
 #endif
 
 #ifndef TWO_MODULES

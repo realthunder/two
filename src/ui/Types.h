@@ -14,6 +14,7 @@
 #ifndef TWO_MODULES
 #include <infra/Types.h>
 #include <type/Types.h>
+#include <tree/Types.h>
 #include <math/Types.h>
 #include <ctx/Types.h>
 #endif

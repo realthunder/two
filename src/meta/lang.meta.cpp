@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(lang);
+module two.lang.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -16,9 +16,8 @@ module TWO(lang);
 #include <meta/refl.meta.h>
 #include <meta/lang.meta.h>
 #include <meta/lang.conv.h>
-#endif
-
 #include <lang/Api.h>
+#endif
 
 using namespace two;
 

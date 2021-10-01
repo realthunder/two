@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module TWO(wfc).gfx;
+module two.wfc.gfx;
 #else
 #include <stl/vector.hpp>
 #include <wfc-gfx/Api.h>

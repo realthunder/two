@@ -377,7 +377,7 @@ namespace two
 
 	export_ TWO_GLTF_EXPORT void setup_nodes(glTF& gltf);
 
-	template <class T>
+	export_ template <class T>
 	vector<T> unpack_accessor(const glTF& gltf, size_t accessor, bool for_vertex)
 	{
 		vector<double> attribs = decode_accessor(gltf, accessor, for_vertex);
@@ -386,7 +386,7 @@ namespace two
 		return ret;
 	}
 
-	template <class T, size_t size>
+	export_ template <class T, size_t size>
 	vector<T> unpack_accessor(const glTF& gltf, size_t accessor, bool for_vertex)
 	{
 		vector<double> attribs = decode_accessor(gltf, accessor, for_vertex);
@@ -396,7 +396,7 @@ namespace two
 		return ret;
 	}
 
-	template <class T>
+	export_ template <class T>
 	int pack_accessor(glTF& gltf, int buffer_index, glTFAccessor& accessor, span<T> values, bool for_vertex)
 	{
 		vector<double> attribs(values.size());
@@ -404,7 +404,7 @@ namespace two
 		return encode_accessor(gltf, buffer_index, accessor, attribs, for_vertex);
 	}
 
-	template <class T, size_t size>
+	export_ template <class T, size_t size>
 	int pack_accessor(glTF& gltf, int buffer_index, glTFAccessor& accessor, span<T> values, bool for_vertex)
 	{
 		vector<double> attribs(values.size() * size);
@@ -413,7 +413,7 @@ namespace two
 		return encode_accessor(gltf, buffer_index, accessor, attribs, for_vertex);
 	}
 
-	template <class T, size_t size>
+	export_ template <class T, size_t size>
 	int pack_accessor_float(glTF& gltf, int buffer_index, span<T> values, bool for_vertex)
 	{
 		static_assert(size > 0 && size <= 4, "incorrect size");

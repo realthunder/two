@@ -6,7 +6,7 @@
 module;
 #include <cstdio>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <cstdio>
 #include <stl/algorithm.h>

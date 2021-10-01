@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx)-obj;
+module TWO2(gfx.obj, meta);
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -18,9 +18,8 @@ module TWO(gfx)-obj;
 #include <meta/gfx.meta.h>
 #include <meta/gfx.obj.meta.h>
 #include <meta/gfx.obj.conv.h>
-#endif
-
 #include <gfx-obj/Api.h>
+#endif
 
 using namespace two;
 

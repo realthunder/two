@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(fract);
+module two.fract;
 #else
 #include <cstdlib>
 #include <cstdio>
@@ -110,7 +110,7 @@ namespace two
 		// nouveaux param
 		dist = (i + 10)*rnd_float() / 2;
 		angle_a = rnd_float() * PI * 2;
-		// élab premier pas de nvx param (+it inut??)
+		// ï¿½lab premier pas de nvx param (+it inut??)
 
 		this->calcnormal();
 

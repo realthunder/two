@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(fract);
+module two.fract;
 #else
 #include <fract/Types.h>
 #include <fract/Api.h>

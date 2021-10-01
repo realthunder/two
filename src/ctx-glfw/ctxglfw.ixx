@@ -2,13 +2,13 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO2(ctx, glfw);
+export module two.ctx.glfw;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(math);
-export import TWO(ctx);
+export import two.math;
+export import two.ctx;
 
 #include <ctx-glfw/Api.h>
 

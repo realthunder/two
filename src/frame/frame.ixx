@@ -2,16 +2,16 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO(frame);
+export module two.frame;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(ui);
-export import TWO(gfx);
-export import TWO(gfx.ui);
-export import TWO2(ctx, glfw);
-export import TWO2(ui, vg);
+export import two.ui;
+export import two.gfx;
+export import two.gfx.ui;
+export import two.ctx.glfw;
+export import two.ui.vg;
 
 #include <frame/Api.h>
 

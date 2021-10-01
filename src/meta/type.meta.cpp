@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(type);
+module two.type.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -14,9 +14,8 @@ module TWO(type);
 #include <meta/infra.meta.h>
 #include <meta/type.meta.h>
 #include <meta/type.conv.h>
-#endif
-
 #include <type/Api.h>
+#endif
 
 using namespace two;
 
@@ -214,6 +213,26 @@ namespace two
 		g_sequence[t.m_id] = &sequence;
 	}
 	
+	// two::Type
+	{
+		Type& t = type<two::Type>();
+		static Meta meta = { t, &namspc({ "two" }), "Type", sizeof(two::Type), TypeClass::Object };
+		// bases
+		// defaults
+		static two::Type* base_default = nullptr;
+		// constructors
+		// copy constructor
+		// members
+		static Member members[] = {
+			{ t, offsetof(two::Type, m_id), type<uint32_t>(), "id", nullptr, Member::Value, nullptr },
+			{ t, offsetof(two::Type, m_name), type<const char*>(), "name", nullptr, Member::Flags(Member::Pointer|Member::Link), nullptr },
+			{ t, offsetof(two::Type, m_size), type<size_t>(), "size", nullptr, Member::Value, nullptr },
+			{ t, offsetof(two::Type, m_base), type<two::Type>(), "base", base_default, Member::Flags(Member::Pointer|Member::Link), nullptr }
+		};
+		// methods
+		// static members
+		static Class cls = { t, {}, {}, {}, {}, members, {}, {}, };
+	}
 	// two::Ref
 	{
 		Type& t = type<two::Ref>();
@@ -238,25 +257,18 @@ namespace two
 		// static members
 		static Class cls = { t, {}, {}, constructors, copy_constructor, members, {}, {}, };
 	}
-	// two::Type
+	// two::Var
 	{
-		Type& t = type<two::Type>();
-		static Meta meta = { t, &namspc({ "two" }), "Type", sizeof(two::Type), TypeClass::Object };
+		Type& t = type<two::Var>();
+		static Meta meta = { t, &namspc({ "two" }), "Var", sizeof(two::Var), TypeClass::Object };
 		// bases
 		// defaults
-		static two::Type* base_default = nullptr;
 		// constructors
 		// copy constructor
 		// members
-		static Member members[] = {
-			{ t, offsetof(two::Type, m_id), type<uint32_t>(), "id", nullptr, Member::Value, nullptr },
-			{ t, offsetof(two::Type, m_name), type<const char*>(), "name", nullptr, Member::Flags(Member::Pointer|Member::Link), nullptr },
-			{ t, offsetof(two::Type, m_size), type<size_t>(), "size", nullptr, Member::Value, nullptr },
-			{ t, offsetof(two::Type, m_base), type<two::Type>(), "base", base_default, Member::Flags(Member::Pointer|Member::Link), nullptr }
-		};
 		// methods
 		// static members
-		static Class cls = { t, {}, {}, {}, {}, members, {}, {}, };
+		static Class cls = { t, {}, {}, {}, {}, {}, {}, {}, };
 	}
 	// two::Indexer
 	{
@@ -294,19 +306,6 @@ namespace two
 		};
 		static Class cls = { t, {}, {}, {}, {}, {}, methods, statics, };
 	}
-	// two::Var
-	{
-		Type& t = type<two::Var>();
-		static Meta meta = { t, &namspc({ "two" }), "Var", sizeof(two::Var), TypeClass::Object };
-		// bases
-		// defaults
-		// constructors
-		// copy constructor
-		// members
-		// methods
-		// static members
-		static Class cls = { t, {}, {}, {}, {}, {}, {}, {}, };
-	}
 	// two::Prototype
 	{
 		Type& t = type<two::Prototype>();
@@ -342,11 +341,11 @@ namespace two
 		m.m_types.push_back(&type<stl::string>());
 		m.m_types.push_back(&type<stl::vector<stl::string>>());
 		m.m_types.push_back(&type<stl::vector<two::Ref>>());
-		m.m_types.push_back(&type<two::Ref>());
 		m.m_types.push_back(&type<two::Type>());
+		m.m_types.push_back(&type<two::Ref>());
+		m.m_types.push_back(&type<two::Var>());
 		m.m_types.push_back(&type<two::Indexer>());
 		m.m_types.push_back(&type<two::Index>());
-		m.m_types.push_back(&type<two::Var>());
 		m.m_types.push_back(&type<two::Prototype>());
 		m.m_types.push_back(&type<void>());
 		{

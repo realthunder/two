@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(ui);
+module two.ui;
 #else
 #include <ui/Container.h>
 #include <ui/Edit/Directory.h>

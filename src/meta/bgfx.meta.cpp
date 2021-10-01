@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(bgfx);
+module two.bgfx.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -16,9 +16,8 @@ module TWO(bgfx);
 #include <meta/ctx.meta.h>
 #include <meta/bgfx.meta.h>
 #include <meta/bgfx.conv.h>
-#endif
-
 #include <bgfx/Api.h>
+#endif
 
 using namespace two;
 

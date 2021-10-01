@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <tool/Forward.h>
 //#include <tool/Types.h>
+#endif
 
-#ifndef TWO_TOOL_REFL_EXPORT
-#define TWO_TOOL_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_TOOL_META_EXPORT
+#define TWO_TOOL_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_TOOL_REFL_EXPORT two_tool : public two::Module
+	export_ class TWO_TOOL_META_EXPORT two_tool : public two::Module
 	{
 	private:
 		two_tool();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_TOOL_MODULE
 extern "C"
-TWO_TOOL_REFL_EXPORT Module& getModule();
+TWO_TOOL_META_EXPORT Module& getModule();
 #endif

@@ -6,6 +6,7 @@
 #include <gfx/Renderer.h>
 #include <gfx/Light.h>
 #include <gfx/RenderTarget.h>
+#include <gfx/Graph.hpp>
 #endif
 #include <gfx-pbr/Forward.h>
 

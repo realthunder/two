@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module TWO(gfx);
+module two.gfx;
 #else
 #include <stl/array.h>
 #include <stl/vector.hpp>

@@ -8,7 +8,7 @@ module;
 #include <cstdio>
 #include <bgfx/bgfx.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <cstring>
 #include <cstdio>
@@ -219,7 +219,7 @@ namespace two
 			, s_fresnel(bgfx::createUniform("s_fresnel", bgfx::UniformType::Sampler, 1U, bgfx::UniformSet::View))
 		{
 #if !MATERIALS_BUFFER
-			//GpuState<MaterialFresnel>::me.init();
+			GpuState<MaterialFresnel>::me.init();
 #endif
 		}
 
@@ -232,7 +232,7 @@ namespace two
 		void upload(bgfx::Encoder& encoder, const MaterialFresnel& block) const
 		{
 #if !MATERIALS_BUFFER
-			//GpuState<MaterialFresnel>::me.upload(encoder, block);
+			GpuState<MaterialFresnel>::me.upload(encoder, block);
 #endif
 
 			encoder.setTexture(uint8_t(TextureSampler::Color), block.m_value.m_texture ? *block.m_value.m_texture : *m_white_tex);

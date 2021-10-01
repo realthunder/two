@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(refl);
+module two.refl.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -15,9 +15,8 @@ module TWO(refl);
 #include <meta/pool.meta.h>
 #include <meta/refl.meta.h>
 #include <meta/refl.conv.h>
-#endif
-
 #include <refl/Api.h>
+#endif
 
 using namespace two;
 
@@ -337,6 +336,31 @@ namespace two
 		// static members
 		static Class cls = { t, bases, bases_offsets, {}, {}, {}, {}, {}, };
 	}
+	// two::Call
+	{
+		Type& t = type<two::Call>();
+		static Meta meta = { t, &namspc({ "two" }), "Call", sizeof(two::Call), TypeClass::Struct };
+		// bases
+		// defaults
+		// constructors
+		static Constructor constructors[] = {
+			{ t, two_Call__construct_0, {} },
+			{ t, two_Call__construct_1, { { "callable", type<two::Callable>(),  }, { "args", type<stl::vector<two::Var>>(),  } } }
+		};
+		// copy constructor
+		static CopyConstructor copy_constructor[] = {
+			{ t, two_Call__copy_construct }
+		};
+		// members
+		static Member members[] = {
+			{ t, offsetof(two::Call, m_args), type<stl::vector<two::Var>>(), "args", nullptr, Member::NonMutable, nullptr },
+			{ t, offsetof(two::Call, m_vargs), type<stl::vector<void*>>(), "vargs", nullptr, Member::NonMutable, nullptr },
+			{ t, offsetof(two::Call, m_result), type<two::Var>(), "result", nullptr, Member::NonMutable, nullptr }
+		};
+		// methods
+		// static members
+		static Class cls = { t, {}, {}, constructors, copy_constructor, members, {}, {}, };
+	}
 	// two::Meta
 	{
 		Type& t = type<two::Meta>();
@@ -414,31 +438,6 @@ namespace two
 		// methods
 		// static members
 		static Class cls = { t, {}, {}, {}, {}, {}, {}, {}, };
-	}
-	// two::Call
-	{
-		Type& t = type<two::Call>();
-		static Meta meta = { t, &namspc({ "two" }), "Call", sizeof(two::Call), TypeClass::Struct };
-		// bases
-		// defaults
-		// constructors
-		static Constructor constructors[] = {
-			{ t, two_Call__construct_0, {} },
-			{ t, two_Call__construct_1, { { "callable", type<two::Callable>(),  }, { "args", type<stl::vector<two::Var>>(),  } } }
-		};
-		// copy constructor
-		static CopyConstructor copy_constructor[] = {
-			{ t, two_Call__copy_construct }
-		};
-		// members
-		static Member members[] = {
-			{ t, offsetof(two::Call, m_args), type<stl::vector<two::Var>>(), "args", nullptr, Member::NonMutable, nullptr },
-			{ t, offsetof(two::Call, m_vargs), type<stl::vector<void*>>(), "vargs", nullptr, Member::NonMutable, nullptr },
-			{ t, offsetof(two::Call, m_result), type<two::Var>(), "result", nullptr, Member::NonMutable, nullptr }
-		};
-		// methods
-		// static members
-		static Class cls = { t, {}, {}, constructors, copy_constructor, members, {}, {}, };
 	}
 	// two::Injector
 	{
@@ -565,6 +564,7 @@ namespace two
 		m.m_types.push_back(&type<two::Constructor>());
 		m.m_types.push_back(&type<two::CopyConstructor>());
 		m.m_types.push_back(&type<two::Destructor>());
+		m.m_types.push_back(&type<two::Call>());
 		m.m_types.push_back(&type<two::TypeClass>());
 		m.m_types.push_back(&type<two::Meta>());
 		m.m_types.push_back(&type<two::Convert>());
@@ -572,7 +572,6 @@ namespace two
 		m.m_types.push_back(&type<two::Member>());
 		m.m_types.push_back(&type<two::Class>());
 		m.m_types.push_back(&type<two::Enum>());
-		m.m_types.push_back(&type<two::Call>());
 		m.m_types.push_back(&type<two::Injector>());
 		m.m_types.push_back(&type<two::Creator>());
 		m.m_types.push_back(&type<two::Namespace>());

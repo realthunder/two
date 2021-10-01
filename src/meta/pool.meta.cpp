@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(pool);
+module two.pool.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -14,9 +14,8 @@ module TWO(pool);
 #include <meta/type.meta.h>
 #include <meta/pool.meta.h>
 #include <meta/pool.conv.h>
-#endif
-
 #include <pool/Api.h>
+#endif
 
 using namespace two;
 

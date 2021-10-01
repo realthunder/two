@@ -80,5 +80,5 @@ namespace two
 		attr_ mat4 m_mirror;
 	};
 
-	TWO_GFX_EXPORT func_ MirrorCamera mirror_camera(const Camera& sourcecam, Node3& node, float clipBias = 0.f);
+	export_ TWO_GFX_EXPORT func_ MirrorCamera mirror_camera(const Camera& sourcecam, Node3& node, float clipBias = 0.f);
 }

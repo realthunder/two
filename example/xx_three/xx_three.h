@@ -5,8 +5,10 @@
 #pragma once
 
 #if UI
+#ifndef TWO_MODULES
 #include <frame/Forward.h>
 #include <frame/Api.h>
+#endif
 using ShellX = two::Shell;
 using WindowX = two::ShellWindow;
 #else

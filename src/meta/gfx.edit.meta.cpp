@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx)-edit;
+module TWO2(gfx.edit, meta);
 #else
 #include <refl/Module.h>
 #include <meta/infra.meta.h>

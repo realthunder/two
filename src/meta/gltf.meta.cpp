@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.gltf;
+module two.gltf.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -17,9 +17,8 @@ module two.gltf;
 #include <meta/math.meta.h>
 #include <meta/gltf.meta.h>
 #include <meta/gltf.conv.h>
-#endif
-
 #include <gltf/Api.h>
+#endif
 
 using namespace two;
 

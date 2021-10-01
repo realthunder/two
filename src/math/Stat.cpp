@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(math);
+module two.math;
 #else
 #include <math/Stat.h>
 #include <math/Stat.hpp>

@@ -7,7 +7,7 @@
 #include <bgfx/bgfx.h>
 
 #ifdef TWO_MODULES
-module TWO2(gfx, pbr);
+module two.gfx.pbr;
 #else
 #include <gfx/RenderTarget.h>
 #include <gfx/Filter.h>

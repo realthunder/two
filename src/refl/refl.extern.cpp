@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module TWO(refl);
+module two.refl;
 #else
 #include <stl/vector.hpp>
 #include <refl/Api.h>

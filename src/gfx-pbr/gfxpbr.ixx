@@ -4,16 +4,16 @@ module;
 #include <bgfx/bgfx.h>
 #include <bimg/bimg.h>
 
-export module TWO2(gfx, pbr);
+export module two.gfx.pbr;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(infra);
-export import TWO(type);
-export import TWO(math);
-export import TWO(geom);
-export import TWO(gfx);
+export import two.infra;
+export import two.type;
+export import two.math;
+export import two.geom;
+export import two.gfx;
 
 #include <gfx-pbr/Api.h>
 

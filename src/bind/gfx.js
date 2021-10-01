@@ -197,6 +197,15 @@ Texture.prototype["valid"] = Texture.prototype.valid = function() {
     
     return !!(_two_Texture_valid_0(this.__ptr));
 };
+Texture.prototype["load"] = Texture.prototype.load = function(a0, a1, a2, a3) {
+    ensureCache.prepare();
+    if (a2 === undefined) { if (!checkClass(a0, GfxSystem)) throw Error('load(0:gfx): expected GfxSystem'); if (typeof a1 !== 'string') throw Error('load(1:path): expected string'); }
+    else if (a3 === undefined) { if (!checkClass(a0, GfxSystem)) throw Error('load(0:gfx): expected GfxSystem'); if (typeof a1 !== 'string') throw Error('load(1:path): expected string'); if (typeof a2 !== 'boolean') throw Error('load(2:srgb): expected boolean'); }
+    else { if (!checkClass(a0, GfxSystem)) throw Error('load(0:gfx): expected GfxSystem'); if (typeof a1 !== 'string') throw Error('load(1:path): expected string'); if (typeof a2 !== 'boolean') throw Error('load(2:srgb): expected boolean'); if (typeof a3 !== 'boolean') throw Error('load(3:mips): expected boolean'); }
+    if (a2 === undefined) { _two_Texture_load_2(this.__ptr, /*gfx*/a0.__ptr, ensureString(/*path*/a1)); }
+    else if (a3 === undefined) { _two_Texture_load_3(this.__ptr, /*gfx*/a0.__ptr, ensureString(/*path*/a1), /*srgb*/a2); }
+    else { _two_Texture_load_4(this.__ptr, /*gfx*/a0.__ptr, ensureString(/*path*/a1), /*srgb*/a2, /*mips*/a3); }
+};
 Texture.prototype["reload"] = Texture.prototype.reload = function(a0, a1, a2) {
     if (a1 === undefined) { if (!checkClass(a0, GfxSystem)) throw Error('reload(0:gfx): expected GfxSystem'); }
     else if (a2 === undefined) { if (!checkClass(a0, GfxSystem)) throw Error('reload(0:gfx): expected GfxSystem'); if (typeof a1 !== 'boolean') throw Error('reload(1:srgb): expected boolean'); }
@@ -204,6 +213,10 @@ Texture.prototype["reload"] = Texture.prototype.reload = function(a0, a1, a2) {
     if (a1 === undefined) { _two_Texture_reload_1(this.__ptr, /*gfx*/a0.__ptr); }
     else if (a2 === undefined) { _two_Texture_reload_2(this.__ptr, /*gfx*/a0.__ptr, /*srgb*/a1); }
     else { _two_Texture_reload_3(this.__ptr, /*gfx*/a0.__ptr, /*srgb*/a1, /*mips*/a2); }
+};
+Texture.prototype["load_mem"] = Texture.prototype.load_mem = function(a0, a1) {
+    if (!checkClass(a0, GfxSystem)) throw Error('load_mem(0:gfx): expected GfxSystem'); 
+    _two_Texture_load_mem_2(this.__ptr, /*gfx*/a0.__ptr, ensureInt8(/*data*/a1), /*data*/a1.length);
 };
 Texture.prototype["load_rgba"] = Texture.prototype.load_rgba = function(a0, a1, a2) {
     if (a2 === undefined) { if (!checkClass(a0, v2_uint)) throw Error('load_rgba(0:size): expected v2<uint>');  }
@@ -603,6 +616,83 @@ Object.defineProperty(Mime.prototype, "default_blend_time", {
 Mime.prototype["__destroy"] = Mime.prototype.__destroy = function() {
     _two_Mime__destroy(this.__ptr);
 };
+// Frustum
+function Frustum() { throw "cannot construct a Frustum, no constructor in IDL" }
+Frustum.prototype = Object.create(WrapperObject.prototype);
+Frustum.prototype.constructor = Frustum;
+Frustum.prototype.__class = Frustum;
+Frustum.__cache = {};
+Module['Frustum'] = Frustum;
+Object.defineProperty(Frustum.prototype, "fov", {
+    get: function() {
+        return _two_Frustum__get_fov(this.__ptr);
+    },
+    set: function(value) {
+        if (typeof value !== 'number') throw Error('Frustum.fov: expected number');
+        _two_Frustum__set_fov(this.__ptr, value);
+    }
+});
+Object.defineProperty(Frustum.prototype, "aspect", {
+    get: function() {
+        return _two_Frustum__get_aspect(this.__ptr);
+    },
+    set: function(value) {
+        if (typeof value !== 'number') throw Error('Frustum.aspect: expected number');
+        _two_Frustum__set_aspect(this.__ptr, value);
+    }
+});
+Object.defineProperty(Frustum.prototype, "near", {
+    get: function() {
+        return _two_Frustum__get_near(this.__ptr);
+    },
+    set: function(value) {
+        if (typeof value !== 'number') throw Error('Frustum.near: expected number');
+        _two_Frustum__set_near(this.__ptr, value);
+    }
+});
+Object.defineProperty(Frustum.prototype, "far", {
+    get: function() {
+        return _two_Frustum__get_far(this.__ptr);
+    },
+    set: function(value) {
+        if (typeof value !== 'number') throw Error('Frustum.far: expected number');
+        _two_Frustum__set_far(this.__ptr, value);
+    }
+});
+Object.defineProperty(Frustum.prototype, "center", {
+    get: function() {
+        return wrapPointer(_two_Frustum__get_center(this.__ptr), v3_float);
+    },
+    set: function(value) {
+        if (!checkClass(value, v3_float)) throw Error('Frustum.center: expected v3<float>');
+        _two_Frustum__set_center(this.__ptr, value.__ptr);
+    }
+});
+Object.defineProperty(Frustum.prototype, "radius", {
+    get: function() {
+        return _two_Frustum__get_radius(this.__ptr);
+    },
+    set: function(value) {
+        if (typeof value !== 'number') throw Error('Frustum.radius: expected number');
+        _two_Frustum__set_radius(this.__ptr, value);
+    }
+});
+Frustum.prototype["__destroy"] = Frustum.prototype.__destroy = function() {
+    _two_Frustum__destroy(this.__ptr);
+};
+// FrustumSlice
+function FrustumSlice() {
+    
+    this.__ptr = _two_FrustumSlice__construct_0(); getCache(FrustumSlice)[this.__ptr] = this;
+};
+FrustumSlice.prototype = Object.create(WrapperObject.prototype);
+FrustumSlice.prototype.constructor = FrustumSlice;
+FrustumSlice.prototype.__class = FrustumSlice;
+FrustumSlice.__cache = {};
+Module['FrustumSlice'] = FrustumSlice;
+FrustumSlice.prototype["__destroy"] = FrustumSlice.prototype.__destroy = function() {
+    _two_FrustumSlice__destroy(this.__ptr);
+};
 // ShaderDefine
 function ShaderDefine() {
     
@@ -803,83 +893,6 @@ Object.defineProperty(Program.prototype, "name", {
 });
 Program.prototype["__destroy"] = Program.prototype.__destroy = function() {
     _two_Program__destroy(this.__ptr);
-};
-// Frustum
-function Frustum() { throw "cannot construct a Frustum, no constructor in IDL" }
-Frustum.prototype = Object.create(WrapperObject.prototype);
-Frustum.prototype.constructor = Frustum;
-Frustum.prototype.__class = Frustum;
-Frustum.__cache = {};
-Module['Frustum'] = Frustum;
-Object.defineProperty(Frustum.prototype, "fov", {
-    get: function() {
-        return _two_Frustum__get_fov(this.__ptr);
-    },
-    set: function(value) {
-        if (typeof value !== 'number') throw Error('Frustum.fov: expected number');
-        _two_Frustum__set_fov(this.__ptr, value);
-    }
-});
-Object.defineProperty(Frustum.prototype, "aspect", {
-    get: function() {
-        return _two_Frustum__get_aspect(this.__ptr);
-    },
-    set: function(value) {
-        if (typeof value !== 'number') throw Error('Frustum.aspect: expected number');
-        _two_Frustum__set_aspect(this.__ptr, value);
-    }
-});
-Object.defineProperty(Frustum.prototype, "near", {
-    get: function() {
-        return _two_Frustum__get_near(this.__ptr);
-    },
-    set: function(value) {
-        if (typeof value !== 'number') throw Error('Frustum.near: expected number');
-        _two_Frustum__set_near(this.__ptr, value);
-    }
-});
-Object.defineProperty(Frustum.prototype, "far", {
-    get: function() {
-        return _two_Frustum__get_far(this.__ptr);
-    },
-    set: function(value) {
-        if (typeof value !== 'number') throw Error('Frustum.far: expected number');
-        _two_Frustum__set_far(this.__ptr, value);
-    }
-});
-Object.defineProperty(Frustum.prototype, "center", {
-    get: function() {
-        return wrapPointer(_two_Frustum__get_center(this.__ptr), v3_float);
-    },
-    set: function(value) {
-        if (!checkClass(value, v3_float)) throw Error('Frustum.center: expected v3<float>');
-        _two_Frustum__set_center(this.__ptr, value.__ptr);
-    }
-});
-Object.defineProperty(Frustum.prototype, "radius", {
-    get: function() {
-        return _two_Frustum__get_radius(this.__ptr);
-    },
-    set: function(value) {
-        if (typeof value !== 'number') throw Error('Frustum.radius: expected number');
-        _two_Frustum__set_radius(this.__ptr, value);
-    }
-});
-Frustum.prototype["__destroy"] = Frustum.prototype.__destroy = function() {
-    _two_Frustum__destroy(this.__ptr);
-};
-// FrustumSlice
-function FrustumSlice() {
-    
-    this.__ptr = _two_FrustumSlice__construct_0(); getCache(FrustumSlice)[this.__ptr] = this;
-};
-FrustumSlice.prototype = Object.create(WrapperObject.prototype);
-FrustumSlice.prototype.constructor = FrustumSlice;
-FrustumSlice.prototype.__class = FrustumSlice;
-FrustumSlice.__cache = {};
-Module['FrustumSlice'] = FrustumSlice;
-FrustumSlice.prototype["__destroy"] = FrustumSlice.prototype.__destroy = function() {
-    _two_FrustumSlice__destroy(this.__ptr);
 };
 // ProgramVersion
 function ProgramVersion(a0) {
@@ -1112,10 +1125,12 @@ Render.prototype["subrender"] = Render.prototype.subrender = function(a0) {
     if (!checkClass(a0, Render)) throw Error('subrender(0:render): expected Render');
     _two_Render_subrender_1(this.__ptr, /*render*/a0.__ptr);
 };
-Render.prototype["next_pass"] = Render.prototype.next_pass = function(a0, a1) {
+Render.prototype["next_pass"] = Render.prototype.next_pass = function(a0, a1, a2) {
     ensureCache.prepare();
-    if (typeof a0 !== 'string') throw Error('next_pass(0:name): expected string'); if (typeof a1 !== 'number') throw Error('next_pass(1:type): expected integer');
-    return wrapPointer(_two_Render_next_pass_2(this.__ptr, ensureString(/*name*/a0), /*type*/a1), Pass);
+    if (a2 === undefined) { if (typeof a0 !== 'string') throw Error('next_pass(0:name): expected string'); if (typeof a1 !== 'number') throw Error('next_pass(1:type): expected integer'); }
+    else { if (typeof a0 !== 'string') throw Error('next_pass(0:name): expected string'); if (typeof a1 !== 'number') throw Error('next_pass(1:type): expected integer'); if (typeof a2 !== 'number') throw Error('next_pass(2:index): expected integer'); }
+    if (a2 === undefined) { return wrapPointer(_two_Render_next_pass_2(this.__ptr, ensureString(/*name*/a0), /*type*/a1), Pass); }
+    else { return wrapPointer(_two_Render_next_pass_3(this.__ptr, ensureString(/*name*/a0), /*type*/a1, /*index*/a2), Pass); }
 };
 Render.prototype["composite_pass"] = Render.prototype.composite_pass = function(a0, a1, a2) {
     ensureCache.prepare();
@@ -1302,6 +1317,162 @@ Renderer.prototype["end"] = Renderer.prototype.end = function(a0) {
 };
 Renderer.prototype["__destroy"] = Renderer.prototype.__destroy = function() {
     _two_Renderer__destroy(this.__ptr);
+};
+// GfxWindow
+function GfxWindow() { throw "cannot construct a GfxWindow, no constructor in IDL" }
+GfxWindow.prototype = Object.create(WrapperObject.prototype);
+GfxWindow.prototype.constructor = GfxWindow;
+GfxWindow.prototype.__class = GfxWindow;
+GfxWindow.__cache = {};
+Module['GfxWindow'] = GfxWindow;
+GfxWindow.prototype["__destroy"] = GfxWindow.prototype.__destroy = function() {
+    _two_GfxWindow__destroy(this.__ptr);
+};
+// GfxSystem
+function GfxSystem(a0) {
+    ensureCache.prepare();
+    if (typeof a0 !== 'string') throw Error('GfxSystem(0:resource_path): expected string');
+    this.__ptr = _two_GfxSystem__construct_1(ensureString(/*resource_path*/a0)); getCache(GfxSystem)[this.__ptr] = this;
+};
+GfxSystem.prototype = Object.create(BgfxSystem.prototype);
+GfxSystem.prototype.constructor = GfxSystem;
+GfxSystem.prototype.__class = GfxSystem;
+GfxSystem.__base = BgfxSystem;
+GfxSystem.__cache = {};
+Module['GfxSystem'] = GfxSystem;
+GfxSystem.prototype["main_target"] = GfxSystem.prototype.main_target = function() {
+    
+    return wrapPointer(_two_GfxSystem_main_target_0(this.__ptr), RenderTarget);
+};
+GfxSystem.prototype["default_pipeline"] = GfxSystem.prototype.default_pipeline = function() {
+    
+    _two_GfxSystem_default_pipeline_0(this.__ptr);
+};
+GfxSystem.prototype["add_resource_path"] = GfxSystem.prototype.add_resource_path = function(a0, a1) {
+    ensureCache.prepare();
+    if (a1 === undefined) { if (typeof a0 !== 'string') throw Error('add_resource_path(0:path): expected string'); }
+    else { if (typeof a0 !== 'string') throw Error('add_resource_path(0:path): expected string'); if (typeof a1 !== 'boolean') throw Error('add_resource_path(1:relative): expected boolean'); }
+    if (a1 === undefined) { _two_GfxSystem_add_resource_path_1(this.__ptr, ensureString(/*path*/a0)); }
+    else { _two_GfxSystem_add_resource_path_2(this.__ptr, ensureString(/*path*/a0), /*relative*/a1); }
+};
+GfxSystem.prototype["debug_material"] = GfxSystem.prototype.debug_material = function() {
+    
+    return wrapPointer(_two_GfxSystem_debug_material_0(this.__ptr), Material);
+};
+GfxSystem.prototype["create_model"] = GfxSystem.prototype.create_model = function(a0) {
+    ensureCache.prepare();
+    if (typeof a0 !== 'string') throw Error('create_model(0:name): expected string');
+    return wrapPointer(_two_GfxSystem_create_model_1(this.__ptr, ensureString(/*name*/a0)), Model);
+};
+GfxSystem.prototype["create_model_geo"] = GfxSystem.prototype.create_model_geo = function(a0, a1, a2, a3) {
+    ensureCache.prepare();
+    if (a2 === undefined) { if (typeof a0 !== 'string') throw Error('create_model_geo(0:name): expected string'); if (!checkClass(a1, MeshPacker)) throw Error('create_model_geo(1:geometry): expected MeshPacker'); }
+    else if (a3 === undefined) { if (typeof a0 !== 'string') throw Error('create_model_geo(0:name): expected string'); if (!checkClass(a1, MeshPacker)) throw Error('create_model_geo(1:geometry): expected MeshPacker'); if (typeof a2 !== 'boolean') throw Error('create_model_geo(2:readback): expected boolean'); }
+    else { if (typeof a0 !== 'string') throw Error('create_model_geo(0:name): expected string'); if (!checkClass(a1, MeshPacker)) throw Error('create_model_geo(1:geometry): expected MeshPacker'); if (typeof a2 !== 'boolean') throw Error('create_model_geo(2:readback): expected boolean'); if (typeof a3 !== 'boolean') throw Error('create_model_geo(3:optimize): expected boolean'); }
+    if (a2 === undefined) { return wrapPointer(_two_GfxSystem_create_model_geo_2(this.__ptr, ensureString(/*name*/a0), /*geometry*/a1.__ptr), Model); }
+    else if (a3 === undefined) { return wrapPointer(_two_GfxSystem_create_model_geo_3(this.__ptr, ensureString(/*name*/a0), /*geometry*/a1.__ptr, /*readback*/a2), Model); }
+    else { return wrapPointer(_two_GfxSystem_create_model_geo_4(this.__ptr, ensureString(/*name*/a0), /*geometry*/a1.__ptr, /*readback*/a2, /*optimize*/a3), Model); }
+};
+GfxSystem.prototype["create_model_gpu"] = GfxSystem.prototype.create_model_gpu = function(a0, a1, a2, a3) {
+    ensureCache.prepare();
+    if (a2 === undefined) { if (typeof a0 !== 'string') throw Error('create_model_gpu(0:name): expected string'); if (!checkClass(a1, GpuMesh)) throw Error('create_model_gpu(1:gpu_mesh): expected GpuMesh'); }
+    else if (a3 === undefined) { if (typeof a0 !== 'string') throw Error('create_model_gpu(0:name): expected string'); if (!checkClass(a1, GpuMesh)) throw Error('create_model_gpu(1:gpu_mesh): expected GpuMesh'); if (typeof a2 !== 'boolean') throw Error('create_model_gpu(2:readback): expected boolean'); }
+    else { if (typeof a0 !== 'string') throw Error('create_model_gpu(0:name): expected string'); if (!checkClass(a1, GpuMesh)) throw Error('create_model_gpu(1:gpu_mesh): expected GpuMesh'); if (typeof a2 !== 'boolean') throw Error('create_model_gpu(2:readback): expected boolean'); if (typeof a3 !== 'boolean') throw Error('create_model_gpu(3:optimize): expected boolean'); }
+    if (a2 === undefined) { return wrapPointer(_two_GfxSystem_create_model_gpu_2(this.__ptr, ensureString(/*name*/a0), /*gpu_mesh*/a1.__ptr), Model); }
+    else if (a3 === undefined) { return wrapPointer(_two_GfxSystem_create_model_gpu_3(this.__ptr, ensureString(/*name*/a0), /*gpu_mesh*/a1.__ptr, /*readback*/a2), Model); }
+    else { return wrapPointer(_two_GfxSystem_create_model_gpu_4(this.__ptr, ensureString(/*name*/a0), /*gpu_mesh*/a1.__ptr, /*readback*/a2, /*optimize*/a3), Model); }
+};
+GfxSystem.prototype["fetch_material"] = GfxSystem.prototype.fetch_material = function(a0, a1, a2) {
+    ensureCache.prepare();
+    if (a2 === undefined) { if (typeof a0 !== 'string') throw Error('fetch_material(0:name): expected string'); if (typeof a1 !== 'string') throw Error('fetch_material(1:shader): expected string'); }
+    else { if (typeof a0 !== 'string') throw Error('fetch_material(0:name): expected string'); if (typeof a1 !== 'string') throw Error('fetch_material(1:shader): expected string'); if (typeof a2 !== 'boolean') throw Error('fetch_material(2:builtin): expected boolean'); }
+    if (a2 === undefined) { return wrapPointer(_two_GfxSystem_fetch_material_2(this.__ptr, ensureString(/*name*/a0), ensureString(/*shader*/a1)), Material); }
+    else { return wrapPointer(_two_GfxSystem_fetch_material_3(this.__ptr, ensureString(/*name*/a0), ensureString(/*shader*/a1), /*builtin*/a2), Material); }
+};
+GfxSystem.prototype["fetch_image256_material"] = GfxSystem.prototype.fetch_image256_material = function(a0) {
+    if (!checkClass(a0, Image256)) throw Error('fetch_image256_material(0:image): expected Image256');
+    return wrapPointer(_two_GfxSystem_fetch_image256_material_1(this.__ptr, /*image*/a0.__ptr), Material);
+};
+GfxSystem.prototype["shape"] = GfxSystem.prototype.shape = function(a0, a1, a2) {
+    if (a1 === undefined) { if (!checkClass(a0, Shape)) throw Error('shape(0:shape): expected Shape'); }
+    else if (a2 === undefined) { if (!checkClass(a0, Shape)) throw Error('shape(0:shape): expected Shape'); if (!checkClass(a1, Symbol)) throw Error('shape(1:symbol): expected Symbol'); }
+    else { if (!checkClass(a0, Shape)) throw Error('shape(0:shape): expected Shape'); if (!checkClass(a1, Symbol)) throw Error('shape(1:symbol): expected Symbol'); if (typeof a2 !== 'number') throw Error('shape(2:draw_mode): expected integer'); }
+    if (a1 === undefined) { return wrapPointer(_two_GfxSystem_shape_1(this.__ptr, /*shape*/a0.__ptr), Model); }
+    else if (a2 === undefined) { return wrapPointer(_two_GfxSystem_shape_2(this.__ptr, /*shape*/a0.__ptr, /*symbol*/a1.__ptr), Model); }
+    else { return wrapPointer(_two_GfxSystem_shape_3(this.__ptr, /*shape*/a0.__ptr, /*symbol*/a1.__ptr, /*draw_mode*/a2), Model); }
+};
+GfxSystem.prototype["symbol_material"] = GfxSystem.prototype.symbol_material = function(a0, a1) {
+    if (a1 === undefined) { if (!checkClass(a0, Symbol)) throw Error('symbol_material(0:symbol): expected Symbol'); }
+    else { if (!checkClass(a0, Symbol)) throw Error('symbol_material(0:symbol): expected Symbol'); if (typeof a1 !== 'number') throw Error('symbol_material(1:draw_mode): expected integer'); }
+    if (a1 === undefined) { return wrapPointer(_two_GfxSystem_symbol_material_1(this.__ptr, /*symbol*/a0.__ptr), Material); }
+    else { return wrapPointer(_two_GfxSystem_symbol_material_2(this.__ptr, /*symbol*/a0.__ptr, /*draw_mode*/a1), Material); }
+};
+Object.defineProperty(GfxSystem.prototype, "renderer", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_renderer(this.__ptr), Renderer);
+    }});
+Object.defineProperty(GfxSystem.prototype, "copy", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_copy(this.__ptr), BlockCopy);
+    },
+    set: function(value) {
+        if (!checkClass(value, BlockCopy)) throw Error('GfxSystem.copy: expected BlockCopy');
+        _two_GfxSystem__set_copy(this.__ptr, value.__ptr);
+    }
+});
+Object.defineProperty(GfxSystem.prototype, "filter", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_filter(this.__ptr), BlockFilter);
+    },
+    set: function(value) {
+        if (!checkClass(value, BlockFilter)) throw Error('GfxSystem.filter: expected BlockFilter');
+        _two_GfxSystem__set_filter(this.__ptr, value.__ptr);
+    }
+});
+Object.defineProperty(GfxSystem.prototype, "flip_y", {
+    get: function() {
+        return !!(_two_GfxSystem__get_flip_y(this.__ptr));
+    },
+    set: function(value) {
+        if (typeof value !== 'boolean') throw Error('GfxSystem.flip_y: expected boolean');
+        _two_GfxSystem__set_flip_y(this.__ptr, value);
+    }
+});
+Object.defineProperty(GfxSystem.prototype, "render_frame", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_render_frame(this.__ptr), RenderFrame);
+    },
+    set: function(value) {
+        if (!checkClass(value, RenderFrame)) throw Error('GfxSystem.render_frame: expected RenderFrame');
+        _two_GfxSystem__set_render_frame(this.__ptr, value.__ptr);
+    }
+});
+Object.defineProperty(GfxSystem.prototype, "textures", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_textures(this.__ptr), AssetStore_two_Texture);
+    }});
+Object.defineProperty(GfxSystem.prototype, "programs", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_programs(this.__ptr), AssetStore_two_Program);
+    }});
+Object.defineProperty(GfxSystem.prototype, "materials", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_materials(this.__ptr), AssetStore_two_Material);
+    }});
+Object.defineProperty(GfxSystem.prototype, "models", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_models(this.__ptr), AssetStore_two_Model);
+    }});
+Object.defineProperty(GfxSystem.prototype, "flows", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_flows(this.__ptr), AssetStore_two_Flow);
+    }});
+Object.defineProperty(GfxSystem.prototype, "prefabs", {
+    get: function() {
+        return wrapPointer(_two_GfxSystem__get_prefabs(this.__ptr), AssetStore_two_Prefab);
+    }});
+GfxSystem.prototype["__destroy"] = GfxSystem.prototype.__destroy = function() {
+    _two_GfxSystem__destroy(this.__ptr);
 };
 // MaterialParam<two::Colour>
 function MaterialParam_two_Colour() {
@@ -4078,23 +4249,33 @@ BlockCopy.prototype.__class = BlockCopy;
 BlockCopy.__base = GfxBlock;
 BlockCopy.__cache = {};
 Module['BlockCopy'] = BlockCopy;
-BlockCopy.prototype["submit"] = BlockCopy.prototype.submit = function(a0, a1, a2, a3, a4) {
+BlockCopy.prototype["submit"] = BlockCopy.prototype.submit = function(a0, a1, a2, a3, a4, a5) {
     if (a4 === undefined) { if (!checkClass(a0, Pass)) throw Error('submit(0:pass): expected Pass'); if (!checkClass(a1, FrameBuffer)) throw Error('submit(1:fbo): expected FrameBuffer'); if (!checkClass(a2, Texture)) throw Error('submit(2:texture): expected Texture'); if (!checkClass(a3, RenderQuad)) throw Error('submit(3:quad): expected RenderQuad'); }
-    else { if (!checkClass(a0, Pass)) throw Error('submit(0:pass): expected Pass'); if (!checkClass(a1, FrameBuffer)) throw Error('submit(1:fbo): expected FrameBuffer'); if (!checkClass(a2, Texture)) throw Error('submit(2:texture): expected Texture'); if (!checkClass(a3, RenderQuad)) throw Error('submit(3:quad): expected RenderQuad'); if (typeof a4 !== 'number') throw Error('submit(4:flags): expected integer'); }
+    else if (a5 === undefined) { if (!checkClass(a0, Pass)) throw Error('submit(0:pass): expected Pass'); if (!checkClass(a1, FrameBuffer)) throw Error('submit(1:fbo): expected FrameBuffer'); if (!checkClass(a2, Texture)) throw Error('submit(2:texture): expected Texture'); if (!checkClass(a3, RenderQuad)) throw Error('submit(3:quad): expected RenderQuad'); if (typeof a4 !== 'number') throw Error('submit(4:flags): expected integer'); }
+    else { if (!checkClass(a0, Pass)) throw Error('submit(0:pass): expected Pass'); if (!checkClass(a1, FrameBuffer)) throw Error('submit(1:fbo): expected FrameBuffer'); if (!checkClass(a2, Texture)) throw Error('submit(2:texture): expected Texture'); if (!checkClass(a3, RenderQuad)) throw Error('submit(3:quad): expected RenderQuad'); if (typeof a4 !== 'number') throw Error('submit(4:flags): expected integer'); if (typeof a5 !== 'boolean') throw Error('submit(5:render): expected boolean'); }
     if (a4 === undefined) { _two_BlockCopy_submit_4(this.__ptr, /*pass*/a0.__ptr, /*fbo*/a1.__ptr, /*texture*/a2.__ptr, /*quad*/a3.__ptr); }
-    else { _two_BlockCopy_submit_5(this.__ptr, /*pass*/a0.__ptr, /*fbo*/a1.__ptr, /*texture*/a2.__ptr, /*quad*/a3.__ptr, /*flags*/a4); }
+    else if (a5 === undefined) { _two_BlockCopy_submit_5(this.__ptr, /*pass*/a0.__ptr, /*fbo*/a1.__ptr, /*texture*/a2.__ptr, /*quad*/a3.__ptr, /*flags*/a4); }
+    else { _two_BlockCopy_submit_6(this.__ptr, /*pass*/a0.__ptr, /*fbo*/a1.__ptr, /*texture*/a2.__ptr, /*quad*/a3.__ptr, /*flags*/a4, /*render*/a5); }
 };
-BlockCopy.prototype["quad"] = BlockCopy.prototype.quad = function(a0, a1, a2, a3) {
+BlockCopy.prototype["quad"] = BlockCopy.prototype.quad = function(a0, a1, a2, a3, a4) {
     if (a3 === undefined) { if (!checkClass(a0, Pass)) throw Error('quad(0:pass): expected Pass'); if (!checkClass(a1, FrameBuffer)) throw Error('quad(1:fbo): expected FrameBuffer'); if (!checkClass(a2, Texture)) throw Error('quad(2:texture): expected Texture'); }
-    else { if (!checkClass(a0, Pass)) throw Error('quad(0:pass): expected Pass'); if (!checkClass(a1, FrameBuffer)) throw Error('quad(1:fbo): expected FrameBuffer'); if (!checkClass(a2, Texture)) throw Error('quad(2:texture): expected Texture'); if (typeof a3 !== 'number') throw Error('quad(3:flags): expected integer'); }
+    else if (a4 === undefined) { if (!checkClass(a0, Pass)) throw Error('quad(0:pass): expected Pass'); if (!checkClass(a1, FrameBuffer)) throw Error('quad(1:fbo): expected FrameBuffer'); if (!checkClass(a2, Texture)) throw Error('quad(2:texture): expected Texture'); if (typeof a3 !== 'number') throw Error('quad(3:flags): expected integer'); }
+    else { if (!checkClass(a0, Pass)) throw Error('quad(0:pass): expected Pass'); if (!checkClass(a1, FrameBuffer)) throw Error('quad(1:fbo): expected FrameBuffer'); if (!checkClass(a2, Texture)) throw Error('quad(2:texture): expected Texture'); if (typeof a3 !== 'number') throw Error('quad(3:flags): expected integer'); if (typeof a4 !== 'boolean') throw Error('quad(4:render): expected boolean'); }
     if (a3 === undefined) { _two_BlockCopy_quad_3(this.__ptr, /*pass*/a0.__ptr, /*fbo*/a1.__ptr, /*texture*/a2.__ptr); }
-    else { _two_BlockCopy_quad_4(this.__ptr, /*pass*/a0.__ptr, /*fbo*/a1.__ptr, /*texture*/a2.__ptr, /*flags*/a3); }
+    else if (a4 === undefined) { _two_BlockCopy_quad_4(this.__ptr, /*pass*/a0.__ptr, /*fbo*/a1.__ptr, /*texture*/a2.__ptr, /*flags*/a3); }
+    else { _two_BlockCopy_quad_5(this.__ptr, /*pass*/a0.__ptr, /*fbo*/a1.__ptr, /*texture*/a2.__ptr, /*flags*/a3, /*render*/a4); }
 };
 BlockCopy.prototype["debug_show_texture"] = BlockCopy.prototype.debug_show_texture = function(a0, a1, a2, a3) {
     if (a3 === undefined) { if (!checkClass(a0, Render)) throw Error('debug_show_texture(0:render): expected Render'); if (!checkClass(a1, Texture)) throw Error('debug_show_texture(1:texture): expected Texture'); if (!checkClass(a2, v4_float)) throw Error('debug_show_texture(2:rect): expected v4<float>'); }
     else { if (!checkClass(a0, Render)) throw Error('debug_show_texture(0:render): expected Render'); if (!checkClass(a1, Texture)) throw Error('debug_show_texture(1:texture): expected Texture'); if (!checkClass(a2, v4_float)) throw Error('debug_show_texture(2:rect): expected v4<float>'); if (typeof a3 !== 'number') throw Error('debug_show_texture(3:level): expected integer'); }
     if (a3 === undefined) { _two_BlockCopy_debug_show_texture_3(this.__ptr, /*render*/a0.__ptr, /*texture*/a1.__ptr, /*rect*/a2.__ptr); }
     else { _two_BlockCopy_debug_show_texture_4(this.__ptr, /*render*/a0.__ptr, /*texture*/a1.__ptr, /*rect*/a2.__ptr, /*level*/a3); }
+};
+BlockCopy.prototype["debug_show_texturep"] = BlockCopy.prototype.debug_show_texturep = function(a0, a1, a2, a3) {
+    if (a3 === undefined) { if (!checkClass(a0, Render)) throw Error('debug_show_texturep(0:render): expected Render'); if (!checkClass(a1, Texture)) throw Error('debug_show_texturep(1:texture): expected Texture'); if (!checkClass(a2, v4_float)) throw Error('debug_show_texturep(2:rect): expected v4<float>'); }
+    else { if (!checkClass(a0, Render)) throw Error('debug_show_texturep(0:render): expected Render'); if (!checkClass(a1, Texture)) throw Error('debug_show_texturep(1:texture): expected Texture'); if (!checkClass(a2, v4_float)) throw Error('debug_show_texturep(2:rect): expected v4<float>'); if (typeof a3 !== 'number') throw Error('debug_show_texturep(3:level): expected integer'); }
+    if (a3 === undefined) { _two_BlockCopy_debug_show_texturep_3(this.__ptr, /*render*/a0.__ptr, /*texture*/a1.__ptr, /*rect*/a2.__ptr); }
+    else { _two_BlockCopy_debug_show_texturep_4(this.__ptr, /*render*/a0.__ptr, /*texture*/a1.__ptr, /*rect*/a2.__ptr, /*level*/a3); }
 };
 BlockCopy.prototype["__destroy"] = BlockCopy.prototype.__destroy = function() {
     _two_BlockCopy__destroy(this.__ptr);
@@ -4315,162 +4496,6 @@ Object.defineProperty(Light.prototype, "shadow_bias", {
 });
 Light.prototype["__destroy"] = Light.prototype.__destroy = function() {
     _two_Light__destroy(this.__ptr);
-};
-// GfxWindow
-function GfxWindow() { throw "cannot construct a GfxWindow, no constructor in IDL" }
-GfxWindow.prototype = Object.create(WrapperObject.prototype);
-GfxWindow.prototype.constructor = GfxWindow;
-GfxWindow.prototype.__class = GfxWindow;
-GfxWindow.__cache = {};
-Module['GfxWindow'] = GfxWindow;
-GfxWindow.prototype["__destroy"] = GfxWindow.prototype.__destroy = function() {
-    _two_GfxWindow__destroy(this.__ptr);
-};
-// GfxSystem
-function GfxSystem(a0) {
-    ensureCache.prepare();
-    if (typeof a0 !== 'string') throw Error('GfxSystem(0:resource_path): expected string');
-    this.__ptr = _two_GfxSystem__construct_1(ensureString(/*resource_path*/a0)); getCache(GfxSystem)[this.__ptr] = this;
-};
-GfxSystem.prototype = Object.create(BgfxSystem.prototype);
-GfxSystem.prototype.constructor = GfxSystem;
-GfxSystem.prototype.__class = GfxSystem;
-GfxSystem.__base = BgfxSystem;
-GfxSystem.__cache = {};
-Module['GfxSystem'] = GfxSystem;
-GfxSystem.prototype["main_target"] = GfxSystem.prototype.main_target = function() {
-    
-    return wrapPointer(_two_GfxSystem_main_target_0(this.__ptr), RenderTarget);
-};
-GfxSystem.prototype["default_pipeline"] = GfxSystem.prototype.default_pipeline = function() {
-    
-    _two_GfxSystem_default_pipeline_0(this.__ptr);
-};
-GfxSystem.prototype["add_resource_path"] = GfxSystem.prototype.add_resource_path = function(a0, a1) {
-    ensureCache.prepare();
-    if (a1 === undefined) { if (typeof a0 !== 'string') throw Error('add_resource_path(0:path): expected string'); }
-    else { if (typeof a0 !== 'string') throw Error('add_resource_path(0:path): expected string'); if (typeof a1 !== 'boolean') throw Error('add_resource_path(1:relative): expected boolean'); }
-    if (a1 === undefined) { _two_GfxSystem_add_resource_path_1(this.__ptr, ensureString(/*path*/a0)); }
-    else { _two_GfxSystem_add_resource_path_2(this.__ptr, ensureString(/*path*/a0), /*relative*/a1); }
-};
-GfxSystem.prototype["debug_material"] = GfxSystem.prototype.debug_material = function() {
-    
-    return wrapPointer(_two_GfxSystem_debug_material_0(this.__ptr), Material);
-};
-GfxSystem.prototype["create_model"] = GfxSystem.prototype.create_model = function(a0) {
-    ensureCache.prepare();
-    if (typeof a0 !== 'string') throw Error('create_model(0:name): expected string');
-    return wrapPointer(_two_GfxSystem_create_model_1(this.__ptr, ensureString(/*name*/a0)), Model);
-};
-GfxSystem.prototype["create_model_geo"] = GfxSystem.prototype.create_model_geo = function(a0, a1, a2, a3) {
-    ensureCache.prepare();
-    if (a2 === undefined) { if (typeof a0 !== 'string') throw Error('create_model_geo(0:name): expected string'); if (!checkClass(a1, MeshPacker)) throw Error('create_model_geo(1:geometry): expected MeshPacker'); }
-    else if (a3 === undefined) { if (typeof a0 !== 'string') throw Error('create_model_geo(0:name): expected string'); if (!checkClass(a1, MeshPacker)) throw Error('create_model_geo(1:geometry): expected MeshPacker'); if (typeof a2 !== 'boolean') throw Error('create_model_geo(2:readback): expected boolean'); }
-    else { if (typeof a0 !== 'string') throw Error('create_model_geo(0:name): expected string'); if (!checkClass(a1, MeshPacker)) throw Error('create_model_geo(1:geometry): expected MeshPacker'); if (typeof a2 !== 'boolean') throw Error('create_model_geo(2:readback): expected boolean'); if (typeof a3 !== 'boolean') throw Error('create_model_geo(3:optimize): expected boolean'); }
-    if (a2 === undefined) { return wrapPointer(_two_GfxSystem_create_model_geo_2(this.__ptr, ensureString(/*name*/a0), /*geometry*/a1.__ptr), Model); }
-    else if (a3 === undefined) { return wrapPointer(_two_GfxSystem_create_model_geo_3(this.__ptr, ensureString(/*name*/a0), /*geometry*/a1.__ptr, /*readback*/a2), Model); }
-    else { return wrapPointer(_two_GfxSystem_create_model_geo_4(this.__ptr, ensureString(/*name*/a0), /*geometry*/a1.__ptr, /*readback*/a2, /*optimize*/a3), Model); }
-};
-GfxSystem.prototype["create_model_gpu"] = GfxSystem.prototype.create_model_gpu = function(a0, a1, a2, a3) {
-    ensureCache.prepare();
-    if (a2 === undefined) { if (typeof a0 !== 'string') throw Error('create_model_gpu(0:name): expected string'); if (!checkClass(a1, GpuMesh)) throw Error('create_model_gpu(1:gpu_mesh): expected GpuMesh'); }
-    else if (a3 === undefined) { if (typeof a0 !== 'string') throw Error('create_model_gpu(0:name): expected string'); if (!checkClass(a1, GpuMesh)) throw Error('create_model_gpu(1:gpu_mesh): expected GpuMesh'); if (typeof a2 !== 'boolean') throw Error('create_model_gpu(2:readback): expected boolean'); }
-    else { if (typeof a0 !== 'string') throw Error('create_model_gpu(0:name): expected string'); if (!checkClass(a1, GpuMesh)) throw Error('create_model_gpu(1:gpu_mesh): expected GpuMesh'); if (typeof a2 !== 'boolean') throw Error('create_model_gpu(2:readback): expected boolean'); if (typeof a3 !== 'boolean') throw Error('create_model_gpu(3:optimize): expected boolean'); }
-    if (a2 === undefined) { return wrapPointer(_two_GfxSystem_create_model_gpu_2(this.__ptr, ensureString(/*name*/a0), /*gpu_mesh*/a1.__ptr), Model); }
-    else if (a3 === undefined) { return wrapPointer(_two_GfxSystem_create_model_gpu_3(this.__ptr, ensureString(/*name*/a0), /*gpu_mesh*/a1.__ptr, /*readback*/a2), Model); }
-    else { return wrapPointer(_two_GfxSystem_create_model_gpu_4(this.__ptr, ensureString(/*name*/a0), /*gpu_mesh*/a1.__ptr, /*readback*/a2, /*optimize*/a3), Model); }
-};
-GfxSystem.prototype["fetch_material"] = GfxSystem.prototype.fetch_material = function(a0, a1, a2) {
-    ensureCache.prepare();
-    if (a2 === undefined) { if (typeof a0 !== 'string') throw Error('fetch_material(0:name): expected string'); if (typeof a1 !== 'string') throw Error('fetch_material(1:shader): expected string'); }
-    else { if (typeof a0 !== 'string') throw Error('fetch_material(0:name): expected string'); if (typeof a1 !== 'string') throw Error('fetch_material(1:shader): expected string'); if (typeof a2 !== 'boolean') throw Error('fetch_material(2:builtin): expected boolean'); }
-    if (a2 === undefined) { return wrapPointer(_two_GfxSystem_fetch_material_2(this.__ptr, ensureString(/*name*/a0), ensureString(/*shader*/a1)), Material); }
-    else { return wrapPointer(_two_GfxSystem_fetch_material_3(this.__ptr, ensureString(/*name*/a0), ensureString(/*shader*/a1), /*builtin*/a2), Material); }
-};
-GfxSystem.prototype["fetch_image256_material"] = GfxSystem.prototype.fetch_image256_material = function(a0) {
-    if (!checkClass(a0, Image256)) throw Error('fetch_image256_material(0:image): expected Image256');
-    return wrapPointer(_two_GfxSystem_fetch_image256_material_1(this.__ptr, /*image*/a0.__ptr), Material);
-};
-GfxSystem.prototype["shape"] = GfxSystem.prototype.shape = function(a0, a1, a2) {
-    if (a1 === undefined) { if (!checkClass(a0, Shape)) throw Error('shape(0:shape): expected Shape'); }
-    else if (a2 === undefined) { if (!checkClass(a0, Shape)) throw Error('shape(0:shape): expected Shape'); if (!checkClass(a1, Symbol)) throw Error('shape(1:symbol): expected Symbol'); }
-    else { if (!checkClass(a0, Shape)) throw Error('shape(0:shape): expected Shape'); if (!checkClass(a1, Symbol)) throw Error('shape(1:symbol): expected Symbol'); if (typeof a2 !== 'number') throw Error('shape(2:draw_mode): expected integer'); }
-    if (a1 === undefined) { return wrapPointer(_two_GfxSystem_shape_1(this.__ptr, /*shape*/a0.__ptr), Model); }
-    else if (a2 === undefined) { return wrapPointer(_two_GfxSystem_shape_2(this.__ptr, /*shape*/a0.__ptr, /*symbol*/a1.__ptr), Model); }
-    else { return wrapPointer(_two_GfxSystem_shape_3(this.__ptr, /*shape*/a0.__ptr, /*symbol*/a1.__ptr, /*draw_mode*/a2), Model); }
-};
-GfxSystem.prototype["symbol_material"] = GfxSystem.prototype.symbol_material = function(a0, a1) {
-    if (a1 === undefined) { if (!checkClass(a0, Symbol)) throw Error('symbol_material(0:symbol): expected Symbol'); }
-    else { if (!checkClass(a0, Symbol)) throw Error('symbol_material(0:symbol): expected Symbol'); if (typeof a1 !== 'number') throw Error('symbol_material(1:draw_mode): expected integer'); }
-    if (a1 === undefined) { return wrapPointer(_two_GfxSystem_symbol_material_1(this.__ptr, /*symbol*/a0.__ptr), Material); }
-    else { return wrapPointer(_two_GfxSystem_symbol_material_2(this.__ptr, /*symbol*/a0.__ptr, /*draw_mode*/a1), Material); }
-};
-Object.defineProperty(GfxSystem.prototype, "renderer", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_renderer(this.__ptr), Renderer);
-    }});
-Object.defineProperty(GfxSystem.prototype, "copy", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_copy(this.__ptr), BlockCopy);
-    },
-    set: function(value) {
-        if (!checkClass(value, BlockCopy)) throw Error('GfxSystem.copy: expected BlockCopy');
-        _two_GfxSystem__set_copy(this.__ptr, value.__ptr);
-    }
-});
-Object.defineProperty(GfxSystem.prototype, "filter", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_filter(this.__ptr), BlockFilter);
-    },
-    set: function(value) {
-        if (!checkClass(value, BlockFilter)) throw Error('GfxSystem.filter: expected BlockFilter');
-        _two_GfxSystem__set_filter(this.__ptr, value.__ptr);
-    }
-});
-Object.defineProperty(GfxSystem.prototype, "flip_y", {
-    get: function() {
-        return !!(_two_GfxSystem__get_flip_y(this.__ptr));
-    },
-    set: function(value) {
-        if (typeof value !== 'boolean') throw Error('GfxSystem.flip_y: expected boolean');
-        _two_GfxSystem__set_flip_y(this.__ptr, value);
-    }
-});
-Object.defineProperty(GfxSystem.prototype, "render_frame", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_render_frame(this.__ptr), RenderFrame);
-    },
-    set: function(value) {
-        if (!checkClass(value, RenderFrame)) throw Error('GfxSystem.render_frame: expected RenderFrame');
-        _two_GfxSystem__set_render_frame(this.__ptr, value.__ptr);
-    }
-});
-Object.defineProperty(GfxSystem.prototype, "textures", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_textures(this.__ptr), AssetStore_two_Texture);
-    }});
-Object.defineProperty(GfxSystem.prototype, "programs", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_programs(this.__ptr), AssetStore_two_Program);
-    }});
-Object.defineProperty(GfxSystem.prototype, "materials", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_materials(this.__ptr), AssetStore_two_Material);
-    }});
-Object.defineProperty(GfxSystem.prototype, "models", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_models(this.__ptr), AssetStore_two_Model);
-    }});
-Object.defineProperty(GfxSystem.prototype, "flows", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_flows(this.__ptr), AssetStore_two_Flow);
-    }});
-Object.defineProperty(GfxSystem.prototype, "prefabs", {
-    get: function() {
-        return wrapPointer(_two_GfxSystem__get_prefabs(this.__ptr), AssetStore_two_Prefab);
-    }});
-GfxSystem.prototype["__destroy"] = GfxSystem.prototype.__destroy = function() {
-    _two_GfxSystem__destroy(this.__ptr);
 };
 // Gnode
 function Gnode() { throw "cannot construct a Gnode, no constructor in IDL" }
@@ -4746,6 +4771,15 @@ Object.defineProperty(Viewport.prototype, "autorender", {
     set: function(value) {
         if (typeof value !== 'boolean') throw Error('Viewport.autorender: expected boolean');
         _two_Viewport__set_autorender(this.__ptr, value);
+    }
+});
+Object.defineProperty(Viewport.prototype, "autoflip", {
+    get: function() {
+        return !!(_two_Viewport__get_autoflip(this.__ptr));
+    },
+    set: function(value) {
+        if (typeof value !== 'boolean') throw Error('Viewport.autoflip: expected boolean');
+        _two_Viewport__set_autoflip(this.__ptr, value);
     }
 });
 Object.defineProperty(Viewport.prototype, "rect", {
@@ -5840,13 +5874,13 @@ Module['render_clear'] = function(a0, a1) {
         AnimNode.prototype.__type = _two_AnimNode__type();
         AnimPlay.prototype.__type = _two_AnimPlay__type();
         Mime.prototype.__type = _two_Mime__type();
+        Frustum.prototype.__type = _two_Frustum__type();
+        FrustumSlice.prototype.__type = _two_FrustumSlice__type();
         ShaderDefine.prototype.__type = _two_ShaderDefine__type();
         ShaderBlock.prototype.__type = _two_ShaderBlock__type();
         ProgramMode.prototype.__type = _two_ProgramMode__type();
         ProgramBlock.prototype.__type = _two_ProgramBlock__type();
         Program.prototype.__type = _two_Program__type();
-        Frustum.prototype.__type = _two_Frustum__type();
-        FrustumSlice.prototype.__type = _two_FrustumSlice__type();
         ProgramVersion.prototype.__type = _two_ProgramVersion__type();
         Shot.prototype.__type = _two_Shot__type();
         Pass.prototype.__type = _two_Pass__type();
@@ -5855,6 +5889,8 @@ Module['render_clear'] = function(a0, a1) {
         GfxBlock.prototype.__type = _two_GfxBlock__type();
         DrawBlock.prototype.__type = _two_DrawBlock__type();
         Renderer.prototype.__type = _two_Renderer__type();
+        GfxWindow.prototype.__type = _two_GfxWindow__type();
+        GfxSystem.prototype.__type = _two_GfxSystem__type();
         MaterialBase.prototype.__type = _two_MaterialBase__type();
         MaterialUser.prototype.__type = _two_MaterialUser__type();
         MaterialAlpha.prototype.__type = _two_MaterialAlpha__type();
@@ -5892,8 +5928,6 @@ Module['render_clear'] = function(a0, a1) {
         BlockCopy.prototype.__type = _two_BlockCopy__type();
         ClusteredFrustum.prototype.__type = _two_ClusteredFrustum__type();
         Light.prototype.__type = _two_Light__type();
-        GfxWindow.prototype.__type = _two_GfxWindow__type();
-        GfxSystem.prototype.__type = _two_GfxSystem__type();
         Gnode.prototype.__type = _two_Gnode__type();
         Culler.prototype.__type = _two_Culler__type();
         Viewport.prototype.__type = _two_Viewport__type();
@@ -5930,6 +5964,7 @@ Module['render_clear'] = function(a0, a1) {
         Module['TextureHint']['Normal'] = _two_TextureHint_Normal();
         // TextureFormat
         Module['TextureFormat'] = Module['TextureFormat'] || {};
+        Module['TextureFormat']['None'] = _two_TextureFormat_None();
         Module['TextureFormat']['R8'] = _two_TextureFormat_R8();
         Module['TextureFormat']['R16F'] = _two_TextureFormat_R16F();
         Module['TextureFormat']['R32U'] = _two_TextureFormat_R32U();
@@ -5947,6 +5982,7 @@ Module['render_clear'] = function(a0, a1) {
         Module['TextureFormat']['D24'] = _two_TextureFormat_D24();
         Module['TextureFormat']['D24S8'] = _two_TextureFormat_D24S8();
         Module['TextureFormat']['D32'] = _two_TextureFormat_D32();
+        Module['TextureFormat']['D32F'] = _two_TextureFormat_D32F();
         Module['TextureFormat']['Count'] = _two_TextureFormat_Count();
         // ShaderType
         Module['ShaderType'] = Module['ShaderType'] || {};

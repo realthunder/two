@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(srlz);
+module two.srlz.meta;
 #else
 #include <refl/Module.h>
 #include <meta/infra.meta.h>

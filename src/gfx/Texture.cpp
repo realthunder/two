@@ -11,7 +11,7 @@ module;
 #include <bx/readerwriter.h>
 #include <bx/file.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <bgfx/bgfx.h>
 #include <bimg/bimg.h>

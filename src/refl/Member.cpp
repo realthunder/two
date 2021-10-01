@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(refl);
+module two.refl;
 #else
 #include <refl/Member.h>
 #include <refl/Meta.h>

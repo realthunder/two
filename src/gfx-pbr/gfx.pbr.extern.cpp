@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module TWO2(gfx, pbr);
+module two.gfx.pbr;
 #else
 #include <stl/vector.hpp>
 #include <stl/unordered_map.hpp>

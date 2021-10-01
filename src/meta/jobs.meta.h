@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <jobs/Forward.h>
 //#include <jobs/Types.h>
+#endif
 
-#ifndef TWO_JOBS_REFL_EXPORT
-#define TWO_JOBS_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_JOBS_META_EXPORT
+#define TWO_JOBS_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_JOBS_REFL_EXPORT two_jobs : public two::Module
+	export_ class TWO_JOBS_META_EXPORT two_jobs : public two::Module
 	{
 	private:
 		two_jobs();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_JOBS_MODULE
 extern "C"
-TWO_JOBS_REFL_EXPORT Module& getModule();
+TWO_JOBS_META_EXPORT Module& getModule();
 #endif

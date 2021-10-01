@@ -1,11 +1,18 @@
+#ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
+#include <xx_three/ex.h>
+module two.xxthree;
+#else
 //#include <two/frame.h>
 #include <xx_three/xx_three.h>
 #include <gfx-pbr/Api.h>
 #include <gfx-obj/Api.h>
-
 #include <xx_three/xx_three.h>
-
 #include <stl/vector.hpp>
+#endif
+
+using namespace two;
 
 #define CLUSTERED 1
 

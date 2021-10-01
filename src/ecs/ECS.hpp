@@ -157,7 +157,9 @@ namespace two
 	{
 		const uint32_t index = m_handles[handle];
 		TBuffer<T>& buffer = this->buffer<T>();
+#ifndef TWO_MODULES
 		TWO_ASSERT(buffer.m_data.size() > index, "Accessing out of bounds component %s at index %d", type<T>().m_name, index);
+#endif
 		return buffer.m_data[index];
 	}
 

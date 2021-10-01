@@ -78,4 +78,5 @@ namespace two
     export_ class Lightmap;
     export_ class LightmapAtlas;
     export_ class LightmapItem;
+    export_ class PBRShot;
 }

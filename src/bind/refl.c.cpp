@@ -113,6 +113,22 @@ extern "C" {
 	void DECL two_Destructor__destroy(two::Destructor* self) {
 		delete self;
 	}
+	// Call
+	two::Type* DECL two_Call__type() {
+		return &two::type<two::Call>();
+	}
+	two::Call* DECL two_Call__construct_0() {
+		return new two::Call();
+	}
+	void** DECL two_Call__get_vargs(two::Call* self) {
+		return (void**)self->m_vargs.data();
+	}
+	two::Var* DECL two_Call__get_result(two::Call* self) {
+		return &self->m_result;
+	}
+	void DECL two_Call__destroy(two::Call* self) {
+		delete self;
+	}
 	// Meta
 	two::Type* DECL two_Meta__type() {
 		return &two::type<two::Meta>();
@@ -153,22 +169,6 @@ extern "C" {
 		return &two::type<two::Enum>();
 	}
 	void DECL two_Enum__destroy(two::Enum* self) {
-		delete self;
-	}
-	// Call
-	two::Type* DECL two_Call__type() {
-		return &two::type<two::Call>();
-	}
-	two::Call* DECL two_Call__construct_0() {
-		return new two::Call();
-	}
-	void** DECL two_Call__get_vargs(two::Call* self) {
-		return (void**)self->m_vargs.data();
-	}
-	two::Var* DECL two_Call__get_result(two::Call* self) {
-		return &self->m_result;
-	}
-	void DECL two_Call__destroy(two::Call* self) {
 		delete self;
 	}
 	// Injector

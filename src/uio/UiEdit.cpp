@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(uio);
+module two.uio;
 #else
 #include <infra/ToString.h>
 #include <ui/Ui.h>

@@ -6,7 +6,7 @@
 module;
 #include <infra/Cpp20.h>
 #include <bgfx/bgfx.h>
-module TWO(gfx.ui);
+module two.gfx.ui;
 #else
 #include <stl/algorithm.h>
 #include <tree/Graph.hpp>

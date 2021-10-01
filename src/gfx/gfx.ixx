@@ -13,23 +13,23 @@ module;
 #include <bx/readerwriter.h>
 #include <bx/file.h>
 
-export module TWO(gfx);
+export module two.gfx;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(json11);
-export import TWO(infra);
-export import TWO(type);
-export import TWO(tree);
-export import TWO(jobs);
-export import TWO(pool);
-export import TWO(ecs);
-export import TWO(math);
-export import TWO(geom);
-export import TWO(ctx);
-export import TWO(bgfx);
-//export import TWO(ui); // @TODO because of class Vg;
+export import json11;
+export import two.infra;
+export import two.type;
+export import two.tree;
+export import two.jobs;
+export import two.pool;
+export import two.ecs;
+export import two.math;
+export import two.geom;
+export import two.ctx;
+export import two.bgfx;
+//export import two.ui; // @TODO because of class Vg;
 
 #include <gfx/Api.h>
 

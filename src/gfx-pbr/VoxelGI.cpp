@@ -6,7 +6,7 @@
 module;
 #include <xatlas.h>
 #include <gfx/Cpp20.h>
-module TWO2(gfx, pbr);
+module two.gfx.pbr;
 #else
 
 #include <cstdio>
@@ -29,6 +29,7 @@ module TWO2(gfx, pbr);
 #include <gfx-pbr/Lighting.h>
 #include <gfx-pbr/Shadow.h>
 #include <gfx-pbr/Lightmap.h>
+#include <gfx-pbr/PipelinePbr.h>
 #include <gfx-pbr/Gpu/VoxelGI.hpp>
 #endif
 

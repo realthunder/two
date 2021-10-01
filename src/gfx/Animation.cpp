@@ -6,7 +6,7 @@
 module;
 #include <cassert>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <cassert>
 #include <algorithm>

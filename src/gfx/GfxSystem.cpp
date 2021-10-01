@@ -10,7 +10,7 @@ module;
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <Tracy.hpp>
 #include <bx/timer.h>

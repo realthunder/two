@@ -2,15 +2,15 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO(lang);
+export module two.lang;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(infra);
-export import TWO(type);
-export import TWO(pool);
-export import TWO(refl);
+export import two.infra;
+export import two.type;
+export import two.pool;
+export import two.refl;
 
 #include <lang/Api.h>
 

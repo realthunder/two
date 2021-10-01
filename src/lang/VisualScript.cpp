@@ -6,7 +6,7 @@
 module;
 #include <cstdio>
 #include <infra/Cpp20.h>
-module TWO(lang);
+module two.lang;
 #else
 #include <cstdio>
 #include <algorithm>

@@ -13,8 +13,8 @@
 
 #ifndef TWO_MODULES
 #include <infra/Types.h>
-#include <tree/Types.h>
 #include <type/Types.h>
+#include <tree/Types.h>
 #include <ecs/Types.h>
 #include <pool/Types.h>
 #include <refl/Types.h>

@@ -805,6 +805,9 @@ namespace two
 			string module_cpp = clgen::module_cpp_template(module);
 			update_file(module.m_refl_path + "/" + module.m_dotname + ".meta.cpp", module_cpp);
 
+			string module_ixx = clgen::module_meta_ixx_template(module);
+			update_file(module.m_refl_path + "/" + module.m_dotname + ".meta.ixx", module_ixx);
+
 			string convert_h = clgen::convert_h_template(module);
 			update_file(module.m_refl_path + "/" + module.m_dotname + ".conv.h", convert_h);
 
@@ -861,7 +864,7 @@ using namespace two;
 
 int main(int argc, char *argv[])
 {
-	string all = "d:/Documents/Programmation/toy/build/refl/two_infra_refl.json d:/Documents/Programmation/toy/build/refl/two_jobs_refl.json d:/Documents/Programmation/toy/build/refl/two_type_refl.json d:/Documents/Programmation/toy/build/refl/two_tree_refl.json d:/Documents/Programmation/toy/build/refl/two_pool_refl.json d:/Documents/Programmation/toy/build/refl/two_refl_refl.json d:/Documents/Programmation/toy/build/refl/two_ecs_refl.json d:/Documents/Programmation/toy/build/refl/two_srlz_refl.json d:/Documents/Programmation/toy/build/refl/two_math_refl.json d:/Documents/Programmation/toy/build/refl/two_geom_refl.json d:/Documents/Programmation/toy/build/refl/two_noise_refl.json d:/Documents/Programmation/toy/build/refl/two_wfc_refl.json d:/Documents/Programmation/toy/build/refl/two_fract_refl.json d:/Documents/Programmation/toy/build/refl/two_lang_refl.json d:/Documents/Programmation/toy/build/refl/two_ctx_refl.json d:/Documents/Programmation/toy/build/refl/two_ui_refl.json d:/Documents/Programmation/toy/build/refl/two_uio_refl.json d:/Documents/Programmation/toy/build/refl/two_snd_refl.json d:/Documents/Programmation/toy/build/refl/two_bgfx_refl.json d:/Documents/Programmation/toy/build/refl/two_gfx_refl.json d:/Documents/Programmation/toy/build/refl/two_gltf_refl.json d:/Documents/Programmation/toy/build/refl/two_gfx_pbr_refl.json d:/Documents/Programmation/toy/build/refl/two_gfx_obj_refl.json d:/Documents/Programmation/toy/build/refl/two_gfx_gltf_refl.json d:/Documents/Programmation/toy/build/refl/two_gfx_ui_refl.json d:/Documents/Programmation/toy/build/refl/two_gfx_edit_refl.json d:/Documents/Programmation/toy/build/refl/two_tool_refl.json d:/Documents/Programmation/toy/build/refl/two_wfc_gfx_refl.json d:/Documents/Programmation/toy/build/refl/two_frame_refl.json d:/Documents/Programmation/toy/build/refl/toy_util_refl.json d:/Documents/Programmation/toy/build/refl/toy_core_refl.json d:/Documents/Programmation/toy/build/refl/toy_visu_refl.json d:/Documents/Programmation/toy/build/refl/toy_edit_refl.json d:/Documents/Programmation/toy/build/refl/toy_block_refl.json d:/Documents/Programmation/toy/build/refl/toy_shell_refl.json d:/Documents/Programmation/toy/build/refl/_test_refl.json d:/Documents/Programmation/toy/build/refl/_minimal_refl.json d:/Documents/Programmation/toy/build/refl/_boids_refl.json d:/Documents/Programmation/toy/build/refl/_space_refl.json d:/Documents/Programmation/toy/build/refl/_platform_refl.json d:/Documents/Programmation/toy/build/refl/_blocks_refl.json d:/Documents/Programmation/toy/build/refl/_wren_refl.json d:/Documents/Programmation/toy/build/refl/_godot_refl.json";
+	string all = "d:/dev/two/build/refl/two_infra_refl.json d:/dev/two/build/refl/two_type_refl.json d:/dev/two/build/refl/two_tree_refl.json d:/dev/two/build/refl/two_jobs_refl.json d:/dev/two/build/refl/two_pool_refl.json d:/dev/two/build/refl/two_refl_refl.json d:/dev/two/build/refl/two_ecs_refl.json d:/dev/two/build/refl/two_srlz_refl.json d:/dev/two/build/refl/two_math_refl.json d:/dev/two/build/refl/two_geom_refl.json d:/dev/two/build/refl/two_noise_refl.json d:/dev/two/build/refl/two_wfc_refl.json d:/dev/two/build/refl/two_fract_refl.json d:/dev/two/build/refl/two_lang_refl.json d:/dev/two/build/refl/two_ctx_refl.json d:/dev/two/build/refl/two_ui_refl.json d:/dev/two/build/refl/two_uio_refl.json d:/dev/two/build/refl/two_snd_refl.json d:/dev/two/build/refl/two_bgfx_refl.json d:/dev/two/build/refl/two_gfx_refl.json d:/dev/two/build/refl/two_gltf_refl.json d:/dev/two/build/refl/two_gfx_pbr_refl.json d:/dev/two/build/refl/two_gfx_obj_refl.json d:/dev/two/build/refl/two_gfx_gltf_refl.json d:/dev/two/build/refl/two_gfx_ui_refl.json d:/dev/two/build/refl/two_gfx_edit_refl.json d:/dev/two/build/refl/two_tool_refl.json d:/dev/two/build/refl/two_wfc_gfx_refl.json d:/dev/two/build/refl/two_frame_refl.json";
 	
 	CLGenerator generator;
 
@@ -878,9 +881,6 @@ int main(int argc, char *argv[])
 		generator.add_module(json_module);
 	}
 
-	//generator.generate_module("two_math");
-	//generator.generate_module("two_geom");
-	//generator.generate_module("two_gfx");
 	generator.generate_all_modules();
 	return 0;
 }

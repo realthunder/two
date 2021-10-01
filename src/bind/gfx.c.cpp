@@ -1,6 +1,7 @@
 #include <infra/Api.h>
-#include <jobs/Api.h>
 #include <type/Api.h>
+#include <tree/Api.h>
+#include <jobs/Api.h>
 #include <pool/Api.h>
 #include <ecs/Api.h>
 #include <math/Api.h>
@@ -176,6 +177,15 @@ extern "C" {
 	bool DECL two_Texture_valid_0(two::Texture* self) {
 		return self->valid();
 	}
+	void DECL two_Texture_load_2(two::Texture* self, two::GfxSystem* gfx, const char* path) {
+		self->load(*gfx, path);
+	}
+	void DECL two_Texture_load_3(two::Texture* self, two::GfxSystem* gfx, const char* path, bool srgb) {
+		self->load(*gfx, path, srgb);
+	}
+	void DECL two_Texture_load_4(two::Texture* self, two::GfxSystem* gfx, const char* path, bool srgb, bool mips) {
+		self->load(*gfx, path, srgb, mips);
+	}
 	void DECL two_Texture_reload_1(two::Texture* self, two::GfxSystem* gfx) {
 		self->reload(*gfx);
 	}
@@ -184,6 +194,9 @@ extern "C" {
 	}
 	void DECL two_Texture_reload_3(two::Texture* self, two::GfxSystem* gfx, bool srgb, bool mips) {
 		self->reload(*gfx, srgb, mips);
+	}
+	void DECL two_Texture_load_mem_2(two::Texture* self, two::GfxSystem* gfx, uchar* data, int data_size) {
+		self->load_mem(*gfx, { (uint8_t*)data, data_size / (sizeof(uint8_t) / sizeof(uchar)) });
 	}
 	void DECL two_Texture_load_rgba_2(two::Texture* self, const two::uvec2* size, uint* data, int data_size) {
 		self->load_rgba(*size, { (uint32_t*)data, data_size / (sizeof(uint32_t) / sizeof(uint)) });
@@ -474,6 +487,59 @@ extern "C" {
 	void DECL two_Mime__destroy(two::Mime* self) {
 		delete self;
 	}
+	// Frustum
+	two::Type* DECL two_Frustum__type() {
+		return &two::type<two::Frustum>();
+	}
+	float DECL two_Frustum__get_fov(two::Frustum* self) {
+		return self->m_fov;
+	}
+	void DECL two_Frustum__set_fov(two::Frustum* self, float value) {
+		self->m_fov = value;
+	}
+	float DECL two_Frustum__get_aspect(two::Frustum* self) {
+		return self->m_aspect;
+	}
+	void DECL two_Frustum__set_aspect(two::Frustum* self, float value) {
+		self->m_aspect = value;
+	}
+	float DECL two_Frustum__get_near(two::Frustum* self) {
+		return self->m_near;
+	}
+	void DECL two_Frustum__set_near(two::Frustum* self, float value) {
+		self->m_near = value;
+	}
+	float DECL two_Frustum__get_far(two::Frustum* self) {
+		return self->m_far;
+	}
+	void DECL two_Frustum__set_far(two::Frustum* self, float value) {
+		self->m_far = value;
+	}
+	two::vec3* DECL two_Frustum__get_center(two::Frustum* self) {
+		return &self->m_center;
+	}
+	void DECL two_Frustum__set_center(two::Frustum* self, two::vec3* value) {
+		self->m_center = *value;
+	}
+	float DECL two_Frustum__get_radius(two::Frustum* self) {
+		return self->m_radius;
+	}
+	void DECL two_Frustum__set_radius(two::Frustum* self, float value) {
+		self->m_radius = value;
+	}
+	void DECL two_Frustum__destroy(two::Frustum* self) {
+		delete self;
+	}
+	// FrustumSlice
+	two::Type* DECL two_FrustumSlice__type() {
+		return &two::type<two::FrustumSlice>();
+	}
+	two::FrustumSlice* DECL two_FrustumSlice__construct_0() {
+		return new two::FrustumSlice();
+	}
+	void DECL two_FrustumSlice__destroy(two::FrustumSlice* self) {
+		delete self;
+	}
 	// ShaderDefine
 	two::Type* DECL two_ShaderDefine__type() {
 		return &two::type<two::ShaderDefine>();
@@ -615,59 +681,6 @@ extern "C" {
 		self->m_name = value;
 	}
 	void DECL two_Program__destroy(two::Program* self) {
-		delete self;
-	}
-	// Frustum
-	two::Type* DECL two_Frustum__type() {
-		return &two::type<two::Frustum>();
-	}
-	float DECL two_Frustum__get_fov(two::Frustum* self) {
-		return self->m_fov;
-	}
-	void DECL two_Frustum__set_fov(two::Frustum* self, float value) {
-		self->m_fov = value;
-	}
-	float DECL two_Frustum__get_aspect(two::Frustum* self) {
-		return self->m_aspect;
-	}
-	void DECL two_Frustum__set_aspect(two::Frustum* self, float value) {
-		self->m_aspect = value;
-	}
-	float DECL two_Frustum__get_near(two::Frustum* self) {
-		return self->m_near;
-	}
-	void DECL two_Frustum__set_near(two::Frustum* self, float value) {
-		self->m_near = value;
-	}
-	float DECL two_Frustum__get_far(two::Frustum* self) {
-		return self->m_far;
-	}
-	void DECL two_Frustum__set_far(two::Frustum* self, float value) {
-		self->m_far = value;
-	}
-	two::vec3* DECL two_Frustum__get_center(two::Frustum* self) {
-		return &self->m_center;
-	}
-	void DECL two_Frustum__set_center(two::Frustum* self, two::vec3* value) {
-		self->m_center = *value;
-	}
-	float DECL two_Frustum__get_radius(two::Frustum* self) {
-		return self->m_radius;
-	}
-	void DECL two_Frustum__set_radius(two::Frustum* self, float value) {
-		self->m_radius = value;
-	}
-	void DECL two_Frustum__destroy(two::Frustum* self) {
-		delete self;
-	}
-	// FrustumSlice
-	two::Type* DECL two_FrustumSlice__type() {
-		return &two::type<two::FrustumSlice>();
-	}
-	two::FrustumSlice* DECL two_FrustumSlice__construct_0() {
-		return new two::FrustumSlice();
-	}
-	void DECL two_FrustumSlice__destroy(two::FrustumSlice* self) {
 		delete self;
 	}
 	// ProgramVersion
@@ -841,6 +854,10 @@ extern "C" {
 		static two::Pass temp;
 		return (temp = self->next_pass(name, type), &temp);
 	}
+	two::Pass* DECL two_Render_next_pass_3(two::Render* self, const char* name, two::PassType type, uint8_t index) {
+		static two::Pass temp;
+		return (temp = self->next_pass(name, type, index), &temp);
+	}
 	two::Pass* DECL two_Render_composite_pass_3(two::Render* self, const char* name, two::FrameBuffer* fbo, const two::vec4* rect) {
 		static two::Pass temp;
 		return (temp = self->composite_pass(name, *fbo, *rect), &temp);
@@ -966,6 +983,128 @@ extern "C" {
 		self->end(*render);
 	}
 	void DECL two_Renderer__destroy(two::Renderer* self) {
+		delete self;
+	}
+	// GfxWindow
+	two::Type* DECL two_GfxWindow__type() {
+		return &two::type<two::GfxWindow>();
+	}
+	void DECL two_GfxWindow__destroy(two::GfxWindow* self) {
+		delete self;
+	}
+	// GfxSystem
+	two::Type* DECL two_GfxSystem__type() {
+		return &two::type<two::GfxSystem>();
+	}
+	two::GfxSystem* DECL two_GfxSystem__construct_1(const char* resource_path) {
+		return new two::GfxSystem(resource_path);
+	}
+	two::RenderTarget* DECL two_GfxSystem_main_target_0(two::GfxSystem* self) {
+		return &self->main_target();
+	}
+	void DECL two_GfxSystem_default_pipeline_0(two::GfxSystem* self) {
+		self->default_pipeline();
+	}
+	void DECL two_GfxSystem_add_resource_path_1(two::GfxSystem* self, const char* path) {
+		self->add_resource_path(path);
+	}
+	void DECL two_GfxSystem_add_resource_path_2(two::GfxSystem* self, const char* path, bool relative) {
+		self->add_resource_path(path, relative);
+	}
+	two::Material* DECL two_GfxSystem_debug_material_0(two::GfxSystem* self) {
+		return &self->debug_material();
+	}
+	two::Model* DECL two_GfxSystem_create_model_1(two::GfxSystem* self, const char* name) {
+		return &self->create_model(name);
+	}
+	two::Model* DECL two_GfxSystem_create_model_geo_2(two::GfxSystem* self, const char* name, const two::MeshPacker* geometry) {
+		return &self->create_model_geo(name, *geometry);
+	}
+	two::Model* DECL two_GfxSystem_create_model_geo_3(two::GfxSystem* self, const char* name, const two::MeshPacker* geometry, bool readback) {
+		return &self->create_model_geo(name, *geometry, readback);
+	}
+	two::Model* DECL two_GfxSystem_create_model_geo_4(two::GfxSystem* self, const char* name, const two::MeshPacker* geometry, bool readback, bool optimize) {
+		return &self->create_model_geo(name, *geometry, readback, optimize);
+	}
+	two::Model* DECL two_GfxSystem_create_model_gpu_2(two::GfxSystem* self, const char* name, const two::GpuMesh* gpu_mesh) {
+		return &self->create_model_gpu(name, *gpu_mesh);
+	}
+	two::Model* DECL two_GfxSystem_create_model_gpu_3(two::GfxSystem* self, const char* name, const two::GpuMesh* gpu_mesh, bool readback) {
+		return &self->create_model_gpu(name, *gpu_mesh, readback);
+	}
+	two::Model* DECL two_GfxSystem_create_model_gpu_4(two::GfxSystem* self, const char* name, const two::GpuMesh* gpu_mesh, bool readback, bool optimize) {
+		return &self->create_model_gpu(name, *gpu_mesh, readback, optimize);
+	}
+	two::Material* DECL two_GfxSystem_fetch_material_2(two::GfxSystem* self, const char* name, const char* shader) {
+		return &self->fetch_material(name, shader);
+	}
+	two::Material* DECL two_GfxSystem_fetch_material_3(two::GfxSystem* self, const char* name, const char* shader, bool builtin) {
+		return &self->fetch_material(name, shader, builtin);
+	}
+	two::Material* DECL two_GfxSystem_fetch_image256_material_1(two::GfxSystem* self, const two::Image256* image) {
+		return &self->fetch_image256_material(*image);
+	}
+	two::Model* DECL two_GfxSystem_shape_1(two::GfxSystem* self, const two::Shape* shape) {
+		return &self->shape(*shape);
+	}
+	two::Model* DECL two_GfxSystem_shape_2(two::GfxSystem* self, const two::Shape* shape, const two::Symbol* symbol) {
+		return &self->shape(*shape, *symbol);
+	}
+	two::Model* DECL two_GfxSystem_shape_3(two::GfxSystem* self, const two::Shape* shape, const two::Symbol* symbol, two::DrawMode draw_mode) {
+		return &self->shape(*shape, *symbol, draw_mode);
+	}
+	two::Material* DECL two_GfxSystem_symbol_material_1(two::GfxSystem* self, const two::Symbol* symbol) {
+		return &self->symbol_material(*symbol);
+	}
+	two::Material* DECL two_GfxSystem_symbol_material_2(two::GfxSystem* self, const two::Symbol* symbol, two::DrawMode draw_mode) {
+		return &self->symbol_material(*symbol, draw_mode);
+	}
+	two::Renderer* DECL two_GfxSystem__get_renderer(two::GfxSystem* self) {
+		return &self->m_renderer;
+	}
+	two::BlockCopy* DECL two_GfxSystem__get_copy(two::GfxSystem* self) {
+		return self->m_copy;
+	}
+	void DECL two_GfxSystem__set_copy(two::GfxSystem* self, two::BlockCopy* value) {
+		self->m_copy = value;
+	}
+	two::BlockFilter* DECL two_GfxSystem__get_filter(two::GfxSystem* self) {
+		return self->m_filter;
+	}
+	void DECL two_GfxSystem__set_filter(two::GfxSystem* self, two::BlockFilter* value) {
+		self->m_filter = value;
+	}
+	bool DECL two_GfxSystem__get_flip_y(two::GfxSystem* self) {
+		return self->m_flip_y;
+	}
+	void DECL two_GfxSystem__set_flip_y(two::GfxSystem* self, bool value) {
+		self->m_flip_y = value;
+	}
+	two::RenderFrame* DECL two_GfxSystem__get_render_frame(two::GfxSystem* self) {
+		return &self->m_render_frame;
+	}
+	void DECL two_GfxSystem__set_render_frame(two::GfxSystem* self, two::RenderFrame* value) {
+		self->m_render_frame = *value;
+	}
+	two::AssetStore<two::Texture>* DECL two_GfxSystem__get_textures(two::GfxSystem* self) {
+		return &self->textures();
+	}
+	two::AssetStore<two::Program>* DECL two_GfxSystem__get_programs(two::GfxSystem* self) {
+		return &self->programs();
+	}
+	two::AssetStore<two::Material>* DECL two_GfxSystem__get_materials(two::GfxSystem* self) {
+		return &self->materials();
+	}
+	two::AssetStore<two::Model>* DECL two_GfxSystem__get_models(two::GfxSystem* self) {
+		return &self->models();
+	}
+	two::AssetStore<two::Flow>* DECL two_GfxSystem__get_flows(two::GfxSystem* self) {
+		return &self->flows();
+	}
+	two::AssetStore<two::Prefab>* DECL two_GfxSystem__get_prefabs(two::GfxSystem* self) {
+		return &self->prefabs();
+	}
+	void DECL two_GfxSystem__destroy(two::GfxSystem* self) {
 		delete self;
 	}
 	// MaterialParam<two::Colour>
@@ -2862,43 +3001,43 @@ extern "C" {
 	void DECL two_BlockFilter_multiply_1(two::BlockFilter* self, float mul) {
 		self->multiply(mul);
 	}
-	void DECL two_BlockFilter_source0p_2(two::BlockFilter* self, two::Texture* texture, two::ProgramVersion* program) {
+	void DECL two_BlockFilter_source0p_2(two::BlockFilter* self, const two::Texture* texture, two::ProgramVersion* program) {
 		self->source0p(*texture, *program);
 	}
-	void DECL two_BlockFilter_source0p_3(two::BlockFilter* self, two::Texture* texture, two::ProgramVersion* program, int level) {
+	void DECL two_BlockFilter_source0p_3(two::BlockFilter* self, const two::Texture* texture, two::ProgramVersion* program, int level) {
 		self->source0p(*texture, *program, level);
 	}
-	void DECL two_BlockFilter_source0p_4(two::BlockFilter* self, two::Texture* texture, two::ProgramVersion* program, int level, uint32_t flags) {
+	void DECL two_BlockFilter_source0p_4(two::BlockFilter* self, const two::Texture* texture, two::ProgramVersion* program, int level, uint32_t flags) {
 		self->source0p(*texture, *program, level, flags);
 	}
-	void DECL two_BlockFilter_source0_1(two::BlockFilter* self, two::Texture* texture) {
+	void DECL two_BlockFilter_source0_1(two::BlockFilter* self, const two::Texture* texture) {
 		self->source0(*texture);
 	}
-	void DECL two_BlockFilter_source0_2(two::BlockFilter* self, two::Texture* texture, uint32_t flags) {
+	void DECL two_BlockFilter_source0_2(two::BlockFilter* self, const two::Texture* texture, uint32_t flags) {
 		self->source0(*texture, flags);
 	}
-	void DECL two_BlockFilter_source1_1(two::BlockFilter* self, two::Texture* texture) {
+	void DECL two_BlockFilter_source1_1(two::BlockFilter* self, const two::Texture* texture) {
 		self->source1(*texture);
 	}
-	void DECL two_BlockFilter_source1_2(two::BlockFilter* self, two::Texture* texture, uint32_t flags) {
+	void DECL two_BlockFilter_source1_2(two::BlockFilter* self, const two::Texture* texture, uint32_t flags) {
 		self->source1(*texture, flags);
 	}
-	void DECL two_BlockFilter_source2_1(two::BlockFilter* self, two::Texture* texture) {
+	void DECL two_BlockFilter_source2_1(two::BlockFilter* self, const two::Texture* texture) {
 		self->source2(*texture);
 	}
-	void DECL two_BlockFilter_source2_2(two::BlockFilter* self, two::Texture* texture, uint32_t flags) {
+	void DECL two_BlockFilter_source2_2(two::BlockFilter* self, const two::Texture* texture, uint32_t flags) {
 		self->source2(*texture, flags);
 	}
-	void DECL two_BlockFilter_source3_1(two::BlockFilter* self, two::Texture* texture) {
+	void DECL two_BlockFilter_source3_1(two::BlockFilter* self, const two::Texture* texture) {
 		self->source3(*texture);
 	}
-	void DECL two_BlockFilter_source3_2(two::BlockFilter* self, two::Texture* texture, uint32_t flags) {
+	void DECL two_BlockFilter_source3_2(two::BlockFilter* self, const two::Texture* texture, uint32_t flags) {
 		self->source3(*texture, flags);
 	}
-	void DECL two_BlockFilter_sourcedepth_1(two::BlockFilter* self, two::Texture* texture) {
+	void DECL two_BlockFilter_sourcedepth_1(two::BlockFilter* self, const two::Texture* texture) {
 		self->sourcedepth(*texture);
 	}
-	void DECL two_BlockFilter_sourcedepth_2(two::BlockFilter* self, two::Texture* texture, uint32_t flags) {
+	void DECL two_BlockFilter_sourcedepth_2(two::BlockFilter* self, const two::Texture* texture, uint32_t flags) {
 		self->sourcedepth(*texture, flags);
 	}
 	void DECL two_BlockFilter_uniform_3(two::BlockFilter* self, const two::Pass* pass, const char* name, const two::vec4* value) {
@@ -2914,23 +3053,35 @@ extern "C" {
 	two::Type* DECL two_BlockCopy__type() {
 		return &two::type<two::BlockCopy>();
 	}
-	void DECL two_BlockCopy_submit_4(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, two::Texture* texture, const two::RenderQuad* quad) {
+	void DECL two_BlockCopy_submit_4(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, const two::Texture* texture, const two::RenderQuad* quad) {
 		self->submit(*pass, *fbo, *texture, *quad);
 	}
-	void DECL two_BlockCopy_submit_5(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, two::Texture* texture, const two::RenderQuad* quad, uint64_t flags) {
+	void DECL two_BlockCopy_submit_5(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, const two::Texture* texture, const two::RenderQuad* quad, uint64_t flags) {
 		self->submit(*pass, *fbo, *texture, *quad, flags);
 	}
-	void DECL two_BlockCopy_quad_3(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, two::Texture* texture) {
+	void DECL two_BlockCopy_submit_6(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, const two::Texture* texture, const two::RenderQuad* quad, uint64_t flags, bool render) {
+		self->submit(*pass, *fbo, *texture, *quad, flags, render);
+	}
+	void DECL two_BlockCopy_quad_3(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, const two::Texture* texture) {
 		self->quad(*pass, *fbo, *texture);
 	}
-	void DECL two_BlockCopy_quad_4(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, two::Texture* texture, uint64_t flags) {
+	void DECL two_BlockCopy_quad_4(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, const two::Texture* texture, uint64_t flags) {
 		self->quad(*pass, *fbo, *texture, flags);
 	}
-	void DECL two_BlockCopy_debug_show_texture_3(two::BlockCopy* self, two::Render* render, two::Texture* texture, const two::vec4* rect) {
+	void DECL two_BlockCopy_quad_5(two::BlockCopy* self, const two::Pass* pass, two::FrameBuffer* fbo, const two::Texture* texture, uint64_t flags, bool render) {
+		self->quad(*pass, *fbo, *texture, flags, render);
+	}
+	void DECL two_BlockCopy_debug_show_texture_3(two::BlockCopy* self, two::Render* render, const two::Texture* texture, const two::vec4* rect) {
 		self->debug_show_texture(*render, *texture, *rect);
 	}
-	void DECL two_BlockCopy_debug_show_texture_4(two::BlockCopy* self, two::Render* render, two::Texture* texture, const two::vec4* rect, int level) {
+	void DECL two_BlockCopy_debug_show_texture_4(two::BlockCopy* self, two::Render* render, const two::Texture* texture, const two::vec4* rect, int level) {
 		self->debug_show_texture(*render, *texture, *rect, level);
+	}
+	void DECL two_BlockCopy_debug_show_texturep_3(two::BlockCopy* self, two::Render* render, const two::Texture* texture, const two::vec4* rect) {
+		self->debug_show_texturep(*render, texture, *rect);
+	}
+	void DECL two_BlockCopy_debug_show_texturep_4(two::BlockCopy* self, two::Render* render, const two::Texture* texture, const two::vec4* rect, int level) {
+		self->debug_show_texturep(*render, texture, *rect, level);
 	}
 	void DECL two_BlockCopy__destroy(two::BlockCopy* self) {
 		delete self;
@@ -3088,128 +3239,6 @@ extern "C" {
 		self->m_shadow_bias = value;
 	}
 	void DECL two_Light__destroy(two::Light* self) {
-		delete self;
-	}
-	// GfxWindow
-	two::Type* DECL two_GfxWindow__type() {
-		return &two::type<two::GfxWindow>();
-	}
-	void DECL two_GfxWindow__destroy(two::GfxWindow* self) {
-		delete self;
-	}
-	// GfxSystem
-	two::Type* DECL two_GfxSystem__type() {
-		return &two::type<two::GfxSystem>();
-	}
-	two::GfxSystem* DECL two_GfxSystem__construct_1(const char* resource_path) {
-		return new two::GfxSystem(resource_path);
-	}
-	two::RenderTarget* DECL two_GfxSystem_main_target_0(two::GfxSystem* self) {
-		return &self->main_target();
-	}
-	void DECL two_GfxSystem_default_pipeline_0(two::GfxSystem* self) {
-		self->default_pipeline();
-	}
-	void DECL two_GfxSystem_add_resource_path_1(two::GfxSystem* self, const char* path) {
-		self->add_resource_path(path);
-	}
-	void DECL two_GfxSystem_add_resource_path_2(two::GfxSystem* self, const char* path, bool relative) {
-		self->add_resource_path(path, relative);
-	}
-	two::Material* DECL two_GfxSystem_debug_material_0(two::GfxSystem* self) {
-		return &self->debug_material();
-	}
-	two::Model* DECL two_GfxSystem_create_model_1(two::GfxSystem* self, const char* name) {
-		return &self->create_model(name);
-	}
-	two::Model* DECL two_GfxSystem_create_model_geo_2(two::GfxSystem* self, const char* name, const two::MeshPacker* geometry) {
-		return &self->create_model_geo(name, *geometry);
-	}
-	two::Model* DECL two_GfxSystem_create_model_geo_3(two::GfxSystem* self, const char* name, const two::MeshPacker* geometry, bool readback) {
-		return &self->create_model_geo(name, *geometry, readback);
-	}
-	two::Model* DECL two_GfxSystem_create_model_geo_4(two::GfxSystem* self, const char* name, const two::MeshPacker* geometry, bool readback, bool optimize) {
-		return &self->create_model_geo(name, *geometry, readback, optimize);
-	}
-	two::Model* DECL two_GfxSystem_create_model_gpu_2(two::GfxSystem* self, const char* name, const two::GpuMesh* gpu_mesh) {
-		return &self->create_model_gpu(name, *gpu_mesh);
-	}
-	two::Model* DECL two_GfxSystem_create_model_gpu_3(two::GfxSystem* self, const char* name, const two::GpuMesh* gpu_mesh, bool readback) {
-		return &self->create_model_gpu(name, *gpu_mesh, readback);
-	}
-	two::Model* DECL two_GfxSystem_create_model_gpu_4(two::GfxSystem* self, const char* name, const two::GpuMesh* gpu_mesh, bool readback, bool optimize) {
-		return &self->create_model_gpu(name, *gpu_mesh, readback, optimize);
-	}
-	two::Material* DECL two_GfxSystem_fetch_material_2(two::GfxSystem* self, const char* name, const char* shader) {
-		return &self->fetch_material(name, shader);
-	}
-	two::Material* DECL two_GfxSystem_fetch_material_3(two::GfxSystem* self, const char* name, const char* shader, bool builtin) {
-		return &self->fetch_material(name, shader, builtin);
-	}
-	two::Material* DECL two_GfxSystem_fetch_image256_material_1(two::GfxSystem* self, const two::Image256* image) {
-		return &self->fetch_image256_material(*image);
-	}
-	two::Model* DECL two_GfxSystem_shape_1(two::GfxSystem* self, const two::Shape* shape) {
-		return &self->shape(*shape);
-	}
-	two::Model* DECL two_GfxSystem_shape_2(two::GfxSystem* self, const two::Shape* shape, const two::Symbol* symbol) {
-		return &self->shape(*shape, *symbol);
-	}
-	two::Model* DECL two_GfxSystem_shape_3(two::GfxSystem* self, const two::Shape* shape, const two::Symbol* symbol, two::DrawMode draw_mode) {
-		return &self->shape(*shape, *symbol, draw_mode);
-	}
-	two::Material* DECL two_GfxSystem_symbol_material_1(two::GfxSystem* self, const two::Symbol* symbol) {
-		return &self->symbol_material(*symbol);
-	}
-	two::Material* DECL two_GfxSystem_symbol_material_2(two::GfxSystem* self, const two::Symbol* symbol, two::DrawMode draw_mode) {
-		return &self->symbol_material(*symbol, draw_mode);
-	}
-	two::Renderer* DECL two_GfxSystem__get_renderer(two::GfxSystem* self) {
-		return &self->m_renderer;
-	}
-	two::BlockCopy* DECL two_GfxSystem__get_copy(two::GfxSystem* self) {
-		return self->m_copy;
-	}
-	void DECL two_GfxSystem__set_copy(two::GfxSystem* self, two::BlockCopy* value) {
-		self->m_copy = value;
-	}
-	two::BlockFilter* DECL two_GfxSystem__get_filter(two::GfxSystem* self) {
-		return self->m_filter;
-	}
-	void DECL two_GfxSystem__set_filter(two::GfxSystem* self, two::BlockFilter* value) {
-		self->m_filter = value;
-	}
-	bool DECL two_GfxSystem__get_flip_y(two::GfxSystem* self) {
-		return self->m_flip_y;
-	}
-	void DECL two_GfxSystem__set_flip_y(two::GfxSystem* self, bool value) {
-		self->m_flip_y = value;
-	}
-	two::RenderFrame* DECL two_GfxSystem__get_render_frame(two::GfxSystem* self) {
-		return &self->m_render_frame;
-	}
-	void DECL two_GfxSystem__set_render_frame(two::GfxSystem* self, two::RenderFrame* value) {
-		self->m_render_frame = *value;
-	}
-	two::AssetStore<two::Texture>* DECL two_GfxSystem__get_textures(two::GfxSystem* self) {
-		return &self->textures();
-	}
-	two::AssetStore<two::Program>* DECL two_GfxSystem__get_programs(two::GfxSystem* self) {
-		return &self->programs();
-	}
-	two::AssetStore<two::Material>* DECL two_GfxSystem__get_materials(two::GfxSystem* self) {
-		return &self->materials();
-	}
-	two::AssetStore<two::Model>* DECL two_GfxSystem__get_models(two::GfxSystem* self) {
-		return &self->models();
-	}
-	two::AssetStore<two::Flow>* DECL two_GfxSystem__get_flows(two::GfxSystem* self) {
-		return &self->flows();
-	}
-	two::AssetStore<two::Prefab>* DECL two_GfxSystem__get_prefabs(two::GfxSystem* self) {
-		return &self->prefabs();
-	}
-	void DECL two_GfxSystem__destroy(two::GfxSystem* self) {
 		delete self;
 	}
 	// Gnode
@@ -3413,6 +3442,12 @@ extern "C" {
 	}
 	void DECL two_Viewport__set_autorender(two::Viewport* self, bool value) {
 		self->m_autorender = value;
+	}
+	bool DECL two_Viewport__get_autoflip(two::Viewport* self) {
+		return self->m_autoflip;
+	}
+	void DECL two_Viewport__set_autoflip(two::Viewport* self, bool value) {
+		self->m_autoflip = value;
 	}
 	two::vec4* DECL two_Viewport__get_rect(two::Viewport* self) {
 		return &self->m_rect;
@@ -4279,6 +4314,9 @@ extern "C" {
 		return two::TextureHint::Normal;
 	}
 	// TextureFormat
+	two::TextureFormat DECL two_TextureFormat_None() {
+		return two::TextureFormat::None;
+	}
 	two::TextureFormat DECL two_TextureFormat_R8() {
 		return two::TextureFormat::R8;
 	}
@@ -4329,6 +4367,9 @@ extern "C" {
 	}
 	two::TextureFormat DECL two_TextureFormat_D32() {
 		return two::TextureFormat::D32;
+	}
+	two::TextureFormat DECL two_TextureFormat_D32F() {
+		return two::TextureFormat::D32F;
 	}
 	two::TextureFormat DECL two_TextureFormat_Count() {
 		return two::TextureFormat::Count;

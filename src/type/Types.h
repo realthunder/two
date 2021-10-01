@@ -43,8 +43,8 @@ namespace two
     export_ template <> TWO_TYPE_EXPORT Type& type<stl::vector<two::Ref>>();
     
     export_ template <> TWO_TYPE_EXPORT Type& type<two::Ref>();
+    export_ template <> TWO_TYPE_EXPORT Type& type<two::Var>();
     export_ template <> TWO_TYPE_EXPORT Type& type<two::Indexer>();
     export_ template <> TWO_TYPE_EXPORT Type& type<two::Index>();
-    export_ template <> TWO_TYPE_EXPORT Type& type<two::Var>();
     export_ template <> TWO_TYPE_EXPORT Type& type<two::Prototype>();
 }

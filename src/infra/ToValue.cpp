@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(infra);
+module two.infra;
 #else
 #include <cstdlib>
 #include <infra/ToValue.h>

@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <wfc/Forward.h>
 //#include <wfc/Types.h>
+#endif
 
-#ifndef TWO_WFC_REFL_EXPORT
-#define TWO_WFC_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_WFC_META_EXPORT
+#define TWO_WFC_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_WFC_REFL_EXPORT two_wfc : public two::Module
+	export_ class TWO_WFC_META_EXPORT two_wfc : public two::Module
 	{
 	private:
 		two_wfc();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_WFC_MODULE
 extern "C"
-TWO_WFC_REFL_EXPORT Module& getModule();
+TWO_WFC_META_EXPORT Module& getModule();
 #endif

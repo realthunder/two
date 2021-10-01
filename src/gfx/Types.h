@@ -13,8 +13,9 @@
 
 #ifndef TWO_MODULES
 #include <infra/Types.h>
-#include <jobs/Types.h>
 #include <type/Types.h>
+#include <tree/Types.h>
+#include <jobs/Types.h>
 #include <pool/Types.h>
 #include <ecs/Types.h>
 #include <math/Types.h>
@@ -85,13 +86,13 @@ namespace two
     export_ template <> TWO_GFX_EXPORT Type& type<two::AnimNode>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::AnimPlay>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::Mime>();
+    export_ template <> TWO_GFX_EXPORT Type& type<two::Frustum>();
+    export_ template <> TWO_GFX_EXPORT Type& type<two::FrustumSlice>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::ShaderDefine>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::ShaderBlock>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::ProgramMode>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::ProgramBlock>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::Program>();
-    export_ template <> TWO_GFX_EXPORT Type& type<two::Frustum>();
-    export_ template <> TWO_GFX_EXPORT Type& type<two::FrustumSlice>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::ProgramVersion>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::Shot>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::Pass>();
@@ -100,6 +101,8 @@ namespace two
     export_ template <> TWO_GFX_EXPORT Type& type<two::GfxBlock>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::DrawBlock>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::Renderer>();
+    export_ template <> TWO_GFX_EXPORT Type& type<two::GfxWindow>();
+    export_ template <> TWO_GFX_EXPORT Type& type<two::GfxSystem>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::MaterialParam<two::Colour>>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::MaterialParam<float>>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::MaterialParam<two::vec4>>();
@@ -146,8 +149,6 @@ namespace two
     export_ template <> TWO_GFX_EXPORT Type& type<two::BlockCopy>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::ClusteredFrustum>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::Light>();
-    export_ template <> TWO_GFX_EXPORT Type& type<two::GfxWindow>();
-    export_ template <> TWO_GFX_EXPORT Type& type<two::GfxSystem>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::Gnode>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::TPool<two::Node3>>();
     export_ template <> TWO_GFX_EXPORT Type& type<two::TPool<two::Item>>();

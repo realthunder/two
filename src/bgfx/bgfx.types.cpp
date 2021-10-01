@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(bgfx);
+module two.bgfx;
 #else
 #include <bgfx/Types.h>
 #include <bgfx/Api.h>

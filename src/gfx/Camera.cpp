@@ -6,7 +6,7 @@
 module;
 #include <bgfx/bgfx.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <bgfx/bgfx.h>
 #include <geom/Geom.hpp>

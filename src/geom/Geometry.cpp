@@ -6,7 +6,7 @@
 module;
 #include <mikktspace.h>
 #include <infra/Cpp20.h>
-module TWO(geom);
+module two.geom;
 #else
 #include <mikktspace.h>
 #include <cassert>

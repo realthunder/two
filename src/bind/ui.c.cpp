@@ -1,5 +1,6 @@
 #include <infra/Api.h>
 #include <type/Api.h>
+#include <tree/Api.h>
 #include <math/Api.h>
 #include <ctx/Api.h>
 #include <ui/Api.h>
@@ -40,34 +41,6 @@ extern "C" {
 		self->sizingDepth = value;
 	}
 	void DECL two_Space__destroy(two::Space* self) {
-		delete self;
-	}
-	// v2<size_t>
-	two::Type* DECL two_v2_size_t__type() {
-		return &two::type<two::v2<size_t>>();
-	}
-	two::v2<size_t>* DECL two_v2_size_t__construct_0() {
-		return new two::v2<size_t>();
-	}
-	two::v2<size_t>* DECL two_v2_size_t__construct_1(size_t v) {
-		return new two::v2<size_t>(v);
-	}
-	two::v2<size_t>* DECL two_v2_size_t__construct_2(size_t x, size_t y) {
-		return new two::v2<size_t>(x, y);
-	}
-	size_t DECL two_v2_size_t__get_x(two::v2<size_t>* self) {
-		return self->x;
-	}
-	void DECL two_v2_size_t__set_x(two::v2<size_t>* self, size_t value) {
-		self->x = value;
-	}
-	size_t DECL two_v2_size_t__get_y(two::v2<size_t>* self) {
-		return self->y;
-	}
-	void DECL two_v2_size_t__set_y(two::v2<size_t>* self, size_t value) {
-		self->y = value;
-	}
-	void DECL two_v2_size_t__destroy(two::v2<size_t>* self) {
 		delete self;
 	}
 	// v2<two::AutoLayout>
@@ -836,42 +809,6 @@ extern "C" {
 	void DECL two_Widget_yield_modal_0(two::Widget* self) {
 		self->yield_modal();
 	}
-	two::KeyEvent* DECL two_Widget_key_event_2(two::Widget* self, two::Key code, two::EventType event_type) {
-		static two::KeyEvent temp;
-		return (temp = self->key_event(code, event_type), &temp);
-	}
-	two::KeyEvent* DECL two_Widget_key_event_3(two::Widget* self, two::Key code, two::EventType event_type, two::InputMod modifier) {
-		static two::KeyEvent temp;
-		return (temp = self->key_event(code, event_type, modifier), &temp);
-	}
-	two::KeyEvent* DECL two_Widget_key_stroke_1(two::Widget* self, two::Key code) {
-		static two::KeyEvent temp;
-		return (temp = self->key_stroke(code), &temp);
-	}
-	two::KeyEvent* DECL two_Widget_key_stroke_2(two::Widget* self, two::Key code, two::InputMod modifier) {
-		static two::KeyEvent temp;
-		return (temp = self->key_stroke(code, modifier), &temp);
-	}
-	two::KeyEvent* DECL two_Widget_char_stroke_1(two::Widget* self, two::Key code) {
-		static two::KeyEvent temp;
-		return (temp = self->char_stroke(code), &temp);
-	}
-	two::KeyEvent* DECL two_Widget_char_stroke_2(two::Widget* self, two::Key code, two::InputMod modifier) {
-		static two::KeyEvent temp;
-		return (temp = self->char_stroke(code, modifier), &temp);
-	}
-	two::MouseEvent* DECL two_Widget_mouse_event_2(two::Widget* self, two::DeviceType device, two::EventType event_type) {
-		static two::MouseEvent temp;
-		return (temp = self->mouse_event(device, event_type), &temp);
-	}
-	two::MouseEvent* DECL two_Widget_mouse_event_3(two::Widget* self, two::DeviceType device, two::EventType event_type, two::InputMod modifier) {
-		static two::MouseEvent temp;
-		return (temp = self->mouse_event(device, event_type, modifier), &temp);
-	}
-	two::MouseEvent* DECL two_Widget_mouse_event_4(two::Widget* self, two::DeviceType device, two::EventType event_type, two::InputMod modifier, bool consume) {
-		static two::MouseEvent temp;
-		return (temp = self->mouse_event(device, event_type, modifier, consume), &temp);
-	}
 	two::Frame* DECL two_Widget__get_frame(two::Widget* self) {
 		return &self->m_frame;
 	}
@@ -1263,7 +1200,7 @@ extern "C" {
 	two::Widget* DECL two_ui_widget_4(two::Widget* parent, two::Style* style, bool open, two::Axis length) {
 		return &two::ui::widget(*parent, *style, open, length);
 	}
-	two::Widget* DECL two_ui_widget_5(two::Widget* parent, two::Style* style, bool open, two::Axis length, two::v2<size_t>* index) {
+	two::Widget* DECL two_ui_widget_5(two::Widget* parent, two::Style* style, bool open, two::Axis length, two::v2<uint>* index) {
 		return &two::ui::widget(*parent, *style, open, length, *index);
 	}
 	two::Widget* DECL two_ui_item_2(two::Widget* parent, two::Style* style) {

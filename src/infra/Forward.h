@@ -1,7 +1,9 @@
 #pragma once
 
 #include <infra/Config.h>
+#ifndef TWO_MODULES
 #include <stl/base.h>
+#endif
 
 #ifndef TWO_INFRA_EXPORT
 #define TWO_INFRA_EXPORT TWO_IMPORT

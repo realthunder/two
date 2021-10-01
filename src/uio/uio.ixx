@@ -2,21 +2,21 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO(uio);
+export module two.uio;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(infra);
-export import TWO(tree);
-export import TWO(type);
-export import TWO(ecs);
-export import TWO(pool);
-export import TWO(refl);
-export import TWO(math);
-export import TWO(lang);
-export import TWO(ctx);
-export import TWO(ui);
+export import two.infra;
+export import two.tree;
+export import two.type;
+export import two.ecs;
+export import two.pool;
+export import two.refl;
+export import two.math;
+export import two.lang;
+export import two.ctx;
+export import two.ui;
 
 #include <uio/Api.h>
 

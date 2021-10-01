@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO2(gfx, pbr);
+module two.gfx.pbr;
 #else
 #include <gfx-pbr/Types.h>
 #include <gfx-pbr/Api.h>
@@ -19,6 +19,7 @@ namespace two
     template <> TWO_GFX_PBR_EXPORT Type& type<two::Lightmap>() { static Type ty("Lightmap", sizeof(two::Lightmap)); return ty; }
     template <> TWO_GFX_PBR_EXPORT Type& type<two::LightmapAtlas>() { static Type ty("LightmapAtlas", sizeof(two::LightmapAtlas)); return ty; }
     template <> TWO_GFX_PBR_EXPORT Type& type<two::BlockLightmap>() { static Type ty("BlockLightmap", type<two::DrawBlock>(), sizeof(two::BlockLightmap)); return ty; }
+    template <> TWO_GFX_PBR_EXPORT Type& type<two::PBRShot>() { static Type ty("PBRShot", type<two::Shot>(), sizeof(two::PBRShot)); return ty; }
     template <> TWO_GFX_PBR_EXPORT Type& type<two::BlockGeometry>() { static Type ty("BlockGeometry", type<two::DrawBlock>(), sizeof(two::BlockGeometry)); return ty; }
     template <> TWO_GFX_PBR_EXPORT Type& type<two::BlockRadiance>() { static Type ty("BlockRadiance", type<two::DrawBlock>(), sizeof(two::BlockRadiance)); return ty; }
     template <> TWO_GFX_PBR_EXPORT Type& type<two::CubeTarget>() { static Type ty("CubeTarget", sizeof(two::CubeTarget)); return ty; }

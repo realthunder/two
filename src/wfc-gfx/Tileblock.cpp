@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(wfc).gfx;
+module two.wfc.gfx;
 #else
 #include <stl/vector.hpp>
 #include <stl/unordered_map.hpp>
@@ -190,7 +190,7 @@ namespace two
 		VisuBlock& visu = parent.state<VisuBlock>();
 
 		Gnode& self = gfx::node(parent, tileblock.m_aabb.bmin());
-		self.m_node->m_object = object;
+		self.as<Node3>()->m_object = object;
 
 		bool dirty = visu.m_updated < tileblock.m_wave_updated;
 

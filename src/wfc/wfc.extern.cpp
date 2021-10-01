@@ -1,6 +1,6 @@
 #ifndef USE_STL
 #ifdef TWO_MODULES
-module TWO(wfc);
+module two.wfc;
 #else
 #include <stl/vector.hpp>
 #include <stl/unordered_map.hpp>

@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(uio);
+module two.uio;
 #else
 #include <uio/Types.h>
 #include <uio/Api.h>

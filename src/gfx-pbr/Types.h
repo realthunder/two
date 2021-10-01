@@ -1,8 +1,10 @@
 #pragma once
 
+#ifndef TWO_MODULES
 #include <stdint.h>
 #include <stl/string.h>
 #include <stl/vector.h>
+#endif
 #include <gfx-pbr/Forward.h>
 
 #if !defined TWO_MODULES || defined TWO_TYPE_LIB
@@ -29,6 +31,7 @@ namespace two
     export_ template <> TWO_GFX_PBR_EXPORT Type& type<two::Lightmap>();
     export_ template <> TWO_GFX_PBR_EXPORT Type& type<two::LightmapAtlas>();
     export_ template <> TWO_GFX_PBR_EXPORT Type& type<two::BlockLightmap>();
+    export_ template <> TWO_GFX_PBR_EXPORT Type& type<two::PBRShot>();
     export_ template <> TWO_GFX_PBR_EXPORT Type& type<two::BlockGeometry>();
     export_ template <> TWO_GFX_PBR_EXPORT Type& type<two::BlockRadiance>();
     export_ template <> TWO_GFX_PBR_EXPORT Type& type<two::CubeTarget>();

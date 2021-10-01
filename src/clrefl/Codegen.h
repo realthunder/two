@@ -647,7 +647,9 @@ namespace clgen
 
 		p("#pragma once");
 		p("");
+		p("#ifndef TWO_MODULES");
 		p("#include <" + m.m_subdir + "/Types.h>");
+		p("#endif");
 		p("");
 		p("#if !defined TWO_MODULES || defined TWO_TYPE_LIB");
 		p("#include <refl/Meta.h>");
@@ -670,6 +672,63 @@ namespace clgen
 		return t;
 	}
 
+	string module_ixx_template(CLModule& m)
+	{
+		string t;
+		int i = 0;
+		auto p = [&](const string& s) {	write_line(t, i, s); };
+		auto s = [&](const string& s) { i--; write_line(t, i, s); i++; };
+
+		p("module;");
+		p("#include <cpp/preimport.h>");
+		p("#include <infra/Config.h>");
+		p("");
+		p("export module " + to_upper(m.m_namespace) + "(" + m.m_dotname + ");");
+		p("import std.core;");
+		p("import std.threading;");
+		p("import std.regex;");
+		p("");
+		for (CLModule* d : m.m_dependencies)
+			p("import " + to_upper(d->m_namespace) + "(" + d->m_dotname + ");");
+		p("");
+		p("#include <meta/" + m.m_dotname + ".meta.h>");
+		if (m.m_has_reflected)
+			p("#include <meta/" + m.m_dotname + ".conv.h>");
+
+		return t;
+	}
+
+	string module_meta_ixx_template(CLModule& m)
+	{
+		string t;
+		int i = 0;
+		auto p = [&](const string& s) {	write_line(t, i, s); };
+		auto s = [&](const string& s) { i--; write_line(t, i, s); i++; };
+
+		p("module;");
+		p("#include <cpp/preimport.h>");
+		p("#include <infra/Config.h>");
+		p("");
+		p("export module " + to_upper(m.m_namespace) + "2(" + m.m_dotname + ", meta);");
+		p("import std.core;");
+		p("import std.threading;");
+		p("import std.regex;");
+		p("");
+		p("import " + to_upper(m.m_namespace) + "(" + m.m_dotname + ");");
+		p("import " + to_upper(m.m_namespace) + "(refl);");
+		for (CLModule* d : m.m_dependencies)
+		{
+			p("import " + to_upper(d->m_namespace) + "(" + d->m_dotname + ");");
+			p("import " + to_upper(d->m_namespace) + "2(" + d->m_dotname + ", meta);");
+		}
+		p("");
+		p("#include <meta/" + m.m_dotname + ".meta.h>");
+		if (m.m_has_reflected)
+			p("#include <meta/" + m.m_dotname + ".conv.h>");
+
+		return t;
+	}
+
 	string module_h_template(CLModule& m)
 	{
 		string t;
@@ -683,8 +742,10 @@ namespace clgen
 		p("#include <refl/Module.h>");
 		p("#endif");
 		p("");
+		p("#ifndef TWO_MODULES");
 		p("#include <" + m.m_subdir + "/Forward.h>");
 		p("//#include <" + m.m_subdir + "/Types.h>");
+		p("#endif");
 		p("");
 		p("#ifndef " + m.m_refl_export);
 		p("#define " + m.m_refl_export + " TWO_IMPORT");
@@ -758,10 +819,10 @@ namespace clgen
 			p("g_sequence[t.m_id] = &sequence;");
 		};
 
-		p("#include <infra/Cpp20.h>");
-		p("");
 		p("#ifdef TWO_MODULES");
-		p("module " + m.m_namespace + "." + m.m_name + ";");
+		p("module;");
+		p("#include <infra/Cpp20.h>");
+		p("module " + to_upper(m.m_namespace) + "2(" + m.m_dotname + ", meta);");
 		p("#else");
 		if(m.m_has_reflected)
 		{
@@ -780,13 +841,13 @@ namespace clgen
 		p("#include <meta/" + m.m_dotname + ".meta.h>");
 		if(m.m_has_reflected)
 			p("#include <meta/" + m.m_dotname + ".conv.h>");
+		if(m.m_has_reflected)
+			p("#include <" + m.m_subdir + "/Api.h>");
 		p("#endif");
 		p("");
 
 		if(m.m_has_reflected)
 		{
-		p("#include <" + m.m_subdir + "/Api.h>");
-		p("");
 		p("using namespace two;");
 		p("");
 
@@ -1076,9 +1137,11 @@ namespace clgen
 		if(m.m_notypes)
 			return t;
 		p("");
+		p("#ifndef TWO_MODULES");
 		p("#include <stdint.h>");
 		p("#include <stl/string.h>");
 		p("#include <stl/vector.h>");
+		p("#endif");
 		p("#include <" + m.m_subdir + "/Forward.h>");
 		p("");
 		p("#if !defined TWO_MODULES || defined TWO_TYPE_LIB");
@@ -1139,10 +1202,10 @@ namespace clgen
 			return "static Type ty(\"" + t.m_name + "\", sizeof(" + t.m_id + ")); return ty;";
 		};
 
-		p("#include <infra/Cpp20.h>");
-		p("");
 		p("#ifdef TWO_MODULES");
-		p("module " + m.m_namespace + "." + m.m_name + ";");
+		p("module;");
+		p("#include <infra/Cpp20.h>");
+		p("module " + to_upper(m.m_namespace) + "(" + m.m_dotname + ");");
 		p("#else");
 		p("#include <" + m.m_subdir + "/Types.h>");
 		p("#include <" + m.m_subdir + "/Api.h>");

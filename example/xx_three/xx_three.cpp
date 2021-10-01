@@ -1,5 +1,11 @@
+#ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
+module two.xxthree;
+#else
 #include <xx_three/xx_three.h>
-
+#include <gfx-pbr/Api.h>
+#include <stl/array.h>
 #if UI
 #else
 #include <infra/Api.h>
@@ -10,9 +16,7 @@
 #include <gfx/Api.h>
 #include <xx_three/gfxshell.h>
 #endif
-#include <gfx-pbr/Api.h>
-
-#include <stl/array.h>
+#endif
 
 using namespace two;
 
@@ -84,7 +88,7 @@ Example examples[] =
 	{ "effect",					xx_effect },
 	{ "effect/bloom",			xx_effect_bloom },
 	{ "effect/dof",				xx_effect_dof },
-	//{ "effect/glitch",			xx_effect_glitch },
+	//{ "effect/glitch",		xx_effect_glitch },
 	{ "effect/godrays",			xx_effect_godrays },
 	{ "effect/halftone",		xx_effect_halftone },
 	{ "effect/sao",				xx_effect_sao },

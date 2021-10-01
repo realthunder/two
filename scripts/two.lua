@@ -364,7 +364,7 @@ two.uibackend   = two_ui_backend()
 two.bgfx    = module("two", "bgfx",     TWO_SRC_DIR,    "bgfx",     two_module, uses_two_bgfx,  true,       { bx, bimg, bimg.decode, bimg.encode, bgfx, two.infra, two.type, two.math, two.ctx, two.ctxbackend })
 two.gfx     = module("two", "gfx",      TWO_SRC_DIR,    "gfx",      two_gfx,    uses_two_gfx,   true,       { tracy, json11, meshopt, culling, bgfx, shaderc, two.infra, two.type, two.tree, two.jobs, two.pool, two.ecs, two.math, two.geom, two.ctx, two.bgfx })
 -- gltf                                                     
-two.gltf    = module("two", "gltf",     TWO_SRC_DIR,    "gltf",     two_gltf,   nil,            true,       { json11, base64, two.infra, two.type, two.refl, two.srlz, two.math })
+two.gltf    = module("two", "gltf",     TWO_SRC_DIR,    "gltf",     two_gltf,   nil,            true,       { json11, base64, two.infra, two.type, two.refl, two.srlz, two.math, two.geom })
 -- gfx exts                                                 
 two.gfx.pbr = module("two", "gfx-pbr",  TWO_SRC_DIR,    "gfx-pbr",  two_gfx_pbr,nil,            true,       { xatlas, two.infra, two.type, two.math, two.geom, two.gfx })
 two.gfx.obj = module("two", "gfx-obj",  TWO_SRC_DIR,    "gfx-obj",  two_module, nil,            true,       { two.infra, two.type, two.srlz, two.math, two.geom, two.gfx })

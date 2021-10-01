@@ -5,6 +5,7 @@
 #pragma once
 
 #ifndef TWO_MODULES
+#include <stl/function.h>
 #include <pool/Pool.h>
 #include <tree/Graph.h>
 #ifdef _MSC_VER

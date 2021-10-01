@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(ctx);
+module two.ctx.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -15,9 +15,8 @@ module TWO(ctx);
 #include <meta/math.meta.h>
 #include <meta/ctx.meta.h>
 #include <meta/ctx.conv.h>
-#endif
-
 #include <ctx/Api.h>
+#endif
 
 using namespace two;
 
@@ -45,6 +44,10 @@ void two_MouseEvent__construct_0(void* ref, span<void*> args) { UNUSED(args); ne
 void two_MouseEvent__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::MouseEvent((*static_cast<two::MouseEvent*>(other))); }
 void two_KeyEvent__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::KeyEvent(  ); }
 void two_KeyEvent__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::KeyEvent((*static_cast<two::KeyEvent*>(other))); }
+void two_ControlNode_key_event(void* object, span<void*> args, void*& result) { (*static_cast<two::KeyEvent*>(result)) = (*static_cast<two::ControlNode*>(object)).key_event(*static_cast<two::Key*>(args[0]), *static_cast<two::EventType*>(args[1]), *static_cast<two::InputMod*>(args[2])); }
+void two_ControlNode_key_stroke(void* object, span<void*> args, void*& result) { (*static_cast<two::KeyEvent*>(result)) = (*static_cast<two::ControlNode*>(object)).key_stroke(*static_cast<two::Key*>(args[0]), *static_cast<two::InputMod*>(args[1])); }
+void two_ControlNode_char_stroke(void* object, span<void*> args, void*& result) { (*static_cast<two::KeyEvent*>(result)) = (*static_cast<two::ControlNode*>(object)).char_stroke(*static_cast<two::Key*>(args[0]), *static_cast<two::InputMod*>(args[1])); }
+void two_ControlNode_mouse_event(void* object, span<void*> args, void*& result) { (*static_cast<two::MouseEvent*>(result)) = (*static_cast<two::ControlNode*>(object)).mouse_event(*static_cast<two::DeviceType*>(args[0]), *static_cast<two::EventType*>(args[1]), *static_cast<two::InputMod*>(args[2]), *static_cast<bool*>(args[3])); }
 
 namespace two
 {
@@ -276,12 +279,23 @@ namespace two
 		static Meta meta = { t, &namspc({ "two" }), "ControlNode", sizeof(two::ControlNode), TypeClass::Object };
 		// bases
 		// defaults
+		static two::InputMod key_event_0_modifier_default = two::InputMod::Any;
+		static two::InputMod key_stroke_0_modifier_default = two::InputMod::Any;
+		static two::InputMod char_stroke_0_modifier_default = two::InputMod::Any;
+		static two::InputMod mouse_event_0_modifier_default = two::InputMod::None;
+		static bool mouse_event_0_consume_default = true;
 		// constructors
 		// copy constructor
 		// members
 		// methods
+		static Method methods[] = {
+			{ t, "key_event", Address(), two_ControlNode_key_event, { { "code", type<two::Key>(),  }, { "event_type", type<two::EventType>(),  }, { "modifier", type<two::InputMod>(), Param::Default, &key_event_0_modifier_default } }, { &type<two::KeyEvent>(), QualType::None } },
+			{ t, "key_stroke", Address(), two_ControlNode_key_stroke, { { "code", type<two::Key>(),  }, { "modifier", type<two::InputMod>(), Param::Default, &key_stroke_0_modifier_default } }, { &type<two::KeyEvent>(), QualType::None } },
+			{ t, "char_stroke", Address(), two_ControlNode_char_stroke, { { "code", type<two::Key>(),  }, { "modifier", type<two::InputMod>(), Param::Default, &char_stroke_0_modifier_default } }, { &type<two::KeyEvent>(), QualType::None } },
+			{ t, "mouse_event", Address(), two_ControlNode_mouse_event, { { "device", type<two::DeviceType>(),  }, { "event_type", type<two::EventType>(),  }, { "modifier", type<two::InputMod>(), Param::Default, &mouse_event_0_modifier_default }, { "consume", type<bool>(), Param::Default, &mouse_event_0_consume_default } }, { &type<two::MouseEvent>(), QualType::None } }
+		};
 		// static members
-		static Class cls = { t, {}, {}, {}, {}, {}, {}, {}, };
+		static Class cls = { t, {}, {}, {}, {}, {}, methods, {}, };
 	}
 	// two::Keyboard
 	{

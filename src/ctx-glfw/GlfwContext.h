@@ -15,6 +15,12 @@
 #define TWO_CTX_GLFW_EXPORT TWO_IMPORT
 #endif
 
+#ifndef TWO_MODULES
+extern "C" {
+	typedef struct GLFWwindow GLFWwindow;
+}
+#endif
+
 namespace two
 {
 	export_ class refl_ TWO_CTX_GLFW_EXPORT GlfwContext : public Context

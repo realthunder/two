@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(uio);
+module two.uio.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -11,8 +11,8 @@ module TWO(uio);
 #include <refl/MetaDecl.h>
 #include <refl/Module.h>
 #include <meta/infra.meta.h>
-#include <meta/tree.meta.h>
 #include <meta/type.meta.h>
+#include <meta/tree.meta.h>
 #include <meta/ecs.meta.h>
 #include <meta/pool.meta.h>
 #include <meta/refl.meta.h>
@@ -22,9 +22,8 @@ module TWO(uio);
 #include <meta/ui.meta.h>
 #include <meta/uio.meta.h>
 #include <meta/uio.conv.h>
-#endif
-
 #include <uio/Api.h>
+#endif
 
 using namespace two;
 
@@ -155,7 +154,7 @@ namespace two
 namespace two
 {
 	two_uio::two_uio()
-		: Module("two::uio", { &two_infra::m(), &two_tree::m(), &two_type::m(), &two_ecs::m(), &two_pool::m(), &two_refl::m(), &two_math::m(), &two_lang::m(), &two_ctx::m(), &two_ui::m() })
+		: Module("two::uio", { &two_infra::m(), &two_type::m(), &two_tree::m(), &two_ecs::m(), &two_pool::m(), &two_refl::m(), &two_math::m(), &two_lang::m(), &two_ctx::m(), &two_ui::m() })
 	{
 		// setup reflection meta data
 		two_uio_meta(*this);

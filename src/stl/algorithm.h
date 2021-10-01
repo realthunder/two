@@ -397,6 +397,7 @@ namespace two
 	export_ using stl::push;
 	export_ using stl::add;
 	export_ using stl::pop;
+	export_ using stl::shift;
 	export_ using stl::swap_pop;
 	export_ using stl::extend;
 	export_ using stl::merge;

@@ -51,6 +51,17 @@ Module['BlockLightmap'] = BlockLightmap;
 BlockLightmap.prototype["__destroy"] = BlockLightmap.prototype.__destroy = function() {
     _two_BlockLightmap__destroy(this.__ptr);
 };
+// PBRShot
+function PBRShot() { throw "cannot construct a PBRShot, no constructor in IDL" }
+PBRShot.prototype = Object.create(Shot.prototype);
+PBRShot.prototype.constructor = PBRShot;
+PBRShot.prototype.__class = PBRShot;
+PBRShot.__base = Shot;
+PBRShot.__cache = {};
+Module['PBRShot'] = PBRShot;
+PBRShot.prototype["__destroy"] = PBRShot.prototype.__destroy = function() {
+    _two_PBRShot__destroy(this.__ptr);
+};
 // BlockGeometry
 function BlockGeometry() { throw "cannot construct a BlockGeometry, no constructor in IDL" }
 BlockGeometry.prototype = Object.create(DrawBlock.prototype);
@@ -731,6 +742,7 @@ Module['pass_tonemap'] = function(a0, a1, a2, a3) {
         Lightmap.prototype.__type = _two_Lightmap__type();
         LightmapAtlas.prototype.__type = _two_LightmapAtlas__type();
         BlockLightmap.prototype.__type = _two_BlockLightmap__type();
+        PBRShot.prototype.__type = _two_PBRShot__type();
         BlockGeometry.prototype.__type = _two_BlockGeometry__type();
         BlockRadiance.prototype.__type = _two_BlockRadiance__type();
         CubeTarget.prototype.__type = _two_CubeTarget__type();

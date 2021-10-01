@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <pool/Forward.h>
 //#include <pool/Types.h>
+#endif
 
-#ifndef TWO_POOL_REFL_EXPORT
-#define TWO_POOL_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_POOL_META_EXPORT
+#define TWO_POOL_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_POOL_REFL_EXPORT two_pool : public two::Module
+	export_ class TWO_POOL_META_EXPORT two_pool : public two::Module
 	{
 	private:
 		two_pool();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_POOL_MODULE
 extern "C"
-TWO_POOL_REFL_EXPORT Module& getModule();
+TWO_POOL_META_EXPORT Module& getModule();
 #endif

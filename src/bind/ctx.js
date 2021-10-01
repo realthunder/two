@@ -327,6 +327,32 @@ ControlNode.prototype.constructor = ControlNode;
 ControlNode.prototype.__class = ControlNode;
 ControlNode.__cache = {};
 Module['ControlNode'] = ControlNode;
+ControlNode.prototype["key_event"] = ControlNode.prototype.key_event = function(a0, a1, a2) {
+    if (a2 === undefined) { if (typeof a0 !== 'number') throw Error('key_event(0:code): expected integer'); if (typeof a1 !== 'number') throw Error('key_event(1:event_type): expected integer'); }
+    else { if (typeof a0 !== 'number') throw Error('key_event(0:code): expected integer'); if (typeof a1 !== 'number') throw Error('key_event(1:event_type): expected integer'); if (typeof a2 !== 'number') throw Error('key_event(2:modifier): expected integer'); }
+    if (a2 === undefined) { return wrapPointer(_two_ControlNode_key_event_2(this.__ptr, /*code*/a0, /*event_type*/a1), KeyEvent); }
+    else { return wrapPointer(_two_ControlNode_key_event_3(this.__ptr, /*code*/a0, /*event_type*/a1, /*modifier*/a2), KeyEvent); }
+};
+ControlNode.prototype["key_stroke"] = ControlNode.prototype.key_stroke = function(a0, a1) {
+    if (a1 === undefined) { if (typeof a0 !== 'number') throw Error('key_stroke(0:code): expected integer'); }
+    else { if (typeof a0 !== 'number') throw Error('key_stroke(0:code): expected integer'); if (typeof a1 !== 'number') throw Error('key_stroke(1:modifier): expected integer'); }
+    if (a1 === undefined) { return wrapPointer(_two_ControlNode_key_stroke_1(this.__ptr, /*code*/a0), KeyEvent); }
+    else { return wrapPointer(_two_ControlNode_key_stroke_2(this.__ptr, /*code*/a0, /*modifier*/a1), KeyEvent); }
+};
+ControlNode.prototype["char_stroke"] = ControlNode.prototype.char_stroke = function(a0, a1) {
+    if (a1 === undefined) { if (typeof a0 !== 'number') throw Error('char_stroke(0:code): expected integer'); }
+    else { if (typeof a0 !== 'number') throw Error('char_stroke(0:code): expected integer'); if (typeof a1 !== 'number') throw Error('char_stroke(1:modifier): expected integer'); }
+    if (a1 === undefined) { return wrapPointer(_two_ControlNode_char_stroke_1(this.__ptr, /*code*/a0), KeyEvent); }
+    else { return wrapPointer(_two_ControlNode_char_stroke_2(this.__ptr, /*code*/a0, /*modifier*/a1), KeyEvent); }
+};
+ControlNode.prototype["mouse_event"] = ControlNode.prototype.mouse_event = function(a0, a1, a2, a3) {
+    if (a2 === undefined) { if (typeof a0 !== 'number') throw Error('mouse_event(0:device): expected integer'); if (typeof a1 !== 'number') throw Error('mouse_event(1:event_type): expected integer'); }
+    else if (a3 === undefined) { if (typeof a0 !== 'number') throw Error('mouse_event(0:device): expected integer'); if (typeof a1 !== 'number') throw Error('mouse_event(1:event_type): expected integer'); if (typeof a2 !== 'number') throw Error('mouse_event(2:modifier): expected integer'); }
+    else { if (typeof a0 !== 'number') throw Error('mouse_event(0:device): expected integer'); if (typeof a1 !== 'number') throw Error('mouse_event(1:event_type): expected integer'); if (typeof a2 !== 'number') throw Error('mouse_event(2:modifier): expected integer'); if (typeof a3 !== 'boolean') throw Error('mouse_event(3:consume): expected boolean'); }
+    if (a2 === undefined) { return wrapPointer(_two_ControlNode_mouse_event_2(this.__ptr, /*device*/a0, /*event_type*/a1), MouseEvent); }
+    else if (a3 === undefined) { return wrapPointer(_two_ControlNode_mouse_event_3(this.__ptr, /*device*/a0, /*event_type*/a1, /*modifier*/a2), MouseEvent); }
+    else { return wrapPointer(_two_ControlNode_mouse_event_4(this.__ptr, /*device*/a0, /*event_type*/a1, /*modifier*/a2, /*consume*/a3), MouseEvent); }
+};
 ControlNode.prototype["__destroy"] = ControlNode.prototype.__destroy = function() {
     _two_ControlNode__destroy(this.__ptr);
 };

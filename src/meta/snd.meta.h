@@ -4,8 +4,10 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <snd/Forward.h>
 //#include <snd/Types.h>
+#endif
 
 #ifndef TWO_SND_REFL_EXPORT
 #define TWO_SND_REFL_EXPORT TWO_IMPORT

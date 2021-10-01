@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(noise);
+module two.noise.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -16,9 +16,8 @@ module TWO(noise);
 #include <meta/geom.meta.h>
 #include <meta/noise.meta.h>
 #include <meta/noise.conv.h>
-#endif
-
 #include <noise/Api.h>
+#endif
 
 using namespace two;
 

@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <ctx/Forward.h>
 //#include <ctx/Types.h>
+#endif
 
-#ifndef TWO_CTX_REFL_EXPORT
-#define TWO_CTX_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_CTX_META_EXPORT
+#define TWO_CTX_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_CTX_REFL_EXPORT two_ctx : public two::Module
+	export_ class TWO_CTX_META_EXPORT two_ctx : public two::Module
 	{
 	private:
 		two_ctx();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_CTX_MODULE
 extern "C"
-TWO_CTX_REFL_EXPORT Module& getModule();
+TWO_CTX_META_EXPORT Module& getModule();
 #endif

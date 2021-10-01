@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <gltf/Forward.h>
 //#include <gltf/Types.h>
+#endif
 
-#ifndef TWO_GLTF_REFL_EXPORT
-#define TWO_GLTF_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_GLTF_META_EXPORT
+#define TWO_GLTF_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_GLTF_REFL_EXPORT two_gltf : public two::Module
+	export_ class TWO_GLTF_META_EXPORT two_gltf : public two::Module
 	{
 	private:
 		two_gltf();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_GLTF_MODULE
 extern "C"
-TWO_GLTF_REFL_EXPORT Module& getModule();
+TWO_GLTF_META_EXPORT Module& getModule();
 #endif

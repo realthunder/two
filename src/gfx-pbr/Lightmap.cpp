@@ -7,7 +7,7 @@ module;
 #include <gfx/Cpp20.h>
 #include <cstddef>
 #include <xatlas.h>
-module TWO2(gfx, pbr);
+module two.gfx.pbr;
 #else
 #include <cstddef>
 #include <xatlas.h>
@@ -471,7 +471,7 @@ namespace two
 			unique<PBRShot> shot = make_unique<PBRShot>();
 			shot->m_gi_probes = gi_probes;
 			lightmap_render.m_shot = shot.get();
-			lightmap_render.m_ushot = std::move(shot);
+			lightmap_render.m_ushot = stl::move(shot);
 
 			m_gfx.m_renderer.render(lightmap_render, renderer);
 

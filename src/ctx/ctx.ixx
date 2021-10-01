@@ -2,14 +2,14 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO(ctx);
+export module two.ctx;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(infra);
-export import TWO(type);
-export import TWO(math);
+export import two.infra;
+export import two.type;
+export import two.math;
 
 #include <ctx/Api.h>
 

@@ -2,17 +2,17 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO(wfc);
+export module two.wfc;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(json11);
-export import TWO(infra);
-export import TWO(type);
-export import TWO(srlz);
-export import TWO(math);
-export import TWO(geom);
+export import json11;
+export import two.infra;
+export import two.type;
+export import two.srlz;
+export import two.math;
+export import two.geom;
 
 #include <wfc/Api.h>
 

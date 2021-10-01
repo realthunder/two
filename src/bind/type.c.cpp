@@ -11,31 +11,6 @@
 
 extern "C" {
 	
-	// Ref
-	two::Type* DECL two_Ref__type() {
-		return &two::type<two::Ref>();
-	}
-	two::Ref* DECL two_Ref__construct_0() {
-		return new two::Ref();
-	}
-	two::Ref* DECL two_Ref__construct_2(void* value, const two::Type* type) {
-		return new two::Ref(value, *type);
-	}
-	const two::Type* DECL two_Ref__get_type(two::Ref* self) {
-		return self->m_type;
-	}
-	void DECL two_Ref__set_type(two::Ref* self, const two::Type* value) {
-		self->m_type = value;
-	}
-	void* DECL two_Ref__get_value(two::Ref* self) {
-		return self->m_value;
-	}
-	void DECL two_Ref__set_value(two::Ref* self, void* value) {
-		self->m_value = value;
-	}
-	void DECL two_Ref__destroy(two::Ref* self) {
-		delete self;
-	}
 	// Type
 	two::Type* DECL two_Type__type() {
 		return &two::type<two::Type>();
@@ -67,6 +42,38 @@ extern "C" {
 	void DECL two_Type__destroy(two::Type* self) {
 		delete self;
 	}
+	// Ref
+	two::Type* DECL two_Ref__type() {
+		return &two::type<two::Ref>();
+	}
+	two::Ref* DECL two_Ref__construct_0() {
+		return new two::Ref();
+	}
+	two::Ref* DECL two_Ref__construct_2(void* value, const two::Type* type) {
+		return new two::Ref(value, *type);
+	}
+	const two::Type* DECL two_Ref__get_type(two::Ref* self) {
+		return self->m_type;
+	}
+	void DECL two_Ref__set_type(two::Ref* self, const two::Type* value) {
+		self->m_type = value;
+	}
+	void* DECL two_Ref__get_value(two::Ref* self) {
+		return self->m_value;
+	}
+	void DECL two_Ref__set_value(two::Ref* self, void* value) {
+		self->m_value = value;
+	}
+	void DECL two_Ref__destroy(two::Ref* self) {
+		delete self;
+	}
+	// Var
+	two::Type* DECL two_Var__type() {
+		return &two::type<two::Var>();
+	}
+	void DECL two_Var__destroy(two::Var* self) {
+		delete self;
+	}
 	// Indexer
 	two::Type* DECL two_Indexer__type() {
 		return &two::type<two::Indexer>();
@@ -88,13 +95,6 @@ extern "C" {
 		return &self->indexer(*type);
 	}
 	void DECL two_Index__destroy(two::Index* self) {
-		delete self;
-	}
-	// Var
-	two::Type* DECL two_Var__type() {
-		return &two::type<two::Var>();
-	}
-	void DECL two_Var__destroy(two::Var* self) {
 		delete self;
 	}
 	// Prototype

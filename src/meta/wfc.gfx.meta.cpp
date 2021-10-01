@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(wfc)-gfx;
+module TWO2(wfc.gfx, meta);
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -24,9 +24,8 @@ module TWO(wfc)-gfx;
 #include <meta/gfx.ui.meta.h>
 #include <meta/wfc.gfx.meta.h>
 #include <meta/wfc.gfx.conv.h>
-#endif
-
 #include <wfc-gfx/Api.h>
+#endif
 
 using namespace two;
 

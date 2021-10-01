@@ -8,7 +8,7 @@ module;
 #include <cstring>
 #include <stb_rect_pack.h>
 #include <stb_image.h>
-module TWO(math);
+module two.math;
 #else
 #include <cstring>
 #include <stb_rect_pack.h>

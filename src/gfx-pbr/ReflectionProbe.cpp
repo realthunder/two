@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <gfx/Cpp20.h>
-module TWO2(gfx, pbr);
+module two.gfx.pbr;
 #else
 #include <stl/algorithm.h>
 #include <math/Axes.h>
@@ -83,7 +83,7 @@ namespace two
 		//probe_render.m_shot->m_lights = render.m_shot->m_lights;
 		//probe_render.m_shot->m_items = render.m_shot->m_items;
 
-		return std::move(probe_render);
+		return stl::move(probe_render);
 	}
 
 	void CubeCamera::render(GfxSystem& gfx, Render& render, RenderFunc renderer)

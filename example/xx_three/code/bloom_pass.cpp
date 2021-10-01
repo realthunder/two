@@ -1,13 +1,18 @@
+#ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
+#include <xx_three/ex.h>
+#include <bgfx/bgfx.h>
+module two.xxthree;
+#else
 #include <xx_three/xx_three.h>
 #include <gfx-pbr/Api.h>
 #include <gfx-gltf/Api.h>
-
 #include <xx_three/xx_three.h>
 #include <xx_three/xx_three.h>
-
 #include <stl/vector.hpp>
-
 #include <cstdio>
+#endif
 
 using namespace two;
 
@@ -103,8 +108,8 @@ void pass_bloom(GfxSystem& gfx, Render& render, Texture& source, FrameBuffer& fb
 	static FrameBuffer targetX = { resolution, TextureFormat::RGBA8 };
 	static FrameBuffer targetY = { resolution, TextureFormat::RGBA8 };
 
-	constexpr vec2 blurX = vec2(0.001953125f, 0.0f);
-	constexpr vec2 blurY = vec2(0.0f, 0.001953125f);
+	CONSTEXPR vec2 blurX = vec2(0.001953125f, 0.0f);
+	CONSTEXPR vec2 blurY = vec2(0.0f, 0.001953125f);
 
 	static Program& convolution = convolution_program(gfx);
 

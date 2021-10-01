@@ -6,16 +6,16 @@ module;
 #include <bgfx/bgfx.h>
 #include <bgfx/platform.h>
 
-export module TWO(bgfx);
+export module two.bgfx;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(infra);
-export import TWO(type);
-export import TWO(math);
-export import TWO(ctx);
-export import TWO2(ctx, glfw);
+export import two.infra;
+export import two.type;
+export import two.math;
+export import two.ctx;
+export import two.ctx.glfw;
 
 #include <bgfx/Api.h>
 

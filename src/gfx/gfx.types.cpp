@@ -1,8 +1,7 @@
 #ifdef TWO_MODULES
 module;
-#include <bgfx/bgfx.h>
 #include <infra/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <gfx/Types.h>
 #include <gfx/Api.h>
@@ -70,13 +69,13 @@ namespace two
     template <> TWO_GFX_EXPORT Type& type<two::AnimNode>() { static Type ty("AnimNode", sizeof(two::AnimNode)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::AnimPlay>() { static Type ty("AnimPlay", sizeof(two::AnimPlay)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::Mime>() { static Type ty("Mime", sizeof(two::Mime)); return ty; }
+    template <> TWO_GFX_EXPORT Type& type<two::Frustum>() { static Type ty("Frustum", sizeof(two::Frustum)); return ty; }
+    template <> TWO_GFX_EXPORT Type& type<two::FrustumSlice>() { static Type ty("FrustumSlice", sizeof(two::FrustumSlice)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::ShaderDefine>() { static Type ty("ShaderDefine", sizeof(two::ShaderDefine)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::ShaderBlock>() { static Type ty("ShaderBlock", sizeof(two::ShaderBlock)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::ProgramMode>() { static Type ty("ProgramMode", sizeof(two::ProgramMode)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::ProgramBlock>() { static Type ty("ProgramBlock", sizeof(two::ProgramBlock)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::Program>() { static Type ty("Program", sizeof(two::Program)); return ty; }
-    template <> TWO_GFX_EXPORT Type& type<two::Frustum>() { static Type ty("Frustum", sizeof(two::Frustum)); return ty; }
-    template <> TWO_GFX_EXPORT Type& type<two::FrustumSlice>() { static Type ty("FrustumSlice", sizeof(two::FrustumSlice)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::ProgramVersion>() { static Type ty("ProgramVersion", sizeof(two::ProgramVersion)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::Shot>() { static Type ty("Shot", sizeof(two::Shot)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::Pass>() { static Type ty("Pass", sizeof(two::Pass)); return ty; }
@@ -85,6 +84,8 @@ namespace two
     template <> TWO_GFX_EXPORT Type& type<two::GfxBlock>() { static Type ty("GfxBlock", type<two::ShaderBlock>(), sizeof(two::GfxBlock)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::DrawBlock>() { static Type ty("DrawBlock", type<two::GfxBlock>(), sizeof(two::DrawBlock)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::Renderer>() { static Type ty("Renderer", sizeof(two::Renderer)); return ty; }
+    template <> TWO_GFX_EXPORT Type& type<two::GfxWindow>() { static Type ty("GfxWindow", sizeof(two::GfxWindow)); return ty; }
+    template <> TWO_GFX_EXPORT Type& type<two::GfxSystem>() { static Type ty("GfxSystem", type<two::BgfxSystem>(), sizeof(two::GfxSystem)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::MaterialParam<two::Colour>>() { static Type ty("MaterialParam<two::Colour>", sizeof(two::MaterialParam<two::Colour>)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::MaterialParam<float>>() { static Type ty("MaterialParam<float>", sizeof(two::MaterialParam<float>)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::MaterialParam<two::vec4>>() { static Type ty("MaterialParam<two::vec4>", sizeof(two::MaterialParam<two::vec4>)); return ty; }
@@ -131,8 +132,6 @@ namespace two
     template <> TWO_GFX_EXPORT Type& type<two::BlockCopy>() { static Type ty("BlockCopy", type<two::GfxBlock>(), sizeof(two::BlockCopy)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::ClusteredFrustum>() { static Type ty("ClusteredFrustum", type<two::Frustum>(), sizeof(two::ClusteredFrustum)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::Light>() { static Type ty("Light", sizeof(two::Light)); return ty; }
-    template <> TWO_GFX_EXPORT Type& type<two::GfxWindow>() { static Type ty("GfxWindow", sizeof(two::GfxWindow)); return ty; }
-    template <> TWO_GFX_EXPORT Type& type<two::GfxSystem>() { static Type ty("GfxSystem", type<two::BgfxSystem>(), sizeof(two::GfxSystem)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::Gnode>() { static Type ty("Gnode", sizeof(two::Gnode)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::TPool<two::Node3>>() { static Type ty("TPool<two::Node3>", sizeof(two::TPool<two::Node3>)); return ty; }
     template <> TWO_GFX_EXPORT Type& type<two::TPool<two::Item>>() { static Type ty("TPool<two::Item>", sizeof(two::TPool<two::Item>)); return ty; }

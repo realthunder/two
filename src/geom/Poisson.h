@@ -65,5 +65,5 @@ namespace two
 		vector2d<vector<Point>> m_grid;
 	};
 
-	TWO_GEOM_EXPORT func_ vector<vec3> distribute_poisson(vec2 size, float radius);
+	export_ TWO_GEOM_EXPORT func_ vector<vec3> distribute_poisson(vec2 size, float radius);
 }

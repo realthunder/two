@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <noise/Forward.h>
 //#include <noise/Types.h>
+#endif
 
-#ifndef TWO_NOISE_REFL_EXPORT
-#define TWO_NOISE_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_NOISE_META_EXPORT
+#define TWO_NOISE_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_NOISE_REFL_EXPORT two_noise : public two::Module
+	export_ class TWO_NOISE_META_EXPORT two_noise : public two::Module
 	{
 	private:
 		two_noise();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_NOISE_MODULE
 extern "C"
-TWO_NOISE_REFL_EXPORT Module& getModule();
+TWO_NOISE_META_EXPORT Module& getModule();
 #endif

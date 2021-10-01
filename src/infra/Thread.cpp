@@ -38,7 +38,7 @@ module;
 
 
 #ifdef TWO_MODULES
-module TWO(infra);
+module two.infra;
 #else
 #include <infra/Config.h>
 #include <infra/Thread.h>

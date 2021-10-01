@@ -8,7 +8,7 @@ module;
 #include <cstring>
 #include <meshoptimizer.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <cstdio>
 #include <cstring>

@@ -41,13 +41,13 @@ namespace two
     export_ template <> TWO_REFL_EXPORT Type& type<two::Constructor>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::CopyConstructor>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Destructor>();
+    export_ template <> TWO_REFL_EXPORT Type& type<two::Call>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Meta>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Convert>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Static>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Member>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Class>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Enum>();
-    export_ template <> TWO_REFL_EXPORT Type& type<two::Call>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Injector>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Creator>();
     export_ template <> TWO_REFL_EXPORT Type& type<two::Namespace>();

@@ -50,6 +50,13 @@ extern "C" {
 	void DECL two_BlockLightmap__destroy(two::BlockLightmap* self) {
 		delete self;
 	}
+	// PBRShot
+	two::Type* DECL two_PBRShot__type() {
+		return &two::type<two::PBRShot>();
+	}
+	void DECL two_PBRShot__destroy(two::PBRShot* self) {
+		delete self;
+	}
 	// BlockGeometry
 	two::Type* DECL two_BlockGeometry__type() {
 		return &two::type<two::BlockGeometry>();

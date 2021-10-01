@@ -6,7 +6,7 @@
 module;
 #include <cstdio>
 #include <infra/Cpp20.h>
-module TWO(ui);
+module two.ui;
 #else
 #include <cstdio>
 #include <stl/algorithm.h>

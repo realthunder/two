@@ -7,7 +7,7 @@
 #include <bgfx/bgfx.h>
 
 #ifdef TWO_MODULES
-module TWO(gfx)-edit;
+module two.gfx-edit;
 #else
 #include <infra/ToString.h>
 #include <stl/algorithm.h>

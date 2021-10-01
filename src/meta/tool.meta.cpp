@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.tool;
+module two.tool.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -27,9 +27,8 @@ module two.tool;
 #include <meta/gfx.edit.meta.h>
 #include <meta/tool.meta.h>
 #include <meta/tool.conv.h>
-#endif
-
 #include <tool/Api.h>
+#endif
 
 using namespace two;
 

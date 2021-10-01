@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx)-ui;
+module TWO2(gfx.ui, meta);
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -20,9 +20,8 @@ module TWO(gfx)-ui;
 #include <meta/gfx.meta.h>
 #include <meta/gfx.ui.meta.h>
 #include <meta/gfx.ui.conv.h>
-#endif
-
 #include <gfx-ui/Api.h>
+#endif
 
 using namespace two;
 

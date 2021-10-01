@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <ecs/Forward.h>
 //#include <ecs/Types.h>
+#endif
 
-#ifndef TWO_ECS_REFL_EXPORT
-#define TWO_ECS_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_ECS_META_EXPORT
+#define TWO_ECS_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_ECS_REFL_EXPORT two_ecs : public two::Module
+	export_ class TWO_ECS_META_EXPORT two_ecs : public two::Module
 	{
 	private:
 		two_ecs();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_ECS_MODULE
 extern "C"
-TWO_ECS_REFL_EXPORT Module& getModule();
+TWO_ECS_META_EXPORT Module& getModule();
 #endif

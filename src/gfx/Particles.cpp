@@ -8,7 +8,7 @@ module;
 #include <bimg/bimg.h>
 #include <bgfx/bgfx.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <bx/allocator.h>
 #include <bimg/bimg.h>

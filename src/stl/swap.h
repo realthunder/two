@@ -14,8 +14,8 @@ namespace stl
 #include <stl/move.h>
 namespace stl
 {
-	//namespace
-	//{
+	namespace
+	{
 		template <class T>
 		inline void swap(T& t1, T& t2)
 		{
@@ -23,7 +23,7 @@ namespace stl
 			t1 = move(t2);
 			t2 = move(temp);
 		}
-	//}
+	}
 }
 #endif
 

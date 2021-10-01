@@ -1,37 +1,4 @@
 Module['stl'] = Module['stl'] || {};
-// Ref
-function Ref(a0, a1) {
-    if (a0 === undefined) {  }
-    else { if (typeof a0 !== 'number') throw Error('Ref(0:value): expected integer'); if (!checkClass(a1, Type)) throw Error('Ref(1:type): expected Type'); }
-    if (a0 === undefined) { this.__ptr = _two_Ref__construct_0(); getCache(Ref)[this.__ptr] = this; }
-    else { this.__ptr = _two_Ref__construct_2(/*value*/a0, /*type*/a1.__ptr); getCache(Ref)[this.__ptr] = this; }
-};
-Ref.prototype = Object.create(WrapperObject.prototype);
-Ref.prototype.constructor = Ref;
-Ref.prototype.__class = Ref;
-Ref.__cache = {};
-Module['Ref'] = Ref;
-Object.defineProperty(Ref.prototype, "type", {
-    get: function() {
-        return wrapPointer(_two_Ref__get_type(this.__ptr), Type);
-    },
-    set: function(value) {
-        if (!checkClass(value, Type)) throw Error('Ref.type: expected Type');
-        _two_Ref__set_type(this.__ptr, value.__ptr);
-    }
-});
-Object.defineProperty(Ref.prototype, "value", {
-    get: function() {
-        return _two_Ref__get_value(this.__ptr);
-    },
-    set: function(value) {
-        if (typeof value !== 'number') throw Error('Ref.value: expected integer');
-        _two_Ref__set_value(this.__ptr, value);
-    }
-});
-Ref.prototype["__destroy"] = Ref.prototype.__destroy = function() {
-    _two_Ref__destroy(this.__ptr);
-};
 // Type
 function Type() { throw "cannot construct a Type, no constructor in IDL" }
 Type.prototype = Object.create(WrapperObject.prototype);
@@ -78,6 +45,49 @@ Object.defineProperty(Type.prototype, "base", {
 Type.prototype["__destroy"] = Type.prototype.__destroy = function() {
     _two_Type__destroy(this.__ptr);
 };
+// Ref
+function Ref(a0, a1) {
+    if (a0 === undefined) {  }
+    else { if (typeof a0 !== 'number') throw Error('Ref(0:value): expected integer'); if (!checkClass(a1, Type)) throw Error('Ref(1:type): expected Type'); }
+    if (a0 === undefined) { this.__ptr = _two_Ref__construct_0(); getCache(Ref)[this.__ptr] = this; }
+    else { this.__ptr = _two_Ref__construct_2(/*value*/a0, /*type*/a1.__ptr); getCache(Ref)[this.__ptr] = this; }
+};
+Ref.prototype = Object.create(WrapperObject.prototype);
+Ref.prototype.constructor = Ref;
+Ref.prototype.__class = Ref;
+Ref.__cache = {};
+Module['Ref'] = Ref;
+Object.defineProperty(Ref.prototype, "type", {
+    get: function() {
+        return wrapPointer(_two_Ref__get_type(this.__ptr), Type);
+    },
+    set: function(value) {
+        if (!checkClass(value, Type)) throw Error('Ref.type: expected Type');
+        _two_Ref__set_type(this.__ptr, value.__ptr);
+    }
+});
+Object.defineProperty(Ref.prototype, "value", {
+    get: function() {
+        return _two_Ref__get_value(this.__ptr);
+    },
+    set: function(value) {
+        if (typeof value !== 'number') throw Error('Ref.value: expected integer');
+        _two_Ref__set_value(this.__ptr, value);
+    }
+});
+Ref.prototype["__destroy"] = Ref.prototype.__destroy = function() {
+    _two_Ref__destroy(this.__ptr);
+};
+// Var
+function Var() { throw "cannot construct a Var, no constructor in IDL" }
+Var.prototype = Object.create(WrapperObject.prototype);
+Var.prototype.constructor = Var;
+Var.prototype.__class = Var;
+Var.__cache = {};
+Module['Var'] = Var;
+Var.prototype["__destroy"] = Var.prototype.__destroy = function() {
+    _two_Var__destroy(this.__ptr);
+};
 // Indexer
 function Indexer() { throw "cannot construct a Indexer, no constructor in IDL" }
 Indexer.prototype = Object.create(WrapperObject.prototype);
@@ -111,16 +121,6 @@ Index.prototype["indexer"] = Index.prototype.indexer = function(a0) {
 Index.prototype["__destroy"] = Index.prototype.__destroy = function() {
     _two_Index__destroy(this.__ptr);
 };
-// Var
-function Var() { throw "cannot construct a Var, no constructor in IDL" }
-Var.prototype = Object.create(WrapperObject.prototype);
-Var.prototype.constructor = Var;
-Var.prototype.__class = Var;
-Var.__cache = {};
-Module['Var'] = Var;
-Var.prototype["__destroy"] = Var.prototype.__destroy = function() {
-    _two_Var__destroy(this.__ptr);
-};
 // Prototype
 function Prototype() { throw "cannot construct a Prototype, no constructor in IDL" }
 Prototype.prototype = Object.create(WrapperObject.prototype);
@@ -138,11 +138,11 @@ Module['indexed'] = function(a0, a1) {
 
 (function() {
     function setup() {
-        Ref.prototype.__type = _two_Ref__type();
         Type.prototype.__type = _two_Type__type();
+        Ref.prototype.__type = _two_Ref__type();
+        Var.prototype.__type = _two_Var__type();
         Indexer.prototype.__type = _two_Indexer__type();
         Index.prototype.__type = _two_Index__type();
-        Var.prototype.__type = _two_Var__type();
         Prototype.prototype.__type = _two_Prototype__type();
     }
     if (Module['calledRun']) setup();

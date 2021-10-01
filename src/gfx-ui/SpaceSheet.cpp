@@ -5,8 +5,9 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx.ui);
+module two.gfx.ui;
 #else
+#include <cstdio>
 #include <geom/Intersect.h>
 #include <geom/Shapes.h>
 #include <geom/Shape/Quad.h>
@@ -24,8 +25,6 @@ module TWO(gfx.ui);
 #include <gfx-ui/SpaceSheet.h>
 #include <gfx-ui/Viewer3.h>
 #endif
-
-#include <cstdio>
 
 namespace two
 {

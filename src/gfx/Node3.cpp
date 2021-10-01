@@ -6,7 +6,7 @@
 module;
 #include <bx/math.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <cstdio>
 #include <bx/math.h>

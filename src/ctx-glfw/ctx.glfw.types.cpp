@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO2(ctx, glfw);
+module two.ctx.glfw;
 #else
 #include <ctx-glfw/Types.h>
 #include <ctx-glfw/Api.h>

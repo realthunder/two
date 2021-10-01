@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(gfx)-pbr;
+module TWO2(gfx.pbr, meta);
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -17,9 +17,8 @@ module TWO(gfx)-pbr;
 #include <meta/gfx.meta.h>
 #include <meta/gfx.pbr.meta.h>
 #include <meta/gfx.pbr.conv.h>
-#endif
-
 #include <gfx-pbr/Api.h>
+#endif
 
 using namespace two;
 
@@ -162,6 +161,21 @@ namespace two
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockLightmap, two::DrawBlock>() };
+		// defaults
+		// constructors
+		// copy constructor
+		// members
+		// methods
+		// static members
+		static Class cls = { t, bases, bases_offsets, {}, {}, {}, {}, {}, };
+	}
+	// two::PBRShot
+	{
+		Type& t = type<two::PBRShot>();
+		static Meta meta = { t, &namspc({ "two" }), "PBRShot", sizeof(two::PBRShot), TypeClass::Object };
+		// bases
+		static Type* bases[] = { &type<two::Shot>() };
+		static size_t bases_offsets[] = { base_offset<two::PBRShot, two::Shot>() };
 		// defaults
 		// constructors
 		// copy constructor
@@ -618,6 +632,7 @@ namespace two
 		m.m_types.push_back(&type<two::Lightmap>());
 		m.m_types.push_back(&type<two::LightmapAtlas>());
 		m.m_types.push_back(&type<two::BlockLightmap>());
+		m.m_types.push_back(&type<two::PBRShot>());
 		m.m_types.push_back(&type<two::BlockGeometry>());
 		m.m_types.push_back(&type<two::BlockRadiance>());
 		m.m_types.push_back(&type<two::CubeTarget>());

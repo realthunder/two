@@ -7,7 +7,7 @@
 module;
 #include <infra/Cpp20.h>
 #include <ctx-glfw/Glfw.h>
-module TWO2(ctx, glfw);
+module two.ctx.glfw;
 #else
 #include <ctx-glfw/Glfw.h>
 #include <cstdio>

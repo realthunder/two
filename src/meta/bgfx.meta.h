@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <bgfx/Forward.h>
 //#include <bgfx/Types.h>
+#endif
 
-#ifndef TWO_BGFX_REFL_EXPORT
-#define TWO_BGFX_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_BGFX_META_EXPORT
+#define TWO_BGFX_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_BGFX_REFL_EXPORT two_bgfx : public two::Module
+	export_ class TWO_BGFX_META_EXPORT two_bgfx : public two::Module
 	{
 	private:
 		two_bgfx();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_BGFX_MODULE
 extern "C"
-TWO_BGFX_REFL_EXPORT Module& getModule();
+TWO_BGFX_META_EXPORT Module& getModule();
 #endif

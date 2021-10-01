@@ -3,7 +3,7 @@
 #ifndef TWO_MODULES
 #include <stdint.h>
 #include <stl/string.h>
-#include <stl/vector.h
+#include <stl/vector.h>
 #endif
 #include <jobs/Forward.h>
 
@@ -13,6 +13,7 @@
 
 #ifndef TWO_MODULES
 #include <infra/Types.h>
+#include <type/Types.h>
 #endif
 
 

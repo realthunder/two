@@ -7,7 +7,7 @@ module;
 #include <bx/bx.h>
 #include <bgfx/bgfx.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <bx/bx.h>
 #include <bgfx/bgfx.h>

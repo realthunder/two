@@ -6,7 +6,7 @@
 module;
 #include <infra/Cpp20.h>
 #include <lang/LuaLib.h>
-module TWO(lang);
+module two.lang;
 #else
 #include <lang/LuaLib.h>
 #include <cassert>

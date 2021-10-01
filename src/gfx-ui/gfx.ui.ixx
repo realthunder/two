@@ -2,19 +2,19 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO(gfx.ui);
+export module two.gfx.ui;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(infra);
-export import TWO(tree);
-export import TWO(type);
-export import TWO(math);
-export import TWO(geom);
-export import TWO(ctx);
-export import TWO(ui);
-export import TWO(gfx);
+export import two.infra;
+export import two.tree;
+export import two.type;
+export import two.math;
+export import two.geom;
+export import two.ctx;
+export import two.ui;
+export import two.gfx;
 
 #include <gfx-ui/Api.h>
 

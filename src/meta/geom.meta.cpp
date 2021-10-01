@@ -1,23 +1,21 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(geom);
+module two.geom.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
 #include <infra/ToString.h>
 #include <infra/ToValue.h>
 #include <type/Vector.h>
-#include <type/Any.h>
 #include <refl/MetaDecl.h>
 #include <refl/Module.h>
 #include <meta/type.meta.h>
 #include <meta/math.meta.h>
 #include <meta/geom.meta.h>
 #include <meta/geom.conv.h>
-#endif
-
 #include <geom/Api.h>
+#endif
 
 using namespace two;
 
@@ -1382,7 +1380,6 @@ namespace two
 	{
 		Type& t = type<two::Sphere>();
 		static Meta meta = { t, &namspc({ "two" }), "Sphere", sizeof(two::Sphere), TypeClass::Struct };
-		meta.m_empty_var = two::var(two::Sphere());
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Sphere, two::Shape>() };

@@ -6,7 +6,7 @@
 module;
 #include <cassert>
 #include <infra/Cpp20.h>
-module TWO(ui);
+module two.ui;
 #else
 #include <cassert>
 #include <stl/string.h>
@@ -38,6 +38,7 @@ namespace ui
 
 	Widget& widget(Widget& parent, Style& style, bool open, Axis length, v2<uint> index)
 	{
+
 		Widget& self = parent.subi(&style).init(style, open, length, index);
 		assert(self.m_frame.d_style);
 		widget_logic(self);

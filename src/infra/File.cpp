@@ -20,7 +20,7 @@ module;
 #endif
 
 #ifdef TWO_MODULES
-module TWO(infra);
+module two.infra;
 #else
 #include <infra/File.h>
 #include <infra/StringOps.h>

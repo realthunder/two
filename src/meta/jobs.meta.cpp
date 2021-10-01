@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(jobs);
+module two.jobs.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -11,11 +11,11 @@ module TWO(jobs);
 #include <refl/MetaDecl.h>
 #include <refl/Module.h>
 #include <meta/infra.meta.h>
+#include <meta/type.meta.h>
 #include <meta/jobs.meta.h>
 #include <meta/jobs.conv.h>
-#endif
-
 #include <jobs/Api.h>
+#endif
 
 using namespace two;
 
@@ -54,7 +54,7 @@ namespace two
 namespace two
 {
 	two_jobs::two_jobs()
-		: Module("two::jobs", { &two_infra::m() })
+		: Module("two::jobs", { &two_infra::m(), &two_type::m() })
 	{
 		// setup reflection meta data
 		two_jobs_meta(*this);

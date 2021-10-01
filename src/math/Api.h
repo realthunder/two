@@ -12,7 +12,7 @@
 #include <math/Random.h>
 #include <math/Range.h>
 #include <math/Stat.h>
-//#include <math/Stream.h>
+#include <math/Stream.h>
 #include <math/Structs.h>
 #include <math/Timer.h>
 #include <math/Types.h>

@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <gfx/Cpp20.h>
-module TWO2(gfx, pbr);
+module two.gfx.pbr;
 #else
 #include <ecs/ECS.hpp>
 #include <pool/ObjectPool.hpp>
@@ -280,7 +280,7 @@ namespace gfx
 		scene.debug_items(render);
 #endif
 
-		render.m_ushot = std::move(shot);
+		render.m_ushot = stl::move(shot);
 	}
 
 	void render_pbr_forward(GfxSystem& gfx, Render& render)

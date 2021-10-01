@@ -65,10 +65,10 @@ namespace two
 		meth_ void render(MeshPacker& output) const;
 	};
 
-	TWO_GEOM_EXPORT func_ void add_ball(MarchingCubes& cubes, const vec3& ball, float strength, float subtract, const Colour& colour);
-	TWO_GEOM_EXPORT func_ void add_ball(MarchingCubes& cubes, const vec3& ball, float strength, float subtract);
+	export_ TWO_GEOM_EXPORT func_ void add_ball(MarchingCubes& cubes, const vec3& ball, float strength, float subtract, const Colour& colour);
+	export_ TWO_GEOM_EXPORT func_ void add_ball(MarchingCubes& cubes, const vec3& ball, float strength, float subtract);
 
-	TWO_GEOM_EXPORT func_ void add_planeX(MarchingCubes& cubes, float strength, float subtract);
-	TWO_GEOM_EXPORT func_ void add_planeY(MarchingCubes& cubes, float strength, float subtract);
-	TWO_GEOM_EXPORT func_ void add_planeZ(MarchingCubes& cubes, float strength, float subtract);
+	export_ TWO_GEOM_EXPORT func_ void add_planeX(MarchingCubes& cubes, float strength, float subtract);
+	export_ TWO_GEOM_EXPORT func_ void add_planeY(MarchingCubes& cubes, float strength, float subtract);
+	export_ TWO_GEOM_EXPORT func_ void add_planeZ(MarchingCubes& cubes, float strength, float subtract);
 }

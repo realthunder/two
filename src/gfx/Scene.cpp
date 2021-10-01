@@ -5,8 +5,9 @@
 #ifdef TWO_MODULES
 module;
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
+#include <stl/move.h>
 #include <stl/algorithm.h>
 #include <tree/Graph.hpp>
 #include <math/Timer.h>
@@ -178,6 +179,6 @@ namespace two
 		scene.debug_items(render);
 #endif
 
-		render.m_ushot = std::move(shot);
+		render.m_ushot = stl::move(shot);
 	}
 }

@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(refl);
+module two.refl;
 #else
 #include <refl/Types.h>
 #include <refl/Api.h>
@@ -31,13 +31,13 @@ namespace two
     template <> TWO_REFL_EXPORT Type& type<two::Constructor>() { static Type ty("Constructor", type<two::Callable>(), sizeof(two::Constructor)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::CopyConstructor>() { static Type ty("CopyConstructor", type<two::Callable>(), sizeof(two::CopyConstructor)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Destructor>() { static Type ty("Destructor", type<two::Callable>(), sizeof(two::Destructor)); return ty; }
+    template <> TWO_REFL_EXPORT Type& type<two::Call>() { static Type ty("Call", sizeof(two::Call)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Meta>() { static Type ty("Meta", sizeof(two::Meta)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Convert>() { static Type ty("Convert", sizeof(two::Convert)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Static>() { static Type ty("Static", sizeof(two::Static)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Member>() { static Type ty("Member", sizeof(two::Member)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Class>() { static Type ty("Class", sizeof(two::Class)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Enum>() { static Type ty("Enum", sizeof(two::Enum)); return ty; }
-    template <> TWO_REFL_EXPORT Type& type<two::Call>() { static Type ty("Call", sizeof(two::Call)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Injector>() { static Type ty("Injector", type<two::Call>(), sizeof(two::Injector)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Creator>() { static Type ty("Creator", sizeof(two::Creator)); return ty; }
     template <> TWO_REFL_EXPORT Type& type<two::Namespace>() { static Type ty("Namespace", sizeof(two::Namespace)); return ty; }

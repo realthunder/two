@@ -6,7 +6,7 @@
 #include <gfx/Cpp20.h>
 
 #ifdef TWO_MODULES
-module TWO(gfx);
+module two.gfx;
 #else
 #include <refl/Class.h>
 #include <infra/ToString.h>

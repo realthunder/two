@@ -84,7 +84,7 @@ namespace two
 			}
 	}
 
-	export_ template <class T>
+	template <class T>
 	inline T bread(std::istream& stream) { T result; stream.read((char*)&result, sizeof(T)); return result; }
 
 	void parse_glb(const string& path, Json& json, vector<uint8_t>& buffer)

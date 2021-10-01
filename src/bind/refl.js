@@ -146,6 +146,27 @@ Module['Destructor'] = Destructor;
 Destructor.prototype["__destroy"] = Destructor.prototype.__destroy = function() {
     _two_Destructor__destroy(this.__ptr);
 };
+// Call
+function Call() {
+    
+    this.__ptr = _two_Call__construct_0(); getCache(Call)[this.__ptr] = this;
+};
+Call.prototype = Object.create(WrapperObject.prototype);
+Call.prototype.constructor = Call;
+Call.prototype.__class = Call;
+Call.__cache = {};
+Module['Call'] = Call;
+Object.defineProperty(Call.prototype, "vargs", {
+    get: function() {
+        return _two_Call__get_vargs(this.__ptr);
+    }});
+Object.defineProperty(Call.prototype, "result", {
+    get: function() {
+        return wrapPointer(_two_Call__get_result(this.__ptr), Var);
+    }});
+Call.prototype["__destroy"] = Call.prototype.__destroy = function() {
+    _two_Call__destroy(this.__ptr);
+};
 // Meta
 function Meta() { throw "cannot construct a Meta, no constructor in IDL" }
 Meta.prototype = Object.create(WrapperObject.prototype);
@@ -205,27 +226,6 @@ Enum.__cache = {};
 Module['Enum'] = Enum;
 Enum.prototype["__destroy"] = Enum.prototype.__destroy = function() {
     _two_Enum__destroy(this.__ptr);
-};
-// Call
-function Call() {
-    
-    this.__ptr = _two_Call__construct_0(); getCache(Call)[this.__ptr] = this;
-};
-Call.prototype = Object.create(WrapperObject.prototype);
-Call.prototype.constructor = Call;
-Call.prototype.__class = Call;
-Call.__cache = {};
-Module['Call'] = Call;
-Object.defineProperty(Call.prototype, "vargs", {
-    get: function() {
-        return _two_Call__get_vargs(this.__ptr);
-    }});
-Object.defineProperty(Call.prototype, "result", {
-    get: function() {
-        return wrapPointer(_two_Call__get_result(this.__ptr), Var);
-    }});
-Call.prototype["__destroy"] = Call.prototype.__destroy = function() {
-    _two_Call__destroy(this.__ptr);
 };
 // Injector
 function Injector() { throw "cannot construct a Injector, no constructor in IDL" }
@@ -324,13 +324,13 @@ Module['system'] = function() {
         Constructor.prototype.__type = _two_Constructor__type();
         CopyConstructor.prototype.__type = _two_CopyConstructor__type();
         Destructor.prototype.__type = _two_Destructor__type();
+        Call.prototype.__type = _two_Call__type();
         Meta.prototype.__type = _two_Meta__type();
         Convert.prototype.__type = _two_Convert__type();
         Static.prototype.__type = _two_Static__type();
         Member.prototype.__type = _two_Member__type();
         Class.prototype.__type = _two_Class__type();
         Enum.prototype.__type = _two_Enum__type();
-        Call.prototype.__type = _two_Call__type();
         Injector.prototype.__type = _two_Injector__type();
         Creator.prototype.__type = _two_Creator__type();
         Namespace.prototype.__type = _two_Namespace__type();

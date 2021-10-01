@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(type);
+module two.type;
 #else
 #include <type/Types.h>
 #include <type/Api.h>
@@ -35,8 +35,8 @@ namespace two
     template <> TWO_TYPE_EXPORT Type& type<stl::vector<two::Ref>>() { static Type ty("vector<two::Ref>", sizeof(stl::vector<two::Ref>)); return ty; }
     
     template <> TWO_TYPE_EXPORT Type& type<two::Ref>() { static Type ty("Ref", sizeof(two::Ref)); return ty; }
+    template <> TWO_TYPE_EXPORT Type& type<two::Var>() { static Type ty("Var", sizeof(two::Var)); return ty; }
     template <> TWO_TYPE_EXPORT Type& type<two::Indexer>() { static Type ty("Indexer", sizeof(two::Indexer)); return ty; }
     template <> TWO_TYPE_EXPORT Type& type<two::Index>() { static Type ty("Index", sizeof(two::Index)); return ty; }
-    template <> TWO_TYPE_EXPORT Type& type<two::Var>() { static Type ty("Var", sizeof(two::Var)); return ty; }
     template <> TWO_TYPE_EXPORT Type& type<two::Prototype>() { static Type ty("Prototype", sizeof(two::Prototype)); return ty; }
 }

@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(ecs);
+module two.ecs;
 #else
 #include <ecs/Entity.h>
 #include <ecs/ECS.h>

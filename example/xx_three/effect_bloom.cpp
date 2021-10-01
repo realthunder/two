@@ -1,9 +1,17 @@
+#ifdef TWO_MODULES
+module;
+#include <infra/Cpp20.h>
+#include <xx_three/ex.h>
+module two.xxthree;
+#else
 #include <xx_three/xx_three.h>
 #include <gfx-pbr/Api.h>
 #include <gfx-gltf/Api.h>
 #include <ecs/ECS.hpp>
-
 #include <cstdio>
+#endif
+
+using namespace two;
 
 #define PREFAB 1
 
@@ -189,7 +197,7 @@ void pass_unreal_bloom(GfxSystem& gfx, Render& render, const Bloom& bloom)
 
 		Pass pass = render.next_pass("bloom_blur", PassType::PostProcess);
 
-		constexpr vec2 dirs[] = { vec2(1.f, 0.f), vec2(0.f, 1.f) };
+		CONSTEXPR vec2 dirs[] = { vec2(1.f, 0.f), vec2(0.f, 1.f) };
 
 		gfx.m_filter->uniform(pass, "u_glow_blur_p0", vec4(dirs[d], vec2(dest.m_size)));
 

@@ -6,7 +6,7 @@
 module;
 #include <stdint.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <stdint.h>
 #include <stl/stddef.h>

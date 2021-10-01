@@ -1,7 +1,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(ui);
+module two.ui.meta;
 #else
 #include <cstddef>
 #include <stl/new.h>
@@ -12,13 +12,13 @@ module TWO(ui);
 #include <refl/Module.h>
 #include <meta/infra.meta.h>
 #include <meta/type.meta.h>
+#include <meta/tree.meta.h>
 #include <meta/math.meta.h>
 #include <meta/ctx.meta.h>
 #include <meta/ui.meta.h>
 #include <meta/ui.conv.h>
-#endif
-
 #include <ui/Api.h>
+#endif
 
 using namespace two;
 
@@ -120,10 +120,6 @@ void two_Widget_take_focus(void* object, span<void*> args, void*& result) { UNUS
 void two_Widget_yield_focus(void* object, span<void*> args, void*& result) { UNUSED(result); UNUSED(args); (*static_cast<two::Widget*>(object)).yield_focus(); }
 void two_Widget_take_modal(void* object, span<void*> args, void*& result) { UNUSED(result); (*static_cast<two::Widget*>(object)).take_modal(*static_cast<uint32_t*>(args[0])); }
 void two_Widget_yield_modal(void* object, span<void*> args, void*& result) { UNUSED(result); UNUSED(args); (*static_cast<two::Widget*>(object)).yield_modal(); }
-void two_Widget_key_event(void* object, span<void*> args, void*& result) { (*static_cast<two::KeyEvent*>(result)) = (*static_cast<two::Widget*>(object)).key_event(*static_cast<two::Key*>(args[0]), *static_cast<two::EventType*>(args[1]), *static_cast<two::InputMod*>(args[2])); }
-void two_Widget_key_stroke(void* object, span<void*> args, void*& result) { (*static_cast<two::KeyEvent*>(result)) = (*static_cast<two::Widget*>(object)).key_stroke(*static_cast<two::Key*>(args[0]), *static_cast<two::InputMod*>(args[1])); }
-void two_Widget_char_stroke(void* object, span<void*> args, void*& result) { (*static_cast<two::KeyEvent*>(result)) = (*static_cast<two::Widget*>(object)).char_stroke(*static_cast<two::Key*>(args[0]), *static_cast<two::InputMod*>(args[1])); }
-void two_Widget_mouse_event(void* object, span<void*> args, void*& result) { (*static_cast<two::MouseEvent*>(result)) = (*static_cast<two::Widget*>(object)).mouse_event(*static_cast<two::DeviceType*>(args[0]), *static_cast<two::EventType*>(args[1]), *static_cast<two::InputMod*>(args[2]), *static_cast<bool*>(args[3])); }
 void two_TextCursor__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::TextCursor(  ); }
 void two_TextCursor__copy_construct(void* ref, void* other) { new(stl::placeholder(), ref) two::TextCursor((*static_cast<two::TextCursor*>(other))); }
 void two_TextSelection__construct_0(void* ref, span<void*> args) { UNUSED(args); new(stl::placeholder(), ref) two::TextSelection(  ); }
@@ -975,11 +971,6 @@ namespace two
 		static uint32_t index_default = 0;
 		static bool open_default = false;
 		static two::Widget* body_default = nullptr;
-		static two::InputMod key_event_0_modifier_default = two::InputMod::Any;
-		static two::InputMod key_stroke_0_modifier_default = two::InputMod::Any;
-		static two::InputMod char_stroke_0_modifier_default = two::InputMod::Any;
-		static two::InputMod mouse_event_0_modifier_default = two::InputMod::None;
-		static bool mouse_event_0_consume_default = true;
 		// constructors
 		// copy constructor
 		// members
@@ -1013,11 +1004,7 @@ namespace two
 			{ t, "take_focus", Address(), two_Widget_take_focus, {}, g_qvoid },
 			{ t, "yield_focus", Address(), two_Widget_yield_focus, {}, g_qvoid },
 			{ t, "take_modal", Address(), two_Widget_take_modal, { { "device_filter", type<uint32_t>(),  } }, g_qvoid },
-			{ t, "yield_modal", Address(), two_Widget_yield_modal, {}, g_qvoid },
-			{ t, "key_event", Address(), two_Widget_key_event, { { "code", type<two::Key>(),  }, { "event_type", type<two::EventType>(),  }, { "modifier", type<two::InputMod>(), Param::Default, &key_event_0_modifier_default } }, { &type<two::KeyEvent>(), QualType::None } },
-			{ t, "key_stroke", Address(), two_Widget_key_stroke, { { "code", type<two::Key>(),  }, { "modifier", type<two::InputMod>(), Param::Default, &key_stroke_0_modifier_default } }, { &type<two::KeyEvent>(), QualType::None } },
-			{ t, "char_stroke", Address(), two_Widget_char_stroke, { { "code", type<two::Key>(),  }, { "modifier", type<two::InputMod>(), Param::Default, &char_stroke_0_modifier_default } }, { &type<two::KeyEvent>(), QualType::None } },
-			{ t, "mouse_event", Address(), two_Widget_mouse_event, { { "device", type<two::DeviceType>(),  }, { "event_type", type<two::EventType>(),  }, { "modifier", type<two::InputMod>(), Param::Default, &mouse_event_0_modifier_default }, { "consume", type<bool>(), Param::Default, &mouse_event_0_consume_default } }, { &type<two::MouseEvent>(), QualType::None } }
+			{ t, "yield_modal", Address(), two_Widget_yield_modal, {}, g_qvoid }
 		};
 		// static members
 		static Class cls = { t, bases, bases_offsets, {}, {}, members, methods, {}, };
@@ -2314,7 +2301,7 @@ namespace two
 namespace two
 {
 	two_ui::two_ui()
-		: Module("two::ui", { &two_infra::m(), &two_type::m(), &two_math::m(), &two_ctx::m() })
+		: Module("two::ui", { &two_infra::m(), &two_type::m(), &two_tree::m(), &two_math::m(), &two_ctx::m() })
 	{
 		// setup reflection meta data
 		two_ui_meta(*this);

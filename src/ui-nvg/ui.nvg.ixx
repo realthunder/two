@@ -2,7 +2,7 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO(ui.nvg);
+export module two.ui.nvg;
 import std.core;
 import std.threading;
 import std.regex;

@@ -10,7 +10,7 @@ module;
 #include <bx/readerwriter.h>
 #include <bgfx/bgfx.h>
 #include <gfx/Cpp20.h>
-module TWO(gfx);
+module two.gfx;
 #else
 #include <cstring>
 #include <cstdio>

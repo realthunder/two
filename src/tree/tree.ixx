@@ -2,12 +2,12 @@ module;
 #include <cpp/preimport.h>
 #include <infra/Config.h>
 
-export module TWO(tree);
+export module two.tree;
 import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(infra);
+export import two.infra;
 
 #include <tree/Api.h>
 

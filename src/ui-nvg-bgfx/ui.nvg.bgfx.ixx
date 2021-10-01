@@ -7,10 +7,10 @@ import std.core;
 import std.threading;
 import std.regex;
 
-export import TWO(infra);
-export import TWO(type);
-export import TWO(math);
-export import TWO(ui);
+export import two.infra;
+export import two.type;
+export import two.math;
+export import two.ui;
 
 #include <ui-nvg-bgfx/Api.h>
 

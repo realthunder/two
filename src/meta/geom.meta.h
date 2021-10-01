@@ -4,16 +4,18 @@
 #include <refl/Module.h>
 #endif
 
+#ifndef TWO_MODULES
 #include <geom/Forward.h>
 //#include <geom/Types.h>
+#endif
 
-#ifndef TWO_GEOM_REFL_EXPORT
-#define TWO_GEOM_REFL_EXPORT TWO_IMPORT
+#ifndef TWO_GEOM_META_EXPORT
+#define TWO_GEOM_META_EXPORT TWO_IMPORT
 #endif
 
 namespace two
 {
-	export_ class TWO_GEOM_REFL_EXPORT two_geom : public two::Module
+	export_ class TWO_GEOM_META_EXPORT two_geom : public two::Module
 	{
 	private:
 		two_geom();
@@ -25,5 +27,5 @@ namespace two
 
 #ifdef TWO_GEOM_MODULE
 extern "C"
-TWO_GEOM_REFL_EXPORT Module& getModule();
+TWO_GEOM_META_EXPORT Module& getModule();
 #endif

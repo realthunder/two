@@ -5,7 +5,7 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module TWO(ui);
+module two.ui;
 #else
 #include <ui/Window.h>
 #include <ui/Dock.h>
