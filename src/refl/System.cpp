@@ -5,15 +5,8 @@
 #ifdef TWO_MODULES
 module;
 #include <infra/Cpp20.h>
-module two.refl;
-#else
-#include <stl/string.h>
-#include <stl/algorithm.h>
-#include <infra/Log.h>
-#include <infra/File.h>
-#include <refl/System.h>
-#include <refl/Module.h>
-#include <refl/Class.h>
+#include <cstdio>
+#include <cstring>
 #endif
 
 #ifdef _WIN32
@@ -32,8 +25,19 @@ module two.refl;
 	#define BUILD_SUFFIX ""
 #endif
 
+#ifdef TWO_MODULES
+module two.refl;
+#else
 #include <cstdio>
 #include <cstring>
+#include <stl/string.h>
+#include <stl/algorithm.h>
+#include <infra/Log.h>
+#include <infra/File.h>
+#include <refl/System.h>
+#include <refl/Module.h>
+#include <refl/Class.h>
+#endif
 
 namespace two
 {

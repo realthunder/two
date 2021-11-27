@@ -30,8 +30,6 @@ namespace two
 		if (!frame.d_style || frame.hollow() || (clip(frame) && !frame.inside(pos)))
 			return nullptr;
 
-#ifndef TWO_MODULES
-		// TODO (hugoam) ICE reverse_adapt
 		if (frame.m_layer)
 			for (Layer* layer : reverse_adapt(frame.m_layer->d_sublayers))
 			{
@@ -48,7 +46,6 @@ namespace two
 			if (target)
 				return target;
 		}
-#endif
 
 		if (filter(frame) && frame.inside(pos))
 			return &frame;

@@ -58,11 +58,8 @@ namespace two
 		//for(FrameSolver* solver : solvers)
 		//	solver->sync();
 
-#ifndef TWO_MODULES
-		// TODO (hugoam) reverse_adapt
 		for(FrameSolver* solver : reverse_adapt(solvers))
 			solver->compute();
-#endif
 
 		for(FrameSolver* solver : solvers)
 			solver->layout();

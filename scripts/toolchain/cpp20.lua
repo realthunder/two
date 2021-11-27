@@ -14,13 +14,14 @@ function modules(m)
     removeflags { "Cpp17" }
     flags {
         "CppLatest",
-        "CppModules",
+        --"CppModules",
     }
     
     defines { "_CRT_NO_VA_START_VALIDATION" }
 
     if _ACTION == "vs2017"
-	or _ACTION == "vs2019" then
+	or _ACTION == "vs2019"
+	or _ACTION == "vs2022" then
         files {
           --path.join(m.path, m.dotname .. ".ixx"),
             path.join(m.path, m.dotname2 .. ".ixx"),

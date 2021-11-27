@@ -137,15 +137,12 @@ namespace two
 	{
 		// turn off non-skinnable state flags
 		state = static_cast<WidgetState>(state & ~(CREATED | ACTIVATED | CLOSED));
-#ifndef TWO_MODULES
-		// TODO (hugoam) reverse_adapt
 		for(Subskin& subskin : reverse_adapt(m_skins))
 			if(state == subskin.state) // exact match
 				return subskin.skin;
 		for(Subskin& subskin : reverse_adapt(m_skins))
 			if(state & subskin.state) // partial match
 				return subskin.skin;
-#endif
 		return m_skin;
 	}
 
