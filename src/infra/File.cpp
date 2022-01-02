@@ -97,7 +97,7 @@ namespace two
 		while(std::getline(file, stdline))
 		{
 			string line = { stdline.data(), stdline.data() + stdline.size() };
-			if(line.back() == '\r') line.pop_back();
+			if(!line.empty() && line.back() == '\r') line.pop_back();
 			if(!visit_line(line))
 				return;
 		}

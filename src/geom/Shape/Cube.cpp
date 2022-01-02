@@ -249,7 +249,7 @@ namespace two
 		auto correctSeam = [&]() {
 
 			// handle case when face straddles the seam, see #3269
-			for(int i = 0; i < uvs.size(); ++i) {
+			for(int i = 0; i < uvs.size(); i += 3) {
 
 				// uv data of a single face
 				float x0 = uvs[i + 0].x;

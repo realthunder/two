@@ -55,7 +55,7 @@ void main()
 
 #ifdef DISPLACEMENT
     LitMaterial matlit = read_lit_material(material_index);
-    float displace = texture2D(s_displace, v_uv0).x;
+    float displace = texture2DLod(s_displace, v_uv0, 0.0).x;
     position += normalize(a_normal) * (displace * matlit.displace + matlit.displace_bias);
 #endif
 

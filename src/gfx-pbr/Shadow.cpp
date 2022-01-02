@@ -610,6 +610,8 @@ namespace two
 			Viewport viewport = Viewport(camera, *render.m_scene, rect);
 
 			Render shadow_render = { Shading::Volume, viewport, *render.m_target, *shadow.m_fbo, *render.m_frame };
+			unique<Shot> shot = make_unique<Shot>();
+			shadow_render.m_shot = shot.get();
 			shadow_render.m_shot->m_lights = render.m_shot->m_lights;
 			shadow_render.m_shot->m_items = shadow.m_items;
 
