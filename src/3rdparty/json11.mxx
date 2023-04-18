@@ -1,7 +1,11 @@
 #include <cpp/stdguard.h>
 
 export module json11;
-export import std.core;
+import <cmath>;
+import <string>;
+import <vector>;
+import <map>;
+import <memory>;
 
 export
 {

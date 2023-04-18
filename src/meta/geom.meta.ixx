@@ -3,9 +3,6 @@ module;
 #include <infra/Config.h>
 
 export module two.geom.meta;
-import std.core;
-import std.threading;
-import std.regex;
 
 import two.geom;
 import two.refl;

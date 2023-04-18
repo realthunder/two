@@ -3,9 +3,6 @@ module;
 #include <infra/Config.h>
 
 export module two.jobs.meta;
-import std.core;
-import std.threading;
-import std.regex;
 
 import two.jobs;
 import two.refl;

@@ -3,9 +3,9 @@ module;
 #include <infra/Config.h>
 
 export module two.jobs;
-import std.core;
-import std.threading;
-import std.regex;
+import <thread>;
+import <mutex>;
+import <random>;
 
 export import two.infra;
 export import two.type;

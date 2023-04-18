@@ -3,9 +3,6 @@ module;
 #include <infra/Config.h>
 
 export module two.type;
-import std.core;
-import std.threading;
-import std.regex;
 
 export import two.infra;
 

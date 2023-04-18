@@ -20,11 +20,9 @@ namespace two
 		bool operator==(const Range<T>& other) const { return m_min == other.m_min && m_max == other.m_max; }
 	};
 
-#ifndef TWO_MODULES
 	extern template struct refl_ Range<vec3>;
 	extern template struct refl_ Range<quat>;
 	extern template struct refl_ Range<float>;
 	extern template struct refl_ Range<uint32_t>;
 	extern template struct refl_ Range<Colour>;
-#endif
 }

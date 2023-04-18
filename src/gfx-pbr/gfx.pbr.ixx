@@ -5,9 +5,6 @@ module;
 #include <bimg/bimg.h>
 
 export module two.gfx.pbr;
-import std.core;
-import std.threading;
-import std.regex;
 
 export import two.infra;
 export import two.type;

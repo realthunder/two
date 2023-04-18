@@ -684,9 +684,6 @@ namespace clgen
 		p("#include <infra/Config.h>");
 		p("");
 		p("export module " + to_upper(m.m_namespace) + "(" + m.m_dotname + ");");
-		p("import std.core;");
-		p("import std.threading;");
-		p("import std.regex;");
 		p("");
 		for (CLModule* d : m.m_dependencies)
 			p("import " + to_upper(d->m_namespace) + "(" + d->m_dotname + ");");
@@ -710,9 +707,6 @@ namespace clgen
 		p("#include <infra/Config.h>");
 		p("");
 		p("export module " + to_upper(m.m_namespace) + "2(" + m.m_dotname + ", meta);");
-		p("import std.core;");
-		p("import std.threading;");
-		p("import std.regex;");
 		p("");
 		p("import " + to_upper(m.m_namespace) + "(" + m.m_dotname + ");");
 		p("import " + to_upper(m.m_namespace) + "(refl);");

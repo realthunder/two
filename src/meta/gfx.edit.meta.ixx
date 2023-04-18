@@ -3,9 +3,6 @@ module;
 #include <infra/Config.h>
 
 export module two.gfx.edit, meta);
-import std.core;
-import std.threading;
-import std.regex;
 
 import two.gfx.edit;
 import two.refl;

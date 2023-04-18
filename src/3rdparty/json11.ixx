@@ -1,6 +1,10 @@
 
 export module json11;
-import std.core;
+import <cmath>;
+import <string>;
+import <vector>;
+import <map>;
+import <memory>;
 
 export
 {

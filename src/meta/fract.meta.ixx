@@ -3,9 +3,6 @@ module;
 #include <infra/Config.h>
 
 export module two.fract.meta;
-import std.core;
-import std.threading;
-import std.regex;
 
 import two.fract;
 import two.refl;

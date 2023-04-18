@@ -14,9 +14,6 @@ module;
 #include <bx/file.h>
 
 export module two.gfx;
-import std.core;
-import std.threading;
-import std.regex;
 
 export import json11;
 export import two.infra;

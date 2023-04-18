@@ -3,9 +3,6 @@ module;
 #include <infra/Config.h>
 
 export module two.ctx.meta;
-import std.core;
-import std.threading;
-import std.regex;
 
 import two.ctx;
 import two.refl;

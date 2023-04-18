@@ -43,7 +43,6 @@ namespace two
     export_ class Namespace;
     export_ class Module;
     export_ class System;
-	export_ class Prototype;
 }
 
 #ifdef TWO_META_GENERATOR

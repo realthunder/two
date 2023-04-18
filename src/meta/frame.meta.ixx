@@ -3,9 +3,6 @@ module;
 #include <infra/Config.h>
 
 export module two.frame.meta;
-import std.core;
-import std.threading;
-import std.regex;
 
 import two.frame;
 import two.refl;

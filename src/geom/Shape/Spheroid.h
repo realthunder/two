@@ -8,5 +8,5 @@
 
 namespace two
 {
-	TWO_GEOM_EXPORT CompoundShape shape_compound(const ProcShape& shape, const Spheroid& spheroid);
+	export_ TWO_GEOM_EXPORT CompoundShape shape_compound(const ProcShape& shape, const Spheroid& spheroid);
 }
