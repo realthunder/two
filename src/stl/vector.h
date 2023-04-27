@@ -130,7 +130,14 @@ namespace stl {
 	}
 
 	template <class T, class Alloc>
-	inline bool operator==(const vector<T, Alloc>& left, const vector<T, Alloc>& right);
+	inline bool operator==(const vector<T, Alloc>& left, const vector<T, Alloc>& right)
+	{
+		auto equal_to = [](auto&& left, auto&& right)
+		{
+			return static_cast<decltype(left) && >(left) == static_cast<decltype(right) && >(right);
+		};
+		return left.size() == right.size() && equal(left.begin(), left.end(), right.begin(), equal_to);
+	}
 }
 #endif
 

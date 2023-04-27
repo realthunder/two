@@ -50,6 +50,7 @@ namespace two
 	{
 		Type& t = type<two::Entity>();
 		static Meta meta = { t, &namspc({ "two" }), "Entity", sizeof(two::Entity), TypeClass::Struct };
+        init_default_value<two::Entity>();
 		// bases
 		// defaults
 		// constructors
@@ -69,6 +70,7 @@ namespace two
 	{
 		Type& t = type<two::Entt>();
 		static Meta meta = { t, &namspc({ "two" }), "Entt", sizeof(two::Entt), TypeClass::Struct };
+        init_default_value<two::Entt>();
 		// bases
 		// defaults
 		// constructors
@@ -88,6 +90,7 @@ namespace two
 	{
 		Type& t = type<two::OEntt>();
 		static Meta meta = { t, &namspc({ "two" }), "OEntt", sizeof(two::OEntt), TypeClass::Object };
+        init_default_value<two::OEntt>();
 		// bases
 		static Type* bases[] = { &type<two::Entt>() };
 		static size_t bases_offsets[] = { base_offset<two::OEntt, two::Entt>() };
@@ -103,6 +106,7 @@ namespace two
 	{
 		Type& t = type<two::Complex>();
 		static Meta meta = { t, &namspc({ "two" }), "Complex", sizeof(two::Complex), TypeClass::Object };
+        init_default_value<two::Complex>();
 		// bases
 		// defaults
 		// constructors

@@ -517,6 +517,7 @@ namespace two
 	{
 		Type& t = type<two::AnimTarget>();
 		static Meta meta = { t, &namspc({ "two" }), "AnimTarget", sizeof(two::AnimTarget), TypeClass::Enum };
+        init_default_value<two::AnimTarget>();
 		static cstring ids[] = { "Position", "Rotation", "Scale", "Weights", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4 };
 		static two::AnimTarget vars[] = { two::AnimTarget::Position, two::AnimTarget::Rotation, two::AnimTarget::Scale, two::AnimTarget::Weights, two::AnimTarget::Count};
@@ -529,6 +530,7 @@ namespace two
 	{
 		Type& t = type<two::Interpolation>();
 		static Meta meta = { t, &namspc({ "two" }), "Interpolation", sizeof(two::Interpolation), TypeClass::Enum };
+        init_default_value<two::Interpolation>();
 		static cstring ids[] = { "Nearest", "Linear", "Cubic" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::Interpolation vars[] = { two::Interpolation::Nearest, two::Interpolation::Linear, two::Interpolation::Cubic};
@@ -541,6 +543,7 @@ namespace two
 	{
 		Type& t = type<two::TextureHint>();
 		static Meta meta = { t, &namspc({ "two" }), "TextureHint", sizeof(two::TextureHint), TypeClass::Enum };
+        init_default_value<two::TextureHint>();
 		static cstring ids[] = { "Black", "White", "Normal" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::TextureHint vars[] = { two::TextureHint::Black, two::TextureHint::White, two::TextureHint::Normal};
@@ -553,6 +556,7 @@ namespace two
 	{
 		Type& t = type<two::TextureFormat>();
 		static Meta meta = { t, &namspc({ "two" }), "TextureFormat", sizeof(two::TextureFormat), TypeClass::Enum };
+        init_default_value<two::TextureFormat>();
 		static cstring ids[] = { "None", "R8", "R16F", "R32U", "R32F", "RG8", "RG16F", "RG32F", "RGB8", "BGRA8", "RGBA8", "RGB10A2", "RGBA16F", "RGBA32F", "D16", "D24", "D24S8", "D32", "D32F", "Count" };
 		static uint32_t values[] = { 26, 29, 36, 39, 40, 41, 48, 52, 53, 58, 59, 74, 66, 70, 77, 78, 79, 80, 83, 84 };
 		static two::TextureFormat vars[] = { two::TextureFormat::None, two::TextureFormat::R8, two::TextureFormat::R16F, two::TextureFormat::R32U, two::TextureFormat::R32F, two::TextureFormat::RG8, two::TextureFormat::RG16F, two::TextureFormat::RG32F, two::TextureFormat::RGB8, two::TextureFormat::BGRA8, two::TextureFormat::RGBA8, two::TextureFormat::RGB10A2, two::TextureFormat::RGBA16F, two::TextureFormat::RGBA32F, two::TextureFormat::D16, two::TextureFormat::D24, two::TextureFormat::D24S8, two::TextureFormat::D32, two::TextureFormat::D32F, two::TextureFormat::Count};
@@ -565,6 +569,7 @@ namespace two
 	{
 		Type& t = type<two::ShaderType>();
 		static Meta meta = { t, &namspc({ "two" }), "ShaderType", sizeof(two::ShaderType), TypeClass::Enum };
+        init_default_value<two::ShaderType>();
 		static cstring ids[] = { "Compute", "Fragment", "Geometry", "Vertex", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4 };
 		static two::ShaderType vars[] = { two::ShaderType::Compute, two::ShaderType::Fragment, two::ShaderType::Geometry, two::ShaderType::Vertex, two::ShaderType::Count};
@@ -577,6 +582,7 @@ namespace two
 	{
 		Type& t = type<two::PassType>();
 		static Meta meta = { t, &namspc({ "two" }), "PassType", sizeof(two::PassType), TypeClass::Enum };
+        init_default_value<two::PassType>();
 		static cstring ids[] = { "VoxelGI", "Lightmap", "Shadowmap", "Probes", "Clear", "Depth", "Normals", "Shadow", "Geometry", "Lights", "Opaque", "Background", "Particles", "Alpha", "Solid", "Effects", "PostProcess", "Flip", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 };
 		static two::PassType vars[] = { two::PassType::VoxelGI, two::PassType::Lightmap, two::PassType::Shadowmap, two::PassType::Probes, two::PassType::Clear, two::PassType::Depth, two::PassType::Normals, two::PassType::Shadow, two::PassType::Geometry, two::PassType::Lights, two::PassType::Opaque, two::PassType::Background, two::PassType::Particles, two::PassType::Alpha, two::PassType::Solid, two::PassType::Effects, two::PassType::PostProcess, two::PassType::Flip, two::PassType::Count};
@@ -589,6 +595,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialBlock>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialBlock", sizeof(two::MaterialBlock), TypeClass::Enum };
+        init_default_value<two::MaterialBlock>();
 		static cstring ids[] = { "Base", "Alpha", "Solid", "Point", "Line", "Lit", "Pbr", "Phong", "Fresnel", "User", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		static two::MaterialBlock vars[] = { two::MaterialBlock::Base, two::MaterialBlock::Alpha, two::MaterialBlock::Solid, two::MaterialBlock::Point, two::MaterialBlock::Line, two::MaterialBlock::Lit, two::MaterialBlock::Pbr, two::MaterialBlock::Phong, two::MaterialBlock::Fresnel, two::MaterialBlock::User, two::MaterialBlock::Count};
@@ -601,6 +608,7 @@ namespace two
 	{
 		Type& t = type<two::TextureSampler>();
 		static Meta meta = { t, &namspc({ "two" }), "TextureSampler", sizeof(two::TextureSampler), TypeClass::Enum };
+        init_default_value<two::TextureSampler>();
 		static cstring ids[] = { "Source0", "Source1", "Source2", "Source3", "SourceDepth", "Color", "Albedo", "Diffuse", "Alpha", "Metallic", "Specular", "Roughness", "Shininess", "Emissive", "Normal", "AO", "Displace", "Depth", "User0", "User1", "User2", "User3", "User4", "User5", "Radiance", "Shadow", "Lightmap", "ReflectionProbe", "GIProbe", "Skeleton", "Zones", "Materials", "Lights", "Clusters", "LightRecords" };
 		static uint32_t values[] = { 0, 1, 2, 3, 3, 0, 0, 0, 1, 2, 2, 3, 3, 4, 5, 6, 7, 7, 12, 13, 14, 15, 6, 7, 10, 11, 12, 13, 14, 15, 0, 8, 9, 13, 14 };
 		static two::TextureSampler vars[] = { two::TextureSampler::Source0, two::TextureSampler::Source1, two::TextureSampler::Source2, two::TextureSampler::Source3, two::TextureSampler::SourceDepth, two::TextureSampler::Color, two::TextureSampler::Albedo, two::TextureSampler::Diffuse, two::TextureSampler::Alpha, two::TextureSampler::Metallic, two::TextureSampler::Specular, two::TextureSampler::Roughness, two::TextureSampler::Shininess, two::TextureSampler::Emissive, two::TextureSampler::Normal, two::TextureSampler::AO, two::TextureSampler::Displace, two::TextureSampler::Depth, two::TextureSampler::User0, two::TextureSampler::User1, two::TextureSampler::User2, two::TextureSampler::User3, two::TextureSampler::User4, two::TextureSampler::User5, two::TextureSampler::Radiance, two::TextureSampler::Shadow, two::TextureSampler::Lightmap, two::TextureSampler::ReflectionProbe, two::TextureSampler::GIProbe, two::TextureSampler::Skeleton, two::TextureSampler::Zones, two::TextureSampler::Materials, two::TextureSampler::Lights, two::TextureSampler::Clusters, two::TextureSampler::LightRecords};
@@ -613,6 +621,7 @@ namespace two
 	{
 		Type& t = type<two::Lighting>();
 		static Meta meta = { t, &namspc({ "two" }), "Lighting", sizeof(two::Lighting), TypeClass::Enum };
+        init_default_value<two::Lighting>();
 		static cstring ids[] = { "None", "Clustered", "Deferred", "VoxelGI" };
 		static uint32_t values[] = { 0, 1, 2, 4 };
 		static two::Lighting vars[] = { two::Lighting::None, two::Lighting::Clustered, two::Lighting::Deferred, two::Lighting::VoxelGI};
@@ -625,6 +634,7 @@ namespace two
 	{
 		Type& t = type<two::BlendMode>();
 		static Meta meta = { t, &namspc({ "two" }), "BlendMode", sizeof(two::BlendMode), TypeClass::Enum };
+        init_default_value<two::BlendMode>();
 		static cstring ids[] = { "None", "Mix", "Add", "Sub", "Mul", "Normal", "Alpha" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6 };
 		static two::BlendMode vars[] = { two::BlendMode::None, two::BlendMode::Mix, two::BlendMode::Add, two::BlendMode::Sub, two::BlendMode::Mul, two::BlendMode::Normal, two::BlendMode::Alpha};
@@ -637,6 +647,7 @@ namespace two
 	{
 		Type& t = type<two::CullMode>();
 		static Meta meta = { t, &namspc({ "two" }), "CullMode", sizeof(two::CullMode), TypeClass::Enum };
+        init_default_value<two::CullMode>();
 		static cstring ids[] = { "None", "Front", "Back", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::CullMode vars[] = { two::CullMode::None, two::CullMode::Front, two::CullMode::Back, two::CullMode::Count};
@@ -649,6 +660,7 @@ namespace two
 	{
 		Type& t = type<two::DepthDraw>();
 		static Meta meta = { t, &namspc({ "two" }), "DepthDraw", sizeof(two::DepthDraw), TypeClass::Enum };
+        init_default_value<two::DepthDraw>();
 		static cstring ids[] = { "Enabled", "Disabled" };
 		static uint32_t values[] = { 0, 1 };
 		static two::DepthDraw vars[] = { two::DepthDraw::Enabled, two::DepthDraw::Disabled};
@@ -661,6 +673,7 @@ namespace two
 	{
 		Type& t = type<two::DepthTest>();
 		static Meta meta = { t, &namspc({ "two" }), "DepthTest", sizeof(two::DepthTest), TypeClass::Enum };
+        init_default_value<two::DepthTest>();
 		static cstring ids[] = { "Enabled", "Disabled" };
 		static uint32_t values[] = { 0, 1 };
 		static two::DepthTest vars[] = { two::DepthTest::Enabled, two::DepthTest::Disabled};
@@ -673,6 +686,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialFlag>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialFlag", sizeof(two::MaterialFlag), TypeClass::Enum };
+        init_default_value<two::MaterialFlag>();
 		static cstring ids[] = { "TriplanarUV1", "TriplanarUV2", "Count" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::MaterialFlag vars[] = { two::MaterialFlag::TriplanarUV1, two::MaterialFlag::TriplanarUV2, two::MaterialFlag::Count};
@@ -685,6 +699,7 @@ namespace two
 	{
 		Type& t = type<two::ShaderColor>();
 		static Meta meta = { t, &namspc({ "two" }), "ShaderColor", sizeof(two::ShaderColor), TypeClass::Enum };
+        init_default_value<two::ShaderColor>();
 		static cstring ids[] = { "Shader", "Vertex", "Face" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::ShaderColor vars[] = { two::ShaderColor::Shader, two::ShaderColor::Vertex, two::ShaderColor::Face};
@@ -697,6 +712,7 @@ namespace two
 	{
 		Type& t = type<two::TextureChannel>();
 		static Meta meta = { t, &namspc({ "two" }), "TextureChannel", sizeof(two::TextureChannel), TypeClass::Enum };
+        init_default_value<two::TextureChannel>();
 		static cstring ids[] = { "Red", "Green", "Blue", "Alpha", "All" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4 };
 		static two::TextureChannel vars[] = { two::TextureChannel::Red, two::TextureChannel::Green, two::TextureChannel::Blue, two::TextureChannel::Alpha, two::TextureChannel::All};
@@ -709,6 +725,7 @@ namespace two
 	{
 		Type& t = type<two::PbrDiffuseMode>();
 		static Meta meta = { t, &namspc({ "two" }), "PbrDiffuseMode", sizeof(two::PbrDiffuseMode), TypeClass::Enum };
+        init_default_value<two::PbrDiffuseMode>();
 		static cstring ids[] = { "Lambert", "LambertHalf", "OrenNayar", "Burley", "Toon" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4 };
 		static two::PbrDiffuseMode vars[] = { two::PbrDiffuseMode::Lambert, two::PbrDiffuseMode::LambertHalf, two::PbrDiffuseMode::OrenNayar, two::PbrDiffuseMode::Burley, two::PbrDiffuseMode::Toon};
@@ -721,6 +738,7 @@ namespace two
 	{
 		Type& t = type<two::PbrSpecularMode>();
 		static Meta meta = { t, &namspc({ "two" }), "PbrSpecularMode", sizeof(two::PbrSpecularMode), TypeClass::Enum };
+        init_default_value<two::PbrSpecularMode>();
 		static cstring ids[] = { "SchlickGGX", "Blinn", "Phong", "Toon", "Disabled" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4 };
 		static two::PbrSpecularMode vars[] = { two::PbrSpecularMode::SchlickGGX, two::PbrSpecularMode::Blinn, two::PbrSpecularMode::Phong, two::PbrSpecularMode::Toon, two::PbrSpecularMode::Disabled};
@@ -733,6 +751,7 @@ namespace two
 	{
 		Type& t = type<two::PhongEnvBlendMode>();
 		static Meta meta = { t, &namspc({ "two" }), "PhongEnvBlendMode", sizeof(two::PhongEnvBlendMode), TypeClass::Enum };
+        init_default_value<two::PhongEnvBlendMode>();
 		static cstring ids[] = { "Mul", "Mix", "Add" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::PhongEnvBlendMode vars[] = { two::PhongEnvBlendMode::Mul, two::PhongEnvBlendMode::Mix, two::PhongEnvBlendMode::Add};
@@ -745,6 +764,7 @@ namespace two
 	{
 		Type& t = type<two::EmitterFlow>();
 		static Meta meta = { t, &namspc({ "two" }), "EmitterFlow", sizeof(two::EmitterFlow), TypeClass::Enum };
+        init_default_value<two::EmitterFlow>();
 		static cstring ids[] = { "Outward", "Absolute" };
 		static uint32_t values[] = { 0, 1 };
 		static two::EmitterFlow vars[] = { two::EmitterFlow::Outward, two::EmitterFlow::Absolute};
@@ -757,6 +777,7 @@ namespace two
 	{
 		Type& t = type<two::ItemShadow>();
 		static Meta meta = { t, &namspc({ "two" }), "ItemShadow", sizeof(two::ItemShadow), TypeClass::Enum };
+        init_default_value<two::ItemShadow>();
 		static cstring ids[] = { "Default", "DoubleSided" };
 		static uint32_t values[] = { 0, 1 };
 		static two::ItemShadow vars[] = { two::ItemShadow::Default, two::ItemShadow::DoubleSided};
@@ -769,6 +790,7 @@ namespace two
 	{
 		Type& t = type<two::ModelFormat>();
 		static Meta meta = { t, &namspc({ "two" }), "ModelFormat", sizeof(two::ModelFormat), TypeClass::Enum };
+        init_default_value<two::ModelFormat>();
 		static cstring ids[] = { "obj", "ply", "gltf", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::ModelFormat vars[] = { two::ModelFormat::obj, two::ModelFormat::ply, two::ModelFormat::gltf, two::ModelFormat::Count};
@@ -781,6 +803,7 @@ namespace two
 	{
 		Type& t = type<two::IsometricAngle>();
 		static Meta meta = { t, &namspc({ "two" }), "IsometricAngle", sizeof(two::IsometricAngle), TypeClass::Enum };
+        init_default_value<two::IsometricAngle>();
 		static cstring ids[] = { "NORTH", "SOUTH", "EAST", "WEST" };
 		static uint32_t values[] = { 1, 2, 256, 512 };
 		static two::IsometricAngle vars[] = { two::NORTH, two::SOUTH, two::EAST, two::WEST};
@@ -793,6 +816,7 @@ namespace two
 	{
 		Type& t = type<two::DepthMethod>();
 		static Meta meta = { t, &namspc({ "two" }), "DepthMethod", sizeof(two::DepthMethod), TypeClass::Enum };
+        init_default_value<two::DepthMethod>();
 		static cstring ids[] = { "Depth", "DepthPacked", "Distance", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::DepthMethod vars[] = { two::DepthMethod::Depth, two::DepthMethod::DepthPacked, two::DepthMethod::Distance, two::DepthMethod::Count};
@@ -805,6 +829,7 @@ namespace two
 	{
 		Type& t = type<two::LightType>();
 		static Meta meta = { t, &namspc({ "two" }), "LightType", sizeof(two::LightType), TypeClass::Enum };
+        init_default_value<two::LightType>();
 		static cstring ids[] = { "Direct", "Point", "Spot", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::LightType vars[] = { two::LightType::Direct, two::LightType::Point, two::LightType::Spot, two::LightType::Count};
@@ -817,6 +842,7 @@ namespace two
 	{
 		Type& t = type<two::ShadowFlags>();
 		static Meta meta = { t, &namspc({ "two" }), "ShadowFlags", sizeof(two::ShadowFlags), TypeClass::Enum };
+        init_default_value<two::ShadowFlags>();
 		static cstring ids[] = { "CSM_Stabilize", "CSM_Optimize", "CSM_BlendSplits" };
 		static uint32_t values[] = { 1, 2, 4 };
 		static two::ShadowFlags vars[] = { two::CSM_Stabilize, two::CSM_Optimize, two::CSM_BlendSplits};
@@ -829,6 +855,7 @@ namespace two
 	{
 		Type& t = type<two::MSAA>();
 		static Meta meta = { t, &namspc({ "two" }), "MSAA", sizeof(two::MSAA), TypeClass::Enum };
+        init_default_value<two::MSAA>();
 		static cstring ids[] = { "Disabled", "X2", "X4", "X8", "X16", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5 };
 		static two::MSAA vars[] = { two::MSAA::Disabled, two::MSAA::X2, two::MSAA::X4, two::MSAA::X8, two::MSAA::X16, two::MSAA::Count};
@@ -841,6 +868,7 @@ namespace two
 	{
 		Type& t = type<two::Shading>();
 		static Meta meta = { t, &namspc({ "two" }), "Shading", sizeof(two::Shading), TypeClass::Enum };
+        init_default_value<two::Shading>();
 		static cstring ids[] = { "Wireframe", "Solid", "Shaded", "Volume", "Voxels", "Lightmap", "Clear", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 		static two::Shading vars[] = { two::Shading::Wireframe, two::Shading::Solid, two::Shading::Shaded, two::Shading::Volume, two::Shading::Voxels, two::Shading::Lightmap, two::Shading::Clear, two::Shading::Count};
@@ -853,6 +881,7 @@ namespace two
 	{
 		Type& t = type<two::BackgroundMode>();
 		static Meta meta = { t, &namspc({ "two" }), "BackgroundMode", sizeof(two::BackgroundMode), TypeClass::Enum };
+        init_default_value<two::BackgroundMode>();
 		static cstring ids[] = { "None", "Panorama", "Radiance", "Custom" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::BackgroundMode vars[] = { two::BackgroundMode::None, two::BackgroundMode::Panorama, two::BackgroundMode::Radiance, two::BackgroundMode::Custom};
@@ -865,6 +894,7 @@ namespace two
 	{
 		Type& t = type<two::Month>();
 		static Meta meta = { t, &namspc({ "two" }), "Month", sizeof(two::Month), TypeClass::Enum };
+        init_default_value<two::Month>();
 		static cstring ids[] = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 		static two::Month vars[] = { two::Month::January, two::Month::February, two::Month::March, two::Month::April, two::Month::May, two::Month::June, two::Month::July, two::Month::August, two::Month::September, two::Month::October, two::Month::November, two::Month::December};
@@ -879,6 +909,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::mat4>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::mat4>", sizeof(stl::span<two::mat4>), TypeClass::Sequence };
+        init_default_value<stl::span<two::mat4>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::mat4>(),
 		                             stl_span_two_mat4__size,
@@ -888,6 +919,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Node3>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Node3>", sizeof(stl::span<two::Node3>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Node3>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Node3>(),
 		                             stl_span_two_Node3__size,
@@ -897,6 +929,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Item>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Item>", sizeof(stl::span<two::Item>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Item>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Item>(),
 		                             stl_span_two_Item__size,
@@ -906,6 +939,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Batch>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Batch>", sizeof(stl::span<two::Batch>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Batch>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Batch>(),
 		                             stl_span_two_Batch__size,
@@ -915,6 +949,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Direct>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Direct>", sizeof(stl::span<two::Direct>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Direct>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Direct>(),
 		                             stl_span_two_Direct__size,
@@ -924,6 +959,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Mime>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Mime>", sizeof(stl::span<two::Mime>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Mime>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Mime>(),
 		                             stl_span_two_Mime__size,
@@ -933,6 +969,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Light>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Light>", sizeof(stl::span<two::Light>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Light>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Light>(),
 		                             stl_span_two_Light__size,
@@ -942,6 +979,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Flare>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Flare>", sizeof(stl::span<two::Flare>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Flare>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Flare>(),
 		                             stl_span_two_Flare__size,
@@ -951,6 +989,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Texture*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Texture*>", sizeof(stl::span<two::Texture*>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Texture*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Texture>(),
 		                             stl_span_two_Texture___size,
@@ -960,6 +999,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Mesh*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Mesh*>", sizeof(stl::vector<two::Mesh*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Mesh*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Mesh>(),
 		                             stl_vector_two_Mesh___size,
@@ -973,6 +1013,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Model*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Model*>", sizeof(stl::vector<two::Model*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Model*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Model>(),
 		                             stl_vector_two_Model___size,
@@ -986,6 +1027,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Texture*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Texture*>", sizeof(stl::vector<two::Texture*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Texture*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Texture>(),
 		                             stl_vector_two_Texture___size,
@@ -999,6 +1041,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Material*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Material*>", sizeof(stl::vector<two::Material*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Material*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Material>(),
 		                             stl_vector_two_Material___size,
@@ -1012,6 +1055,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Animation*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Animation*>", sizeof(stl::vector<two::Animation*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Animation*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Animation>(),
 		                             stl_vector_two_Animation___size,
@@ -1025,6 +1069,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::AnimPlay>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::AnimPlay>", sizeof(stl::vector<two::AnimPlay>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::AnimPlay>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::AnimPlay>(),
 		                             stl_vector_two_AnimPlay__size,
@@ -1040,6 +1085,7 @@ namespace two
 	{
 		Type& t = type<two::Node3>();
 		static Meta meta = { t, &namspc({ "two" }), "Node3", sizeof(two::Node3), TypeClass::Object };
+        init_default_value<two::Node3>();
 		// bases
 		// defaults
 		static two::mat4 transform_default = bxidentity();
@@ -1075,6 +1121,7 @@ namespace two
 	{
 		Type& t = type<two::AnimTrack>();
 		static Meta meta = { t, &namspc({ "two" }), "AnimTrack", sizeof(two::AnimTrack), TypeClass::Object };
+        init_default_value<two::AnimTrack>();
 		// bases
 		// defaults
 		static two::Type* value_type_default = nullptr;
@@ -1100,6 +1147,7 @@ namespace two
 	{
 		Type& t = type<two::Animation>();
 		static Meta meta = { t, &namspc({ "two" }), "Animation", sizeof(two::Animation), TypeClass::Object };
+        init_default_value<two::Animation>();
 		// bases
 		// defaults
 		static float length_default = 1.f;
@@ -1120,6 +1168,7 @@ namespace two
 	{
 		Type& t = type<two::Texture>();
 		static Meta meta = { t, &namspc({ "two" }), "Texture", sizeof(two::Texture), TypeClass::Object };
+        init_default_value_abstract<two::Texture>();
 		// bases
 		// defaults
 		static uint16_t depth_default = 0;
@@ -1178,6 +1227,7 @@ namespace two
 	{
 		Type& t = type<two::Skeleton>();
 		static Meta meta = { t, &namspc({ "two" }), "Skeleton", sizeof(two::Skeleton), TypeClass::Object };
+        init_default_value<two::Skeleton>();
 		// bases
 		// defaults
 		// constructors
@@ -1191,6 +1241,7 @@ namespace two
 	{
 		Type& t = type<two::Joint>();
 		static Meta meta = { t, &namspc({ "two" }), "Joint", sizeof(two::Joint), TypeClass::Struct };
+        init_default_value<two::Joint>();
 		// bases
 		// defaults
 		// constructors
@@ -1210,6 +1261,7 @@ namespace two
 	{
 		Type& t = type<two::Skin>();
 		static Meta meta = { t, &namspc({ "two" }), "Skin", sizeof(two::Skin), TypeClass::Object };
+        init_default_value<two::Skin>();
 		// bases
 		// defaults
 		// constructors
@@ -1223,6 +1275,7 @@ namespace two
 	{
 		Type& t = type<two::Rig>();
 		static Meta meta = { t, &namspc({ "two" }), "Rig", sizeof(two::Rig), TypeClass::Object };
+        init_default_value<two::Rig>();
 		// bases
 		// defaults
 		// constructors
@@ -1236,6 +1289,7 @@ namespace two
 	{
 		Type& t = type<two::AnimNode>();
 		static Meta meta = { t, &namspc({ "two" }), "AnimNode", sizeof(two::AnimNode), TypeClass::Struct };
+        init_default_value<two::AnimNode>();
 		// bases
 		// defaults
 		static two::quat rotation_default = ZeroQuat;
@@ -1262,6 +1316,7 @@ namespace two
 	{
 		Type& t = type<two::AnimPlay>();
 		static Meta meta = { t, &namspc({ "two" }), "AnimPlay", sizeof(two::AnimPlay), TypeClass::Struct };
+        init_default_value<two::AnimPlay>();
 		// bases
 		// defaults
 		static const two::Animation* animation_default = nullptr;
@@ -1299,6 +1354,7 @@ namespace two
 	{
 		Type& t = type<two::Mime>();
 		static Meta meta = { t, &namspc({ "two" }), "Mime", sizeof(two::Mime), TypeClass::Object };
+        init_default_value<two::Mime>();
 		// bases
 		// defaults
 		static bool active_default = true;
@@ -1343,6 +1399,7 @@ namespace two
 	{
 		Type& t = type<two::Frustum>();
 		static Meta meta = { t, &namspc({ "two" }), "Frustum", sizeof(two::Frustum), TypeClass::Object };
+        init_default_value<two::Frustum>();
 		// bases
 		// defaults
 		static float fov_default = 60.f;
@@ -1366,6 +1423,7 @@ namespace two
 	{
 		Type& t = type<two::FrustumSlice>();
 		static Meta meta = { t, &namspc({ "two" }), "FrustumSlice", sizeof(two::FrustumSlice), TypeClass::Struct };
+        init_default_value<two::FrustumSlice>();
 		// bases
 		// defaults
 		// constructors
@@ -1385,6 +1443,7 @@ namespace two
 	{
 		Type& t = type<two::ShaderDefine>();
 		static Meta meta = { t, &namspc({ "two" }), "ShaderDefine", sizeof(two::ShaderDefine), TypeClass::Struct };
+        init_default_value<two::ShaderDefine>();
 		// bases
 		// defaults
 		// constructors
@@ -1408,6 +1467,7 @@ namespace two
 	{
 		Type& t = type<two::ShaderBlock>();
 		static Meta meta = { t, &namspc({ "two" }), "ShaderBlock", sizeof(two::ShaderBlock), TypeClass::Struct };
+        init_default_value<two::ShaderBlock>();
 		// bases
 		// defaults
 		// constructors
@@ -1437,6 +1497,7 @@ namespace two
 	{
 		Type& t = type<two::ProgramMode>();
 		static Meta meta = { t, &namspc({ "two" }), "ProgramMode", sizeof(two::ProgramMode), TypeClass::Struct };
+        init_default_value<two::ProgramMode>();
 		// bases
 		// defaults
 		// constructors
@@ -1462,6 +1523,7 @@ namespace two
 	{
 		Type& t = type<two::ProgramBlock>();
 		static Meta meta = { t, &namspc({ "two" }), "ProgramBlock", sizeof(two::ProgramBlock), TypeClass::Struct };
+        init_default_value<two::ProgramBlock>();
 		// bases
 		// defaults
 		static bool enabled_default = false;
@@ -1489,6 +1551,7 @@ namespace two
 	{
 		Type& t = type<two::Program>();
 		static Meta meta = { t, &namspc({ "two" }), "Program", sizeof(two::Program), TypeClass::Object };
+        init_default_value<two::Program>();
 		// bases
 		// defaults
 		static bool set_block_0_enabled_default = true;
@@ -1514,6 +1577,7 @@ namespace two
 	{
 		Type& t = type<two::ProgramVersion>();
 		static Meta meta = { t, &namspc({ "two" }), "ProgramVersion", sizeof(two::ProgramVersion), TypeClass::Struct };
+        init_default_value<two::ProgramVersion>();
 		// bases
 		// defaults
 		static bool set_option_0_active_default = true;
@@ -1541,6 +1605,7 @@ namespace two
 	{
 		Type& t = type<two::Shot>();
 		static Meta meta = { t, &namspc({ "two" }), "Shot", sizeof(two::Shot), TypeClass::Object };
+        init_default_value<two::Shot>();
 		// bases
 		// defaults
 		// constructors
@@ -1554,6 +1619,7 @@ namespace two
 	{
 		Type& t = type<two::Pass>();
 		static Meta meta = { t, &namspc({ "two" }), "Pass", sizeof(two::Pass), TypeClass::Struct };
+        init_default_value<two::Pass>();
 		// bases
 		// defaults
 		static two::RenderTarget* target_default = nullptr;
@@ -1590,6 +1656,7 @@ namespace two
 	{
 		Type& t = type<two::RenderFrame>();
 		static Meta meta = { t, &namspc({ "two" }), "RenderFrame", sizeof(two::RenderFrame), TypeClass::Struct };
+        init_default_value<two::RenderFrame>();
 		// bases
 		// defaults
 		static uint32_t nudraw_calls_default = 0;
@@ -1621,6 +1688,7 @@ namespace two
 	{
 		Type& t = type<two::Render>();
 		static Meta meta = { t, &namspc({ "two" }), "Render", sizeof(two::Render), TypeClass::Struct };
+        init_default_value<two::Render>();
 		// bases
 		// defaults
 		static two::Zone* env_default = nullptr;
@@ -1667,6 +1735,7 @@ namespace two
 	{
 		Type& t = type<two::GfxBlock>();
 		static Meta meta = { t, &namspc({ "two" }), "GfxBlock", sizeof(two::GfxBlock), TypeClass::Object };
+        init_default_value<two::GfxBlock>();
 		// bases
 		static Type* bases[] = { &type<two::ShaderBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::GfxBlock, two::ShaderBlock>() };
@@ -1685,6 +1754,7 @@ namespace two
 	{
 		Type& t = type<two::DrawBlock>();
 		static Meta meta = { t, &namspc({ "two" }), "DrawBlock", sizeof(two::DrawBlock), TypeClass::Object };
+        init_default_value<two::DrawBlock>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::DrawBlock, two::GfxBlock>() };
@@ -1700,6 +1770,7 @@ namespace two
 	{
 		Type& t = type<two::Renderer>();
 		static Meta meta = { t, &namspc({ "two" }), "Renderer", sizeof(two::Renderer), TypeClass::Object };
+        init_default_value<two::Renderer>();
 		// bases
 		// defaults
 		// constructors
@@ -1718,6 +1789,7 @@ namespace two
 	{
 		Type& t = type<two::GfxWindow>();
 		static Meta meta = { t, &namspc({ "two" }), "GfxWindow", sizeof(two::GfxWindow), TypeClass::Object };
+        init_default_value<two::GfxWindow>();
 		// bases
 		// defaults
 		// constructors
@@ -1731,6 +1803,7 @@ namespace two
 	{
 		Type& t = type<two::GfxSystem>();
 		static Meta meta = { t, &namspc({ "two" }), "GfxSystem", sizeof(two::GfxSystem), TypeClass::Object };
+        init_default_value<two::GfxSystem>();
 		// bases
 		static Type* bases[] = { &type<two::BgfxSystem>() };
 		static size_t bases_offsets[] = { base_offset<two::GfxSystem, two::BgfxSystem>() };
@@ -1787,6 +1860,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialParam<two::Colour>>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialParam<two::Colour>", sizeof(two::MaterialParam<two::Colour>), TypeClass::Struct };
+        init_default_value<two::MaterialParam<two::Colour>>();
 		// bases
 		// defaults
 		static two::Texture* texture_default = nullptr;
@@ -1813,6 +1887,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialParam<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialParam<float>", sizeof(two::MaterialParam<float>), TypeClass::Struct };
+        init_default_value<two::MaterialParam<float>>();
 		// bases
 		// defaults
 		static two::Texture* texture_default = nullptr;
@@ -1839,6 +1914,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialParam<two::vec4>>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialParam<two::vec4>", sizeof(two::MaterialParam<two::vec4>), TypeClass::Struct };
+        init_default_value<two::MaterialParam<two::vec4>>();
 		// bases
 		// defaults
 		static two::Texture* texture_default = nullptr;
@@ -1865,6 +1941,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialBase>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialBase", sizeof(two::MaterialBase), TypeClass::Struct };
+        init_default_value<two::MaterialBase>();
 		// bases
 		// defaults
 		static two::BlendMode blend_mode_default = two::BlendMode::None;
@@ -1909,6 +1986,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialUser>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialUser", sizeof(two::MaterialUser), TypeClass::Struct };
+        init_default_value<two::MaterialUser>();
 		// bases
 		// defaults
 		static two::Texture* tex0_default = nullptr;
@@ -1948,6 +2026,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialAlpha>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialAlpha", sizeof(two::MaterialAlpha), TypeClass::Struct };
+        init_default_value<two::MaterialAlpha>();
 		// bases
 		// defaults
 		static two::MaterialParam<float> alpha_default = {1.f,nullptr};
@@ -1977,6 +2056,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialSolid>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialSolid", sizeof(two::MaterialSolid), TypeClass::Struct };
+        init_default_value<two::MaterialSolid>();
 		// bases
 		// defaults
 		static two::MaterialParam<two::Colour> colour_default = {Colour::White,nullptr};
@@ -2000,6 +2080,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialPoint>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialPoint", sizeof(two::MaterialPoint), TypeClass::Struct };
+        init_default_value<two::MaterialPoint>();
 		// bases
 		// defaults
 		static float point_size_default = 1.f;
@@ -2025,6 +2106,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialLine>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialLine", sizeof(two::MaterialLine), TypeClass::Struct };
+        init_default_value<two::MaterialLine>();
 		// bases
 		// defaults
 		static float line_width_default = 1.f;
@@ -2056,6 +2138,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialFresnel>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialFresnel", sizeof(two::MaterialFresnel), TypeClass::Struct };
+        init_default_value<two::MaterialFresnel>();
 		// bases
 		// defaults
 		static two::MaterialParam<two::Colour> value_default = {Colour::White,nullptr};
@@ -2085,6 +2168,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialLit>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialLit", sizeof(two::MaterialLit), TypeClass::Struct };
+        init_default_value<two::MaterialLit>();
 		// bases
 		// defaults
 		static two::MaterialParam<two::Colour> emissive_default = {rgba(0x00000000),nullptr};
@@ -2122,6 +2206,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialPbr>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialPbr", sizeof(two::MaterialPbr), TypeClass::Struct };
+        init_default_value<two::MaterialPbr>();
 		// bases
 		// defaults
 		static two::MaterialParam<two::Colour> albedo_default = {Colour::White,nullptr};
@@ -2170,6 +2255,7 @@ namespace two
 	{
 		Type& t = type<two::MaterialPhong>();
 		static Meta meta = { t, &namspc({ "two" }), "MaterialPhong", sizeof(two::MaterialPhong), TypeClass::Struct };
+        init_default_value<two::MaterialPhong>();
 		// bases
 		// defaults
 		static two::MaterialParam<two::Colour> diffuse_default = {rgb(0xffffff),nullptr};
@@ -2205,6 +2291,7 @@ namespace two
 	{
 		Type& t = type<two::BlockMaterial>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockMaterial", sizeof(two::BlockMaterial), TypeClass::Object };
+        init_default_value<two::BlockMaterial>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockMaterial, two::GfxBlock>() };
@@ -2220,6 +2307,7 @@ namespace two
 	{
 		Type& t = type<two::Material>();
 		static Meta meta = { t, &namspc({ "two" }), "Material", sizeof(two::Material), TypeClass::Object };
+        init_default_value<two::Material>();
 		// bases
 		// defaults
 		static uint16_t index_default = 0;
@@ -2252,6 +2340,7 @@ namespace two
 	{
 		Type& t = type<two::ModelElem>();
 		static Meta meta = { t, &namspc({ "two" }), "ModelElem", sizeof(two::ModelElem), TypeClass::Struct };
+        init_default_value<two::ModelElem>();
 		// bases
 		// defaults
 		// constructors
@@ -2280,6 +2369,7 @@ namespace two
 	{
 		Type& t = type<two::Model>();
 		static Meta meta = { t, &namspc({ "two" }), "Model", sizeof(two::Model), TypeClass::Object };
+        init_default_value<two::Model>();
 		// bases
 		// defaults
 		static two::Aabb aabb_default = {vec3(0.f),vec3(0.f)};
@@ -2313,6 +2403,7 @@ namespace two
 	{
 		Type& t = type<two::Flow>();
 		static Meta meta = { t, &namspc({ "two" }), "Flow", sizeof(two::Flow), TypeClass::Struct };
+        init_default_value<two::Flow>();
 		// bases
 		// defaults
 		static float duration_default = 1.f;
@@ -2374,6 +2465,7 @@ namespace two
 	{
 		Type& t = type<two::Flare>();
 		static Meta meta = { t, &namspc({ "two" }), "Flare", sizeof(two::Flare), TypeClass::Struct };
+        init_default_value<two::Flare>();
 		// bases
 		static Type* bases[] = { &type<two::Flow>() };
 		static size_t bases_offsets[] = { base_offset<two::Flare, two::Flow>() };
@@ -2399,6 +2491,7 @@ namespace two
 	{
 		Type& t = type<two::BlockParticles>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockParticles", sizeof(two::BlockParticles), TypeClass::Object };
+        init_default_value<two::BlockParticles>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockParticles, two::GfxBlock>() };
@@ -2414,6 +2507,7 @@ namespace two
 	{
 		Type& t = type<two::Batch>();
 		static Meta meta = { t, &namspc({ "two" }), "Batch", sizeof(two::Batch), TypeClass::Struct };
+        init_default_value<two::Batch>();
 		// bases
 		// defaults
 		static two::Item* item_default = nullptr;
@@ -2447,6 +2541,7 @@ namespace two
 	{
 		Type& t = type<two::Item>();
 		static Meta meta = { t, &namspc({ "two" }), "Item", sizeof(two::Item), TypeClass::Object };
+        init_default_value<two::Item>();
 		// bases
 		// defaults
 		static two::Node3* node_default = nullptr;
@@ -2490,6 +2585,7 @@ namespace two
 	{
 		Type& t = type<two::ImportConfig>();
 		static Meta meta = { t, &namspc({ "two" }), "ImportConfig", sizeof(two::ImportConfig), TypeClass::Struct };
+        init_default_value<two::ImportConfig>();
 		// bases
 		// defaults
 		static two::ModelFormat format_default = two::ModelFormat::obj;
@@ -2538,6 +2634,7 @@ namespace two
 	{
 		Type& t = type<two::Import>();
 		static Meta meta = { t, &namspc({ "two" }), "Import", sizeof(two::Import), TypeClass::Object };
+        init_default_value<two::Import>();
 		// bases
 		// defaults
 		// constructors
@@ -2562,6 +2659,7 @@ namespace two
 	{
 		Type& t = type<two::Prefab>();
 		static Meta meta = { t, &namspc({ "two" }), "Prefab", sizeof(two::Prefab), TypeClass::Object };
+        init_default_value<two::Prefab>();
 		// bases
 		// defaults
 		static two::Mime* add_0_mime_default = nullptr;
@@ -2582,6 +2680,7 @@ namespace two
 	{
 		Type& t = type<two::AssetStore<two::Texture>>();
 		static Meta meta = { t, &namspc({ "two" }), "AssetStore<two::Texture>", sizeof(two::AssetStore<two::Texture>), TypeClass::Object };
+        init_default_value<two::AssetStore<two::Texture>>();
 		// bases
 		// defaults
 		// constructors
@@ -2605,6 +2704,7 @@ namespace two
 	{
 		Type& t = type<two::AssetStore<two::Program>>();
 		static Meta meta = { t, &namspc({ "two" }), "AssetStore<two::Program>", sizeof(two::AssetStore<two::Program>), TypeClass::Object };
+        init_default_value<two::AssetStore<two::Program>>();
 		// bases
 		// defaults
 		// constructors
@@ -2628,6 +2728,7 @@ namespace two
 	{
 		Type& t = type<two::AssetStore<two::Material>>();
 		static Meta meta = { t, &namspc({ "two" }), "AssetStore<two::Material>", sizeof(two::AssetStore<two::Material>), TypeClass::Object };
+        init_default_value<two::AssetStore<two::Material>>();
 		// bases
 		// defaults
 		// constructors
@@ -2651,6 +2752,7 @@ namespace two
 	{
 		Type& t = type<two::AssetStore<two::Model>>();
 		static Meta meta = { t, &namspc({ "two" }), "AssetStore<two::Model>", sizeof(two::AssetStore<two::Model>), TypeClass::Object };
+        init_default_value<two::AssetStore<two::Model>>();
 		// bases
 		// defaults
 		// constructors
@@ -2674,6 +2776,7 @@ namespace two
 	{
 		Type& t = type<two::AssetStore<two::Flow>>();
 		static Meta meta = { t, &namspc({ "two" }), "AssetStore<two::Flow>", sizeof(two::AssetStore<two::Flow>), TypeClass::Object };
+        init_default_value<two::AssetStore<two::Flow>>();
 		// bases
 		// defaults
 		// constructors
@@ -2697,6 +2800,7 @@ namespace two
 	{
 		Type& t = type<two::AssetStore<two::Prefab>>();
 		static Meta meta = { t, &namspc({ "two" }), "AssetStore<two::Prefab>", sizeof(two::AssetStore<two::Prefab>), TypeClass::Object };
+        init_default_value<two::AssetStore<two::Prefab>>();
 		// bases
 		// defaults
 		// constructors
@@ -2720,6 +2824,7 @@ namespace two
 	{
 		Type& t = type<two::Camera>();
 		static Meta meta = { t, &namspc({ "two" }), "Camera", sizeof(two::Camera), TypeClass::Object };
+        init_default_value<two::Camera>();
 		// bases
 		// defaults
 		static two::vec3 eye_default = z3;
@@ -2767,6 +2872,7 @@ namespace two
 	{
 		Type& t = type<two::MirrorCamera>();
 		static Meta meta = { t, &namspc({ "two" }), "MirrorCamera", sizeof(two::MirrorCamera), TypeClass::Struct };
+        init_default_value<two::MirrorCamera>();
 		// bases
 		// defaults
 		static bool visible_default = false;
@@ -2792,6 +2898,7 @@ namespace two
 	{
 		Type& t = type<two::DepthParams>();
 		static Meta meta = { t, &namspc({ "two" }), "DepthParams", sizeof(two::DepthParams), TypeClass::Struct };
+        init_default_value<two::DepthParams>();
 		// bases
 		// defaults
 		static float depth_bias_default = 0.f;
@@ -2819,6 +2926,7 @@ namespace two
 	{
 		Type& t = type<two::DistanceParams>();
 		static Meta meta = { t, &namspc({ "two" }), "DistanceParams", sizeof(two::DistanceParams), TypeClass::Struct };
+        init_default_value<two::DistanceParams>();
 		// bases
 		// defaults
 		static float near_default = 0.f;
@@ -2845,6 +2953,7 @@ namespace two
 	{
 		Type& t = type<two::BlockDepth>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockDepth", sizeof(two::BlockDepth), TypeClass::Object };
+        init_default_value<two::BlockDepth>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockDepth, two::DrawBlock>() };
@@ -2860,6 +2969,7 @@ namespace two
 	{
 		Type& t = type<two::GpuMesh>();
 		static Meta meta = { t, &namspc({ "two" }), "GpuMesh", sizeof(two::GpuMesh), TypeClass::Struct };
+        init_default_value<two::GpuMesh>();
 		// bases
 		// defaults
 		// constructors
@@ -2879,6 +2989,7 @@ namespace two
 	{
 		Type& t = type<two::Mesh>();
 		static Meta meta = { t, &namspc({ "two" }), "Mesh", sizeof(two::Mesh), TypeClass::Object };
+        init_default_value<two::Mesh>();
 		// bases
 		// defaults
 		static two::PrimitiveType primitive_default = two::PrimitiveType::Triangles;
@@ -2937,6 +3048,7 @@ namespace two
 	{
 		Type& t = type<two::Direct>();
 		static Meta meta = { t, &namspc({ "two" }), "Direct", sizeof(two::Direct), TypeClass::Object };
+        init_default_value<two::Direct>();
 		// bases
 		// defaults
 		static two::Item* item_default = nullptr;
@@ -2958,6 +3070,7 @@ namespace two
 	{
 		Type& t = type<two::ImmediateDraw>();
 		static Meta meta = { t, &namspc({ "two" }), "ImmediateDraw", sizeof(two::ImmediateDraw), TypeClass::Object };
+        init_default_value<two::ImmediateDraw>();
 		// bases
 		// defaults
 		// constructors
@@ -2971,6 +3084,7 @@ namespace two
 	{
 		Type& t = type<two::SymbolIndex>();
 		static Meta meta = { t, &namspc({ "two" }), "SymbolIndex", sizeof(two::SymbolIndex), TypeClass::Object };
+        init_default_value<two::SymbolIndex>();
 		// bases
 		// defaults
 		// constructors
@@ -2984,6 +3098,7 @@ namespace two
 	{
 		Type& t = type<two::Lines>();
 		static Meta meta = { t, &namspc({ "two" }), "Lines", sizeof(two::Lines), TypeClass::Object };
+        init_default_value<two::Lines>();
 		// bases
 		// defaults
 		static two::Colour add_0_start_colour_default = two::Colour(1.f);
@@ -3014,6 +3129,7 @@ namespace two
 	{
 		Type& t = type<two::BlockFilter>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockFilter", sizeof(two::BlockFilter), TypeClass::Object };
+        init_default_value<two::BlockFilter>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockFilter, two::GfxBlock>() };
@@ -3053,6 +3169,7 @@ namespace two
 	{
 		Type& t = type<two::BlockCopy>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockCopy", sizeof(two::BlockCopy), TypeClass::Object };
+        init_default_value<two::BlockCopy>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockCopy, two::GfxBlock>() };
@@ -3080,6 +3197,7 @@ namespace two
 	{
 		Type& t = type<two::ClusteredFrustum>();
 		static Meta meta = { t, &namspc({ "two" }), "ClusteredFrustum", sizeof(two::ClusteredFrustum), TypeClass::Struct };
+        init_default_value<two::ClusteredFrustum>();
 		// bases
 		static Type* bases[] = { &type<two::Frustum>() };
 		static size_t bases_offsets[] = { base_offset<two::ClusteredFrustum, two::Frustum>() };
@@ -3101,6 +3219,7 @@ namespace two
 	{
 		Type& t = type<two::Light>();
 		static Meta meta = { t, &namspc({ "two" }), "Light", sizeof(two::Light), TypeClass::Object };
+        init_default_value<two::Light>();
 		// bases
 		// defaults
 		static two::Node3* node_default = nullptr;
@@ -3163,6 +3282,7 @@ namespace two
 	{
 		Type& t = type<two::Gnode>();
 		static Meta meta = { t, &namspc({ "two" }), "Gnode", sizeof(two::Gnode), TypeClass::Object };
+        init_default_value<two::Gnode>();
 		// bases
 		// defaults
 		// constructors
@@ -3176,6 +3296,7 @@ namespace two
 	{
 		Type& t = type<two::TPool<two::Node3>>();
 		static Meta meta = { t, &namspc({ "two" }), "TPool<two::Node3>", sizeof(two::TPool<two::Node3>), TypeClass::Object };
+        init_default_value<two::TPool<two::Node3>>();
 		// bases
 		// defaults
 		// constructors
@@ -3196,6 +3317,7 @@ namespace two
 	{
 		Type& t = type<two::TPool<two::Item>>();
 		static Meta meta = { t, &namspc({ "two" }), "TPool<two::Item>", sizeof(two::TPool<two::Item>), TypeClass::Object };
+        init_default_value<two::TPool<two::Item>>();
 		// bases
 		// defaults
 		// constructors
@@ -3216,6 +3338,7 @@ namespace two
 	{
 		Type& t = type<two::TPool<two::Batch>>();
 		static Meta meta = { t, &namspc({ "two" }), "TPool<two::Batch>", sizeof(two::TPool<two::Batch>), TypeClass::Object };
+        init_default_value<two::TPool<two::Batch>>();
 		// bases
 		// defaults
 		// constructors
@@ -3236,6 +3359,7 @@ namespace two
 	{
 		Type& t = type<two::TPool<two::Direct>>();
 		static Meta meta = { t, &namspc({ "two" }), "TPool<two::Direct>", sizeof(two::TPool<two::Direct>), TypeClass::Object };
+        init_default_value<two::TPool<two::Direct>>();
 		// bases
 		// defaults
 		// constructors
@@ -3256,6 +3380,7 @@ namespace two
 	{
 		Type& t = type<two::TPool<two::Mime>>();
 		static Meta meta = { t, &namspc({ "two" }), "TPool<two::Mime>", sizeof(two::TPool<two::Mime>), TypeClass::Object };
+        init_default_value<two::TPool<two::Mime>>();
 		// bases
 		// defaults
 		// constructors
@@ -3276,6 +3401,7 @@ namespace two
 	{
 		Type& t = type<two::TPool<two::Light>>();
 		static Meta meta = { t, &namspc({ "two" }), "TPool<two::Light>", sizeof(two::TPool<two::Light>), TypeClass::Object };
+        init_default_value<two::TPool<two::Light>>();
 		// bases
 		// defaults
 		// constructors
@@ -3296,6 +3422,7 @@ namespace two
 	{
 		Type& t = type<two::TPool<two::Flare>>();
 		static Meta meta = { t, &namspc({ "two" }), "TPool<two::Flare>", sizeof(two::TPool<two::Flare>), TypeClass::Object };
+        init_default_value<two::TPool<two::Flare>>();
 		// bases
 		// defaults
 		// constructors
@@ -3316,6 +3443,7 @@ namespace two
 	{
 		Type& t = type<two::Culler>();
 		static Meta meta = { t, &namspc({ "two" }), "Culler", sizeof(two::Culler), TypeClass::Object };
+        init_default_value<two::Culler>();
 		// bases
 		// defaults
 		// constructors
@@ -3332,6 +3460,7 @@ namespace two
 	{
 		Type& t = type<two::Viewport>();
 		static Meta meta = { t, &namspc({ "two" }), "Viewport", sizeof(two::Viewport), TypeClass::Object };
+        init_default_value<two::Viewport>();
 		// bases
 		static Type* bases[] = { &type<two::OEntt>() };
 		static size_t bases_offsets[] = { base_offset<two::Viewport, two::OEntt>() };
@@ -3381,6 +3510,7 @@ namespace two
 	{
 		Type& t = type<two::RenderQuad>();
 		static Meta meta = { t, &namspc({ "two" }), "RenderQuad", sizeof(two::RenderQuad), TypeClass::Struct };
+        init_default_value<two::RenderQuad>();
 		// bases
 		// defaults
 		static two::vec4 source_default = vec4(vec2(0.f),vec2(1.f));
@@ -3416,6 +3546,7 @@ namespace two
 	{
 		Type& t = type<two::FrameBuffer>();
 		static Meta meta = { t, &namspc({ "two" }), "FrameBuffer", sizeof(two::FrameBuffer), TypeClass::Object };
+        init_default_value<two::FrameBuffer>();
 		// bases
 		// defaults
 		static uint64_t construct_1_flags_default = 0U;
@@ -3442,6 +3573,7 @@ namespace two
 	{
 		Type& t = type<two::SwapBuffer>();
 		static Meta meta = { t, &namspc({ "two" }), "SwapBuffer", sizeof(two::SwapBuffer), TypeClass::Object };
+        init_default_value<two::SwapBuffer>();
 		// bases
 		// defaults
 		// constructors
@@ -3468,6 +3600,7 @@ namespace two
 	{
 		Type& t = type<two::Cascade>();
 		static Meta meta = { t, &namspc({ "two" }), "Cascade", sizeof(two::Cascade), TypeClass::Object };
+        init_default_value<two::Cascade>();
 		// bases
 		// defaults
 		// constructors
@@ -3492,6 +3625,7 @@ namespace two
 	{
 		Type& t = type<two::SwapCascade>();
 		static Meta meta = { t, &namspc({ "two" }), "SwapCascade", sizeof(two::SwapCascade), TypeClass::Object };
+        init_default_value<two::SwapCascade>();
 		// bases
 		// defaults
 		// constructors
@@ -3517,6 +3651,7 @@ namespace two
 	{
 		Type& t = type<two::RenderTarget>();
 		static Meta meta = { t, &namspc({ "two" }), "RenderTarget", sizeof(two::RenderTarget), TypeClass::Object };
+        init_default_value<two::RenderTarget>();
 		// bases
 		static Type* bases[] = { &type<two::FrameBuffer>() };
 		static size_t bases_offsets[] = { base_offset<two::RenderTarget, two::FrameBuffer>() };
@@ -3550,6 +3685,7 @@ namespace two
 	{
 		Type& t = type<two::Sun>();
 		static Meta meta = { t, &namspc({ "two" }), "Sun", sizeof(two::Sun), TypeClass::Struct };
+        init_default_value<two::Sun>();
 		// bases
 		// defaults
 		static two::Colour colour_default = {0.8f,0.8f,0.0f};
@@ -3577,6 +3713,7 @@ namespace two
 	{
 		Type& t = type<two::Radiance>();
 		static Meta meta = { t, &namspc({ "two" }), "Radiance", sizeof(two::Radiance), TypeClass::Struct };
+        init_default_value<two::Radiance>();
 		// bases
 		// defaults
 		static two::Colour colour_default = two::Colour::White;
@@ -3610,6 +3747,7 @@ namespace two
 	{
 		Type& t = type<two::Background>();
 		static Meta meta = { t, &namspc({ "two" }), "Background", sizeof(two::Background), TypeClass::Struct };
+        init_default_value<two::Background>();
 		// bases
 		// defaults
 		static two::BackgroundMode mode_default = two::BackgroundMode::None;
@@ -3639,6 +3777,7 @@ namespace two
 	{
 		Type& t = type<two::Skylight>();
 		static Meta meta = { t, &namspc({ "two" }), "Skylight", sizeof(two::Skylight), TypeClass::Struct };
+        init_default_value<two::Skylight>();
 		// bases
 		// defaults
 		static bool enabled_default = false;
@@ -3669,6 +3808,7 @@ namespace two
 	{
 		Type& t = type<two::Fog>();
 		static Meta meta = { t, &namspc({ "two" }), "Fog", sizeof(two::Fog), TypeClass::Struct };
+        init_default_value<two::Fog>();
 		// bases
 		// defaults
 		static bool enabled_default = false;
@@ -3716,6 +3856,7 @@ namespace two
 	{
 		Type& t = type<two::Zone>();
 		static Meta meta = { t, &namspc({ "two" }), "Zone", sizeof(two::Zone), TypeClass::Struct };
+        init_default_value<two::Zone>();
 		// bases
 		// defaults
 		// constructors
@@ -3742,6 +3883,7 @@ namespace two
 	{
 		Type& t = type<two::Scene>();
 		static Meta meta = { t, &namspc({ "two" }), "Scene", sizeof(two::Scene), TypeClass::Object };
+        init_default_value<two::Scene>();
 		// bases
 		// defaults
 		// constructors
@@ -3776,6 +3918,7 @@ namespace two
 	{
 		Type& t = type<two::BlockSky>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockSky", sizeof(two::BlockSky), TypeClass::Object };
+        init_default_value<two::BlockSky>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockSky, two::GfxBlock>() };

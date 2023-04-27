@@ -50,6 +50,7 @@ namespace two
 	{
 		Type& t = type<two::Result>();
 		static Meta meta = { t, &namspc({ "two" }), "Result", sizeof(two::Result), TypeClass::Enum };
+        init_default_value<two::Result>();
 		static cstring ids[] = { "kSuccess", "kFail", "kUnfinished" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::Result vars[] = { two::kSuccess, two::kFail, two::kUnfinished};
@@ -66,6 +67,7 @@ namespace two
 	{
 		Type& t = type<two::Tile>();
 		static Meta meta = { t, &namspc({ "two" }), "Tile", sizeof(two::Tile), TypeClass::Struct };
+        init_default_value<two::Tile>();
 		// bases
 		// defaults
 		// constructors
@@ -92,6 +94,7 @@ namespace two
 	{
 		Type& t = type<two::Tileset>();
 		static Meta meta = { t, &namspc({ "two" }), "Tileset", sizeof(two::Tileset), TypeClass::Struct };
+        init_default_value<two::Tileset>();
 		// bases
 		// defaults
 		// constructors
@@ -117,6 +120,7 @@ namespace two
 	{
 		Type& t = type<two::Wave>();
 		static Meta meta = { t, &namspc({ "two" }), "Wave", sizeof(two::Wave), TypeClass::Struct };
+        init_default_value<two::Wave>();
 		// bases
 		// defaults
 		// constructors
@@ -139,6 +143,7 @@ namespace two
 	{
 		Type& t = type<two::WaveTileset>();
 		static Meta meta = { t, &namspc({ "two" }), "WaveTileset", sizeof(two::WaveTileset), TypeClass::Struct };
+        init_default_value<two::WaveTileset>();
 		// bases
 		static Type* bases[] = { &type<two::Tileset>() };
 		static size_t bases_offsets[] = { base_offset<two::WaveTileset, two::Tileset>() };
@@ -160,6 +165,7 @@ namespace two
 	{
 		Type& t = type<two::TileWave>();
 		static Meta meta = { t, &namspc({ "two" }), "TileWave", sizeof(two::TileWave), TypeClass::Struct };
+        init_default_value<two::TileWave>();
 		// bases
 		static Type* bases[] = { &type<two::Wave>() };
 		static size_t bases_offsets[] = { base_offset<two::TileWave, two::Wave>() };

@@ -171,7 +171,10 @@ namespace two
 		return header;
 	}
 
-	struct Buffer
+    // Buffer conflict with two::Buffer defined in ecs/Buffer.h
+    //
+	// struct Buffer 
+    struct MyBuffer
 	{
 		vector<uint32_t> indices;
 		vector<vec3> vertices;
@@ -181,7 +184,7 @@ namespace two
 		vector<Colour> colors;
 	};
 
-	void pack(Buffer buffer, MeshPacker& geometry)
+	void pack(MyBuffer buffer, MeshPacker& geometry)
 	{
 		geometry.m_indices = buffer.indices;
 		geometry.m_positions = buffer.vertices;
@@ -195,7 +198,7 @@ namespace two
 		//}
 	}
 
-	void vertex(const Header& header, Buffer& buffer, const Element& element, span<double> data)
+	void vertex(const Header& header, MyBuffer& buffer, const Element& element, span<double> data)
 	{
 		// @todo make this faster... this is ridiculous
 		vec3 position;
@@ -239,7 +242,7 @@ namespace two
 		if(header.has_colours) buffer.colors.push_back(to_colour(colour));
 	}
 
-	void face(const Header& header, Buffer& buffer, const Element& element, span<double> data)
+	void face(const Header& header, MyBuffer& buffer, const Element& element, span<double> data)
 	{
 		UNUSED(header);
 		size_t i = 0;
@@ -281,7 +284,7 @@ namespace two
 	{
 		// PLY ascii format specification, as per http://en.wikipedia.org/wiki/PLY_(file_format)
 
-		Buffer buffer;
+		MyBuffer buffer;
 
 		const size_t num_elements = header.elements.size();
 		Element element = header.elements[0];
@@ -358,7 +361,7 @@ namespace two
 			return 0.0;
 		};
 
-		Buffer buffer;
+		MyBuffer buffer;
 
 		for(const Element& element : header.elements)
 		{

@@ -56,6 +56,7 @@ namespace two
 	{
 		Type& t = type<two::EditNestMode>();
 		static Meta meta = { t, &namspc({ "two" }), "EditNestMode", sizeof(two::EditNestMode), TypeClass::Enum };
+        init_default_value<two::EditNestMode>();
 		static cstring ids[] = { "Inline", "Modal", "Embed" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::EditNestMode vars[] = { two::EditNestMode::Inline, two::EditNestMode::Modal, two::EditNestMode::Embed};
@@ -68,6 +69,7 @@ namespace two
 	{
 		Type& t = type<two::EditorHint>();
 		static Meta meta = { t, &namspc({ "two" }), "EditorHint", sizeof(two::EditorHint), TypeClass::Enum };
+        init_default_value<two::EditorHint>();
 		static cstring ids[] = { "Table", "Rows", "Inline" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::EditorHint vars[] = { two::EditorHint::Table, two::EditorHint::Rows, two::EditorHint::Inline};
@@ -84,6 +86,7 @@ namespace two
 	{
 		Type& t = type<two::ScriptEditor>();
 		static Meta meta = { t, &namspc({ "two" }), "ScriptEditor", sizeof(two::ScriptEditor), TypeClass::Object };
+        init_default_value<two::ScriptEditor>();
 		// bases
 		// defaults
 		// constructors

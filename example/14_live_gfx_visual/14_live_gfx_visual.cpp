@@ -54,7 +54,7 @@ void define_visual_script(VisualScript& script)
 	Gnode& (*func_node)(Gnode&, const vec3&, const quat&, const vec3&) = gfx::node;
 	Var& node = *script.function(func_node, { &scene, &position, &rotation, &scale });
 
-	Var& fill_colour = script.value(Colour::None);
+    Var& fill_colour = script.value(Colour::None);
 	Var& symbol = script.create<Symbol>({ &fill_colour, &colour });
 	Var& shape = script.value(Cube());
 

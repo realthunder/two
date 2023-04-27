@@ -383,7 +383,7 @@ namespace two
 		else if(cls(type).m_id_member)
 			name = string(type.m_name) + " : " + to_string(cls(type).m_id_member->get(value));
 		else
-			name = string(type.m_name); // + " : " + to_string(value.m_value); // @todo void* to string fails with vs2017 + modules
+			name = string(type.m_name) + " : " + to_string(value.m_value); // @todo void* to string fails with vs2017 + modules
 		return name;
 	}
 
@@ -432,7 +432,7 @@ namespace two
 
 	void TypeConverter::convert(Ref input, const Type& output, Var& result)
 	{
-		if(result.none() || !type(result).is(output))
+		if(result.null() || !type(result).is(output))
 			result = meta(output).m_empty_var;
 		DoubleDispatch::dispatch(input, result);
 	}

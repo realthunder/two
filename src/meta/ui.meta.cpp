@@ -300,6 +300,7 @@ namespace two
 	{
 		Type& t = type<two::FlowAxis>();
 		static Meta meta = { t, &namspc({ "two" }), "FlowAxis", sizeof(two::FlowAxis), TypeClass::Enum };
+        init_default_value<two::FlowAxis>();
 		static cstring ids[] = { "Reading", "Paragraph", "Same", "Flip", "None" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4 };
 		static two::FlowAxis vars[] = { two::FlowAxis::Reading, two::FlowAxis::Paragraph, two::FlowAxis::Same, two::FlowAxis::Flip, two::FlowAxis::None};
@@ -312,6 +313,7 @@ namespace two
 	{
 		Type& t = type<two::Pivot>();
 		static Meta meta = { t, &namspc({ "two" }), "Pivot", sizeof(two::Pivot), TypeClass::Enum };
+        init_default_value<two::Pivot>();
 		static cstring ids[] = { "Forward", "Reverse" };
 		static uint32_t values[] = { 0, 1 };
 		static two::Pivot vars[] = { two::Pivot::Forward, two::Pivot::Reverse};
@@ -324,6 +326,7 @@ namespace two
 	{
 		Type& t = type<two::Align>();
 		static Meta meta = { t, &namspc({ "two" }), "Align", sizeof(two::Align), TypeClass::Enum };
+        init_default_value<two::Align>();
 		static cstring ids[] = { "Left", "Center", "Right", "OutLeft", "OutRight", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5 };
 		static two::Align vars[] = { two::Align::Left, two::Align::Center, two::Align::Right, two::Align::OutLeft, two::Align::OutRight, two::Align::Count};
@@ -336,6 +339,7 @@ namespace two
 	{
 		Type& t = type<two::Solver>();
 		static Meta meta = { t, &namspc({ "two" }), "Solver", sizeof(two::Solver), TypeClass::Enum };
+        init_default_value<two::Solver>();
 		static cstring ids[] = { "Frame", "Row", "Grid", "Table" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::Solver vars[] = { two::Solver::Frame, two::Solver::Row, two::Solver::Grid, two::Solver::Table};
@@ -348,6 +352,7 @@ namespace two
 	{
 		Type& t = type<two::AutoLayout>();
 		static Meta meta = { t, &namspc({ "two" }), "AutoLayout", sizeof(two::AutoLayout), TypeClass::Enum };
+        init_default_value<two::AutoLayout>();
 		static cstring ids[] = { "None", "Size", "Layout" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::AutoLayout vars[] = { two::AutoLayout::None, two::AutoLayout::Size, two::AutoLayout::Layout};
@@ -360,6 +365,7 @@ namespace two
 	{
 		Type& t = type<two::LayoutFlow>();
 		static Meta meta = { t, &namspc({ "two" }), "LayoutFlow", sizeof(two::LayoutFlow), TypeClass::Enum };
+        init_default_value<two::LayoutFlow>();
 		static cstring ids[] = { "Flow", "Overlay", "Align", "Free" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::LayoutFlow vars[] = { two::LayoutFlow::Flow, two::LayoutFlow::Overlay, two::LayoutFlow::Align, two::LayoutFlow::Free};
@@ -372,6 +378,7 @@ namespace two
 	{
 		Type& t = type<two::Sizing>();
 		static Meta meta = { t, &namspc({ "two" }), "Sizing", sizeof(two::Sizing), TypeClass::Enum };
+        init_default_value<two::Sizing>();
 		static cstring ids[] = { "Fixed", "Shrink", "Wrap", "Expand" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::Sizing vars[] = { two::Sizing::Fixed, two::Sizing::Shrink, two::Sizing::Wrap, two::Sizing::Expand};
@@ -384,6 +391,7 @@ namespace two
 	{
 		Type& t = type<two::Preset>();
 		static Meta meta = { t, &namspc({ "two" }), "Preset", sizeof(two::Preset), TypeClass::Enum };
+        init_default_value<two::Preset>();
 		static cstring ids[] = { "Sheet", "Flex", "Item", "Unit", "Block", "Line", "Stack", "Div", "Spacer", "Board", "Layout" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		static two::Preset vars[] = { two::Preset::Sheet, two::Preset::Flex, two::Preset::Item, two::Preset::Unit, two::Preset::Block, two::Preset::Line, two::Preset::Stack, two::Preset::Div, two::Preset::Spacer, two::Preset::Board, two::Preset::Layout};
@@ -396,6 +404,7 @@ namespace two
 	{
 		Type& t = type<two::Clip>();
 		static Meta meta = { t, &namspc({ "two" }), "Clip", sizeof(two::Clip), TypeClass::Enum };
+        init_default_value<two::Clip>();
 		static cstring ids[] = { "None", "Clip", "Unclip" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::Clip vars[] = { two::Clip::None, two::Clip::Clip, two::Clip::Unclip};
@@ -408,6 +417,7 @@ namespace two
 	{
 		Type& t = type<two::Opacity>();
 		static Meta meta = { t, &namspc({ "two" }), "Opacity", sizeof(two::Opacity), TypeClass::Enum };
+        init_default_value<two::Opacity>();
 		static cstring ids[] = { "Opaque", "Clear", "Hollow" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::Opacity vars[] = { two::Opacity::Opaque, two::Opacity::Clear, two::Opacity::Hollow};
@@ -420,6 +430,7 @@ namespace two
 	{
 		Type& t = type<two::WidgetState>();
 		static Meta meta = { t, &namspc({ "two" }), "WidgetState", sizeof(two::WidgetState), TypeClass::Enum };
+        init_default_value<two::WidgetState>();
 		static cstring ids[] = { "NOSTATE", "CREATED", "HOVERED", "PRESSED", "ACTIVATED", "ACTIVE", "SELECTED", "DISABLED", "DRAGGED", "FOCUSED", "CLOSED" };
 		static uint32_t values[] = { 0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512 };
 		static two::WidgetState vars[] = { two::NOSTATE, two::CREATED, two::HOVERED, two::PRESSED, two::ACTIVATED, two::ACTIVE, two::SELECTED, two::DISABLED, two::DRAGGED, two::FOCUSED, two::CLOSED};
@@ -432,6 +443,7 @@ namespace two
 	{
 		Type& t = type<two::ui::PopupFlags>();
 		static Meta meta = { t, &namspc({ "two", "ui" }), "PopupFlags", sizeof(two::ui::PopupFlags), TypeClass::Enum };
+        init_default_value<two::ui::PopupFlags>();
 		static cstring ids[] = { "None", "Modal", "Clamp", "AutoClose", "AutoModal" };
 		static uint32_t values[] = { 0, 1, 2, 4, 5 };
 		static two::ui::PopupFlags vars[] = { two::ui::PopupFlags::None, two::ui::PopupFlags::Modal, two::ui::PopupFlags::Clamp, two::ui::PopupFlags::AutoClose, two::ui::PopupFlags::AutoModal};
@@ -444,6 +456,7 @@ namespace two
 	{
 		Type& t = type<two::WindowState>();
 		static Meta meta = { t, &namspc({ "two" }), "WindowState", sizeof(two::WindowState), TypeClass::Enum };
+        init_default_value<two::WindowState>();
 		static cstring ids[] = { "None", "Header", "Dockable", "Closable", "Movable", "Sizable", "Scrollable", "Menu", "Default" };
 		static uint32_t values[] = { 0, 2, 4, 8, 16, 32, 64, 128, 122 };
 		static two::WindowState vars[] = { two::WindowState::None, two::WindowState::Header, two::WindowState::Dockable, two::WindowState::Closable, two::WindowState::Movable, two::WindowState::Sizable, two::WindowState::Scrollable, two::WindowState::Menu, two::WindowState::Default};
@@ -458,6 +471,7 @@ namespace two
 	{
 		Type& t = type<stl::span<const char*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<const char*>", sizeof(stl::span<const char*>), TypeClass::Sequence };
+        init_default_value<stl::span<const char*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<const char*>(),
 		                             stl_span_const_char___size,
@@ -467,6 +481,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Space>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Space>", sizeof(stl::vector<two::Space>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Space>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Space>(),
 		                             stl_vector_two_Space__size,
@@ -480,6 +495,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Subskin>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Subskin>", sizeof(stl::vector<two::Subskin>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Subskin>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Subskin>(),
 		                             stl_vector_two_Subskin__size,
@@ -495,6 +511,7 @@ namespace two
 	{
 		Type& t = type<two::Space>();
 		static Meta meta = { t, &namspc({ "two" }), "Space", sizeof(two::Space), TypeClass::Struct };
+        init_default_value<two::Space>();
 		// bases
 		// defaults
 		// constructors
@@ -519,6 +536,7 @@ namespace two
 	{
 		Type& t = type<two::v2<two::AutoLayout>>();
 		static Meta meta = { t, &namspc({ "two" }), "v2<two::AutoLayout>", sizeof(two::v2<two::AutoLayout>), TypeClass::Struct };
+        init_default_value<two::v2<two::AutoLayout>>();
 		// bases
 		// defaults
 		// constructors
@@ -544,6 +562,7 @@ namespace two
 	{
 		Type& t = type<two::v2<two::Sizing>>();
 		static Meta meta = { t, &namspc({ "two" }), "v2<two::Sizing>", sizeof(two::v2<two::Sizing>), TypeClass::Struct };
+        init_default_value<two::v2<two::Sizing>>();
 		// bases
 		// defaults
 		// constructors
@@ -569,6 +588,7 @@ namespace two
 	{
 		Type& t = type<two::v2<two::Align>>();
 		static Meta meta = { t, &namspc({ "two" }), "v2<two::Align>", sizeof(two::v2<two::Align>), TypeClass::Struct };
+        init_default_value<two::v2<two::Align>>();
 		// bases
 		// defaults
 		// constructors
@@ -594,6 +614,7 @@ namespace two
 	{
 		Type& t = type<two::v2<two::Pivot>>();
 		static Meta meta = { t, &namspc({ "two" }), "v2<two::Pivot>", sizeof(two::v2<two::Pivot>), TypeClass::Struct };
+        init_default_value<two::v2<two::Pivot>>();
 		// bases
 		// defaults
 		// constructors
@@ -619,6 +640,7 @@ namespace two
 	{
 		Type& t = type<two::ImageSkin>();
 		static Meta meta = { t, &namspc({ "two" }), "ImageSkin", sizeof(two::ImageSkin), TypeClass::Struct };
+        init_default_value<two::ImageSkin>();
 		// bases
 		// defaults
 		static two::Image* d_image_default = nullptr;
@@ -656,6 +678,7 @@ namespace two
 	{
 		Type& t = type<two::Shadow>();
 		static Meta meta = { t, &namspc({ "two" }), "Shadow", sizeof(two::Shadow), TypeClass::Struct };
+        init_default_value<two::Shadow>();
 		// bases
 		// defaults
 		static two::Colour construct_0_colour_default = two::Colour::AlphaBlack;
@@ -684,6 +707,7 @@ namespace two
 	{
 		Type& t = type<two::Paint>();
 		static Meta meta = { t, &namspc({ "two" }), "Paint", sizeof(two::Paint), TypeClass::Struct };
+        init_default_value<two::Paint>();
 		// bases
 		// defaults
 		// constructors
@@ -708,6 +732,7 @@ namespace two
 	{
 		Type& t = type<two::TextPaint>();
 		static Meta meta = { t, &namspc({ "two" }), "TextPaint", sizeof(two::TextPaint), TypeClass::Struct };
+        init_default_value<two::TextPaint>();
 		// bases
 		// defaults
 		// constructors
@@ -735,6 +760,7 @@ namespace two
 	{
 		Type& t = type<two::Gradient>();
 		static Meta meta = { t, &namspc({ "two" }), "Gradient", sizeof(two::Gradient), TypeClass::Struct };
+        init_default_value<two::Gradient>();
 		// bases
 		// defaults
 		// constructors
@@ -758,6 +784,7 @@ namespace two
 	{
 		Type& t = type<two::InkStyle>();
 		static Meta meta = { t, &namspc({ "two" }), "InkStyle", sizeof(two::InkStyle), TypeClass::Struct };
+        init_default_value<two::InkStyle>();
 		// bases
 		// defaults
 		static stl::string name_default = "";
@@ -824,6 +851,7 @@ namespace two
 	{
 		Type& t = type<two::Layout>();
 		static Meta meta = { t, &namspc({ "two" }), "Layout", sizeof(two::Layout), TypeClass::Struct };
+        init_default_value<two::Layout>();
 		// bases
 		// defaults
 		static stl::string name_default = "";
@@ -877,6 +905,7 @@ namespace two
 	{
 		Type& t = type<two::Subskin>();
 		static Meta meta = { t, &namspc({ "two" }), "Subskin", sizeof(two::Subskin), TypeClass::Struct };
+        init_default_value<two::Subskin>();
 		// bases
 		// defaults
 		// constructors
@@ -900,6 +929,7 @@ namespace two
 	{
 		Type& t = type<two::Style>();
 		static Meta meta = { t, &namspc({ "two" }), "Style", sizeof(two::Style), TypeClass::Object };
+        init_default_value<two::Style>();
 		// bases
 		// defaults
 		// constructors
@@ -920,6 +950,7 @@ namespace two
 	{
 		Type& t = type<two::UiRect>();
 		static Meta meta = { t, &namspc({ "two" }), "UiRect", sizeof(two::UiRect), TypeClass::Struct };
+        init_default_value<two::UiRect>();
 		// bases
 		// defaults
 		static float scale_default = 1.f;
@@ -947,6 +978,7 @@ namespace two
 	{
 		Type& t = type<two::Frame>();
 		static Meta meta = { t, &namspc({ "two" }), "Frame", sizeof(two::Frame), TypeClass::Object };
+        init_default_value<two::Frame>();
 		// bases
 		static Type* bases[] = { &type<two::UiRect>() };
 		static size_t bases_offsets[] = { base_offset<two::Frame, two::UiRect>() };
@@ -962,6 +994,7 @@ namespace two
 	{
 		Type& t = type<two::Widget>();
 		static Meta meta = { t, &namspc({ "two" }), "Widget", sizeof(two::Widget), TypeClass::Object };
+        init_default_value<two::Widget>();
 		// bases
 		static Type* bases[] = { &type<two::ControlNode>() };
 		static size_t bases_offsets[] = { base_offset<two::Widget, two::ControlNode>() };
@@ -1013,6 +1046,7 @@ namespace two
 	{
 		Type& t = type<two::TextCursor>();
 		static Meta meta = { t, &namspc({ "two" }), "TextCursor", sizeof(two::TextCursor), TypeClass::Struct };
+        init_default_value<two::TextCursor>();
 		// bases
 		// defaults
 		// constructors
@@ -1032,6 +1066,7 @@ namespace two
 	{
 		Type& t = type<two::TextSelection>();
 		static Meta meta = { t, &namspc({ "two" }), "TextSelection", sizeof(two::TextSelection), TypeClass::Struct };
+        init_default_value<two::TextSelection>();
 		// bases
 		// defaults
 		// constructors
@@ -1051,6 +1086,7 @@ namespace two
 	{
 		Type& t = type<two::TextMarker>();
 		static Meta meta = { t, &namspc({ "two" }), "TextMarker", sizeof(two::TextMarker), TypeClass::Struct };
+        init_default_value<two::TextMarker>();
 		// bases
 		// defaults
 		// constructors
@@ -1070,6 +1106,7 @@ namespace two
 	{
 		Type& t = type<two::Text>();
 		static Meta meta = { t, &namspc({ "two" }), "Text", sizeof(two::Text), TypeClass::Object };
+        init_default_value<two::Text>();
 		// bases
 		// defaults
 		// constructors
@@ -1083,6 +1120,7 @@ namespace two
 	{
 		Type& t = type<two::TextEdit>();
 		static Meta meta = { t, &namspc({ "two" }), "TextEdit", sizeof(two::TextEdit), TypeClass::Object };
+        init_default_value<two::TextEdit>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::TextEdit, two::Widget>() };
@@ -1098,6 +1136,7 @@ namespace two
 	{
 		Type& t = type<two::NodeConnection>();
 		static Meta meta = { t, &namspc({ "two" }), "NodeConnection", sizeof(two::NodeConnection), TypeClass::Struct };
+        init_default_value<two::NodeConnection>();
 		// bases
 		// defaults
 		// constructors
@@ -1117,6 +1156,7 @@ namespace two
 	{
 		Type& t = type<two::Vg>();
 		static Meta meta = { t, &namspc({ "two" }), "Vg", sizeof(two::Vg), TypeClass::Object };
+        init_default_value<two::Vg>();
 		// bases
 		// defaults
 		// constructors
@@ -1130,6 +1170,7 @@ namespace two
 	{
 		Type& t = type<two::Clipboard>();
 		static Meta meta = { t, &namspc({ "two" }), "Clipboard", sizeof(two::Clipboard), TypeClass::Struct };
+        init_default_value<two::Clipboard>();
 		// bases
 		// defaults
 		static stl::string text_default = "";
@@ -1157,6 +1198,7 @@ namespace two
 	{
 		Type& t = type<two::UiWindow>();
 		static Meta meta = { t, &namspc({ "two" }), "UiWindow", sizeof(two::UiWindow), TypeClass::Object };
+        init_default_value<two::UiWindow>();
 		// bases
 		// defaults
 		static bool shutdown_default = false;
@@ -1182,6 +1224,7 @@ namespace two
 	{
 		Type& t = type<two::User>();
 		static Meta meta = { t, &namspc({ "two" }), "User", sizeof(two::User), TypeClass::Object };
+        init_default_value<two::User>();
 		// bases
 		// defaults
 		// constructors
@@ -1195,6 +1238,7 @@ namespace two
 	{
 		Type& t = type<two::Layer>();
 		static Meta meta = { t, &namspc({ "two" }), "Layer", sizeof(two::Layer), TypeClass::Object };
+        init_default_value<two::Layer>();
 		// bases
 		// defaults
 		// constructors
@@ -1208,6 +1252,7 @@ namespace two
 	{
 		Type& t = type<two::FrameSolver>();
 		static Meta meta = { t, &namspc({ "two" }), "FrameSolver", sizeof(two::FrameSolver), TypeClass::Object };
+        init_default_value<two::FrameSolver>();
 		// bases
 		static Type* bases[] = { &type<two::UiRect>() };
 		static size_t bases_offsets[] = { base_offset<two::FrameSolver, two::UiRect>() };
@@ -1223,6 +1268,7 @@ namespace two
 	{
 		Type& t = type<two::RowSolver>();
 		static Meta meta = { t, &namspc({ "two" }), "RowSolver", sizeof(two::RowSolver), TypeClass::Object };
+        init_default_value<two::RowSolver>();
 		// bases
 		static Type* bases[] = { &type<two::FrameSolver>() };
 		static size_t bases_offsets[] = { base_offset<two::RowSolver, two::FrameSolver>() };
@@ -1238,6 +1284,7 @@ namespace two
 	{
 		Type& t = type<two::TableSolver>();
 		static Meta meta = { t, &namspc({ "two" }), "TableSolver", sizeof(two::TableSolver), TypeClass::Object };
+        init_default_value<two::TableSolver>();
 		// bases
 		// defaults
 		// constructors
@@ -1251,6 +1298,7 @@ namespace two
 	{
 		Type& t = type<two::LineSolver>();
 		static Meta meta = { t, &namspc({ "two" }), "LineSolver", sizeof(two::LineSolver), TypeClass::Object };
+        init_default_value<two::LineSolver>();
 		// bases
 		static Type* bases[] = { &type<two::RowSolver>() };
 		static size_t bases_offsets[] = { base_offset<two::LineSolver, two::RowSolver>() };
@@ -1266,6 +1314,7 @@ namespace two
 	{
 		Type& t = type<two::GridSolver>();
 		static Meta meta = { t, &namspc({ "two" }), "GridSolver", sizeof(two::GridSolver), TypeClass::Object };
+        init_default_value<two::GridSolver>();
 		// bases
 		// defaults
 		// constructors
@@ -1279,6 +1328,7 @@ namespace two
 	{
 		Type& t = type<two::ScrollSheet>();
 		static Meta meta = { t, &namspc({ "two" }), "ScrollSheet", sizeof(two::ScrollSheet), TypeClass::Object };
+        init_default_value<two::ScrollSheet>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::ScrollSheet, two::Widget>() };
@@ -1294,6 +1344,7 @@ namespace two
 	{
 		Type& t = type<two::ui::Sequence>();
 		static Meta meta = { t, &namspc({ "two", "ui" }), "Sequence", sizeof(two::ui::Sequence), TypeClass::Object };
+        init_default_value<two::ui::Sequence>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::ui::Sequence, two::Widget>() };
@@ -1309,6 +1360,7 @@ namespace two
 	{
 		Type& t = type<two::Tabber>();
 		static Meta meta = { t, &namspc({ "two" }), "Tabber", sizeof(two::Tabber), TypeClass::Object };
+        init_default_value<two::Tabber>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Tabber, two::Widget>() };
@@ -1324,6 +1376,7 @@ namespace two
 	{
 		Type& t = type<two::Expandbox>();
 		static Meta meta = { t, &namspc({ "two" }), "Expandbox", sizeof(two::Expandbox), TypeClass::Object };
+        init_default_value<two::Expandbox>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Expandbox, two::Widget>() };
@@ -1339,6 +1392,7 @@ namespace two
 	{
 		Type& t = type<two::TreeNode>();
 		static Meta meta = { t, &namspc({ "two" }), "TreeNode", sizeof(two::TreeNode), TypeClass::Object };
+        init_default_value<two::TreeNode>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::TreeNode, two::Widget>() };
@@ -1354,6 +1408,7 @@ namespace two
 	{
 		Type& t = type<two::Table>();
 		static Meta meta = { t, &namspc({ "two" }), "Table", sizeof(two::Table), TypeClass::Object };
+        init_default_value<two::Table>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Table, two::Widget>() };
@@ -1369,6 +1424,7 @@ namespace two
 	{
 		Type& t = type<two::Dock>();
 		static Meta meta = { t, &namspc({ "two" }), "Dock", sizeof(two::Dock), TypeClass::Struct };
+        init_default_value<two::Dock>();
 		// bases
 		// defaults
 		// constructors
@@ -1388,6 +1444,7 @@ namespace two
 	{
 		Type& t = type<two::Docksystem>();
 		static Meta meta = { t, &namspc({ "two" }), "Docksystem", sizeof(two::Docksystem), TypeClass::Object };
+        init_default_value<two::Docksystem>();
 		// bases
 		// defaults
 		// constructors
@@ -1401,6 +1458,7 @@ namespace two
 	{
 		Type& t = type<two::Dockable>();
 		static Meta meta = { t, &namspc({ "two" }), "Dockable", sizeof(two::Dockable), TypeClass::Object };
+        init_default_value<two::Dockable>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Dockable, two::Widget>() };
@@ -1416,6 +1474,7 @@ namespace two
 	{
 		Type& t = type<two::Docker>();
 		static Meta meta = { t, &namspc({ "two" }), "Docker", sizeof(two::Docker), TypeClass::Object };
+        init_default_value<two::Docker>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Docker, two::Widget>() };
@@ -1431,6 +1490,7 @@ namespace two
 	{
 		Type& t = type<two::Dockspace>();
 		static Meta meta = { t, &namspc({ "two" }), "Dockspace", sizeof(two::Dockspace), TypeClass::Object };
+        init_default_value<two::Dockspace>();
 		// bases
 		static Type* bases[] = { &type<two::Docker>() };
 		static size_t bases_offsets[] = { base_offset<two::Dockspace, two::Docker>() };
@@ -1446,6 +1506,7 @@ namespace two
 	{
 		Type& t = type<two::Dockbar>();
 		static Meta meta = { t, &namspc({ "two" }), "Dockbar", sizeof(two::Dockbar), TypeClass::Object };
+        init_default_value<two::Dockbar>();
 		// bases
 		static Type* bases[] = { &type<two::Docker>() };
 		static size_t bases_offsets[] = { base_offset<two::Dockbar, two::Docker>() };
@@ -1461,6 +1522,7 @@ namespace two
 	{
 		Type& t = type<two::NodePlug>();
 		static Meta meta = { t, &namspc({ "two" }), "NodePlug", sizeof(two::NodePlug), TypeClass::Object };
+        init_default_value<two::NodePlug>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::NodePlug, two::Widget>() };
@@ -1476,6 +1538,7 @@ namespace two
 	{
 		Type& t = type<two::Node>();
 		static Meta meta = { t, &namspc({ "two" }), "Node", sizeof(two::Node), TypeClass::Object };
+        init_default_value<two::Node>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Node, two::Widget>() };
@@ -1491,6 +1554,7 @@ namespace two
 	{
 		Type& t = type<two::CanvasConnect>();
 		static Meta meta = { t, &namspc({ "two" }), "CanvasConnect", sizeof(two::CanvasConnect), TypeClass::Struct };
+        init_default_value<two::CanvasConnect>();
 		// bases
 		// defaults
 		// constructors
@@ -1510,6 +1574,7 @@ namespace two
 	{
 		Type& t = type<two::Canvas>();
 		static Meta meta = { t, &namspc({ "two" }), "Canvas", sizeof(two::Canvas), TypeClass::Object };
+        init_default_value<two::Canvas>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Canvas, two::Widget>() };
@@ -1525,6 +1590,7 @@ namespace two
 	{
 		Type& t = type<two::Ui>();
 		static Meta meta = { t, &namspc({ "two" }), "Ui", sizeof(two::Ui), TypeClass::Object };
+        init_default_value<two::Ui>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Ui, two::Widget>() };
@@ -1544,6 +1610,7 @@ namespace two
 	{
 		Type& t = type<two::Window>();
 		static Meta meta = { t, &namspc({ "two" }), "Window", sizeof(two::Window), TypeClass::Object };
+        init_default_value<two::Window>();
 		// bases
 		static Type* bases[] = { &type<two::Dockable>() };
 		static size_t bases_offsets[] = { base_offset<two::Window, two::Dockable>() };

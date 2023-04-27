@@ -88,6 +88,7 @@ namespace two
 	{
 		Type& t = type<two::TonemapMode>();
 		static Meta meta = { t, &namspc({ "two" }), "TonemapMode", sizeof(two::TonemapMode), TypeClass::Enum };
+        init_default_value<two::TonemapMode>();
 		static cstring ids[] = { "Linear", "Reinhardt", "Filmic", "ACES", "Cineon", "Uncharted2" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5 };
 		static two::TonemapMode vars[] = { two::TonemapMode::Linear, two::TonemapMode::Reinhardt, two::TonemapMode::Filmic, two::TonemapMode::ACES, two::TonemapMode::Cineon, two::TonemapMode::Uncharted2};
@@ -104,6 +105,7 @@ namespace two
 	{
 		Type& t = type<two::BlockLight>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockLight", sizeof(two::BlockLight), TypeClass::Object };
+        init_default_value<two::BlockLight>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockLight, two::DrawBlock>() };
@@ -119,6 +121,7 @@ namespace two
 	{
 		Type& t = type<two::LightmapItem>();
 		static Meta meta = { t, &namspc({ "two" }), "LightmapItem", sizeof(two::LightmapItem), TypeClass::Object };
+        init_default_value<two::LightmapItem>();
 		// bases
 		// defaults
 		// constructors
@@ -132,6 +135,7 @@ namespace two
 	{
 		Type& t = type<two::Lightmap>();
 		static Meta meta = { t, &namspc({ "two" }), "Lightmap", sizeof(two::Lightmap), TypeClass::Object };
+        init_default_value<two::Lightmap>();
 		// bases
 		// defaults
 		// constructors
@@ -145,6 +149,7 @@ namespace two
 	{
 		Type& t = type<two::LightmapAtlas>();
 		static Meta meta = { t, &namspc({ "two" }), "LightmapAtlas", sizeof(two::LightmapAtlas), TypeClass::Object };
+        init_default_value<two::LightmapAtlas>();
 		// bases
 		// defaults
 		// constructors
@@ -158,6 +163,7 @@ namespace two
 	{
 		Type& t = type<two::BlockLightmap>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockLightmap", sizeof(two::BlockLightmap), TypeClass::Object };
+        init_default_value<two::BlockLightmap>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockLightmap, two::DrawBlock>() };
@@ -173,6 +179,7 @@ namespace two
 	{
 		Type& t = type<two::PBRShot>();
 		static Meta meta = { t, &namspc({ "two" }), "PBRShot", sizeof(two::PBRShot), TypeClass::Object };
+        init_default_value<two::PBRShot>();
 		// bases
 		static Type* bases[] = { &type<two::Shot>() };
 		static size_t bases_offsets[] = { base_offset<two::PBRShot, two::Shot>() };
@@ -188,6 +195,7 @@ namespace two
 	{
 		Type& t = type<two::BlockGeometry>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockGeometry", sizeof(two::BlockGeometry), TypeClass::Object };
+        init_default_value<two::BlockGeometry>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockGeometry, two::DrawBlock>() };
@@ -203,6 +211,7 @@ namespace two
 	{
 		Type& t = type<two::BlockRadiance>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockRadiance", sizeof(two::BlockRadiance), TypeClass::Object };
+        init_default_value<two::BlockRadiance>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockRadiance, two::DrawBlock>() };
@@ -218,6 +227,7 @@ namespace two
 	{
 		Type& t = type<two::CubeTarget>();
 		static Meta meta = { t, &namspc({ "two" }), "CubeTarget", sizeof(two::CubeTarget), TypeClass::Object };
+        init_default_value<two::CubeTarget>();
 		// bases
 		// defaults
 		// constructors
@@ -243,6 +253,7 @@ namespace two
 	{
 		Type& t = type<two::CubeCamera>();
 		static Meta meta = { t, &namspc({ "two" }), "CubeCamera", sizeof(two::CubeCamera), TypeClass::Object };
+        init_default_value<two::CubeCamera>();
 		// bases
 		// defaults
 		// constructors
@@ -267,6 +278,7 @@ namespace two
 	{
 		Type& t = type<two::ReflectionProbe>();
 		static Meta meta = { t, &namspc({ "two" }), "ReflectionProbe", sizeof(two::ReflectionProbe), TypeClass::Object };
+        init_default_value<two::ReflectionProbe>();
 		// bases
 		// defaults
 		static bool visible_default = true;
@@ -292,6 +304,7 @@ namespace two
 	{
 		Type& t = type<two::BlockReflection>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockReflection", sizeof(two::BlockReflection), TypeClass::Object };
+        init_default_value<two::BlockReflection>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockReflection, two::DrawBlock>() };
@@ -307,6 +320,7 @@ namespace two
 	{
 		Type& t = type<two::LightShadow>();
 		static Meta meta = { t, &namspc({ "two" }), "LightShadow", sizeof(two::LightShadow), TypeClass::Struct };
+        init_default_value<two::LightShadow>();
 		// bases
 		// defaults
 		// constructors
@@ -326,6 +340,7 @@ namespace two
 	{
 		Type& t = type<two::CSMSlice>();
 		static Meta meta = { t, &namspc({ "two" }), "CSMSlice", sizeof(two::CSMSlice), TypeClass::Struct };
+        init_default_value<two::CSMSlice>();
 		// bases
 		static Type* bases[] = { &type<two::LightShadow>(), &type<two::FrustumSlice>() };
 		static size_t bases_offsets[] = { base_offset<two::CSMSlice, two::LightShadow>(), base_offset<two::CSMSlice, two::FrustumSlice>() };
@@ -347,6 +362,7 @@ namespace two
 	{
 		Type& t = type<two::CSMShadow>();
 		static Meta meta = { t, &namspc({ "two" }), "CSMShadow", sizeof(two::CSMShadow), TypeClass::Struct };
+        init_default_value<two::CSMShadow>();
 		// bases
 		// defaults
 		// constructors
@@ -366,6 +382,7 @@ namespace two
 	{
 		Type& t = type<two::BlockShadow>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockShadow", sizeof(two::BlockShadow), TypeClass::Object };
+        init_default_value<two::BlockShadow>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockShadow, two::DrawBlock>() };
@@ -381,6 +398,7 @@ namespace two
 	{
 		Type& t = type<two::GIProbe>();
 		static Meta meta = { t, &namspc({ "two" }), "GIProbe", sizeof(two::GIProbe), TypeClass::Object };
+        init_default_value<two::GIProbe>();
 		// bases
 		// defaults
 		// constructors
@@ -394,6 +412,7 @@ namespace two
 	{
 		Type& t = type<two::BlockGITrace>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockGITrace", sizeof(two::BlockGITrace), TypeClass::Object };
+        init_default_value<two::BlockGITrace>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockGITrace, two::DrawBlock>() };
@@ -409,6 +428,7 @@ namespace two
 	{
 		Type& t = type<two::BlockGIBake>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockGIBake", sizeof(two::BlockGIBake), TypeClass::Object };
+        init_default_value<two::BlockGIBake>();
 		// bases
 		static Type* bases[] = { &type<two::DrawBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockGIBake, two::DrawBlock>() };
@@ -424,6 +444,7 @@ namespace two
 	{
 		Type& t = type<two::BlockBlur>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockBlur", sizeof(two::BlockBlur), TypeClass::Object };
+        init_default_value<two::BlockBlur>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockBlur, two::GfxBlock>() };
@@ -439,6 +460,7 @@ namespace two
 	{
 		Type& t = type<two::DofParams>();
 		static Meta meta = { t, &namspc({ "two" }), "DofParams", sizeof(two::DofParams), TypeClass::Struct };
+        init_default_value<two::DofParams>();
 		// bases
 		// defaults
 		// constructors
@@ -463,6 +485,7 @@ namespace two
 	{
 		Type& t = type<two::DofBlur>();
 		static Meta meta = { t, &namspc({ "two" }), "DofBlur", sizeof(two::DofBlur), TypeClass::Struct };
+        init_default_value<two::DofBlur>();
 		// bases
 		// defaults
 		static bool enabled_default = false;
@@ -490,6 +513,7 @@ namespace two
 	{
 		Type& t = type<two::BlockDofBlur>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockDofBlur", sizeof(two::BlockDofBlur), TypeClass::Object };
+        init_default_value<two::BlockDofBlur>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockDofBlur, two::GfxBlock>() };
@@ -505,6 +529,7 @@ namespace two
 	{
 		Type& t = type<two::Glow>();
 		static Meta meta = { t, &namspc({ "two" }), "Glow", sizeof(two::Glow), TypeClass::Struct };
+        init_default_value<two::Glow>();
 		// bases
 		// defaults
 		static bool enabled_default = false;
@@ -541,6 +566,7 @@ namespace two
 	{
 		Type& t = type<two::BlockGlow>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockGlow", sizeof(two::BlockGlow), TypeClass::Object };
+        init_default_value<two::BlockGlow>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockGlow, two::GfxBlock>() };
@@ -556,6 +582,7 @@ namespace two
 	{
 		Type& t = type<two::BCS>();
 		static Meta meta = { t, &namspc({ "two" }), "BCS", sizeof(two::BCS), TypeClass::Struct };
+        init_default_value<two::BCS>();
 		// bases
 		// defaults
 		static bool enabled_default = false;
@@ -585,6 +612,7 @@ namespace two
 	{
 		Type& t = type<two::Tonemap>();
 		static Meta meta = { t, &namspc({ "two" }), "Tonemap", sizeof(two::Tonemap), TypeClass::Struct };
+        init_default_value<two::Tonemap>();
 		// bases
 		// defaults
 		static two::TonemapMode mode_default = two::TonemapMode::Linear;
@@ -614,6 +642,7 @@ namespace two
 	{
 		Type& t = type<two::BlockTonemap>();
 		static Meta meta = { t, &namspc({ "two" }), "BlockTonemap", sizeof(two::BlockTonemap), TypeClass::Object };
+        init_default_value<two::BlockTonemap>();
 		// bases
 		static Type* bases[] = { &type<two::GfxBlock>() };
 		static size_t bases_offsets[] = { base_offset<two::BlockTonemap, two::GfxBlock>() };

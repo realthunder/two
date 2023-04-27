@@ -332,7 +332,7 @@ namespace stl
 	}
 	
 	export_ template <class T, class U>
-	inline void remove_object(T& vec, U& object)
+	inline void remove_object(T& vec, const U& object)
 	{
 		auto pos = find_if(vec.begin(), vec.end(), [&](const U& look) { return &look == &object; });
 		vec.erase(pos);

@@ -17,7 +17,6 @@ namespace two
 	export_ template <class T>
 	inline enable_if<is_comparable<T>, bool>
 		any_compare(const T& first, const T& second) { return first == second; }
-
 	export_ template <class T>
 	inline enable_if<!is_comparable<T>, bool>
 		any_compare(const T& first, const T& second) { return &first == &second; }

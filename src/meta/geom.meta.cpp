@@ -243,6 +243,7 @@ namespace two
 	{
 		Type& t = type<two::CatmullType>();
 		static Meta meta = { t, &namspc({ "two" }), "CatmullType", sizeof(two::CatmullType), TypeClass::Enum };
+        init_default_value<two::CatmullType>();
 		static cstring ids[] = { "Centripetal", "Chordal", "CatmullRom" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::CatmullType vars[] = { two::CatmullType::Centripetal, two::CatmullType::Chordal, two::CatmullType::CatmullRom};
@@ -255,6 +256,7 @@ namespace two
 	{
 		Type& t = type<two::DrawMode>();
 		static Meta meta = { t, &namspc({ "two" }), "DrawMode", sizeof(two::DrawMode), TypeClass::Enum };
+        init_default_value<two::DrawMode>();
 		static cstring ids[] = { "OUTLINE", "PLAIN" };
 		static uint32_t values[] = { 0, 1 };
 		static two::DrawMode vars[] = { two::OUTLINE, two::PLAIN};
@@ -267,6 +269,7 @@ namespace two
 	{
 		Type& t = type<two::PrimitiveType>();
 		static Meta meta = { t, &namspc({ "two" }), "PrimitiveType", sizeof(two::PrimitiveType), TypeClass::Enum };
+        init_default_value<two::PrimitiveType>();
 		static cstring ids[] = { "Points", "Lines", "LineStrip", "Triangles", "TriangleStrip", "TriangleFan", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6 };
 		static two::PrimitiveType vars[] = { two::PrimitiveType::Points, two::PrimitiveType::Lines, two::PrimitiveType::LineStrip, two::PrimitiveType::Triangles, two::PrimitiveType::TriangleStrip, two::PrimitiveType::TriangleFan, two::PrimitiveType::Count};
@@ -279,6 +282,7 @@ namespace two
 	{
 		Type& t = type<two::SymbolDetail>();
 		static Meta meta = { t, &namspc({ "two" }), "SymbolDetail", sizeof(two::SymbolDetail), TypeClass::Enum };
+        init_default_value<two::SymbolDetail>();
 		static cstring ids[] = { "Lowest", "Low", "Medium", "High", "Highest" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4 };
 		static two::SymbolDetail vars[] = { two::SymbolDetail::Lowest, two::SymbolDetail::Low, two::SymbolDetail::Medium, two::SymbolDetail::High, two::SymbolDetail::Highest};
@@ -293,6 +297,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::vec2>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::vec2>", sizeof(stl::vector<two::vec2>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::vec2>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::vec2>(),
 		                             stl_vector_two_vec2__size,
@@ -306,6 +311,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::vec4>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::vec4>", sizeof(stl::vector<two::vec4>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::vec4>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::vec4>(),
 		                             stl_vector_two_vec4__size,
@@ -319,6 +325,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::ivec4>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::ivec4>", sizeof(stl::vector<two::ivec4>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::ivec4>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::ivec4>(),
 		                             stl_vector_two_ivec4__size,
@@ -332,6 +339,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Circle>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Circle>", sizeof(stl::vector<two::Circle>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Circle>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Circle>(),
 		                             stl_vector_two_Circle__size,
@@ -347,6 +355,7 @@ namespace two
 	{
 		Type& t = type<two::Aabb>();
 		static Meta meta = { t, &namspc({ "two" }), "Aabb", sizeof(two::Aabb), TypeClass::Struct };
+        init_default_value<two::Aabb>();
 		// bases
 		// defaults
 		// constructors
@@ -372,6 +381,7 @@ namespace two
 	{
 		Type& t = type<two::Curve2>();
 		static Meta meta = { t, &namspc({ "two" }), "Curve2", sizeof(two::Curve2), TypeClass::Object };
+        init_default_value<two::Curve2>();
 		// bases
 		// defaults
 		// constructors
@@ -388,6 +398,7 @@ namespace two
 	{
 		Type& t = type<two::Curve3>();
 		static Meta meta = { t, &namspc({ "two" }), "Curve3", sizeof(two::Curve3), TypeClass::Object };
+        init_default_value<two::Curve3>();
 		// bases
 		// defaults
 		// constructors
@@ -404,6 +415,7 @@ namespace two
 	{
 		Type& t = type<two::CurveSpline>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveSpline", sizeof(two::CurveSpline), TypeClass::Struct };
+        init_default_value<two::CurveSpline>();
 		// bases
 		static Type* bases[] = { &type<two::Curve2>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveSpline, two::Curve2>() };
@@ -428,6 +440,7 @@ namespace two
 	{
 		Type& t = type<two::CurveSpline3>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveSpline3", sizeof(two::CurveSpline3), TypeClass::Struct };
+        init_default_value<two::CurveSpline3>();
 		// bases
 		static Type* bases[] = { &type<two::Curve3>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveSpline3, two::Curve3>() };
@@ -452,6 +465,7 @@ namespace two
 	{
 		Type& t = type<two::CurveBezierCubic>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveBezierCubic", sizeof(two::CurveBezierCubic), TypeClass::Struct };
+        init_default_value<two::CurveBezierCubic>();
 		// bases
 		static Type* bases[] = { &type<two::Curve2>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveBezierCubic, two::Curve2>() };
@@ -479,6 +493,7 @@ namespace two
 	{
 		Type& t = type<two::CurveBezierCubic3>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveBezierCubic3", sizeof(two::CurveBezierCubic3), TypeClass::Struct };
+        init_default_value<two::CurveBezierCubic3>();
 		// bases
 		static Type* bases[] = { &type<two::Curve3>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveBezierCubic3, two::Curve3>() };
@@ -506,6 +521,7 @@ namespace two
 	{
 		Type& t = type<two::CurveLine>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveLine", sizeof(two::CurveLine), TypeClass::Struct };
+        init_default_value<two::CurveLine>();
 		// bases
 		static Type* bases[] = { &type<two::Curve2>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveLine, two::Curve2>() };
@@ -531,6 +547,7 @@ namespace two
 	{
 		Type& t = type<two::CurveLine3>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveLine3", sizeof(two::CurveLine3), TypeClass::Struct };
+        init_default_value<two::CurveLine3>();
 		// bases
 		static Type* bases[] = { &type<two::Curve3>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveLine3, two::Curve3>() };
@@ -556,6 +573,7 @@ namespace two
 	{
 		Type& t = type<two::CurveBezierQuadratic>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveBezierQuadratic", sizeof(two::CurveBezierQuadratic), TypeClass::Struct };
+        init_default_value<two::CurveBezierQuadratic>();
 		// bases
 		static Type* bases[] = { &type<two::Curve2>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveBezierQuadratic, two::Curve2>() };
@@ -582,6 +600,7 @@ namespace two
 	{
 		Type& t = type<two::CurveBezierQuadratic3>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveBezierQuadratic3", sizeof(two::CurveBezierQuadratic3), TypeClass::Struct };
+        init_default_value<two::CurveBezierQuadratic3>();
 		// bases
 		static Type* bases[] = { &type<two::Curve3>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveBezierQuadratic3, two::Curve3>() };
@@ -608,6 +627,7 @@ namespace two
 	{
 		Type& t = type<two::CurveCatmullRom3>();
 		static Meta meta = { t, &namspc({ "two" }), "CurveCatmullRom3", sizeof(two::CurveCatmullRom3), TypeClass::Struct };
+        init_default_value<two::CurveCatmullRom3>();
 		// bases
 		static Type* bases[] = { &type<two::Curve3>() };
 		static size_t bases_offsets[] = { base_offset<two::CurveCatmullRom3, two::Curve3>() };
@@ -646,6 +666,7 @@ namespace two
 	{
 		Type& t = type<two::Plane>();
 		static Meta meta = { t, &namspc({ "two" }), "Plane", sizeof(two::Plane), TypeClass::Struct };
+        init_default_value<two::Plane>();
 		// bases
 		// defaults
 		// constructors
@@ -669,6 +690,7 @@ namespace two
 	{
 		Type& t = type<two::Plane3>();
 		static Meta meta = { t, &namspc({ "two" }), "Plane3", sizeof(two::Plane3), TypeClass::Struct };
+        init_default_value<two::Plane3>();
 		// bases
 		// defaults
 		// constructors
@@ -693,6 +715,7 @@ namespace two
 	{
 		Type& t = type<two::Face3>();
 		static Meta meta = { t, &namspc({ "two" }), "Face3", sizeof(two::Face3), TypeClass::Struct };
+        init_default_value<two::Face3>();
 		// bases
 		// defaults
 		// constructors
@@ -712,6 +735,7 @@ namespace two
 	{
 		Type& t = type<two::Segment>();
 		static Meta meta = { t, &namspc({ "two" }), "Segment", sizeof(two::Segment), TypeClass::Struct };
+        init_default_value<two::Segment>();
 		// bases
 		// defaults
 		// constructors
@@ -735,6 +759,7 @@ namespace two
 	{
 		Type& t = type<two::Ray>();
 		static Meta meta = { t, &namspc({ "two" }), "Ray", sizeof(two::Ray), TypeClass::Struct };
+        init_default_value<two::Ray>();
 		// bases
 		// defaults
 		// constructors
@@ -760,6 +785,7 @@ namespace two
 	{
 		Type& t = type<two::MeshAdapter>();
 		static Meta meta = { t, &namspc({ "two" }), "MeshAdapter", sizeof(two::MeshAdapter), TypeClass::Struct };
+        init_default_value<two::MeshAdapter>();
 		// bases
 		// defaults
 		static uint32_t vertex_format_default = 0;
@@ -807,6 +833,7 @@ namespace two
 	{
 		Type& t = type<two::Shape>();
 		static Meta meta = { t, &namspc({ "two" }), "Shape", sizeof(two::Shape), TypeClass::Object };
+        init_default_value<two::Shape>();
 		// bases
 		// defaults
 		// constructors
@@ -823,6 +850,7 @@ namespace two
 	{
 		Type& t = type<two::ShapeVar>();
 		static Meta meta = { t, &namspc({ "two" }), "ShapeVar", sizeof(two::ShapeVar), TypeClass::Object };
+        init_default_value<two::ShapeVar>();
 		// bases
 		// defaults
 		// constructors
@@ -843,6 +871,7 @@ namespace two
 	{
 		Type& t = type<two::Geometry>();
 		static Meta meta = { t, &namspc({ "two" }), "Geometry", sizeof(two::Geometry), TypeClass::Object };
+        init_default_value<two::Geometry>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Geometry, two::Shape>() };
@@ -861,6 +890,7 @@ namespace two
 	{
 		Type& t = type<two::MeshPacker>();
 		static Meta meta = { t, &namspc({ "two" }), "MeshPacker", sizeof(two::MeshPacker), TypeClass::Struct };
+        init_default_value<two::MeshPacker>();
 		// bases
 		// defaults
 		static two::PrimitiveType primitive_default = two::PrimitiveType::Triangles;
@@ -919,6 +949,7 @@ namespace two
 	{
 		Type& t = type<two::Line>();
 		static Meta meta = { t, &namspc({ "two" }), "Line", sizeof(two::Line), TypeClass::Struct };
+        init_default_value<two::Line>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Line, two::Shape>() };
@@ -945,6 +976,7 @@ namespace two
 	{
 		Type& t = type<two::Rect>();
 		static Meta meta = { t, &namspc({ "two" }), "Rect", sizeof(two::Rect), TypeClass::Struct };
+        init_default_value<two::Rect>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Rect, two::Shape>() };
@@ -972,6 +1004,7 @@ namespace two
 	{
 		Type& t = type<two::Quad>();
 		static Meta meta = { t, &namspc({ "two" }), "Quad", sizeof(two::Quad), TypeClass::Struct };
+        init_default_value<two::Quad>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Quad, two::Shape>() };
@@ -994,6 +1027,7 @@ namespace two
 	{
 		Type& t = type<two::Grid2>();
 		static Meta meta = { t, &namspc({ "two" }), "Grid2", sizeof(two::Grid2), TypeClass::Struct };
+        init_default_value<two::Grid2>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Grid2, two::Shape>() };
@@ -1021,6 +1055,7 @@ namespace two
 	{
 		Type& t = type<two::Triangle>();
 		static Meta meta = { t, &namspc({ "two" }), "Triangle", sizeof(two::Triangle), TypeClass::Struct };
+        init_default_value<two::Triangle>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Triangle, two::Shape>() };
@@ -1046,6 +1081,7 @@ namespace two
 	{
 		Type& t = type<two::Circle>();
 		static Meta meta = { t, &namspc({ "two" }), "Circle", sizeof(two::Circle), TypeClass::Struct };
+        init_default_value<two::Circle>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Circle, two::Shape>() };
@@ -1077,6 +1113,7 @@ namespace two
 	{
 		Type& t = type<two::Torus>();
 		static Meta meta = { t, &namspc({ "two" }), "Torus", sizeof(two::Torus), TypeClass::Struct };
+        init_default_value<two::Torus>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Torus, two::Shape>() };
@@ -1110,6 +1147,7 @@ namespace two
 	{
 		Type& t = type<two::TorusKnot>();
 		static Meta meta = { t, &namspc({ "two" }), "TorusKnot", sizeof(two::TorusKnot), TypeClass::Struct };
+        init_default_value<two::TorusKnot>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::TorusKnot, two::Shape>() };
@@ -1147,6 +1185,7 @@ namespace two
 	{
 		Type& t = type<two::Ring>();
 		static Meta meta = { t, &namspc({ "two" }), "Ring", sizeof(two::Ring), TypeClass::Struct };
+        init_default_value<two::Ring>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Ring, two::Shape>() };
@@ -1177,6 +1216,7 @@ namespace two
 	{
 		Type& t = type<two::Ellipsis>();
 		static Meta meta = { t, &namspc({ "two" }), "Ellipsis", sizeof(two::Ellipsis), TypeClass::Struct };
+        init_default_value<two::Ellipsis>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Ellipsis, two::Shape>() };
@@ -1205,6 +1245,7 @@ namespace two
 	{
 		Type& t = type<two::Arc>();
 		static Meta meta = { t, &namspc({ "two" }), "Arc", sizeof(two::Arc), TypeClass::Struct };
+        init_default_value<two::Arc>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Arc, two::Shape>() };
@@ -1235,6 +1276,7 @@ namespace two
 	{
 		Type& t = type<two::ArcLine>();
 		static Meta meta = { t, &namspc({ "two" }), "ArcLine", sizeof(two::ArcLine), TypeClass::Struct };
+        init_default_value<two::ArcLine>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::ArcLine, two::Shape>() };
@@ -1263,6 +1305,7 @@ namespace two
 	{
 		Type& t = type<two::Cylinder>();
 		static Meta meta = { t, &namspc({ "two" }), "Cylinder", sizeof(two::Cylinder), TypeClass::Struct };
+        init_default_value<two::Cylinder>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Cylinder, two::Shape>() };
@@ -1296,6 +1339,7 @@ namespace two
 	{
 		Type& t = type<two::Capsule>();
 		static Meta meta = { t, &namspc({ "two" }), "Capsule", sizeof(two::Capsule), TypeClass::Struct };
+        init_default_value<two::Capsule>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Capsule, two::Shape>() };
@@ -1327,6 +1371,7 @@ namespace two
 	{
 		Type& t = type<two::Cube>();
 		static Meta meta = { t, &namspc({ "two" }), "Cube", sizeof(two::Cube), TypeClass::Struct };
+        init_default_value<two::Cube>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Cube, two::Shape>() };
@@ -1353,6 +1398,7 @@ namespace two
 	{
 		Type& t = type<two::Tetraedr>();
 		static Meta meta = { t, &namspc({ "two" }), "Tetraedr", sizeof(two::Tetraedr), TypeClass::Struct };
+        init_default_value<two::Tetraedr>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Tetraedr, two::Shape>() };
@@ -1380,6 +1426,7 @@ namespace two
 	{
 		Type& t = type<two::Sphere>();
 		static Meta meta = { t, &namspc({ "two" }), "Sphere", sizeof(two::Sphere), TypeClass::Struct };
+        init_default_value<two::Sphere>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Sphere, two::Shape>() };
@@ -1415,6 +1462,7 @@ namespace two
 	{
 		Type& t = type<two::SphereRing>();
 		static Meta meta = { t, &namspc({ "two" }), "SphereRing", sizeof(two::SphereRing), TypeClass::Struct };
+        init_default_value<two::SphereRing>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::SphereRing, two::Shape>() };
@@ -1445,6 +1493,7 @@ namespace two
 	{
 		Type& t = type<two::Spheroid>();
 		static Meta meta = { t, &namspc({ "two" }), "Spheroid", sizeof(two::Spheroid), TypeClass::Struct };
+        init_default_value<two::Spheroid>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Spheroid, two::Shape>() };
@@ -1472,6 +1521,7 @@ namespace two
 	{
 		Type& t = type<two::Icosaedr>();
 		static Meta meta = { t, &namspc({ "two" }), "Icosaedr", sizeof(two::Icosaedr), TypeClass::Struct };
+        init_default_value<two::Icosaedr>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Icosaedr, two::Shape>() };
@@ -1499,6 +1549,7 @@ namespace two
 	{
 		Type& t = type<two::Distribution>();
 		static Meta meta = { t, &namspc({ "two" }), "Distribution", sizeof(two::Distribution), TypeClass::Object };
+        init_default_value<two::Distribution>();
 		// bases
 		// defaults
 		// constructors
@@ -1512,6 +1563,7 @@ namespace two
 	{
 		Type& t = type<two::Poisson>();
 		static Meta meta = { t, &namspc({ "two" }), "Poisson", sizeof(two::Poisson), TypeClass::Object };
+        init_default_value<two::Poisson>();
 		// bases
 		static Type* bases[] = { &type<two::Distribution>() };
 		static size_t bases_offsets[] = { base_offset<two::Poisson, two::Distribution>() };
@@ -1535,6 +1587,7 @@ namespace two
 	{
 		Type& t = type<two::Polygon>();
 		static Meta meta = { t, &namspc({ "two" }), "Polygon", sizeof(two::Polygon), TypeClass::Struct };
+        init_default_value<two::Polygon>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Polygon, two::Shape>() };
@@ -1557,6 +1610,7 @@ namespace two
 	{
 		Type& t = type<two::Box>();
 		static Meta meta = { t, &namspc({ "two" }), "Box", sizeof(two::Box), TypeClass::Struct };
+        init_default_value<two::Box>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Box, two::Shape>() };
@@ -1578,6 +1632,7 @@ namespace two
 	{
 		Type& t = type<two::Points>();
 		static Meta meta = { t, &namspc({ "two" }), "Points", sizeof(two::Points), TypeClass::Struct };
+        init_default_value<two::Points>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Points, two::Shape>() };
@@ -1603,6 +1658,7 @@ namespace two
 	{
 		Type& t = type<two::Grid3>();
 		static Meta meta = { t, &namspc({ "two" }), "Grid3", sizeof(two::Grid3), TypeClass::Struct };
+        init_default_value<two::Grid3>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::Grid3, two::Shape>() };
@@ -1630,6 +1686,7 @@ namespace two
 	{
 		Type& t = type<two::ConvexHull>();
 		static Meta meta = { t, &namspc({ "two" }), "ConvexHull", sizeof(two::ConvexHull), TypeClass::Struct };
+        init_default_value<two::ConvexHull>();
 		// bases
 		static Type* bases[] = { &type<two::Shape>() };
 		static size_t bases_offsets[] = { base_offset<two::ConvexHull, two::Shape>() };
@@ -1655,6 +1712,7 @@ namespace two
 	{
 		Type& t = type<two::Symbol>();
 		static Meta meta = { t, &namspc({ "two" }), "Symbol", sizeof(two::Symbol), TypeClass::Struct };
+        init_default_value<two::Symbol>();
 		// bases
 		// defaults
 		static const char* image_default = nullptr;
@@ -1692,6 +1750,7 @@ namespace two
 	{
 		Type& t = type<two::MarchingCubes>();
 		static Meta meta = { t, &namspc({ "two" }), "MarchingCubes", sizeof(two::MarchingCubes), TypeClass::Object };
+        init_default_value<two::MarchingCubes>();
 		// bases
 		// defaults
 		static float isolation_default = 80.f;

@@ -51,6 +51,7 @@ namespace two
 	{
 		Type& t = type<two::ui::OrbitMode>();
 		static Meta meta = { t, &namspc({ "two", "ui" }), "OrbitMode", sizeof(two::ui::OrbitMode), TypeClass::Enum };
+        init_default_value<two::ui::OrbitMode>();
 		static cstring ids[] = { "ThirdPerson", "Isometric", "PseudoIsometric" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::ui::OrbitMode vars[] = { two::ui::OrbitMode::ThirdPerson, two::ui::OrbitMode::Isometric, two::ui::OrbitMode::PseudoIsometric};
@@ -67,6 +68,7 @@ namespace two
 	{
 		Type& t = type<two::SpaceSheet>();
 		static Meta meta = { t, &namspc({ "two" }), "SpaceSheet", sizeof(two::SpaceSheet), TypeClass::Object };
+        init_default_value<two::SpaceSheet>();
 		// bases
 		static Type* bases[] = { &type<two::Ui>() };
 		static size_t bases_offsets[] = { base_offset<two::SpaceSheet, two::Ui>() };
@@ -82,6 +84,7 @@ namespace two
 	{
 		Type& t = type<two::ViewerController>();
 		static Meta meta = { t, &namspc({ "two" }), "ViewerController", sizeof(two::ViewerController), TypeClass::Object };
+        init_default_value<two::ViewerController>();
 		// bases
 		// defaults
 		// constructors
@@ -95,6 +98,7 @@ namespace two
 	{
 		Type& t = type<two::Viewer>();
 		static Meta meta = { t, &namspc({ "two" }), "Viewer", sizeof(two::Viewer), TypeClass::Object };
+        init_default_value<two::Viewer>();
 		// bases
 		static Type* bases[] = { &type<two::Widget>() };
 		static size_t bases_offsets[] = { base_offset<two::Viewer, two::Widget>() };
@@ -117,6 +121,7 @@ namespace two
 	{
 		Type& t = type<two::SceneViewer>();
 		static Meta meta = { t, &namspc({ "two" }), "SceneViewer", sizeof(two::SceneViewer), TypeClass::Object };
+        init_default_value<two::SceneViewer>();
 		// bases
 		static Type* bases[] = { &type<two::Viewer>() };
 		static size_t bases_offsets[] = { base_offset<two::SceneViewer, two::Viewer>() };
@@ -132,6 +137,7 @@ namespace two
 	{
 		Type& t = type<two::OrbitController>();
 		static Meta meta = { t, &namspc({ "two" }), "OrbitController", sizeof(two::OrbitController), TypeClass::Object };
+        init_default_value<two::OrbitController>();
 		// bases
 		static Type* bases[] = { &type<two::ViewerController>() };
 		static size_t bases_offsets[] = { base_offset<two::OrbitController, two::ViewerController>() };
@@ -160,6 +166,7 @@ namespace two
 	{
 		Type& t = type<two::TrackballController>();
 		static Meta meta = { t, &namspc({ "two" }), "TrackballController", sizeof(two::TrackballController), TypeClass::Object };
+        init_default_value<two::TrackballController>();
 		// bases
 		static Type* bases[] = { &type<two::ViewerController>() };
 		static size_t bases_offsets[] = { base_offset<two::TrackballController, two::ViewerController>() };
@@ -191,6 +198,7 @@ namespace two
 	{
 		Type& t = type<two::OrbitControls>();
 		static Meta meta = { t, &namspc({ "two" }), "OrbitControls", sizeof(two::OrbitControls), TypeClass::Object };
+        init_default_value<two::OrbitControls>();
 		// bases
 		static Type* bases[] = { &type<two::ViewerController>() };
 		static size_t bases_offsets[] = { base_offset<two::OrbitControls, two::ViewerController>() };
@@ -206,6 +214,7 @@ namespace two
 	{
 		Type& t = type<two::FreeOrbitController>();
 		static Meta meta = { t, &namspc({ "two" }), "FreeOrbitController", sizeof(two::FreeOrbitController), TypeClass::Object };
+        init_default_value<two::FreeOrbitController>();
 		// bases
 		static Type* bases[] = { &type<two::OrbitController>() };
 		static size_t bases_offsets[] = { base_offset<two::FreeOrbitController, two::OrbitController>() };

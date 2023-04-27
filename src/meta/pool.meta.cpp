@@ -36,6 +36,7 @@ namespace two
 	{
 		Type& t = type<two::Pool>();
 		static Meta meta = { t, &namspc({ "two" }), "Pool", sizeof(two::Pool), TypeClass::Object };
+        init_default_value<two::Pool>();
 		// bases
 		// defaults
 		// constructors
@@ -49,6 +50,7 @@ namespace two
 	{
 		Type& t = type<two::HandlePool>();
 		static Meta meta = { t, &namspc({ "two" }), "HandlePool", sizeof(two::HandlePool), TypeClass::Object };
+        init_default_value<two::HandlePool>();
 		// bases
 		// defaults
 		// constructors

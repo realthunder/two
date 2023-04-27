@@ -79,6 +79,7 @@ namespace two
 	{
 		Type& t = type<two::TypeClass>();
 		static Meta meta = { t, &namspc({ "two" }), "TypeClass", sizeof(two::TypeClass), TypeClass::Enum };
+        init_default_value<two::TypeClass>();
 		static cstring ids[] = { "None", "Object", "Struct", "Sequence", "BaseType", "Enum" };
 		static uint32_t values[] = { 0, 1, 2, 4, 5, 6 };
 		static two::TypeClass vars[] = { two::TypeClass::None, two::TypeClass::Object, two::TypeClass::Struct, two::TypeClass::Sequence, two::TypeClass::BaseType, two::TypeClass::Enum};
@@ -93,6 +94,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Type*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Type*>", sizeof(stl::span<two::Type*>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Type*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Type>(),
 		                             stl_span_two_Type___size,
@@ -102,6 +104,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Var>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Var>", sizeof(stl::vector<two::Var>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Var>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Var>(),
 		                             stl_vector_two_Var__size,
@@ -115,6 +118,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<void*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<void*>", sizeof(stl::vector<void*>), TypeClass::Sequence };
+        init_default_value<stl::vector<void*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<void*>(),
 		                             stl_vector_void___size,
@@ -128,6 +132,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Module*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Module*>", sizeof(stl::vector<two::Module*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Module*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Module>(),
 		                             stl_vector_two_Module___size,
@@ -141,6 +146,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Type*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Type*>", sizeof(stl::vector<two::Type*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Type*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Type>(),
 		                             stl_vector_two_Type___size,
@@ -154,6 +160,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Alias*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Alias*>", sizeof(stl::vector<two::Alias*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Alias*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Alias>(),
 		                             stl_vector_two_Alias___size,
@@ -167,6 +174,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Function*>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Function*>", sizeof(stl::vector<two::Function*>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Function*>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Function>(),
 		                             stl_vector_two_Function___size,
@@ -182,6 +190,7 @@ namespace two
 	{
 		Type& t = type<two::QualType>();
 		static Meta meta = { t, &namspc({ "two" }), "QualType", sizeof(two::QualType), TypeClass::Struct };
+        init_default_value<two::QualType>();
 		// bases
 		// defaults
 		// constructors
@@ -201,6 +210,7 @@ namespace two
 	{
 		Type& t = type<two::Param>();
 		static Meta meta = { t, &namspc({ "two" }), "Param", sizeof(two::Param), TypeClass::Object };
+        init_default_value<two::Param>();
 		// bases
 		// defaults
 		// constructors
@@ -214,6 +224,7 @@ namespace two
 	{
 		Type& t = type<two::Signature>();
 		static Meta meta = { t, &namspc({ "two" }), "Signature", sizeof(two::Signature), TypeClass::Object };
+        init_default_value<two::Signature>();
 		// bases
 		// defaults
 		// constructors
@@ -227,6 +238,7 @@ namespace two
 	{
 		Type& t = type<two::Callable>();
 		static Meta meta = { t, &namspc({ "two" }), "Callable", sizeof(two::Callable), TypeClass::Object };
+        init_default_value<two::Callable>();
 		// bases
 		// defaults
 		// constructors
@@ -240,6 +252,7 @@ namespace two
 	{
 		Type& t = type<two::Function>();
 		static Meta meta = { t, &namspc({ "two" }), "Function", sizeof(two::Function), TypeClass::Object };
+        init_default_value<two::Function>();
 		// bases
 		static Type* bases[] = { &type<two::Callable>() };
 		static size_t bases_offsets[] = { base_offset<two::Function, two::Callable>() };
@@ -255,6 +268,7 @@ namespace two
 	{
 		Type& t = type<two::Operator>();
 		static Meta meta = { t, &namspc({ "two" }), "Operator", sizeof(two::Operator), TypeClass::Struct };
+        init_default_value<two::Operator>();
 		// bases
 		// defaults
 		// constructors
@@ -280,6 +294,7 @@ namespace two
 	{
 		Type& t = type<two::Method>();
 		static Meta meta = { t, &namspc({ "two" }), "Method", sizeof(two::Method), TypeClass::Object };
+        init_default_value<two::Method>();
 		// bases
 		static Type* bases[] = { &type<two::Callable>() };
 		static size_t bases_offsets[] = { base_offset<two::Method, two::Callable>() };
@@ -295,6 +310,7 @@ namespace two
 	{
 		Type& t = type<two::Constructor>();
 		static Meta meta = { t, &namspc({ "two" }), "Constructor", sizeof(two::Constructor), TypeClass::Object };
+        init_default_value<two::Constructor>();
 		// bases
 		static Type* bases[] = { &type<two::Callable>() };
 		static size_t bases_offsets[] = { base_offset<two::Constructor, two::Callable>() };
@@ -310,6 +326,7 @@ namespace two
 	{
 		Type& t = type<two::CopyConstructor>();
 		static Meta meta = { t, &namspc({ "two" }), "CopyConstructor", sizeof(two::CopyConstructor), TypeClass::Object };
+        init_default_value<two::CopyConstructor>();
 		// bases
 		static Type* bases[] = { &type<two::Callable>() };
 		static size_t bases_offsets[] = { base_offset<two::CopyConstructor, two::Callable>() };
@@ -325,6 +342,7 @@ namespace two
 	{
 		Type& t = type<two::Destructor>();
 		static Meta meta = { t, &namspc({ "two" }), "Destructor", sizeof(two::Destructor), TypeClass::Object };
+        init_default_value<two::Destructor>();
 		// bases
 		static Type* bases[] = { &type<two::Callable>() };
 		static size_t bases_offsets[] = { base_offset<two::Destructor, two::Callable>() };
@@ -340,6 +358,7 @@ namespace two
 	{
 		Type& t = type<two::Call>();
 		static Meta meta = { t, &namspc({ "two" }), "Call", sizeof(two::Call), TypeClass::Struct };
+        init_default_value<two::Call>();
 		// bases
 		// defaults
 		// constructors
@@ -365,6 +384,7 @@ namespace two
 	{
 		Type& t = type<two::Meta>();
 		static Meta meta = { t, &namspc({ "two" }), "Meta", sizeof(two::Meta), TypeClass::Object };
+        init_default_value<two::Meta>();
 		// bases
 		// defaults
 		// constructors
@@ -378,6 +398,7 @@ namespace two
 	{
 		Type& t = type<two::Convert>();
 		static Meta meta = { t, &namspc({ "two" }), "Convert", sizeof(two::Convert), TypeClass::Object };
+        init_default_value<two::Convert>();
 		// bases
 		// defaults
 		// constructors
@@ -391,6 +412,7 @@ namespace two
 	{
 		Type& t = type<two::Static>();
 		static Meta meta = { t, &namspc({ "two" }), "Static", sizeof(two::Static), TypeClass::Object };
+        init_default_value<two::Static>();
 		// bases
 		// defaults
 		// constructors
@@ -404,6 +426,7 @@ namespace two
 	{
 		Type& t = type<two::Member>();
 		static Meta meta = { t, &namspc({ "two" }), "Member", sizeof(two::Member), TypeClass::Object };
+        init_default_value<two::Member>();
 		// bases
 		// defaults
 		// constructors
@@ -417,6 +440,7 @@ namespace two
 	{
 		Type& t = type<two::Class>();
 		static Meta meta = { t, &namspc({ "two" }), "Class", sizeof(two::Class), TypeClass::Object };
+        init_default_value<two::Class>();
 		// bases
 		// defaults
 		// constructors
@@ -430,6 +454,7 @@ namespace two
 	{
 		Type& t = type<two::Enum>();
 		static Meta meta = { t, &namspc({ "two" }), "Enum", sizeof(two::Enum), TypeClass::Object };
+        init_default_value<two::Enum>();
 		// bases
 		// defaults
 		// constructors
@@ -443,6 +468,7 @@ namespace two
 	{
 		Type& t = type<two::Injector>();
 		static Meta meta = { t, &namspc({ "two" }), "Injector", sizeof(two::Injector), TypeClass::Object };
+        init_default_value<two::Injector>();
 		// bases
 		static Type* bases[] = { &type<two::Call>() };
 		static size_t bases_offsets[] = { base_offset<two::Injector, two::Call>() };
@@ -458,6 +484,7 @@ namespace two
 	{
 		Type& t = type<two::Creator>();
 		static Meta meta = { t, &namspc({ "two" }), "Creator", sizeof(two::Creator), TypeClass::Object };
+        init_default_value<two::Creator>();
 		// bases
 		// defaults
 		// constructors
@@ -477,6 +504,7 @@ namespace two
 	{
 		Type& t = type<two::Namespace>();
 		static Meta meta = { t, &namspc({ "two" }), "Namespace", sizeof(two::Namespace), TypeClass::Object };
+        init_default_value<two::Namespace>();
 		// bases
 		// defaults
 		// constructors
@@ -490,6 +518,7 @@ namespace two
 	{
 		Type& t = type<two::Alias>();
 		static Meta meta = { t, &namspc({ "two" }), "Alias", sizeof(two::Alias), TypeClass::Struct };
+        init_default_value<two::Alias>();
 		// bases
 		// defaults
 		// constructors
@@ -509,6 +538,7 @@ namespace two
 	{
 		Type& t = type<two::Module>();
 		static Meta meta = { t, &namspc({ "two" }), "Module", sizeof(two::Module), TypeClass::Object };
+        init_default_value<two::Module>();
 		// bases
 		// defaults
 		// constructors
@@ -530,6 +560,7 @@ namespace two
 	{
 		Type& t = type<two::System>();
 		static Meta meta = { t, &namspc({ "two" }), "System", sizeof(two::System), TypeClass::Object };
+        init_default_value<two::System>();
 		// bases
 		// defaults
 		// constructors

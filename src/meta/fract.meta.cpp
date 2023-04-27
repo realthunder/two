@@ -58,6 +58,7 @@ namespace two
 	{
 		Type& t = type<two::PatternSampling>();
 		static Meta meta = { t, &namspc({ "two" }), "PatternSampling", sizeof(two::PatternSampling), TypeClass::Enum };
+        init_default_value<two::PatternSampling>();
 		static cstring ids[] = { "X", "XY", "Depth" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::PatternSampling vars[] = { two::PatternSampling::X, two::PatternSampling::XY, two::PatternSampling::Depth};
@@ -72,6 +73,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Image256>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Image256>", sizeof(stl::vector<two::Image256>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Image256>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Image256>(),
 		                             stl_vector_two_Image256__size,
@@ -87,6 +89,7 @@ namespace two
 	{
 		Type& t = type<two::Circlifier>();
 		static Meta meta = { t, &namspc({ "two" }), "Circlifier", sizeof(two::Circlifier), TypeClass::Object };
+        init_default_value<two::Circlifier>();
 		// bases
 		// defaults
 		static float compute_0_scale_default = 1.f;
@@ -107,6 +110,7 @@ namespace two
 	{
 		Type& t = type<two::Pattern>();
 		static Meta meta = { t, &namspc({ "two" }), "Pattern", sizeof(two::Pattern), TypeClass::Struct };
+        init_default_value<two::Pattern>();
 		// bases
 		// defaults
 		static float construct_0_precision_default = 1.f;
@@ -129,6 +133,7 @@ namespace two
 	{
 		Type& t = type<two::FractTab>();
 		static Meta meta = { t, &namspc({ "two" }), "FractTab", sizeof(two::FractTab), TypeClass::Struct };
+        init_default_value<two::FractTab>();
 		// bases
 		// defaults
 		// constructors
@@ -148,6 +153,7 @@ namespace two
 	{
 		Type& t = type<two::Fract>();
 		static Meta meta = { t, &namspc({ "two" }), "Fract", sizeof(two::Fract), TypeClass::Object };
+        init_default_value<two::Fract>();
 		// bases
 		// defaults
 		static size_t construct_0_num_tabs_default = 75;
@@ -176,6 +182,7 @@ namespace two
 	{
 		Type& t = type<two::FractSample>();
 		static Meta meta = { t, &namspc({ "two" }), "FractSample", sizeof(two::FractSample), TypeClass::Object };
+        init_default_value<two::FractSample>();
 		// bases
 		// defaults
 		// constructors

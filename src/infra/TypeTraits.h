@@ -19,7 +19,7 @@ namespace two
 	struct is_comparable_base { constexpr static bool value = false;};
 
 	export_ template <class T>
-	struct is_comparable_base<T, decltype(declval<T&>() == declval<T&>(), (void) 0)> { constexpr static bool value = true; };
+	struct is_comparable_base<T, decltype(declval<T&>() == declval<T&>())> { constexpr static bool value = true; };
 
 	export_ template <class T>
 	constexpr bool is_comparable = is_comparable_base<T>::value;

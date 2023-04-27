@@ -31,7 +31,7 @@ namespace two
 	};
 
 	template <class T>
-	class TBuffer : public Buffer
+	class TBuffer : public two::Buffer
 	{
 	public:
 		TBuffer() {}

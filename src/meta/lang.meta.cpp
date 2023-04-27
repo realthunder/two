@@ -51,6 +51,7 @@ namespace two
 	{
 		Type& t = type<two::Language>();
 		static Meta meta = { t, &namspc({ "two" }), "Language", sizeof(two::Language), TypeClass::Enum };
+        init_default_value<two::Language>();
 		static cstring ids[] = { "Cpp", "Lua", "Wren" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::Language vars[] = { two::Language::Cpp, two::Language::Lua, two::Language::Wren};
@@ -67,6 +68,7 @@ namespace two
 	{
 		Type& t = type<two::Script>();
 		static Meta meta = { t, &namspc({ "two" }), "Script", sizeof(two::Script), TypeClass::Object };
+        init_default_value<two::Script>();
 		// bases
 		static Type* bases[] = { &type<two::Callable>() };
 		static size_t bases_offsets[] = { base_offset<two::Script, two::Callable>() };
@@ -88,6 +90,7 @@ namespace two
 	{
 		Type& t = type<two::ScriptError>();
 		static Meta meta = { t, &namspc({ "two" }), "ScriptError", sizeof(two::ScriptError), TypeClass::Struct };
+        init_default_value<two::ScriptError>();
 		// bases
 		// defaults
 		// constructors
@@ -107,6 +110,7 @@ namespace two
 	{
 		Type& t = type<two::TextScript>();
 		static Meta meta = { t, &namspc({ "two" }), "TextScript", sizeof(two::TextScript), TypeClass::Object };
+        init_default_value<two::TextScript>();
 		// bases
 		static Type* bases[] = { &type<two::Script>() };
 		static size_t bases_offsets[] = { base_offset<two::TextScript, two::Script>() };
@@ -131,6 +135,7 @@ namespace two
 	{
 		Type& t = type<two::Interpreter>();
 		static Meta meta = { t, &namspc({ "two" }), "Interpreter", sizeof(two::Interpreter), TypeClass::Object };
+        init_default_value<two::Interpreter>();
 		// bases
 		// defaults
 		// constructors
@@ -144,6 +149,7 @@ namespace two
 	{
 		Type& t = type<two::ScriptClass>();
 		static Meta meta = { t, &namspc({ "two" }), "ScriptClass", sizeof(two::ScriptClass), TypeClass::Object };
+        init_default_value<two::ScriptClass>();
 		// bases
 		// defaults
 		// constructors
@@ -166,6 +172,7 @@ namespace two
 	{
 		Type& t = type<two::LuaInterpreter>();
 		static Meta meta = { t, &namspc({ "two" }), "LuaInterpreter", sizeof(two::LuaInterpreter), TypeClass::Object };
+        init_default_value<two::LuaInterpreter>();
 		// bases
 		static Type* bases[] = { &type<two::Interpreter>() };
 		static size_t bases_offsets[] = { base_offset<two::LuaInterpreter, two::Interpreter>() };
@@ -181,6 +188,7 @@ namespace two
 	{
 		Type& t = type<two::StreamBranch>();
 		static Meta meta = { t, &namspc({ "two" }), "StreamBranch", sizeof(two::StreamBranch), TypeClass::Object };
+        init_default_value<two::StreamBranch>();
 		// bases
 		// defaults
 		// constructors
@@ -194,6 +202,7 @@ namespace two
 	{
 		Type& t = type<two::Stream>();
 		static Meta meta = { t, &namspc({ "two" }), "Stream", sizeof(two::Stream), TypeClass::Object };
+        init_default_value<two::Stream>();
 		// bases
 		static Type* bases[] = { &type<two::StreamBranch>() };
 		static size_t bases_offsets[] = { base_offset<two::Stream, two::StreamBranch>() };
@@ -209,6 +218,7 @@ namespace two
 	{
 		Type& t = type<two::Valve>();
 		static Meta meta = { t, &namspc({ "two" }), "Valve", sizeof(two::Valve), TypeClass::Object };
+        init_default_value<two::Valve>();
 		// bases
 		// defaults
 		// constructors
@@ -222,6 +232,7 @@ namespace two
 	{
 		Type& t = type<two::Pipe>();
 		static Meta meta = { t, &namspc({ "two" }), "Pipe", sizeof(two::Pipe), TypeClass::Object };
+        init_default_value<two::Pipe>();
 		// bases
 		// defaults
 		// constructors
@@ -235,6 +246,7 @@ namespace two
 	{
 		Type& t = type<two::Process>();
 		static Meta meta = { t, &namspc({ "two" }), "Process", sizeof(two::Process), TypeClass::Object };
+        init_default_value<two::Process>();
 		// bases
 		// defaults
 		// constructors
@@ -251,6 +263,7 @@ namespace two
 	{
 		Type& t = type<two::VisualScript>();
 		static Meta meta = { t, &namspc({ "two" }), "VisualScript", sizeof(two::VisualScript), TypeClass::Object };
+        init_default_value<two::VisualScript>();
 		// bases
 		static Type* bases[] = { &type<two::Script>() };
 		static size_t bases_offsets[] = { base_offset<two::VisualScript, two::Script>() };
@@ -270,6 +283,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessInput>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessInput", sizeof(two::ProcessInput), TypeClass::Object };
+        init_default_value<two::ProcessInput>();
 		// bases
 		static Type* bases[] = { &type<two::Process>(), &type<two::Param>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessInput, two::Process>(), base_offset<two::ProcessInput, two::Param>() };
@@ -285,6 +299,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessOutput>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessOutput", sizeof(two::ProcessOutput), TypeClass::Object };
+        init_default_value<two::ProcessOutput>();
 		// bases
 		static Type* bases[] = { &type<two::Process>(), &type<two::Param>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessOutput, two::Process>(), base_offset<two::ProcessOutput, two::Param>() };
@@ -300,6 +315,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessValue>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessValue", sizeof(two::ProcessValue), TypeClass::Object };
+        init_default_value<two::ProcessValue>();
 		// bases
 		static Type* bases[] = { &type<two::Process>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessValue, two::Process>() };
@@ -318,6 +334,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessCreate>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessCreate", sizeof(two::ProcessCreate), TypeClass::Object };
+        init_default_value<two::ProcessCreate>();
 		// bases
 		static Type* bases[] = { &type<two::Process>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessCreate, two::Process>() };
@@ -336,6 +353,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessCallable>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessCallable", sizeof(two::ProcessCallable), TypeClass::Object };
+        init_default_value<two::ProcessCallable>();
 		// bases
 		static Type* bases[] = { &type<two::Process>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessCallable, two::Process>() };
@@ -354,6 +372,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessScript>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessScript", sizeof(two::ProcessScript), TypeClass::Object };
+        init_default_value<two::ProcessScript>();
 		// bases
 		static Type* bases[] = { &type<two::ProcessCallable>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessScript, two::ProcessCallable>() };
@@ -372,6 +391,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessFunction>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessFunction", sizeof(two::ProcessFunction), TypeClass::Object };
+        init_default_value<two::ProcessFunction>();
 		// bases
 		static Type* bases[] = { &type<two::ProcessCallable>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessFunction, two::ProcessCallable>() };
@@ -390,6 +410,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessMethod>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessMethod", sizeof(two::ProcessMethod), TypeClass::Object };
+        init_default_value<two::ProcessMethod>();
 		// bases
 		static Type* bases[] = { &type<two::ProcessCallable>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessMethod, two::ProcessCallable>() };
@@ -408,6 +429,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessGetMember>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessGetMember", sizeof(two::ProcessGetMember), TypeClass::Object };
+        init_default_value<two::ProcessGetMember>();
 		// bases
 		static Type* bases[] = { &type<two::Process>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessGetMember, two::Process>() };
@@ -426,6 +448,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessSetMember>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessSetMember", sizeof(two::ProcessSetMember), TypeClass::Object };
+        init_default_value<two::ProcessSetMember>();
 		// bases
 		static Type* bases[] = { &type<two::Process>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessSetMember, two::Process>() };
@@ -444,6 +467,7 @@ namespace two
 	{
 		Type& t = type<two::ProcessDisplay>();
 		static Meta meta = { t, &namspc({ "two" }), "ProcessDisplay", sizeof(two::ProcessDisplay), TypeClass::Object };
+        init_default_value<two::ProcessDisplay>();
 		// bases
 		static Type* bases[] = { &type<two::Process>() };
 		static size_t bases_offsets[] = { base_offset<two::ProcessDisplay, two::Process>() };
@@ -459,6 +483,7 @@ namespace two
 	{
 		Type& t = type<two::WrenInterpreter>();
 		static Meta meta = { t, &namspc({ "two" }), "WrenInterpreter", sizeof(two::WrenInterpreter), TypeClass::Object };
+        init_default_value<two::WrenInterpreter>();
 		// bases
 		static Type* bases[] = { &type<two::Interpreter>() };
 		static size_t bases_offsets[] = { base_offset<two::WrenInterpreter, two::Interpreter>() };

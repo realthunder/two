@@ -15,6 +15,7 @@ module two.math;
 #include <math/Grid.h>
 #include <math/Axes.h>
 #include <math/Range.h>
+#include <refl/Convert.h>
 #endif
 
 namespace two
@@ -54,8 +55,8 @@ namespace two
 
 	void register_math_conversions()
 	{
-#if 0
-		dispatch_branch<float, vec3, copy_convert<float, vec3>>(TypeConverter::me());
+#if 1
+        dispatch_branch<float, vec3, copy_convert<float, vec3>>(TypeConverter::me());
 		TypeConverter::me().default_converter<vec3, ivec3>();
 		TypeConverter::me().default_converter<vec3, uvec3>();
 #endif

@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <assert.h>
 #ifndef TWO_MODULES
 #include <stl/vector.h>
 #include <type/Unique.h>
@@ -108,7 +109,10 @@ namespace two
 		bool computed() { return m_state == COMPUTED; }
 		bool locked() { return m_state == LOCKED; }
 
-		Valve& output() { return *m_outputs[0]; }
+		Valve& output() {
+            assert(m_outputs[0]);
+            return *m_outputs[0];
+        }
 
 		void invalidate() { if(m_state != LOCKED) m_state = UNCOMPUTED; }
 		void recompute();

@@ -75,7 +75,7 @@ namespace two
 		meth_ inline bool valid() { return m_deviceType != DeviceType::None && m_consumer == nullptr; }
 		operator bool() { return this->valid(); }
 
-		//bool operator==(const InputEvent& other) const { UNUSED(other); return false; }
+        bool operator==(const InputEvent& other) const { UNUSED(other); return false; }
 	};
 
 	export_ struct refl_ TWO_CTX_EXPORT MouseEvent : public InputEvent

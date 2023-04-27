@@ -257,6 +257,7 @@ namespace two
 	{
 		Type& t = type<two::Axis>();
 		static Meta meta = { t, &namspc({ "two" }), "Axis", sizeof(two::Axis), TypeClass::Enum };
+        init_default_value<two::Axis>();
 		static cstring ids[] = { "X", "Y", "Z", "None", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 2, 3 };
 		static two::Axis vars[] = { two::Axis::X, two::Axis::Y, two::Axis::Z, two::Axis::None, two::Axis::Count};
@@ -269,6 +270,7 @@ namespace two
 	{
 		Type& t = type<two::Axes>();
 		static Meta meta = { t, &namspc({ "two" }), "Axes", sizeof(two::Axes), TypeClass::Enum };
+        init_default_value<two::Axes>();
 		static cstring ids[] = { "None", "X", "Y", "Z" };
 		static uint32_t values[] = { 0, 1, 2, 4 };
 		static two::Axes vars[] = { two::Axes::None, two::Axes::X, two::Axes::Y, two::Axes::Z};
@@ -281,6 +283,7 @@ namespace two
 	{
 		Type& t = type<two::SignedAxis>();
 		static Meta meta = { t, &namspc({ "two" }), "SignedAxis", sizeof(two::SignedAxis), TypeClass::Enum };
+        init_default_value<two::SignedAxis>();
 		static cstring ids[] = { "PlusX", "MinusX", "PlusY", "MinusY", "PlusZ", "MinusZ", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6 };
 		static two::SignedAxis vars[] = { two::SignedAxis::PlusX, two::SignedAxis::MinusX, two::SignedAxis::PlusY, two::SignedAxis::MinusY, two::SignedAxis::PlusZ, two::SignedAxis::MinusZ, two::SignedAxis::Count};
@@ -293,6 +296,7 @@ namespace two
 	{
 		Type& t = type<two::Side>();
 		static Meta meta = { t, &namspc({ "two" }), "Side", sizeof(two::Side), TypeClass::Enum };
+        init_default_value<two::Side>();
 		static cstring ids[] = { "Right", "Left", "Up", "Down", "Back", "Front", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6 };
 		static two::Side vars[] = { two::Side::Right, two::Side::Left, two::Side::Up, two::Side::Down, two::Side::Back, two::Side::Front, two::Side::Count};
@@ -305,6 +309,7 @@ namespace two
 	{
 		Type& t = type<two::Clockwise>();
 		static Meta meta = { t, &namspc({ "two" }), "Clockwise", sizeof(two::Clockwise), TypeClass::Enum };
+        init_default_value<two::Clockwise>();
 		static cstring ids[] = { "CLOCKWISE", "ANTI_CLOCKWISE" };
 		static uint32_t values[] = { 0, 1 };
 		static two::Clockwise vars[] = { two::CLOCKWISE, two::ANTI_CLOCKWISE};
@@ -317,6 +322,7 @@ namespace two
 	{
 		Type& t = type<two::TrackMode>();
 		static Meta meta = { t, &namspc({ "two" }), "TrackMode", sizeof(two::TrackMode), TypeClass::Enum };
+        init_default_value<two::TrackMode>();
 		static cstring ids[] = { "Constant", "ConstantRandom", "Curve", "CurveRandom" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::TrackMode vars[] = { two::TrackMode::Constant, two::TrackMode::ConstantRandom, two::TrackMode::Curve, two::TrackMode::CurveRandom};
@@ -329,6 +335,7 @@ namespace two
 	{
 		Type& t = type<two::Spectrum>();
 		static Meta meta = { t, &namspc({ "two" }), "Spectrum", sizeof(two::Spectrum), TypeClass::Enum };
+        init_default_value<two::Spectrum>();
 		static cstring ids[] = { "Value", "Hue" };
 		static uint32_t values[] = { 0, 1 };
 		static two::Spectrum vars[] = { two::Spectrum::Value, two::Spectrum::Hue};
@@ -343,6 +350,7 @@ namespace two
 	{
 		Type& t = type<stl::span<uint8_t>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<uint8_t>", sizeof(stl::span<uint8_t>), TypeClass::Sequence };
+        init_default_value<stl::span<uint8_t>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<uint8_t>(),
 		                             stl_span_uint8_t__size,
@@ -352,6 +360,7 @@ namespace two
 	{
 		Type& t = type<stl::span<int>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<int>", sizeof(stl::span<int>), TypeClass::Sequence };
+        init_default_value<stl::span<int>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<int>(),
 		                             stl_span_int__size,
@@ -361,6 +370,7 @@ namespace two
 	{
 		Type& t = type<stl::span<float>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<float>", sizeof(stl::span<float>), TypeClass::Sequence };
+        init_default_value<stl::span<float>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<float>(),
 		                             stl_span_float__size,
@@ -370,6 +380,7 @@ namespace two
 	{
 		Type& t = type<stl::span<uint32_t>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<uint32_t>", sizeof(stl::span<uint32_t>), TypeClass::Sequence };
+        init_default_value<stl::span<uint32_t>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<uint32_t>(),
 		                             stl_span_uint32_t__size,
@@ -379,6 +390,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::vec3>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::vec3>", sizeof(stl::span<two::vec3>), TypeClass::Sequence };
+        init_default_value<stl::span<two::vec3>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::vec3>(),
 		                             stl_span_two_vec3__size,
@@ -388,6 +400,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::quat>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::quat>", sizeof(stl::span<two::quat>), TypeClass::Sequence };
+        init_default_value<stl::span<two::quat>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::quat>(),
 		                             stl_span_two_quat__size,
@@ -397,6 +410,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::Colour>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::Colour>", sizeof(stl::span<two::Colour>), TypeClass::Sequence };
+        init_default_value<stl::span<two::Colour>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Colour>(),
 		                             stl_span_two_Colour__size,
@@ -406,6 +420,7 @@ namespace two
 	{
 		Type& t = type<stl::span<two::uvec3>>();
 		static Meta meta = { t, &namspc({ "stl" }), "span<two::uvec3>", sizeof(stl::span<two::uvec3>), TypeClass::Sequence };
+        init_default_value<stl::span<two::uvec3>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::uvec3>(),
 		                             stl_span_two_uvec3__size,
@@ -415,6 +430,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<int>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<int>", sizeof(stl::vector<int>), TypeClass::Sequence };
+        init_default_value<stl::vector<int>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<int>(),
 		                             stl_vector_int__size,
@@ -428,6 +444,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<float>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<float>", sizeof(stl::vector<float>), TypeClass::Sequence };
+        init_default_value<stl::vector<float>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<float>(),
 		                             stl_vector_float__size,
@@ -441,6 +458,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<uint32_t>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<uint32_t>", sizeof(stl::vector<uint32_t>), TypeClass::Sequence };
+        init_default_value<stl::vector<uint32_t>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<uint32_t>(),
 		                             stl_vector_uint32_t__size,
@@ -454,6 +472,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::vec3>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::vec3>", sizeof(stl::vector<two::vec3>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::vec3>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::vec3>(),
 		                             stl_vector_two_vec3__size,
@@ -467,6 +486,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::quat>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::quat>", sizeof(stl::vector<two::quat>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::quat>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::quat>(),
 		                             stl_vector_two_quat__size,
@@ -480,6 +500,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::Colour>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::Colour>", sizeof(stl::vector<two::Colour>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::Colour>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::Colour>(),
 		                             stl_vector_two_Colour__size,
@@ -493,6 +514,7 @@ namespace two
 	{
 		Type& t = type<stl::vector<two::uvec3>>();
 		static Meta meta = { t, &namspc({ "stl" }), "vector<two::uvec3>", sizeof(stl::vector<two::uvec3>), TypeClass::Sequence };
+        init_default_value<stl::vector<two::uvec3>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<two::uvec3>(),
 		                             stl_vector_two_uvec3__size,
@@ -508,6 +530,7 @@ namespace two
 	{
 		Type& t = type<two::v2<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "v2<float>", sizeof(two::v2<float>), TypeClass::Struct };
+        init_default_value<two::v2<float>>();
 		// bases
 		// defaults
 		// constructors
@@ -533,6 +556,7 @@ namespace two
 	{
 		Type& t = type<two::v3<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "v3<float>", sizeof(two::v3<float>), TypeClass::Struct };
+        init_default_value<two::v3<float>>();
 		// bases
 		// defaults
 		// constructors
@@ -559,6 +583,7 @@ namespace two
 	{
 		Type& t = type<two::v4<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "v4<float>", sizeof(two::v4<float>), TypeClass::Struct };
+        init_default_value<two::v4<float>>();
 		// bases
 		// defaults
 		// constructors
@@ -586,6 +611,7 @@ namespace two
 	{
 		Type& t = type<two::v2<int>>();
 		static Meta meta = { t, &namspc({ "two" }), "v2<int>", sizeof(two::v2<int>), TypeClass::Struct };
+        init_default_value<two::v2<int>>();
 		// bases
 		// defaults
 		// constructors
@@ -611,6 +637,7 @@ namespace two
 	{
 		Type& t = type<two::v3<int>>();
 		static Meta meta = { t, &namspc({ "two" }), "v3<int>", sizeof(two::v3<int>), TypeClass::Struct };
+        init_default_value<two::v3<int>>();
 		// bases
 		// defaults
 		// constructors
@@ -637,6 +664,7 @@ namespace two
 	{
 		Type& t = type<two::v4<int>>();
 		static Meta meta = { t, &namspc({ "two" }), "v4<int>", sizeof(two::v4<int>), TypeClass::Struct };
+        init_default_value<two::v4<int>>();
 		// bases
 		// defaults
 		// constructors
@@ -664,6 +692,7 @@ namespace two
 	{
 		Type& t = type<two::v2<uint>>();
 		static Meta meta = { t, &namspc({ "two" }), "v2<uint>", sizeof(two::v2<uint>), TypeClass::Struct };
+        init_default_value<two::v2<uint>>();
 		// bases
 		// defaults
 		// constructors
@@ -689,6 +718,7 @@ namespace two
 	{
 		Type& t = type<two::v3<uint>>();
 		static Meta meta = { t, &namspc({ "two" }), "v3<uint>", sizeof(two::v3<uint>), TypeClass::Struct };
+        init_default_value<two::v3<uint>>();
 		// bases
 		// defaults
 		// constructors
@@ -715,6 +745,7 @@ namespace two
 	{
 		Type& t = type<two::v4<uint>>();
 		static Meta meta = { t, &namspc({ "two" }), "v4<uint>", sizeof(two::v4<uint>), TypeClass::Struct };
+        init_default_value<two::v4<uint>>();
 		// bases
 		// defaults
 		// constructors
@@ -742,6 +773,7 @@ namespace two
 	{
 		Type& t = type<two::v2<bool>>();
 		static Meta meta = { t, &namspc({ "two" }), "v2<bool>", sizeof(two::v2<bool>), TypeClass::Struct };
+        init_default_value<two::v2<bool>>();
 		// bases
 		// defaults
 		// constructors
@@ -767,6 +799,7 @@ namespace two
 	{
 		Type& t = type<two::v3<bool>>();
 		static Meta meta = { t, &namspc({ "two" }), "v3<bool>", sizeof(two::v3<bool>), TypeClass::Struct };
+        init_default_value<two::v3<bool>>();
 		// bases
 		// defaults
 		// constructors
@@ -793,6 +826,7 @@ namespace two
 	{
 		Type& t = type<two::v4<bool>>();
 		static Meta meta = { t, &namspc({ "two" }), "v4<bool>", sizeof(two::v4<bool>), TypeClass::Struct };
+        init_default_value<two::v4<bool>>();
 		// bases
 		// defaults
 		// constructors
@@ -820,6 +854,7 @@ namespace two
 	{
 		Type& t = type<two::mat3>();
 		static Meta meta = { t, &namspc({ "two" }), "mat3", sizeof(two::mat3), TypeClass::Struct };
+        init_default_value<two::mat3>();
 		// bases
 		// defaults
 		// constructors
@@ -844,6 +879,7 @@ namespace two
 	{
 		Type& t = type<two::mat4>();
 		static Meta meta = { t, &namspc({ "two" }), "mat4", sizeof(two::mat4), TypeClass::Struct };
+        init_default_value<two::mat4>();
 		// bases
 		// defaults
 		// constructors
@@ -868,6 +904,7 @@ namespace two
 	{
 		Type& t = type<two::quat>();
 		static Meta meta = { t, &namspc({ "two" }), "quat", sizeof(two::quat), TypeClass::Struct };
+        init_default_value<two::quat>();
 		// bases
 		static Type* bases[] = { &type<two::v4<float>>() };
 		static size_t bases_offsets[] = { base_offset<two::quat, two::v4<float>>() };
@@ -891,6 +928,7 @@ namespace two
 	{
 		Type& t = type<two::Transform>();
 		static Meta meta = { t, &namspc({ "two" }), "Transform", sizeof(two::Transform), TypeClass::Struct };
+        init_default_value<two::Transform>();
 		// bases
 		// defaults
 		static two::quat rotation_default = ZeroQuat;
@@ -916,6 +954,7 @@ namespace two
 	{
 		Type& t = type<two::ColourHSL>();
 		static Meta meta = { t, &namspc({ "two" }), "ColourHSL", sizeof(two::ColourHSL), TypeClass::Struct };
+        init_default_value<two::ColourHSL>();
 		// bases
 		// defaults
 		// constructors
@@ -941,6 +980,7 @@ namespace two
 	{
 		Type& t = type<two::Colour>();
 		static Meta meta = { t, &namspc({ "two" }), "Colour", sizeof(two::Colour), TypeClass::Struct };
+        init_default_value<two::Colour>();
 		// bases
 		// defaults
 		static float construct_1_a_default = 1.f;
@@ -990,6 +1030,7 @@ namespace two
 	{
 		Type& t = type<two::ValueCurve<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueCurve<float>", sizeof(two::ValueCurve<float>), TypeClass::Struct };
+        init_default_value<two::ValueCurve<float>>();
 		// bases
 		// defaults
 		// constructors
@@ -1013,6 +1054,7 @@ namespace two
 	{
 		Type& t = type<two::ValueCurve<uint32_t>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueCurve<uint32_t>", sizeof(two::ValueCurve<uint32_t>), TypeClass::Struct };
+        init_default_value<two::ValueCurve<uint32_t>>();
 		// bases
 		// defaults
 		// constructors
@@ -1036,6 +1078,7 @@ namespace two
 	{
 		Type& t = type<two::ValueCurve<two::vec3>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueCurve<two::vec3>", sizeof(two::ValueCurve<two::vec3>), TypeClass::Struct };
+        init_default_value<two::ValueCurve<two::vec3>>();
 		// bases
 		// defaults
 		// constructors
@@ -1059,6 +1102,7 @@ namespace two
 	{
 		Type& t = type<two::ValueCurve<two::quat>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueCurve<two::quat>", sizeof(two::ValueCurve<two::quat>), TypeClass::Struct };
+        init_default_value<two::ValueCurve<two::quat>>();
 		// bases
 		// defaults
 		// constructors
@@ -1082,6 +1126,7 @@ namespace two
 	{
 		Type& t = type<two::ValueCurve<two::Colour>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueCurve<two::Colour>", sizeof(two::ValueCurve<two::Colour>), TypeClass::Struct };
+        init_default_value<two::ValueCurve<two::Colour>>();
 		// bases
 		// defaults
 		// constructors
@@ -1105,6 +1150,7 @@ namespace two
 	{
 		Type& t = type<two::ValueTrack<two::vec3>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueTrack<two::vec3>", sizeof(two::ValueTrack<two::vec3>), TypeClass::Struct };
+        init_default_value<two::ValueTrack<two::vec3>>();
 		// bases
 		// defaults
 		static two::vec3 value_default = One<two::vec3>::value();
@@ -1137,6 +1183,7 @@ namespace two
 	{
 		Type& t = type<two::ValueTrack<two::quat>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueTrack<two::quat>", sizeof(two::ValueTrack<two::quat>), TypeClass::Struct };
+        init_default_value<two::ValueTrack<two::quat>>();
 		// bases
 		// defaults
 		static two::quat value_default = One<two::quat>::value();
@@ -1169,6 +1216,7 @@ namespace two
 	{
 		Type& t = type<two::ValueTrack<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueTrack<float>", sizeof(two::ValueTrack<float>), TypeClass::Struct };
+        init_default_value<two::ValueTrack<float>>();
 		// bases
 		// defaults
 		static float value_default = One<float>::value();
@@ -1201,6 +1249,7 @@ namespace two
 	{
 		Type& t = type<two::ValueTrack<uint32_t>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueTrack<uint32_t>", sizeof(two::ValueTrack<uint32_t>), TypeClass::Struct };
+        init_default_value<two::ValueTrack<uint32_t>>();
 		// bases
 		// defaults
 		static uint32_t value_default = One<uint32_t>::value();
@@ -1233,6 +1282,7 @@ namespace two
 	{
 		Type& t = type<two::ValueTrack<two::Colour>>();
 		static Meta meta = { t, &namspc({ "two" }), "ValueTrack<two::Colour>", sizeof(two::ValueTrack<two::Colour>), TypeClass::Struct };
+        init_default_value<two::ValueTrack<two::Colour>>();
 		// bases
 		// defaults
 		static two::Colour value_default = One<two::Colour>::value();
@@ -1265,6 +1315,7 @@ namespace two
 	{
 		Type& t = type<two::Image>();
 		static Meta meta = { t, &namspc({ "two" }), "Image", sizeof(two::Image), TypeClass::Struct };
+        init_default_value<two::Image>();
 		// bases
 		// defaults
 		// constructors
@@ -1288,6 +1339,7 @@ namespace two
 	{
 		Type& t = type<two::Palette>();
 		static Meta meta = { t, &namspc({ "two" }), "Palette", sizeof(two::Palette), TypeClass::Struct };
+        init_default_value<two::Palette>();
 		// bases
 		// defaults
 		// constructors
@@ -1309,6 +1361,7 @@ namespace two
 	{
 		Type& t = type<two::Image256>();
 		static Meta meta = { t, &namspc({ "two" }), "Image256", sizeof(two::Image256), TypeClass::Struct };
+        init_default_value<two::Image256>();
 		// bases
 		// defaults
 		static two::uvec2 construct_0_size_default = uvec2(0U);
@@ -1335,6 +1388,7 @@ namespace two
 	{
 		Type& t = type<two::ImageAtlas>();
 		static Meta meta = { t, &namspc({ "two" }), "ImageAtlas", sizeof(two::ImageAtlas), TypeClass::Object };
+        init_default_value<two::ImageAtlas>();
 		// bases
 		// defaults
 		// constructors
@@ -1348,6 +1402,7 @@ namespace two
 	{
 		Type& t = type<two::TextureAtlas>();
 		static Meta meta = { t, &namspc({ "two" }), "TextureAtlas", sizeof(two::TextureAtlas), TypeClass::Object };
+        init_default_value<two::TextureAtlas>();
 		// bases
 		static Type* bases[] = { &type<two::ImageAtlas>() };
 		static size_t bases_offsets[] = { base_offset<two::TextureAtlas, two::ImageAtlas>() };
@@ -1363,6 +1418,7 @@ namespace two
 	{
 		Type& t = type<two::Sprite>();
 		static Meta meta = { t, &namspc({ "two" }), "Sprite", sizeof(two::Sprite), TypeClass::Object };
+        init_default_value<two::Sprite>();
 		// bases
 		static Type* bases[] = { &type<two::Image>() };
 		static size_t bases_offsets[] = { base_offset<two::Sprite, two::Image>() };
@@ -1378,6 +1434,7 @@ namespace two
 	{
 		Type& t = type<two::SpriteAtlas>();
 		static Meta meta = { t, &namspc({ "two" }), "SpriteAtlas", sizeof(two::SpriteAtlas), TypeClass::Object };
+        init_default_value<two::SpriteAtlas>();
 		// bases
 		static Type* bases[] = { &type<two::ImageAtlas>() };
 		static size_t bases_offsets[] = { base_offset<two::SpriteAtlas, two::ImageAtlas>() };
@@ -1393,6 +1450,7 @@ namespace two
 	{
 		Type& t = type<two::Range<two::vec3>>();
 		static Meta meta = { t, &namspc({ "two" }), "Range<two::vec3>", sizeof(two::Range<two::vec3>), TypeClass::Struct };
+        init_default_value<two::Range<two::vec3>>();
 		// bases
 		// defaults
 		// constructors
@@ -1416,6 +1474,7 @@ namespace two
 	{
 		Type& t = type<two::Range<two::quat>>();
 		static Meta meta = { t, &namspc({ "two" }), "Range<two::quat>", sizeof(two::Range<two::quat>), TypeClass::Struct };
+        init_default_value<two::Range<two::quat>>();
 		// bases
 		// defaults
 		// constructors
@@ -1439,6 +1498,7 @@ namespace two
 	{
 		Type& t = type<two::Range<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "Range<float>", sizeof(two::Range<float>), TypeClass::Struct };
+        init_default_value<two::Range<float>>();
 		// bases
 		// defaults
 		// constructors
@@ -1462,6 +1522,7 @@ namespace two
 	{
 		Type& t = type<two::Range<uint32_t>>();
 		static Meta meta = { t, &namspc({ "two" }), "Range<uint32_t>", sizeof(two::Range<uint32_t>), TypeClass::Struct };
+        init_default_value<two::Range<uint32_t>>();
 		// bases
 		// defaults
 		// constructors
@@ -1485,6 +1546,7 @@ namespace two
 	{
 		Type& t = type<two::Range<two::Colour>>();
 		static Meta meta = { t, &namspc({ "two" }), "Range<two::Colour>", sizeof(two::Range<two::Colour>), TypeClass::Struct };
+        init_default_value<two::Range<two::Colour>>();
 		// bases
 		// defaults
 		// constructors
@@ -1508,6 +1570,7 @@ namespace two
 	{
 		Type& t = type<two::StatDef<int>>();
 		static Meta meta = { t, &namspc({ "two" }), "StatDef<int>", sizeof(two::StatDef<int>), TypeClass::Struct };
+        init_default_value<two::StatDef<int>>();
 		// bases
 		// defaults
 		static int min_default = limits<int>::min();
@@ -1535,6 +1598,7 @@ namespace two
 	{
 		Type& t = type<two::StatDef<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "StatDef<float>", sizeof(two::StatDef<float>), TypeClass::Struct };
+        init_default_value<two::StatDef<float>>();
 		// bases
 		// defaults
 		static float min_default = limits<float>::min();
@@ -1562,6 +1626,7 @@ namespace two
 	{
 		Type& t = type<two::Time>();
 		static Meta meta = { t, &namspc({ "two" }), "Time", sizeof(two::Time), TypeClass::Struct };
+        init_default_value<two::Time>();
 		// bases
 		// defaults
 		// constructors
@@ -1584,6 +1649,7 @@ namespace two
 	{
 		Type& t = type<two::TimeSpan>();
 		static Meta meta = { t, &namspc({ "two" }), "TimeSpan", sizeof(two::TimeSpan), TypeClass::Struct };
+        init_default_value<two::TimeSpan>();
 		// bases
 		// defaults
 		// constructors

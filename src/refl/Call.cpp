@@ -37,7 +37,7 @@ namespace two
 	Call::Call(const Callable& callable, vector<Var> args)
 		: m_callable(&callable)
 		, m_args(args)
-		, m_vargs(args.size(), nullptr)
+		, m_vargs(args.size() + (callable.m_return_type.isvoid() ? 0 : 1), nullptr)
 	{
 		if(!callable.m_return_type.isvoid())
 		{

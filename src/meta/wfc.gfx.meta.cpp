@@ -55,6 +55,7 @@ namespace two
 	{
 		Type& t = type<two::TileModel>();
 		static Meta meta = { t, &namspc({ "two" }), "TileModel", sizeof(two::TileModel), TypeClass::Struct };
+        init_default_value<two::TileModel>();
 		// bases
 		// defaults
 		// constructors
@@ -74,6 +75,7 @@ namespace two
 	{
 		Type& t = type<two::WfcBlock>();
 		static Meta meta = { t, &namspc({ "two" }), "WfcBlock", sizeof(two::WfcBlock), TypeClass::Object };
+        init_default_value<two::WfcBlock>();
 		// bases
 		// defaults
 		static bool construct_1_auto_solve_default = false;

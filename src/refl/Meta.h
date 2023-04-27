@@ -49,11 +49,11 @@ namespace two
 		Ref m_empty_ref;
 		Var m_empty_var;
 
-		using CopyConstruct = void(*)(void*, void*); CopyConstruct m_copy_construct;
-		using CopyAssign = void(*)(void*, void*); CopyAssign m_copy_assign;
+		using CopyConstruct = void(*)(Ref, Ref); CopyConstruct m_copy_construct;
+		using CopyAssign = void(*)(Ref, Ref); CopyAssign m_copy_assign;
 
-		inline void copy_construct(Ref first, Ref other) const { m_copy_construct(first.m_value, other.m_value); }
-		inline void copy_assign(Ref first, Ref other) const { m_copy_assign(first.m_value, other.m_value); }
+		inline void copy_construct(Ref first, Ref other) const { m_copy_construct(first, other); }
+		inline void copy_assign(Ref first, Ref other) const { m_copy_assign(first, other); }
 	};
 
 	export_ class refl_ TWO_REFL_EXPORT Convert
@@ -77,6 +77,7 @@ namespace two
 	export_ inline Class& cls(const Type& type) { return *g_class[type.m_id]; }
 	export_ inline Enum& enu(const Type& type) { return *g_enu[type.m_id]; }
 	export_ inline Convert& convert(const Type& type) { return *g_convert[type.m_id]; }
+	export_ inline Convert* convertp(const Type& type) { return g_convert[type.m_id]; }
 	export_ inline Iterable& iter(const Type& type) { return *g_iterable[type.m_id]; }
 	export_ inline Sequence& sequence(const Type& type) { return *g_sequence[type.m_id]; }
 

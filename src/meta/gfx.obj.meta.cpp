@@ -50,6 +50,7 @@ namespace two
 	{
 		Type& t = type<two::ImporterOBJ>();
 		static Meta meta = { t, &namspc({ "two" }), "ImporterOBJ", sizeof(two::ImporterOBJ), TypeClass::Object };
+        init_default_value<two::ImporterOBJ>();
 		// bases
 		// defaults
 		// constructors
@@ -72,6 +73,7 @@ namespace two
 	{
 		Type& t = type<two::ImporterPLY>();
 		static Meta meta = { t, &namspc({ "two" }), "ImporterPLY", sizeof(two::ImporterPLY), TypeClass::Object };
+        init_default_value<two::ImporterPLY>();
 		// bases
 		// defaults
 		// constructors

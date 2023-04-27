@@ -13,8 +13,8 @@
 namespace two
 {
 	export_ template <class T>
-	enable_if<is_comparable<T>, void> vector_remove_any(vector<T>& vector, T value) { remove(vector, value); }
+	enable_if<is_comparable<T>, void> vector_remove_any(vector<T>& vector, const T &value) { remove(vector, value); }
 
 	export_ template <class T>
-	enable_if<!is_comparable<T>, void> vector_remove_any(vector<T>& vector, T& value) { remove_object(vector, value); }
+	enable_if<!is_comparable<T>, void> vector_remove_any(vector<T>& vector, const T& value) { remove_object(vector, value); }
 }

@@ -166,8 +166,11 @@ namespace two
 		{
 			for(size_t d = 0; d < branch.m_depth; ++d)
 				printf("    ");
-			printf("Branch %s value %s\n", to_string(branch.m_index).c_str(), convert(type(branch.m_value)).m_to_string ? to_string(branch.m_value.m_ref).c_str()
-																														: to_name(type(branch.m_value), branch.m_value.m_ref).c_str());
+            auto txt1 = to_string(branch.m_index);
+            auto &tp = type(branch.m_value);
+            auto c = convertp(tp);
+            auto txt2 = c && c->m_to_string ? to_string(branch.m_value.m_ref) : to_name(type(branch.m_value), branch.m_value.m_ref);
+			printf("Branch %s value %s\n", txt1.c_str(),  txt2.c_str());
 		});
 	}
 
@@ -182,7 +185,7 @@ namespace two
 
 		m_input.m_process.invalidate();
 
-		//dump_stream(m_input.m_stream, m_input.m_process.m_title + " " + m_input.m_name);
+        // dump_stream(m_input.m_stream, m_input.m_process.m_title + " " + m_input.m_name);
 	}
 
 	Process::Process(VisualScript& script, cstring title, Type& type)
@@ -228,7 +231,7 @@ namespace two
 
 	void Process::execute()
 	{
-		//printf("execute process %s\n", m_title.c_str());
+        // info("execute process %s", m_title.c_str());
 		this->clear();
 
 		this->execution_flow();
@@ -286,8 +289,10 @@ namespace two
 			bool check = input->check(branch);
 			valid = valid && check;
 #ifdef TWO_DEBUG_SCRIPT
-			if(!check)
+			if(!check) {
 				warn("vislang - wrong parameter for process %s, input %s, branch %s\n", m_title.c_str(), input->m_name.c_str(), to_string(branch.m_index).c_str());
+                input->check(branch);
+            }
 #endif
 		}
 		return valid;
@@ -318,7 +323,8 @@ namespace two
 	Valve* Process::pipe(span<Valve*> outputParams, Process* flow, span<StreamModifier> modifiers)
 	{
 		this->plug(outputParams, flow, modifiers);
-		return m_outputs.size() > 0 ? &this->output() : nullptr;
+		auto ret = m_outputs.size() > 0 ? &this->output() : nullptr;
+        return ret;
 	}
 
 	Process& Process::plug(span<Valve*> outputParams, Process* flow, span<StreamModifier> modifiers)
@@ -346,16 +352,21 @@ namespace two
 
 	int Process::visit_order()
 	{
-		if(!m_dirty)
+		if(!m_dirty) {
+            // printf("not reorder %s %d\n", m_title.c_str(), m_order);
 			return m_order;
+        }
 
 		m_order = 0;
 		m_dirty = false;
+        // printf("reordering %s\n", m_title.c_str());
 
 		if(m_out_flow)
 			for(Pipe* pipe : m_out_flow->m_pipes)
 			{
 				Process& process = pipe->m_input.m_process;
+                // if (m_order > process.visit_order() - 1)
+                //     printf("\treorder out flow %s %d\n", m_title.c_str(), process.visit_order()-1);
 				m_order = min(m_order, process.visit_order() - 1);
 			}
 
@@ -363,6 +374,8 @@ namespace two
 			for(Pipe* pipe : valve->m_pipes)
 			{
 				Process& process = pipe->m_input.m_process;
+                // if (m_order > process.visit_order() - 1)
+                //     printf("\treorder %s %d\n", m_title.c_str(), process.visit_order()-1);
 				m_order = min(m_order, process.visit_order() - 1);
 			}
 
@@ -424,6 +437,9 @@ namespace two
 		// TODO (hugoam) fix swap() ADL issues
 		std::sort(m_execution.begin(), m_execution.end(), [](Process* lhs, Process* rhs) { return lhs->m_order < rhs->m_order; });
 #endif
+
+        // for (auto &process : m_execution)
+        //     printf("[debug] vislang - ordered process %s\n", process->m_title.c_str());
 	}
 
 	void VisualScript::connect(Valve& output, Valve& input, StreamModifier modifier)
@@ -452,10 +468,10 @@ namespace two
 	{
 		for(Process* process : m_execution)
 		{
-			printf("[debug] vislang - eval process %s\n", process->m_title.c_str());
+			// printf("[debug] vislang - eval process %s\n", process->m_title.c_str());
 			if(!uncomputed || (!process->computed() && !process->locked()))
 			{
-				printf("[debug] vislang - run process %s\n", process->m_title.c_str());
+				// printf("[debug] vislang - run process %s\n", process->m_title.c_str());
 				process->recompute();
 			}
 		}

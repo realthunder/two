@@ -46,6 +46,7 @@ namespace two
 	{
 		Type& t = type<two::ShellContext>();
 		static Meta meta = { t, &namspc({ "two" }), "ShellContext", sizeof(two::ShellContext), TypeClass::Struct };
+        init_default_value<two::ShellContext>();
 		// bases
 		// defaults
 		static two::Widget* screen_default = nullptr;
@@ -71,6 +72,7 @@ namespace two
 	{
 		Type& t = type<two::ShellWindow>();
 		static Meta meta = { t, &namspc({ "two" }), "ShellWindow", sizeof(two::ShellWindow), TypeClass::Object };
+        init_default_value<two::ShellWindow>();
 		// bases
 		static Type* bases[] = { &type<two::GfxWindow>() };
 		static size_t bases_offsets[] = { base_offset<two::ShellWindow, two::GfxWindow>() };
@@ -93,6 +95,7 @@ namespace two
 	{
 		Type& t = type<two::Shell>();
 		static Meta meta = { t, &namspc({ "two" }), "Shell", sizeof(two::Shell), TypeClass::Object };
+        init_default_value<two::Shell>();
 		// bases
 		// defaults
 		static stl::string construct_0_exec_path_default = "";

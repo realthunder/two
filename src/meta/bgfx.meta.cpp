@@ -38,6 +38,7 @@ namespace two
 	{
 		Type& t = type<two::BgfxSystem>();
 		static Meta meta = { t, &namspc({ "two" }), "BgfxSystem", sizeof(two::BgfxSystem), TypeClass::Object };
+        init_default_value<two::BgfxSystem>();
 		// bases
 		static Type* bases[] = { &type<two::RenderSystem>() };
 		static size_t bases_offsets[] = { base_offset<two::BgfxSystem, two::RenderSystem>() };

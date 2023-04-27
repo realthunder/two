@@ -53,8 +53,20 @@ namespace two
 	template class TPool<Flare>;
 
 	Gnode::Gnode() : Graph() {}
-	Gnode::Gnode(Scene& scene, SoundManager* sound_manager) : Graph(), m_scene(&scene), m_attach(&scene.m_root_node), m_sound_manager(sound_manager) {}
-	Gnode::Gnode(Gnode* parent, void* identity) : Graph(parent, identity), m_scene(parent->m_scene), m_attach(parent->m_attach), m_sound_manager(parent->m_sound_manager) {}
+
+	Gnode::Gnode(Scene& scene, SoundManager* sound_manager)
+        : Graph()
+        , m_scene(&scene)
+        , m_attach(&scene.m_root_node)
+        , m_sound_manager(sound_manager)
+    {}
+
+	Gnode::Gnode(Gnode* parent, void* identity) 
+        : Graph(parent, identity)
+        , m_scene(parent->m_scene)
+        , m_attach(parent->m_attach)
+        , m_sound_manager(parent->m_sound_manager)
+    {}
 
 	Gnode::~Gnode()
 	{

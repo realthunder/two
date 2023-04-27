@@ -28,6 +28,8 @@ namespace two
 	void dispatch_branch(DoubleDispatch& dispatch)
 	{
 		dispatch.resize(type<T_First>(), type<T_Second>());
-		dispatch.m_branches[type<T_First>().m_id][type<T_Second>().m_id] = [](Ref first, Ref second) { func(val<T_First>(first), val<T_Second>(second)); };
+		dispatch.m_branches[type<T_First>().m_id][type<T_Second>().m_id] = [](Ref first, Ref second) {
+            func(val<T_First>(first), val<T_Second>(second));
+        };
 	}
 }

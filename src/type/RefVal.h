@@ -23,8 +23,8 @@ namespace two
 		val(Ref& ref) { type_check<T>(ref); return *(T*)(ref.m_value); }
 
 	export_ template <class T>
-	inline enable_if<is_pointer<T> && !is_same<T, cstring>, T>
-		val(Ref& ref) { type_check<remove_pointer<T>>(ref); return (T)(ref.m_value); }
+	inline enable_if<is_pointer<T> && !is_same<T, cstring>, T&>
+		val(Ref& ref) { type_check<remove_pointer<T>>(ref); return (T&)(ref.m_value); }
 
 	export_ template <class T>
 	inline enable_if<!is_pointer<T> || is_same<T, cstring>, const T&>
@@ -46,12 +46,6 @@ namespace two
 	export_ template <>
 	inline const Ref& val<Ref>(const Ref& ref) { return ref; }
 	
-	export_ template <>
-	inline void* val<void*>(Ref& ref) { return ref.m_value; }
-
-	export_ template <>
-	inline void* val<void*>(const Ref& ref) { return ref.m_value; }
-
 	export_ template <class T>
 	inline T* try_val(Ref object) { if(object && type(object).template is<T>()) return &val<T>(object); else return nullptr; }
 }

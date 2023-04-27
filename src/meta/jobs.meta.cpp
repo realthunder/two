@@ -36,6 +36,7 @@ namespace two
 	{
 		Type& t = type<two::JobSystem>();
 		static Meta meta = { t, &namspc({ "two" }), "JobSystem", sizeof(two::JobSystem), TypeClass::Object };
+        init_default_value<two::JobSystem>();
 		// bases
 		// defaults
 		// constructors

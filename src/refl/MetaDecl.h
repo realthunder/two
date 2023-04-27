@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <type/Any.h>
 #include <refl/Forward.h>
 #include <refl/Meta.h>
 #include <refl/Enum.h>
@@ -134,5 +135,28 @@ namespace two
 		meta_type<T>();
 		init_string<T>();
 	}
+#else
+	export_ template <class T>
+	inline enable_if<is_copy_assignable<T>, void>
+		init_assign() { meta<T>().m_copy_assign = [](Ref first, Ref second) { val<T>(first) = val<T>(second); }; }
+
+	export_ template <class T>
+	inline enable_if<!is_copy_assignable<T>, void>
+		init_assign() {}
+
+	export_ template <class T>
+	inline enable_if<is_default_constructible<T>, void>
+		init_default_value() { init_assign<T>(); meta<T>().m_empty_var = var(T()); meta<T>().m_empty_ref = Ref(type<T>()); }
+
+	export_ template <class T>
+	inline enable_if<!is_default_constructible<T>, void>
+		init_default_value() { init_assign<T>(); meta<T>().m_empty_var = Ref(type<T>()); meta<T>().m_empty_ref = Ref(type<T>()); }
+	
+	export_ template <>
+	inline void	init_default_value<Ref>() { meta<Ref>().m_empty_var = Ref(); meta<Ref>().m_empty_ref = Ref(); }
+
+	export_ template <class T>
+	inline void init_default_value_abstract() { meta<T>().m_empty_var = Ref(type<T>()); meta<T>().m_empty_ref = Ref(type<T>()); }
+
 #endif
 }

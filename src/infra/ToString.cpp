@@ -32,4 +32,6 @@ namespace two
 	template <> void to_string(const float&   value, string& str) { str.resize(snprintf(nullptr, 0, "%f",   value)); sprintf(&str[0], "%f",   value); }
 	template <> void to_string(const double&  value, string& str) { str.resize(snprintf(nullptr, 0, "%f",   value)); sprintf(&str[0], "%f",   value); }
 	template <> void to_string(const ldouble& value, string& str) { str.resize(snprintf(nullptr, 0, "%Lf",  value)); sprintf(&str[0], "%Lf",  value); }
+	template <> void to_string(void *const    &value, string& str) { str.resize(snprintf(nullptr, 0, "%p",   value)); sprintf(&str[0], "%p",   value); }
+	template <> void to_string(const void *const &value, string& str) { str.resize(snprintf(nullptr, 0, "%p",   value)); sprintf(&str[0], "%p",   value); }
 }

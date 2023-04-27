@@ -7,6 +7,7 @@ module;
 #include <infra/Cpp20.h>
 module two.lang;
 #else
+#include <cstdio>
 #include <type/Indexer.h>
 #include <refl/System.h>
 #include <pool/ObjectPool.h>
@@ -62,6 +63,7 @@ namespace two
 		for(size_t i = 1; i < m_injector.m_args.size(); ++i)
 			m_injector.m_args[i] = m_inputs[i - 1]->read(branch);
 
+        m_injector.prepare();
 		if(is_struct(m_object_type))
 		{
 			Var& value = m_output.m_stream.branch(branch.m_index).m_value;
@@ -70,16 +72,18 @@ namespace two
 		else
 		{
 			Ref object = m_injector.inject(*m_pool);
-			m_output.m_stream.write(branch, object);
+			m_output.m_stream.branch(branch.m_index).write(object);
 			m_persistent_objects.push_back(object);
 		}
 	}
 
 	ProcessCallable::ProcessCallable(VisualScript& script, Callable& callable)
 		: Process(script, callable.m_name, type<ProcessCallable>())
-		, m_parameters(callable.m_params.size() + (callable.m_return_type == g_qvoid ? 0 : 1))
 		, m_callable(callable)
+        , m_call(callable)
 	{
+		m_parameters.resize(m_parameters.size() + 1);
+
 		for(const Param& param : callable.m_params)
 			m_params.push_back(oconstruct<Valve>(*this, param));
 
@@ -91,19 +95,27 @@ namespace two
 	{
 		for(Valve* valve : m_inputs)
 			m_parameters[valve->m_index] = valve->read(branch);
-		for(Valve* valve : m_outputs)
-			m_parameters[m_inputs.size() + valve->m_index] = valve->m_stream.m_default;
+		for(Valve* valve : m_outputs) {
+            auto &def = valve->m_stream.m_default;
+			auto &var = m_parameters[m_inputs.size() + valve->m_index];
+            if (def.null() && def.m_ref.m_type) {
+                auto &m = meta(def);
+                var = m.m_empty_var;
+            } else
+                var = def;
+        }
 
+        m_call.prepare();
 		if(m_result)
 		{
 			Var& value = m_result->m_stream.branch(branch.m_index).m_value;
-			//m_callable(to_array(m_parameters), value);
+            m_call.m_result = value;
+            value = m_call();
 			m_result->m_stream.branch(branch.m_index).write(value);
 		}
 		else
 		{
-			static Var unused;
-			//m_callable(to_array(m_parameters), unused);
+            m_call();
 		}
 
 		for(const Param& param : m_callable.m_params)
@@ -128,7 +140,6 @@ namespace two
 		, m_method(method)
 		, m_object(*this, "object", OUTPUT_VALVE, meta(*method.m_object_type).m_empty_ref, false, true)
 	{
-		m_parameters.resize(m_parameters.size() + 1);
 	}
 
 	void ProcessMethod::process(const StreamLocation& branch)

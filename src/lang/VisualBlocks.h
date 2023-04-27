@@ -53,13 +53,14 @@ namespace two
 		virtual void process(const StreamLocation& branch) override;
 
 	protected:
-		vector<Var> m_parameters;
 		Callable& m_callable;
 		vector<object<Valve>> m_params;
 		// @todo : try moving to this
 		//vector<Valve> m_inputParams;
 		//vector<Valve> m_outputParams;
 		object<Valve> m_result;
+        Call m_call;
+		vector<Var> &m_parameters = m_call.m_args;
 	};
 
 	export_ class refl_ TWO_LANG_EXPORT ProcessScript : public ProcessCallable

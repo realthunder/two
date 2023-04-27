@@ -56,6 +56,7 @@ namespace two
 	{
 		Type& t = type<two::ToolState>();
 		static Meta meta = { t, &namspc({ "two" }), "ToolState", sizeof(two::ToolState), TypeClass::Enum };
+        init_default_value<two::ToolState>();
 		static cstring ids[] = { "Inactive", "Done", "Active" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::ToolState vars[] = { two::ToolState::Inactive, two::ToolState::Done, two::ToolState::Active};
@@ -72,6 +73,7 @@ namespace two
 	{
 		Type& t = type<two::EditorAction>();
 		static Meta meta = { t, &namspc({ "two" }), "EditorAction", sizeof(two::EditorAction), TypeClass::Object };
+        init_default_value<two::EditorAction>();
 		// bases
 		// defaults
 		// constructors
@@ -85,6 +87,7 @@ namespace two
 	{
 		Type& t = type<two::ToolContext>();
 		static Meta meta = { t, &namspc({ "two" }), "ToolContext", sizeof(two::ToolContext), TypeClass::Struct };
+        init_default_value<two::ToolContext>();
 		// bases
 		// defaults
 		// constructors
@@ -104,6 +107,7 @@ namespace two
 	{
 		Type& t = type<two::ToolOption>();
 		static Meta meta = { t, &namspc({ "two" }), "ToolOption", sizeof(two::ToolOption), TypeClass::Object };
+        init_default_value<two::ToolOption>();
 		// bases
 		// defaults
 		// constructors
@@ -117,6 +121,7 @@ namespace two
 	{
 		Type& t = type<two::Tool>();
 		static Meta meta = { t, &namspc({ "two" }), "Tool", sizeof(two::Tool), TypeClass::Object };
+        init_default_value<two::Tool>();
 		// bases
 		// defaults
 		// constructors
@@ -136,6 +141,7 @@ namespace two
 	{
 		Type& t = type<two::ViewportTool>();
 		static Meta meta = { t, &namspc({ "two" }), "ViewportTool", sizeof(two::ViewportTool), TypeClass::Object };
+        init_default_value<two::ViewportTool>();
 		// bases
 		static Type* bases[] = { &type<two::Tool>() };
 		static size_t bases_offsets[] = { base_offset<two::ViewportTool, two::Tool>() };
@@ -151,6 +157,7 @@ namespace two
 	{
 		Type& t = type<two::SpatialTool>();
 		static Meta meta = { t, &namspc({ "two" }), "SpatialTool", sizeof(two::SpatialTool), TypeClass::Object };
+        init_default_value<two::SpatialTool>();
 		// bases
 		static Type* bases[] = { &type<two::ViewportTool>() };
 		static size_t bases_offsets[] = { base_offset<two::SpatialTool, two::ViewportTool>() };
@@ -166,6 +173,7 @@ namespace two
 	{
 		Type& t = type<two::Gizmo>();
 		static Meta meta = { t, &namspc({ "two" }), "Gizmo", sizeof(two::Gizmo), TypeClass::Object };
+        init_default_value<two::Gizmo>();
 		// bases
 		// defaults
 		// constructors
@@ -179,6 +187,7 @@ namespace two
 	{
 		Type& t = type<two::TransformAction>();
 		static Meta meta = { t, &namspc({ "two" }), "TransformAction", sizeof(two::TransformAction), TypeClass::Object };
+        init_default_value<two::TransformAction>();
 		// bases
 		static Type* bases[] = { &type<two::EditorAction>() };
 		static size_t bases_offsets[] = { base_offset<two::TransformAction, two::EditorAction>() };
@@ -194,6 +203,7 @@ namespace two
 	{
 		Type& t = type<two::TransformTool>();
 		static Meta meta = { t, &namspc({ "two" }), "TransformTool", sizeof(two::TransformTool), TypeClass::Object };
+        init_default_value<two::TransformTool>();
 		// bases
 		static Type* bases[] = { &type<two::SpatialTool>() };
 		static size_t bases_offsets[] = { base_offset<two::TransformTool, two::SpatialTool>() };
@@ -209,6 +219,7 @@ namespace two
 	{
 		Type& t = type<two::TransformGizmo>();
 		static Meta meta = { t, &namspc({ "two" }), "TransformGizmo", sizeof(two::TransformGizmo), TypeClass::Object };
+        init_default_value<two::TransformGizmo>();
 		// bases
 		static Type* bases[] = { &type<two::Gizmo>() };
 		static size_t bases_offsets[] = { base_offset<two::TransformGizmo, two::Gizmo>() };
@@ -224,6 +235,7 @@ namespace two
 	{
 		Type& t = type<two::UndoTool>();
 		static Meta meta = { t, &namspc({ "two" }), "UndoTool", sizeof(two::UndoTool), TypeClass::Object };
+        init_default_value<two::UndoTool>();
 		// bases
 		static Type* bases[] = { &type<two::Tool>() };
 		static size_t bases_offsets[] = { base_offset<two::UndoTool, two::Tool>() };
@@ -239,6 +251,7 @@ namespace two
 	{
 		Type& t = type<two::RedoTool>();
 		static Meta meta = { t, &namspc({ "two" }), "RedoTool", sizeof(two::RedoTool), TypeClass::Object };
+        init_default_value<two::RedoTool>();
 		// bases
 		static Type* bases[] = { &type<two::Tool>() };
 		static size_t bases_offsets[] = { base_offset<two::RedoTool, two::Tool>() };
@@ -254,6 +267,7 @@ namespace two
 	{
 		Type& t = type<two::Brush>();
 		static Meta meta = { t, &namspc({ "two" }), "Brush", sizeof(two::Brush), TypeClass::Object };
+        init_default_value<two::Brush>();
 		// bases
 		static Type* bases[] = { &type<two::SpatialTool>() };
 		static size_t bases_offsets[] = { base_offset<two::Brush, two::SpatialTool>() };
@@ -269,6 +283,7 @@ namespace two
 	{
 		Type& t = type<two::PlaneSnapOption>();
 		static Meta meta = { t, &namspc({ "two" }), "PlaneSnapOption", sizeof(two::PlaneSnapOption), TypeClass::Object };
+        init_default_value<two::PlaneSnapOption>();
 		// bases
 		static Type* bases[] = { &type<two::ToolOption>() };
 		static size_t bases_offsets[] = { base_offset<two::PlaneSnapOption, two::ToolOption>() };
@@ -284,6 +299,7 @@ namespace two
 	{
 		Type& t = type<two::WorldSnapOption>();
 		static Meta meta = { t, &namspc({ "two" }), "WorldSnapOption", sizeof(two::WorldSnapOption), TypeClass::Object };
+        init_default_value<two::WorldSnapOption>();
 		// bases
 		static Type* bases[] = { &type<two::ToolOption>() };
 		static size_t bases_offsets[] = { base_offset<two::WorldSnapOption, two::ToolOption>() };
@@ -299,6 +315,7 @@ namespace two
 	{
 		Type& t = type<two::PlaceBrush>();
 		static Meta meta = { t, &namspc({ "two" }), "PlaceBrush", sizeof(two::PlaceBrush), TypeClass::Object };
+        init_default_value<two::PlaceBrush>();
 		// bases
 		static Type* bases[] = { &type<two::Brush>() };
 		static size_t bases_offsets[] = { base_offset<two::PlaceBrush, two::Brush>() };
@@ -320,6 +337,7 @@ namespace two
 	{
 		Type& t = type<two::CircleBrush>();
 		static Meta meta = { t, &namspc({ "two" }), "CircleBrush", sizeof(two::CircleBrush), TypeClass::Object };
+        init_default_value<two::CircleBrush>();
 		// bases
 		static Type* bases[] = { &type<two::Brush>() };
 		static size_t bases_offsets[] = { base_offset<two::CircleBrush, two::Brush>() };
@@ -343,6 +361,7 @@ namespace two
 	{
 		Type& t = type<two::ScriptedBrush>();
 		static Meta meta = { t, &namspc({ "two" }), "ScriptedBrush", sizeof(two::ScriptedBrush), TypeClass::Object };
+        init_default_value<two::ScriptedBrush>();
 		// bases
 		static Type* bases[] = { &type<two::Brush>() };
 		static size_t bases_offsets[] = { base_offset<two::ScriptedBrush, two::Brush>() };
@@ -364,6 +383,7 @@ namespace two
 	{
 		Type& t = type<two::TranslateAction>();
 		static Meta meta = { t, &namspc({ "two" }), "TranslateAction", sizeof(two::TranslateAction), TypeClass::Object };
+        init_default_value<two::TranslateAction>();
 		// bases
 		static Type* bases[] = { &type<two::TransformAction>() };
 		static size_t bases_offsets[] = { base_offset<two::TranslateAction, two::TransformAction>() };
@@ -379,6 +399,7 @@ namespace two
 	{
 		Type& t = type<two::TranslateTool>();
 		static Meta meta = { t, &namspc({ "two" }), "TranslateTool", sizeof(two::TranslateTool), TypeClass::Object };
+        init_default_value<two::TranslateTool>();
 		// bases
 		static Type* bases[] = { &type<two::TransformTool>() };
 		static size_t bases_offsets[] = { base_offset<two::TranslateTool, two::TransformTool>() };
@@ -394,6 +415,7 @@ namespace two
 	{
 		Type& t = type<two::RotateAction>();
 		static Meta meta = { t, &namspc({ "two" }), "RotateAction", sizeof(two::RotateAction), TypeClass::Object };
+        init_default_value<two::RotateAction>();
 		// bases
 		static Type* bases[] = { &type<two::TransformAction>() };
 		static size_t bases_offsets[] = { base_offset<two::RotateAction, two::TransformAction>() };
@@ -409,6 +431,7 @@ namespace two
 	{
 		Type& t = type<two::RotateTool>();
 		static Meta meta = { t, &namspc({ "two" }), "RotateTool", sizeof(two::RotateTool), TypeClass::Object };
+        init_default_value<two::RotateTool>();
 		// bases
 		static Type* bases[] = { &type<two::TransformTool>() };
 		static size_t bases_offsets[] = { base_offset<two::RotateTool, two::TransformTool>() };
@@ -424,6 +447,7 @@ namespace two
 	{
 		Type& t = type<two::ScaleAction>();
 		static Meta meta = { t, &namspc({ "two" }), "ScaleAction", sizeof(two::ScaleAction), TypeClass::Object };
+        init_default_value<two::ScaleAction>();
 		// bases
 		static Type* bases[] = { &type<two::TransformAction>() };
 		static size_t bases_offsets[] = { base_offset<two::ScaleAction, two::TransformAction>() };
@@ -439,6 +463,7 @@ namespace two
 	{
 		Type& t = type<two::ScaleTool>();
 		static Meta meta = { t, &namspc({ "two" }), "ScaleTool", sizeof(two::ScaleTool), TypeClass::Object };
+        init_default_value<two::ScaleTool>();
 		// bases
 		static Type* bases[] = { &type<two::TransformTool>() };
 		static size_t bases_offsets[] = { base_offset<two::ScaleTool, two::TransformTool>() };
@@ -454,6 +479,7 @@ namespace two
 	{
 		Type& t = type<two::CopyAction>();
 		static Meta meta = { t, &namspc({ "two" }), "CopyAction", sizeof(two::CopyAction), TypeClass::Object };
+        init_default_value<two::CopyAction>();
 		// bases
 		static Type* bases[] = { &type<two::TranslateAction>() };
 		static size_t bases_offsets[] = { base_offset<two::CopyAction, two::TranslateAction>() };
@@ -469,6 +495,7 @@ namespace two
 	{
 		Type& t = type<two::CopyTool>();
 		static Meta meta = { t, &namspc({ "two" }), "CopyTool", sizeof(two::CopyTool), TypeClass::Object };
+        init_default_value<two::CopyTool>();
 		// bases
 		static Type* bases[] = { &type<two::TransformTool>() };
 		static size_t bases_offsets[] = { base_offset<two::CopyTool, two::TransformTool>() };
@@ -484,6 +511,7 @@ namespace two
 	{
 		Type& t = type<two::ViewAction>();
 		static Meta meta = { t, &namspc({ "two" }), "ViewAction", sizeof(two::ViewAction), TypeClass::Object };
+        init_default_value<two::ViewAction>();
 		// bases
 		static Type* bases[] = { &type<two::EditorAction>() };
 		static size_t bases_offsets[] = { base_offset<two::ViewAction, two::EditorAction>() };
@@ -499,6 +527,7 @@ namespace two
 	{
 		Type& t = type<two::FrameViewTool>();
 		static Meta meta = { t, &namspc({ "two" }), "FrameViewTool", sizeof(two::FrameViewTool), TypeClass::Object };
+        init_default_value<two::FrameViewTool>();
 		// bases
 		static Type* bases[] = { &type<two::ViewportTool>() };
 		static size_t bases_offsets[] = { base_offset<two::FrameViewTool, two::ViewportTool>() };
@@ -514,6 +543,7 @@ namespace two
 	{
 		Type& t = type<two::ViewTool>();
 		static Meta meta = { t, &namspc({ "two" }), "ViewTool", sizeof(two::ViewTool), TypeClass::Object };
+        init_default_value<two::ViewTool>();
 		// bases
 		static Type* bases[] = { &type<two::ViewportTool>() };
 		static size_t bases_offsets[] = { base_offset<two::ViewTool, two::ViewportTool>() };
@@ -529,6 +559,7 @@ namespace two
 	{
 		Type& t = type<two::Selection>();
 		static Meta meta = { t, &namspc({ "two" }), "Selection", sizeof(two::Selection), TypeClass::Struct };
+        init_default_value<two::Selection>();
 		// bases
 		// defaults
 		// constructors
@@ -548,6 +579,7 @@ namespace two
 	{
 		Type& t = type<two::EditContext>();
 		static Meta meta = { t, &namspc({ "two" }), "EditContext", sizeof(two::EditContext), TypeClass::Object };
+        init_default_value<two::EditContext>();
 		// bases
 		// defaults
 		static two::Viewer* viewer_default = nullptr;
@@ -577,6 +609,7 @@ namespace two
 	{
 		Type& t = type<two::WorkPlaneAction>();
 		static Meta meta = { t, &namspc({ "two" }), "WorkPlaneAction", sizeof(two::WorkPlaneAction), TypeClass::Object };
+        init_default_value<two::WorkPlaneAction>();
 		// bases
 		static Type* bases[] = { &type<two::EditorAction>() };
 		static size_t bases_offsets[] = { base_offset<two::WorkPlaneAction, two::EditorAction>() };
@@ -592,6 +625,7 @@ namespace two
 	{
 		Type& t = type<two::WorkPlaneTool>();
 		static Meta meta = { t, &namspc({ "two" }), "WorkPlaneTool", sizeof(two::WorkPlaneTool), TypeClass::Object };
+        init_default_value<two::WorkPlaneTool>();
 		// bases
 		static Type* bases[] = { &type<two::Tool>() };
 		static size_t bases_offsets[] = { base_offset<two::WorkPlaneTool, two::Tool>() };

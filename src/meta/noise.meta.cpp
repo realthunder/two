@@ -55,6 +55,7 @@ namespace two
 	{
 		Type& t = type<two::Noise::NoiseType>();
 		static Meta meta = { t, &namspc({ "two", "Noise" }), "NoiseType", sizeof(two::Noise::NoiseType), TypeClass::Enum };
+        init_default_value<two::Noise::NoiseType>();
 		static cstring ids[] = { "Value", "ValueFractal", "Perlin", "PerlinFractal", "Simplex", "SimplexFractal", "Cellular", "WhiteNoise", "Cubic", "CubicFractal" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 		static two::Noise::NoiseType vars[] = { two::Noise::Value, two::Noise::ValueFractal, two::Noise::Perlin, two::Noise::PerlinFractal, two::Noise::Simplex, two::Noise::SimplexFractal, two::Noise::Cellular, two::Noise::WhiteNoise, two::Noise::Cubic, two::Noise::CubicFractal};
@@ -67,6 +68,7 @@ namespace two
 	{
 		Type& t = type<two::Noise::Interp>();
 		static Meta meta = { t, &namspc({ "two", "Noise" }), "Interp", sizeof(two::Noise::Interp), TypeClass::Enum };
+        init_default_value<two::Noise::Interp>();
 		static cstring ids[] = { "Linear", "Hermite", "Quintic" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::Noise::Interp vars[] = { two::Noise::Linear, two::Noise::Hermite, two::Noise::Quintic};
@@ -79,6 +81,7 @@ namespace two
 	{
 		Type& t = type<two::Noise::FractalType>();
 		static Meta meta = { t, &namspc({ "two", "Noise" }), "FractalType", sizeof(two::Noise::FractalType), TypeClass::Enum };
+        init_default_value<two::Noise::FractalType>();
 		static cstring ids[] = { "FBM", "Billow", "RigidMulti" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::Noise::FractalType vars[] = { two::Noise::FBM, two::Noise::Billow, two::Noise::RigidMulti};
@@ -91,6 +94,7 @@ namespace two
 	{
 		Type& t = type<two::Noise::CellularDistanceFunction>();
 		static Meta meta = { t, &namspc({ "two", "Noise" }), "CellularDistanceFunction", sizeof(two::Noise::CellularDistanceFunction), TypeClass::Enum };
+        init_default_value<two::Noise::CellularDistanceFunction>();
 		static cstring ids[] = { "Euclidean", "Manhattan", "Natural" };
 		static uint32_t values[] = { 0, 1, 2 };
 		static two::Noise::CellularDistanceFunction vars[] = { two::Noise::Euclidean, two::Noise::Manhattan, two::Noise::Natural};
@@ -103,6 +107,7 @@ namespace two
 	{
 		Type& t = type<two::Noise::CellularReturnType>();
 		static Meta meta = { t, &namspc({ "two", "Noise" }), "CellularReturnType", sizeof(two::Noise::CellularReturnType), TypeClass::Enum };
+        init_default_value<two::Noise::CellularReturnType>();
 		static cstring ids[] = { "CellValue", "NoiseLookup", "Distance", "Distance2", "Distance2Add", "Distance2Sub", "Distance2Mul", "Distance2Div" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 		static two::Noise::CellularReturnType vars[] = { two::Noise::CellValue, two::Noise::NoiseLookup, two::Noise::Distance, two::Noise::Distance2, two::Noise::Distance2Add, two::Noise::Distance2Sub, two::Noise::Distance2Mul, two::Noise::Distance2Div};
@@ -117,6 +122,7 @@ namespace two
 	{
 		Type& t = type<two::vector3d<float>>();
 		static Meta meta = { t, &namspc({ "two" }), "vector3d<float>", sizeof(two::vector3d<float>), TypeClass::Sequence };
+        init_default_value<two::vector3d<float>>();
 		static Class cls = { t };
 		static Iterable iterable = { &type<float>(),
 		                             two_vector3d_float__size,
@@ -132,6 +138,7 @@ namespace two
 	{
 		Type& t = type<two::Noise>();
 		static Meta meta = { t, &namspc({ "two" }), "Noise", sizeof(two::Noise), TypeClass::Object };
+        init_default_value<two::Noise>();
 		// bases
 		// defaults
 		// constructors

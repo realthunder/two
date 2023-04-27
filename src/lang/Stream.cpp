@@ -125,7 +125,8 @@ namespace two
 		, m_type(value == Var(Ref()) ? &type<Ref>() : &type(value))
 		, m_nullable(nullable)
 		, m_reference(reference)
-	{}
+	{
+    }
 
 	Stream::Stream(const Stream& stream)
 		: Stream(stream.m_default, stream.m_nullable, stream.m_reference)

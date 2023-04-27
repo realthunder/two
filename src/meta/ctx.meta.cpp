@@ -61,6 +61,7 @@ namespace two
 	{
 		Type& t = type<two::Key>();
 		static Meta meta = { t, &namspc({ "two" }), "Key", sizeof(two::Key), TypeClass::Enum };
+        init_default_value<two::Key>();
 		static cstring ids[] = { "Unassigned", "Escape", "Num1", "Num2", "Num3", "Num4", "Num5", "Num6", "Num7", "Num8", "Num9", "Num0", "Minus", "Equals", "Back", "Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "LeftBracket", "RightBracket", "Return", "LeftControl", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Semicolon", "Apostrophe", "Grave", "LeftShift", "Backslash", "Z", "X", "C", "V", "B", "N", "M", "Comma", "Period", "Slash", "RightShift", "Multiply", "LeftAlt", "Space", "Capital", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "Numlock", "ScrollLock", "Numpad7", "Numpad8", "Numpad9", "Subtract", "Numpad4", "Numpad5", "Numpad6", "Add", "Numpad1", "Numpad2", "Numpad3", "Numpad0", "Decimal", "F11", "F12", "F13", "F14", "F15", "NumpadEquals", "NumpadEnter", "RightControl", "Mute", "NumpadComma", "Divide", "RightAlt", "Pause", "Home", "Up", "PageUp", "Left", "Right", "End", "Down", "PageDown", "Insert", "Delete", "LeftWin", "RightWin", "Translated" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 87, 88, 100, 101, 102, 141, 156, 157, 160, 179, 181, 184, 197, 199, 200, 201, 203, 205, 207, 208, 209, 210, 211, 219, 220, 32768 };
 		static two::Key vars[] = { two::Key::Unassigned, two::Key::Escape, two::Key::Num1, two::Key::Num2, two::Key::Num3, two::Key::Num4, two::Key::Num5, two::Key::Num6, two::Key::Num7, two::Key::Num8, two::Key::Num9, two::Key::Num0, two::Key::Minus, two::Key::Equals, two::Key::Back, two::Key::Tab, two::Key::Q, two::Key::W, two::Key::E, two::Key::R, two::Key::T, two::Key::Y, two::Key::U, two::Key::I, two::Key::O, two::Key::P, two::Key::LeftBracket, two::Key::RightBracket, two::Key::Return, two::Key::LeftControl, two::Key::A, two::Key::S, two::Key::D, two::Key::F, two::Key::G, two::Key::H, two::Key::J, two::Key::K, two::Key::L, two::Key::Semicolon, two::Key::Apostrophe, two::Key::Grave, two::Key::LeftShift, two::Key::Backslash, two::Key::Z, two::Key::X, two::Key::C, two::Key::V, two::Key::B, two::Key::N, two::Key::M, two::Key::Comma, two::Key::Period, two::Key::Slash, two::Key::RightShift, two::Key::Multiply, two::Key::LeftAlt, two::Key::Space, two::Key::Capital, two::Key::F1, two::Key::F2, two::Key::F3, two::Key::F4, two::Key::F5, two::Key::F6, two::Key::F7, two::Key::F8, two::Key::F9, two::Key::F10, two::Key::Numlock, two::Key::ScrollLock, two::Key::Numpad7, two::Key::Numpad8, two::Key::Numpad9, two::Key::Subtract, two::Key::Numpad4, two::Key::Numpad5, two::Key::Numpad6, two::Key::Add, two::Key::Numpad1, two::Key::Numpad2, two::Key::Numpad3, two::Key::Numpad0, two::Key::Decimal, two::Key::F11, two::Key::F12, two::Key::F13, two::Key::F14, two::Key::F15, two::Key::NumpadEquals, two::Key::NumpadEnter, two::Key::RightControl, two::Key::Mute, two::Key::NumpadComma, two::Key::Divide, two::Key::RightAlt, two::Key::Pause, two::Key::Home, two::Key::Up, two::Key::PageUp, two::Key::Left, two::Key::Right, two::Key::End, two::Key::Down, two::Key::PageDown, two::Key::Insert, two::Key::Delete, two::Key::LeftWin, two::Key::RightWin, two::Key::Translated};
@@ -73,6 +74,7 @@ namespace two
 	{
 		Type& t = type<two::MouseButtonCode>();
 		static Meta meta = { t, &namspc({ "two" }), "MouseButtonCode", sizeof(two::MouseButtonCode), TypeClass::Enum };
+        init_default_value<two::MouseButtonCode>();
 		static cstring ids[] = { "LEFT_BUTTON", "RIGHT_BUTTON", "MIDDLE_BUTTON", "NO_BUTTON" };
 		static uint32_t values[] = { 0, 1, 2, 3 };
 		static two::MouseButtonCode vars[] = { two::LEFT_BUTTON, two::RIGHT_BUTTON, two::MIDDLE_BUTTON, two::NO_BUTTON};
@@ -85,6 +87,7 @@ namespace two
 	{
 		Type& t = type<two::InputMod>();
 		static Meta meta = { t, &namspc({ "two" }), "InputMod", sizeof(two::InputMod), TypeClass::Enum };
+        init_default_value<two::InputMod>();
 		static cstring ids[] = { "None", "Shift", "Ctrl", "Alt", "Any" };
 		static uint32_t values[] = { 0, 1, 2, 4, 7 };
 		static two::InputMod vars[] = { two::InputMod::None, two::InputMod::Shift, two::InputMod::Ctrl, two::InputMod::Alt, two::InputMod::Any};
@@ -97,6 +100,7 @@ namespace two
 	{
 		Type& t = type<two::DeviceType>();
 		static Meta meta = { t, &namspc({ "two" }), "DeviceType", sizeof(two::DeviceType), TypeClass::Enum };
+        init_default_value<two::DeviceType>();
 		static cstring ids[] = { "None", "Keyboard", "Mouse", "MouseLeft", "MouseRight", "MouseMiddle", "Touch", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 		static two::DeviceType vars[] = { two::DeviceType::None, two::DeviceType::Keyboard, two::DeviceType::Mouse, two::DeviceType::MouseLeft, two::DeviceType::MouseRight, two::DeviceType::MouseMiddle, two::DeviceType::Touch, two::DeviceType::Count};
@@ -109,6 +113,7 @@ namespace two
 	{
 		Type& t = type<two::EventType>();
 		static Meta meta = { t, &namspc({ "two" }), "EventType", sizeof(two::EventType), TypeClass::Enum };
+        init_default_value<two::EventType>();
 		static cstring ids[] = { "None", "Heartbeat", "Moved", "Pressed", "Released", "Stroked", "DoubleStroked", "Dragged", "DraggedTarget", "DragStarted", "DragEnded", "Dropped", "Count" };
 		static uint32_t values[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
 		static two::EventType vars[] = { two::EventType::None, two::EventType::Heartbeat, two::EventType::Moved, two::EventType::Pressed, two::EventType::Released, two::EventType::Stroked, two::EventType::DoubleStroked, two::EventType::Dragged, two::EventType::DraggedTarget, two::EventType::DragStarted, two::EventType::DragEnded, two::EventType::Dropped, two::EventType::Count};
@@ -125,6 +130,7 @@ namespace two
 	{
 		Type& t = type<two::RenderSystem>();
 		static Meta meta = { t, &namspc({ "two" }), "RenderSystem", sizeof(two::RenderSystem), TypeClass::Object };
+        init_default_value<two::RenderSystem>();
 		// bases
 		// defaults
 		// constructors
@@ -138,6 +144,7 @@ namespace two
 	{
 		Type& t = type<two::Context>();
 		static Meta meta = { t, &namspc({ "two" }), "Context", sizeof(two::Context), TypeClass::Object };
+        init_default_value<two::Context>();
 		// bases
 		// defaults
 		static bool fullscreen_default = false;
@@ -178,6 +185,7 @@ namespace two
 	{
 		Type& t = type<two::InputEvent>();
 		static Meta meta = { t, &namspc({ "two" }), "InputEvent", sizeof(two::InputEvent), TypeClass::Struct };
+        init_default_value<two::InputEvent>();
 		// bases
 		// defaults
 		static two::DeviceType deviceType_default = two::DeviceType::None;
@@ -217,6 +225,7 @@ namespace two
 	{
 		Type& t = type<two::MouseEvent>();
 		static Meta meta = { t, &namspc({ "two" }), "MouseEvent", sizeof(two::MouseEvent), TypeClass::Struct };
+        init_default_value<two::MouseEvent>();
 		// bases
 		static Type* bases[] = { &type<two::InputEvent>() };
 		static size_t bases_offsets[] = { base_offset<two::MouseEvent, two::InputEvent>() };
@@ -252,6 +261,7 @@ namespace two
 	{
 		Type& t = type<two::KeyEvent>();
 		static Meta meta = { t, &namspc({ "two" }), "KeyEvent", sizeof(two::KeyEvent), TypeClass::Struct };
+        init_default_value<two::KeyEvent>();
 		// bases
 		static Type* bases[] = { &type<two::InputEvent>() };
 		static size_t bases_offsets[] = { base_offset<two::KeyEvent, two::InputEvent>() };
@@ -277,6 +287,7 @@ namespace two
 	{
 		Type& t = type<two::ControlNode>();
 		static Meta meta = { t, &namspc({ "two" }), "ControlNode", sizeof(two::ControlNode), TypeClass::Object };
+        init_default_value<two::ControlNode>();
 		// bases
 		// defaults
 		static two::InputMod key_event_0_modifier_default = two::InputMod::Any;
@@ -301,6 +312,7 @@ namespace two
 	{
 		Type& t = type<two::Keyboard>();
 		static Meta meta = { t, &namspc({ "two" }), "Keyboard", sizeof(two::Keyboard), TypeClass::Object };
+        init_default_value<two::Keyboard>();
 		// bases
 		// defaults
 		// constructors
@@ -314,6 +326,7 @@ namespace two
 	{
 		Type& t = type<two::Mouse>();
 		static Meta meta = { t, &namspc({ "two" }), "Mouse", sizeof(two::Mouse), TypeClass::Object };
+        init_default_value<two::Mouse>();
 		// bases
 		// defaults
 		// constructors
